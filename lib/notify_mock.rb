@@ -1,3 +1,5 @@
+require "rails-html-sanitizer"
+
 module NotifyMock
   URL = "https://email.eu-west-2.amazonaws.com/v2/email/outbound-emails"
 
@@ -35,6 +37,10 @@ module NotifyMock
         [ 200, { "Content-Type" => "application/json" }, ["{}"] ]
       end
 
+      def sanitize(html, options = {})
+        safe_list_sanitizer.sanitize(html, options)&.html_safe
+      end
+
       private
 
       def templates
@@ -53,6 +59,14 @@ module NotifyMock
 
       def template_dir
         Rails.root.join("spec", "fixtures", "notify")
+      end
+
+      def sanitizer_vendor
+        Rails::Html::Sanitizer
+      end
+
+      def safe_list_sanitizer
+        @safe_list_sanitizer ||= sanitizer_vendor.safe_list_sanitizer.new
       end
     end
   end
