@@ -13,16 +13,12 @@ class ApplicationController < ActionController::Base
     font_src = %w[font-src 'self' https://fonts.gstatic.com]
 
     img_src = %w[img-src 'self' data:]
-    img_src << "https://www.google-analytics.com"
 
     connect_src = %w[connect-src 'self']
     connect_src << "https://apikeys.civiccomputing.com"
-    connect_src << "https://www.google-analytics.com"
 
     script_src = %w[script-src 'self' 'unsafe-inline']
     script_src << "https://cc.cdn.civiccomputing.com"
-    script_src << "https://www.googletagmanager.com"
-    script_src << "https://www.google-analytics.com"
 
     if Site.translation_enabled?
       script_src << Site.moderate_url
