@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_070749) do
+ActiveRecord::Schema.define(version: 2021_01_20_015258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
   enable_extension "plpgsql"
 
-  create_table "admin_users", id: :serial, force: :cascade do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", limit: 255, null: false
     t.string "persistence_token", limit: 255
     t.string "crypted_password", limit: 255
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["region_id"], name: "index_constituencies_on_region_id"
   end
 
-  create_table "constituency_petition_journals", id: :serial, force: :cascade do |t|
+  create_table "constituency_petition_journals", force: :cascade do |t|
     t.string "constituency_id", null: false
-    t.integer "petition_id", null: false
+    t.bigint "petition_id", null: false
     t.integer "signature_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id", "constituency_id"], name: "idx_constituency_petition_journal_uniqueness", unique: true
   end
 
-  create_table "contacts", id: :serial, force: :cascade do |t|
-    t.integer "signature_id", null: false
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "signature_id", null: false
     t.string "address"
     t.string "phone_number", limit: 255
     t.datetime "created_at", null: false
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["signature_id"], name: "index_contacts_on_signature_id"
   end
 
-  create_table "country_petition_journals", id: :serial, force: :cascade do |t|
-    t.integer "petition_id", null: false
+  create_table "country_petition_journals", force: :cascade do |t|
+    t.bigint "petition_id", null: false
     t.integer "signature_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id", "location_code"], name: "index_country_petition_journals_on_petition_and_location", unique: true
   end
 
-  create_table "debate_outcomes", id: :serial, force: :cascade do |t|
-    t.integer "petition_id", null: false
+  create_table "debate_outcomes", force: :cascade do |t|
+    t.bigint "petition_id", null: false
     t.date "debated_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["updated_at"], name: "index_debate_outcomes_on_updated_at"
   end
 
-  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0
     t.integer "attempts", default: 0
     t.text "handler"
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["priority", "run_at"], name: "index_delayed_jobs_on_priority_and_run_at"
   end
 
-  create_table "domains", id: :serial, force: :cascade do |t|
-    t.integer "canonical_domain_id"
+  create_table "domains", force: :cascade do |t|
+    t.bigint "canonical_domain_id"
     t.string "name", limit: 100, null: false
     t.string "strip_characters", limit: 10
     t.string "strip_extension", limit: 10, default: "+"
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["name"], name: "index_domains_on_name", unique: true
   end
 
-  create_table "email_requested_receipts", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "email_requested_receipts", force: :cascade do |t|
+    t.bigint "petition_id"
     t.datetime "debate_outcome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -139,14 +139,14 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id"], name: "index_email_requested_receipts_on_petition_id"
   end
 
-  create_table "feedback", id: :serial, force: :cascade do |t|
+  create_table "feedback", force: :cascade do |t|
     t.string "comment", limit: 32768, null: false
     t.string "petition_link_or_title"
     t.string "email"
     t.string "user_agent"
   end
 
-  create_table "holidays", id: :serial, force: :cascade do |t|
+  create_table "holidays", force: :cascade do |t|
     t.date "christmas_start"
     t.date "christmas_end"
     t.date "easter_start"
@@ -155,10 +155,10 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "invalidations", id: :serial, force: :cascade do |t|
+  create_table "invalidations", force: :cascade do |t|
     t.string "summary", limit: 255, null: false
     t.string "details", limit: 10000
-    t.integer "petition_id"
+    t.bigint "petition_id"
     t.string "name", limit: 255
     t.string "postcode", limit: 255
     t.string "ip_address", limit: 40
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["started_at"], name: "index_invalidations_on_started_at"
   end
 
-  create_table "languages", id: :serial, force: :cascade do |t|
+  create_table "languages", force: :cascade do |t|
     t.string "locale", limit: 10, null: false
     t.string "name", limit: 30, null: false
     t.jsonb "translations", default: {}, null: false
@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
-  create_table "members", id: :serial, force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.string "region_id", limit: 9
     t.string "constituency_id", limit: 9
     t.string "name_en", limit: 100, null: false
@@ -210,16 +210,16 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["region_id"], name: "index_members_on_region_id"
   end
 
-  create_table "notes", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "notes", force: :cascade do |t|
+    t.bigint "petition_id"
     t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["petition_id"], name: "index_notes_on_petition_id", unique: true
   end
 
-  create_table "petition_emails", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "petition_emails", force: :cascade do |t|
+    t.bigint "petition_id"
     t.string "sent_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -230,8 +230,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id"], name: "index_petition_emails_on_petition_id"
   end
 
-  create_table "petition_statistics", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "petition_statistics", force: :cascade do |t|
+    t.bigint "petition_id"
     t.datetime "refreshed_at"
     t.integer "duplicate_emails"
     t.datetime "created_at"
@@ -240,7 +240,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id"], name: "index_petition_statistics_on_petition_id", unique: true
   end
 
-  create_table "petitions", id: :serial, force: :cascade do |t|
+  create_table "petitions", force: :cascade do |t|
     t.string "state", limit: 10, default: "pending", null: false
     t.datetime "open_at"
     t.datetime "created_at"
@@ -260,7 +260,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.boolean "special_consideration"
     t.integer "tags", default: [], null: false, array: true
     t.datetime "locked_at"
-    t.integer "locked_by_id"
+    t.bigint "locked_by_id"
     t.integer "moderation_lag"
     t.datetime "signature_count_reset_at"
     t.datetime "signature_count_validated_at"
@@ -310,7 +310,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["constituency_id"], name: "index_postcodes_on_constituency_id"
   end
 
-  create_table "rate_limits", id: :serial, force: :cascade do |t|
+  create_table "rate_limits", force: :cascade do |t|
     t.integer "burst_rate", default: 1, null: false
     t.integer "burst_period", default: 60, null: false
     t.integer "sustained_rate", default: 5, null: false
@@ -344,7 +344,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["name_en"], name: "index_regions_on_name_en", unique: true
   end
 
-  create_table "rejection_reasons", id: :serial, force: :cascade do |t|
+  create_table "rejection_reasons", force: :cascade do |t|
     t.string "code", limit: 30, null: false
     t.string "title", limit: 100, null: false
     t.string "description_en", limit: 2000, null: false
@@ -356,8 +356,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["title"], name: "index_rejection_reasons_on_title", unique: true
   end
 
-  create_table "rejections", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "rejections", force: :cascade do |t|
+    t.bigint "petition_id"
     t.string "code", limit: 50, null: false
     t.text "details"
     t.datetime "created_at", null: false
@@ -367,13 +367,13 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id"], name: "index_rejections_on_petition_id", unique: true
   end
 
-  create_table "signatures", id: :serial, force: :cascade do |t|
+  create_table "signatures", force: :cascade do |t|
     t.string "name", limit: 255, null: false
     t.string "state", limit: 20, default: "pending", null: false
     t.string "perishable_token", limit: 255
     t.string "postcode", limit: 255
     t.string "ip_address", limit: 40
-    t.integer "petition_id"
+    t.bigint "petition_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "notify_by_email", default: false
@@ -385,7 +385,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.boolean "seen_signed_confirmation_page", default: false, null: false
     t.string "location_code", limit: 30
     t.datetime "invalidated_at"
-    t.integer "invalidation_id"
+    t.bigint "invalidation_id"
     t.datetime "debate_scheduled_email_at"
     t.datetime "debate_outcome_email_at"
     t.datetime "petition_email_at"
@@ -423,7 +423,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["validated_at"], name: "index_signatures_on_validated_at"
   end
 
-  create_table "sites", id: :serial, force: :cascade do |t|
+  create_table "sites", force: :cascade do |t|
     t.string "title_en", limit: 50, default: "Petition the Senedd", null: false
     t.string "url_en", limit: 50, default: "https://petitions.senedd.wales", null: false
     t.string "email_from_en", limit: 100, default: "\"Petitions: Senedd\" <no-reply@petitions.senedd.wales>", null: false
@@ -455,7 +455,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.datetime "translations_updated_at"
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.string "description", limit: 200
     t.datetime "created_at", null: false
@@ -465,14 +465,14 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "tasks", id: :serial, force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
     t.string "name", limit: 60, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tasks_on_name", unique: true
   end
 
-  create_table "topics", id: :serial, force: :cascade do |t|
+  create_table "topics", force: :cascade do |t|
     t.string "code_en", limit: 100, null: false
     t.string "code_cy", limit: 100, null: false
     t.string "name_en", limit: 100, null: false
@@ -485,8 +485,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["name_en"], name: "index_topics_on_name_en", unique: true
   end
 
-  create_table "trending_domains", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "trending_domains", force: :cascade do |t|
+    t.bigint "petition_id"
     t.string "domain", limit: 100, null: false
     t.integer "count", null: false
     t.datetime "starts_at", null: false
@@ -497,8 +497,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_070749) do
     t.index ["petition_id"], name: "index_trending_domains_on_petition_id"
   end
 
-  create_table "trending_ips", id: :serial, force: :cascade do |t|
-    t.integer "petition_id"
+  create_table "trending_ips", force: :cascade do |t|
+    t.bigint "petition_id"
     t.inet "ip_address", null: false
     t.string "country_code", limit: 30, null: false
     t.integer "count", null: false
