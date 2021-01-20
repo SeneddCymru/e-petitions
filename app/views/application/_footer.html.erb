@@ -27,13 +27,6 @@
             <%= t(:"ui.footer.nav.privacy") %>
           <% end %>
         </li>
-        <% if Site.cookie_control? %>
-          <li>
-            <%= link_to privacy_path(anchor: "cookies"), id: "cookie-control" do %>
-              <%= t(:"ui.footer.nav.cookies") %>
-            <% end %>
-          </li>
-        <% end %>
         <li>
           <%= link_to feedback_path do %>
             <%= t(:"ui.footer.nav.feedback") %>
@@ -55,16 +48,3 @@
     </div>
   </div>
 </footer>
-<% if Site.cookie_control? && !holding_page?  %>
-  <script>
-    var button = document.getElementById('cookie-control');
-
-    button.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      if (CookieControl) {
-        CookieControl.open();
-      }
-    });
-  </script>
-<% end %>
