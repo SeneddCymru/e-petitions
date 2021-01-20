@@ -1,7 +1,7 @@
 version: "3.7"
 
 x-application: &application
-  image: unboxed/epetitions
+  image: unboxed/epetitions:12
   entrypoint: ./docker-entrypoint.sh
   environment:
     - DATABASE_URL=postgres://postgres@postgres:5432
@@ -17,7 +17,7 @@ x-application: &application
 
 services:
   postgres:
-    image: postgres:10.7
+    image: postgres:12
     restart: always
     ports:
       - "5432:5432"
