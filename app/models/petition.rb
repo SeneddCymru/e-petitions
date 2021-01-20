@@ -70,10 +70,10 @@ class Petition < ActiveRecord::Base
 
   filter :topic, ->(codes) { topics(codes) }
 
-  has_one :creator, -> { creator }, class_name: 'Signature'
+  has_one :creator, -> { creator }, class_name: 'Signature', inverse_of: :petition
   accepts_nested_attributes_for :creator, update_only: true
 
-  belongs_to :locked_by, class_name: 'AdminUser'
+  belongs_to :locked_by, class_name: 'AdminUser', optional: true
 
   has_one :debate_outcome, dependent: :destroy
   has_one :email_requested_receipt, dependent: :destroy

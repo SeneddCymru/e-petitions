@@ -23,6 +23,7 @@ FactoryBot.define do
   factory :petition do
     transient do
       admin_notes { nil }
+      creator { nil }
       creator_name { nil }
       creator_email { nil }
       creator_attributes { {} }
@@ -42,7 +43,7 @@ FactoryBot.define do
     end
 
     after(:build) do |petition, evaluator|
-      petition.creator ||= FactoryBot.build(:validated_signature, creator: true)
+      petition.creator ||= evaluator.creator || build(:validated_signature, petition: petition, creator: true)
       petition.creator.assign_attributes(evaluator.creator_attributes)
 
       if evaluator.creator_name
@@ -383,6 +384,7 @@ FactoryBot.define do
     state                 Signature::VALIDATED_STATE
 
     after(:build) do |signature, evaluator|
+      signature.petition ||= build(:petition, creator: (signature.creator ? signature : nil))
       build(:contact, signature: signature) if signature.creator?
     end
 
