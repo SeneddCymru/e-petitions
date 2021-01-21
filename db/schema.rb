@@ -426,7 +426,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_183137) do
   create_table "sites", force: :cascade do |t|
     t.string "title_en", limit: 50, default: "Petition the Scottish Parliament", null: false
     t.string "url_en", limit: 50, default: "https://petitions.parliament.scot", null: false
-    t.string "email_from_en", limit: 100, default: "\"Petitions: Scottish Parliament\" <no-reply@petitions.parliament.scot>\"", null: false
+    t.string "email_from_en", limit: 100, default: "\"Petitions: Scottish Parliament\" <no-reply@petitions.parliament.scot>", null: false
     t.string "username", limit: 30
     t.string "password_digest", limit: 60
     t.boolean "enabled", default: true, null: false
