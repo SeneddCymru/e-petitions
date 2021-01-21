@@ -12,8 +12,8 @@ class ChangeDefaultsForScottishParliament < ActiveRecord::Migration[5.2]
 
     change_column_default :sites,
                           :email_from_en,
-                          from: %["Petitions: Welsh Parliament" <no-reply@petition.senedd.wales>"],
-                          to:   %["Petitions: Scottish Parliament" <no-reply@petitions.parliament.scot>"]
+                          from: %["Petitions: Welsh Parliament" <no-reply@petition.senedd.wales>],
+                          to:   %["Petitions: Scottish Parliament" <no-reply@petitions.parliament.scot>]
 
     change_column_default :sites, :moderate_url,
                           from: %[https://moderate.petitions.senedd.wales],
@@ -35,7 +35,7 @@ class ChangeDefaultsForScottishParliament < ActiveRecord::Migration[5.2]
 
     change_column_default :sites,
                           :email_from_cy,
-                          from: %["Deisebau: Senedd" <dim-ateb@deisebau.senedd.cymru>"],
+                          from: %["Deisebau: Senedd" <dim-ateb@deisebau.senedd.cymru>],
                           to:   %["Athchuingean: Pàrlamaid na h-Alba" <gun-fhreagairt@athchuingean.parlamaid-alba.scot>]
   end
 end
