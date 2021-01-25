@@ -12,3 +12,11 @@ task default: %i[
   bundle:audit brakeman:check
   spec jasmine:ci cucumber
 ]
+
+task :load_schema_if_empty do
+  unless Site.table_exists?
+    Rake::Task["db:schema:load"].invoke
+  end
+end
+
+Rake::Task["db:migrate"].enhance(%w[load_schema_if_empty])
