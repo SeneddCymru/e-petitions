@@ -295,7 +295,7 @@ class PackageBuilder
   end
 
   def region
-    ENV.fetch('AWS_REGION', 'eu-west-1')
+    ENV.fetch('AWS_REGION', 'eu-west-2')
   end
 
   def release_bucket
