@@ -1,0 +1,26 @@
+id: "a18a2bbf-df46-4f7f-8202-dcfe2c9ba188"
+name: "notify_creator_that_petition_is_published_gd"
+subject: "We published your petition “((action_gd))”"
+body: |-
+  Dear ((creator)),
+  
+  Your petition “((action_gd))” is now published and ready to collect signatures. 
+  
+  Click this link to see your petition and start sharing it:
+  ((url_gd))
+  
+  Petitions need to collect ((referral_threshold)) signatures in order to be considered by the Petitions Committee. This does not happen until after the petition has finished collecting signatures. Please let us know if you would like to change the closing date of your petition.
+  
+  If your petition collects more than ((debate_threshold)) signatures, the Committee will consider referring it for a debate in Parliament. In doing so, the Committee will consider a range of factors including the subject-matter of the petition and the percentage of signatures gathered from within Scotland.
+  
+  Should you also wish to collect signatures on paper, we can provide a template on request.
+  
+  If your petition collects ((referral_threshold)) signatures you can arrange to come to Parliament to formally hand in your petition to the Committee. This is an informal opportunity to speak to the Chair and other Members of the Committee about your petition. It is entirely optional.
+  
+  Handovers take place at 12.30pm on Tuesdays and Wednesdays when Parliament is sitting and last approximately 10 – 15 minutes. These opportunities are often taken up quickly, so please contact us at your earliest convenience if you would like to arrange one.
+  
+  Finally, should you require any further information in the meantime, please do not hesitate to contact us.
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

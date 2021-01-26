@@ -1,0 +1,18 @@
+id: "a41374bb-235b-4203-8ed2-076961c7554c"
+name: "sponsor_signed_email_on_threshold_christmas_gd"
+subject: "We’re checking your petition"
+body: |-
+  Dear ((creator)),
+  
+  Your petition is nearly ready to go.
+  
+  ((sponsor)) supported your petition – “((action))”.
+  
+  ((moderation_threshold)) people have supported your petition. We’re checking your petition to make sure it meets the petition criteria. If it does, we’ll publish it and let you know. This usually takes a week or less but over the Christmas period it will take us a little longer than usual. We’ll check your petition as quickly as we can.
+  
+  Find out how we check petitions before we publish them:
+  ((url_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

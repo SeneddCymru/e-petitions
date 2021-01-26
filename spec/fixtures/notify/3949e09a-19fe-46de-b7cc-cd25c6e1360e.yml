@@ -1,0 +1,18 @@
+id: "3949e09a-19fe-46de-b7cc-cd25c6e1360e"
+name: "sponsor_signed_email_on_threshold_en"
+subject: "We’re checking your petition"
+body: |-
+  Dear ((creator)),
+  
+  Your petition is nearly ready to go.
+  
+  ((sponsor)) supported your petition – “((action))”.
+  
+  ((moderation_threshold)) people have supported your petition. We’re checking your petition to make sure it meets the petition criteria. If it does, we’ll publish it and let you know. This usually takes a week or less.
+  
+  Find out how we check petitions before we publish them:
+  ((url_en))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

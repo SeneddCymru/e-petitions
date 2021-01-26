@@ -1,0 +1,13 @@
+id: "b79b908a-5b2f-4577-a03e-d8c625a2e280"
+name: "email_confirmation_for_signer_gd"
+subject: "Please confirm your signature"
+body: |-
+  Click this link to sign the petition:
+  
+  # ((action_gd))
+  
+  ((url_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

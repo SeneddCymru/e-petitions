@@ -1,0 +1,9 @@
+id: "5cca1ad8-1214-41b0-8abe-bf982463dc01"
+name: "email_duplicate_sponsor_gd"
+subject: "Duplicate signature of petition"
+body: |-
+  You’re receiving this email because your email has been used to support the petition “((action))”, but you have already supported this petition.
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

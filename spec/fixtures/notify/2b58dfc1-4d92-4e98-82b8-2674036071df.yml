@@ -1,0 +1,33 @@
+id: "2b58dfc1-4d92-4e98-82b8-2674036071df"
+name: "gather_sponsors_for_petition_gd"
+subject: "Action required: Petition “((action))”"
+body: |-
+  Dear ((creator)),
+  
+  You’re not done yet!
+  
+  Forward the email below to your potential supporters.
+  
+  ((moderation_threshold)) people need to click the link and confirm their support for us to publish your petition.
+  
+  Once you’ve gained the required number of supporters, we’ll check your petition to make sure it meets the petition criteria. If it does, we’ll publish it and let you know. This usually takes a week or less.
+  
+  Thanks, 
+  The Petitions team
+  The Scottish Parliament
+  
+  ---
+  
+  I’ve made a petition – will you sign it?
+  
+  Click this link to sign the petition: 
+  ((url_gd))
+  
+  My petition:
+  
+  # ((action))
+  
+  ((content))
+  
+  Click this link to sign the petition:
+  ((url_gd))

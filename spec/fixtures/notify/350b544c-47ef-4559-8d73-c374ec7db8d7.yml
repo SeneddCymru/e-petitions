@@ -1,0 +1,20 @@
+id: "350b544c-47ef-4559-8d73-c374ec7db8d7"
+name: "notify_sponsor_that_petition_was_rejected_hidden_en"
+subject: "We rejected the petition “((action))” that you supported"
+body: |-
+  Dear ((sponsor)),
+  
+  Thank you for supporting a petition. 
+  
+  Before we can publish a petition on our website and it can begin to collect signatures, we need to ensure that it meets the petition rules. 
+  
+  Unfortunately, we are not able to accept the proposed petition “((action))”. 
+  
+  ((content_en))
+  
+  We only reject petitions that don’t meet the petition standards:
+  ((standards_url_en))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

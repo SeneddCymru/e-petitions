@@ -1,0 +1,17 @@
+id: "61647c95-10f3-445b-aa38-1cbe436663b6"
+name: "email_signer_about_other_business_gd"
+subject: "((subject_gd))"
+body: |-
+  Dear ((name)),
+  
+  You recently signed the petition “((action_gd))”:
+  ((petition_url_gd))
+  
+  ((body_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament
+  
+  You’re receiving this email because you signed this petition: “((action_gd))”.
+  To unsubscribe from getting emails about this petition: ((unsubscribe_url_gd))

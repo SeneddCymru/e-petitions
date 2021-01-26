@@ -1,0 +1,25 @@
+id: "925889ef-245f-4f41-adbc-2378d079d1c6"
+name: "notify_creator_that_petition_was_rejected_hidden_en"
+subject: "We rejected your petition “((action))”"
+body: |-
+  Dear ((creator)),
+  
+  Thank you for submitting a petition to Parliament.  
+  
+  Before we can publish a petition on our website and it can begin to collect signatures, we need to ensure that it meets the petition rules. 
+  
+  Unfortunately, we are not able to accept your proposed petition “((action))”. 
+  
+  ((content_en))
+  
+  We only reject petitions that don’t meet the petition standards:
+  ((standards_url_en))
+  
+  If you want to try again, click here to start a petition:
+  ((new_petition_url_en))
+  
+  We’re sorry that we’re not able to take your petition forward on this occasion.
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

@@ -1,0 +1,16 @@
+id: "71f415b2-6488-4dc5-aa47-91ebaad41faf"
+name: "sponsor_signed_email_below_threshold_gd"
+subject: "((sponsor)) supported your petition"
+body: |-
+  Dear ((creator)),
+  
+  ((sponsor)) supported your petition – “((action))”.
+  
+  ((sponsor_count_gd)). If ((moderation_threshold)) people support your petition, we’ll check it to make sure it meets the petition criteria. If it does, we’ll publish it and let you know.
+  
+  Find out how we check petitions before we publish them:
+  ((url_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

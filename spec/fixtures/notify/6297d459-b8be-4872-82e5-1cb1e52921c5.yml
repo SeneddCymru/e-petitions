@@ -1,0 +1,26 @@
+id: "6297d459-b8be-4872-82e5-1cb1e52921c5"
+name: "notify_creator_that_petition_was_rejected_insufficient_en"
+subject: "We rejected your petition “((action_en))”"
+body: |-
+  Dear ((creator)),
+  
+  Thank you for submitting a petition to Parliament.
+  
+  Unfortunately, we are not able to refer the petition “((action_en))” to the Petitions Committee.
+  
+  ((content_en))
+  
+  Click this link to see your rejected petition:
+  ((url_en))
+  
+  We only reject petitions that don’t meet the petition standards:
+  ((standards_url_en))
+  
+  If you want to try again, click here to start a petition:
+  ((new_petition_url_en))
+  
+  We’re sorry that we’re not able to take your petition forward on this occasion.
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament
