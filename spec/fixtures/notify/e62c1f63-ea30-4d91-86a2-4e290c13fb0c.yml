@@ -1,0 +1,17 @@
+id: "e62c1f63-ea30-4d91-86a2-4e290c13fb0c"
+name: "email_creator_about_other_business_gd"
+subject: "((subject_gd))"
+body: |-
+  Dear ((name)),
+  
+  You recently created the petition “((action_gd))”:
+  ((petition_url_gd))
+  
+  ((body_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament
+  
+  You’re receiving this email because you created this petition: “((action_gd))”.
+  To unsubscribe from getting emails about this petition: ((unsubscribe_url_gd))

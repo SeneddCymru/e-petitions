@@ -1,0 +1,24 @@
+id: "fc58c0b6-217b-4d3b-9a9f-2537bb16f636"
+name: "notify_signer_of_positive_debate_outcome_gd"
+subject: "Parliament debated “((action_gd))”"
+body: |-
+  Dear ((name)),
+  
+  Parliament debated the petition you signed – “((action_gd))”
+  
+  ((overview_gd))
+  
+  Watch the debate: ((video_url_gd))
+  
+  Read the transcript: ((transcript_url_gd))
+  
+  Find details of the petition: ((debate_pack_url_gd))
+  
+  The petition: ((petition_url_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament
+  
+  You’re receiving this email because you signed this petition: “((action_gd))”.
+  To unsubscribe from getting emails about this petition: ((unsubscribe_url_gd))

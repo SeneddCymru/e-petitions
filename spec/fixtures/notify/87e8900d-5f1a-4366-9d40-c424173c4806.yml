@@ -1,0 +1,21 @@
+id: "87e8900d-5f1a-4366-9d40-c424173c4806"
+name: "notify_sponsor_that_petition_was_rejected_insufficient_en"
+subject: "We rejected the petition “((action_en))” that you supported"
+body: |-
+  Dear ((sponsor)),
+  
+  Thank you for supporting a petition. 
+  
+  Unfortunately, we are not able to refer the petition “((action_en))” to the Petitions Committee. 
+  
+  ((content_en))
+  
+  Click this link to see the rejected petition:
+  ((url_en))
+  
+  We only reject petitions that don’t meet the petition standards:
+  ((standards_url_en))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

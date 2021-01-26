@@ -1,0 +1,20 @@
+id: "73de5200-a8a7-47f1-a6c7-b2a90c2ba419"
+name: "notify_signer_of_debate_scheduled_gd"
+subject: "Parliament will debate “((action_gd))”"
+body: |-
+  Dear ((name)),
+  
+  Parliament is going to debate the petition you signed – “((action_gd))”.
+  
+  ((petition_url_gd))
+  
+  The debate is scheduled for ((debate_date_gd)).
+  
+  Once the debate has happened, we’ll email you a video and transcript.
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament
+  
+  You’re receiving this email because you signed this petition: “((action_gd))”.
+  To unsubscribe from getting emails about this petition: ((unsubscribe_url_gd))

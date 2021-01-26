@@ -16,13 +16,13 @@ Then /^I am told to check my inbox to complete signing$/ do
   expect(page).to have_content("We’ve sent you an email")
 end
 
-Then(/^(?:I|they|"(.*?)") should be asked to confirm their email address$/) do |address|
-  expect(find_email(address, with_subject: "Please confirm your email address")).to be_present
+Then(/^(?:I|they|"(.*?)") should be asked to confirm their signature$/) do |address|
+  expect(find_email(address, with_subject: "Please confirm your signature")).to be_present
 end
 
 When(/^I confirm my email address(?: again)?$/) do
   steps %Q(
-    And I open the email with subject "Please confirm your email address"
+    And I open the email with subject "Please confirm your signature"
     When I click the first link in the email
   )
 end

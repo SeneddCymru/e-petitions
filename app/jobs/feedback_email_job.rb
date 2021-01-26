@@ -12,7 +12,7 @@ class FeedbackEmailJob < NotifyJob
   def perform(feedback)
     client.send_email(
       email_address: Site.feedback_address,
-      template_id: "68009505-3bc4-49b6-b1b5-c3f36967f9b4",
+      template_id: "18fe5489-1e5b-4741-b840-5a1dddd97983",
       reference: feedback.to_gid_param,
       personalisation: {
         comment: feedback.comment,

@@ -1,0 +1,33 @@
+id: "6b082ec8-af7d-4333-98a9-9ca71bfc9950"
+name: "gather_sponsors_for_petition_christmas_gd"
+subject: "Action required: Petition “((action))”"
+body: |-
+  Dear ((creator)),
+  
+  You’re not done yet!
+  
+  Forward the email below to your potential supporters.
+  
+  ((moderation_threshold)) people need to click the link and confirm their support for us to publish your petition.
+  
+  Once you’ve gained the required number of supporters, we’ll check your petition to make sure it meets the petition criteria. If it does we’ll publish it and let you know. This usually takes a week or less but over the Christmas period it will take us a little longer than usual. We’ll check your petition as quickly as we can.
+  
+  Thanks, 
+  The Petitions team
+  The Scottish Parliament
+  
+  ---
+  
+  I’ve made a petition – will you sign it?
+  
+  Click this link to sign the petition: 
+  ((url_gd))
+  
+  My petition:
+  
+  # ((action))
+  
+  ((content))
+  
+  Click this link to sign the petition:
+  ((url_gd))

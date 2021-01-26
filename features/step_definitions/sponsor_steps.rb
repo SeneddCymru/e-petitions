@@ -28,7 +28,7 @@ When(/^a sponsor supports my petition$/) do
     And I select "Wales" from "Location"
     And I try to sign
     And I say I am happy with my email address
-    And "#{sponsor_email}" opens the email with subject "Please confirm your email address"
+    And "#{sponsor_email}" opens the email with subject "Please confirm your signature"
     And they click the first link in the email
   }
   signature = @sponsor_petition.signatures.for_email(sponsor_email).first
@@ -140,7 +140,7 @@ Then(/^(?:I|"(.*?)") should receive an email explaining the petition I am sponso
   expect(unread_emails_for(address).size).to eq 1
   open_last_email_for(address)
   steps %{
-    Then they should see "Please confirm your email address" in the email subject
+    Then they should see "Please confirm your signature" in the email subject
     And they should see "#{@sponsor_petition.action}" in the email body
     And they should see "#{@sponsor_petition.background}" in the email body
     And they should see "#{@sponsor_petition.additional_details}" in the email body
@@ -156,9 +156,17 @@ Then(/^(I|they|".*?") should be emailed a link for gathering support from sponso
   steps %{
     Then #{address} should receive an email with subject "Action required: Petition"
     When they open the email with subject "Action required: Petition"
-    Then they should see /\/petitions\/\\d+\/sponsors\/[A-Za-z0-9]+/ in the email body
-    Then they should see /\/deisebau\/\\d+\/noddwyr\/[A-Za-z0-9]+/ in the email body
   }
+
+  if I18n.locale == :"gd-GB"
+    steps %{
+      Then they should see /\/deisebau\/\\d+\/noddwyr\/[A-Za-z0-9]+/ in the email body
+    }
+  else
+    steps %{
+      Then they should see /\/petitions\/\\d+\/sponsors\/[A-Za-z0-9]+/ in the email body
+    }
+  end
 end
 
 When(/^I have sponsored a petition$/) do

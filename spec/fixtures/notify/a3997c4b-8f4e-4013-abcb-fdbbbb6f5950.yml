@@ -1,0 +1,12 @@
+id: "a3997c4b-8f4e-4013-abcb-fdbbbb6f5950"
+name: "email_duplicate_signatures_gd"
+subject: "Duplicate signature of petition"
+body: |-
+  You’re receiving this email because your email has been used to sign the petition “((action_gd))”, but you have already signed this petition.
+  
+  View the petition “((action_gd))” at: 
+  ((url_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament

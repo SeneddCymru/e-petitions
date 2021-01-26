@@ -317,7 +317,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "7e098470-4a73-435c-bd8c-9f0d9d9ba010",
+                template_id: "3ed42402-0038-4304-b910-08eaa4ec580b",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Do stuff",
@@ -340,7 +340,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "c93ca86b-b508-417c-a4b5-28ec33047b2e",
+                template_id: "0e0cbb33-2546-45b8-8445-cd7281cd2f44",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Do stuff",
@@ -365,7 +365,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "ed21ff1d-b718-4cef-9491-451f443f9a1d",
+                template_id: "3f08c4ae-f37b-4bc0-a96e-5495d4048411",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Do stuff",
@@ -388,7 +388,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "c93ca86b-b508-417c-a4b5-28ec33047b2e",
+                template_id: "0e0cbb33-2546-45b8-8445-cd7281cd2f44",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Do stuff",
@@ -413,7 +413,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "f7965a34-6f8e-4aa3-97fe-51e8f465d264",
+                template_id: "17729e9f-859c-43f4-a0c1-2d82823d54b8",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Do stuff",
@@ -436,7 +436,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "c93ca86b-b508-417c-a4b5-28ec33047b2e",
+                template_id: "0e0cbb33-2546-45b8-8445-cd7281cd2f44",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Do stuff",
@@ -476,7 +476,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "1a52a93e-808a-4ce4-9b24-2d165aaaef4b",
+                template_id: "2b58dfc1-4d92-4e98-82b8-2674036071df",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Gwnewch bethau",
@@ -499,7 +499,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "fb8c5cee-8fb1-46f3-8818-58f3c4311c2b",
+                template_id: "d9d30b35-9e57-421c-9421-b5c234f314ed",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Gwnewch bethau",
@@ -524,7 +524,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "5920b765-6921-4537-9e01-d8b1338b1071",
+                template_id: "c277d917-d95a-4724-952c-e55f3577a6ad",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Gwnewch bethau",
@@ -547,7 +547,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "fb8c5cee-8fb1-46f3-8818-58f3c4311c2b",
+                template_id: "d9d30b35-9e57-421c-9421-b5c234f314ed",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Gwnewch bethau",
@@ -572,7 +572,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "6c9730a2-e31d-4c15-9c05-e96ef5cb8ff4",
+                template_id: "6b082ec8-af7d-4333-98a9-9ca71bfc9950",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Gwnewch bethau",
@@ -595,7 +595,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "fb8c5cee-8fb1-46f3-8818-58f3c4311c2b",
+                template_id: "d9d30b35-9e57-421c-9421-b5c234f314ed",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   action: "Gwnewch bethau",
@@ -653,7 +653,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "0f912b39-37e2-4de0-886a-28c3e529d139",
+              template_id: "43eec5b3-3630-45bb-8a0f-38dbad99d3e6",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Do stuff",
@@ -685,7 +685,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "f10ca6dd-4f07-479c-a588-a3abbafe2c55",
+              template_id: "d807f6ff-700d-4785-a41e-4572d3dd9dfa",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Do stuff",
@@ -734,7 +734,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "0f912b39-37e2-4de0-886a-28c3e529d139",
+              template_id: "43eec5b3-3630-45bb-8a0f-38dbad99d3e6",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Gwnewch bethau",
@@ -766,7 +766,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "f10ca6dd-4f07-479c-a588-a3abbafe2c55",
+              template_id: "d807f6ff-700d-4785-a41e-4572d3dd9dfa",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Gwnewch bethau",
@@ -824,7 +824,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "0f1791a4-55cc-42c2-84d4-d822b35dad55",
+              template_id: "3a7e8201-52c5-4dc9-a349-7e2235312147",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Do stuff"
@@ -863,7 +863,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "c58cd340-4ba9-43f7-b6f4-7386f7c63260",
+              template_id: "5cca1ad8-1214-41b0-8abe-bf982463dc01",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Do stuff",
@@ -919,7 +919,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "0f1791a4-55cc-42c2-84d4-d822b35dad55",
+              template_id: "3a7e8201-52c5-4dc9-a349-7e2235312147",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Gwnewch bethau"
@@ -958,7 +958,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "c58cd340-4ba9-43f7-b6f4-7386f7c63260",
+              template_id: "5cca1ad8-1214-41b0-8abe-bf982463dc01",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 action: "Gwnewch bethau"
@@ -998,7 +998,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "suzie@example.com",
-            template_id: "a33e91d1-808a-4a85-abcc-8a4c62266789",
+            template_id: "d1f5e610-5455-41ec-b71d-776c61ad9cac",
             reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
             personalisation: {
               action_en: "Do stuff",
@@ -1042,7 +1042,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "suzie@example.com",
-            template_id: "de60bc30-2d7b-4a71-851f-0ac357af048f",
+            template_id: "b79b908a-5b2f-4577-a03e-d8c625a2e280",
             reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
             personalisation: {
               action_en: "Do stuff",
@@ -1095,7 +1095,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "suzie@example.com",
-            template_id: "e4beb5af-0db1-406b-9c03-a8c8b65f27fd",
+            template_id: "ba9c3050-cc8b-410b-b3d2-30c692ffb91c",
             reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
             personalisation: {
               action_en: "Do stuff",
@@ -1127,7 +1127,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "suzie@example.com",
-            template_id: "8d63e92e-1591-420d-a8ec-1df6ecf6a34c",
+            template_id: "a3997c4b-8f4e-4013-abcb-fdbbbb6f5950",
             reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
             personalisation: {
               action_en: "Do stuff",
@@ -1184,7 +1184,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "dc337901-65b0-4e76-b1d5-b14b90e7ee3e",
+            template_id: "f23547af-65d8-4d9d-82cb-6f247112217e",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               creator: "Charlie",
@@ -1222,7 +1222,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "2d864e9a-275b-41ea-90c9-92b93da8c48a",
+            template_id: "a18a2bbf-df46-4f7f-8202-dcfe2c9ba188",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               creator: "Charlie",
@@ -1280,7 +1280,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "a8557cbf-a889-4392-88a1-988634169d69",
+              template_id: "f622a170-c0cf-42ca-aef6-66deb7f25611",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 sponsor: "Suzie",
@@ -1311,7 +1311,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "46f90a8f-eb76-4ed7-b24f-c657560c5c41",
+              template_id: "0ad7a912-1444-49c9-b915-f4969f24376f",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 sponsor: "Suzie",
@@ -1362,7 +1362,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "a8557cbf-a889-4392-88a1-988634169d69",
+              template_id: "f622a170-c0cf-42ca-aef6-66deb7f25611",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 sponsor: "Suzie",
@@ -1393,7 +1393,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "46f90a8f-eb76-4ed7-b24f-c657560c5c41",
+              template_id: "0ad7a912-1444-49c9-b915-f4969f24376f",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 sponsor: "Suzie",
@@ -1447,7 +1447,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "262dc874-cba2-4aef-888d-b6fcd23401a8",
+              template_id: "13846021-76c3-41d1-8f6d-a452fc763c67",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 creator: "Charlie", action: "Do stuff",
@@ -1475,7 +1475,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "0e9af1c3-17b2-4af6-9440-5fce1f5eb7bb",
+              template_id: "925889ef-245f-4f41-adbc-2378d079d1c6",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 creator: "Charlie", action: "Do stuff",
@@ -1503,7 +1503,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "47bbcd29-ffc8-4bea-b490-c6caed2fd0ae",
+              template_id: "6297d459-b8be-4872-82e5-1cb1e52921c5",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 creator: "Charlie", action_en: "Do stuff", action_gd: "Gwnewch bethau",
@@ -1551,7 +1551,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "71d0736e-ff45-43d5-b083-c78f04d2b02c",
+              template_id: "506fd5ab-379f-4a0d-9913-b151abad69a9",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 creator: "Charlie", action: "Gwnewch bethau",
@@ -1579,7 +1579,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "59dad299-5c03-48b9-be2b-37b90a7701fe",
+              template_id: "111a4136-365b-48ee-bf2f-be60e5798bdc",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 creator: "Charlie", action: "Gwnewch bethau",
@@ -1607,7 +1607,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "fd40fb7a-0548-4880-bbeb-eb07e409348a",
+              template_id: "61bf3c20-decd-4aa6-88e0-9df929b4dae8",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 creator: "Charlie", action_en: "Do stuff", action_gd: "Gwnewch bethau",
@@ -1678,7 +1678,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "0a9de360-8eab-4e81-946b-7fe2146b6b1e",
+                template_id: "f9e6a3f3-7eb0-4ab9-baa2-0f517d1e51c8",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Do stuff",
@@ -1712,7 +1712,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "9bcdcefd-60a3-4698-85c7-5b4246745b43",
+                template_id: "2386c97c-307f-4d40-ad48-9e44e2eaecd7",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Do stuff",
@@ -1751,7 +1751,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "69e7f6e1-da4c-4b1e-95d5-e687a62c2cc7",
+                template_id: "350b544c-47ef-4559-8d73-c374ec7db8d7",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Do stuff",
@@ -1785,7 +1785,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "cf28ed24-3710-4843-bc35-0ec157adb9ca",
+                template_id: "59a256a3-e0e8-4bc7-923a-142a42410ea9",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Do stuff",
@@ -1824,7 +1824,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "611e4790-2a93-43fe-897d-07c21caddd0b",
+                template_id: "87e8900d-5f1a-4366-9d40-c424173c4806",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Gwnewch bethau",
@@ -1858,7 +1858,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "3911e196-c27a-41dc-8ee4-8390dd198ee6",
+                template_id: "6cd02568-0627-4932-a81d-23bf543840da",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Gwnewch bethau",
@@ -1917,7 +1917,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "0a9de360-8eab-4e81-946b-7fe2146b6b1e",
+                template_id: "f9e6a3f3-7eb0-4ab9-baa2-0f517d1e51c8",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Gwnewch bethau",
@@ -1951,7 +1951,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "9bcdcefd-60a3-4698-85c7-5b4246745b43",
+                template_id: "2386c97c-307f-4d40-ad48-9e44e2eaecd7",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Gwnewch bethau",
@@ -1990,7 +1990,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "69e7f6e1-da4c-4b1e-95d5-e687a62c2cc7",
+                template_id: "350b544c-47ef-4559-8d73-c374ec7db8d7",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Gwnewch bethau",
@@ -2024,7 +2024,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "cf28ed24-3710-4843-bc35-0ec157adb9ca",
+                template_id: "59a256a3-e0e8-4bc7-923a-142a42410ea9",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action: "Gwnewch bethau",
@@ -2063,7 +2063,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "611e4790-2a93-43fe-897d-07c21caddd0b",
+                template_id: "87e8900d-5f1a-4366-9d40-c424173c4806",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Gwnewch bethau",
@@ -2097,7 +2097,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "suzie@example.com",
-                template_id: "3911e196-c27a-41dc-8ee4-8390dd198ee6",
+                template_id: "6cd02568-0627-4932-a81d-23bf543840da",
                 reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
                 personalisation: {
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Gwnewch bethau",
@@ -2159,12 +2159,12 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "32eabf04-06e7-4e80-9be4-f425321419c1",
+              template_id: "112c46d3-980e-4d56-83e8-06bb98a57871",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
                 sponsor_count_en: "You have 1 supporter so far",
-                sponsor_count_gd: "Mae gennych chi 1 cefnogwr hyd yn hyn",
+                sponsor_count_gd: "You have 1 supporter so far",
                 url_en: "https://petitions.parliament.scot/help#standards",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/help#standards"
               }
@@ -2191,12 +2191,12 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "32eabf04-06e7-4e80-9be4-f425321419c1",
+              template_id: "112c46d3-980e-4d56-83e8-06bb98a57871",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
                 sponsor_count_en: "You have 1 supporter so far",
-                sponsor_count_gd: "Mae gennych chi 1 cefnogwr hyd yn hyn",
+                sponsor_count_gd: "You have 1 supporter so far",
                 url_en: "https://petitions.parliament.scot/help#standards",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/help#standards"
               }
@@ -2240,12 +2240,12 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "29b774ac-7852-4657-9b7d-c0395e7f890c",
+              template_id: "71f415b2-6488-4dc5-aa47-91ebaad41faf",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
                 sponsor_count_en: "You have 1 supporter so far",
-                sponsor_count_gd: "Mae gennych chi 1 cefnogwr hyd yn hyn",
+                sponsor_count_gd: "You have 1 supporter so far",
                 url_en: "https://petitions.parliament.scot/help#standards",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/help#standards"
               }
@@ -2272,12 +2272,12 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "charlie@example.com",
-              template_id: "29b774ac-7852-4657-9b7d-c0395e7f890c",
+              template_id: "71f415b2-6488-4dc5-aa47-91ebaad41faf",
               reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
               personalisation: {
                 sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
                 sponsor_count_en: "You have 1 supporter so far",
-                sponsor_count_gd: "Mae gennych chi 1 cefnogwr hyd yn hyn",
+                sponsor_count_gd: "You have 1 supporter so far",
                 url_en: "https://petitions.parliament.scot/help#standards",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/help#standards"
               }
@@ -2332,7 +2332,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "b0bbd8f3-ad81-4095-a01d-68d979775418",
+                template_id: "3949e09a-19fe-46de-b7cc-cd25c6e1360e",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
@@ -2362,7 +2362,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "b0bbd8f3-ad81-4095-a01d-68d979775418",
+                template_id: "3949e09a-19fe-46de-b7cc-cd25c6e1360e",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
@@ -2396,7 +2396,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "6fbe2afa-0ee5-4dec-adab-1a7518cbee33",
+                template_id: "cb8144c1-3d7c-417b-9add-261fe4253d24",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
@@ -2426,7 +2426,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "6fbe2afa-0ee5-4dec-adab-1a7518cbee33",
+                template_id: "cb8144c1-3d7c-417b-9add-261fe4253d24",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
@@ -2460,7 +2460,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "f6ea7df0-9cb1-4895-941a-183ddd0e79db",
+                template_id: "13feeec9-d539-4548-a1cf-13254a51af1c",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
@@ -2490,7 +2490,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "f6ea7df0-9cb1-4895-941a-183ddd0e79db",
+                template_id: "13feeec9-d539-4548-a1cf-13254a51af1c",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
@@ -2539,7 +2539,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "8766cdb6-19cb-4eab-a2ba-1af7643f66ee",
+                template_id: "20cb31ed-5758-4fd4-9d0d-69fe6c1f4818",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
@@ -2569,7 +2569,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "8766cdb6-19cb-4eab-a2ba-1af7643f66ee",
+                template_id: "20cb31ed-5758-4fd4-9d0d-69fe6c1f4818",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
@@ -2603,7 +2603,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "fffa81d1-0625-44a1-af7b-780dd27a7719",
+                template_id: "8c18ec4e-c6a5-4939-bbdd-19fbb1e392d3",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
@@ -2633,7 +2633,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "fffa81d1-0625-44a1-af7b-780dd27a7719",
+                template_id: "8c18ec4e-c6a5-4939-bbdd-19fbb1e392d3",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
@@ -2667,7 +2667,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "50d84545-2438-478d-9838-d61fc2467efd",
+                template_id: "a41374bb-235b-4203-8ed2-076961c7554c",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
@@ -2697,7 +2697,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
               expect(notify_request(
                 email_address: "charlie@example.com",
-                template_id: "50d84545-2438-478d-9838-d61fc2467efd",
+                template_id: "a41374bb-235b-4203-8ed2-076961c7554c",
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Gwnewch bethau",
@@ -2733,7 +2733,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
         json = {
           email_address: "petitionscommittee@parliament.scot",
-          template_id: "68009505-3bc4-49b6-b1b5-c3f36967f9b4",
+          template_id: "18fe5489-1e5b-4741-b840-5a1dddd97983",
           reference: feedback.to_gid_param,
           personalisation: {
             comment: "This is a test",
@@ -2814,7 +2814,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "5b75b985-fc6e-4473-8b51-0958818bea63",
+            template_id: "1b64c2cc-d9f0-49ef-920e-34716aff1fc2",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -2858,7 +2858,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "86b5dee8-ca22-45be-af00-d74d601e656d",
+            template_id: "e62c1f63-ea30-4d91-86a2-4e290c13fb0c",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -2924,7 +2924,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "fdc05cf0-81d1-4a28-933c-65b8e10666dd",
+              template_id: "180c8aed-726a-46cf-aef6-2a0a34906cb4",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -2952,7 +2952,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "5aa3434b-0530-4655-a2d2-318fd3668568",
+              template_id: "61647c95-10f3-445b-aa38-1cbe436663b6",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3000,7 +3000,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "fdc05cf0-81d1-4a28-933c-65b8e10666dd",
+              template_id: "180c8aed-726a-46cf-aef6-2a0a34906cb4",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3028,7 +3028,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "5aa3434b-0530-4655-a2d2-318fd3668568",
+              template_id: "61647c95-10f3-445b-aa38-1cbe436663b6",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3084,7 +3084,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "085e81e4-5ced-4cfe-b142-a03f8b5ffb08",
+            template_id: "eedd584c-1ea0-40cb-81d5-df30b9dc4a59",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -3127,7 +3127,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "0e81b36b-9e52-445c-8984-0ee9d89399fe",
+            template_id: "1915c783-3b72-4a77-91b2-abb67e44bd07",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -3181,7 +3181,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "824662f6-2cb1-4da8-b65d-6b071c569d0e",
+              template_id: "3e998aef-a6cf-45f2-b3af-80ddf2375ddd",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3206,7 +3206,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "939413df-ec0d-4898-acb2-46a63ea3d42f",
+              template_id: "73de5200-a8a7-47f1-a6c7-b2a90c2ba419",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3253,7 +3253,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "824662f6-2cb1-4da8-b65d-6b071c569d0e",
+              template_id: "3e998aef-a6cf-45f2-b3af-80ddf2375ddd",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3278,7 +3278,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "939413df-ec0d-4898-acb2-46a63ea3d42f",
+              template_id: "73de5200-a8a7-47f1-a6c7-b2a90c2ba419",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3332,7 +3332,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "41021e4a-70d7-43ec-b98e-14ca5e8e0835",
+            template_id: "a86c7fc5-dc56-4cbc-93cb-7ed289f76938",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -3378,7 +3378,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "3e283d4a-7b74-4a96-8431-857e3b3bfc89",
+            template_id: "374a45ab-b871-423f-a0cb-6a3bd090dc19",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -3437,7 +3437,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "865e3a66-6b98-406d-8883-04dd7d35a580",
+              template_id: "918ff0be-d33e-4ad5-ad9c-da2f339e8070",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3465,7 +3465,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "d97d154f-cdb8-4273-b6cb-d5f89479efba",
+              template_id: "4ef93900-6278-433e-9a11-36700c57da29",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3515,7 +3515,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "865e3a66-6b98-406d-8883-04dd7d35a580",
+              template_id: "918ff0be-d33e-4ad5-ad9c-da2f339e8070",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3543,7 +3543,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "d97d154f-cdb8-4273-b6cb-d5f89479efba",
+              template_id: "4ef93900-6278-433e-9a11-36700c57da29",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3606,7 +3606,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "929f4523-ee7d-4895-a9e5-32f9fff0c41a",
+            template_id: "be4a7709-d813-4257-ab45-fda327aef2d9",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -3662,7 +3662,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
           expect(notify_request(
             email_address: "charlie@example.com",
-            template_id: "4bda6753-3639-4bad-94a2-b1b1596222b9",
+            template_id: "031cf660-43e3-4d8b-91ea-1e7ce2ddc140",
             reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
             personalisation: {
               name: "Charlie",
@@ -3731,7 +3731,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "4254e36c-b0bc-48ad-9a8c-62d59d16d0ce",
+              template_id: "d2777d25-c434-4196-8ed5-54460b71f7c9",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3763,7 +3763,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "61cd5971-7bc7-4a1e-b30b-d799a36bff5c",
+              template_id: "fc58c0b6-217b-4d3b-9a9f-2537bb16f636",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3823,7 +3823,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "4254e36c-b0bc-48ad-9a8c-62d59d16d0ce",
+              template_id: "d2777d25-c434-4196-8ed5-54460b71f7c9",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",
@@ -3855,7 +3855,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
             expect(notify_request(
               email_address: "suzie@example.com",
-              template_id: "61cd5971-7bc7-4a1e-b30b-d799a36bff5c",
+              template_id: "fc58c0b6-217b-4d3b-9a9f-2537bb16f636",
               reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
               personalisation: {
                 name: "Suzie",

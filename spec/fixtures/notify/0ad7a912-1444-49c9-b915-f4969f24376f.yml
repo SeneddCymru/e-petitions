@@ -1,0 +1,16 @@
+id: "0ad7a912-1444-49c9-b915-f4969f24376f"
+name: "notify_sponsor_that_petition_is_published_gd"
+subject: "We published the petition “((action_gd))” that you supported"
+body: |-
+  Dear ((sponsor)),
+  
+  The petition you supported – “((action_gd))”, has now been published.
+  
+  Petitions need to collect ((referral_threshold)) signatures in order to be considered by the Petitions Committee.
+  
+  Click this link to see the petition and start sharing it:
+  ((url_gd))
+  
+  Thanks,
+  The Petitions team
+  The Scottish Parliament
