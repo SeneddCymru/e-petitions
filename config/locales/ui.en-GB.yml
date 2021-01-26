@@ -67,15 +67,15 @@ en-GB:
         <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="external license">Open Government Licence v3.0</a>, except where otherwise stated</p>
     header:
       brand_html: |-
-        <a href="https://senedd.wales" rel="external">      
-          <p>Senedd Cymru</p>
-          <p>Gaelic Parliament</p>
+        <a href="https://beta.parliament.scot" rel="external">
+          <p>The Scottish Parliament</p>
+          <p>Pàrlamaid na h-Alba</p>
         </a>
       title: Petitions
       title_link_html: |-
         <a title="Go to the Petitions homepage" href="%{url}">Petitions</a>
       language_switcher_html: |-
-        <a class="language-switcher" title="Dangoswch y dudalen hon yn Gymraeg" href="%{url}">Cymraeg</a>
+        <a class="language-switcher" title="Seall an duilleag seo sa Ghàidhlig" href="%{url}">Gàidhlig</a>
     sharing:
       email_html: |-
         <a rel="external" target="_blank" href="mailto:?body=%{url}&amp;subject=Petition%3A%20%{action}">Email</a>

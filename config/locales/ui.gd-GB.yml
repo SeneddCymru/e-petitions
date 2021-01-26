@@ -65,15 +65,15 @@ gd-GB:
         <p>Mae’r holl gynnwys ar gael o dan <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="external license">Drwydded Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol</p>
     header:
       brand_html: |-
-        <a href="https://senedd.cymru" rel="external">      
-          <p>Senedd Cymru</p>
-          <p>Gaelic Parliament</p>
+        <a href="https://beta.parlamaid-alba.scot" rel="external">
+          <p>The Scottish Parliament</p>
+          <p>Pàrlamaid na h-Alba</p>
         </a>
-      title: Deisebau
+      title: Petitions
       title_link_html: |-
-        <a title="Ewch i hafan y Deisebau" href="%{url}">Deisebau</a>
+        <a title="Go to the Petitions homepage" href="%{url}">Petitions</a>
       language_switcher_html: |-
-        <a class="language-switcher" title="Show this page in English" tabindex="-1" href="%{url}">English</a>
+        <a class="language-switcher" title="Show this page in English" href="%{url}">English</a>
     sharing:
       email_html: |-
         <a rel="external" target="_blank" href="mailto:?body=%{url}&amp;subject=Deiseb%3A%20%{action}">E-bost</a>

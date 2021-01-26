@@ -2,9 +2,10 @@ $black: #000000;
 $dark-grey: #3C3C3B;
 $mid-grey: #747474;
 $light-grey: #E6E6E6;
-$pink: #C9187E;
+$pink: #B0008E;
 $dark-pink: #B31570;
 $white: #FFFFFF;
+$purple: #500778;
 
 $text-color: $dark-grey;
 $secondary-text-color: $mid-grey;
@@ -25,9 +26,13 @@ body {
   color: $text-color;
 }
 
-body > header,
+body > header {
+  background-color: $purple;
+  color: $white;
+}
+
 body > footer {
-  background-color: $dark-grey;
+  background-image: linear-gradient(170deg, $purple 0, $pink 100%);
   color: $white;
 }
 
