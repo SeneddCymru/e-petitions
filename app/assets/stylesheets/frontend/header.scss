@@ -24,6 +24,10 @@ body > header {
   }
 
   .brand {
+    @extend %icon-logo;
+
+    background-position: left top;
+    background-size: contain;
     font-weight: bold;
 
     p {
@@ -32,11 +36,10 @@ body > header {
     }
 
     .logo {
-      width: 250px;
+      width: 300px;
 
       a {
-        @extend %icon-dragon;
-        @include padding-left(72px, 84px);
+        @include padding-left(56px, 64px);
 
         background-position: left top;
         display: block;
@@ -50,10 +53,10 @@ body > header {
     }
 
     .service {
-      font-weight: 800;
+      font-weight: bold;
       margin-top: 12px;
       @include font-size(1.25rem, 1.5rem);
-      @include padding-left(72px, 84px);
+      @include padding-left(56px, 64px);
     }
   }
 }

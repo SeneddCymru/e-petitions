@@ -1,5 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
+@font-face {
+  font-family: "Futura";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: font-url("FuturaBT-Book.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Futura";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: font-url("FuturaBT-Bold.ttf") format("ttf");
+}
 
 body {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: "Futura", Helvetica, Arial, sans-serif;
 }
