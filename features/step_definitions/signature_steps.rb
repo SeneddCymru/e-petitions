@@ -99,13 +99,13 @@ end
 When(/^I fill in my creator contact details$/) do
   if I18n.locale == :"en-GB"
     steps %Q(
-      And I fill in "Phone number" with "0300 200 6565"
-      And I fill in "Address" with "Pierhead St, Cardiff"
+      And I fill in "Phone number" with "0141 496 1234"
+      And I fill in "Address" with "1 Nowhere Road, Glasgow"
     )
   else
     steps %Q(
-      And I fill in "Rhif ffôn" with "0300 200 6565"
-      And I fill in "Cyfeiriad" with "Pierhead St, Cardiff"
+      And I fill in "Rhif ffôn" with "0141 496 1234"
+      And I fill in "Cyfeiriad" with "1 Nowhere Road, Glasgow"
     )
   end
 end
@@ -164,17 +164,17 @@ end
 
 And "I have already signed the petition but not validated my email" do
   FactoryBot.create(:pending_signature, name: "Womboid Wibbledon", :petition => @petition,
-                     :email => "womboid@wimbledon.com", :postcode => "CF991NA")
+                     :email => "womboid@wimbledon.com", :postcode => "G340BX")
 end
 
 And "I have already signed the petition using an alias" do
   FactoryBot.create(:signature, name: "Womboid Wibbledon", :petition => @petition,
-                     :email => "wom.boid@wimbledon.com", :postcode => "CF991NA")
+                     :email => "wom.boid@wimbledon.com", :postcode => "G340BX")
 end
 
 And "I have already signed the petition using an alias but not validated my email" do
   FactoryBot.create(:pending_signature, name: "Womboid Wibbledon", :petition => @petition,
-                     :email => "wom.boid@wimbledon.com", :postcode => "CF991NA")
+                     :email => "wom.boid@wimbledon.com", :postcode => "G340BX")
 end
 
 Given /^Suzie has already signed the petition$/ do

@@ -17,10 +17,10 @@ RSpec.describe Contact, type: :model do
     describe "#phone_number=" do
       it "normalizes input" do
         expect {
-          subject.phone_number = "0300 200 6565"
+          subject.phone_number = "0141 496 1234"
         }.to change {
           subject.phone_number
-        }.from(nil).to("03002006565")
+        }.from(nil).to("01414961234")
       end
     end
   end

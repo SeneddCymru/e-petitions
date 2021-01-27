@@ -1,0 +1,19 @@
+[{
+  "ID": 25,
+  "PersonID": 2159,
+  "ConstituencyID": 88,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 360,
+  "PersonID": 5612,
+  "ConstituencyID": 88,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}]

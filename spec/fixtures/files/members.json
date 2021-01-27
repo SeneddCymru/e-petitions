@@ -1,0 +1,81 @@
+[{
+	"PersonID": 1857,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35960261831",
+	"Notes": "",
+	"BirthDate": null,
+	"BirthDateIsProtected": true,
+	"ParliamentaryName": "McNeill, Pauline",
+	"PreferredName": "Pauline",
+	"GenderTypeID": 1,
+	"IsCurrent": true
+}, {
+	"PersonID": 2059,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35783690470",
+	"Notes": "",
+	"BirthDate": "1963-10-23T00:00:00",
+	"BirthDateIsProtected": false,
+	"ParliamentaryName": "Kelly, James",
+	"PreferredName": "James",
+	"GenderTypeID": 2,
+	"IsCurrent": true
+}, {
+	"PersonID": 2080,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/9853504141",
+	"Notes": "",
+	"BirthDate": "1957-07-11T00:00:00",
+	"BirthDateIsProtected": false,
+	"ParliamentaryName": "Lamont, Johann",
+	"PreferredName": "Johann",
+	"GenderTypeID": 1,
+	"IsCurrent": true
+}, {
+	"PersonID": 2892,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35783690519",
+	"Notes": "",
+	"BirthDate": "1973-03-18T00:00:00",
+	"BirthDateIsProtected": false,
+	"ParliamentaryName": "Harvie, Patrick",
+	"PreferredName": "Patrick",
+	"GenderTypeID": 2,
+	"IsCurrent": true
+}, {
+	"PersonID": 5586,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35783690447",
+	"Notes": "",
+	"BirthDate": null,
+	"BirthDateIsProtected": true,
+	"ParliamentaryName": "Sarwar, Anas",
+	"PreferredName": "Anas",
+	"GenderTypeID": 2,
+	"IsCurrent": true
+}, {
+	"PersonID": 5612,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35783688223",
+	"Notes": "",
+	"BirthDate": null,
+	"BirthDateIsProtected": true,
+	"ParliamentaryName": "McKee, Ivan",
+	"PreferredName": "Ivan",
+	"GenderTypeID": 2,
+	"IsCurrent": true
+}, {
+	"PersonID": 5783,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35781655804",
+	"Notes": "",
+	"BirthDate": null,
+	"BirthDateIsProtected": true,
+	"ParliamentaryName": "Tomkins, Adam",
+	"PreferredName": "Adam",
+	"GenderTypeID": 2,
+	"IsCurrent": true
+}, {
+	"PersonID": 5788,
+	"PhotoURL": "http://scottishparliament.thirdlight.com/file/35783686421",
+	"Notes": "",
+	"BirthDate": "1972-02-24T00:00:00",
+	"BirthDateIsProtected": false,
+	"ParliamentaryName": "Wells, Annie",
+	"PreferredName": "Annie",
+	"GenderTypeID": 1,
+	"IsCurrent": true
+}]

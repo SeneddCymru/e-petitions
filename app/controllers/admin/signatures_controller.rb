@@ -156,7 +156,7 @@ class Admin::SignaturesController < Admin::AdminController
   end
 
   def signature_params_for_new
-    { location_code: "GB-WLS" }
+    { location_code: "GB-SCT" }
   end
 
   def signature_params

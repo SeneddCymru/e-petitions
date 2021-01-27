@@ -12,7 +12,7 @@ class PaperPetition
   attribute :additional_details_en, :string
   attribute :additional_details_gd, :string
   attribute :locale, :string, default: "en-GB"
-  attribute :location_code, :string, default: "GB-WLS"
+  attribute :location_code, :string, default: "GB-SCT"
   attribute :signature_count, :integer
   attribute :submitted_on, :date
   attribute :name, :string

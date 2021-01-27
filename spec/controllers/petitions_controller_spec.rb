@@ -25,17 +25,17 @@ RSpec.describe PetitionsController, type: :controller do
         background: "Limit temperature rise at two degrees",
         additional_details: "Global warming is upon us",
         name: "John Mcenroe", email: "john@example.com",
-        phone_number: "0300 200 6565", address: "Pierhead St, Cardiff",
-        postcode: "CF99 1NA", location_code: "GB-WLS"
+        phone_number: "0141 496 1234", address: "1 Nowhere Road, Cardiff",
+        postcode: "G34 0BX", location_code: "GB-SCT"
       }
     end
 
     let(:constituency) do
-      FactoryBot.create(:constituency, :cardiff_south_and_penarth)
+      FactoryBot.create(:constituency, :glasgow_provan)
     end
 
     before do
-      allow(Constituency).to receive(:find_by_postcode).with("CF991NA").and_return(constituency)
+      allow(Constituency).to receive(:find_by_postcode).with("G340BX").and_return(constituency)
     end
 
     context "valid post" do
@@ -123,7 +123,7 @@ RSpec.describe PetitionsController, type: :controller do
           post :create, params: { stage: "replay_email", petition_creator: params.merge(state: Signature::VALIDATED_STATE) }
         end
 
-        expect(petition.creator.constituency_id).to eq("W09000043")
+        expect(petition.creator.constituency_id).to eq("S16000147")
       end
 
       context "when creator is on the English domain" do

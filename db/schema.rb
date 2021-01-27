@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_192856) do
+ActiveRecord::Schema.define(version: 2021_01_27_084351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -202,8 +202,8 @@ ActiveRecord::Schema.define(version: 2021_01_20_192856) do
     t.string "constituency_id", limit: 9
     t.string "name_en", limit: 100, null: false
     t.string "name_gd", limit: 100, null: false
-    t.string "party_en", limit: 100, null: false
-    t.string "party_gd", limit: 100, null: false
+    t.string "party_en", limit: 100
+    t.string "party_gd", limit: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["constituency_id"], name: "index_members_on_constituency_id", unique: true

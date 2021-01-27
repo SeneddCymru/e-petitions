@@ -3,7 +3,7 @@ Given(/^a constituency "(.*?)"(?: with Member "(.*?)")? is found by postcode "(.
   constituency = @constituencies[constituency_name]
 
   if constituency.nil?
-    member_name = member_name.present? ? member_name : 'Rye Tonnemem-Burr AM'
+    member_name = member_name.present? ? member_name : 'Rye Tonnemem-Burr MSP'
     constituency = FactoryBot.create(:constituency, name: constituency_name)
     FactoryBot.create(:postcode, id: postcode.tr(' ', ''), constituency_id: constituency.id)
     FactoryBot.create(:member, constituency_id: constituency.id, name_en: member_name, name_gd: member_name)
@@ -53,7 +53,7 @@ When(/^I search for petitions local to me in "(.*?)"$/) do |postcode|
   end
 
   within :css, '.local-to-you' do
-    fill_in "Gaelic postcode", with: postcode
+    fill_in "Scottish postcode", with: postcode
     click_on "Search"
   end
 end

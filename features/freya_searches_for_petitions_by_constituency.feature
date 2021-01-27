@@ -4,25 +4,25 @@ Feature: Freya searches petitions by constituency
   I want to use my postcode to find my constituency and see petitions with signatures from people who also live in it
 
   Background:
-    Given a constituency "Monmouth" with Member "Nick Ramsay AM" is found by postcode "NP6 5YE"
-    And a constituency "Pontypridd" is found by postcode "CF15 7QE"
+    Given a constituency "Kirkcaldy" with Member "David Torrance MSP" is found by postcode "KY1 1HX"
+    And a constituency "Stirling" is found by postcode "FK17 8HJ"
     And an open petition "Save the monkeys" with some signatures
     And an open petition "Restore vintage diggers" with some signatures
     And an open petition "Build more quirky theme parks" with some signatures
     And a closed petition "What about other primates?" with some signatures
-    And a constituent in "Pontypridd" supports "Restore vintage diggers"
-    And few constituents in "Monmouth" support "Save the monkeys"
-    And some constituents in "Monmouth" support "Build more quirky theme parks"
-    And many constituents in "Pontypridd" support "Build more quirky theme parks"
-    And a constituent in "Monmouth" supports "What about other primates?"
+    And a constituent in "Stirling" supports "Restore vintage diggers"
+    And few constituents in "Kirkcaldy" support "Save the monkeys"
+    And some constituents in "Kirkcaldy" support "Build more quirky theme parks"
+    And many constituents in "Stirling" support "Build more quirky theme parks"
+    And a constituent in "Kirkcaldy" supports "What about other primates?"
 
   Scenario: Searching for local petitions
     Given I am on the home page
-    When I search for petitions local to me in "NP6 5YE"
+    When I search for petitions local to me in "KY1 1HX"
     Then I should be on the local petitions results page
     And the markup should be valid
-    And I should see "Petitions in Monmouth" in the browser page title
-    And I should see "Popular open petitions in the constituency of Monmouth"
+    And I should see "Petitions in Kirkcaldy" in the browser page title
+    And I should see "Popular open petitions in the constituency of Kirkcaldy"
     And I should see a link to view all local petitions
     And I should see a link to the Member for my constituency
     And I should see that my fellow constituents support "Save the monkeys"
@@ -33,7 +33,7 @@ Feature: Freya searches petitions by constituency
     When I click the view all local petitions
     Then I should be on the all local petitions results page
     And the markup should be valid
-    And I should see "Popular petitions in the constituency of Monmouth"
+    And I should see "Popular petitions in the constituency of Kirkcaldy"
     And I should see a link to view open local petitions
     And I should see that my fellow constituents support "What about other primates?"
     And I should see that closed petitions are identified
@@ -41,7 +41,7 @@ Feature: Freya searches petitions by constituency
 
   Scenario: Downloading the JSON data for open local petitions
     Given I am on the home page
-    When I search for petitions local to me in "NP6 5YE"
+    When I search for petitions local to me in "KY1 1HX"
     Then I should be on the local petitions results page
     And the markup should be valid
     When I click the JSON link
@@ -50,7 +50,7 @@ Feature: Freya searches petitions by constituency
 
   Scenario: Downloading the JSON data for all local petitions
     Given I am on the home page
-    When I search for petitions local to me in "NP6 5YE"
+    When I search for petitions local to me in "KY1 1HX"
     Then I should be on the local petitions results page
     And the markup should be valid
     When I click the view all local petitions
@@ -62,53 +62,53 @@ Feature: Freya searches petitions by constituency
 
   Scenario: Downloading the CSV data for open local petitions
     Given I am on the home page
-    When I search for petitions local to me in "NP6 5YE"
+    When I search for petitions local to me in "KY1 1HX"
     Then I should be on the local petitions results page
     And the markup should be valid
     When I click the CSV link
-    Then I should get a download with the filename "open-popular-petitions-in-monmouth.csv"
+    Then I should get a download with the filename "open-popular-petitions-in-kirkcaldy.csv"
 
   Scenario: Downloading the CSV data for all local petitions
     Given I am on the home page
-    When I search for petitions local to me in "NP6 5YE"
+    When I search for petitions local to me in "KY1 1HX"
     Then I should be on the local petitions results page
     And the markup should be valid
     When I click the view all local petitions
     Then I should be on the all local petitions results page
     And the markup should be valid
     When I click the CSV link
-    Then I should get a download with the filename "all-popular-petitions-in-monmouth.csv"
+    Then I should get a download with the filename "all-popular-petitions-in-kirkcaldy.csv"
 
   Scenario: Searching for local petitions when the no-one in my constituency is engaged
-    Given a constituency "Llanelli" is found by postcode "CF478YN"
+    Given a constituency "Linlithgow" is found by postcode "EH28 8YQ"
     And I am on the home page
-    When I search for petitions local to me in "CF478YN"
+    When I search for petitions local to me in "EH28 8YQ"
     Then the markup should be valid
     But I should see an explanation that there are no petitions popular in my constituency
 
   Scenario: Searching for local petitions when the member has passed away
-    Given a constituency "Rhondda" with Member "Harry Harpham" is found by postcode "CF40 2YN"
+    Given a constituency "Rutherglen" with Member "Harry Harpham MSP" is found by postcode "G72 0EN"
     And the Member has passed away
     When I am on the home page
-    And I search for petitions local to me in "CF40 2YN"
+    And I search for petitions local to me in "G72 0EN"
     Then the markup should be valid
     And I should not see a link to the Member for my constituency
 
   Scenario: Downloading the JSON data for open local petitions when the member has passed away
-    Given a constituency "Rhondda" with Member "Harry Harpham" is found by postcode "CF40 2YN"
+    Given a constituency "Rutherglen" with Member "Harry Harpham MSP" is found by postcode "G72 0EN"
     And the Member has passed away
     When I am on the home page
-    And I search for petitions local to me in "CF40 2YN"
+    And I search for petitions local to me in "G72 0EN"
     Then the markup should be valid
     When I click the JSON link
     Then I should be on the local petitions JSON page
     And the JSON should be valid
 
   Scenario: Downloading the JSON data for all local petitions when the member has passed away
-    Given a constituency "Rhondda" with Member "Harry Harpham" is found by postcode "CF40 2YN"
+    Given a constituency "Rutherglen" with Member "Harry Harpham MSP" is found by postcode "G72 0EN"
     And the Member has passed away
     When I am on the home page
-    And I search for petitions local to me in "CF40 2YN"
+    And I search for petitions local to me in "G72 0EN"
     Then the markup should be valid
     When I click the view all local petitions
     Then I should be on the all local petitions results page
@@ -118,22 +118,22 @@ Feature: Freya searches petitions by constituency
     And the JSON should be valid
 
   Scenario: Downloading the CSV data for local petitions when the member has passed away
-    Given a constituency "Rhondda" with Member "Harry Harpham" is found by postcode "CF40 2YN"
+    Given a constituency "Rutherglen" with Member "Harry Harpham MSP" is found by postcode "G72 0EN"
     And the Member has passed away
     When I am on the home page
-    And I search for petitions local to me in "CF40 2YN"
+    And I search for petitions local to me in "G72 0EN"
     Then the markup should be valid
     When I click the CSV link
-    Then I should get a download with the filename "open-popular-petitions-in-rhondda.csv"
+    Then I should get a download with the filename "open-popular-petitions-in-rutherglen.csv"
 
   Scenario: Downloading the CSV data for local petitions when the member has passed away
-    Given a constituency "Rhondda" with Member "Harry Harpham" is found by postcode "CF40 2YN"
+    Given a constituency "Rutherglen" with Member "Harry Harpham MSP" is found by postcode "G72 0EN"
     And the Member has passed away
     When I am on the home page
-    And I search for petitions local to me in "CF40 2YN"
+    And I search for petitions local to me in "G72 0EN"
     Then the markup should be valid
     When I click the view all local petitions
     Then I should be on the all local petitions results page
     And the markup should be valid
     When I click the CSV link
-    Then I should get a download with the filename "all-popular-petitions-in-rhondda.csv"
+    Then I should get a download with the filename "all-popular-petitions-in-rutherglen.csv"

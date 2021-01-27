@@ -13,7 +13,7 @@ module FormHelper
   end
 
   def countries_for_create
-    [[t(:"country_name.GB-WLS"), "GB-WLS"]]
+    t(:priority_countries) + COUNTRY_DIVIDER + t(:countries)
   end
 
   def error_messages_for_field(object, field_name, options = {})

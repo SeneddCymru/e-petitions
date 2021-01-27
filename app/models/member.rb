@@ -1,6 +1,8 @@
 class Member < ActiveRecord::Base
-  URL_EN = "https://senedd.wales/en/memhome/Pages/MemberProfile.aspx?mid=%{id}"
-  URL_GD = "https://senedd.cymru/cy/memhome/Pages/MemberProfile.aspx?mid=%{id}"
+  URL_EN = "https://beta.parliament.scot/msps/current-and-previous-msps/%{slug}"
+  URL_GD = "https://beta.parlamaid-alba.scot/msps/current-and-previous-msps/%{slug}"
+
+  MEMBER_PATTERN = / (?:MSP|BPA)$/
 
   include Translatable
 
@@ -22,6 +24,10 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def slug
+    name.gsub(MEMBER_PATTERN, '').parameterize
+  end
+
   def url
     I18n.locale == :"gd-GB" ? url_gd : url_en
   end
@@ -29,10 +35,10 @@ class Member < ActiveRecord::Base
   private
 
   def url_en
-    URL_EN % { id: id }
+    URL_EN % { slug: slug }
   end
 
   def url_gd
-    URL_GD % { id: id }
+    URL_GD % { slug: slug }
   end
 end

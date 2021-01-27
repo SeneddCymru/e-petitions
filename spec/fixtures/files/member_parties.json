@@ -1,0 +1,155 @@
+[{
+  "ID": 95,
+  "PersonID": 2892,
+  "PartyID": 4,
+  "ValidFromDate": "2003-05-01T00:00:00",
+  "ValidUntilDate": "2007-04-02T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 96,
+  "PersonID": 2892,
+  "PartyID": 4,
+  "ValidFromDate": "2007-05-03T00:00:00",
+  "ValidUntilDate": "2011-03-22T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 97,
+  "PersonID": 2892,
+  "PartyID": 4,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 131,
+  "PersonID": 2059,
+  "PartyID": 5,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 142,
+  "PersonID": 2059,
+  "PartyID": 5,
+  "ValidFromDate": "2007-05-03T00:00:00",
+  "ValidUntilDate": "2011-03-22T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 217,
+  "PersonID": 2080,
+  "PartyID": 5,
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": "2003-03-31T00:00:00",
+  "MemberPartyRoles": null
+}, {
+  "ID": 218,
+  "PersonID": 2080,
+  "PartyID": 5,
+  "ValidFromDate": "2003-05-01T00:00:00",
+  "ValidUntilDate": "2007-04-02T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 219,
+  "PersonID": 2080,
+  "PartyID": 5,
+  "ValidFromDate": "2007-05-03T00:00:00",
+  "ValidUntilDate": "2011-03-22T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 220,
+  "PersonID": 2080,
+  "PartyID": 5,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 222,
+  "PersonID": 1857,
+  "PartyID": 5,
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": "2003-03-31T00:00:00",
+  "MemberPartyRoles": null
+}, {
+  "ID": 223,
+  "PersonID": 1857,
+  "PartyID": 5,
+  "ValidFromDate": "2003-05-01T00:00:00",
+  "ValidUntilDate": "2007-04-02T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 224,
+  "PersonID": 1857,
+  "PartyID": 5,
+  "ValidFromDate": "2007-05-03T00:00:00",
+  "ValidUntilDate": "2011-03-22T23:59:59",
+  "MemberPartyRoles": null
+}, {
+  "ID": 612,
+  "PersonID": 5612,
+  "PartyID": 7,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 634,
+  "PersonID": 2080,
+  "PartyID": 5,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 635,
+  "PersonID": 2892,
+  "PartyID": 4,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 637,
+  "PersonID": 1857,
+  "PartyID": 5,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 638,
+  "PersonID": 2059,
+  "PartyID": 5,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 639,
+  "PersonID": 5586,
+  "PartyID": 5,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 640,
+  "PersonID": 5783,
+  "PartyID": 3,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 641,
+  "PersonID": 5788,
+  "PartyID": 3,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 711,
+  "PersonID": 5788,
+  "PartyID": 1,
+  "ValidFromDate": "2020-09-21T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}, {
+  "ID": 716,
+  "PersonID": 5797,
+  "PartyID": 13,
+  "ValidFromDate": "2021-01-11T00:00:00",
+  "ValidUntilDate": null,
+  "MemberPartyRoles": null
+}]
