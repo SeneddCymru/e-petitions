@@ -269,7 +269,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.3)
-    puma (5.1.1)
+    puma (4.3.7)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -442,7 +442,7 @@ DEPENDENCIES
   paperclip
   pg
   pry
-  puma
+  puma (< 5)
   rails (= 6.1.1)
   rails-controller-testing
   rake
