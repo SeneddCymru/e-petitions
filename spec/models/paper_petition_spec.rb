@@ -40,8 +40,8 @@ RSpec.describe PaperPetition, type: :model do
     it { is_expected.to allow_value("alice@example.com").for(:email) }
     it { is_expected.not_to allow_value("alice").for(:email).with_message(:invalid) }
 
-    it { is_expected.to allow_value("CF991NA").for(:postcode) }
-    it { is_expected.not_to allow_value("CF99").for(:postcode).with_message(:invalid) }
+    it { is_expected.to allow_value("G340BX").for(:postcode) }
+    it { is_expected.not_to allow_value("G34").for(:postcode).with_message(:invalid) }
 
     it { is_expected.to allow_value(50).for(:signature_count) }
     it { is_expected.not_to allow_value(49).for(:signature_count).with_message(:greater_than_or_equal_to) }
@@ -172,8 +172,8 @@ RSpec.describe PaperPetition, type: :model do
           additional_details_en: "Here's some more reasons",
           additional_details_gd: "Dyma ychydig mwy o resymau",
           locale: "gd-GB", signature_count: 6000, submitted_on: "2020-04-30",
-          name: "Alice Smith", email: "alice@example.com", postcode: "CF99 1NA",
-          address: "The Senedd\nPierhead St\nCardiff", phone_number: "0300 200 6565"
+          name: "Alice Smith", email: "alice@example.com", postcode: "G34 0BX",
+          address: "1 Nowhere Road\nGlasgow", phone_number: "0141 496 1234"
         }
       end
 
@@ -208,14 +208,14 @@ RSpec.describe PaperPetition, type: :model do
           state: "pending",
           name: "Alice Smith",
           email: "alice@example.com",
-          postcode: "CF991NA",
-          location_code: "GB-WLS",
+          postcode: "G340BX",
+          location_code: "GB-SCT",
           locale: "gd-GB"
         )
 
         expect(contact).to have_attributes(
-          address: "The Senedd\nPierhead St\nCardiff",
-          phone_number: "03002006565"
+          address: "1 Nowhere Road\nGlasgow",
+          phone_number: "01414961234"
         )
       end
     end

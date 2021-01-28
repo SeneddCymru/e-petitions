@@ -25,22 +25,22 @@ RSpec.describe CountryPetitionJournal, type: :model do
     let(:petition) { FactoryBot.create(:petition) }
 
     context "when there is a journal for the requested petition and country" do
-      let!(:existing_record) { FactoryBot.create(:country_petition_journal, petition: petition, location_code: "GB-WLS", signature_count: 30) }
+      let!(:existing_record) { FactoryBot.create(:country_petition_journal, petition: petition, location_code: "GB-SCT", signature_count: 30) }
 
       it "doesn't create a new record" do
         expect {
-          described_class.for(petition, "GB-WLS")
+          described_class.for(petition, "GB-SCT")
         }.not_to change(described_class, :count)
       end
 
       it "fetches the instance from the DB" do
-        fetched = described_class.for(petition, "GB-WLS")
+        fetched = described_class.for(petition, "GB-SCT")
         expect(fetched).to eq(existing_record)
       end
     end
 
     context "when there is no journal for the requested petition and country" do
-      let!(:journal) { described_class.for(petition, "GB-WLS") }
+      let!(:journal) { described_class.for(petition, "GB-SCT") }
 
       it "returns a newly created instance" do
         expect(journal).to be_an_instance_of(described_class)
@@ -55,7 +55,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
       end
 
       it "sets the country of the new instance to the supplied country" do
-        expect(journal.location_code).to eq("GB-WLS")
+        expect(journal.location_code).to eq("GB-SCT")
       end
 
       it "has 0 for a signature count" do
@@ -66,11 +66,11 @@ RSpec.describe CountryPetitionJournal, type: :model do
 
   describe ".invalidate_signature_for" do
     let!(:petition) { FactoryBot.create(:open_petition) }
-    let!(:journal) { FactoryBot.create(:country_petition_journal, petition: petition, location_code: "GB-WLS", signature_count: signature_count) }
+    let!(:journal) { FactoryBot.create(:country_petition_journal, petition: petition, location_code: "GB-SCT", signature_count: signature_count) }
     let(:signature_count) { 1 }
 
     context "when the supplied signature is valid" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-WLS") }
+      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-SCT") }
       let(:now) { 1.hour.from_now.change(usec: 0) }
 
       it "decrements the signature_count by 1" do
@@ -97,7 +97,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
     end
 
     context "when the supplied signature has no petition" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: nil, location_code: "GB-WLS") }
+      let(:signature) { FactoryBot.build(:invalidated_signature, petition: nil, location_code: "GB-SCT") }
 
       it "does nothing" do
         expect {
@@ -117,7 +117,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
     end
 
     context "when the supplied signature is not validated" do
-      let(:signature) { FactoryBot.build(:pending_signature, petition: petition, location_code: "GB-WLS") }
+      let(:signature) { FactoryBot.build(:pending_signature, petition: petition, location_code: "GB-SCT") }
 
       it "does nothing" do
         expect {
@@ -127,7 +127,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
     end
 
     context "when the signature count is already zero" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-WLS") }
+      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-SCT") }
       let(:signature_count) { 0 }
 
       it "does nothing" do
@@ -138,7 +138,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
     end
 
     context "when no journal exists" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-WLS") }
+      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-SCT") }
 
       before do
         described_class.delete_all

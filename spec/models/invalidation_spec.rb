@@ -607,21 +607,21 @@ RSpec.describe Invalidation, type: :model do
 
       context "when filtering by postcode" do
         before do
-          FactoryBot.create(:constituency, :cardiff_south_and_penarth)
-          FactoryBot.create(:postcode, :cardiff_south_and_penarth)
+          FactoryBot.create(:constituency, :glasgow_provan)
+          FactoryBot.create(:postcode, :glasgow_provan)
 
-          FactoryBot.create(:constituency, :swansea_west)
-          FactoryBot.create(:postcode, :swansea_west)
+          FactoryBot.create(:constituency, :dumbarton)
+          FactoryBot.create(:postcode, :dumbarton)
         end
 
         let!(:petition) { FactoryBot.create(:open_petition) }
-        let!(:signature_1) { FactoryBot.create(:validated_signature, postcode: "CF99 1NA", petition: petition) }
+        let!(:signature_1) { FactoryBot.create(:validated_signature, postcode: "G34 0BX", petition: petition) }
         let!(:signature_2) { FactoryBot.create(:validated_signature, postcode: "SA11 BD", petition: petition) }
-        let!(:signature_3) { FactoryBot.create(:pending_signature, postcode: "CF99 1NA", petition: petition) }
-        let!(:signature_4) { FactoryBot.create(:invalidated_signature, postcode: "CF99 1NA", petition: petition) }
-        let!(:signature_5) { FactoryBot.create(:fraudulent_signature, postcode: "CF99 1NA", petition: petition) }
+        let!(:signature_3) { FactoryBot.create(:pending_signature, postcode: "G34 0BX", petition: petition) }
+        let!(:signature_4) { FactoryBot.create(:invalidated_signature, postcode: "G34 0BX", petition: petition) }
+        let!(:signature_5) { FactoryBot.create(:fraudulent_signature, postcode: "G34 0BX", petition: petition) }
 
-        subject { FactoryBot.create(:invalidation, postcode: "CF991NA") }
+        subject { FactoryBot.create(:invalidation, postcode: "G340BX") }
 
         it "includes validated signatures that match" do
           expect(subject.matching_signatures).to include(signature_1)
@@ -863,15 +863,15 @@ RSpec.describe Invalidation, type: :model do
 
       context "when filtering by constituency_id" do
         let!(:petition) { FactoryBot.create(:open_petition) }
-        let!(:cardiff) { FactoryBot.create(:constituency, :cardiff_south_and_penarth) }
-        let!(:swansea) { FactoryBot.create(:constituency, :swansea_west) }
-        let!(:signature_1) { FactoryBot.create(:validated_signature, constituency_id: "W09000043", petition: petition) }
-        let!(:signature_2) { FactoryBot.create(:validated_signature, constituency_id: "W09000019", petition: petition) }
-        let!(:signature_3) { FactoryBot.create(:pending_signature, constituency_id: "W09000043", petition: petition) }
-        let!(:signature_4) { FactoryBot.create(:invalidated_signature, constituency_id: "W09000043", petition: petition) }
-        let!(:signature_5) { FactoryBot.create(:fraudulent_signature, constituency_id: "W09000043", petition: petition) }
+        let!(:glasgow) { FactoryBot.create(:constituency, :glasgow_provan) }
+        let!(:dumbarton) { FactoryBot.create(:constituency, :dumbarton) }
+        let!(:signature_1) { FactoryBot.create(:validated_signature, constituency_id: "S16000147", petition: petition) }
+        let!(:signature_2) { FactoryBot.create(:validated_signature, constituency_id: "S16000096", petition: petition) }
+        let!(:signature_3) { FactoryBot.create(:pending_signature, constituency_id: "S16000147", petition: petition) }
+        let!(:signature_4) { FactoryBot.create(:invalidated_signature, constituency_id: "S16000147", petition: petition) }
+        let!(:signature_5) { FactoryBot.create(:fraudulent_signature, constituency_id: "S16000147", petition: petition) }
 
-        subject { FactoryBot.create(:invalidation, constituency_id: "W09000043") }
+        subject { FactoryBot.create(:invalidation, constituency_id: "S16000147") }
 
         it "includes validated signatures that match" do
           expect(subject.matching_signatures).to include(signature_1)
@@ -896,13 +896,13 @@ RSpec.describe Invalidation, type: :model do
 
       context "when filtering by location_code" do
         let!(:petition) { FactoryBot.create(:open_petition) }
-        let!(:signature_1) { FactoryBot.create(:validated_signature, location_code: "GB-WLS", petition: petition) }
+        let!(:signature_1) { FactoryBot.create(:validated_signature, location_code: "GB-SCT", petition: petition) }
         let!(:signature_2) { FactoryBot.create(:validated_signature, location_code: "AU", petition: petition) }
-        let!(:signature_3) { FactoryBot.create(:pending_signature, location_code: "GB-WLS", petition: petition) }
-        let!(:signature_4) { FactoryBot.create(:invalidated_signature, location_code: "GB-WLS", petition: petition) }
-        let!(:signature_5) { FactoryBot.create(:fraudulent_signature, location_code: "GB-WLS", petition: petition) }
+        let!(:signature_3) { FactoryBot.create(:pending_signature, location_code: "GB-SCT", petition: petition) }
+        let!(:signature_4) { FactoryBot.create(:invalidated_signature, location_code: "GB-SCT", petition: petition) }
+        let!(:signature_5) { FactoryBot.create(:fraudulent_signature, location_code: "GB-SCT", petition: petition) }
 
-        subject { FactoryBot.create(:invalidation, location_code: "GB-WLS") }
+        subject { FactoryBot.create(:invalidation, location_code: "GB-SCT") }
 
         it "includes validated signatures that match" do
           expect(subject.matching_signatures).to include(signature_1)

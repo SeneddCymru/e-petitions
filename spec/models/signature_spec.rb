@@ -12,8 +12,8 @@ RSpec.describe Signature, type: :model do
   end
 
   before do
-    FactoryBot.create(:constituency, :cardiff_south_and_penarth)
-    FactoryBot.create(:postcode, :cardiff_south_and_penarth)
+    FactoryBot.create(:constituency, :glasgow_provan)
+    FactoryBot.create(:postcode, :glasgow_provan)
   end
 
   context "defaults" do
@@ -109,15 +109,15 @@ RSpec.describe Signature, type: :model do
       end
 
       context "and the signature is not the creator" do
-        let(:country_journal) { CountryPetitionJournal.for(petition, "GB-WLS") }
-        let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "W09000043") }
+        let(:country_journal) { CountryPetitionJournal.for(petition, "GB-SCT") }
+        let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "S16000147") }
 
         let(:signature) {
           FactoryBot.create(
             :pending_signature,
             petition: petition,
-            constituency_id: "W09000043",
-            location_code: "GB-WLS"
+            constituency_id: "S16000147",
+            location_code: "GB-SCT"
           )
         }
 
@@ -143,14 +143,14 @@ RSpec.describe Signature, type: :model do
       end
 
       context "and the signature is invalidated" do
-        let(:country_journal) { CountryPetitionJournal.for(petition, "GB-WLS") }
-        let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "W09000043") }
+        let(:country_journal) { CountryPetitionJournal.for(petition, "GB-SCT") }
+        let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "S16000147") }
 
         let(:signature) {
           FactoryBot.create(
             :pending_signature,
             petition: petition,
-            constituency_id: "W09000043",
+            constituency_id: "S16000147",
             location_code: "GB"
           )
         }
@@ -182,8 +182,8 @@ RSpec.describe Signature, type: :model do
       let!(:petition) { FactoryBot.create(:open_petition) }
       let!(:signature) { petition.signatures.build(attributes) }
       let(:email) { "foo@example.com" }
-      let(:location_code) { "GB-WLS" }
-      let(:postcode) { "CF99 1NA" }
+      let(:location_code) { "GB-SCT" }
+      let(:postcode) { "G34 0BX" }
 
       let(:attributes) do
         {
@@ -291,17 +291,17 @@ RSpec.describe Signature, type: :model do
 
     describe "postcode" do
       it "requires a postcode for a UK address" do
-        expect(FactoryBot.build(:signature, :postcode => 'CF99 1NA')).to be_valid
+        expect(FactoryBot.build(:signature, :postcode => 'G34 0BX')).to be_valid
         expect(FactoryBot.build(:signature, :postcode => '')).not_to be_valid
       end
 
       it "does not require a postcode for non-UK addresses" do
-        expect(FactoryBot.build(:signature, :location_code => "GB-WLS", :postcode => '')).not_to be_valid
+        expect(FactoryBot.build(:signature, :location_code => "GB-SCT", :postcode => '')).not_to be_valid
         expect(FactoryBot.build(:signature, :location_code => "US", :postcode => '')).to be_valid
       end
 
       it "checks the format of postcode" do
-        s = FactoryBot.build(:signature, :postcode => 'CF99 1NA')
+        s = FactoryBot.build(:signature, :postcode => 'G34 0BX')
         expect(s).to have_valid(:postcode)
       end
 
@@ -913,15 +913,15 @@ RSpec.describe Signature, type: :model do
     end
 
     context "when the signature is not the creator" do
-      let(:country_journal) { CountryPetitionJournal.for(petition, "GB-WLS") }
-      let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "W09000043") }
+      let(:country_journal) { CountryPetitionJournal.for(petition, "GB-SCT") }
+      let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "S16000147") }
 
       let(:signature) {
         FactoryBot.create(
           :pending_signature,
           petition: petition,
-          constituency_id: "W09000043",
-          location_code: "GB-WLS"
+          constituency_id: "S16000147",
+          location_code: "GB-SCT"
         )
       }
 
@@ -1311,8 +1311,8 @@ RSpec.describe Signature, type: :model do
 
   describe '#validate!' do
     let(:signature) { FactoryBot.create(:pending_signature, attributes) }
-    let(:location_code) { "GB-WLS" }
-    let(:postcode) { "CF99 1NA" }
+    let(:location_code) { "GB-SCT" }
+    let(:postcode) { "G34 0BX" }
 
     let (:attributes) do
       {
@@ -1397,26 +1397,26 @@ RSpec.describe Signature, type: :model do
       end
 
       context "and the signer is from the UK" do
-        let(:location_code) { "GB-WLS" }
+        let(:location_code) { "GB-SCT" }
 
         context "and the postcode is valid" do
-          let(:postcode) { "CF99 1NA" }
+          let(:postcode) { "G34 0BX" }
 
           it "searches for the constituency and sets the constituency_id" do
-            expect(Constituency).to receive(:find_by_postcode).with("CF991NA").and_call_original
+            expect(Constituency).to receive(:find_by_postcode).with("G340BX").and_call_original
 
             signature.validate!
 
             expect(signature).to be_validated
-            expect(signature.constituency_id).to eq("W09000043")
+            expect(signature.constituency_id).to eq("S16000147")
           end
         end
 
         context "and the postcode is invalid" do
-          let(:postcode) { "CF99 1ZZ" }
+          let(:postcode) { "G34 1ZZ" }
 
           it "searches for the constituency but doesn't set constituency_id" do
-            expect(Constituency).to receive(:find_by_postcode).with("CF991ZZ").and_return(nil)
+            expect(Constituency).to receive(:find_by_postcode).with("G341ZZ").and_return(nil)
 
             signature.validate!
 
@@ -1874,7 +1874,7 @@ RSpec.describe Signature, type: :model do
   describe "#constituency" do
     let(:signature) { FactoryBot.build(:signature, attributes) }
     let(:constituency) { signature.constituency }
-    let(:location_code) { "GB-WLS" }
+    let(:location_code) { "GB-SCT" }
 
     let(:attributes) do
       { postcode: postcode, constituency_id: constituency_id }
@@ -1896,32 +1896,32 @@ RSpec.describe Signature, type: :model do
       end
 
       context "and the signature is from the UK" do
-        let(:postcode) { "CF99 1NA" }
+        let(:postcode) { "G34 0BX" }
 
         it "returns the correct constituency" do
-          expect(Constituency).to receive(:find_by_postcode).with("CF991NA").and_call_original
-          expect(constituency.name).to eq("Cardiff South and Penarth")
+          expect(Constituency).to receive(:find_by_postcode).with("G340BX").and_call_original
+          expect(constituency.name).to eq("Glasgow Provan")
         end
       end
 
       context "and postcode is not found" do
-        let(:postcode) { "CF99 1ZZ" }
+        let(:postcode) { "G34 1ZZ" }
 
         it "returns nil" do
-          expect(Constituency).to receive(:find_by_postcode).with("CF991ZZ").and_return(nil)
+          expect(Constituency).to receive(:find_by_postcode).with("G341ZZ").and_return(nil)
           expect(constituency).to be_nil
         end
       end
     end
 
     context "when the constituency_id is set" do
-      let(:constituency_id) { "W09000043" }
-      let(:postcode) { "CF99 1NA" }
+      let(:constituency_id) { "S16000147" }
+      let(:postcode) { "G34 0BX" }
 
       it "searches the database for the constituency" do
         expect(Constituency).not_to receive(:find_by_postcode)
-        expect(Constituency).to receive(:find_by_id).with("W09000043").and_call_original
-        expect(constituency.name).to eq("Cardiff South and Penarth")
+        expect(Constituency).to receive(:find_by_id).with("S16000147").and_call_original
+        expect(constituency.name).to eq("Glasgow Provan")
       end
     end
   end
@@ -2086,7 +2086,7 @@ RSpec.describe Signature, type: :model do
     let(:other_petition) { FactoryBot.create(:open_petition) }
     let(:signature) { petition.signatures.build(attributes) }
     let(:name) { "Suzy Signer" }
-    let(:postcode) { "CF99 1NA" }
+    let(:postcode) { "G34 0BX" }
     let(:email) { "foo@example.com" }
 
     let(:attributes) do
@@ -2094,7 +2094,7 @@ RSpec.describe Signature, type: :model do
         name: name,
         email: email,
         postcode: postcode,
-        location_code: "GB-WLS"
+        location_code: "GB-SCT"
       }
     end
 
@@ -2109,8 +2109,8 @@ RSpec.describe Signature, type: :model do
         petition.signatures.create!(
           name: "Suzy Signer",
           email: "foo@example.com",
-          postcode: "CF99 1NA",
-          location_code: "GB-WLS"
+          postcode: "G34 0BX",
+          location_code: "GB-SCT"
         )
       end
 
@@ -2183,15 +2183,15 @@ RSpec.describe Signature, type: :model do
         petition.signatures.create!(
           name: "Suzy Signer",
           email: "foo@example.com",
-          postcode: "CF99 1NA",
-          location_code: "GB-WLS"
+          postcode: "G34 0BX",
+          location_code: "GB-SCT"
         )
 
         petition.signatures.create!(
           name: "Sam Signer",
           email: "foo@example.com",
-          postcode: "CF99 1NA",
-          location_code: "GB-WLS"
+          postcode: "G34 0BX",
+          location_code: "GB-SCT"
         )
       end
 
@@ -2219,8 +2219,8 @@ RSpec.describe Signature, type: :model do
       {
         name: "Suzy Signer",
         email: "foo@example.com",
-        postcode: "CF99 1NA",
-        location_code: "GB-WLS"
+        postcode: "G34 0BX",
+        location_code: "GB-SCT"
       }
     end
 

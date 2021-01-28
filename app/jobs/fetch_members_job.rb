@@ -1,39 +1,82 @@
 require 'faraday'
 
 class FetchMembersJob < ApplicationJob
-  HOST = "https://business.senedd.wales"
+  HOST = "https://data.parliament.scot"
   TIMEOUT = 5
 
   ENDPOINTS = {
-    "en-GB": "/mgwebservice.asmx/GetCouncillorsByWard",
-    "gd-GB": "/mgwebservicew.asmx/GetCouncillorsByWard"
+    constituencies: "/api/Constituencies",
+    constituency_elections: "/api/MemberElectionConstituencyStatuses",
+    member_parties: "/api/MemberParties",
+    members: "/api/Members",
+    parties: "/api/Parties",
+    regions: "/api/Regions",
+    region_elections: "/api/MemberElectionRegionStatuses"
   }
 
-  WARDS = "/councillorsbyward/wards/ward"
-  CONSTITUENCY = ".//wardtitle"
-  REGION = ".//districttitle"
-  MEMBERS = ".//councillor"
-  MEMBER_ID = ".//councillorid"
-  MEMBER_NAME = ".//fullusername"
-  PARTY = ".//politicalpartytitle"
+  NAME_PATTERN = /,\s+/
+
+  # The constituencies endpoint currently returns incorrect codes
+  # for 'Glasgow Provan' and 'Strathkelvin and Bearsden' so we need
+  # to map those to the correct ONS codes
+  CONSTITUENCY_FIXES = {
+    "S16000120" => "S16000147",
+    "S16000145" => "S16000148"
+  }
+
+  # The regions endpoint currently returns incorrect codes for 'Glasgow'
+  # so we need to map that to the correct ONS code
+  REGION_FIXES = {
+    "S17000010" => "S17000017"
+  }
+
+  # The 'Reform UK' party doesn't appear in the parties endpoint so
+  # we need to add it to the list manually for now.
+  ADDITIONAL_PARTIES = {
+    13 => "Reform UK"
+  }
+
+  GAELIC_PARTIES = {
+    "No Party Affiliation" => "Gun Cheangal Pàrtaidh",
+    "Scottish Green Party" => "Pàrtaidh Uaine na h-Alba",
+    "Independent" => "Neo-eisimeileach",
+    "Scottish National Party" => "Pàrtaidh Nàiseanta na h-Alba",
+    "Scottish Conservative and Unionist Party" => "Pàrtaidh Tòraidheach na h-Alba",
+    "Scottish Liberal Democrats" => "Pàrtaidh Libearal Deamocratach na h-Alba",
+    "Scottish Labour" => "Pàrtaidh Làbarach na h-Alba",
+    "Reform UK" => "Reform UK"
+  }
 
   rescue_from StandardError do |exception|
     Appsignal.send_exception exception
-  end
-
-  before_perform do
-    @translated_members = load_translated_members
   end
 
   def perform
     Member.transaction do
       Member.update_all(region_id: nil, constituency_id: nil)
 
-      @translated_members.each do |id, attributes|
+      members.each do |attrs|
+        person_id = attrs["PersonID"]
         retried = false
 
         begin
-          Member.for(id) { |member| member.update!(attributes) }
+          Member.for(person_id) do |member|
+            last, first = attrs["ParliamentaryName"].split(NAME_PATTERN)
+            party = parties[member_parties[person_id]]
+
+            member.name_en = "#{first} #{last} MSP"
+            member.name_gd = "#{first} #{last} BPA"
+            member.party_en = party
+            member.party_gd = GAELIC_PARTIES[party]
+
+            if region_id = region_elections[person_id]
+              member.region_id = regions.fetch(region_id)
+            elsif constituency_id = constituency_elections[person_id]
+              member.constituency_id = constituencies.fetch(constituency_id)
+            end
+
+            member.save!
+          end
         rescue ActiveRecord::RecordNotUnique => e
           if retried
             raise e
@@ -48,51 +91,63 @@ class FetchMembersJob < ApplicationJob
 
   private
 
-  def load_translated_members
-    {}.tap do |hash|
-      members(:"en-GB").each do |member|
-        hash[member[:id]] = {}.tap do |row|
-          row[:name_en] = member[:name]
-          row[:party_en] = member[:party]
-          row[:constituency_id] = member[:constituency_id]
-          row[:region_id] = member [:region_id]
-        end
-      end
+  def members
+    @members ||= get(:members).select { |member| member["IsCurrent"] }
+  end
 
-      members(:"gd-GB").each do |member|
-        hash.fetch(member[:id]).tap do |row|
-          row[:name_gd] = member[:name]
-          row[:party_gd] = member[:party]
-        end
-      end
+  def constituencies
+    @constituencies ||= build_map(:constituencies, "ID", "ConstituencyCode").transform_values(&method(:fix_constituencies))
+  end
+
+  def fix_constituencies(code)
+    CONSTITUENCY_FIXES[code] || code
+  end
+
+  def constituency_elections
+    @constituency_elections ||= build_map(:constituency_elections, "PersonID", "ConstituencyID")
+  end
+
+  def parties
+    @parties ||= build_map(:parties, "ID", "PreferredName").merge(ADDITIONAL_PARTIES)
+  end
+
+  def member_parties
+    @member_parties ||= build_map(:member_parties, "PersonID", "PartyID")
+  end
+
+  def regions
+    @regions ||= build_map(:regions, "ID", "RegionCode", "EndDate").transform_values(&method(:fix_regions))
+  end
+
+  def fix_regions(code)
+    REGION_FIXES[code] || code
+  end
+
+  def region_elections
+    @region_elections ||= build_map(:region_elections, "PersonID", "RegionID")
+  end
+
+  def faraday
+    Faraday.new(HOST) do |f|
+      f.response :follow_redirects
+      f.response :raise_error
+      f.response :json
+      f.adapter :net_http_persistent
     end
   end
 
-  def members(locale)
-    I18n.with_locale(locale) { load_members }
+  def request(entity)
+    faraday.get(ENDPOINTS[entity]) do |request|
+      request.options[:timeout] = TIMEOUT
+      request.options[:open_timeout] = TIMEOUT
+    end
   end
 
-  def constituency_maps
-    @constituency_maps ||= {}
-  end
-
-  def constituency_map
-    constituency_maps[I18n.locale] ||= normalize_map(Constituency.pluck(:name, :id))
-  end
-
-  def region_maps
-    @region_maps ||= {}
-  end
-
-  def region_map
-    region_maps[I18n.locale] ||= normalize_map(Region.pluck(:name, :id))
-  end
-
-  def load_members
-    response = fetch_members
+  def get(entity)
+    response = request(entity)
 
     if response.success?
-      parse(response.body)
+      response.body
     else
       []
     end
@@ -101,70 +156,13 @@ class FetchMembersJob < ApplicationJob
     return []
   end
 
-  def parse(body)
-    xml = Nokogiri::XML(body)
-
-    parse_wards(body).inject([]) do |members, node|
-      if constituency_member?(node)
-        members << parse_constituency(node)
-      else
-        members += parse_regions(node)
+  def build_map(entity, id, name, ends_at = "ValidUntilDate")
+    get(entity).inject({}) do |objects, object|
+      if object[ends_at].nil?
+        objects[object[id]] = object[name]
       end
 
-      members
+      objects
     end
-  end
-
-  def parse_wards(body)
-    Nokogiri::XML(body).xpath(WARDS)
-  end
-
-  def constituency_member?(node)
-    node.at_xpath(CONSTITUENCY).text.strip != "No Ward"
-  end
-
-  def parse_constituency(node)
-    id = Integer(node.at_xpath(MEMBER_ID).text)
-    name = node.at_xpath(MEMBER_NAME).text.strip
-    party = node.at_xpath(PARTY).text.strip
-    constituency_name = node.at_xpath(CONSTITUENCY).text.strip
-    constituency_id = constituency_map.fetch(constituency_name.downcase)
-
-    { id: id, name: name, party: party, constituency_id: constituency_id }
-  end
-
-  def parse_regions(node)
-    node.xpath(MEMBERS).map do |member|
-      id = Integer(member.at_xpath(MEMBER_ID).text)
-      name = member.at_xpath(MEMBER_NAME).text.strip
-      party = member.at_xpath(PARTY).text.strip
-      region_name = member.at_xpath(REGION).text.strip
-      region_id = region_map.fetch(region_name.downcase)
-
-      { id: id, name: name, party: party, region_id: region_id }
-    end
-  end
-
-  def faraday
-    Faraday.new(HOST) do |f|
-      f.response :follow_redirects
-      f.response :raise_error
-      f.adapter :net_http_persistent
-    end
-  end
-
-  def fetch_members
-    faraday.get(endpoint) do |request|
-      request.options[:timeout] = TIMEOUT
-      request.options[:open_timeout] = TIMEOUT
-    end
-  end
-
-  def endpoint
-    ENDPOINTS[I18n.locale]
-  end
-
-  def normalize_map(mappings)
-    mappings.map { |key, id| [key.downcase, id] }.to_h
   end
 end

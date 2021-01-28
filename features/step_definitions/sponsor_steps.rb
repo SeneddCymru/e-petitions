@@ -24,7 +24,7 @@ When(/^a sponsor supports my petition$/) do
     When I visit the "sponsor this petition" url I was given
     And I fill in "Name" with "Anonymous Sponsor"
     And I fill in "Email" with "#{sponsor_email}"
-    And I fill in my postcode with "CF99 1NA"
+    And I fill in my postcode with "G34 0BX"
     And I select "Wales" from "Location"
     And I try to sign
     And I say I am happy with my email address

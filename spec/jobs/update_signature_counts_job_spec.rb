@@ -54,7 +54,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
     end
 
     describe "updating" do
-      let(:country_journal) { CountryPetitionJournal.for(petition, "GB-SCT") }
+      let(:country_journal) { CountryPetitionJournal.for(petition, "GB-WLS") }
       let(:constituency_journal) { ConstituencyPetitionJournal.for(petition, "9999") }
 
       before do
@@ -65,7 +65,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
 
       context "with an open petition" do
         let(:petition) { FactoryBot.create(:open_petition) }
-        let(:attributes) { { petition: petition, location_code: "GB-SCT", constituency_id: "9999" } }
+        let(:attributes) { { petition: petition, location_code: "GB-WLS", constituency_id: "9999" } }
         let(:signatures) { FactoryBot.create_list(:pending_signature, 5, attributes) }
 
         before do
@@ -101,7 +101,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
 
       context "with a pending petition" do
         let(:petition) { FactoryBot.create(:pending_petition) }
-        let(:attributes) { { petition: petition, location_code: "GB-SCT", constituency_id: "9999" } }
+        let(:attributes) { { petition: petition, location_code: "GB-WLS", constituency_id: "9999" } }
         let(:signatures) { FactoryBot.create_list(:pending_signature, 5, attributes) }
 
         before do
@@ -143,7 +143,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
       end
 
       context "with a pending petition that's had its creator validated after the current time window" do
-        let(:petition) { FactoryBot.create(:pending_petition, creator_attributes: { location_code: "GB-SCT", constituency_id: "9999" }) }
+        let(:petition) { FactoryBot.create(:pending_petition, creator_attributes: { location_code: "GB-WLS", constituency_id: "9999" }) }
 
         before do
           # A new petition won't have been counted yet so we need
@@ -244,7 +244,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
 
       context "with a validated petition" do
         let(:petition) { FactoryBot.create(:validated_petition) }
-        let(:attributes) { { petition: petition, location_code: "GB-SCT", constituency_id: "9999" } }
+        let(:attributes) { { petition: petition, location_code: "GB-WLS", constituency_id: "9999" } }
         let(:signatures) { FactoryBot.create_list(:pending_signature, 5, attributes) }
 
         before do
@@ -280,7 +280,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
 
       context "with a petition that's having its count reset" do
         let(:petition) { FactoryBot.create(:open_petition, signature_count_reset_at: current_time) }
-        let(:attributes) { { petition: petition, location_code: "GB-SCT", constituency_id: "9999" } }
+        let(:attributes) { { petition: petition, location_code: "GB-WLS", constituency_id: "9999" } }
         let(:signatures) { FactoryBot.create_list(:pending_signature, 5, attributes) }
 
         before do
@@ -316,7 +316,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
 
       context "with a petition that's having its count reset for more than 5 minutes" do
         let(:petition) { FactoryBot.create(:open_petition, signature_count_reset_at: 10.minutes.ago) }
-        let(:attributes) { { petition: petition, location_code: "GB-SCT", constituency_id: "9999" } }
+        let(:attributes) { { petition: petition, location_code: "GB-WLS", constituency_id: "9999" } }
         let(:signatures) { FactoryBot.create_list(:pending_signature, 5, attributes) }
 
         before do
@@ -352,7 +352,7 @@ RSpec.describe UpdateSignatureCountsJob, type: :job do
 
         context "and there are validated signatures" do
           let(:petition) { FactoryBot.create(:open_petition) }
-          let(:attributes) { { petition: petition, location_code: "GB-SCT", constituency_id: "9999" } }
+          let(:attributes) { { petition: petition, location_code: "GB-WLS", constituency_id: "9999" } }
           let(:signatures) { FactoryBot.create_list(:pending_signature, 5, attributes) }
 
           before do

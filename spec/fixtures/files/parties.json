@@ -1,0 +1,71 @@
+[{
+  "ID": 1,
+  "Abbreviation": "Ind",
+  "ActualName": "Independent",
+  "PreferredName": "Independent",
+  "Notes": "",
+  "ValidFromDate": "2002-05-02T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}, {
+  "ID": 2,
+  "Abbreviation": "NPA",
+  "ActualName": "No Party Affiliation",
+  "PreferredName": "No Party Affiliation",
+  "Notes": "",
+  "ValidFromDate": "2003-05-07T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}, {
+  "ID": 3,
+  "Abbreviation": "Con",
+  "ActualName": "Scottish Conservative and Unionist Party",
+  "PreferredName": "Scottish Conservative and Unionist Party",
+  "Notes": "",
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}, {
+  "ID": 4,
+  "Abbreviation": "Green",
+  "ActualName": "Scottish Green Party",
+  "PreferredName": "Scottish Green Party",
+  "Notes": "",
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}, {
+  "ID": 5,
+  "Abbreviation": "Lab",
+  "ActualName": "Scottish Labour",
+  "PreferredName": "Scottish Labour",
+  "Notes": "",
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}, {
+  "ID": 6,
+  "Abbreviation": "LD",
+  "ActualName": "Scottish Liberal Democrats",
+  "PreferredName": "Scottish Liberal Democrats",
+  "Notes": "",
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}, {
+  "ID": 7,
+  "Abbreviation": "SNP",
+  "ActualName": "Scottish National Party",
+  "PreferredName": "Scottish National Party",
+  "Notes": "",
+  "ValidFromDate": "1999-05-06T00:00:00",
+  "ValidUntilDate": null,
+  "MemberParties": null,
+  "PartyRoles": null
+}]

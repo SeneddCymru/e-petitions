@@ -21,7 +21,7 @@ Feature: Suzie signs a petition
     And I should see "Do something! - Sign this petition - Petitions" in the browser page title
     And I should be connected to the server via an ssl connection
     And I fill in my details with email "womboid@wimbledon.com"
-    And I fill in my postcode with "CF99 1NA"
+    And I fill in my postcode with "G34 0BX"
     And I try to sign
     Then I am asked to review my email address
     When I change my email address to "womboidian@wimbledon.com"
@@ -31,9 +31,9 @@ Feature: Suzie signs a petition
     And "womboidian@wimbledon.com" should receive 1 email
     When I confirm my email address
     Then I should see "2 signatures"
-    And I should see my constituency "Cardiff South and Penarth"
-    And I should see my Member of the Senedd
-    And I can click on a link to visit my Member of the Senedd
+    And I should see my constituency "Glasgow Provan"
+    And I should see my Member of the Scottish Parliament
+    And I can click on a link to visit my Member of the Scottish Parliament
     And I can click on a link to return to the petition
     When I follow "Do something!"
     Then I should see "2 signatures"
@@ -53,7 +53,7 @@ Feature: Suzie signs a petition
   Scenario: Suzie signs a petition with invalid postcode SW14 9RQ
     When I go to the new signature page for "Do something!"
     And I fill in my details with email "womboid@wimbledon.com"
-    And I fill in my postcode with "CF99 1ZZ"
+    And I fill in my postcode with "G34 1ZZ"
     And I try to sign
     Then I am asked to review my email address
     And I say I am happy with my email address
@@ -85,7 +85,7 @@ Feature: Suzie signs a petition
     Given "wimbledon.com" is configured to normalize email address
     And I have already signed the petition using an alias
     When I decide to sign the petition
-    And I fill in my details with postcode "CF99 1NA"
+    And I fill in my details with postcode "G34 0BX"
     And I try to sign
     And I say I am happy with my email address
     Then "wom.boid@wimbledon.com" should receive 1 email with subject "Duplicate signature of petition"
@@ -93,7 +93,7 @@ Feature: Suzie signs a petition
   Scenario: Suzie receives another email if she has already signed but not validated
     When I have already signed the petition but not validated my email
     And I decide to sign the petition
-    And I fill in my details with postcode "CF99 1NA"
+    And I fill in my details with postcode "G34 0BX"
     And I try to sign
     And I say I am happy with my email address
     Then the signature count stays at 2
@@ -101,9 +101,9 @@ Feature: Suzie signs a petition
     And "womboid@wimbledon.com" should receive 1 email
     When I confirm my email address
     Then I should see "2 signatures"
-    And I should see my constituency "Cardiff South and Penarth"
-    And I should see my Member of the Senedd
-    And I can click on a link to visit my Member of the Senedd
+    And I should see my constituency "Glasgow Provan"
+    And I should see my Member of the Scottish Parliament
+    And I can click on a link to visit my Member of the Scottish Parliament
     And I can click on a link to return to the petition
     When I follow "Do something!"
     Then I should see "2 signatures"
@@ -112,7 +112,7 @@ Feature: Suzie signs a petition
     Given "wimbledon.com" is configured to normalize email address
     And I have already signed the petition using an alias but not validated my email
     When I decide to sign the petition
-    And I fill in my details with postcode "CF99 1NA"
+    And I fill in my details with postcode "G34 0BX"
     And I try to sign
     And I say I am happy with my email address
     Then the signature count stays at 2
@@ -120,9 +120,9 @@ Feature: Suzie signs a petition
     And "wom.boid@wimbledon.com" should receive 1 email
     When I confirm my email address
     Then I should see "2 signatures"
-    And I should see my constituency "Cardiff South and Penarth"
-    And I should see my Member of the Senedd
-    And I can click on a link to visit my Member of the Senedd
+    And I should see my constituency "Glasgow Provan"
+    And I should see my Member of the Scottish Parliament
+    And I can click on a link to visit my Member of the Scottish Parliament
     And I can click on a link to return to the petition
     When I follow "Do something!"
     Then I should see "2 signatures"

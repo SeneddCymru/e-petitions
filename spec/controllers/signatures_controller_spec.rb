@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SignaturesController, type: :controller do
   before do
-    constituency = FactoryBot.create(:constituency, :cardiff_south_and_penarth)
-    allow(Constituency).to receive(:find_by_postcode).with("CF991NA").and_return(constituency)
+    constituency = FactoryBot.create(:constituency, :glasgow_provan)
+    allow(Constituency).to receive(:find_by_postcode).with("G340BX").and_return(constituency)
   end
 
   describe "GET /petitions/:petition_id/signatures/new" do
@@ -60,8 +60,8 @@ RSpec.describe SignaturesController, type: :controller do
         expect(assigns[:signature]).not_to be_persisted
       end
 
-      it "sets the signature's location_code to 'GB-WLS'" do
-        expect(assigns[:signature].location_code).to eq("GB-WLS")
+      it "sets the signature's location_code to 'GB-SCT'" do
+        expect(assigns[:signature].location_code).to eq("GB-SCT")
       end
 
       it "renders the signatures/new template" do
@@ -75,8 +75,8 @@ RSpec.describe SignaturesController, type: :controller do
       {
         name: "Ted Berry",
         email: "ted@example.com",
-        postcode: "CF99 1NA",
-        location_code: "GB-WLS"
+        postcode: "G34 0BX",
+        location_code: "GB-SCT"
       }
     end
 
@@ -137,8 +137,8 @@ RSpec.describe SignaturesController, type: :controller do
       it "sets the signature's params" do
         expect(assigns[:signature].name).to eq("Ted Berry")
         expect(assigns[:signature].email).to eq("ted@example.com")
-        expect(assigns[:signature].postcode).to eq("CF991NA")
-        expect(assigns[:signature].location_code).to eq("GB-WLS")
+        expect(assigns[:signature].postcode).to eq("G340BX")
+        expect(assigns[:signature].location_code).to eq("GB-SCT")
       end
 
       it "records the IP address on the signature" do
@@ -171,7 +171,7 @@ RSpec.describe SignaturesController, type: :controller do
             name: "Ted Berry",
             email: "",
             postcode: "12345",
-            location_code: "GB-WLS"
+            location_code: "GB-SCT"
           }
         end
 
@@ -187,8 +187,8 @@ RSpec.describe SignaturesController, type: :controller do
       {
         name: "Ted Berry",
         email: "ted@example.com",
-        postcode: "CF99 1NA",
-        location_code: "GB-WLS"
+        postcode: "G34 0BX",
+        location_code: "GB-SCT"
       }
     end
 
@@ -252,8 +252,8 @@ RSpec.describe SignaturesController, type: :controller do
         it "sets the signature's params" do
           expect(assigns[:signature].name).to eq("Ted Berry")
           expect(assigns[:signature].email).to eq("ted@example.com")
-          expect(assigns[:signature].postcode).to eq("CF991NA")
-          expect(assigns[:signature].location_code).to eq("GB-WLS")
+          expect(assigns[:signature].postcode).to eq("G340BX")
+          expect(assigns[:signature].location_code).to eq("GB-SCT")
         end
 
         it "records the IP address on the signature" do
@@ -290,8 +290,8 @@ RSpec.describe SignaturesController, type: :controller do
             {
               name: "Ted Berry",
               email: "",
-              postcode: "CF99 1NA",
-              location_code: "GB-WLS"
+              postcode: "G34 0BX",
+              location_code: "GB-SCT"
             }
           end
 
@@ -642,7 +642,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "records the constituency id on the signature" do
-        expect(assigns[:signature].constituency_id).to eq("W09000043")
+        expect(assigns[:signature].constituency_id).to eq("S16000147")
       end
 
       it "records the ip address on the signature" do
@@ -685,7 +685,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "records the constituency id on the signature" do
-        expect(assigns[:signature].constituency_id).to eq("W09000043")
+        expect(assigns[:signature].constituency_id).to eq("S16000147")
       end
 
       it "records the ip address on the signature" do

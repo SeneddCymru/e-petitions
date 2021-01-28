@@ -60,9 +60,9 @@ module ScotsPets
 
         details = []
         details << 'C=GB'
-        details << 'ST=Wales'
-        details << 'L=Cardiff'
-        details << 'O=Senedd'
+        details << 'ST=Scotland'
+        details << 'L=Edinburgh'
+        details << 'O=The Scottish Parliament'
         details << 'OU=ICT'
         details << 'CN=petitions.parliament.scot'
 

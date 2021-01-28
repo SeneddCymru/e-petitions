@@ -371,15 +371,15 @@ FactoryBot.define do
 
   factory :contact do
     association :signature
-    phone_number { "0300 200 6565" }
-    address { "Pierhead St, Cardiff" }
+    phone_number { "0141 496 1234" }
+    address { "1 Nowhere Road, Cardiff" }
   end
 
   factory :signature do
     sequence(:name)  {|n| "Jo Public #{n}" }
     sequence(:email) {|n| "jo#{n}@public.com" }
-    postcode              "CF99 1NA"
-    location_code         "GB-WLS"
+    postcode              "G34 0BX"
+    location_code         "GB-SCT"
     notify_by_email       "1"
     state                 Signature::VALIDATED_STATE
 
@@ -437,48 +437,48 @@ FactoryBot.define do
     end
   end
 
-  sequence(:constituency_id) { |n| "W09%06d" % n }
+  sequence(:constituency_id) { |n| "S16%06d" % n }
 
   factory :constituency do
-    trait :cardiff_south_and_penarth do
-      id { "W09000043" }
-      association :region, :south_wales_central
-      name_en { "Cardiff South and Penarth" }
-      name_gd { "De Caerdydd a Phenarth" }
-      example_postcode { "CF119WE" }
+    trait :glasgow_provan do
+      id { "S16000147" }
+      association :region, :glasgow
+      name_en { "Glasgow Provan" }
+      name_gd { "Glaschu Provan" }
+      example_postcode { "G340BX" }
     end
 
-    trait :swansea_west do
-      id { "W09000019" }
-      association :region, :south_wales_west
-      name_en { "Swansea West" }
-      name_gd { "Gorllewin Abertawe" }
-      example_postcode { "SA16UD" }
+    trait :dumbarton do
+      id { "S16000096" }
+      association :region, :west_scotland
+      name_en { "Dumbarton" }
+      name_gd { "Dùn Breatann" }
+      example_postcode { "G849EQ" }
     end
 
-    sequence(:id) { |n| "W19%06d" % n }
+    sequence(:id) { |n| "S16%06d" % n }
     association :region
     sequence(:name_en) { |n| "Constituency #{n}" }
-    sequence(:name_gd) { |n| "Etholaeth #{n}" }
+    sequence(:name_gd) { |n| "Sgìre-phàrlamaid #{n}" }
     example_postcode { Faker::Address.postcode.tr(" ", "") }
   end
 
   factory :region do
-    trait :south_wales_central do
-      id { "W10000007" }
-      name_en { "South Wales Central" }
-      name_gd { "Canol De Cymru" }
+    trait :glasgow do
+      id { "S17000017" }
+      name_en { "Glasgow" }
+      name_gd { "Glaschu" }
     end
 
-    trait :south_wales_west do
-      id { "W10000009" }
-      name_en { "South Wales West" }
-      name_gd { "Gorllewin De Cymru" }
+    trait :west_scotland do
+      id { "S17000018" }
+      name_en { "West Scotland" }
+      name_gd { "Alba a Iar" }
     end
 
-    sequence(:id) { |n| "W11%06d" % n }
+    sequence(:id) { |n| "S171%05d" % n }
     sequence(:name_en) { |n| "Region #{n}" }
-    sequence(:name_gd) { |n| "Rhanbarth #{n}" }
+    sequence(:name_gd) { |n| "Roinn #{n}" }
   end
 
   factory :member do
@@ -486,8 +486,8 @@ FactoryBot.define do
     constituency_id { nil }
     name_en { Faker::Name.name }
     name_gd { Faker::Name.name }
-    party_en { "Gaelic Labour" }
-    party_gd { "Llafur Cymru" }
+    party_en { "Scottish Labour" }
+    party_gd { "Làbarach na h-Alba" }
 
     trait :region do
       association :region
@@ -497,54 +497,54 @@ FactoryBot.define do
       association :constituency
     end
 
-    trait :cardiff_south_and_penarth do
-      id { 249 }
-      constituency_id { "W09000043" }
-      name_en { "Vaughan Gething MS" }
-      name_gd { "Vaughan Gething AS" }
-      party_en { "Gaelic Labour" }
-      party_gd { "Llafur Cymru" }
+    trait :glasgow_provan do
+      id { 5612 }
+      constituency_id { "S16000147" }
+      name_en { "Ivan McKee MSP" }
+      name_gd { "Ivan McKee BPA" }
+      party_en { "Scottish National Party" }
+      party_gd { "Pàrtaidh Nàiseanta na h-Alba" }
     end
 
     trait :regional_member do
-      region_id { "W10000007" }
-      name_en { "Bob Jones MS" }
-      name_gd { "Bob Jones AS" }
-      party_en { "Gaelic Conservative Party" }
-      party_gd { "Ceidwadwyr Cymreig" }
+      region_id { "S17000015" }
+      name_en { "Michelle Ballantyne MSP" }
+      name_gd { "Michelle Ballantyne BPA" }
+      party_en { "Reform UK" }
+      party_gd { "Reform UK" }
     end
 
     trait :constituency_member do
-      constituency_id { "W09000043" }
-      name_en { "Alice Davies MS" }
-      name_gd { "Alice Davies AS" }
-      party_en { "Gaelic Labour" }
-      party_gd { "Llafur Cymru" }
+      constituency_id { "S16000075" }
+      name_en { "Mark McDonald MSP" }
+      name_gd { "Mark McDonald BPA" }
+      party_en { "Independent" }
+      party_gd { "Neo-eisimeileach" }
     end
   end
 
   factory :postcode do
     id { Faker::Address.postcode.tr(" ", "") }
-    sequence(:constituency_id) { |n| "W09%06d" % n }
+    sequence(:constituency_id) { |n| "S16%06d" % n }
 
-    trait :cardiff_south_and_penarth do
-      id { "CF991NA" }
-      constituency_id { "W09000043" }
+    trait :glasgow_provan do
+      id { "G340BX" }
+      constituency_id { "S16000147" }
     end
 
-    trait :swansea_west do
-      id { "SA11BD" }
-      constituency_id { "W09000019" }
+    trait :dumbarton do
+      id { "G849EQ" }
+      constituency_id { "S16000096" }
     end
   end
 
   factory :constituency_petition_journal do
-    constituency_id "W09000043"
+    constituency_id "S16000147"
     association :petition
   end
 
   factory :country_petition_journal do
-    location_code "GB-WLS"
+    location_code "GB-SCT"
     association :petition
   end
 

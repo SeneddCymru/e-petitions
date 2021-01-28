@@ -1,22 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe LocalPetitionsController, type: :controller do
-  let(:constituency) { FactoryBot.create(:constituency, :cardiff_south_and_penarth) }
+  let(:constituency) { FactoryBot.create(:constituency, :glasgow_provan) }
 
   describe "GET /petitions/local" do
     context "when the postcode is valid" do
       before do
-        expect(Constituency).to receive(:find_by_postcode).with("CF991NA").and_return(constituency)
+        expect(Constituency).to receive(:find_by_postcode).with("G340BX").and_return(constituency)
 
-        get :index, params: { postcode: "cf99 1na" }
+        get :index, params: { postcode: "g34 0bx" }
       end
 
       it "assigns the sanitized postcode" do
-        expect(assigns(:postcode)).to eq("CF991NA")
+        expect(assigns(:postcode)).to eq("G340BX")
       end
 
       it "redirects to the constituency page for current popular petitions" do
-        expect(response).to redirect_to("/petitions/local/W09000043")
+        expect(response).to redirect_to("/petitions/local/S16000147")
       end
     end
 
@@ -85,13 +85,13 @@ RSpec.describe LocalPetitionsController, type: :controller do
     let(:members) { double(:members) }
 
     before do
-      expect(Constituency).to receive(:find).with("W09000043").and_return(constituency)
+      expect(Constituency).to receive(:find).with("S16000147").and_return(constituency)
       expect(constituency).to receive(:member).and_return(member)
       expect(constituency).to receive(:region).and_return(region)
       expect(region).to receive(:members).and_return(members)
-      expect(Petition).to receive(:popular_in_constituency).with("W09000043", 50).and_return(petitions)
+      expect(Petition).to receive(:popular_in_constituency).with("S16000147", 50).and_return(petitions)
 
-      get :show, params: { id: "W09000043" }
+      get :show, params: { id: "S16000147" }
     end
 
     it "renders the all template" do
@@ -114,13 +114,13 @@ RSpec.describe LocalPetitionsController, type: :controller do
     let(:members) { double(:members) }
 
     before do
-      expect(Constituency).to receive(:find).with("W09000043").and_return(constituency)
+      expect(Constituency).to receive(:find).with("S16000147").and_return(constituency)
       expect(constituency).to receive(:member).and_return(member)
       expect(constituency).to receive(:region).and_return(region)
       expect(region).to receive(:members).and_return(members)
-      expect(Petition).to receive(:all_popular_in_constituency).with("W09000043", 50).and_return(petitions)
+      expect(Petition).to receive(:all_popular_in_constituency).with("S16000147", 50).and_return(petitions)
 
-      get :all, params: { id: "W09000043" }
+      get :all, params: { id: "S16000147" }
     end
 
     it "renders the all template" do

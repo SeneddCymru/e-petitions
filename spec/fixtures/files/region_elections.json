@@ -1,0 +1,127 @@
+[{
+  "ID": 20,
+  "PersonID": 4976,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 76,
+  "PersonID": 2892,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 100,
+  "PersonID": 5047,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 101,
+  "PersonID": 5079,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 102,
+  "PersonID": 3101,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 149,
+  "PersonID": 3771,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 150,
+  "PersonID": 4941,
+  "RegionID": 10,
+  "ValidFromDate": "2011-05-05T00:00:00",
+  "ValidUntilDate": "2016-03-23T23:59:59",
+  "ElectionStatusID": 2,
+  "ElectionReasonDateID": 3,
+  "Notes": ""
+}, {
+  "ID": 244,
+  "PersonID": 2080,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}, {
+  "ID": 245,
+  "PersonID": 2892,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}, {
+  "ID": 246,
+  "PersonID": 1857,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}, {
+  "ID": 247,
+  "PersonID": 2059,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}, {
+  "ID": 248,
+  "PersonID": 5586,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}, {
+  "ID": 249,
+  "PersonID": 5783,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}, {
+  "ID": 250,
+  "PersonID": 5788,
+  "RegionID": 10,
+  "ValidFromDate": "2016-05-05T00:00:00",
+  "ValidUntilDate": null,
+  "ElectionStatusID": 1,
+  "ElectionReasonDateID": null,
+  "Notes": ""
+}]

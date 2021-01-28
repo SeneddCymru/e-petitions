@@ -981,7 +981,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
 
     describe EmailConfirmationForSignerEmailJob do
       let(:petition) { FactoryBot.create(:open_petition, action_en: "Do stuff", action_gd: "Gwnewch bethau") }
-      let(:constituency) { FactoryBot.create(:constituency, :cardiff_south_and_penarth) }
+      let(:constituency) { FactoryBot.create(:constituency, :glasgow_provan) }
 
       it_behaves_like "a notify job" do
         let(:signature) { FactoryBot.create(:pending_signature, petition: petition) }
@@ -1020,7 +1020,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "sets the constituency_id" do
-          expect(Constituency).to receive(:find_by_postcode).with("CF991NA").and_return(constituency)
+          expect(Constituency).to receive(:find_by_postcode).with("G340BX").and_return(constituency)
 
           expect {
             perform_enqueued_jobs do
@@ -1028,7 +1028,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             end
           }.to change {
             signature.reload.constituency_id
-          }.from(nil).to("W09000043")
+          }.from(nil).to("S16000147")
         end
       end
 
@@ -1064,7 +1064,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "sets the constituency_id" do
-          expect(Constituency).to receive(:find_by_postcode).with("CF991NA").and_return(constituency)
+          expect(Constituency).to receive(:find_by_postcode).with("G340BX").and_return(constituency)
 
           expect {
             perform_enqueued_jobs do
@@ -1072,7 +1072,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             end
           }.to change {
             signature.reload.constituency_id
-          }.from(nil).to("W09000043")
+          }.from(nil).to("S16000147")
         end
       end
     end

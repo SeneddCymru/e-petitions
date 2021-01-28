@@ -3,9 +3,9 @@ Before do
 end
 
 Before do
-  FactoryBot.create(:constituency, :cardiff_south_and_penarth)
-  FactoryBot.create(:postcode, :cardiff_south_and_penarth)
-  FactoryBot.create(:member, :cardiff_south_and_penarth)
+  FactoryBot.create(:constituency, :glasgow_provan)
+  FactoryBot.create(:postcode, :glasgow_provan)
+  FactoryBot.create(:member, :glasgow_provan)
 end
 
 Before do
