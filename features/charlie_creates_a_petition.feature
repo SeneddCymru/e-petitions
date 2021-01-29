@@ -57,6 +57,26 @@ Scenario: Charlie creates a petition with a custom closing date
   When I press "Yes – this is my email address"
   Then the petition "The wombats of wimbledon rock." should exist with a closing date of "2020-08-31"
 
+Scenario: Charlie creates a petition when sponsor count is set to 0
+  Given the site is not collecting sponsors
+  And I start a new petition
+  And I fill in the petition details
+  And I press "Preview petition"
+  And I press "This looks good"
+  And I choose the default closing date
+  And I fill in my details as a creator
+  And I fill in my creator contact details
+  When I press "Continue"
+  Then the markup should be valid
+  And I am asked to review my email address
+  When I press "Yes – this is my email address"
+  Then a petition should exist with action_en: "The wombats of wimbledon rock.", action_gd: nil, state: "pending", locale: "en-GB"
+  And there should be a "pending" signature with email "womboid@wimbledon.com" and name "Womboid Wibbledon"
+  And "Womboid Wibbledon" wants to be notified about the petition's progress
+  And "womboid@wimbledon.com" should be emailed a link for validating their signature
+  When I confirm my email
+  Then a petition should exist with action_en: "The wombats of wimbledon rock.", state: "sponsored"
+
 @gaelic
 Scenario: Charlie creates a petition in Gaelic
   Given I start a new petition
