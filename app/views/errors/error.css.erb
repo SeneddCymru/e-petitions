@@ -1,5 +1,19 @@
 /* fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
+@font-face {
+  font-family: "Futura";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url(<%= data_uri("FuturaBT-Book.ttf") %>) format("ttf");
+}
+
+@font-face {
+  font-family: "Futura";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url(<%= data_uri("FuturaBT-Book.ttf") %>) format("ttf");
+}
 
 /* normalize.css */
 html {
@@ -170,7 +184,7 @@ template {
 
 /* core */
 html {
-  background-color: #3C3C3B;
+  background-color: #B0008E;
 }
 
 html, body {
@@ -182,21 +196,29 @@ html, body {
 body {
   background-color: #FFFFFF;
   color: #3C3C3B;
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: "Futura", Helvetica, Arial, sans-serif;
+
+}
+
+body > header {
+  background-color: #500778;
+}
+
+body > footer {
+  background-image: linear-gradient(180deg, #500778 0, #B0008E 100%);
 }
 
 body > header,
 body > footer {
-  background-color: #3C3C3B;
   color: #FFFFFF;
 }
 
 a {
-  color: #C9187E;
+  color: #B0008E;
 }
 
 a:focus {
-  background-color: #C9187E;
+  background-color: #B0008E;
   color: #FFFFFF;
   text-decoration: none;
 }
@@ -350,6 +372,8 @@ body > header a:hover {
 }
 
 body > header .brand {
+  background: url(<%= data_uri("frontend/logo.svg") %>) left top no-repeat;
+  background-size: contain;
   font-weight: bold;
 }
 
@@ -359,14 +383,13 @@ body > header .brand p {
 }
 
 body > header .brand .logo {
-  background: url(<%= data_uri("frontend/dragon.svg") %>) left center no-repeat;
   padding-top: 1px;
 }
 
 body > header .brand .logo p {
   margin: 3px 0;
   font-size: 0.75rem;
-  padding-left: 72px;
+  padding-left: 56px;
 }
 
 @media (min-width: 641px) {
@@ -377,7 +400,7 @@ body > header .brand .logo p {
 
 @media (min-width: 641px) {
   body > header .brand .logo p {
-    padding-left: 84px;
+    padding-left: 64px;
   }
 }
 
@@ -385,7 +408,7 @@ body > header .brand .service {
   margin-top: 12px;
   font-weight: 800;
   font-size: 1.25rem;
-  padding-left: 72px;
+  padding-left: 56px;
 }
 
 @media (min-width: 641px) {
@@ -396,7 +419,7 @@ body > header .brand .service {
 
 @media (min-width: 641px) {
   body > header .brand .service {
-    padding-left: 84px;
+    padding-left: 64px;
   }
 }
 
@@ -456,99 +479,5 @@ body > footer .logo {
 }
 
 body > footer .logo:focus {
-  background-color: #C9187E;
-}
-
-/* cookie control */
-
-#ccc {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif !important;
-}
-
-#ccc #ccc-notify #ccc-close,
-#ccc #ccc-notify-dismiss,
-#ccc #ccc-notify-reject {
-  display: none !important;
-}
-
-#ccc #ccc-content h2,
-#ccc #ccc-content h3 {
-  line-height: 1.25 !important;
-  margin: 0 0 6px 0;
-}
-
-#ccc #ccc-content h2 {
-  @include font-size(0.875rem, 1rem);
-}
-
-#ccc #ccc-content h3 {
-  @include font-size(0.75rem, 0.875rem);
-}
-
-#ccc #ccc-content p {
-  font-size: 0.75rem;
-  line-height: 1.375 !important;
-  margin: 0 0 12px;
-}
-
-@media (min-width: 641px) {
-  #ccc #ccc-content p {
-    font-size: 0.875rem;
-  }
-}
-
-
-#ccc #ccc-content hr {
-  margin: 12px 0 !important;
-}
-
-#ccc #ccc-content .ccc-svg-element {
-  height: 10px;
-  width: 10px;
-  top: 3px;
-  margin-left: 6px;
-}
-
-#ccc #ccc-content .checkbox-toggle {
-  background-color: #FFFFFF !important;
-  border-color: #FFFFFF !important;
-  border-width: 2px !important;
-  padding: 0;
-}
-
-#ccc #ccc-content .checkbox-toggle-on {
-  color: #3C3C3B !important;
-}
-
-#ccc #ccc-content .checkbox-toggle-off {
-  color: #747474 !important;
-}
-
-#ccc #ccc-content #ccc-necessary-title {
-  padding-right: 0;
-}
-
-#ccc-close:focus {
-  outline: none;
-}
-
-#ccc #ccc-notify-accept,
-#ccc #ccc-recommended-settings {
-  background-color: #C9187E;
-  border-color: #C9187E;
-  color: #FFFFFF;
-}
-
-#ccc .ccc-notify-button {
-  border-radius: 0 !important;
-  border-width: 2px !important;
-  font-weight: bold !important;
-}
-
-#ccc .ccc-notify-button:active,
-#ccc .ccc-notify-button:focus,
-#ccc .ccc-notify-button:hover {
-  background-color: #FFFFFF !important;
-  border-color: #C9187E !important;
-  color: #3C3C3B !important;
+  background-color: #B0008E;
 }
