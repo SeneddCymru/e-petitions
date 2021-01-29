@@ -334,6 +334,13 @@ When(/^I click to see more details$/) do
   click_details "More details"
 end
 
+Given(/^the site is not collecting sponsors$/) do
+  Site.instance.update!(
+    minimum_number_of_sponsors: 0,
+    threshold_for_moderation: 0
+  )
+end
+
 Given(/^an? (open|closed|rejected) petition "(.*?)" with some (fraudulent)? ?signatures$/) do |state, petition_action, signature_state|
   petition_closed_at = state == 'closed' ? 1.day.ago : nil
   petition_state = state == 'closed' ? 'open' : state

@@ -242,6 +242,10 @@ class Site < ActiveRecord::Base
       bypass_token.present?
     end
 
+    def collecting_sponsors?
+      minimum_number_of_sponsors > 0
+    end
+
     private
 
     def default_title_en

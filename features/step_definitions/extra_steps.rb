@@ -190,3 +190,25 @@ end
 Given(/^a petition "([^"]*)" exists$/) do |action|
   @petition = FactoryBot.create(:petition, action: action)
 end
+
+Then(/^"([^"]*)" should be emailed a link for validating their signature$/) do |address|
+  open_last_email_for(address)
+  steps %{
+    Then they should see "Please confirm your email" in the email subject
+    When they open the email with subject "Please confirm your email"
+  }
+  steps %{
+    Then they should see /Click this link to confirm your email/ in the email body
+  }
+end
+
+When(/^I confirm my email$/) do
+  steps %Q(
+    When I click the first link in the email
+  )
+end
+
+Then(/^a petition should exist with action_en: "([^"]*)", state: "([^"]*)"$/) do |action_en, state|
+  petition = Petition.where(action_en: action_en, state: state)
+  expect(petition).to exist
+end

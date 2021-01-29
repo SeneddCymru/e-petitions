@@ -71,6 +71,10 @@ Rails.application.routes.draw do
       get '/:id', action: 'show',  as: :petition
     end
 
+    scope '/petitioners', controller: 'petitioners' do
+      get '/:id/verify', action: 'verify', as: :verify_petitioner
+    end
+
     scope '/sponsors', controller: 'sponsors' do
       get '/:id/verify',    action: 'verify', as: :verify_sponsor
       get '/:id/sponsored', action: 'signed', as: :signed_sponsor

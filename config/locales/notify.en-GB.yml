@@ -2,6 +2,7 @@ en-GB:
   notify:
     templates:
       email_confirmation_for_signer: "d1f5e610-5455-41ec-b71d-776c61ad9cac"
+      email_confirmation_for_creator: "2b9f7f53-1f28-446d-9502-cb77d0928f61"
       email_creator_about_other_business: "1b64c2cc-d9f0-49ef-920e-34716aff1fc2"
       email_duplicate_signatures: "ba9c3050-cc8b-410b-b3d2-30c692ffb91c"
       email_duplicate_sponsor: "3a7e8201-52c5-4dc9-a349-7e2235312147"

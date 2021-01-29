@@ -2,6 +2,7 @@ gd-GB:
   notify:
     templates:
       email_confirmation_for_signer: "b79b908a-5b2f-4577-a03e-d8c625a2e280"
+      email_confirmation_for_creator: "cbf205c3-9d3a-4d97-8dd6-c367ecaeb8cd"
       email_creator_about_other_business: "e62c1f63-ea30-4d91-86a2-4e290c13fb0c"
       email_duplicate_signatures: "a3997c4b-8f4e-4013-abcb-fdbbbb6f5950"
       email_duplicate_sponsor: "5cca1ad8-1214-41b0-8abe-bf982463dc01"
@@ -29,7 +30,7 @@ gd-GB:
       sponsor_signed_email_on_threshold_christmas: "a41374bb-235b-4203-8ed2-076961c7554c"
       sponsor_signed_email_on_threshold_easter: "8c18ec4e-c6a5-4939-bbdd-19fbb1e392d3"
       sponsor_signed_email_on_threshold: "20cb31ed-5758-4fd4-9d0d-69fe6c1f4818"
-      
+
     strings:
       sponsor_count:
         zero: "You have 0 supporters so far"
