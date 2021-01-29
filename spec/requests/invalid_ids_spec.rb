@@ -123,121 +123,121 @@ RSpec.describe "invalid ids", type: :request, show_exceptions: true, csrf: false
   end
 
   context "when on the Gaelic website", gaelic: true do
-    describe "GET /deisebau/:id" do
+    describe "GET /athchuingean/:id" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif"
+        get "/athchuingean/no-aireamh"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:id/cyfrif.json" do
+    describe "GET /athchuingean/:id/cunnt.json" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/cyfrif.json"
+        get "/athchuingean/no-aireamh/cunnt.json"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:id/casglu-cefnogaeth" do
+    describe "GET /athchuingean/:id/cruinneachadh-taic" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/casglu-cefnogaeth"
+        get "/athchuingean/no-aireamh/cruinneachadh-taic"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:id/cymedroli-gwybodaeth" do
+    describe "GET /athchuingean/:id/fiosrachadh-measaidh" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/cymedroli-gwybodaeth"
+        get "/athchuingean/no-aireamh/fiosrachadh-measaidh"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:petition_id/noddwyr/newydd" do
+    describe "GET /athchuingean/:petition_id/luchd-taic/ur" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/noddwyr/newydd"
+        get "/athchuingean/no-aireamh/luchd-taic/ur"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "POST /deisebau/:petition_id/noddwyr/newydd" do
+    describe "POST /athchuingean/:petition_id/luchd-taic/ur" do
       it "returns a 400 Bad Request" do
-        post "/deisebau/nid-rhif/noddwyr/newydd"
+        post "/athchuingean/no-aireamh/luchd-taic/ur"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "POST /deisebau/:petition_id/noddwyr" do
+    describe "POST /athchuingean/:petition_id/luchd-taic" do
       it "returns a 400 Bad Request" do
-        post "/deisebau/nid-rhif/noddwyr"
+        post "/athchuingean/no-aireamh/luchd-taic"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:petition_id/noddwyr/diolch" do
+    describe "GET /athchuingean/:petition_id/luchd-taic/tapadh-leibh" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/noddwyr/diolch"
+        get "/athchuingean/no-aireamh/luchd-taic/tapadh-leibh"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /noddwyr/:id/gwirio" do
+    describe "GET /luchd-taic/:id/dearbhaich" do
       it "returns a 400 Bad Request" do
-        get "/noddwyr/nid-rhif/gwirio"
+        get "/luchd-taic/no-aireamh/dearbhaich"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /noddwyr/:id/noddedig" do
+    describe "GET /luchd-taic/:id/urrasach" do
       it "returns a 400 Bad Request" do
-        get "/noddwyr/nid-rhif/noddedig"
+        get "/luchd-taic/no-aireamh/urrasach"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:petition_id/llofnodion/newydd" do
+    describe "GET /athchuingean/:petition_id/ainmean-sgriobhte/ur" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/llofnodion/newydd"
+        get "/athchuingean/no-aireamh/ainmean-sgriobhte/ur"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "POST /deisebau/:petition_id/llofnodion/newydd" do
+    describe "POST /athchuingean/:petition_id/ainmean-sgriobhte/ur" do
       it "returns a 400 Bad Request" do
-        post "/deisebau/nid-rhif/llofnodion/newydd"
+        post "/athchuingean/no-aireamh/ainmean-sgriobhte/ur"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "POST /deisebau/:petition_id/llofnodion" do
+    describe "POST /athchuingean/:petition_id/ainmean-sgriobhte" do
       it "returns a 400 Bad Request" do
-        post "/deisebau/nid-rhif/llofnodion"
+        post "/athchuingean/no-aireamh/ainmean-sgriobhte"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /deisebau/:petition_id/llofnodion/diolch" do
+    describe "GET /athchuingean/:petition_id/ainmean-sgriobhte/tapadh-leibh" do
       it "returns a 400 Bad Request" do
-        get "/deisebau/nid-rhif/llofnodion/diolch"
+        get "/athchuingean/no-aireamh/ainmean-sgriobhte/tapadh-leibh"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /llofnodion/:id/gwirio" do
+    describe "GET /ainmean-sgriobhte/:id/dearbhaich" do
       it "returns a 400 Bad Request" do
-        get "/llofnodion/nid-rhif/gwirio"
+        get "/ainmean-sgriobhte/no-aireamh/dearbhaich"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /llofnodion/:id/llofnodwyd" do
+    describe "GET /ainmean-sgriobhte/:id/air-a-shoidhnigeadh" do
       it "returns a 400 Bad Request" do
-        get "/llofnodion/nid-rhif/llofnodwyd"
+        get "/ainmean-sgriobhte/no-aireamh/air-a-shoidhnigeadh"
         expect(response).to have_http_status(:bad_request)
       end
     end
 
-    describe "GET /llofnodion/:id/dad-danysgrifio" do
+    describe "GET /ainmean-sgriobhte/:id/di-chlaradh" do
       it "returns a 400 Bad Request" do
-        get "/llofnodion/nid-rhif/dad-danysgrifio"
+        get "/ainmean-sgriobhte/no-aireamh/di-chlaradh"
         expect(response).to have_http_status(:bad_request)
       end
     end

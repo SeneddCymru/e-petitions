@@ -143,12 +143,12 @@ Given(/^a moderator updates the petition activity$/) do
     Given I am logged in as a moderator
     And I view all petitions
     And I follow "#{@petition.action}"
-    And I follow "Other Senedd business"
-    And I follow "New other Senedd business"
+    And I follow "Other parliamentary business"
+    And I follow "New other parliamentary business"
     And I fill in "Subject in English" with "Get ready"
-    And I fill in "Subject in Gaelic" with "Paratowch"
-    And I fill in "Body in English" with "Senedd here it comes"
-    And I fill in "Body in Gaelic" with "Senedd yma mae'n dod"
+    And I fill in "Subject in Gaelic" with "Ullaich"
+    And I fill in "Body in English" with "Parliament here it comes"
+    And I fill in "Body in Gaelic" with "Pàrlamaid an seo thig e"
     And I press "Send email"
   )
 end

@@ -20,7 +20,7 @@ RSpec.describe DateTimeHelper, type: :helper do
       end
 
       it "returns the correct date format" do
-        expect(helper.short_date_format(date)).to eq("31 Hydref 2020")
+        expect(helper.short_date_format(date)).to eq("31 dhen Dàmhair 2020")
       end
     end
   end
@@ -96,24 +96,24 @@ RSpec.describe DateTimeHelper, type: :helper do
       context "when the date is in the future" do
         let(:date) { Date.parse("11/11/2016") }
 
-        it "returns 'Trefnwyd dadl ar gyfer 11 Tachwedd 2016'" do
-          expect(helper.scheduled_for_debate_in_words(date)).to eq("Trefnwyd dadl ar gyfer 11 Tachwedd 2016")
+        it "returns 'Clàraichte airson deasbad air 11 dhen t-Samhain 2016'" do
+          expect(helper.scheduled_for_debate_in_words(date)).to eq("Clàraichte airson deasbad air 11 dhen t-Samhain 2016")
         end
       end
 
       context "when the date is today" do
         let(:date) { Date.current }
 
-        it "returns 'Trefnwyd cynnal dadl heddiw'" do
-          expect(helper.scheduled_for_debate_in_words(date)).to eq("Trefnwyd cynnal dadl heddiw")
+        it "returns 'Clàraichte airson deasbad an-diugh'" do
+          expect(helper.scheduled_for_debate_in_words(date)).to eq("Clàraichte airson deasbad an-diugh")
         end
       end
 
       context "when the date is tomorrow" do
         let(:date) { Date.tomorrow }
 
-        it "returns 'Trefnwyd cynnal dadl yfory'" do
-          expect(helper.scheduled_for_debate_in_words(date)).to eq("Trefnwyd cynnal dadl yfory")
+        it "returns 'Clàraichte airson deasbad a-màireach'" do
+          expect(helper.scheduled_for_debate_in_words(date)).to eq("Clàraichte airson deasbad a-màireach")
         end
       end
     end

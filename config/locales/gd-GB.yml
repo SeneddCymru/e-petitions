@@ -2,53 +2,53 @@
 gd-GB:
   date:
     abbr_day_names:
-    - Sul
-    - Llun
-    - Maw
-    - Mer
-    - Iau
-    - Gwe
-    - Sad
+    - DiD
+    - DiL
+    - DiM
+    - DiC
+    - Dia
+    - Dih
+    - DiS
     abbr_month_names:
     -
-    - Ion
-    - Chw
-    - Maw
-    - Ebr
-    - Mai
-    - Meh
-    - Gor
-    - Awst
-    - Med
-    - Hyd
-    - Tach
-    - Rha
+    - Faoi
+    - Gearr
+    - Màrt
+    - Gibl
+    - Cèit
+    - Ògmh
+    - Iuch
+    - Lùna
+    - Sult
+    - Dàmh
+    - Samh
+    - Dùbh
     day_names:
-    - Dydd Sul
-    - Dydd Llun
-    - Dydd Mawrth
-    - Dydd Mercher
-    - Dydd Iau
-    - Dydd Gwener
-    - Dydd Sadwrn
+    - DiDòmhnaich
+    - DiLuain
+    - DiMàirt
+    - DiCiadain
+    - DiarDaoin
+    - DihAoine
+    - DiSathairne
     formats:
       default: "%d-%m-%Y"
       long: "%d %B, %Y"
       short: "%d %b"
     month_names:
     -
-    - Ionawr
-    - Chwefror
-    - Mawrth
-    - Ebrill
-    - Mai
-    - Mehefin
-    - Gorffennaf
-    - Awst
-    - Medi
-    - Hydref
-    - Tachwedd
-    - Rhagfyr
+    - dhen Fhaoilleachh
+    - dhen Ghearran
+    - dhen Mhàrt
+    - dhen Ghiblean
+    - dhen Chèitean
+    - dhen Ògmhios
+    - dhen Iuchar
+    - dhen Lùnastal
+    - dhen t-Sultain
+    - dhen Dàmhair
+    - dhen t-Samhain
+    - dhen Dùbhlachd
     order:
     - :day
     - :month
@@ -56,83 +56,106 @@ gd-GB:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: tuag awr
-        other: tua %{count} awr
+        one: mu 1 uair a thìde
+        two: mu 2 uair a thìde
+        other: "mu %{count} uairean"
       about_x_months:
-        one: tua mis
-        other: tua %{count} mis
+        one: mu 1 mhìos
+        two: mu 2 mhìos
+        other: "mu %{count} mìosan"
       about_x_years:
-        one: tua blwyddyn
-        other: tua %{count} blynedd
+        one: mu 1 bliadhna
+        two: mu 2 bliadhna
+        other: "mu %{count} bliadhna"
       almost_x_years:
-        one: bron yn flwyddyn
-        other: bron yn %{count} blynedd
-      half_a_minute: hanner munud
+        one: cha mhòr 1 bliadhna
+        two: cha mhòr 2 bliadhna
+        other: "cha mhòr %{count} years"
+      half_a_minute: leth-mhionaid
       less_than_x_minutes:
-        one: llai na munud
-        other: llai na %{count} munud
+        one: nas lugha na 1 mhionaid
+        two: nas lugha na 2 mhionaid
+        other: "nas lugha na %{count} mionaidean"
       less_than_x_seconds:
-        one: llai nag eiliad
-        other: llai na %{count} eiliad
+        one: nas lugha na 1 diog
+        two: nas lugha na 2 dhiog
+        other: "nas lugha na %{count} diogan"
       over_x_years:
-        one: dros flwyddyn
-        other: dros %{count} blynedd
+        one: thairis air 1 bhliadhna
+        two: thairis air 2 bhliadhna
+        other: "thairis air %{count} bliadhna"
       x_days:
-        one: 1 diwrnod
-        other: "%{count} diwrnod"
+        one: 1 latha
+        two: 2 latha
+        other: "%{count} latha"
       x_minutes:
-        one: 1 munud
-        other: "%{count} o funudau"
+        one: 1 mionaid
+        two: 2 mionaid
+        other: "%{count} 3 mionaid"
       x_months:
-        one: 1 mis
-        other: "%{count} mis"
+        one: 1 mìos
+        two: 2 mhìos
+        other: "%{count} mìosan"
       x_seconds:
-        one: 1 eiliad
-        other: "%{count} o eiliadau"
+        one: 1 diog
+        one: 2 dhiog
+        other: "%{count} diogan"
     prompts:
-      day: Diwrnod
-      hour: Awr
-      minute: Munud
-      month: Mis
-      second: Eiliad
-      year: Blwyddyn
+      day: Latha
+      hour: Uair
+      minute: Mionaid
+      month: Mìos
+      second: Diogan
+      year: Bliadhna
   errors:
     format: "%{message}"
     messages:
-      accepted: "%{attribute} angen ei dderbyn"
-      blank: "%{attribute} methu bod yn wag"
-      confirmation: "%{attribute} heb fod yn gyfateb"
-      empty: "%{attribute} methu bod yn wag"
-      equal_to: "%{attribute} angen bod yn %{count}"
-      even: "%{attribute} rhaid bod yn eilrif"
-      exclusion: "%{attribute} wedi cadw"
-      greater_than: "%{attribute} angen bod yn fwy na %{count}"
-      greater_than_or_equal_to: "%{attribute} angen bod yr un maint neu fwy na %{count}"
-      inclusion: "%{attribute} heb fod yn y rhestr"
-      invalid: "%{attribute} heb fod yn nheilwng"
-      less_than: "%{attribute} angen bod yn llai na %{count}"
-      less_than_or_equal_to: "%{attribute} angen bod yr un maint neu lai na %{count}"
-      not_a_number: "%{attribute} heb fod yn rhif"
-      not_an_integer: "%{attribute} heb fod yn rhif llawn"
-      odd: "%{attribute} rhaid bod yn odrif"
-      taken: "%{attribute} wedi'i gymryd yn barod"
-      too_long: "%{attribute} yn rhy hir (cewch %{count} llythyren ar y fwyaf)"
-      too_short: "%{attribute} yn rhy fyr (rhaid am o leiaf %{count} llythyren)"
-      wrong_length: "%{attribute} gyda maint anghywir o lythrennau (dylai fod yn %{count} llythyren)"
+      accepted: "Feumar gabhail ri %{attribute}"
+      blank: "Chan urrainn dha %{attribute} a bhith bàn"
+      confirmation: "Chan eil %{attribute} a ’freagairt ri %{attribute}"
+      empty: "Chan urrainn dha %{attribute} a bhith falamh"
+      equal_to: "Feumaidh %{attribute} a bhith co-ionann ri %{count}"
+      even: "Feumaidh %{attribute} a bhith eadhon"
+      exclusion: "Tha %{attribute} glèidhte"
+      greater_than: "Feumaidh %{attribute} a bhith nas àirde na %{count}"
+      greater_than_or_equal_to: "Feumaidh %{attribute} a bhith nas motha na no co-ionann ri %{count}"
+      inclusion: "Chan eil %{attribute} air a thoirt a-steach don liosta"
+      invalid: "Tha %{attribute} neo-dhligheach"
+      less_than: "Feumaidh %{attribute} a bhith nas lugha na %{count}"
+      less_than_or_equal_to: "Feumaidh %{attribute} a bhith nas lugha na no co-ionann ri %{count}"
+      not_a_number: "Chan e %{attribute} àireamh"
+      not_an_integer: "Feumaidh %{attribute} a bhith na integer"
+      odd: "Feumaidh %{attribute} a bhith neònach"
+      record_invalid: "Dh'fhàillig an dearbhadh: %{errors}"
+      taken: "Chaidh %{attribute} a ghabhail mu thràth"
+      too_long:
+        one: "Tha %{attribute} ro fhada (1 caractar aig a ’char as àirde)"
+        other: "Tha %{attribute} ro fhada (is e %{count} caractaran aig a ’char as àirde)"
+      too_short:
+        one: "Tha %{attribute} ro ghoirid (1 caractar aig a ’char as lugha)"
+        other: "Tha% {attribute} ro ghoirid (is e %{count} caractaran as ìsle)"
+      wrong_length:
+        one: "Is e %{attribute} an fhad ceàrr (bu chòir a bhith 1 caractar)"
+        other: "Is e %{attribute} an fhad ceàrr (bu chòir dha a bhith %{count} caractaran)"
   activerecord:
     errors:
       template:
-        body: "Roedd problemau gyda'r meysydd canlynol:"
+        body: "Bha duilgheadasan ann leis na raointean a leanas:"
         header:
-          one: Roedd 1 gwall yn gwahardd y% {model} hwn rhag cael ei arbed
-          other: "Roedd gwallau% {count} yn gwahardd y% {model} hwn rhag cael ei arbed"
+          one: "Chuir 1 mearachd casg air an %{model} seo a shàbhaladh"
+          other: "Chuir %{count} mearachdan casg air an %{model} seo a shàbhaladh"
   helpers:
+    label:
+      tag:
+        name: "Tag"
+      site:
+        url: "URL"
     select:
-      prompt: Dewiswch
+      prompt: Tagh
     submit:
-      create: Creu %{model}
-      submit: Cadw %{model}
-      update: Diweddaru %{model}
+      create: "Cruthaich %{model}"
+      submit: "Sàbhail %{model}"
+      update: "Ùraich %{model}"
   number:
     currency:
       format:
@@ -153,11 +176,11 @@ gd-GB:
       decimal_units:
         format: "%n %u"
         units:
-          billion: Biliwn
-          million: Miliwn
-          quadrillion: Cwadriliwn
-          thousand: Mil
-          trillion: Triliwn
+          billion: Billion
+          million: Millean
+          quadrillion: Quadrillion
+          thousand: Mìle
+          trillion: Trillean
           unit: ''
       format:
         delimiter: ''
@@ -168,11 +191,7 @@ gd-GB:
         format: "%n %u"
         units:
           byte:
-            zero: Bytes
             one: Byte
-            two: Bytes
-            few: Bytes
-            many: Bytes
             other: Bytes
           gb: GB
           kb: KB
@@ -186,13 +205,13 @@ gd-GB:
         delimiter: ''
   support:
     array:
-      last_word_connector: ", a "
-      two_words_connector: " a "
+      last_word_connector: ", agus "
+      two_words_connector: " agus "
       words_connector: ", "
   time:
-    am: yb
+    am: m
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
+      long: "%d %B, %Y %H:%M"
       short: "%d %b %H:%M"
-    pm: yh
+    pm: f

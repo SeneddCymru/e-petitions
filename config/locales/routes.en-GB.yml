@@ -11,97 +11,97 @@ en-GB:
       gd-GB: "/browserconfig"
     "/coming-soon":
       en-GB: "/coming-soon"
-      gd-GB: "/dod-yn-fuan"
+      gd-GB: "/a-tighinn-a-dh-aithghearr"
     "/constituencies":
       en-GB: "/constituencies"
-      gd-GB: "/etholaethau"
+      gd-GB: "/roinnean-parlamaid"
     "/feedback":
       en-GB: "/feedback"
-      gd-GB: "/adborth"
+      gd-GB: "/fiosrachadh-air-ais"
     "/feedback/thanks":
       en-GB: "/feedback/thanks"
-      gd-GB: "/adborth/diolch"
+      gd-GB: "/fiosrachadh-air-ais/tapadh-leibh"
     "/help":
       en-GB: "/help"
-      gd-GB: "/help"
+      gd-GB: "/cuideachadh"
     "/manifest":
       en-GB: "/manifest"
       gd-GB: "/manifest"
     "/petitions":
       en-GB: "/petitions"
-      gd-GB: "/deisebau"
+      gd-GB: "/athchuingean"
     "/petitions/:id":
       en-GB: "/petitions/:id"
-      gd-GB: "/deisebau/:id"
+      gd-GB: "/athchuingean/:id"
     "/petitions/:id/count":
       en-GB: "/petitions/:id/count"
-      gd-GB: "/deisebau/:id/cyfrif"
+      gd-GB: "/athchuingean/:id/cunnt"
     "/petitions/:id/gathering-support":
       en-GB: "/petitions/:id/gathering-support"
-      gd-GB: "/deisebau/:id/casglu-cefnogaeth"
+      gd-GB: "/athchuingean/:id/cruinneachadh-taic"
     "/petitions/:id/moderation-info":
       en-GB: "/petitions/:id/moderation-info"
-      gd-GB: "/deisebau/:id/cymedroli-gwybodaeth"
+      gd-GB: "/athchuingean/:id/fiosrachadh-measaidh"
     "/petitions/thank-you":
       en-GB: "/petitions/thank-you"
-      gd-GB: "/deisebau/diolch"
+      gd-GB: "/athchuingean/tapadh-leibh"
     "/petitions/:petition_id/signatures":
       en-GB: "/petitions/:petition_id/signatures"
-      gd-GB: "/deisebau/:petition_id/llofnodion"
+      gd-GB: "/athchuingean/:petition_id/ainmean-sgriobhte"
     "/petitions/:petition_id/signatures/new":
       en-GB: "/petitions/:petition_id/signatures/new"
-      gd-GB: "/deisebau/:petition_id/llofnodion/newydd"
+      gd-GB: "/athchuingean/:petition_id/ainmean-sgriobhte/ur"
     "/petitions/:petition_id/signatures/thank-you":
       en-GB: "/petitions/:petition_id/signatures/thank-you"
-      gd-GB: "/deisebau/:petition_id/llofnodion/diolch"
+      gd-GB: "/athchuingean/:petition_id/ainmean-sgriobhte/tapadh-leibh"
     "/petitions/:petition_id/sponsors":
       en-GB: "/petitions/:petition_id/sponsors"
-      gd-GB: "/deisebau/:petition_id/noddwyr"
+      gd-GB: "/athchuingean/:petition_id/luchd-taic"
     "/petitions/:petition_id/sponsors/new":
       en-GB: "/petitions/:petition_id/sponsors/new"
-      gd-GB: "/deisebau/:petition_id/noddwyr/newydd"
+      gd-GB: "/athchuingean/:petition_id/luchd-taic/ur"
     "/petitions/:petition_id/sponsors/thank-you":
       en-GB: "/petitions/:petition_id/sponsors/thank-you"
-      gd-GB: "/deisebau/:petition_id/noddwyr/diolch"
-    "/petitions/check_results":
-      en-GB: "/petitions/check_results"
-      gd-GB: "/deisebau/gwirio_canlyniadau"
+      gd-GB: "/athchuingean/:petition_id/luchd-taic/tapadh-leibh"
+    "/petitions/check-results":
+      en-GB: "/petitions/check-results"
+      gd-GB: "/athchuingean/thoir-suil-air-toraidhean"
     "/petitions/check":
       en-GB: "/petitions/check"
-      gd-GB: "/deisebau/gwirio"
+      gd-GB: "/athchuingean/thoir-suil"
     "/petitions/local":
       en-GB: "/petitions/local"
-      gd-GB: "/deisebau/lleol"
+      gd-GB: "/athchuingean/ionadail"
     "/petitions/local/:id":
       en-GB: "/petitions/local/:id"
-      gd-GB: "/deisebau/lleol/:id"
+      gd-GB: "/athchuingean/ionadail/:id"
     "/petitions/local/:id/all":
       en-GB: "/petitions/local/:id/all"
-      gd-GB: "/deisebau/lleol/:id/bob"
+      gd-GB: "/athchuingean/ionadail/:id/uile"
     "/petitions/new":
       en-GB: "/petitions/new"
-      gd-GB: "/deisebau/newydd"
+      gd-GB: "/athchuingean/ur"
     "/privacy":
       en-GB: "/privacy"
-      gd-GB: "/preifatrwydd"
+      gd-GB: "/priobhaideachd"
     "/rules":
       en-GB: "/rules"
-      gd-GB: "/rheolau"
+      gd-GB: "/riaghailtean"
     "/signatures/:id/signed":
       en-GB: "/signatures/:id/signed"
-      gd-GB: "/llofnodion/:id/llofnodwyd"
+      gd-GB: "/ainmean-sgriobhte/:id/air-a-shoidhnigeadh"
     "/signatures/:id/unsubscribe":
       en-GB: "/signatures/:id/unsubscribe"
-      gd-GB: "/llofnodion/:id/dad-danysgrifio"
+      gd-GB: "/ainmean-sgriobhte/:id/di-chlaradh"
     "/signatures/:id/verify":
       en-GB: "/signatures/:id/verify"
-      gd-GB: "/llofnodion/:id/gwirio"
+      gd-GB: "/ainmean-sgriobhte/:id/dearbhaich"
     "/sponsors/:id/sponsored":
       en-GB: "/sponsors/:id/sponsored"
-      gd-GB: "/noddwyr/:id/noddedig"
+      gd-GB: "/luchd-taic/:id/urrasach"
     "/sponsors/:id/verify":
       en-GB: "/sponsors/:id/verify"
-      gd-GB: "/noddwyr/:id/gwirio"
+      gd-GB: "/luchd-taic/:id/dearbhaich"
     "/topics":
       en-GB: "/topics"
-      gd-GB: "/pynciau"
+      gd-GB: "/cuspairean"

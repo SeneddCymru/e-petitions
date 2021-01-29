@@ -86,15 +86,15 @@ Feature: Suzie views a petition
     When I view the petition
     Then I should not see the petition creator
 
-  Scenario: Suzie does not see information about other Senedd business when there is none
+  Scenario: Suzie does not see information about other parliamentary business when there is none
     Given an open petition "Ban Badger Baiting"
     When I view the petition
-    Then I should not see "Other Senedd business"
+    Then I should not see "Other parliamentary business"
 
-  Scenario: Suzie sees information about other Senedd business when there is some
-    Given a petition "Ban Badger Baiting" has other Senedd business
+  Scenario: Suzie sees information about other parliamentary business when there is some
+    Given a petition "Ban Badger Baiting" has other parliamentary business
     When I view the petition
-    Then I should see the other Senedd business items
+    Then I should see the other parliamentary business items
 
   Scenario: Suzie sees information about the outcomes when viewing a debated petition
     Given a petition "Ban Badger Baiting" has been debated 2 days ago
@@ -107,7 +107,7 @@ Feature: Suzie views a petition
     Given the date is the "01/08/2015"
     And a petition "Spend more money on Defence" with a scheduled debate date of "18/08/2015"
     When I view the petition
-    Then I should see "Senedd will debate this petition on 18 August 2015. You’ll be able to watch online on Senedd TV."
+    Then I should see "Parliament will debate this petition on 18 August 2015. You’ll be able to watch online on Scottish Parliament TV."
 
   Scenario: Suzie views a petition which will not be debated
     Given a petition "Spend more money on Defence" with a negative debate outcome
@@ -118,30 +118,30 @@ Feature: Suzie views a petition
     Given the date is the "27/10/2015"
     And a petition "Free the wombles" has been debated yesterday
     When I view the petition
-    Then I should see "Senedd debated this petition on 26 October 2015"
+    Then I should see "Parliament debated this petition on 26 October 2015"
 
   Scenario: Suzie does not see information about future signature targets when viewing a closed petition
     Given a petition "Spend more money on Defence" has been closed
     When I view the petition
-    Then I should not see "At 50 signatures..."
-    Then I should not see "At 5,000 signatures..."
+    Then I should not see "At 50 signatures…"
+    Then I should not see "At 5,000 signatures…"
 
   Scenario: Suzie does not see information about future signature targets when viewing a completed petition
     Given a petition "Spend more money on Defence" has been completed
     When I view the petition
-    Then I should not see "At 50 signatures..."
-    Then I should not see "At 5,000 signatures..."
+    Then I should not see "At 50 signatures…"
+    Then I should not see "At 5,000 signatures…"
 
   Scenario: Suzie sees information about future signature targets when viewing an open petition which has not passed the threshold for referral or debate
     Given an open petition "Spend more money on Defence"
     When I view the petition
-    Then I should see "At 50 signatures..."
-    Then I should see "At 5,000 signatures..."
+    Then I should see "At 50 signatures…"
+    Then I should see "At 5,000 signatures…"
 
   @javascript
   Scenario: Suzie does not see information about a future signature targets when viewing an open petition which has passed the threshold for referral and debate
     Given a petition "Spend more money on Defence" exists with a debate outcome and with referral threshold met
     When I view the petition
-    Then I should not see "At 50 signatures..."
-    Then I should not see "At 5,000 signatures..."
+    Then I should not see "At 50 signatures…"
+    Then I should not see "At 5,000 signatures…"
     And I should see a summary of the debate outcome

@@ -160,7 +160,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
     feedback/thanks
     help
     petitions/check
-    petitions/check_results
+    petitions/check-results
     petitions/local
     petitions/new
     privacy

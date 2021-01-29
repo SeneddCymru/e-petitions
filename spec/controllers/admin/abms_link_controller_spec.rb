@@ -59,8 +59,8 @@ RSpec.describe Admin::AbmsLinkController, type: :controller, admin: true do
     describe "PATCH /update" do
       let(:attributes) do
         {
-          abms_link_en: "https://business.senedd.wales/mgIssueHistoryHome.aspx?IId=27662&Opt=0",
-          abms_link_gd: "https://busnes.senedd.cymru/mgIssueHistoryHome.aspx?IId=27662&Opt=0"
+          abms_link_en: "https://beta.parliament.scot/getting-involved/petitions/PE01319",
+          abms_link_gd: "https://beta.parlamaid-alba.scot/a-dol-an-sas/athchuingean/PE01319"
         }
       end
 
@@ -85,7 +85,7 @@ RSpec.describe Admin::AbmsLinkController, type: :controller, admin: true do
           petition.reload
         }.to change {
           petition.abms_link_en
-        }.from(nil).to(a_string_matching("business.senedd.wales"))
+        }.from(nil).to(a_string_matching("beta.parliament.scot"))
       end
 
       it "stores the Gaelic link in the database" do
@@ -93,7 +93,7 @@ RSpec.describe Admin::AbmsLinkController, type: :controller, admin: true do
           petition.reload
         }.to change {
           petition.abms_link_gd
-        }.from(nil).to(a_string_matching("busnes.senedd.cymru"))
+        }.from(nil).to(a_string_matching("beta.parlamaid-alba.scot"))
       end
     end
   end

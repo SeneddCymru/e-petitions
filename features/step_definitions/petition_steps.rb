@@ -229,9 +229,9 @@ When(/^I fill in the petition details/) do
     )
   else
     steps %Q(
-      When I fill in "Beth ydych chi am i ni ei wneud?" with "The wombats of wimbledon rock."
-      And I fill in "Cefndir" with "Give half of Wimbledon rock to wombats!"
-      And I fill in "Rhagor o fanylion" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
+      When I fill in "What do you want us to do?" with "The wombats of wimbledon rock."
+      And I fill in "Background" with "Give half of Wimbledon rock to wombats!"
+      And I fill in "Additional details" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
     )
   end
 end
@@ -246,10 +246,10 @@ When(/^I choose the default closing date$/) do
     )
   else
     steps %Q(
-      When I press "Gwirio’r dyddiad cau"
-      Then I should see "Chwe mis o’i gyhoeddi"
-      When I press "Mae’n edrych yn iawn"
-      Then I should see "Llofnodwch eich deiseb"
+      When I press "Check closing date"
+      Then I should see "Six months from publication"
+      When I press "This looks good"
+      Then I should see "Sign your petition"
     )
   end
 end
@@ -355,7 +355,7 @@ Given(/^an? (open|closed|rejected) petition "(.*?)" with some (fraudulent)? ?sig
   @petition.update_signature_count!
 end
 
-Given(/^the threshold for a Senedd debate is "(.*?)"$/) do |amount|
+Given(/^the threshold for a Parliament debate is "(.*?)"$/) do |amount|
   Site.instance.update!(threshold_for_debate: amount)
 end
 
@@ -409,7 +409,7 @@ Given(/^there are (\d+) petitions with enough signatures to require a debate$/) 
   end
 end
 
-Given(/^a petition "(.*?)" has other Senedd business$/) do |petition_action|
+Given(/^a petition "(.*?)" has other parliamentary business$/) do |petition_action|
   @petition = FactoryBot.create(:open_petition, action: petition_action)
   @email = FactoryBot.create(:petition_email,
     petition: @petition,
@@ -418,9 +418,9 @@ Given(/^a petition "(.*?)" has other Senedd business$/) do |petition_action|
   )
 end
 
-Then(/^I should see the other Senedd business items$/) do
+Then(/^I should see the other parliamentary business items$/) do
   steps %Q(
-    Then I should see "Other Senedd business"
+    Then I should see "Other parliamentary business"
     And I should see "Committee to discuss #{@petition.action}"
     And I should see "The Petition Committee will discuss #{@petition.action} on the #{Date.tomorrow}"
   )
@@ -433,7 +433,7 @@ When (/^I search all petitions for "(.*?)"$/) do |search_term|
     if I18n.locale == :"en-GB"
       step %{I press "Search"}
     else
-      step %{I press "Chwilio"}
+      step %{I press "Search"}
     end
   end
 end

@@ -5,11 +5,11 @@ insufficient:
   description_en: |-
     It did not collect enough signatures to be referred to the Petitions Committee.
 
-    Petitions need to receive at least 50 signatures before they can be considered in the Senedd.
+    Petitions need to receive at least 50 signatures before they can be considered in Parliament.
   description_gd: |-
-    Ni chasglwyd digon o lofnodion i gyfeirio’r ddeiseb at y Pwyllgor Deisebau.
+    Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.
 
-    Mae angen o leiaf 50 llofnod ar ddeiseb cyn y gellir ei hystyried yn y Senedd.
+    Feumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.
   hidden: false
 
 duplicate:
@@ -19,17 +19,17 @@ duplicate:
   description_en: |-
     There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.
   description_gd: |-
-    Mae deiseb yn bodoli eisoes ar y mater hwn. Ni allwn dderbyn deiseb newydd os oes un yn bodoli eisoes ar fater tebyg iawn, neu os yw’r Pwyllgor Deisebau wedi ystyried deiseb debyg yn ystod y flwyddyn ddiwethaf.
+    Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.
   hidden: false
 
 irrelevant:
   created_at: "2020-03-30T10:00:03Z"
   code: "irrelevant"
-  title: "Not the Senedd/Government’s responsibility"
+  title: "Not Parliament/Government’s responsibility"
   description_en: |-
-    It’s about something that the Senedd or Gaelic Government is not responsible for.
+    It’s about something that Parliament or Scottish Government is not responsible for.
   description_gd: |-
-    Mae’n ymwneud â rhywbeth nad yw’r Senedd na Llywodraeth Cymru yn gyfrifol amdano.
+    Tha e mu dheidhinn rudeigin nach eil uallach air a ’Phàrlamaid no Riaghaltas na h-Alba.
   hidden: false
 
 no_action:
@@ -37,13 +37,13 @@ no_action:
   code: "no-action"
   title: "Action unclear"
   description_en: |-
-    It’s not clear what the petition is asking the Senedd or Gaelic Government to do.
+    It’s not clear what the petition is asking Parliament or Scottish Government to do.
 
-    Petitions need to call on the Senedd or Government to take a specific action.
+    Petitions need to call on Parliament or Government to take a specific action.
   description_gd: |-
-    Nid yw’n glir beth mae’r ddeiseb yn gofyn i’r Senedd neu Lywodraeth Cymru ei wneud.
+    Chan eil e soilleir dè a tha an athchuinge ag iarraidh air a ’Phàrlamaid no Riaghaltas na h-Alba a dhèanamh.
 
-    Mae angen i ddeisebau alw ar y Senedd neu’r Llywodraeth i gymryd camau penodol.
+    Feumaidh athchuingean iarraidh air a ’Phàrlamaid no an Riaghaltas gnìomh sònraichte a ghabhail.
   hidden: false
 
 fake_name:
@@ -55,9 +55,9 @@ fake_name:
 
     We are rejecting your petition for that reason, but if you resubmit your petition with a full name and contact details, we may able to approve it.
   description_gd: |-
-    Rhaid i unrhyw un sy’n creu deiseb nodi ei enw go iawn yn llawn, ynghyd â’i gyfeiriad a’i fanylion cyswllt. Mae’n ddrwg gennym os nad oedd hynny’n glir i chi.
+    Feumaidh daoine a chruthaicheas athchuingean ainm làn, fìor a thoirt seachad, a bharrachd air an seòladh agus am fiosrachadh conaltraidh. Tha sinn duilich mura robh seo soilleir dhut.
 
-    Rydym yn gwrthod eich deiseb am y rheswm hwnnw, ond os byddwch chi’n ailgyflwyno’ch deiseb gydag enw llawn a manylion cyswllt, efallai y gallwn ei chymeradwyo.
+    Tha sinn a ’diùltadh an athchuinge agad air an adhbhar sin, ach ma chuireas tu athchuinge a-steach le làn ainm agus fiosrachadh conaltraidh, is dòcha gun urrainn dhuinn gabhail ris.
   hidden: false
 
 libellous:
@@ -67,7 +67,7 @@ libellous:
   description_en: |-
     It included potentially confidential, libellous, false or defamatory information, or a reference to a case which is active in the UK courts.
   description_gd: |-
-    Roedd yn cynnwys gwybodaeth a allai fod yn gyfrinachol, yn enllibus, yn ffug neu’n ddifenwol, neu’n cyfeirio at achos sy’n weithredol yn llysoedd y DU.
+    Bha e a ’toirt a-steach fiosrachadh a dh’ fhaodadh a bhith dìomhair, cliùiteach, meallta no mì-chliùiteach, no iomradh air cùis a tha gnìomhach ann an cùirtean na RA.
   hidden: true
 
 offensive:
@@ -77,18 +77,8 @@ offensive:
   description_en: |-
     It’s offensive, nonsense, a joke, or an advert.
   description_gd: |-
-    Mae’n sarhaus, yn nonsens, yn jôc neu’n hysbyseb.
+    Tha e oilbheumach, neoni, fealla-dhà no sanas.
   hidden: true
-
-bad_address:
-  created_at: "2020-03-30T10:00:08Z"
-  code: "bad-address"
-  title: "Petitioner location"
-  description_en: |-
-    We can only accept petitions from people who live in Wales or organisations with a base in Wales.
-  description_gd: |-
-    Dim ond deisebau a gyflwynir gan bobl sy’n byw yng Nghymru neu sefydliadau sydd â chanolfan yng Nghymru y gallwn ni eu derbyn.
-  hidden: false
 
 not_suitable:
   created_at: "2020-03-30T10:00:09Z"
@@ -97,5 +87,5 @@ not_suitable:
   description_en: |-
     It included issues relating to an issue for which a petition is not the appropriate channel, or personal information which it would not be appropriate to publish.
   description_gd: |-
-    Roedd yn ymwneud â materion nad yw’n briodol ymdrin â nhw mewn deiseb, neu’n cynnwys gwybodaeth bersonol na fyddai’n briodol ei chyhoeddi.
+    Bha e a ’toirt a-steach cùisean co-cheangailte ri cùis nach e athchuinge an sianal iomchaidh, no fiosrachadh pearsanta nach biodh e iomchaidh fhoillseachadh.
   hidden: true

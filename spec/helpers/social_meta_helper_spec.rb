@@ -20,7 +20,7 @@ RSpec.describe SocialMetaHelper, type: :helper do
       end
 
       it "generates a meta tag with the i18n content" do
-        expect(subject).to match(%r{<meta property="og:site_name" content="Petitions - Senedd" />})
+        expect(subject).to match(%r{<meta property="og:site_name" content="Petitions - The Scottish Parliament" />})
       end
     end
 
@@ -54,11 +54,11 @@ RSpec.describe SocialMetaHelper, type: :helper do
   describe "#twitter_card_tag" do
     context "when using a string for content" do
       subject do
-        helper.twitter_card_tag("site", "@GaelicPetitions")
+        helper.twitter_card_tag("site", "@SP_Petitions")
       end
 
       it "generates a meta tag with the content" do
-        expect(subject).to match(%r{<meta name="twitter:site" content="@GaelicPetitions" />})
+        expect(subject).to match(%r{<meta name="twitter:site" content="@SP_Petitions" />})
       end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe SocialMetaHelper, type: :helper do
       end
 
       it "generates a meta tag with the i18n content" do
-        expect(subject).to match(%r{<meta name="twitter:title" content="Petitions - Senedd" />})
+        expect(subject).to match(%r{<meta name="twitter:title" content="Petitions - The Scottish Parliament" />})
       end
     end
 

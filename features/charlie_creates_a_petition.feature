@@ -1,5 +1,5 @@
 Feature: As Charlie
-  In order to have an issue discussed in the Senedd
+  In order to have an issue discussed in the Parliament
   I want to be able to create a petition and verify my email address.
 
 Scenario: Charlie has to search for a petition before creating one
@@ -81,15 +81,15 @@ Scenario: Charlie creates a petition when sponsor count is set to 0
 Scenario: Charlie creates a petition in Gaelic
   Given I start a new petition
   And I fill in the petition details
-  And I press "Gweld rhagolwg o’r ddeiseb"
-  And I press "Mae’n edrych yn iawn"
+  And I press "Preview petition"
+  And I press "This looks good"
   And I choose the default closing date
   And I fill in my details as a creator
   And I fill in my creator contact details
-  When I press "Parhau"
+  When I press "Continue"
   Then the markup should be valid
   And I am asked to review my email address
-  When I press "Ie – dyma fy nghyfeiriad e-bost i"
+  When I press "Yes – this is my email address"
   Then a petition should exist with action_gd: "The wombats of wimbledon rock.", action_en: nil, state: "pending", locale: "gd-GB"
   And there should be a "pending" signature with email "womboid@wimbledon.com" and name "Womboid Wibbledon"
   And "Womboid Wibbledon" wants to be notified about the petition's progress

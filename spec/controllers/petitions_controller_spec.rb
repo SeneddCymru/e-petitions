@@ -319,7 +319,7 @@ RSpec.describe PetitionsController, type: :controller do
     end
   end
 
-  describe "GET /petitions/check_results" do
+  describe "GET /petitions/check-results" do
     it "is successful" do
       get :check_results, params: { q: "action" }
       expect(response).to be_successful

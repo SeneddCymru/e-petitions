@@ -183,8 +183,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
         {
           subject_en: "Petition email subject",
           body_en: "Petition email body",
-          subject_gd: "Testun e-bost y ddeiseb",
-          body_gd: "Corff e-bost deiseb"
+          subject_gd: "Cuspair post-d athchuinge",
+          body_gd: "Buidheann post-d athchuinge"
         }
       end
 
@@ -223,8 +223,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
               expect(email).to be_present
               expect(email.subject_en).to eq "Petition email subject"
               expect(email.body_en).to eq "Petition email body"
-              expect(email.subject_gd).to eq "Testun e-bost y ddeiseb"
-              expect(email.body_gd).to eq "Corff e-bost deiseb"
+              expect(email.subject_gd).to eq "Cuspair post-d athchuinge"
+              expect(email.body_gd).to eq "Buidheann post-d athchuinge"
               expect(email.sent_by).to eq user.pretty_name
             end
 
@@ -383,7 +383,7 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
 
             it "tells the moderator that their changes were saved" do
               do_post
-              expect(flash[:notice]).to eq "Created other Senedd business successfully"
+              expect(flash[:notice]).to eq "Created other parliamentary business successfully"
             end
 
             it "stores the supplied email details in the db" do
@@ -393,8 +393,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
               expect(email).to be_present
               expect(email.subject_en).to eq "Petition email subject"
               expect(email.body_en).to eq "Petition email body"
-              expect(email.subject_gd).to eq "Testun e-bost y ddeiseb"
-              expect(email.body_gd).to eq "Corff e-bost deiseb"
+              expect(email.subject_gd).to eq "Cuspair post-d athchuinge"
+              expect(email.body_gd).to eq "Buidheann post-d athchuinge"
               expect(email.sent_by).to eq user.pretty_name
             end
 
@@ -531,8 +531,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
               expect(email).to be_present
               expect(email.subject_en).to eq "Petition email subject"
               expect(email.body_en).to eq "Petition email body"
-              expect(email.subject_gd).to eq "Testun e-bost y ddeiseb"
-              expect(email.body_gd).to eq "Corff e-bost deiseb"
+              expect(email.subject_gd).to eq "Cuspair post-d athchuinge"
+              expect(email.body_gd).to eq "Buidheann post-d athchuinge"
               expect(email.sent_by).to eq user.pretty_name
             end
 
@@ -642,8 +642,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
           petition: petition,
           subject_en: "Petition email subject",
           body_en: "Petition email body",
-          subject_gd: "Testun e-bost y ddeiseb",
-          body_gd: "Corff e-bost deiseb"
+          subject_gd: "Cuspair post-d athchuinge",
+          body_gd: "Buidheann post-d athchuinge"
         )
       end
 
@@ -696,8 +696,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
           petition: petition,
           subject_en: "Petition email subject",
           body_en: "Petition email body",
-          subject_gd: "Testun e-bost y ddeiseb",
-          body_gd: "Corff e-bost deiseb"
+          subject_gd: "Cuspair post-d athchuinge",
+          body_gd: "Buidheann post-d athchuinge"
         )
       end
 
@@ -705,8 +705,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
         {
           subject_en: "New petition email subject",
           body_en: "New petition email body",
-          subject_gd: "Testun e-bost deiseb newydd",
-          body_gd: "Corff e-bost deiseb newydd"
+          subject_gd: "Cuspair post-d athchuinge ùr",
+          body_gd: "Buidheann post-d athchuinge ùr"
         }
       end
 
@@ -751,8 +751,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
               expect(email).to be_present
               expect(email.subject_en).to eq "New petition email subject"
               expect(email.body_en).to eq "New petition email body"
-              expect(email.subject_gd).to eq "Testun e-bost deiseb newydd"
-              expect(email.body_gd).to eq "Corff e-bost deiseb newydd"
+              expect(email.subject_gd).to eq "Cuspair post-d athchuinge ùr"
+              expect(email.body_gd).to eq "Buidheann post-d athchuinge ùr"
               expect(email.sent_by).to eq user.pretty_name
             end
 
@@ -921,7 +921,7 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
 
             it "tells the moderator that their changes were saved" do
               do_patch
-              expect(flash[:notice]).to eq "Updated other Senedd business successfully"
+              expect(flash[:notice]).to eq "Updated other parliamentary business successfully"
             end
 
             it "stores the supplied email details in the db" do
@@ -1151,8 +1151,8 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
               email.reload
               expect(email.subject_en).to eq "Petition email subject"
               expect(email.body_en).to eq "Petition email body"
-              expect(email.subject_gd).to eq "Testun e-bost y ddeiseb"
-              expect(email.body_gd).to eq "Corff e-bost deiseb"
+              expect(email.subject_gd).to eq "Cuspair post-d athchuinge"
+              expect(email.body_gd).to eq "Buidheann post-d athchuinge"
             end
           end
         end
@@ -1237,7 +1237,7 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
 
           it "tells the moderator that the record was deleted" do
             do_delete
-            expect(flash[:notice]).to eq "Deleted other Senedd business successfully"
+            expect(flash[:notice]).to eq "Deleted other parliamentary business successfully"
           end
         end
 
@@ -1253,7 +1253,7 @@ RSpec.describe Admin::PetitionEmailsController, type: :controller, admin: true d
 
           it "tells the moderator to contact support" do
             do_delete
-            expect(flash[:notice]).to eq "Unable to delete other Senedd business - please contact support"
+            expect(flash[:notice]).to eq "Unable to delete other parliamentary business - please contact support"
           end
         end
       end

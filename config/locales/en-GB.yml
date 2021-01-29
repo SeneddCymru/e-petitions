@@ -57,26 +57,26 @@ en-GB:
     distance_in_words:
       about_x_hours:
         one: about 1 hour
-        other: about %{count} hours
+        other: "about %{count} hours"
       about_x_months:
         one: about 1 month
-        other: about %{count} months
+        other: "about %{count} months"
       about_x_years:
         one: about 1 year
-        other: about %{count} years
+        other: "about %{count} years"
       almost_x_years:
         one: almost 1 year
-        other: almost %{count} years
+        other: "almost %{count} years"
       half_a_minute: half a minute
       less_than_x_minutes:
         one: less than a minute
-        other: less than %{count} minutes
+        other: "less than %{count} minutes"
       less_than_x_seconds:
         one: less than 1 second
-        other: less than %{count} seconds
+        other: "less than %{count} seconds"
       over_x_years:
         one: over 1 year
-        other: over %{count} years
+        other: "over %{count} years"
       x_days:
         one: 1 day
         other: "%{count} days"
@@ -115,7 +115,7 @@ en-GB:
       not_a_number: "%{attribute} is not a number"
       not_an_integer: "%{attribute} must be an integer"
       odd: "%{attribute} must be odd"
-      record_invalid: 'Validation failed: %{errors}'
+      record_invalid: "Validation failed: %{errors}"
       taken: "%{attribute} has already been taken"
       too_long:
         one: "%{attribute} is too long (maximum is 1 character)"
@@ -131,7 +131,7 @@ en-GB:
       template:
         body: "There were problems with the following fields:"
         header:
-          one: 1 error prohibited this %{model} from being saved
+          one: "1 error prohibited this %{model} from being saved"
           other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
     label:
@@ -142,9 +142,9 @@ en-GB:
     select:
       prompt: Please select
     submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
+      create: "Create %{model}"
+      submit: "Save %{model}"
+      update: "Update %{model}"
   number:
     currency:
       format:

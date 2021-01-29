@@ -6,7 +6,7 @@ Disallow: /feedback/thanks
 Disallow: /health-check
 Disallow: /manifest.json
 Disallow: /petitions/check
-Disallow: /petitions/check_results
+Disallow: /petitions/check-results
 Disallow: /petitions/*/thank-you
 Disallow: /petitions/*/moderation-info
 Disallow: /petitions/*/sponsors/

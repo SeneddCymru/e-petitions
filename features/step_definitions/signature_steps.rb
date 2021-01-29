@@ -42,17 +42,17 @@ When(/^I fill in my details(?: with email "([^"]+)")?$/) do |email_address|
     steps %Q(
       When I fill in "Name" with "Womboid Wibbledon"
       And I fill in "Email" with "#{email_address}"
-      And I fill in my postcode with "SW14 9RQ"
-      And I select "Wales" from "Location"
+      And I fill in my postcode with "G34 0BX"
+      And I select "Scotland" from "Location"
       And I check "Email me whenever there’s an update about this petition"
     )
   else
     steps %Q(
-      When I fill in "Enw" with "Womboid Wibbledon"
-      And I fill in "Cyfeiriad e-bost" with "#{email_address}"
-      And I fill in my postcode with "SW14 9RQ"
-      And I select "Cymru" from "Lleoliad"
-      And I check "Anfonwch neges e-bost ataf pryd bynnag y bydd diweddariad ynghylch y ddeiseb hon"
+      When I fill in "Name" with "Womboid Wibbledon"
+      And I fill in "Email" with "#{email_address}"
+      And I fill in my postcode with "G34 0BX"
+      And I select "Scotland" from "Location"
+      And I check "Email me whenever there’s an update about this petition"
     )
   end
 end
@@ -64,15 +64,15 @@ When(/^I fill in my details as a creator(?: with email "([^"]+)")?$/) do |email_
     steps %Q(
       When I fill in "Name" with "Womboid Wibbledon"
       And I fill in "Email" with "#{email_address}"
-      And I fill in my postcode with "SW14 9RQ"
-      And I select "Wales" from "Location"
+      And I fill in my postcode with "G34 0BX"
+      And I select "Scotland" from "Location"
     )
   else
     steps %Q(
-      When I fill in "Enw" with "Womboid Wibbledon"
-      And I fill in "Cyfeiriad e-bost" with "#{email_address}"
-      And I fill in my postcode with "SW14 9RQ"
-      And I select "Cymru" from "Lleoliad"
+      When I fill in "Name" with "Womboid Wibbledon"
+      And I fill in "Email" with "#{email_address}"
+      And I fill in my postcode with "G34 0BX"
+      And I select "Scotland" from "Location"
     )
   end
 end
@@ -104,8 +104,8 @@ When(/^I fill in my creator contact details$/) do
     )
   else
     steps %Q(
-      And I fill in "Rhif ffôn" with "0141 496 1234"
-      And I fill in "Cyfeiriad" with "1 Nowhere Road, Glasgow"
+      And I fill in "Phone number" with "0141 496 1234"
+      And I fill in "Address" with "1 Nowhere Road, Glasgow"
     )
   end
 end
@@ -114,7 +114,7 @@ When(/^I fill in my postcode with "(.*?)"$/) do |postcode|
   if I18n.locale == :"en-GB"
     step %{I fill in "Postcode" with "#{postcode}"}
   else
-    step %{I fill in "Cod post" with "#{postcode}"}
+    step %{I fill in "Postcode" with "#{postcode}"}
   end
 end
 
@@ -140,8 +140,8 @@ Then(/^I am asked to review my email address$/) do
     expect(page).to have_content 'Make sure this is right'
     expect(page).to have_field('Email')
   else
-    expect(page).to have_content 'Gwnewch yn siŵr fod hyn yn gywir'
-    expect(page).to have_field('Cyfeiriad e-bost')
+    expect(page).to have_content 'Make sure this is right'
+    expect(page).to have_field('Email')
   end
 end
 
@@ -179,12 +179,12 @@ end
 
 Given /^Suzie has already signed the petition$/ do
   @suzies_signature = FactoryBot.create(:signature, :petition => @petition, :email => "womboid@wimbledon.com",
-         :postcode => "SW14 9RQ", :name => "Womboid Wibbledon")
+         :postcode => "G34 0BX", :name => "Womboid Wibbledon")
 end
 
 Given /^Eric has already signed the petition with Suzies email$/ do
   FactoryBot.create(:signature, :petition => @petition, :email => "womboid@wimbledon.com",
-         :postcode => "SW14 9RQ", :name => "Eric Wibbledon")
+         :postcode => "G34 0BX", :name => "Eric Wibbledon")
 end
 
 Given(/^"([^"]*)" is configured to normalize email address$/) do |domain|
@@ -193,12 +193,12 @@ end
 
 Given /^I have signed the petition with a second name$/ do
   FactoryBot.create(:signature, :petition => @petition, :email => "womboid@wimbledon.com",
-         :postcode => "SW14 9RQ", :name => "Sam Wibbledon")
+         :postcode => "G34 0BX", :name => "Sam Wibbledon")
 end
 
 Given(/^Suzie has already signed the petition and validated her email$/) do
   @suzies_signature = FactoryBot.create(:validated_signature, :petition => @petition, :email => "womboid@wimbledon.com",
-         :postcode => "SW14 9RQ", :name => "Womboid Wibbledon")
+         :postcode => "G34 0BX", :name => "Womboid Wibbledon")
 end
 
 When(/^Suzie shares the signatory confirmation link with Eric$/) do
