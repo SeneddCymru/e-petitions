@@ -60,6 +60,7 @@ Scenario: Charlie creates a petition with a custom closing date
 Scenario: Charlie creates a petition when sponsor count is set to 0
   Given the site is not collecting sponsors
   And I start a new petition
+  Then I should not see "email addresses for 0 supporters"
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
@@ -72,10 +73,12 @@ Scenario: Charlie creates a petition when sponsor count is set to 0
   When I press "Yes – this is my email address"
   Then a petition should exist with action_en: "The wombats of wimbledon rock.", action_gd: nil, state: "pending", locale: "en-GB"
   And there should be a "pending" signature with email "womboid@wimbledon.com" and name "Womboid Wibbledon"
+  Then I should see "We’ve emailed you a link to confirm your email address"
   And "Womboid Wibbledon" wants to be notified about the petition's progress
   And "womboid@wimbledon.com" should be emailed a link for validating their signature
   When I confirm my email
   Then a petition should exist with action_en: "The wombats of wimbledon rock.", state: "sponsored"
+  Then I should see "We’re checking this petition"
 
 @gaelic
 Scenario: Charlie creates a petition in Gaelic
