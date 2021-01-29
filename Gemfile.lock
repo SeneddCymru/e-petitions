@@ -146,7 +146,6 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    dynamic_form (1.1.4)
     email_spec (2.2.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -415,7 +414,6 @@ DEPENDENCIES
   delayed-web
   delayed_job_active_record
   dotenv-rails
-  dynamic_form
   email_spec
   factory_bot_rails
   faker
