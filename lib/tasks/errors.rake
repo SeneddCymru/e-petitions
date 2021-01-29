@@ -13,7 +13,9 @@ namespace :errors do
       include Rails.application.routes.url_helpers
 
       def data_uri(path)
-        if path =~ /svg\z/
+        if path =~ /ttf\z/
+          "data:font/ttf;base64,#{Base64.strict_encode64(font_data(path))}"
+        elsif path =~ /svg\z/
           "data:image/svg+xml;base64,#{Base64.strict_encode64(asset_data(path))}"
         else
           "data:image/png;base64,#{Base64.strict_encode64(asset_data(path))}"
@@ -22,6 +24,10 @@ namespace :errors do
 
       def asset_data(path)
         File.read(Rails.root.join('app', 'assets', 'images', path))
+      end
+
+      def font_data(path)
+        File.read(Rails.root.join('app', 'assets', 'fonts', path))
       end
 
       def home_page?
