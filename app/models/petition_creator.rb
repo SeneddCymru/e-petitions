@@ -139,7 +139,12 @@ class PetitionCreator
 
       unless rate_limit.exceeded?(@petition.creator)
         @petition.save!
-        send_email_to_gather_sponsors(@petition)
+
+        if Site.collecting_sponsors?
+          send_email_to_gather_sponsors(@petition)
+        else
+          send_email_to_validate_creator(@petition)
+        end
       end
 
       return true
@@ -361,6 +366,10 @@ class PetitionCreator
 
   def send_email_to_gather_sponsors(petition)
     GatherSponsorsForPetitionEmailJob.perform_later(petition.creator)
+  end
+
+  def send_email_to_validate_creator(petition)
+    EmailConfirmationForCreatorEmailJob.perform_later(petition.creator)
   end
 
   private
