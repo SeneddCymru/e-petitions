@@ -71,5 +71,10 @@ module ScotsPets
     config.generators do |generator|
       generator.orm :active_record, primary_key_type: :serial
     end
+
+    # Using a sass css compressor causes a scss file to be processed twice (once
+    # to build, once to compress) which breaks the usage of "unquote" to use
+    # CSS that has same function names as SCSS such as max
+    config.assets.css_compressor = nil
   end
 end
