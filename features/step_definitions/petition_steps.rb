@@ -280,7 +280,7 @@ When(/^I choose the default closing date$/) do
   end
 end
 
-When(/^I fill in the closing date with a date (\d+) ((?:day|month)s?) from today$/) do |number, period|
+When(/^I fill in the closing date with a date (\d+) ((?:day|week|month)s?) from today$/) do |number, period|
   closing_date = number.public_send(period).from_now
 
   fill_in "Day", with: closing_date.day

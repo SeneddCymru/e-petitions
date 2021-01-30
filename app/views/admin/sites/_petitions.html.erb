@@ -23,7 +23,7 @@
     <%= form_row for: [form.object, :petition_duration] do %>
       <%= form.label :petition_duration, "Duration", class: "form-label" %>
       <%= error_messages_for_field @site, :petition_duration %>
-      <%= form.text_field :petition_duration, tabindex: increment, maxlength: 10, class: "form-control form-control-1-2" %> <span class="suffix">months</span>
+      <%= form.text_field :petition_duration, tabindex: increment, maxlength: 10, class: "form-control form-control-1-2" %> <span class="suffix">weeks</span>
     <% end %>
   </div>
 </div>

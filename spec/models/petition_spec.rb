@@ -2013,7 +2013,7 @@ RSpec.describe Petition, type: :model do
   describe '#publish' do
     subject(:petition) { FactoryBot.create(:petition, :translated) }
     let(:now) { Time.current }
-    let(:duration) { Site.petition_duration.months }
+    let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
 
     before do
@@ -2092,7 +2092,7 @@ RSpec.describe Petition, type: :model do
   describe '#close!' do
     subject(:petition) { FactoryBot.create(:open_petition, referred: true, debate_state: debate_state, closed_at: closing_date) }
     let(:now) { Time.current }
-    let(:duration) { Site.petition_duration.months }
+    let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
     let(:debate_state) { 'pending' }
 
@@ -2150,7 +2150,7 @@ RSpec.describe Petition, type: :model do
   describe "#refer_or_reject!" do
     subject(:petition) { FactoryBot.create(:closed_petition, :translated, referred: true, debate_state: debate_state, closed_at: closing_date) }
     let(:now) { Time.current }
-    let(:duration) { Site.petition_duration.months }
+    let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
     let(:debate_state) { 'pending' }
 
@@ -2228,10 +2228,10 @@ RSpec.describe Petition, type: :model do
 
     context 'for open petitions' do
       subject(:petition) { FactoryBot.build(:open_petition, open_at: now) }
-      let(:duration) { Site.petition_duration.months }
+      let(:duration) { Site.petition_duration.weeks }
       let(:closing_date) { (now + duration).end_of_day }
 
-      it "returns the end of the day, #{Site.petition_duration} months after the open_at" do
+      it "returns the end of the day, #{Site.petition_duration} weeks after the open_at" do
         expect(petition.open_at).to eq now
         expect(petition.deadline).to eq closing_date
       end

@@ -432,7 +432,7 @@ ActiveRecord::Schema.define(version: 2021_02_01_162617) do
     t.string "password_digest", limit: 60
     t.boolean "enabled", default: true, null: false
     t.boolean "protected", default: false, null: false
-    t.integer "petition_duration", default: 6, null: false
+    t.integer "petition_duration", default: 4, null: false
     t.integer "minimum_number_of_sponsors", default: 2, null: false
     t.integer "maximum_number_of_sponsors", default: 20, null: false
     t.integer "threshold_for_moderation", default: 2, null: false
