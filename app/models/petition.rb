@@ -76,6 +76,7 @@ class Petition < ActiveRecord::Base
   accepts_nested_attributes_for :creator, update_only: true
 
   belongs_to :locked_by, class_name: 'AdminUser', optional: true
+  belongs_to :pe_number, optional: true
 
   has_one :debate_outcome, dependent: :destroy
   has_one :email_requested_receipt, dependent: :destroy
