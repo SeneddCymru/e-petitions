@@ -14,6 +14,10 @@ Given(/^the site is protected$/) do
   Site.instance.update! protected: true, username: "username", password: "password"
 end
 
+Given(/^the Gaelic website is disabled$/) do
+  Site.instance.update! feature_flags: { disable_gaelic_website: true }
+end
+
 Given(/^the request is not local$/) do
   page.driver.options[:headers] = { "REMOTE_ADDR" => "192.168.1.128" }
 end

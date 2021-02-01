@@ -51,6 +51,10 @@ module TranslationHelper
     LanguageSwitcherTag.new(self).render
   end
 
+  def show_language_switcher?
+    request.present? && !Site.disable_gaelic_website?
+  end
+
   if Site.translation_enabled?
     def t(key, options = {})
       keys = I18n.normalize_keys(I18n.locale, key, options[:scope])

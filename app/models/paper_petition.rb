@@ -23,23 +23,38 @@ class PaperPetition
 
   with_options presence: true do
     validates :action_en, :background_en
-    validates :action_gd, :background_gd
     validates :locale, :location_code
     validates :signature_count, :submitted_on
     validates :name, :email, :phone_number
     validates :address, :postcode
+
+    with_options unless: :gaelic_disabled? do
+      validates :action_gd, :background_gd
+    end
   end
 
   with_options length: { maximum: 100 } do
-    validates :action_en, :action_gd
+    validates :action_en
+
+    with_options unless: :gaelic_disabled? do
+      validates :action_gd
+    end
   end
 
   with_options length: { maximum: 500 } do
-    validates :background_en, :background_gd, :address
+    validates :background_en, :address
+
+    with_options unless: :gaelic_disabled? do
+      validates :background_gd
+    end
   end
 
   with_options length: { maximum: 1100 } do
-    validates :additional_details_en, :additional_details_gd
+    validates :additional_details_en
+
+    with_options unless: :gaelic_disabled? do
+      validates :additional_details_gd
+    end
   end
 
   with_options length: { maximum: 255 } do
@@ -48,8 +63,11 @@ class PaperPetition
 
   with_options format: { with: /\A[^-=+@]/, allow_blank: true } do
     validates :action_en, :background_en, :additional_details_en
-    validates :action_gd, :background_gd, :additional_details_gd
     validates :name, :phone_number, :address
+
+    with_options unless: :gaelic_disabled? do
+      validates :action_gd, :background_gd, :additional_details_gd
+    end
   end
 
   validates :locale, inclusion: { in: %w[en-GB gd-GB] }
@@ -159,5 +177,9 @@ class PaperPetition
 
   def debate_threshold_reached_at
     signature_count >= threshold_for_debate ? closed_at : nil
+  end
+
+  def gaelic_disabled?
+    Site.disable_gaelic_website?
   end
 end

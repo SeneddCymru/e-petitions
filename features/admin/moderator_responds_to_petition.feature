@@ -67,6 +67,15 @@ Feature: Moderator respond to petition
     Then the petition should be visible on the site for signing
     And the creator should receive a notification email
 
+  Scenario: Moderator publishes petition when Gaelic is disabled
+    Given I am logged in as a moderator
+    And the Gaelic website is disabled
+    When I look at the next petition on my list
+    And the petition is not translated
+    And I publish the petition
+    Then the petition should be visible on the site for signing
+    And the creator should receive a notification email
+
   Scenario: Moderator publishes petition with a custom closing date
     Given the date is the "20 April 2020"
     And I am logged in as a moderator

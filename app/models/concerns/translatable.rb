@@ -79,4 +79,8 @@ module Translatable
   def translated_method(english, gaelic, *args)
     public_send(I18n.locale == :"en-GB" ? english : gaelic, *args)
   end
+
+  def gaelic_disabled?
+    Site.disable_gaelic_website?
+  end
 end

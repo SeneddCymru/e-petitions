@@ -171,6 +171,24 @@ Given /^the petition is translated$/ do
   end
 end
 
+Given /^the petition is not translated$/ do
+  (@sponsored_petition || @petition).tap do |petition|
+    if petition.english?
+      petition.update!(
+        action_gd: nil,
+        background_gd: nil,
+        additional_details_gd: nil
+      )
+    else
+      petition.update!(
+        action_en: nil,
+        background_en: nil,
+        additional_details_en: nil
+      )
+    end
+  end
+end
+
 Given /^the petition "([^"]*)" is translated$/ do |action|
   (Petition.find_by!(action: action)).tap do |petition|
     if petition.english?

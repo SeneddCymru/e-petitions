@@ -25,7 +25,7 @@ class Admin::PetitionEmailsController < Admin::AdminController
 
       redirect_to [:admin, @petition, :emails], notice: message
     else
-      render :new
+      render :new, alert: :unable_to_create_petition_email
     end
   end
 

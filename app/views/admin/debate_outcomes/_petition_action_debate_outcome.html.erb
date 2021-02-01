@@ -1,15 +1,23 @@
 <h2 class="petition-action-heading">Debate Outcome</h2>
 <%= form_for petition.debate_outcome, url: admin_petition_debate_outcome_path(petition), method: :patch do |f| -%>
-  <%= form_row for: [f.object, :overview_en] do %>
-    <%= f.label :overview_en, "Overview  (English)", class: 'form-label' %>
-    <%= error_messages_for_field f.object, :overview_en %>
-    <%= f.text_area :overview_en, tabindex: increment, class: 'form-control' %>
-  <% end %>
+  <% if Site.disable_gaelic_website? %>
+    <%= form_row for: [f.object, :overview_en] do %>
+      <%= f.label :overview_en, "Overview", class: 'form-label' %>
+      <%= error_messages_for_field f.object, :overview_en %>
+      <%= f.text_area :overview_en, tabindex: increment, class: 'form-control' %>
+    <% end %>
+  <% else %>
+    <%= form_row for: [f.object, :overview_en] do %>
+      <%= f.label :overview_en, "Overview  (English)", class: 'form-label' %>
+      <%= error_messages_for_field f.object, :overview_en %>
+      <%= f.text_area :overview_en, tabindex: increment, class: 'form-control' %>
+    <% end %>
 
-  <%= form_row for: [f.object, :overview_gd] do %>
-    <%= f.label :overview_gd, "Overview  (Gaelic)", class: 'form-label' %>
-    <%= error_messages_for_field f.object, :overview_gd %>
-    <%= f.text_area :overview_gd, tabindex: increment, class: 'form-control' %>
+    <%= form_row for: [f.object, :overview_gd] do %>
+      <%= f.label :overview_gd, "Overview  (Gaelic)", class: 'form-label' %>
+      <%= error_messages_for_field f.object, :overview_gd %>
+      <%= f.text_area :overview_gd, tabindex: increment, class: 'form-control' %>
+    <% end %>
   <% end %>
 
   <h3 class="petition-action-subheading">Was this petition debated?</h3>
@@ -34,40 +42,60 @@
       <%= f.date_field :debated_on, tabindex: increment, class: 'form-control' %>
     <% end %>
 
-    <%= form_row for: [f.object, :transcript_url_en] do %>
-      <%= f.label :transcript_url_en, 'Transcript URL (English)', class: 'form-label' %>
-      <%= error_messages_for_field f.object, :transcript_url_en %>
-      <%= f.url_field :transcript_url_en, tabindex: increment, class: 'form-control' %>
-    <% end %>
+    <% if Site.disable_gaelic_website? %>
+      <%= form_row for: [f.object, :transcript_url_en] do %>
+        <%= f.label :transcript_url_en, 'Transcript URL', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :transcript_url_en %>
+        <%= f.url_field :transcript_url_en, tabindex: increment, class: 'form-control' %>
+      <% end %>
 
-    <%= form_row for: [f.object, :transcript_url_gd] do %>
-      <%= f.label :transcript_url_gd, 'Transcript URL (Gaelic)', class: 'form-label' %>
-      <%= error_messages_for_field f.object, :transcript_url_gd %>
-      <%= f.url_field :transcript_url_gd, tabindex: increment, class: 'form-control' %>
-    <% end %>
+      <%= form_row for: [f.object, :video_url_en] do %>
+        <%= f.label :video_url_en, 'Video URL', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :video_url_en %>
+        <%= f.url_field :video_url_en, tabindex: increment, class: 'form-control' %>
+      <% end %>
 
-    <%= form_row for: [f.object, :video_url_en] do %>
-      <%= f.label :video_url_en, 'Video URL (English)', class: 'form-label' %>
-      <%= error_messages_for_field f.object, :video_url_en %>
-      <%= f.url_field :video_url_en, tabindex: increment, class: 'form-control' %>
-    <% end %>
+      <%= form_row for: [f.object, :debate_pack_url_en] do %>
+        <%= f.label :debate_pack_url_en, 'Debate Pack URL', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :debate_pack_url_en %>
+        <%= f.url_field :debate_pack_url_en, tabindex: increment, class: 'form-control' %>
+      <% end %>
+    <% else %>
+      <%= form_row for: [f.object, :transcript_url_en] do %>
+        <%= f.label :transcript_url_en, 'Transcript URL (English)', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :transcript_url_en %>
+        <%= f.url_field :transcript_url_en, tabindex: increment, class: 'form-control' %>
+      <% end %>
 
-    <%= form_row for: [f.object, :video_url_gd] do %>
-      <%= f.label :video_url_gd, 'Video URL (Gaelic)', class: 'form-label' %>
-      <%= error_messages_for_field f.object, :video_url_gd %>
-      <%= f.url_field :video_url_gd, tabindex: increment, class: 'form-control' %>
-    <% end %>
+      <%= form_row for: [f.object, :transcript_url_gd] do %>
+        <%= f.label :transcript_url_gd, 'Transcript URL (Gaelic)', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :transcript_url_gd %>
+        <%= f.url_field :transcript_url_gd, tabindex: increment, class: 'form-control' %>
+      <% end %>
 
-    <%= form_row for: [f.object, :debate_pack_url_en] do %>
-      <%= f.label :debate_pack_url_en, 'Debate Pack URL (English)', class: 'form-label' %>
-      <%= error_messages_for_field f.object, :debate_pack_url_en %>
-      <%= f.url_field :debate_pack_url_en, tabindex: increment, class: 'form-control' %>
-    <% end %>
+      <%= form_row for: [f.object, :video_url_en] do %>
+        <%= f.label :video_url_en, 'Video URL (English)', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :video_url_en %>
+        <%= f.url_field :video_url_en, tabindex: increment, class: 'form-control' %>
+      <% end %>
 
-    <%= form_row for: [f.object, :debate_pack_url_gd] do %>
-      <%= f.label :debate_pack_url_gd, 'Debate Pack URL (Gaelic)', class: 'form-label' %>
-      <%= error_messages_for_field f.object, :debate_pack_url_gd %>
-      <%= f.url_field :debate_pack_url_gd, tabindex: increment, class: 'form-control' %>
+      <%= form_row for: [f.object, :video_url_gd] do %>
+        <%= f.label :video_url_gd, 'Video URL (Gaelic)', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :video_url_gd %>
+        <%= f.url_field :video_url_gd, tabindex: increment, class: 'form-control' %>
+      <% end %>
+
+      <%= form_row for: [f.object, :debate_pack_url_en] do %>
+        <%= f.label :debate_pack_url_en, 'Debate Pack URL (English)', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :debate_pack_url_en %>
+        <%= f.url_field :debate_pack_url_en, tabindex: increment, class: 'form-control' %>
+      <% end %>
+
+      <%= form_row for: [f.object, :debate_pack_url_gd] do %>
+        <%= f.label :debate_pack_url_gd, 'Debate Pack URL (Gaelic)', class: 'form-label' %>
+        <%= error_messages_for_field f.object, :debate_pack_url_gd %>
+        <%= f.url_field :debate_pack_url_gd, tabindex: increment, class: 'form-control' %>
+      <% end %>
     <% end %>
 
     <%= form_row for: [f.object, :commons_image] do %>

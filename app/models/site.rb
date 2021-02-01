@@ -19,6 +19,7 @@ class Site < ActiveRecord::Base
     disable_daily_update_statistics_job
     disable_plus_address_check
     disable_feedback_sending
+    disable_gaelic_website
     show_holding_page
   ]
 

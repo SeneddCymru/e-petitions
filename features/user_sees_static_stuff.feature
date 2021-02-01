@@ -20,3 +20,13 @@ Feature: User views static pages
     Then I should be on the privacy page
     And I should see "Privacy and cookies" in the browser page title
     And the markup should be valid
+
+  Scenario: The language switcher is disabled
+    Given the Gaelic website is disabled
+    When I go to the home page
+    Then I should not see "Gàidhlig"
+
+  Scenario: I am redirected to the English website
+    Given the Gaelic website is disabled
+    When I go to the Gaelic home page
+    Then I should be on the English home page

@@ -7,6 +7,7 @@ class LocalizedController < ApplicationController
 
   before_action :set_locale
   before_action :set_bypass_cookie, if: :bypass_param?
+  before_action :redirect_to_english_page, if: :gaelic_disabled?
   before_action :redirect_to_holding_page, except: :holding
   before_action :redirect_to_home_page, only: :holding
 
@@ -25,6 +26,18 @@ class LocalizedController < ApplicationController
     else
       :"en-GB"
     end
+  end
+
+  def english_url?
+    params[:locale] == "en-GB"
+  end
+
+  def english_url
+    URI.parse(request.original_url).tap do |uri|
+      uri.host = Site.host_en
+    end.to_s
+  rescue URI::InvalidURIError => e
+    home_en_url
   end
 
   def holding_page?
@@ -52,6 +65,14 @@ class LocalizedController < ApplicationController
       cookies.signed[:_spets_bypass] = Site.bypass_token
       redirect_to home_url
     end
+  end
+
+  def gaelic_disabled?
+    Site.disable_gaelic_website?
+  end
+
+  def redirect_to_english_page
+    redirect_to english_url unless english_url?
   end
 
   def redirect_to_home_page
