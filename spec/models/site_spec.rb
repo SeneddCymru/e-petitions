@@ -109,13 +109,13 @@ RSpec.describe Site, type: :model do
     end
 
     it "delegates url to the instance" do
-      expect(site).to receive(:url).and_return("https://petition.senedd.test")
-      expect(Site.url).to eq("https://petition.senedd.test")
+      expect(site).to receive(:url).and_return("https://petition.parliament.test")
+      expect(Site.url).to eq("https://petition.parliament.test")
     end
 
     it "delegates email_from to the instance" do
-      expect(site).to receive(:email_from).and_return("no-reply@petition.senedd.test")
-      expect(Site.email_from).to eq("no-reply@petition.senedd.test")
+      expect(site).to receive(:email_from).and_return("no-reply@petition.parliament.test")
+      expect(Site.email_from).to eq("no-reply@petition.parliament.test")
     end
 
     it "delegates username to the instance" do
@@ -135,42 +135,42 @@ RSpec.describe Site, type: :model do
 
     it "delegates constraints_for_public to the instance" do
       expect(site).to receive(:constraints_for_public_en).and_return(
-        protocol: "https://", host: "petition.senedd.test", port: 443
+        protocol: "https://", host: "petition.parliament.test", port: 443
       )
 
       expect(Site.constraints_for_public).to eq(
-        protocol: "https://", host: "petition.senedd.test", port: 443
+        protocol: "https://", host: "petition.parliament.test", port: 443
       )
     end
 
     it "delegates constraints_for_moderation to the instance" do
       expect(site).to receive(:constraints_for_moderation).and_return(
-        protocol: "https://", host: "moderate.petition.senedd.test", port: 443
+        protocol: "https://", host: "moderate.petition.parliament.test", port: 443
       )
 
       expect(Site.constraints_for_moderation).to eq(
-        protocol: "https://", host: "moderate.petition.senedd.test", port: 443
+        protocol: "https://", host: "moderate.petition.parliament.test", port: 443
       )
     end
 
     it "delegates host to the instance" do
-      expect(site).to receive(:host_en).and_return("petition.senedd.test")
-      expect(Site.host).to eq("petition.senedd.test")
+      expect(site).to receive(:host_en).and_return("petition.parliament.test")
+      expect(Site.host).to eq("petition.parliament.test")
     end
 
     it "delegates host_with_port to the instance" do
-      expect(site).to receive(:host_with_port_en).and_return("petition.senedd.test:8443")
-      expect(Site.host_with_port).to eq("petition.senedd.test:8443")
+      expect(site).to receive(:host_with_port_en).and_return("petition.parliament.test:8443")
+      expect(Site.host_with_port).to eq("petition.parliament.test:8443")
     end
 
     it "delegates moderate_host to the instance" do
-      expect(site).to receive(:moderate_host).and_return("moderate.petition.senedd.test")
-      expect(Site.moderate_host).to eq("moderate.petition.senedd.test")
+      expect(site).to receive(:moderate_host).and_return("moderate.petition.parliament.test")
+      expect(Site.moderate_host).to eq("moderate.petition.parliament.test")
     end
 
     it "delegates moderate_host_with_port to the instance" do
-      expect(site).to receive(:moderate_host_with_port).and_return("moderate.petition.senedd.test:8443")
-      expect(Site.moderate_host_with_port).to eq("moderate.petition.senedd.test:8443")
+      expect(site).to receive(:moderate_host_with_port).and_return("moderate.petition.parliament.test:8443")
+      expect(Site.moderate_host_with_port).to eq("moderate.petition.parliament.test:8443")
     end
 
     it "delegates port to the instance" do
@@ -803,7 +803,7 @@ RSpec.describe Site, type: :model do
 
   describe "#email_protocol" do
     subject :site do
-      described_class.create!(url: "https://petition.senedd.test")
+      described_class.create!(url: "https://petition.parliament.test")
     end
 
     it "the protocol of the url" do
@@ -843,31 +843,31 @@ RSpec.describe Site, type: :model do
 
   describe "#constraints_for_public_en" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "a hash of routing constraints" do
       expect(site.constraints_for_public_en).to eq(
-        protocol: "https://", host: "petition.senedd.test", port: 443
+        protocol: "https://", host: "petition.parliament.test", port: 443
       )
     end
   end
 
   describe "#constraints_for_public_gd" do
     subject :site do
-      described_class.create!(url_gd: "https://deiseb.senedd.prawf")
+      described_class.create!(url_gd: "https://athchuinge.parlamaid.deuchainn")
     end
 
     it "a hash of routing constraints" do
       expect(site.constraints_for_public_gd).to eq(
-        protocol: "https://", host: "deiseb.senedd.prawf", port: 443
+        protocol: "https://", host: "athchuinge.parlamaid.deuchainn", port: 443
       )
     end
   end
 
   describe "#constraints_for_public" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "is aliased to #constraints_for_public_en" do
@@ -877,39 +877,39 @@ RSpec.describe Site, type: :model do
 
   describe "#constraints_for_moderation" do
     subject :site do
-      described_class.create!(moderate_url: "https://moderate.petition.senedd.test")
+      described_class.create!(moderate_url: "https://moderate.petition.parliament.test")
     end
 
     it "a hash of routing constraints" do
       expect(site.constraints_for_moderation).to eq(
-        protocol: "https://", host: "moderate.petition.senedd.test", port: 443
+        protocol: "https://", host: "moderate.petition.parliament.test", port: 443
       )
     end
   end
 
   describe "#host_en" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "the host of the url" do
-      expect(site.host_en).to eq("petition.senedd.test")
+      expect(site.host_en).to eq("petition.parliament.test")
     end
   end
 
   describe "#host_gd" do
     subject :site do
-      described_class.create!(url_gd: "https://deiseb.senedd.prawf")
+      described_class.create!(url_gd: "https://athchuinge.parlamaid.deuchainn")
     end
 
     it "the host of the url" do
-      expect(site.host_gd).to eq("deiseb.senedd.prawf")
+      expect(site.host_gd).to eq("athchuinge.parlamaid.deuchainn")
     end
   end
 
   describe "#host" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "is aliased to #host_en" do
@@ -920,21 +920,21 @@ RSpec.describe Site, type: :model do
   describe "#host_with_port_en" do
     context "when the port is the default port" do
       subject :site do
-        described_class.create!(url_en: "https://petition.senedd.test")
+        described_class.create!(url_en: "https://petition.parliament.test")
       end
 
       it "the host without the port of the url" do
-        expect(site.host_with_port_en).to eq("petition.senedd.test")
+        expect(site.host_with_port_en).to eq("petition.parliament.test")
       end
     end
 
     context "when the port is not the default port" do
       subject :site do
-        described_class.create!(url_en: "https://petition.senedd.test:8443")
+        described_class.create!(url_en: "https://petition.parliament.test:8443")
       end
 
       it "the host with the port of the url" do
-        expect(site.host_with_port_en).to eq("petition.senedd.test:8443")
+        expect(site.host_with_port_en).to eq("petition.parliament.test:8443")
       end
     end
   end
@@ -942,28 +942,28 @@ RSpec.describe Site, type: :model do
   describe "#host_with_port_gd" do
     context "when the port is the default port" do
       subject :site do
-        described_class.create!(url_gd: "https://deiseb.senedd.prawf")
+        described_class.create!(url_gd: "https://athchuinge.parlamaid.deuchainn")
       end
 
       it "the host without the port of the url" do
-        expect(site.host_with_port_gd).to eq("deiseb.senedd.prawf")
+        expect(site.host_with_port_gd).to eq("athchuinge.parlamaid.deuchainn")
       end
     end
 
     context "when the port is not the default port" do
       subject :site do
-        described_class.create!(url_gd: "https://deiseb.senedd.prawf:8443")
+        described_class.create!(url_gd: "https://athchuinge.parlamaid.deuchainn:8443")
       end
 
       it "the host with the port of the url" do
-        expect(site.host_with_port_gd).to eq("deiseb.senedd.prawf:8443")
+        expect(site.host_with_port_gd).to eq("athchuinge.parlamaid.deuchainn:8443")
       end
     end
   end
 
   describe "#host_with_port" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "is aliased to #host_with_port_en" do
@@ -973,39 +973,39 @@ RSpec.describe Site, type: :model do
 
   describe "#moderate_host" do
     subject :site do
-      described_class.create!(moderate_url: "https://moderate.petition.senedd.test")
+      described_class.create!(moderate_url: "https://moderate.petition.parliament.test")
     end
 
     it "the moderation host of the url" do
-      expect(site.moderate_host).to eq("moderate.petition.senedd.test")
+      expect(site.moderate_host).to eq("moderate.petition.parliament.test")
     end
   end
 
   describe "#moderate_host_with_port" do
     context "when the port is the default port" do
       subject :site do
-        described_class.create!(moderate_url: "https://moderate.petition.senedd.test")
+        described_class.create!(moderate_url: "https://moderate.petition.parliament.test")
       end
 
       it "the moderation host without the port of the url" do
-        expect(site.moderate_host_with_port).to eq("moderate.petition.senedd.test")
+        expect(site.moderate_host_with_port).to eq("moderate.petition.parliament.test")
       end
     end
 
     context "when the port is not the default port" do
       subject :site do
-        described_class.create!(moderate_url: "https://moderate.petition.senedd.test:8443")
+        described_class.create!(moderate_url: "https://moderate.petition.parliament.test:8443")
       end
 
       it "the moderation host with the port of the url" do
-        expect(site.moderate_host_with_port).to eq("moderate.petition.senedd.test:8443")
+        expect(site.moderate_host_with_port).to eq("moderate.petition.parliament.test:8443")
       end
     end
   end
 
   describe "#port_en" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "the port of the url" do
@@ -1015,7 +1015,7 @@ RSpec.describe Site, type: :model do
 
   describe "#port_gd" do
     subject :site do
-      described_class.create!(url_gd: "https://deiseb.senedd.prawf")
+      described_class.create!(url_gd: "https://athchuinge.parlamaid.deuchainn")
     end
 
     it "the port of the url" do
@@ -1025,7 +1025,7 @@ RSpec.describe Site, type: :model do
 
   describe "#port" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "is aliased to #port_en" do
@@ -1035,7 +1035,7 @@ RSpec.describe Site, type: :model do
 
   describe "#protocol_en" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "the protocol of the url" do
@@ -1045,7 +1045,7 @@ RSpec.describe Site, type: :model do
 
   describe "#protocol_gd" do
     subject :site do
-      described_class.create!(url_gd: "https://deiseb.senedd.prawf")
+      described_class.create!(url_gd: "https://athchuinge.parlamaid.deuchainn")
     end
 
     it "the protocol of the url" do
@@ -1055,7 +1055,7 @@ RSpec.describe Site, type: :model do
 
   describe "#protocol" do
     subject :site do
-      described_class.create!(url_en: "https://petition.senedd.test")
+      described_class.create!(url_en: "https://petition.parliament.test")
     end
 
     it "is aliased to #protocol_en" do

@@ -1,6 +1,6 @@
 <h1 class="page-title"><%= t(:"ui.petitions.check.heading") %></h1>
 
-<form method="get" action="/petitions/check_results">
+<form method="get" action="/petitions/check-results">
   <div class="form-group">
     <label for="action" class="form-label"><%= t(:"ui.petitions.action.label") %></label>
     <textarea name="q" id="action" class="form-control" data-max-length="100" rows="3"><%= @new_petition.action %></textarea>

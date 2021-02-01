@@ -1,10 +1,10 @@
 en-GB:
   metadata:
     open_graph:
-      site_name: "Petitions - Senedd"
-      default_title: "Petitions - Senedd"
+      site_name: "Petitions - The Scottish Parliament"
+      default_title: "Petitions - The Scottish Parliament"
       title: "Petition: %{petition}"
 
     twitter:
-      default_title: "Petitions - Senedd"
+      default_title: "Petitions - The Scottish Parliament"
       title: "Petition: %{petition}"

@@ -51,8 +51,8 @@ RSpec.describe Language, type: :model do
 
       it "delegates to the language instance" do
         expect(Language).to receive(:find_by).with(locale: :"en-GB").and_return(language)
-        expect(language).to receive(:lookup).with(*arguments).and_return("Gaelic Petitions")
-        expect(Language.lookup(*arguments)).to eq("Gaelic Petitions")
+        expect(language).to receive(:lookup).with(*arguments).and_return("Scottish Petitions")
+        expect(Language.lookup(*arguments)).to eq("Scottish Petitions")
       end
     end
   end
@@ -97,7 +97,7 @@ RSpec.describe Language, type: :model do
       allow(File).to receive(:read).and_call_original
       allow(File).to receive(:read).with(yaml_file).and_return <<~YAML
         en-GB:
-          title: "Gaelic Petitions"
+          title: "Scottish Petitions"
       YAML
     end
 
@@ -109,7 +109,7 @@ RSpec.describe Language, type: :model do
       }.from(
         "en-GB" => { "title" => "Petitions" }
       ).to(
-        "en-GB" => { "title" => "Gaelic Petitions" }
+        "en-GB" => { "title" => "Scottish Petitions" }
       )
     end
   end
@@ -181,7 +181,7 @@ RSpec.describe Language, type: :model do
 
     context "when the key exists and is different from the YAML file" do
       let(:translations) do
-        { "en-GB" => { "ui" => { "header" => { "title" => "Gaelic Petitions" } } } }
+        { "en-GB" => { "ui" => { "header" => { "title" => "Scottish Petitions" } } } }
       end
 
       it "returns true" do
@@ -193,11 +193,11 @@ RSpec.describe Language, type: :model do
   describe "#get" do
     let(:language) { FactoryBot.create(:language, :english, translations: translations) }
     let(:translations) do
-      { "en-GB" => { "header" => { "title" => "Gaelic Petitions" } } }
+      { "en-GB" => { "header" => { "title" => "Scottish Petitions" } } }
     end
 
     it "returns the translation for the key" do
-      expect(language.get("header.title")).to eq("Gaelic Petitions")
+      expect(language.get("header.title")).to eq("Scottish Petitions")
     end
   end
 
@@ -206,11 +206,11 @@ RSpec.describe Language, type: :model do
 
     it "sets the translation for the key but doesn't save it" do
       expect {
-        language.set("header.title", "Gaelic Petitions")
+        language.set("header.title", "Scottish Petitions")
       }.to change {
         language.translations
       }.from({}).to(
-        { "en-GB" => { "header" => { "title" => "Gaelic Petitions" } } }
+        { "en-GB" => { "header" => { "title" => "Scottish Petitions" } } }
       )
 
       language.reload
@@ -223,16 +223,16 @@ RSpec.describe Language, type: :model do
 
     it "sets and saves the translation for the key" do
       expect {
-        language.set!("header.title", "Gaelic Petitions")
+        language.set!("header.title", "Scottish Petitions")
       }.to change {
         language.translations
       }.from({}).to(
-        { "en-GB" => { "header" => { "title" => "Gaelic Petitions" } } }
+        { "en-GB" => { "header" => { "title" => "Scottish Petitions" } } }
       )
 
       language.reload
       expect(language.translations).to eq(
-        { "en-GB" => { "header" => { "title" => "Gaelic Petitions" } } }
+        { "en-GB" => { "header" => { "title" => "Scottish Petitions" } } }
       )
     end
   end
@@ -240,7 +240,7 @@ RSpec.describe Language, type: :model do
   describe "#delete" do
     let(:language) { FactoryBot.create(:language, :english, translations: translations) }
     let(:translations) do
-      { "en-GB" => { "header" => { "title" => "Gaelic Petitions" } } }
+      { "en-GB" => { "header" => { "title" => "Scottish Petitions" } } }
     end
 
     it "deletes the translation for the key but doesn't save it" do
@@ -260,7 +260,7 @@ RSpec.describe Language, type: :model do
   describe "#delete!" do
     let(:language) { FactoryBot.create(:language, :english, translations: translations) }
     let(:translations) do
-      { "en-GB" => { "header" => { "title" => "Gaelic Petitions" } } }
+      { "en-GB" => { "header" => { "title" => "Scottish Petitions" } } }
     end
 
     it "deletes the translation for the key and saves it" do
@@ -282,13 +282,13 @@ RSpec.describe Language, type: :model do
   describe "#flatten" do
     let(:language) { FactoryBot.create(:language, :english, translations: translations) }
     let(:translations) do
-      { "en-GB" => { "header" => { "title" => "Petitions", "strapline" => "Senedd" } } }
+      { "en-GB" => { "header" => { "title" => "Petitions", "strapline" => "The Scottish Parliament" } } }
     end
 
     it "returns a flattened hash" do
       expect(language.flatten).to eq(
         "header.title" => "Petitions",
-        "header.strapline" => "Senedd"
+        "header.strapline" => "The Scottish Parliament"
       )
     end
   end
@@ -296,7 +296,7 @@ RSpec.describe Language, type: :model do
   describe "#keys" do
     let(:language) { FactoryBot.create(:language, :english, translations: translations) }
     let(:translations) do
-      { "en-GB" => { "header" => { "title" => "Petitions", "strapline" => "Senedd" } } }
+      { "en-GB" => { "header" => { "title" => "Petitions", "strapline" => "The Scottish Parliament" } } }
     end
 
     it "returns a sorted list of flattened keys" do
@@ -312,7 +312,7 @@ RSpec.describe Language, type: :model do
     let(:translations) do
       {
         "en-GB" => {
-          "header" => { "title" => "Gaelic Petitions" },
+          "header" => { "title" => "Scottish Petitions" },
           "signature_count" => { "one" => "1 signature", "other" => "%{count} signatures" }
         }
       }
@@ -327,7 +327,7 @@ RSpec.describe Language, type: :model do
 
       context "when it does exist" do
         it "returns nil" do
-          expect(language.lookup(:"en-GB", :"header.title", [], {})).to eq("Gaelic Petitions")
+          expect(language.lookup(:"en-GB", :"header.title", [], {})).to eq("Scottish Petitions")
         end
       end
     end
@@ -341,7 +341,7 @@ RSpec.describe Language, type: :model do
 
       context "when it does exist" do
         it "returns nil" do
-          expect(language.lookup(:"en-GB", :title, :header, {})).to eq("Gaelic Petitions")
+          expect(language.lookup(:"en-GB", :title, :header, {})).to eq("Scottish Petitions")
         end
       end
     end

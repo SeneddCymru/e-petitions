@@ -8,16 +8,16 @@ Feature: Maggie searches for petitions by keyword
     Given I am logged in as a moderator
 
   Scenario: When searching for keyword, it returns all petitions with keyword in action OR background OR additional_details
-    Given an open petition exists with action_en: "Raise benefits", action_gd: "Codi buddion", background_en: "Because they're too low", background_gd: "Oherwydd eu bod yn rhy isel"
-    And an open petition exists with action_en: "Help the poor", background_en: "Need higher benefits", action_gd: "Helpwch y tlawd", background_gd: "Angen buddion uwch"
-    And an open petition exists with action_en: "Help the homeless", background_en: "Could raise benefits", action_gd: "Helpwch y digartref", background_gd: "Gallai godi buddion"
-    And an open petition exists with action_en: "Petition about something else", background_en: "Something else", action_gd: "Deiseb am rywbeth arall", background_gd: "Rhywbeth arall"
+    Given an open petition exists with action_en: "Raise benefits", action_gd: "Àrdaich buannachdan", background_en: "Because they're too low", background_gd: "Leis gu bheil iad ro ìosal"
+    And an open petition exists with action_en: "Help the poor", background_en: "Need higher benefits", action_gd: "Cuidich na bochdan", background_gd: "Feum air buannachdan nas àirde"
+    And an open petition exists with action_en: "Help the homeless", background_en: "Could raise benefits", action_gd: "Cuidich na daoine gun dachaigh", background_gd: "A dh ’fhaodadh buannachdan a thogail"
+    And an open petition exists with action_en: "Petition about something else", background_en: "Something else", action_gd: "Athchuinge mu rudeigin eile", background_gd: "Rud eile"
     When I search for petitions with keyword "benefits"
     Then I should see the following list of petitions:
           | Help the homeless |
           | Help the poor     |
           | Raise benefits    |
-    When I search for petitions with keyword "buddion"
+    When I search for petitions with keyword "buannachdan"
     Then I should see the following list of petitions:
           | Help the homeless |
           | Help the poor     |

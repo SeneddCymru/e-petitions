@@ -2026,7 +2026,7 @@ RSpec.describe Petition, type: :model do
   describe "#reject" do
     subject(:petition) { FactoryBot.create(:petition, :translated) }
 
-    %w[insufficient duplicate irrelevant no-action fake-name bad-address].each do |rejection_code|
+    %w[insufficient duplicate irrelevant no-action fake-name].each do |rejection_code|
       context "when the reason for rejection is #{rejection_code}" do
         before do
           petition.reject(code: rejection_code)

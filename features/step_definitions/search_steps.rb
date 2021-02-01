@@ -12,7 +12,7 @@ When(/^I search for "([^"]*)" with "([^"]*)"$/) do |facet, term|
   if I18n.locale == :"en-GB"
     step %{I press "Search"}
   else
-    step %{I press "Chwilio"}
+    step %{I press "Search"}
   end
 end
 

@@ -1,6 +1,6 @@
 en-GB:
   page_titles:
-    default: "Petitions - Senedd"
+    default: "Petitions - The Scottish Parliament"
     feedback:
       index: "Send feedback - Petitions"
       thanks: "Thank you - Petitions"
@@ -32,6 +32,6 @@ en-GB:
       signed: "Thank you - Petitions"
       thank_you: "%{petition} - Thank you for supporting this petition - Petitions"
     pages:
-      index: "Petitions - Senedd"
+      index: "Petitions - The Scottish Parliament"
       help: "How petitions work"
       privacy: "Privacy and cookies"

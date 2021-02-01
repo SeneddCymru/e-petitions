@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MarkdownHelper, type: :helper do
   describe "#markdown_to_html" do
     it "converts markdown to html" do
-      expect(helper.markdown_to_html("## Petitions: Senedd")).to eq(%[<h2>Petitions: Senedd</h2>\n])
+      expect(helper.markdown_to_html("## Petitions: The Scottish Parliament")).to eq(%[<h2>Petitions: The Scottish Parliament</h2>\n])
     end
 
     it "autolinks urls" do
@@ -17,7 +17,7 @@ RSpec.describe MarkdownHelper, type: :helper do
 
   describe "#markdown_to_text" do
     it "converts markdown to text" do
-      expect(helper.markdown_to_text("## Petitions: Senedd")).to eq(%[Petitions: Senedd\n])
+      expect(helper.markdown_to_text("## Petitions: The Scottish Parliament")).to eq(%[Petitions: The Scottish Parliament\n])
     end
 
     it "autolinks urls" do

@@ -91,144 +91,144 @@ RSpec.describe "routes for sponsor", type: :routes do
     end
 
     describe "redirects" do
-      it "GET /deisebau/1/noddwyr/newydd" do
-        expect(get("/deisebau/1/noddwyr/newydd")).to redirect_to("/petitions/1/sponsors/new", 308)
+      it "GET /athchuingean/1/luchd-taic/ur" do
+        expect(get("/athchuingean/1/luchd-taic/ur")).to redirect_to("/petitions/1/sponsors/new", 308)
       end
 
-      it "POST /deisebau/1/noddwyr/newydd" do
-        expect(post("/deisebau/1/noddwyr/newydd")).to redirect_to("/petitions/1/sponsors/new", 308)
+      it "POST /athchuingean/1/luchd-taic/ur" do
+        expect(post("/athchuingean/1/luchd-taic/ur")).to redirect_to("/petitions/1/sponsors/new", 308)
       end
 
-      it "POST /deisebau/1/noddwyr" do
-        expect(post("/deisebau/1/noddwyr")).to redirect_to("/petitions/1/sponsors", 308)
+      it "POST /athchuingean/1/luchd-taic" do
+        expect(post("/athchuingean/1/luchd-taic")).to redirect_to("/petitions/1/sponsors", 308)
       end
 
-      it "GET /deisebau/1/noddwyr/diolch" do
-        expect(get("/deisebau/1/noddwyr/diolch")).to redirect_to("/petitions/1/sponsors/thank-you", 308)
+      it "GET /athchuingean/1/luchd-taic/tapadh-leibh" do
+        expect(get("/athchuingean/1/luchd-taic/tapadh-leibh")).to redirect_to("/petitions/1/sponsors/thank-you", 308)
       end
 
-      it "GET /noddwyr/1/gwirio" do
-        expect(get("/noddwyr/1/gwirio?token=abcdef1234567890")).to redirect_to("/sponsors/1/verify?token=abcdef1234567890", 308)
+      it "GET /luchd-taic/1/dearbhaich" do
+        expect(get("/luchd-taic/1/dearbhaich?token=abcdef1234567890")).to redirect_to("/sponsors/1/verify?token=abcdef1234567890", 308)
       end
 
-      it "GET /noddwyr/1/noddedig" do
-        expect(get("/noddwyr/1/noddedig?token=abcdef1234567890")).to redirect_to("/sponsors/1/sponsored?token=abcdef1234567890", 308)
+      it "GET /luchd-taic/1/urrasach" do
+        expect(get("/luchd-taic/1/urrasach?token=abcdef1234567890")).to redirect_to("/sponsors/1/sponsored?token=abcdef1234567890", 308)
       end
     end
   end
 
   describe "Gaelic", gaelic: true do
-    # Routes nested to /deisebau/:petition_id
-    it "doesn't route GET /deisebau/1/noddwyr" do
-      expect(get("/deisebau/1/noddwyr")).not_to be_routable
+    # Routes nested to /athchuingean/:petition_id
+    it "doesn't route GET /athchuingean/1/luchd-taic" do
+      expect(get("/athchuingean/1/luchd-taic")).not_to be_routable
     end
 
-    it "routes GET /deisebau/1/noddwyr/newydd to sponsors#new" do
-      expect(get("/deisebau/1/noddwyr/newydd")).to route_to("sponsors#new", petition_id: "1")
+    it "routes GET /athchuingean/1/luchd-taic/ur to sponsors#new" do
+      expect(get("/athchuingean/1/luchd-taic/ur")).to route_to("sponsors#new", petition_id: "1")
     end
 
-    it "routes POST /deisebau/1/noddwyr/newydd to sponsors#confirm" do
-      expect(post("/deisebau/1/noddwyr/newydd")).to route_to("sponsors#confirm", petition_id: "1")
+    it "routes POST /athchuingean/1/luchd-taic/ur to sponsors#confirm" do
+      expect(post("/athchuingean/1/luchd-taic/ur")).to route_to("sponsors#confirm", petition_id: "1")
     end
 
-    it "routes POST /deisebau/1/noddwyr to sponsors#create" do
-      expect(post("/deisebau/1/noddwyr")).to route_to("sponsors#create", petition_id: "1")
+    it "routes POST /athchuingean/1/luchd-taic to sponsors#create" do
+      expect(post("/athchuingean/1/luchd-taic")).to route_to("sponsors#create", petition_id: "1")
     end
 
-    it "routes GET /deisebau/1/noddwyr/diolch to sponsors#thank_you" do
-      expect(get("/deisebau/1/noddwyr/diolch")).to route_to("sponsors#thank_you", petition_id: "1")
+    it "routes GET /athchuingean/1/luchd-taic/tapadh-leibh to sponsors#thank_you" do
+      expect(get("/athchuingean/1/luchd-taic/tapadh-leibh")).to route_to("sponsors#thank_you", petition_id: "1")
     end
 
-    it "doesn't route GET /deisebau/1/noddwyr/2" do
-      expect(get("/deisebau/1/noddwyr/2")).not_to be_routable
+    it "doesn't route GET /athchuingean/1/luchd-taic/2" do
+      expect(get("/athchuingean/1/luchd-taic/2")).not_to be_routable
     end
 
-    it "doesn't route GET /deisebau/1/noddwyr/2/golygu" do
-      expect(get("/deisebau/1/noddwyr/2/golygu")).not_to be_routable
+    it "doesn't route GET /athchuingean/1/luchd-taic/2/deasaich" do
+      expect(get("/athchuingean/1/luchd-taic/2/deasaich")).not_to be_routable
     end
 
-    it "doesn't route PATCH /deisebau/1/noddwyr/2" do
-      expect(patch("/deisebau/1/noddwyr/2")).not_to be_routable
+    it "doesn't route PATCH /athchuingean/1/luchd-taic/2" do
+      expect(patch("/athchuingean/1/luchd-taic/2")).not_to be_routable
     end
 
-    it "doesn't route PUT /deisebau/1/noddwyr/2" do
-      expect(put("/deisebau/1/noddwyr/2")).not_to be_routable
+    it "doesn't route PUT /athchuingean/1/luchd-taic/2" do
+      expect(put("/athchuingean/1/luchd-taic/2")).not_to be_routable
     end
 
-    it "doesn't route DELETE /deisebau/1/noddwyr/2" do
-      expect(delete("/deisebau/1/noddwyr/2")).not_to be_routable
+    it "doesn't route DELETE /athchuingean/1/luchd-taic/2" do
+      expect(delete("/athchuingean/1/luchd-taic/2")).not_to be_routable
     end
 
     # un-nested routes
-    it "routes GET /noddwyr/1/gwirio to sponsors#verify" do
-      expect(get("/noddwyr/1/gwirio?token=abcdef1234567890")).
+    it "routes GET /luchd-taic/1/dearbhaich to sponsors#verify" do
+      expect(get("/luchd-taic/1/dearbhaich?token=abcdef1234567890")).
         to route_to("sponsors#verify", id: "1", token: "abcdef1234567890")
 
-      expect(verify_sponsor_path("1", token: "abcdef1234567890")).to eq("/noddwyr/1/gwirio?token=abcdef1234567890")
+      expect(verify_sponsor_path("1", token: "abcdef1234567890")).to eq("/luchd-taic/1/dearbhaich?token=abcdef1234567890")
     end
 
-    it "doesn't route GET /noddwyr/1/dad-danysgrifio" do
-      expect(delete("/noddwyr/1/dad-danysgrifio")).not_to be_routable
+    it "doesn't route GET /luchd-taic/1/di-chlaradh" do
+      expect(delete("/luchd-taic/1/di-chlaradh")).not_to be_routable
     end
 
-    it "routes GET /noddwyr/1/noddedig to sponsors#signed" do
-      expect(get("/noddwyr/1/noddedig?token=abcdef1234567890")).
+    it "routes GET /luchd-taic/1/urrasach to sponsors#signed" do
+      expect(get("/luchd-taic/1/urrasach?token=abcdef1234567890")).
         to route_to("sponsors#signed", id: "1", token: "abcdef1234567890")
 
-      expect(signed_sponsor_path("1", token: "abcdef1234567890")).to eq("/noddwyr/1/noddedig?token=abcdef1234567890")
+      expect(signed_sponsor_path("1", token: "abcdef1234567890")).to eq("/luchd-taic/1/urrasach?token=abcdef1234567890")
     end
 
-    it "doesn't route GET /noddwyr" do
-      expect(get("/noddwyr")).not_to be_routable
+    it "doesn't route GET /luchd-taic" do
+      expect(get("/luchd-taic")).not_to be_routable
     end
 
-    it "doesn't route GET /noddwyr/newydd" do
-      expect(get("/noddwyr/newydd")).not_to be_routable
+    it "doesn't route GET /luchd-taic/ur" do
+      expect(get("/luchd-taic/ur")).not_to be_routable
     end
 
-    it "doesn't route POST /noddwyr" do
-      expect(post("/noddwyr")).not_to be_routable
+    it "doesn't route POST /luchd-taic" do
+      expect(post("/luchd-taic")).not_to be_routable
     end
 
-    it "doesn't route GET /noddwyr/1" do
-      expect(get("/noddwyr/2")).not_to be_routable
+    it "doesn't route GET /luchd-taic/1" do
+      expect(get("/luchd-taic/2")).not_to be_routable
     end
 
-    it "doesn't route GET /noddwyr/1/golygu" do
-      expect(get("/noddwyr/2/golygu")).not_to be_routable
+    it "doesn't route GET /luchd-taic/1/deasaich" do
+      expect(get("/luchd-taic/2/deasaich")).not_to be_routable
     end
 
-    it "doesn't route PATCH /noddwyr/1" do
-      expect(patch("/noddwyr/2")).not_to be_routable
+    it "doesn't route PATCH /luchd-taic/1" do
+      expect(patch("/luchd-taic/2")).not_to be_routable
     end
 
-    it "doesn't route DELETE /noddwyr/1" do
-      expect(delete("/noddwyr/2")).not_to be_routable
+    it "doesn't route DELETE /luchd-taic/1" do
+      expect(delete("/luchd-taic/2")).not_to be_routable
     end
 
     describe "redirects" do
       it "GET /petitions/1/sponsors/new" do
-        expect(get("/petitions/1/sponsors/new")).to redirect_to("/deisebau/1/noddwyr/newydd", 308)
+        expect(get("/petitions/1/sponsors/new")).to redirect_to("/athchuingean/1/luchd-taic/ur", 308)
       end
 
       it "POST /petitions/1/sponsors/new" do
-        expect(post("/petitions/1/sponsors/new")).to redirect_to("/deisebau/1/noddwyr/newydd", 308)
+        expect(post("/petitions/1/sponsors/new")).to redirect_to("/athchuingean/1/luchd-taic/ur", 308)
       end
 
       it "POST /petitions/1/sponsors" do
-        expect(post("/petitions/1/sponsors")).to redirect_to("/deisebau/1/noddwyr", 308)
+        expect(post("/petitions/1/sponsors")).to redirect_to("/athchuingean/1/luchd-taic", 308)
       end
 
       it "GET /petitions/1/sponsors/thank-you" do
-        expect(get("/petitions/1/sponsors/thank-you")).to redirect_to("/deisebau/1/noddwyr/diolch", 308)
+        expect(get("/petitions/1/sponsors/thank-you")).to redirect_to("/athchuingean/1/luchd-taic/tapadh-leibh", 308)
       end
 
       it "GET /sponsors/1/verify" do
-        expect(get("/sponsors/1/verify?token=abcdef1234567890")).to redirect_to("/noddwyr/1/gwirio?token=abcdef1234567890", 308)
+        expect(get("/sponsors/1/verify?token=abcdef1234567890")).to redirect_to("/luchd-taic/1/dearbhaich?token=abcdef1234567890", 308)
       end
 
       it "GET /sponsors/1/sponsored" do
-        expect(get("/sponsors/1/sponsored?token=abcdef1234567890")).to redirect_to("/noddwyr/1/noddedig?token=abcdef1234567890", 308)
+        expect(get("/sponsors/1/sponsored?token=abcdef1234567890")).to redirect_to("/luchd-taic/1/urrasach?token=abcdef1234567890", 308)
       end
     end
   end

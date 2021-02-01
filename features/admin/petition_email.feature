@@ -9,8 +9,8 @@ Feature: Emailing petitioner supporters
     And I am logged in as a sysadmin with the email "admin@example.com", first_name "Admin", last_name "User"
     When I am on the admin all petitions page
     And I follow "Ban Badger Baiting"
-    And I follow "Other Senedd business"
-    And I follow "New other Senedd business"
+    And I follow "Other parliamentary business"
+    And I follow "New other parliamentary business"
     Then I should be on the admin email petitioners form page for "Ban Badger Baiting"
     And the markup should be valid
     When I press "Send email"
@@ -28,8 +28,8 @@ Feature: Emailing petitioner supporters
     And I am logged in as a sysadmin with the email "admin@example.com", first_name "Admin", last_name "User"
     When I am on the admin all petitions page
     And I follow "Ban Badger Baiting"
-    And I follow "Other Senedd business"
-    And I follow "New other Senedd business"
+    And I follow "Other parliamentary business"
+    And I follow "New other parliamentary business"
     Then I should be on the admin email petitioners form page for "Ban Badger Baiting"
     And the markup should be valid
     When I press "Save"
@@ -47,8 +47,8 @@ Feature: Emailing petitioner supporters
     And I am logged in as a sysadmin with the email "admin@example.com", first_name "Admin", last_name "User"
     When I am on the admin all petitions page
     And I follow "Ban Badger Baiting"
-    And I follow "Other Senedd business"
-    And I follow "New other Senedd business"
+    And I follow "Other parliamentary business"
+    And I follow "New other parliamentary business"
     Then I should be on the admin email petitioners form page for "Ban Badger Baiting"
     And the markup should be valid
     When I press "Save"
@@ -67,14 +67,14 @@ Feature: Emailing petitioner supporters
     And I am logged in as a sysadmin with the email "admin@example.com", first_name "Admin", last_name "User"
     When I am on the admin all petitions page
     And I follow "Ban Badger Baiting"
-    And I follow "Other Senedd business"
+    And I follow "Other parliamentary business"
     Then I should see "This will be debated"
     And the markup should be valid
     When I press "Edit"
-    Then I should see "Edit other Senedd business"
+    Then I should see "Edit other parliamentary business"
     When I fill in "Subject in English" with "This will not be debated"
     And I press "Save"
-    Then I should see "Updated other Senedd business successfully"
+    Then I should see "Updated other parliamentary business successfully"
     And I should see "This will not be debated"
 
   Scenario: Deleting an email to all petitioners
@@ -83,9 +83,9 @@ Feature: Emailing petitioner supporters
     And I am logged in as a sysadmin with the email "admin@example.com", first_name "Admin", last_name "User"
     When I am on the admin all petitions page
     And I follow "Ban Badger Baiting"
-    And I follow "Other Senedd business"
+    And I follow "Other parliamentary business"
     Then I should see "This will be debated"
     And the markup should be valid
     When I press "Delete"
-    Then I should see "Deleted other Senedd business successfully"
+    Then I should see "Deleted other parliamentary business successfully"
     And I should not see "This will be debated"

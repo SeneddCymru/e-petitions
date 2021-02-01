@@ -24,7 +24,7 @@ RSpec.describe "domain constraints", type: :routes do
   context "when on the Gaelic public domain", gaelic: true do
     context "and making a request for a public path" do
       it "is routable" do
-        expect(get("/deisebau")).to route_to("petitions#index")
+        expect(get("/athchuingean")).to route_to("petitions#index")
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe "domain constraints", type: :routes do
 
     context "and making a request for an Gaelic public path" do
       it "is not routeable" do
-        expect(get("/deisebau")).not_to be_routable
+        expect(get("/athchuingean")).not_to be_routable
       end
     end
 

@@ -554,15 +554,15 @@ FactoryBot.define do
     debated { true }
 
     trait :fully_specified do
-      overview { 'Debate on Petition P-05-869: Declare a Climate Emergency and fit all policies with zero-carbon targets' }
+      overview { 'Debate on Petition PE01319: Improving youth football in Scotland' }
       sequence(:transcript_url) { |n|
-        "https://record.assembly.wales/Plenary/5667#A51756"
+        "ttps://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf"
       }
       video_url {
-        "http://www.senedd.tv/Meeting/Archive/760dfc2e-74aa-4fc7-b4a7-fccaa9e2ba1c?autostart=True"
+        "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021"
       }
       sequence(:debate_pack_url) { |n|
-        "https://business.senedd.wales/ieListDocuments.aspx?CId=401&MId=5667"
+        "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
       }
     end
   end
@@ -576,8 +576,8 @@ FactoryBot.define do
     association :petition, factory: :petition
     subject_en { "Message Subject" }
     body_en { "Message body" }
-    subject_gd { "Pwnc Neges" }
-    body_gd { "Corff neges" }
+    subject_gd { "Cuspair teachdaireachd" }
+    body_gd { "Corp teachdaireachd" }
     sent_by { "Admin User" }
   end
 
@@ -667,7 +667,7 @@ FactoryBot.define do
       name   { "Gaelic" }
 
       translations do
-        { "gd-GB" => { "title" => "Deisebau" } }
+        { "gd-GB" => { "title" => "Athchuingean" } }
       end
     end
   end

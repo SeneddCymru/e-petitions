@@ -113,13 +113,13 @@ RSpec.describe Admin::DebateOutcomesController, type: :controller, admin: true d
         {
           debated_on: '2014-12-01',
           overview_en: 'Debate on Petition P-05-869: Declare a Climate Emergency and fit all policies with zero-carbon targets',
-          overview_gd: 'Dadl ar Ddeiseb P-05-869: Datgan Argyfwng Hinsawdd a gosod targedau di-garbon ar bob polisi',
-          transcript_url_en: 'https://record.assembly.wales/Plenary/5667#A51756',
-          transcript_url_gd: 'https://cofnod.cynulliad.cymru/Plenary/5667#A51756',
-          video_url_en: 'http://www.senedd.tv/Meeting/Archive/760dfc2e-74aa-4fc7-b4a7-fccaa9e2ba1c?autostart=True',
-          video_url_gd: 'http://www.senedd.tv/Meeting/Archive/c36fbd6a-d3b8-40dd-9567-ac1bef6caa84?autostart=True',
-          debate_pack_url_en: "https://business.senedd.wales/ieListDocuments.aspx?CId=401&MId=5667",
-          debate_pack_url_gd: "https://busnes.senedd.cymru/ieListDocuments.aspx?CId=401&MId=5667"
+          overview_gd: 'Deasbad air Athchuinge P-05-869: Cuir an cèill èiginn gnàth-shìde agus cuir a-steach gach poileasaidh le targaidean gun charbon',
+          transcript_url_en: 'https://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf',
+          transcript_url_gd: 'https://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf',
+          video_url_en: 'https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021',
+          video_url_gd: 'https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021',
+          debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
+          debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
         }
       end
 

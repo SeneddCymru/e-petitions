@@ -62,7 +62,7 @@ Feature: Suzie signs a petition
     When I confirm my email address
     Then I should see "2 signatures"
     And I should not see the text "Your constituency is"
-    And I should not see the text "Your Member of the Senedd is"
+    And I should not see the text "Your Member of the Scottish Parliament is"
 
   Scenario: Suzie receives a duplicate signature email if she tries to sign but she has already signed and validated
     When I have already signed the petition with an uppercase email

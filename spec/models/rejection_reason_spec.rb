@@ -70,7 +70,7 @@ RSpec.describe RejectionReason, type: :model do
       expect(RejectionReason.codes).to eq %w[
         insufficient duplicate irrelevant
         no-action fake-name libellous offensive
-        bad-address not-suitable
+        not-suitable
       ]
     end
   end

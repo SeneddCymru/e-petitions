@@ -215,9 +215,9 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
         FactoryBot.create :debated_petition,
           debated_on: 1.day.ago,
           overview: "What happened in the debate",
-          transcript_url: "https://record.assembly.wales/Plenary/5667#A51756",
-          video_url: "http://www.senedd.tv/Meeting/Archive/760dfc2e-74aa-4fc7-b4a7-fccaa9e2ba1c?autostart=True",
-          debate_pack_url: "https://business.senedd.wales/ieListDocuments.aspx?CId=401&MId=5667"
+          transcript_url: "https://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf",
+          video_url: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
+          debate_pack_url: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
 
       get "/petitions.json"
       expect(response).to be_successful
@@ -229,9 +229,9 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
               "debate" => a_hash_including(
                 "debated_on" => a_string_matching(%r[\A\d{4}-\d{2}-\d{2}\z]),
                 "overview" => "What happened in the debate",
-                "transcript_url" => "https://record.assembly.wales/Plenary/5667#A51756",
-                "video_url" => "http://www.senedd.tv/Meeting/Archive/760dfc2e-74aa-4fc7-b4a7-fccaa9e2ba1c?autostart=True",
-                "debate_pack_url" => "https://business.senedd.wales/ieListDocuments.aspx?CId=401&MId=5667"
+                "transcript_url" => "https://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf",
+                "video_url" => "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
+                "debate_pack_url" => "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
               )
             )
           )

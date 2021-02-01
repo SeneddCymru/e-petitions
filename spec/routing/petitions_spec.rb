@@ -52,9 +52,9 @@ RSpec.describe "routes for petitions", type: :routes do
       expect(check_petitions_path).to eq("/petitions/check")
     end
 
-    it "routes GET /petitions/check_results to petitions#check_results" do
-      expect(get("/petitions/check_results")).to route_to(controller: "petitions", action: "check_results")
-      expect(check_results_petitions_path).to eq("/petitions/check_results")
+    it "routes GET /petitions/check-results to petitions#check_results" do
+      expect(get("/petitions/check-results")).to route_to(controller: "petitions", action: "check_results")
+      expect(check_results_petitions_path).to eq("/petitions/check-results")
     end
 
     it "routes GET /petitions/:id/count to petitions#count" do
@@ -73,158 +73,158 @@ RSpec.describe "routes for petitions", type: :routes do
     end
 
     describe "redirects" do
-      it "GET /deisebau" do
-        expect(get("/deisebau")).to redirect_to("/petitions", 308)
+      it "GET /athchuingean" do
+        expect(get("/athchuingean")).to redirect_to("/petitions", 308)
       end
 
-      it "GET /deisebau/newydd" do
-        expect(get("/deisebau/newydd")).to redirect_to("/petitions/new", 308)
+      it "GET /athchuingean/ur" do
+        expect(get("/athchuingean/ur")).to redirect_to("/petitions/new", 308)
       end
 
-      it "POST /deisebau/newydd" do
-        expect(post("/deisebau/newydd")).to redirect_to("/petitions/new", 308)
+      it "POST /athchuingean/ur" do
+        expect(post("/athchuingean/ur")).to redirect_to("/petitions/new", 308)
       end
 
-      it "GET /deisebau/:id" do
-        expect(get("/deisebau/1")).to redirect_to("/petitions/1", 308)
+      it "GET /athchuingean/:id" do
+        expect(get("/athchuingean/1")).to redirect_to("/petitions/1", 308)
       end
 
-      it "GET /deisebau/gwirio" do
-        expect(get("/deisebau/gwirio")).to redirect_to("/petitions/check", 308)
+      it "GET /athchuingean/thoir-suil" do
+        expect(get("/athchuingean/thoir-suil")).to redirect_to("/petitions/check", 308)
       end
 
-      it "GET /deisebau/gwirio_canlyniadau" do
-        expect(get("/deisebau/gwirio_canlyniadau")).to redirect_to("/petitions/check_results", 308)
+      it "GET /athchuingean/thoir-suil-air-toraidhean" do
+        expect(get("/athchuingean/thoir-suil-air-toraidhean")).to redirect_to("/petitions/check-results", 308)
       end
 
-      it "GET /deisebau/:id/cyfrif" do
-        expect(get("/deisebau/1/cyfrif")).to redirect_to("/petitions/1/count", 308)
+      it "GET /athchuingean/:id/cunnt" do
+        expect(get("/athchuingean/1/cunnt")).to redirect_to("/petitions/1/count", 308)
       end
 
-      it "GET /deisebau/diolch" do
-        expect(get("/deisebau/diolch")).to redirect_to("/petitions/thank-you", 308)
+      it "GET /athchuingean/tapadh-leibh" do
+        expect(get("/athchuingean/tapadh-leibh")).to redirect_to("/petitions/thank-you", 308)
       end
 
-      it "GET /deisebau/:id/casglu-cefnogaeth" do
-        expect(get("/deisebau/1/casglu-cefnogaeth")).to redirect_to("/petitions/1/gathering-support", 308)
+      it "GET /athchuingean/:id/cruinneachadh-taic" do
+        expect(get("/athchuingean/1/cruinneachadh-taic")).to redirect_to("/petitions/1/gathering-support", 308)
       end
 
-      it "GET /deisebau/:id/cymedroli-gwybodaeth" do
-        expect(get("/deisebau/1/cymedroli-gwybodaeth")).to redirect_to("/petitions/1/moderation-info", 308)
+      it "GET /athchuingean/:id/fiosrachadh-measaidh" do
+        expect(get("/athchuingean/1/fiosrachadh-measaidh")).to redirect_to("/petitions/1/moderation-info", 308)
       end
     end
   end
 
   describe "Gaelic", gaelic: true do
-    it "routes GET /deisebau to petitions#index" do
-      expect(get("/deisebau")).to route_to(controller: "petitions", action: "index")
-      expect(petitions_path).to eq("/deisebau")
+    it "routes GET /athchuingean to petitions#index" do
+      expect(get("/athchuingean")).to route_to(controller: "petitions", action: "index")
+      expect(petitions_path).to eq("/athchuingean")
     end
 
-    it "routes GET /deisebau/newydd to petitions#new" do
-      expect(get("/deisebau/newydd")).to route_to(controller: "petitions", action: "new")
-      expect(new_petition_path).to eq("/deisebau/newydd")
+    it "routes GET /athchuingean/ur to petitions#new" do
+      expect(get("/athchuingean/ur")).to route_to(controller: "petitions", action: "new")
+      expect(new_petition_path).to eq("/athchuingean/ur")
     end
 
-    it "routes POST /deisebau/newydd to petitions#create" do
-      expect(post("/deisebau/newydd")).to route_to(controller: "petitions", action: "create")
-      expect(new_petition_path).to eq("/deisebau/newydd")
+    it "routes POST /athchuingean/ur to petitions#create" do
+      expect(post("/athchuingean/ur")).to route_to(controller: "petitions", action: "create")
+      expect(new_petition_path).to eq("/athchuingean/ur")
     end
 
-    it "routes GET /deisebau/diolch to petitions#thank_you" do
-      expect(get("/deisebau/diolch")).to route_to(controller: "petitions", action: "thank_you")
-      expect(thank_you_petitions_path).to eq("/deisebau/diolch")
+    it "routes GET /athchuingean/tapadh-leibh to petitions#thank_you" do
+      expect(get("/athchuingean/tapadh-leibh")).to route_to(controller: "petitions", action: "thank_you")
+      expect(thank_you_petitions_path).to eq("/athchuingean/tapadh-leibh")
     end
 
     it "doesn't route POST /petitions" do
-      expect(post("/deisebau")).not_to be_routable
+      expect(post("/athchuingean")).not_to be_routable
     end
 
-    it "routes GET /deisebau/:id to petitions#show" do
-      expect(get("/deisebau/1")).to route_to(controller: "petitions", action: "show", id: "1")
-      expect(petition_path("1")).to eq("/deisebau/1")
+    it "routes GET /athchuingean/:id to petitions#show" do
+      expect(get("/athchuingean/1")).to route_to(controller: "petitions", action: "show", id: "1")
+      expect(petition_path("1")).to eq("/athchuingean/1")
     end
 
-    it "doesn't route GET /deisebau/:id/golygu" do
-      expect(patch("/deisebau/1/golygu")).not_to be_routable
+    it "doesn't route GET /athchuingean/:id/deasaich" do
+      expect(patch("/athchuingean/1/deasaich")).not_to be_routable
     end
 
-    it "doesn't route PATCH /deisebau/:id" do
-      expect(patch("/deisebau/1")).not_to be_routable
+    it "doesn't route PATCH /athchuingean/:id" do
+      expect(patch("/athchuingean/1")).not_to be_routable
     end
 
-    it "doesn't route PUT /deisebau/:id" do
-      expect(put("/deisebau/1")).not_to be_routable
+    it "doesn't route PUT /athchuingean/:id" do
+      expect(put("/athchuingean/1")).not_to be_routable
     end
 
-    it "doesn't route DELETE /deisebau/:id" do
-      expect(delete("/deisebau/1")).not_to be_routable
+    it "doesn't route DELETE /athchuingean/:id" do
+      expect(delete("/athchuingean/1")).not_to be_routable
     end
 
-    it "routes GET /deisebau/gwirio to petitions#check" do
-      expect(get("/deisebau/gwirio")).to route_to(controller: "petitions", action: "check")
-      expect(check_petitions_path).to eq("/deisebau/gwirio")
+    it "routes GET /athchuingean/thoir-suil to petitions#check" do
+      expect(get("/athchuingean/thoir-suil")).to route_to(controller: "petitions", action: "check")
+      expect(check_petitions_path).to eq("/athchuingean/thoir-suil")
     end
 
-    it "routes GET /deisebau/gwirio_canlyniadau to petitions#check_results" do
-      expect(get("/deisebau/gwirio_canlyniadau")).to route_to(controller: "petitions", action: "check_results")
-      expect(check_results_petitions_path).to eq("/deisebau/gwirio_canlyniadau")
+    it "routes GET /athchuingean/thoir-suil-air-toraidhean to petitions#check_results" do
+      expect(get("/athchuingean/thoir-suil-air-toraidhean")).to route_to(controller: "petitions", action: "check_results")
+      expect(check_results_petitions_path).to eq("/athchuingean/thoir-suil-air-toraidhean")
     end
 
-    it "routes GET /deisebau/:id/cyfrif to petitions#count" do
-      expect(get("/deisebau/1/cyfrif")).to route_to(controller: "petitions", action: "count", id: "1")
-      expect(count_petition_path("1")).to eq("/deisebau/1/cyfrif")
+    it "routes GET /athchuingean/:id/cunnt to petitions#count" do
+      expect(get("/athchuingean/1/cunnt")).to route_to(controller: "petitions", action: "count", id: "1")
+      expect(count_petition_path("1")).to eq("/athchuingean/1/cunnt")
     end
 
-    it "routes GET /deisebau/:id/casglu-cefnogaeth to petitions#gathering_support" do
-      expect(get("/deisebau/1/casglu-cefnogaeth")).to route_to(controller: "petitions", action: "gathering_support", id: "1")
-      expect(gathering_support_petition_path("1")).to eq("/deisebau/1/casglu-cefnogaeth")
+    it "routes GET /athchuingean/:id/cruinneachadh-taic to petitions#gathering_support" do
+      expect(get("/athchuingean/1/cruinneachadh-taic")).to route_to(controller: "petitions", action: "gathering_support", id: "1")
+      expect(gathering_support_petition_path("1")).to eq("/athchuingean/1/cruinneachadh-taic")
     end
 
-    it "routes GET /deisebau/:id/cymedroli-gwybodaeth to petitions#moderation_info" do
-      expect(get("/deisebau/1/cymedroli-gwybodaeth")).to route_to(controller: "petitions", action: "moderation_info", id: "1")
-      expect(moderation_info_petition_path("1")).to eq("/deisebau/1/cymedroli-gwybodaeth")
+    it "routes GET /athchuingean/:id/fiosrachadh-measaidh to petitions#moderation_info" do
+      expect(get("/athchuingean/1/fiosrachadh-measaidh")).to route_to(controller: "petitions", action: "moderation_info", id: "1")
+      expect(moderation_info_petition_path("1")).to eq("/athchuingean/1/fiosrachadh-measaidh")
     end
 
     describe "redirects" do
       it "GET /petitions" do
-        expect(get("/petitions")).to redirect_to("/deisebau", 308)
+        expect(get("/petitions")).to redirect_to("/athchuingean", 308)
       end
 
       it "GET /petitions/new" do
-        expect(get("/petitions/new")).to redirect_to("/deisebau/newydd", 308)
+        expect(get("/petitions/new")).to redirect_to("/athchuingean/ur", 308)
       end
 
       it "POST /petitions/new" do
-        expect(post("/petitions/new")).to redirect_to("/deisebau/newydd", 308)
+        expect(post("/petitions/new")).to redirect_to("/athchuingean/ur", 308)
       end
 
       it "GET /petitions/:id" do
-        expect(get("/petitions/1")).to redirect_to("/deisebau/1", 308)
+        expect(get("/petitions/1")).to redirect_to("/athchuingean/1", 308)
       end
 
       it "GET /petitions/check" do
-        expect(get("/petitions/check")).to redirect_to("/deisebau/gwirio", 308)
+        expect(get("/petitions/check")).to redirect_to("/athchuingean/thoir-suil", 308)
       end
 
-      it "GET /petitions/check_results" do
-        expect(get("/petitions/check_results")).to redirect_to("/deisebau/gwirio_canlyniadau", 308)
+      it "GET /petitions/check-results" do
+        expect(get("/petitions/check-results")).to redirect_to("/athchuingean/thoir-suil-air-toraidhean", 308)
       end
 
       it "GET /petitions/:id/count" do
-        expect(get("/petitions/1/count")).to redirect_to("/deisebau/1/cyfrif", 308)
+        expect(get("/petitions/1/count")).to redirect_to("/athchuingean/1/cunnt", 308)
       end
 
       it "GET /petitions/thank-you" do
-        expect(get("/petitions/thank-you")).to redirect_to("/deisebau/diolch", 308)
+        expect(get("/petitions/thank-you")).to redirect_to("/athchuingean/tapadh-leibh", 308)
       end
 
       it "GET /petitions/:id/gathering-support" do
-        expect(get("/petitions/1/gathering-support")).to redirect_to("/deisebau/1/casglu-cefnogaeth", 308)
+        expect(get("/petitions/1/gathering-support")).to redirect_to("/athchuingean/1/cruinneachadh-taic", 308)
       end
 
       it "GET /petitions/:id/moderation-info" do
-        expect(get("/petitions/1/moderation-info")).to redirect_to("/deisebau/1/cymedroli-gwybodaeth", 308)
+        expect(get("/petitions/1/moderation-info")).to redirect_to("/athchuingean/1/fiosrachadh-measaidh", 308)
       end
     end
   end

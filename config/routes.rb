@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
     scope '/petitions', controller: 'petitions' do
       get  '/check',         action: 'check',         as: :check_petitions
-      get  '/check_results', action: 'check_results', as: :check_results_petitions
+      get  '/check-results', action: 'check_results', as: :check_results_petitions
       post '/new',           action: 'create',        as: :create_petition
       get  '/thank-you',     action: 'thank_you',     as: :thank_you_petitions
 

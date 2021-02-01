@@ -94,155 +94,155 @@ RSpec.describe "routes for signatures", type: :routes do
     end
 
     describe "redirects" do
-      it "GET /deisebau/1/llofnodion/newydd" do
-        expect(get("/deisebau/1/llofnodion/newydd")).to redirect_to("/petitions/1/signatures/new", 308)
+      it "GET /athchuingean/1/ainmean-sgriobhte/ur" do
+        expect(get("/athchuingean/1/ainmean-sgriobhte/ur")).to redirect_to("/petitions/1/signatures/new", 308)
       end
 
-      it "POST /deisebau/1/noddwyr/newydd" do
-        expect(post("/deisebau/1/llofnodion/newydd")).to redirect_to("/petitions/1/signatures/new", 308)
+      it "POST /athchuingean/1/luchd-taic/ur" do
+        expect(post("/athchuingean/1/ainmean-sgriobhte/ur")).to redirect_to("/petitions/1/signatures/new", 308)
       end
 
-      it "POST /deisebau/1/llofnodion" do
-        expect(post("/deisebau/1/llofnodion")).to redirect_to("/petitions/1/signatures", 308)
+      it "POST /athchuingean/1/ainmean-sgriobhte" do
+        expect(post("/athchuingean/1/ainmean-sgriobhte")).to redirect_to("/petitions/1/signatures", 308)
       end
 
-      it "GET /deisebau/1/llofnodion/diolch" do
-        expect(get("/deisebau/1/llofnodion/diolch")).to redirect_to("/petitions/1/signatures/thank-you", 308)
+      it "GET /athchuingean/1/ainmean-sgriobhte/tapadh-leibh" do
+        expect(get("/athchuingean/1/ainmean-sgriobhte/tapadh-leibh")).to redirect_to("/petitions/1/signatures/thank-you", 308)
       end
 
-      it "GET /llofnodion/1/gwirio" do
-        expect(get("/llofnodion/1/gwirio?token=abcdef1234567890")).to redirect_to("/signatures/1/verify?token=abcdef1234567890", 308)
+      it "GET /ainmean-sgriobhte/1/dearbhaich" do
+        expect(get("/ainmean-sgriobhte/1/dearbhaich?token=abcdef1234567890")).to redirect_to("/signatures/1/verify?token=abcdef1234567890", 308)
       end
 
-      it "GET /llofnodion/1/dad-danysgrifio" do
-        expect(get("/llofnodion/1/dad-danysgrifio?token=abcdef1234567890")).to redirect_to("/signatures/1/unsubscribe?token=abcdef1234567890", 308)
+      it "GET /ainmean-sgriobhte/1/di-chlaradh" do
+        expect(get("/ainmean-sgriobhte/1/di-chlaradh?token=abcdef1234567890")).to redirect_to("/signatures/1/unsubscribe?token=abcdef1234567890", 308)
       end
 
-      it "GET /llofnodion/1/llofnodwyd" do
-        expect(get("/llofnodion/1/llofnodwyd?token=abcdef1234567890")).to redirect_to("/signatures/1/signed?token=abcdef1234567890", 308)
+      it "GET /ainmean-sgriobhte/1/air-a-shoidhnigeadh" do
+        expect(get("/ainmean-sgriobhte/1/air-a-shoidhnigeadh?token=abcdef1234567890")).to redirect_to("/signatures/1/signed?token=abcdef1234567890", 308)
       end
     end
   end
 
   describe "Gaelic", gaelic: true do
     # Routes nested to /petition/:petition_id
-    it "doesn't route GET /deisebau/1/llofnodion" do
-      expect(get("/deisebau/1/llofnodion")).not_to be_routable
+    it "doesn't route GET /athchuingean/1/ainmean-sgriobhte" do
+      expect(get("/athchuingean/1/ainmean-sgriobhte")).not_to be_routable
     end
 
-    it "routes GET /deisebau/1/llofnodion/newydd to signatures#new" do
-      expect(get("/deisebau/1/llofnodion/newydd")).to route_to("signatures#new", petition_id: "1")
+    it "routes GET /athchuingean/1/ainmean-sgriobhte/ur to signatures#new" do
+      expect(get("/athchuingean/1/ainmean-sgriobhte/ur")).to route_to("signatures#new", petition_id: "1")
     end
 
-    it "routes POST /deisebau/1/llofnodion/newydd to signatures#confirm" do
-      expect(post("/deisebau/1/llofnodion/newydd")).to route_to("signatures#confirm", petition_id: "1")
+    it "routes POST /athchuingean/1/ainmean-sgriobhte/ur to signatures#confirm" do
+      expect(post("/athchuingean/1/ainmean-sgriobhte/ur")).to route_to("signatures#confirm", petition_id: "1")
     end
 
-    it "routes POST /deisebau/1/llofnodion to signatures#create" do
-      expect(post("/deisebau/1/llofnodion")).to route_to("signatures#create", petition_id: "1")
+    it "routes POST /athchuingean/1/ainmean-sgriobhte to signatures#create" do
+      expect(post("/athchuingean/1/ainmean-sgriobhte")).to route_to("signatures#create", petition_id: "1")
     end
 
-    it "routes GET /deisebau/1/llofnodion/diolch to signatures#thank_you" do
-      expect(get("/deisebau/1/llofnodion/diolch")).to route_to("signatures#thank_you", petition_id: "1")
+    it "routes GET /athchuingean/1/ainmean-sgriobhte/tapadh-leibh to signatures#thank_you" do
+      expect(get("/athchuingean/1/ainmean-sgriobhte/tapadh-leibh")).to route_to("signatures#thank_you", petition_id: "1")
     end
 
-    it "doesn't route GET /deisebau/1/llofnodion/2" do
-      expect(get("/deisebau/1/llofnodion/2")).not_to be_routable
+    it "doesn't route GET /athchuingean/1/ainmean-sgriobhte/2" do
+      expect(get("/athchuingean/1/ainmean-sgriobhte/2")).not_to be_routable
     end
 
-    it "doesn't route GET /deisebau/1/llofnodion/2/golygu" do
-      expect(get("/deisebau/1/llofnodion/2/golygu")).not_to be_routable
+    it "doesn't route GET /athchuingean/1/ainmean-sgriobhte/2/deasaich" do
+      expect(get("/athchuingean/1/ainmean-sgriobhte/2/deasaich")).not_to be_routable
     end
 
-    it "doesn't route PATCH /deisebau/1/llofnodion/2" do
-      expect(patch("/deisebau/1/llofnodion/2")).not_to be_routable
+    it "doesn't route PATCH /athchuingean/1/ainmean-sgriobhte/2" do
+      expect(patch("/athchuingean/1/ainmean-sgriobhte/2")).not_to be_routable
     end
 
-    it "doesn't route PUT /deisebau/1/llofnodion/2" do
-      expect(put("/deisebau/1/llofnodion/2")).not_to be_routable
+    it "doesn't route PUT /athchuingean/1/ainmean-sgriobhte/2" do
+      expect(put("/athchuingean/1/ainmean-sgriobhte/2")).not_to be_routable
     end
 
-    it "doesn't route DELETE /deisebau/1/llofnodion/2" do
-      expect(delete("/deisebau/1/llofnodion/2")).not_to be_routable
+    it "doesn't route DELETE /athchuingean/1/ainmean-sgriobhte/2" do
+      expect(delete("/athchuingean/1/ainmean-sgriobhte/2")).not_to be_routable
     end
 
     # un-nested routes
-    it "routes GET /llofnodion/1/gwirio to signatures#verify" do
-      expect(get("/llofnodion/1/gwirio?token=abcdef1234567890")).
+    it "routes GET /ainmean-sgriobhte/1/dearbhaich to signatures#verify" do
+      expect(get("/ainmean-sgriobhte/1/dearbhaich?token=abcdef1234567890")).
         to route_to("signatures#verify", id: "1", token: "abcdef1234567890")
 
-      expect(verify_signature_path("1", token: "abcdef1234567890")).to eq("/llofnodion/1/gwirio?token=abcdef1234567890")
+      expect(verify_signature_path("1", token: "abcdef1234567890")).to eq("/ainmean-sgriobhte/1/dearbhaich?token=abcdef1234567890")
     end
 
-    it "routes GET /llofnodion/1/dad-danysgrifio to signatures#unsubscribe" do
-      expect(get("/llofnodion/1/dad-danysgrifio?token=abcdef1234567890")).
+    it "routes GET /ainmean-sgriobhte/1/di-chlaradh to signatures#unsubscribe" do
+      expect(get("/ainmean-sgriobhte/1/di-chlaradh?token=abcdef1234567890")).
         to route_to("signatures#unsubscribe", id: "1", token: "abcdef1234567890")
 
-      expect(unsubscribe_signature_path("1", token: "abcdef1234567890")).to eq("/llofnodion/1/dad-danysgrifio?token=abcdef1234567890")
+      expect(unsubscribe_signature_path("1", token: "abcdef1234567890")).to eq("/ainmean-sgriobhte/1/di-chlaradh?token=abcdef1234567890")
     end
 
-    it "routes GET /llofnodion/1/llofnodwyd to signatures#signed" do
-      expect(get("/llofnodion/1/llofnodwyd?token=abcdef1234567890")).
+    it "routes GET /ainmean-sgriobhte/1/air-a-shoidhnigeadh to signatures#signed" do
+      expect(get("/ainmean-sgriobhte/1/air-a-shoidhnigeadh?token=abcdef1234567890")).
         to route_to("signatures#signed", id: "1", token: "abcdef1234567890")
 
-      expect(signed_signature_path("1", token: "abcdef1234567890")).to eq("/llofnodion/1/llofnodwyd?token=abcdef1234567890")
+      expect(signed_signature_path("1", token: "abcdef1234567890")).to eq("/ainmean-sgriobhte/1/air-a-shoidhnigeadh?token=abcdef1234567890")
     end
 
-    it "doesn't route GET /llofnodion" do
-      expect(get("/llofnodion")).not_to be_routable
+    it "doesn't route GET /ainmean-sgriobhte" do
+      expect(get("/ainmean-sgriobhte")).not_to be_routable
     end
 
-    it "doesn't route GET /llofnodion/newydd" do
-      expect(get("/llofnodion/newydd")).not_to be_routable
+    it "doesn't route GET /ainmean-sgriobhte/ur" do
+      expect(get("/ainmean-sgriobhte/ur")).not_to be_routable
     end
 
-    it "doesn't route POST /llofnodion" do
-      expect(post("/llofnodion")).not_to be_routable
+    it "doesn't route POST /ainmean-sgriobhte" do
+      expect(post("/ainmean-sgriobhte")).not_to be_routable
     end
 
-    it "doesn't route GET /llofnodion/1" do
-      expect(post("/llofnodion/2")).not_to be_routable
+    it "doesn't route GET /ainmean-sgriobhte/1" do
+      expect(post("/ainmean-sgriobhte/2")).not_to be_routable
     end
 
-    it "doesn't route GET /llofnodion/1/golygu" do
-      expect(post("/llofnodion/2/golygu")).not_to be_routable
+    it "doesn't route GET /ainmean-sgriobhte/1/deasaich" do
+      expect(post("/ainmean-sgriobhte/2/deasaich")).not_to be_routable
     end
 
-    it "doesn't route PATCH /llofnodion/1" do
-      expect(patch("/llofnodion/2")).not_to be_routable
+    it "doesn't route PATCH /ainmean-sgriobhte/1" do
+      expect(patch("/ainmean-sgriobhte/2")).not_to be_routable
     end
 
-    it "doesn't route DELETE /llofnodion/1" do
-      expect(delete("/llofnodion/2")).not_to be_routable
+    it "doesn't route DELETE /ainmean-sgriobhte/1" do
+      expect(delete("/ainmean-sgriobhte/2")).not_to be_routable
     end
 
     describe "redirects" do
       it "GET /petitions/1/signatures/new" do
-        expect(get("/petitions/1/signatures/new")).to redirect_to("/deisebau/1/llofnodion/newydd", 308)
+        expect(get("/petitions/1/signatures/new")).to redirect_to("/athchuingean/1/ainmean-sgriobhte/ur", 308)
       end
 
       it "POST /petitions/1/signatures/new" do
-        expect(post("/petitions/1/signatures/new")).to redirect_to("/deisebau/1/llofnodion/newydd", 308)
+        expect(post("/petitions/1/signatures/new")).to redirect_to("/athchuingean/1/ainmean-sgriobhte/ur", 308)
       end
 
       it "POST /petitions/1/signatures" do
-        expect(post("/petitions/1/signatures")).to redirect_to("/deisebau/1/llofnodion", 308)
+        expect(post("/petitions/1/signatures")).to redirect_to("/athchuingean/1/ainmean-sgriobhte", 308)
       end
 
       it "GET /petitions/1/signatures/thank-you" do
-        expect(get("/petitions/1/signatures/thank-you")).to redirect_to("/deisebau/1/llofnodion/diolch", 308)
+        expect(get("/petitions/1/signatures/thank-you")).to redirect_to("/athchuingean/1/ainmean-sgriobhte/tapadh-leibh", 308)
       end
 
       it "GET /signatures/1/verify" do
-        expect(get("/signatures/1/verify?token=abcdef1234567890")).to redirect_to("/llofnodion/1/gwirio?token=abcdef1234567890", 308)
+        expect(get("/signatures/1/verify?token=abcdef1234567890")).to redirect_to("/ainmean-sgriobhte/1/dearbhaich?token=abcdef1234567890", 308)
       end
 
       it "GET /signatures/1/unsubscribe" do
-        expect(get("/signatures/1/unsubscribe?token=abcdef1234567890")).to redirect_to("/llofnodion/1/dad-danysgrifio?token=abcdef1234567890", 308)
+        expect(get("/signatures/1/unsubscribe?token=abcdef1234567890")).to redirect_to("/ainmean-sgriobhte/1/di-chlaradh?token=abcdef1234567890", 308)
       end
 
       it "GET /signatures/1/signed" do
-        expect(get("/signatures/1/signed?token=abcdef1234567890")).to redirect_to("/llofnodion/1/llofnodwyd?token=abcdef1234567890", 308)
+        expect(get("/signatures/1/signed?token=abcdef1234567890")).to redirect_to("/ainmean-sgriobhte/1/air-a-shoidhnigeadh?token=abcdef1234567890", 308)
       end
     end
   end
