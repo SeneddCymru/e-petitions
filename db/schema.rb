@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_162617) do
+ActiveRecord::Schema.define(version: 2021_02_03_114826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -218,6 +218,9 @@ ActiveRecord::Schema.define(version: 2021_02_01_162617) do
     t.index ["petition_id"], name: "index_notes_on_petition_id", unique: true
   end
 
+  create_table "pe_numbers", force: :cascade do |t|
+  end
+
   create_table "petition_emails", force: :cascade do |t|
     t.bigint "petition_id"
     t.string "sent_by"
@@ -283,6 +286,7 @@ ActiveRecord::Schema.define(version: 2021_02_01_162617) do
     t.datetime "anonymized_at"
     t.integer "topics", default: [], null: false, array: true
     t.boolean "collect_signatures", default: false, null: false
+    t.bigint "pe_number_id"
     t.index "((last_signed_at > signature_count_validated_at))", name: "index_petitions_on_validated_at_and_signed_at"
     t.index "to_tsvector('english'::regconfig, (action_en)::text)", name: "index_petitions_on_action_en", using: :gin
     t.index "to_tsvector('english'::regconfig, (background_en)::text)", name: "index_petitions_on_background_en", using: :gin
@@ -298,6 +302,7 @@ ActiveRecord::Schema.define(version: 2021_02_01_162617) do
     t.index ["last_signed_at"], name: "index_petitions_on_last_signed_at"
     t.index ["locked_by_id"], name: "index_petitions_on_locked_by_id"
     t.index ["moderation_threshold_reached_at", "moderation_lag"], name: "index_petitions_on_mt_reached_at_and_moderation_lag"
+    t.index ["pe_number_id"], name: "index_petitions_on_pe_number_id"
     t.index ["referral_threshold_reached_at"], name: "index_petitions_on_referral_threshold_reached_at"
     t.index ["referred_at", "created_at"], name: "index_petitions_on_referred_at_and_created_at", order: { created_at: :desc }
     t.index ["signature_count", "state"], name: "index_petitions_on_signature_count_and_state"
@@ -520,6 +525,7 @@ ActiveRecord::Schema.define(version: 2021_02_01_162617) do
   add_foreign_key "notes", "petitions", on_delete: :cascade
   add_foreign_key "petition_emails", "petitions", on_delete: :cascade
   add_foreign_key "petition_statistics", "petitions"
+  add_foreign_key "petitions", "pe_numbers", on_delete: :cascade
   add_foreign_key "rejections", "petitions", on_delete: :cascade
   add_foreign_key "rejections", "rejection_reasons", column: "code", primary_key: "code"
   add_foreign_key "signatures", "petitions", on_delete: :cascade
