@@ -8,11 +8,13 @@
     <%= t(:"ui.petitions.action.help_html") %>
   </div>
 
-  <section class="create-warning" aria-labelledby="just-so-you-know-heading">
-    <h2 id="just-so-you-know-heading"><%= t(:"ui.petitions.need_sponsors_later_heading") %></h2>
-    <span aria-hidden="true"><%= Site.minimum_number_of_sponsors %></span>
-    <p><%= t(:"ui.petitions.need_sponsors_later", count: Site.minimum_number_of_sponsors) %></p>
-  </section>
+  <% if Site.collecting_sponsors? %>
+    <section class="create-warning" aria-labelledby="just-so-you-know-heading">
+      <h2 id="just-so-you-know-heading"><%= t(:"ui.petitions.need_sponsors_later_heading") %></h2>
+      <span aria-hidden="true"><%= Site.minimum_number_of_sponsors %></span>
+      <p><%= t(:"ui.petitions.need_sponsors_later", count: Site.minimum_number_of_sponsors) %></p>
+    </section>
+  <% end %>
 
   <%= t(:"ui.application.continue_html") %>
 </form>
