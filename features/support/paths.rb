@@ -8,6 +8,12 @@ module NavigationHelpers
   def url_to(page_name)
     case page_name
 
+    when /^the English home\s?page$/
+      home_en_url
+
+    when /^the Gaelic home\s?page$/
+      home_gd_url
+
     when /^the home\s?page$/
       home_url
 

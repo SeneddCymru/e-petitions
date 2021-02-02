@@ -649,7 +649,7 @@ class Petition < ActiveRecord::Base
   end
 
   def translated?
-    english_translated? && gaelic_translated?
+    english_translated? && gaelic_translated? || gaelic_disabled?
   end
 
   def english_translated?

@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_084351) do
+ActiveRecord::Schema.define(version: 2021_02_01_162617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_084351) do
     t.index ["last_name", "first_name"], name: "index_admin_users_on_last_name_and_first_name"
   end
 
-  create_table "constituencies", id: :string, limit: 9, force: :cascade do |t|
+  create_table "constituencies", id: { type: :string, limit: 9 }, force: :cascade do |t|
     t.string "region_id", limit: 9, null: false
     t.string "name_en", limit: 100, null: false
     t.string "name_gd", limit: 100, null: false
@@ -224,7 +224,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_084351) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "subject_en", null: false
-    t.string "subject_gd", null: false
+    t.string "subject_gd"
     t.text "body_en"
     t.text "body_gd"
     t.index ["petition_id"], name: "index_petition_emails_on_petition_id"
@@ -305,7 +305,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_084351) do
     t.index ["topics"], name: "index_petitions_on_topics", opclass: :gin__int_ops, using: :gin
   end
 
-  create_table "postcodes", id: :string, limit: 7, force: :cascade do |t|
+  create_table "postcodes", id: { type: :string, limit: 7 }, force: :cascade do |t|
     t.string "constituency_id", limit: 9, null: false
     t.index ["constituency_id"], name: "index_postcodes_on_constituency_id"
   end
@@ -335,7 +335,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_084351) do
     t.integer "sponsor_rate", default: 5, null: false
   end
 
-  create_table "regions", id: :string, limit: 9, force: :cascade do |t|
+  create_table "regions", id: { type: :string, limit: 9 }, force: :cascade do |t|
     t.string "name_en", limit: 100, null: false
     t.string "name_gd", limit: 100, null: false
     t.datetime "created_at", null: false
@@ -348,7 +348,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_084351) do
     t.string "code", limit: 30, null: false
     t.string "title", limit: 100, null: false
     t.string "description_en", limit: 2000, null: false
-    t.string "description_gd", limit: 2000, null: false
+    t.string "description_gd", limit: 2000
     t.boolean "hidden", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -474,9 +474,9 @@ ActiveRecord::Schema.define(version: 2021_01_27_084351) do
 
   create_table "topics", force: :cascade do |t|
     t.string "code_en", limit: 100, null: false
-    t.string "code_gd", limit: 100, null: false
+    t.string "code_gd", limit: 100
     t.string "name_en", limit: 100, null: false
-    t.string "name_gd", limit: 100, null: false
+    t.string "name_gd", limit: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code_en"], name: "index_topics_on_code_en", unique: true

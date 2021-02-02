@@ -8,7 +8,11 @@ class Rejection < ActiveRecord::Base
 
   validates :petition, presence: true
   validates :code, presence: true, inclusion: { in: :rejection_codes }
-  validates :details_en, :details_gd, length: { maximum: 4000 }, allow_blank: true
+  validates :details_en, length: { maximum: 4000 }, allow_blank: true
+
+  with_options unless: :gaelic_disabled? do
+    validates :details_gd, length: { maximum: 4000 }, allow_blank: true
+  end
 
   attr_writer :rejected_at
 

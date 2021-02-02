@@ -10,7 +10,10 @@ class RejectionReason < ActiveRecord::Base
 
   with_options presence: true do
     validates :description_en, length: { maximum: 1000 }
-    validates :description_gd, length: { maximum: 1000 }
+
+    with_options unless: :gaelic_disabled? do
+      validates :description_gd, length: { maximum: 1000 }
+    end
   end
 
   before_destroy do

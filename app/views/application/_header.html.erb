@@ -1,6 +1,6 @@
 <header role="banner">
   <div class="wrapper">
-    <% unless request.nil? %>
+    <% if show_language_switcher? %>
       <%= language_switcher_tag %>
     <% end %>
 

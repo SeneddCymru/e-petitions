@@ -5,13 +5,15 @@
   <div class="column-two-thirds extra-gutter">
     <h2 class="petition-action-heading">Edit petition</h2>
 
-    <p class="tabs">
-      <% if petition_locale == :"en-GB" %>
-        English | <%= link_to "Gaelic", admin_petition_details_path(locale: "gd-GB") %>
-      <% else %>
-        <%= link_to "English", admin_petition_details_path(locale: "en-GB") %> | Gaelic
-      <% end %>
-    </p>
+    <% unless Site.disable_gaelic_website? %>
+      <p class="tabs">
+        <% if petition_locale == :"en-GB" %>
+          English | <%= link_to "Gaelic", admin_petition_details_path(locale: "gd-GB") %>
+        <% else %>
+          <%= link_to "English", admin_petition_details_path(locale: "en-GB") %> | Gaelic
+        <% end %>
+      </p>
+    <% end %>
 
     <%= form_for @petition, url: admin_petition_details_path(@petition), method: :patch do |f| %>
       <%= hidden_field_tag :locale, petition_locale %>

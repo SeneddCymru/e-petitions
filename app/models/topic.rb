@@ -7,8 +7,11 @@ class Topic < ActiveRecord::Base
   translate :code, :name
 
   with_options presence: true, uniqueness: true do
-    validates :code_en, :code_gd, length: { maximum: 100 }
-    validates :name_en, :name_gd, length: { maximum: 100 }
+    validates :code_en, :name_en, length: { maximum: 100 }
+
+    with_options unless: :gaelic_disabled? do
+      validates :code_gd, :name_gd, length: { maximum: 100 }
+    end
   end
 
   after_destroy :remove_topic_from_petitions

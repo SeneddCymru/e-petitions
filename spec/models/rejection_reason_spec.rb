@@ -5,7 +5,7 @@ RSpec.describe RejectionReason, type: :model do
     it { is_expected.to have_db_column(:code).of_type(:string).with_options(limit: 30, null: false) }
     it { is_expected.to have_db_column(:title).of_type(:string).with_options(limit: 100, null: false) }
     it { is_expected.to have_db_column(:description_en).of_type(:string).with_options(limit: 2000, null: false) }
-    it { is_expected.to have_db_column(:description_gd).of_type(:string).with_options(limit: 2000, null: false) }
+    it { is_expected.to have_db_column(:description_gd).of_type(:string).with_options(limit: 2000) }
     it { is_expected.to have_db_column(:hidden).of_type(:boolean).with_options(null: false, default: false) }
     it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }

@@ -37,6 +37,10 @@ namespace :errors do
       def holding_page?
         false
       end
+
+      def show_language_switcher?
+        false
+      end
     end
 
     lookup_context = ActionView::LookupContext.new('app/views')
