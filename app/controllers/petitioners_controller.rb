@@ -3,6 +3,7 @@ class PetitionersController < SponsorsController
 
   def verify
     @petition.validate_creator!
+    @petition.increment_signature_count!
 
     redirect_to moderation_info_petition_url(@petition)
   end
