@@ -5,7 +5,13 @@ class PetitionersController < SponsorsController
     @petition.validate_creator!
     @petition.increment_signature_count!
 
-    redirect_to moderation_info_petition_url(@petition)
+    redirect_to thank_you_petitioner_url(@signature)
+  end
+
+  def thank_you
+    respond_to do |format|
+      format.html
+    end
   end
 
   private
@@ -18,6 +24,11 @@ class PetitionersController < SponsorsController
 
   def retrieve_signature
     @signature = Signature.find(signature_id)
+    @petition = @signature.petition
+  end
+
+  def retrieve_petition
+    @signature = Signature.find(params[:id])
     @petition = @signature.petition
   end
 end
