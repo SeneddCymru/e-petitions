@@ -331,12 +331,12 @@ RSpec.describe Signature, type: :model do
   describe "scopes" do
     let(:week_ago) { 1.week.ago }
     let(:two_days_ago) { 2.days.ago }
-    let!(:petition) { FactoryBot.create(:petition) }
-    let!(:signature1) { FactoryBot.create(:signature, :email => "person1@example.com", :petition => petition, :state => Signature::VALIDATED_STATE, :notify_by_email => true) }
-    let!(:signature2) { FactoryBot.create(:signature, :email => "person2@example.com", :petition => petition, :state => Signature::PENDING_STATE, :notify_by_email => true) }
-    let!(:signature3) { FactoryBot.create(:signature, :email => "person3@example.com", :petition => petition, :state => Signature::VALIDATED_STATE, :notify_by_email => false) }
-    let!(:signature4) { FactoryBot.create(:signature, :email => "person4@example.com", :petition => petition, :state => Signature::INVALIDATED_STATE, :notify_by_email => false) }
-    let!(:signature5) { FactoryBot.create(:signature, :email => "person4@example.com", :petition => petition, :state => Signature::FRAUDULENT_STATE, :notify_by_email => false) }
+    let!(:petition) { FactoryBot.create(:open_petition) }
+    let!(:signature1) { FactoryBot.create(:validated_signature, email: "person1@example.com", petition: petition, notify_by_email: true) }
+    let!(:signature2) { FactoryBot.create(:pending_signature, email: "person2@example.com", petition: petition, notify_by_email: true) }
+    let!(:signature3) { FactoryBot.create(:validated_signature, email: "person3@example.com", petition: petition, notify_by_email: false) }
+    let!(:signature4) { FactoryBot.create(:invalidated_signature, email: "person4@example.com", petition: petition, notify_by_email: false) }
+    let!(:signature5) { FactoryBot.create(:fraudulent_signature, email: "person4@example.com", petition: petition, notify_by_email: false) }
 
     describe "validated" do
       it "returns only validated signatures" do
