@@ -29,6 +29,7 @@ FactoryBot.define do
       creator_attributes { {} }
       sponsors_signed { nil }
       sponsor_count { Site.minimum_number_of_sponsors }
+      increment { true }
     end
 
     sequence(:action) { |n| "Petition #{n}" }
@@ -43,7 +44,16 @@ FactoryBot.define do
     end
 
     after(:build) do |petition, evaluator|
-      petition.creator ||= evaluator.creator || build(:validated_signature, petition: petition, creator: true)
+      unless petition.creator
+        petition.creator = evaluator.creator
+
+        if petition.pending?
+          petition.creator ||= build(:pending_signature, petition: petition, creator: true)
+        else
+          petition.creator ||= build(:validated_signature, petition: petition, creator: true)
+        end
+      end
+
       petition.creator.assign_attributes(evaluator.creator_attributes)
 
       if evaluator.creator_name
@@ -54,14 +64,21 @@ FactoryBot.define do
         petition.creator.email = evaluator.creator_email
       end
 
+      if petition.last_signed_at?
+        petition.creator.validated_at = petition.last_signed_at
+      end
+
       if evaluator.admin_notes
         petition.build_note details: evaluator.admin_notes
       end
     end
 
     after(:create) do |petition, evaluator|
-      if petition.signature_count.zero?
-        petition.increment!(:signature_count) if petition.creator.validated?
+      if petition.signature_count.zero? && evaluator.increment
+        if petition.creator.validated?
+          petition.last_signed_at = nil
+          petition.increment_signature_count!(petition.creator.validated_at)
+        end
       end
 
       unless evaluator.sponsors_signed.nil?
@@ -387,13 +404,6 @@ FactoryBot.define do
       signature.petition ||= build(:petition, creator: (signature.creator ? signature : nil))
       build(:contact, signature: signature) if signature.creator?
     end
-
-    after(:create) do |signature, evaluator|
-      if signature.petition && signature.validated?
-        signature.petition.increment!(:signature_count)
-        signature.increment!(:number)
-      end
-    end
   end
 
   factory :pending_signature, :parent => :signature do
@@ -412,9 +422,19 @@ FactoryBot.define do
     trait :just_signed do
       seen_signed_confirmation_page { false }
     end
+
+    transient {
+      increment { true }
+    }
+
+    after(:create) do |signature, evaluator|
+      if evaluator.increment && signature.petition
+        signature.petition.increment_signature_count!
+      end
+    end
   end
 
-  factory :invalidated_signature, :parent => :validated_signature do
+  factory :invalidated_signature, :parent => :pending_signature do
     state { Signature::INVALIDATED_STATE }
     invalidated_at { Time.current }
   end

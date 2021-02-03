@@ -461,10 +461,6 @@ class Signature < ActiveRecord::Base
       arel_table[Arel.star].count
     end
 
-    def max_validated_at
-      arel_table[:validated_at].maximum
-    end
-
     def normalize_email(email)
       "#{normalize_user(email)}@#{normalize_domain(email)}"
     end
