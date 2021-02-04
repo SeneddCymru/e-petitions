@@ -39,13 +39,13 @@ module NavigationHelpers
       new_petition_url
 
     when /^the petition page$/
-      petition_url(@petition.id)
+      petition_url(@petition)
 
     when /^the petition page for "([^\"]*)"$/
       petition_url(Petition.find_by(action: $1))
 
     when /^the new signature page$/
-      new_petition_signature_url(@petition.id)
+      new_petition_signature_url(@petition)
 
     when /^the new signature page for "([^\"]*)"$/
       new_petition_signature_url(Petition.find_by(action: $1))
