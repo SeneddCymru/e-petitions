@@ -183,7 +183,7 @@ Then(/^I should see my search query already filled in as the action of the petit
 end
 
 Then(/^I can click on a link to return to the petition$/) do
-  slug = ('PE%05d' % @petition.pe_number_id)
+  slug = ('PE%04d' % @petition.pe_number_id)
   expect(page).to have_css("a[href*='/petitions/#{slug}']")
 end
 

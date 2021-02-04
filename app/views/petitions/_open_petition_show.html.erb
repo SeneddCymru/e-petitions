@@ -4,7 +4,7 @@
 
 <%= cache_for :petition do %>
   <h1>
-    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open")%> - <%= ('PE%05d' % @petition.pe_number_id) %></span>
+    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open")%> - <%= ('PE%04d' % @petition.pe_number_id) %></span>
     <%= petition.action %>
   </h1>
 

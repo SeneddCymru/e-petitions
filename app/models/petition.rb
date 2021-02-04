@@ -149,9 +149,9 @@ class Petition < ActiveRecord::Base
   class << self
     def find_by_param!(param)
       case param
-      when /\APE(\d{5,7})\z/
+      when /\APE(\d{4,7})\z/
         find_by!(pe_number_id: $1)
-      when /\APP(\d{5,7})\z/
+      when /\APP(\d{4,7})\z/
         find_by!(id: $1)
       else
         find_by!(id: param)
@@ -487,7 +487,7 @@ class Petition < ActiveRecord::Base
   end
 
   def to_param
-    published? ? ('PE%05d' % pe_number_id) : ('PP%05d' % id)
+    published? ? ('PE%04d' % pe_number_id) : ('PP%04d' % id)
   end
 
   def statistics
