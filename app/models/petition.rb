@@ -495,7 +495,7 @@ class Petition < ActiveRecord::Base
   end
 
   def to_param
-    published? ? ('PE%05d' % pe_number_id) : ('PP%05d' % id)
+    published? ? ('PE%04d' % pe_number_id) : ('PP%04d' % id)
   end
 
   def statistics

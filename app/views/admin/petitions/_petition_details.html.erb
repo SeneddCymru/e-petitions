@@ -65,11 +65,11 @@
   <dd><%= link_to petition_path(@petition), petition_url(@petition), target: "_blank" %></dd>
 
   <dt>PP Number</dt>
-  <dd><%= ('PP%05d' % @petition.id) %></dd>
+  <dd><%= ('PP%04d' % @petition.id) %></dd>
 
   <% unless @petition.pe_number_id.nil? %>
     <dt>PE Number</dt>
-    <dd><%= ('PE%05d' % @petition.pe_number_id) %></dd>
+    <dd><%= ('PE%04d' % @petition.pe_number_id) %></dd>
   <% end %>
 
   <% if @petition.tags? %>
