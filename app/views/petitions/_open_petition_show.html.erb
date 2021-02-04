@@ -4,7 +4,7 @@
 
 <%= cache_for :petition do %>
   <h1>
-    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open") %></span>
+    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open")%> - <%= @petition.to_param %></span>
     <%= petition.action %>
   </h1>
 
