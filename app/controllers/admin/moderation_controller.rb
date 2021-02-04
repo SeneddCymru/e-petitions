@@ -13,7 +13,7 @@ class Admin::ModerationController < Admin::AdminController
   private
 
   def fetch_petition
-    @petition = Petition.todo_list.find(params[:petition_id])
+    @petition = Petition.todo_list.find_by_param!(params[:petition_id])
   end
 
   def moderation_params

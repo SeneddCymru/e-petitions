@@ -132,7 +132,7 @@ class Admin::SignaturesController < Admin::AdminController
   end
 
   def fetch_petition
-    @petition = Petition.find(params[:petition_id])
+    @petition = Petition.find_by_param!(params[:petition_id])
   end
 
   def scope

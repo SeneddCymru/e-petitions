@@ -28,7 +28,7 @@ class Admin::DebateOutcomesController < Admin::AdminController
   private
 
   def fetch_petition
-    @petition = Petition.debateable.find(params[:petition_id])
+    @petition = Petition.debateable.find_by_param!(params[:petition_id])
   end
 
   def fetch_debate_outcome

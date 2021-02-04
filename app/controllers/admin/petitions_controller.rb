@@ -70,7 +70,7 @@ class Admin::PetitionsController < Admin::AdminController
   end
 
   def fetch_petition
-    @petition = Petition.find(params[:id])
+    @petition = Petition.find_by_param!(params[:id])
   end
 
   def set_back_location

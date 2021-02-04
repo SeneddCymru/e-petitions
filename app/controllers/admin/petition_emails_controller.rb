@@ -64,7 +64,7 @@ class Admin::PetitionEmailsController < Admin::AdminController
   private
 
   def fetch_petition
-    @petition = Petition.moderated.find(params[:petition_id])
+    @petition = Petition.moderated.find_by_param!(params[:petition_id])
   end
 
   def build_email

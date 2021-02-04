@@ -21,7 +21,7 @@ class SponsorsController < SignaturesController
   private
 
   def retrieve_petition
-    @petition = Petition.not_hidden.find(petition_id)
+    @petition = Petition.not_hidden.find_by_param!(petition_id)
 
     if @petition.flagged?
       raise ActiveRecord::RecordNotFound, "Unable to find Petition with id: #{petition_id}"
