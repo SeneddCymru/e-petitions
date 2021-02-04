@@ -85,7 +85,7 @@ class PetitionsController < LocalizedController
   protected
 
   def petition_id
-    Integer(params[:id])
+    params[:id]
   rescue ArgumentError => e
     raise ActionController::BadRequest, "Invalid petition id: #{params[:id]}"
   end

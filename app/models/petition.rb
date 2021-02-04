@@ -146,18 +146,26 @@ class Petition < ActiveRecord::Base
     Appsignal.increment_counter("petition.created")
   end
 
-  class << self
-    def find_by_param!(param)
-      case param
-      when /\APE(\d{5,7})\z/
-        find_by!(pe_number_id: $1)
-      when /\APP(\d{5,7})\z/
-        find_by!(id: $1)
-      else
-        find_by!(id: param)
-      end
-    end
+  finders = Module.new do
+   def find_by_param(param)
+     case param
+     when /\APE(\d{4,7})\z/
+       all.find_by!(pe_number_id: $1)
+     when /\APP(\d{4,7})\z/
+       all.find_by!(id: $1)
+     else
+       all.find_by!(id: param)
+     end
+   end
+   def find(id)
+     id.is_a?(String) ? find_by_param(id) : super(id)
+   end
+ end
 
+ include finders
+ relation.class.include finders
+
+  class << self
     def by_most_popular
       reorder(signature_count: :desc, created_at: :desc)
     end

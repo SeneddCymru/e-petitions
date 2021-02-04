@@ -80,7 +80,7 @@ class SignaturesController < LocalizedController
   private
 
   def petition_id
-    @petition_id ||= Integer(params[:petition_id])
+    @petition_id ||= params[:petition_id]
   rescue ArgumentError => e
     raise ActionController::BadRequest, "Invalid petition id: #{params[:petition_id]}"
   end
