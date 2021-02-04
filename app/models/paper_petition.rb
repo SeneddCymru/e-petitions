@@ -134,6 +134,8 @@ class PaperPetition
     @signature = @petition.build_creator(signature_params)
     @contact = @signature.build_contact(contact_params)
 
+    @petition.create_pe_number
+
     @petition.save!
   end
 
