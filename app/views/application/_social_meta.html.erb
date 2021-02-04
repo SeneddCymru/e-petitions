@@ -5,10 +5,12 @@
 <%= open_graph_tag 'locale', 'en_GB' %>
 <%= open_graph_tag 'image', 'os-social/opengraph-image.png' %>
 <% if defined?(@petition) %>
+<% if @petition.visible? %>
 <%= open_graph_tag 'url', petition_url(@petition) %>
 <%= open_graph_tag 'type', 'article' %>
 <%= open_graph_tag 'title', :title, petition: @petition.action %>
 <%= open_graph_tag 'description', @petition.background %>
+<% end %>
 <% else %>
 <%= open_graph_tag 'url', original_url %>
 <%= open_graph_tag 'type', 'website' %>
