@@ -345,7 +345,7 @@ class Site < ActiveRecord::Base
     end
 
     def default_petition_duration
-      ENV.fetch('PETITION_DURATION', '6').to_i
+      ENV.fetch('PETITION_DURATION', '4').to_i
     end
 
     def default_minimum_number_of_sponsors
@@ -526,17 +526,11 @@ class Site < ActiveRecord::Base
   end
 
   def opened_at_for_closing(time = Time.current)
-    opened_at = time.beginning_of_day - petition_duration.months
-
-    if opened_at.day < time.day
-      opened_at + 1.day
-    else
-      opened_at
-    end
+    opened_at = time.beginning_of_day - petition_duration.weeks
   end
 
   def closed_at_for_opening(time = Time.current)
-    time.end_of_day + petition_duration.months
+    time.end_of_day + petition_duration.weeks
   end
 
   def signature_count_updated_at

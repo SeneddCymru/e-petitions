@@ -557,8 +557,8 @@ gd-GB:
         This petition closed early because of a Scottish Parliament election
       petition_closed_notice: |-
         This petition is closed
-      petitions_run_6_months: |-
-        Petitions can collect signatures for a maximum of 6 months
+      petitions_run_length: |-
+        Petitions can collect signatures for a maximum of 4 weeks
       about_petition_data_html: |-
         <details role="group">
           <summary role="button" aria-controls="about-json-content" aria-expanded="true">
@@ -988,7 +988,7 @@ gd-GB:
         <ol class="list-number">
           <li>
             <h2>Means and format for submission</h2>
-            <p>Petitions may be submitted on paper or electronically using Parliament’s online petitions system. Petitions may collect signatures for a maximum period of six months.</p>
+            <p>Petitions may be submitted on paper or electronically using Parliament’s online petitions system. Petitions may collect signatures for a maximum period of four weeks.</p>
             <p>For a paper petition the petition wording should be set out in full on each sheet (or side of a sheet) where signatures are asked for. A template is available on request.</p>
           </li>
 

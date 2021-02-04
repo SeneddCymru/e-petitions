@@ -12,7 +12,7 @@ RSpec.describe Site, type: :model do
     it { is_expected.to have_db_column(:password_digest).of_type(:string).with_options(limit: 60) }
     it { is_expected.to have_db_column(:enabled).of_type(:boolean).with_options(null: false, default: true) }
     it { is_expected.to have_db_column(:protected).of_type(:boolean).with_options(null: false, default: false) }
-    it { is_expected.to have_db_column(:petition_duration).of_type(:integer).with_options(null: false, default: 6) }
+    it { is_expected.to have_db_column(:petition_duration).of_type(:integer).with_options(null: false, default: 4) }
     it { is_expected.to have_db_column(:minimum_number_of_sponsors).of_type(:integer).with_options(null: false, default: 2) }
     it { is_expected.to have_db_column(:maximum_number_of_sponsors).of_type(:integer).with_options(null: false, default: 20) }
     it { is_expected.to have_db_column(:threshold_for_moderation).of_type(:integer).with_options(null: false, default: 2) }
@@ -494,13 +494,13 @@ RSpec.describe Site, type: :model do
     end
 
     describe "for petition_duration" do
-      it "defaults to 6" do
-        allow(ENV).to receive(:fetch).with("PETITION_DURATION", '6').and_return("6")
-        expect(defaults[:petition_duration]).to eq(6)
+      it "defaults to 4" do
+        allow(ENV).to receive(:fetch).with("PETITION_DURATION", '4').and_return("4")
+        expect(defaults[:petition_duration]).to eq(4)
       end
 
       it "can be overridden with the PETITION_DURATION environment variable" do
-        allow(ENV).to receive(:fetch).with("PETITION_DURATION", '6').and_return("12")
+        allow(ENV).to receive(:fetch).with("PETITION_DURATION", '4').and_return("12")
         expect(defaults[:petition_duration]).to eq(12)
       end
     end
@@ -1068,56 +1068,24 @@ RSpec.describe Site, type: :model do
       described_class.create!(petition_duration: 3)
     end
 
-    it "returns the opening date at petition_duration months ago" do
+    it "returns the opening date at petition_duration weeks ago" do
       travel_to "2018-05-15" do
-        expect(site.opened_at_for_closing).to eq(3.months.ago.beginning_of_day)
+        expect(site.opened_at_for_closing).to eq(3.weeks.ago.beginning_of_day)
       end
     end
 
     describe "special cases" do
       subject :site do
-        described_class.create!(petition_duration: 6)
+        described_class.create!(petition_duration: 4)
       end
 
       around do |example|
         travel_to(now) { example.run }
       end
 
-      context "when the date is 31st January" do
-        let(:now) { Time.utc(2016, 1, 31, 12, 0, 0) }
-
-        it "returns the 31st July" do
-          expect(site.opened_at_for_closing).to eq("2015-07-31T00:00:00".in_time_zone)
-        end
-      end
-
-      context "when the date is 31st March" do
-        let(:now) { Time.utc(2016, 3, 31, 12, 0, 0) }
-
-        it "returns the 1st October" do
-          expect(site.opened_at_for_closing).to eq("2015-10-01T00:00:00".in_time_zone)
-        end
-      end
-
-      context "when the date is 31st May" do
-        let(:now) { Time.utc(2016, 5, 31, 12, 0, 0) }
-
-        it "returns the 1st December" do
-          expect(site.opened_at_for_closing).to eq("2015-12-01T00:00:00".in_time_zone)
-        end
-      end
-
-      context "when the date is 31st July" do
-        let(:now) { Time.utc(2016, 7, 31, 12, 0, 0) }
-
-        it "returns the 31st January" do
-          expect(site.opened_at_for_closing).to eq("2016-01-31T00:00:00".in_time_zone)
-        end
-      end
-
-      context "when the date is 29th August" do
+      context "when the date is 28th March" do
         context "and it's a leap year" do
-          let(:now) { Time.utc(2016, 8, 29, 12, 0, 0) }
+          let(:now) { Time.utc(2016, 3, 28, 12, 0, 0) }
 
           it "returns the 29th February" do
             expect(site.opened_at_for_closing).to eq("2016-02-29T00:00:00".in_time_zone)
@@ -1125,63 +1093,11 @@ RSpec.describe Site, type: :model do
         end
 
         context "and it's not a leap year" do
-          let(:now) { Time.utc(2017, 8, 29, 12, 0, 0) }
+          let(:now) { Time.utc(2017, 3, 28, 12, 0, 0) }
 
-          it "returns the 1st March" do
-            expect(site.opened_at_for_closing).to eq("2017-03-01T00:00:00".in_time_zone)
+          it "returns the 28th February" do
+            expect(site.opened_at_for_closing).to eq("2017-02-28T00:00:00".in_time_zone)
           end
-        end
-      end
-
-      context "when the date is 30th August" do
-        context "and it's a leap year" do
-          let(:now) { Time.utc(2016, 8, 30, 12, 0, 0) }
-
-          it "returns the 1st March" do
-            expect(site.opened_at_for_closing).to eq("2016-03-01T00:00:00".in_time_zone)
-          end
-        end
-
-        context "and it's not a leap year" do
-          let(:now) { Time.utc(2017, 8, 30, 12, 0, 0) }
-
-          it "returns the 1st March" do
-            expect(site.opened_at_for_closing).to eq("2017-03-01T00:00:00".in_time_zone)
-          end
-        end
-      end
-
-      context "when the date is 31st August" do
-        context "and it's a leap year" do
-          let(:now) { Time.utc(2016, 8, 31, 12, 0, 0) }
-
-          it "returns the 1st March" do
-            expect(site.opened_at_for_closing).to eq("2016-03-01T00:00:00".in_time_zone)
-          end
-        end
-
-        context "and it's not a leap year" do
-          let(:now) { Time.utc(2017, 8, 31, 12, 0, 0) }
-
-          it "returns the 1st March" do
-            expect(site.opened_at_for_closing).to eq("2017-03-01T00:00:00".in_time_zone)
-          end
-        end
-      end
-
-      context "when the date is 31st October" do
-        let(:now) { Time.utc(2016, 10, 31, 12, 0, 0) }
-
-        it "returns the 1st May" do
-          expect(site.opened_at_for_closing).to eq("2016-05-01T00:00:00".in_time_zone)
-        end
-      end
-
-      context "when the date is 31st December" do
-        let(:now) { Time.utc(2016, 12, 31, 12, 0, 0) }
-
-        it "returns the 1st July" do
-          expect(site.opened_at_for_closing).to eq("2016-07-01T00:00:00".in_time_zone)
         end
       end
     end
@@ -1192,8 +1108,8 @@ RSpec.describe Site, type: :model do
       described_class.create!(petition_duration: 3)
     end
 
-    it "returns the closing date at petition_duration months in the future" do
-      expect(site.closed_at_for_opening).to eq(3.months.from_now.end_of_day)
+    it "returns the closing date at petition_duration weeks in the future" do
+      expect(site.closed_at_for_opening).to eq(3.weeks.from_now.end_of_day)
     end
   end
 

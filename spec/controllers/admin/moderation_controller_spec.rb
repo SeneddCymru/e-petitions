@@ -39,7 +39,7 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
         let(:creator_email) { deliveries.select{ |m| m.to == %w[bazbutler@gmail.com] }.last }
         let(:sponsor_email) { deliveries.detect{ |m| m.to == %w[laurapalmer@gmail.com] } }
         let(:pending_email) { deliveries.detect{ |m| m.to == %w[sandyfisher@hotmail.com] } }
-        let(:duration) { Site.petition_duration.months }
+        let(:duration) { Site.petition_duration.weeks }
         let(:closing_date) { (now + duration).end_of_day }
         let!(:sponsor) { FactoryBot.create(:sponsor, :pending, petition: petition, email: "laurapalmer@gmail.com") }
         let!(:pending_sponsor) { FactoryBot.create(:sponsor, :pending, petition: petition, email: "sandyfisher@hotmail.com") }
