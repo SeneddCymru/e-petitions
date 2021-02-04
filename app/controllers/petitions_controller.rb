@@ -9,6 +9,7 @@ class PetitionsController < LocalizedController
   before_action :retrieve_petition, only: [:show, :count, :gathering_support, :moderation_info]
   before_action :build_petition_creator, only: [:check, :check_results, :new, :create]
 
+  before_action :raise_not_found, unless: :site_collecting_sponsors?, only: %i[gathering_support moderation_info]
   before_action :redirect_to_gathering_support_url, if: :collecting_sponsors?, only: [:moderation_info, :show]
   before_action :redirect_to_moderation_info_url, if: :in_moderation?, only: [:gathering_support, :show]
   before_action :redirect_to_petition_url, if: :moderated?, only: [:gathering_support, :moderation_info]
@@ -168,5 +169,13 @@ class PetitionsController < LocalizedController
 
   def set_content_disposition
     response.headers['Content-Disposition'] = "attachment; filename=#{csv_filename}"
+  end
+
+  def raise_not_found
+    raise ActiveRecord::RecordNotFound, "Unable to find petition"
+  end
+
+  def site_collecting_sponsors?
+    Site.collecting_sponsors?
   end
 end
