@@ -44,20 +44,22 @@ Rails.application.routes.draw do
       post '/new',           action: 'create',        as: :create_petition
       get  '/thank-you',     action: 'thank_you',     as: :thank_you_petitions
 
-      scope '/:id' do
+      scope '/:id', constraints: { id: /(PE|PP)\d{1,11}/ } do
         get '/count',             action: 'count',             as: :count_petition
         get '/gathering-support', action: 'gathering_support', as: :gathering_support_petition
         get '/moderation-info',   action: 'moderation_info',   as: :moderation_info_petition
       end
 
-      scope '/:petition_id' do
+      scope '/:petition_id', constraints: { id: /PP\d{1,11}/ } do
         scope '/sponsors', controller: 'sponsors' do
           post '/new',       action: 'confirm',   as: :confirm_petition_sponsors
           get  '/thank-you', action: 'thank_you', as: :thank_you_petition_sponsors
           post '/',          action: 'create',    as: :petition_sponsors
           get  '/new',       action: 'new',       as: :new_petition_sponsor
         end
+      end
 
+      scope '/:petition_id', constraints: { id: /PE\d{1,11}/ } do
         scope '/signatures', controller: 'signatures' do
           post '/new',       action: 'confirm',   as: :confirm_petition_signatures
           get  '/thank-you', action: 'thank_you', as: :thank_you_petition_signatures
@@ -68,11 +70,12 @@ Rails.application.routes.draw do
 
       get '/',    action: 'index', as: :petitions
       get '/new', action: 'new',   as: :new_petition
-      get '/:id', action: 'show',  as: :petition
+      get '/:id', action: 'show',  as: :petition, constraints: { id: /(PE|PP)\d{1,11}/ }
     end
 
     scope '/petitioners', controller: 'petitioners' do
       get '/:id/verify', action: 'verify', as: :verify_petitioner
+      get '/:id/thank-you', action: 'thank_you', as: :thank_you_petitioner
     end
 
     scope '/sponsors', controller: 'sponsors' do
@@ -123,7 +126,7 @@ Rails.application.routes.draw do
 
       resources :paper_petitions, only: %i[new create]
 
-      resources :petitions, only: %i[show index] do
+      resources :petitions, only: %i[show index], constraints: { id: /(PE|PP)?\d{1,11}/ } do
         post :resend, on: :member
 
         resources :emails, controller: 'petition_emails', except: %i[show]

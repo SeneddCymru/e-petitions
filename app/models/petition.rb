@@ -147,6 +147,17 @@ class Petition < ActiveRecord::Base
   end
 
   class << self
+    def find_by_param!(param)
+      case param
+      when /\APE(\d{5,7})\z/
+        find_by!(pe_number_id: $1)
+      when /\APP(\d{5,7})\z/
+        find_by!(id: $1)
+      else
+        find_by!(id: param)
+      end
+    end
+
     def by_most_popular
       reorder(signature_count: :desc, created_at: :desc)
     end
@@ -475,6 +486,10 @@ class Petition < ActiveRecord::Base
     end
   end
 
+  def to_param
+    published? ? ('PE%05d' % pe_number_id) : ('PP%05d' % id)
+  end
+
   def statistics
     super || create_statistics!
   end
@@ -702,8 +717,10 @@ class Petition < ActiveRecord::Base
       errors.add :moderation, :translation_missing
       return false
     end
-
     Appsignal.increment_counter("petition.published", 1)
+
+    build_pe_number
+
     update(state: OPEN_STATE, open_at: time, closed_at: closing_date(time))
   end
 
