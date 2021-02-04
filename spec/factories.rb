@@ -44,6 +44,10 @@ FactoryBot.define do
       locale { "gd-GB" }
     end
 
+    before(:create) do |petition|
+      petition.build_pe_number if petition.visible?
+    end
+
     after(:build) do |petition, evaluator|
       unless petition.creator
         petition.creator = evaluator.creator
@@ -703,5 +707,8 @@ FactoryBot.define do
     trait :hidden do
       hidden { true }
     end
+  end
+
+  factory :pe_number do
   end
 end
