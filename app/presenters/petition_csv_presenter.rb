@@ -46,11 +46,11 @@ class PetitionCSVPresenter
   end
 
   def public_url
-    petition_url id
+    petition_url @petition
   end
 
   def admin_url
-    admin_petition_url id
+    admin_petition_url @petition
   end
 
   def notes
