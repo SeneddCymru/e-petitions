@@ -114,7 +114,7 @@ RSpec.describe Admin::ScheduleDebateController, type: :controller, admin: true d
           describe 'with valid params' do
             it 'redirects to the petition show page' do
               do_patch
-              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}"
+              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}"
             end
 
             it 'tells the moderator that their email will be sent overnight' do
@@ -288,7 +288,7 @@ RSpec.describe Admin::ScheduleDebateController, type: :controller, admin: true d
           describe 'with valid params' do
             it 'redirects to the petition show page' do
               do_patch
-              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}"
+              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}"
             end
 
             it 'tells the moderator that their changes were saved' do

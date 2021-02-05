@@ -23,7 +23,7 @@ RSpec.describe "missing a 'token'", type: :request, show_exceptions: true do
     end
 
     it "redirects to the petition page" do
-      expect(response).to redirect_to("/petitions/#{petition.id}")
+      expect(response).to redirect_to("/petitions/#{petition.to_param}")
     end
   end
 

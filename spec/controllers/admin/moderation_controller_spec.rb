@@ -64,8 +64,12 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
           expect(petition.moderation_lag).to eq(4)
         end
 
+        it "assigns a PE Number" do
+          expect(petition.pe_number_id).not_to eq(nil)
+        end
+
         it "redirects to the admin show page for the petition page" do
-          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
         end
 
         it "sends an email to the petition creator" do
@@ -124,13 +128,17 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
             expect(petition.rejection.code).to eq(rejection_code)
           end
 
+          it "does not assign a PE Number" do
+            expect(petition.pe_number_id).to eq(nil)
+          end
+
           it 'sets the rejection details to the supplied details' do
             expect(petition.rejection.details_en).to eq('rejection details')
             expect(petition.rejection.details_gd).to eq('manylion gwrthod')
           end
 
           it 'redirects to the admin show page for the petition' do
-            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
           end
 
           it "sends an email to the petition creator" do
@@ -173,8 +181,12 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
             expect(petition.rejection.code).to eq(rejection_code)
           end
 
+          it "does not assign a PE Number" do
+            expect(petition.pe_number_id).to eq(nil)
+          end
+
           it 'redirects to the admin show page for the petition' do
-            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
           end
 
           it "sends an email to the petition creator" do
@@ -243,8 +255,12 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
           expect(petition.moderation_lag).to be_nil
         end
 
+        it "does not assign a PE Number" do
+          expect(petition.pe_number_id).to eq(nil)
+        end
+
         it "redirects to the admin show page for the petition page" do
-          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
         end
 
         it "does not send an email to the petition creator" do
@@ -276,8 +292,12 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
           expect(petition.moderation_lag).to be_nil
         end
 
+        it "does not assign a PE Number" do
+          expect(petition.pe_number_id).to eq(nil)
+        end
+
         it "redirects to the admin show page for the petition page" do
-          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
         end
 
         it "does not send an email to the petition creator" do

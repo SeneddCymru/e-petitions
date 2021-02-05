@@ -202,6 +202,7 @@ RSpec.describe PaperPetition, type: :model do
           debate_threshold_reached_at: Time.utc(2020, 4, 30, 11, 0, 0),
           last_signed_at: Time.utc(2020, 4, 30, 11, 0, 0),
           referred_at: Time.utc(2020, 4, 30, 11, 0, 0),
+          pe_number_id: petition.pe_number_id
         )
 
         expect(signature).to have_attributes(
