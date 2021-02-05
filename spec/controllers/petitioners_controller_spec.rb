@@ -48,8 +48,8 @@ RSpec.describe PetitionersController, type: :controller do
         expect(petition.reload.state).to eq("sponsored")
       end
 
-      it "redirects to the moderation info page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}/moderation-info")
+      it "redirects to the thank you page" do
+        expect(response).to redirect_to("/petitioners/#{signature.id}/thank-you")
       end
     end
 
@@ -63,7 +63,7 @@ RSpec.describe PetitionersController, type: :controller do
         end
 
         it "redirects to the moderation info page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}/moderation-info")
+          expect(response).to redirect_to("/petitioners/#{signature.id}/thank-you")
         end
       end
     end

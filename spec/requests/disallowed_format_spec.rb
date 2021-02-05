@@ -209,7 +209,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions show url' do
-    let(:url) { "/petitions/#{petition.id}" }
+    let(:url) { "/petitions/#{'PE%04d' % petition.pe_number_id}" }
     let(:petition) { FactoryBot.create(:open_petition) }
     let(:params) { {} }
 
@@ -224,7 +224,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions/gathering-support url' do
-    let(:url) { "/petitions/#{petition.id}/gathering-support" }
+    let(:url) { "/petitions/#{'PP%04d' % petition.id}/gathering-support" }
     let(:petition) { FactoryBot.create(:validated_petition) }
     let(:params) { {} }
 
@@ -232,7 +232,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions/moderation-info url' do
-    let(:url) { "/petitions/#{petition.id}/moderation-info" }
+    let(:url) { "/petitions/#{'PP%04d' % petition.id}/moderation-info" }
     let(:petition) { FactoryBot.create(:sponsored_petition) }
     let(:params) { {} }
 
@@ -240,7 +240,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions/sponsors/new url' do
-    let(:url) { "/petitions/#{petition.id}/sponsors/new" }
+    let(:url) { "/petitions/#{'PP%04d' % petition.id}/sponsors/new" }
     let(:petition) { FactoryBot.create(:pending_petition) }
     let(:params) {
       {
@@ -252,7 +252,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions/sponsors/thank-you url' do
-    let(:url) { "/petitions/#{petition.id}/sponsors/thank-you" }
+    let(:url) { "/petitions/#{'PP%04d' % petition.id}/sponsors/thank-you" }
     let(:petition) { FactoryBot.create(:pending_petition) }
     let(:params) {
       {
@@ -277,7 +277,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions/signatures/new url' do
-    let(:url) { "/petitions/#{petition.id}/signatures/new" }
+    let(:url) { "/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/new" }
     let(:petition) { FactoryBot.create(:open_petition) }
     let(:params) { {} }
 
@@ -285,7 +285,7 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'the petitions/signatures/thank-you url' do
-    let(:url) { "/petitions/#{petition.id}/signatures/thank-you" }
+    let(:url) { "/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/thank-you" }
     let(:petition) { FactoryBot.create(:open_petition) }
     let(:params) { {} }
 
@@ -388,13 +388,13 @@ RSpec.describe 'Requests for pages when we do not support the format on that pag
   end
 
   context 'a failed post to signatures/new' do
-    let(:url) { "/petitions/#{petition.id}/signatures/new" }
+    let(:url) { "/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/new" }
     let(:petition) { FactoryBot.create(:open_petition) }
     let(:params) {
       {
         'stage' => 'replay-email',
         'move' => 'next',
-        'petition_id' => "#{petition.id}",
+        'petition_id' => "#{'PE%04d' % petition.pe_number_id}",
         'signature' => {
           'name' => 'John Mcenroe', 'email' => 'john@example.com',
           'postcode' => 'SE3 4LL', 'location_code' => 'GB'

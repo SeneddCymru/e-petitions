@@ -27,21 +27,35 @@ RSpec.describe SignaturesController, type: :controller do
       end
     end
 
-    %w[closed rejected].each do |state|
-      context "when the petition is #{state}" do
-        let(:petition) { FactoryBot.create(:"#{state}_petition") }
+    context "when the petition is closed" do
+      let(:petition) { FactoryBot.create(:closed_petition) }
 
-        before do
-          get :new, params: { petition_id: petition.id }
-        end
+      before do
+        get :new, params: { petition_id: petition.id }
+      end
 
-        it "assigns the @petition instance variable" do
-          expect(assigns[:petition]).to eq(petition)
-        end
+      it "assigns the @petition instance variable" do
+        expect(assigns[:petition]).to eq(petition)
+      end
 
-        it "redirects to the petition page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}")
-        end
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
+      end
+    end
+
+    context "when the petition is rejected" do
+      let(:petition) { FactoryBot.create(:rejected_petition) }
+
+      before do
+        get :new, params: { petition_id: petition.id }
+      end
+
+      it "assigns the @petition instance variable" do
+        expect(assigns[:petition]).to eq(petition)
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{'PP%04d' % petition.id}")
       end
     end
 
@@ -100,21 +114,35 @@ RSpec.describe SignaturesController, type: :controller do
       end
     end
 
-    %w[closed rejected].each do |state|
-      context "when the petition is #{state}" do
-        let(:petition) { FactoryBot.create(:"#{state}_petition") }
+    context "when the petition is closed" do
+      let(:petition) { FactoryBot.create(:closed_petition) }
 
-        before do
-          post :confirm, params: { petition_id: petition.id, signature: params }
-        end
+      before do
+        post :confirm, params: { petition_id: petition.id, signature: params }
+      end
 
-        it "assigns the @petition instance variable" do
-          expect(assigns[:petition]).to eq(petition)
-        end
+      it "assigns the @petition instance variable" do
+        expect(assigns[:petition]).to eq(petition)
+      end
 
-        it "redirects to the petition page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}")
-        end
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
+      end
+    end
+
+    context "when the petition is rejected" do
+      let(:petition) { FactoryBot.create(:rejected_petition) }
+
+      before do
+        post :confirm, params: { petition_id: petition.id, signature: params }
+      end
+
+      it "assigns the @petition instance variable" do
+        expect(assigns[:petition]).to eq(petition)
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{'PP%04d' % petition.id}")
       end
     end
 
@@ -212,21 +240,35 @@ RSpec.describe SignaturesController, type: :controller do
       end
     end
 
-    %w[closed rejected].each do |state|
-      context "when the petition is #{state}" do
-        let(:petition) { FactoryBot.create(:"#{state}_petition") }
+    context "when the petition is closed" do
+      let(:petition) { FactoryBot.create(:closed_petition) }
 
-        before do
-          post :create, params: { petition_id: petition.id, signature: params }
-        end
+      before do
+        post :confirm, params: { petition_id: petition.id, signature: params }
+      end
 
-        it "assigns the @petition instance variable" do
-          expect(assigns[:petition]).to eq(petition)
-        end
+      it "assigns the @petition instance variable" do
+        expect(assigns[:petition]).to eq(petition)
+      end
 
-        it "redirects to the petition page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}")
-        end
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
+      end
+    end
+
+    context "when the petition is rejected" do
+      let(:petition) { FactoryBot.create(:rejected_petition) }
+
+      before do
+        post :confirm, params: { petition_id: petition.id, signature: params }
+      end
+
+      it "assigns the @petition instance variable" do
+        expect(assigns[:petition]).to eq(petition)
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{'PP%04d' % petition.id}")
       end
     end
 
@@ -266,7 +308,7 @@ RSpec.describe SignaturesController, type: :controller do
         end
 
         it "redirects to the thank you page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}/signatures/thank-you")
+          expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/thank-you")
         end
 
         context "and the user is on the English domain" do
@@ -324,7 +366,7 @@ RSpec.describe SignaturesController, type: :controller do
         end
 
         it "redirects to the thank you page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}/signatures/thank-you")
+          expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/thank-you")
         end
       end
 
@@ -353,7 +395,7 @@ RSpec.describe SignaturesController, type: :controller do
         end
 
         it "redirects to the thank you page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}/signatures/thank-you")
+          expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/thank-you")
         end
       end
 
@@ -380,7 +422,7 @@ RSpec.describe SignaturesController, type: :controller do
         end
 
         it "redirects to the thank you page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}/signatures/thank-you")
+          expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/thank-you")
         end
       end
 
@@ -409,7 +451,7 @@ RSpec.describe SignaturesController, type: :controller do
         end
 
         it "redirects to the thank you page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}/signatures/thank-you")
+          expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/thank-you")
         end
       end
     end
@@ -452,7 +494,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PP%04d' % petition.id}")
       end
     end
 
@@ -473,7 +515,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
       end
     end
 
@@ -494,7 +536,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
       end
     end
 
@@ -592,7 +634,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PP%04d' % petition.id}")
       end
     end
 
@@ -617,7 +659,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
       end
     end
 
@@ -729,7 +771,7 @@ RSpec.describe SignaturesController, type: :controller do
 
       it "redirects to the petition page" do
         get :signed, params: { id: signature.id }
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
       end
     end
 
@@ -785,7 +827,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PP%04d' % petition.id}")
       end
     end
 
@@ -806,7 +848,7 @@ RSpec.describe SignaturesController, type: :controller do
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("/petitions/#{petition.id}")
+        expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
       end
     end
 
@@ -870,7 +912,7 @@ RSpec.describe SignaturesController, type: :controller do
           let(:signature) { FactoryBot.create(:validated_signature, petition: petition) }
 
           it "doesn't redirect to the petition page" do
-            expect(response).not_to redirect_to("/petitions/#{petition.id}")
+            expect(response).not_to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
           end
         end
       end
@@ -883,7 +925,7 @@ RSpec.describe SignaturesController, type: :controller do
         end
 
         it "redirects to the petition page" do
-          expect(response).to redirect_to("/petitions/#{petition.id}")
+          expect(response).to redirect_to("/petitions/#{'PE%04d' % petition.pe_number_id}")
         end
       end
     end

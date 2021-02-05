@@ -19,7 +19,7 @@ RSpec.describe 'Cache-Control headers', type: :request do
     let!(:petition) { FactoryBot.create(:open_petition) }
 
     before do
-      get "/petitions/#{petition.id}"
+      get "/petitions/#{'PE%04d' % petition.pe_number_id}"
     end
 
     it "doesn't change the cache control headers" do
@@ -45,7 +45,7 @@ RSpec.describe 'Cache-Control headers', type: :request do
     let!(:petition) { FactoryBot.create(:pending_petition) }
 
     before do
-      get "/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}"
+      get "/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}"
     end
 
     it "changes the cache control headers to 'no-store'" do
@@ -58,7 +58,7 @@ RSpec.describe 'Cache-Control headers', type: :request do
     let!(:petition) { FactoryBot.create(:open_petition) }
 
     before do
-      get "/petitions/#{petition.id}/signatures/new"
+      get "/petitions/#{'PE%04d' % petition.pe_number_id}/signatures/new"
     end
 
     it "changes the cache control headers to 'no-store'" do

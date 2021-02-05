@@ -18,7 +18,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_facebook" do
       it "generates a share via Facebook link" do
         expect(helper.share_via_facebook(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="https://www.facebook.com/sharer/sharer.php?ref=responsive&amp;u=https%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F100000">Facebook</a>
+          <a rel="external" target="_blank" href="https://www.facebook.com/sharer/sharer.php?ref=responsive&amp;u=https%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F#{'PE%04d' % petition.pe_number_id}">Facebook</a>
         URL
       end
     end
@@ -26,7 +26,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_email" do
       it "generates a share via email link" do
         expect(helper.share_via_email(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="mailto:?body=https%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F100000&amp;subject=Petition%3A%20Do%20Something%21">Email</a>
+          <a rel="external" target="_blank" href="mailto:?body=https%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F#{'PE%04d' % petition.pe_number_id}&amp;subject=Petition%3A%20Do%20Something%21">Email</a>
         URL
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_twitter" do
       it "generates a share via Twitter link" do
         expect(helper.share_via_twitter(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="https://twitter.com/intent/tweet?text=Petition%3A%20Do%20Something%21&amp;url=https%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F100000">Twitter</a>
+          <a rel="external" target="_blank" href="https://twitter.com/intent/tweet?text=Petition%3A%20Do%20Something%21&amp;url=https%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F#{'PE%04d' % petition.pe_number_id}">Twitter</a>
         URL
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_whatsapp" do
       it "generates a share via Whatsapp link" do
         expect(helper.share_via_whatsapp(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="whatsapp://send?text=Petition%3A%20Do%20Something%21%0Ahttps%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F100000">Whatsapp</a>
+          <a rel="external" target="_blank" href="whatsapp://send?text=Petition%3A%20Do%20Something%21%0Ahttps%3A%2F%2Fpetitions.parliament.scot%2Fpetitions%2F#{'PE%04d' % petition.pe_number_id}">Whatsapp</a>
         URL
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_facebook" do
       it "generates a share via Facebook link" do
         expect(helper.share_via_facebook(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="https://www.facebook.com/sharer/sharer.php?ref=responsive&amp;u=https%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F100000">Facebook</a>
+          <a rel="external" target="_blank" href="https://www.facebook.com/sharer/sharer.php?ref=responsive&amp;u=https%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F#{'PE%04d' % petition.pe_number_id}">Facebook</a>
         URL
       end
     end
@@ -65,7 +65,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_email" do
       it "generates a share via email link" do
         expect(helper.share_via_email(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="mailto:?body=https%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F100000&amp;subject=Athchuinge%3A%20D%C3%A8an%20Rudeigin%21">Post-d</a>
+          <a rel="external" target="_blank" href="mailto:?body=https%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F#{'PE%04d' % petition.pe_number_id}&amp;subject=Athchuinge%3A%20D%C3%A8an%20Rudeigin%21">Post-d</a>
         URL
       end
     end
@@ -73,7 +73,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_twitter" do
       it "generates a share via Twitter link" do
         expect(helper.share_via_twitter(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="https://twitter.com/intent/tweet?text=Athchuinge%3A%20D%C3%A8an%20Rudeigin%21&amp;url=https%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F100000">Twitter</a>
+          <a rel="external" target="_blank" href="https://twitter.com/intent/tweet?text=Athchuinge%3A%20D%C3%A8an%20Rudeigin%21&amp;url=https%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F#{'PE%04d' % petition.pe_number_id}">Twitter</a>
         URL
       end
     end
@@ -81,7 +81,7 @@ RSpec.describe SharingHelper, type: :helper do
     describe "#share_via_whatsapp" do
       it "generates a share via Whatsapp link" do
         expect(helper.share_via_whatsapp(petition)).to eq <<-URL.strip
-          <a rel="external" target="_blank" href="whatsapp://send?text=Athchuinge%3A%20D%C3%A8an%20Rudeigin%21%0Ahttps%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F100000">Whatsapp</a>
+          <a rel="external" target="_blank" href="whatsapp://send?text=Athchuinge%3A%20D%C3%A8an%20Rudeigin%21%0Ahttps%3A%2F%2Fathchuingean.parlamaid-alba.scot%2Fathchuingean%2F#{'PE%04d' % petition.pe_number_id}">Whatsapp</a>
         URL
       end
     end

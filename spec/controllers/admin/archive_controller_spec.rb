@@ -41,7 +41,7 @@ RSpec.describe Admin::ArchiveController, type: :controller, admin: true do
 
       it "redirects to the petition page" do
         patch :update, params: { petition_id: petition.id }
-        expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+        expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{'PE%04d' % petition.pe_number_id}")
       end
 
       it "displays a notice" do
@@ -62,7 +62,7 @@ RSpec.describe Admin::ArchiveController, type: :controller, admin: true do
 
         it "redirects to the petition page" do
           patch :update, params: { petition_id: petition.id }
-          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+          expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{'PE%04d' % petition.pe_number_id}")
         end
 
         it "displays an alert" do

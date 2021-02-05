@@ -108,7 +108,7 @@ RSpec.describe Admin::NotesController, type: :controller, admin: true do
         context 'with valid params' do
           it 'redirects to the petition show page' do
             do_patch
-            expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}"
+            expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{'PP%04d' % petition.id}"
           end
 
           it 'stores the supplied notes in the db' do
@@ -120,7 +120,23 @@ RSpec.describe Admin::NotesController, type: :controller, admin: true do
       end
 
       describe 'for an open petition' do
-        it_behaves_like 'updating notes for a petition'
+        it 'fetches the requested petition' do
+          do_patch
+          expect(assigns(:petition)).to eq petition
+        end
+
+        context 'with valid params' do
+          it 'redirects to the petition show page' do
+            do_patch
+            expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{'PE%04d' % petition.pe_number_id}"
+          end
+
+          it 'stores the supplied notes in the db' do
+            do_patch
+            petition.reload
+            expect(petition.note.details).to eq notes_attributes[:details]
+          end
+        end
       end
 
       describe 'for a pending petition' do
@@ -152,7 +168,7 @@ RSpec.describe Admin::NotesController, type: :controller, admin: true do
         let(:note) { FactoryBot.build(:note, details: "", petition: petition) }
 
         before do
-          allow(Petition).to receive(:find).with(petition.id.to_s).and_return(petition)
+          allow(Petition).to receive(:find_by_param!).with(petition.pe_number_id.to_s).and_return(petition)
         end
 
         it "doesn't raise an ActiveRecord::RecordNotUnique error" do

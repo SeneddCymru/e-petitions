@@ -42,9 +42,9 @@ RSpec.describe Admin::TrendingIpsController, type: :controller, admin: true do
       login_as(user)
     end
 
-    describe "GET /admin/petitions/200000/trending-ips" do
+    describe "GET /admin/petitions/PE200000/trending-ips" do
       before do
-        allow(Petition).to receive(:find).with("200000").and_return(petition)
+        allow(Petition).to receive(:find_by_param!).with("PE200000").and_return(petition)
         allow(petition).to receive(:trending_ips).and_return(scope)
       end
 
@@ -69,7 +69,7 @@ RSpec.describe Admin::TrendingIpsController, type: :controller, admin: true do
       context "when viewing all trending ip addresses" do
         before do
           expect(scope).to receive(:search).with(nil, page: nil).and_return(trending_ips)
-          get :index, params: { petition_id: "200000" }
+          get :index, params: { petition_id: "PE200000" }
         end
 
         include_examples("trending ip addresses index page")
@@ -78,7 +78,7 @@ RSpec.describe Admin::TrendingIpsController, type: :controller, admin: true do
       context "when viewing page 2 of all trending ip addresses" do
         before do
           expect(scope).to receive(:search).with(nil, page: "2").and_return(trending_ips)
-          get :index, params: { petition_id: "200000", page: "2" }
+          get :index, params: { petition_id: "PE200000", page: "2" }
         end
 
         include_examples("trending ip addresses index page")
@@ -87,7 +87,7 @@ RSpec.describe Admin::TrendingIpsController, type: :controller, admin: true do
       context "when searching trending ip addresses" do
         before do
           expect(scope).to receive(:search).with("127.0.0.1", page: nil).and_return(trending_ips)
-          get :index, params: { petition_id: "200000", q: "127.0.0.1" }
+          get :index, params: { petition_id: "PE200000", q: "127.0.0.1" }
         end
 
         include_examples("trending ip addresses index page")
@@ -96,7 +96,7 @@ RSpec.describe Admin::TrendingIpsController, type: :controller, admin: true do
       context "when viewing page 2 of a trending ip addresses search" do
         before do
           expect(scope).to receive(:search).with("127.0.0.1", page: "2").and_return(trending_ips)
-          get :index, params: { petition_id: "200000", q: "127.0.0.1", page: "2" }
+          get :index, params: { petition_id: "PE200000", q: "127.0.0.1", page: "2" }
         end
 
         include_examples("trending ip addresses index page")

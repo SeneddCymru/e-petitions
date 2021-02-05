@@ -323,8 +323,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Do stuff",
                   content: "Because of reasons\n\nHere's some more reasons",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -346,8 +346,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Do stuff",
                   content: "Because of reasons\n\nHere's some more reasons",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -371,8 +371,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Do stuff",
                   content: "Because of reasons\n\nHere's some more reasons",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -394,8 +394,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Do stuff",
                   content: "Because of reasons\n\nHere's some more reasons",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -419,8 +419,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Do stuff",
                   content: "Because of reasons\n\nHere's some more reasons",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -442,8 +442,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Do stuff",
                   content: "Because of reasons\n\nHere's some more reasons",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -482,8 +482,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Dèan stuth",
                   content: "Air sgàth adhbharan\n\nSeo beagan a bharrachd adhbharan",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -505,8 +505,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Dèan stuth",
                   content: "Air sgàth adhbharan\n\nSeo beagan a bharrachd adhbharan",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -530,8 +530,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Dèan stuth",
                   content: "Air sgàth adhbharan\n\nSeo beagan a bharrachd adhbharan",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -553,8 +553,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Dèan stuth",
                   content: "Air sgàth adhbharan\n\nSeo beagan a bharrachd adhbharan",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -578,8 +578,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Dèan stuth",
                   content: "Air sgàth adhbharan\n\nSeo beagan a bharrachd adhbharan",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -601,8 +601,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   action: "Dèan stuth",
                   content: "Air sgàth adhbharan\n\nSeo beagan a bharrachd adhbharan",
                   creator: "Charlie",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}/sponsors/new?token=#{petition.sponsor_token}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}/sponsors/new?token=#{petition.sponsor_token}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}/luchd-taic/ur?token=#{petition.sponsor_token}"
                 }
               )).to have_been_made
             end
@@ -1100,8 +1100,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               action_en: "Do stuff",
               action_gd: "Dèan stuth",
-              url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+              url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
             }
           )).to have_been_made
         end
@@ -1132,8 +1132,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               action_en: "Do stuff",
               action_gd: "Dèan stuth",
-              url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+              url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
             }
           )).to have_been_made
         end
@@ -1189,8 +1189,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               creator: "Charlie",
               action_en: "Do stuff", action_gd: "Dèan stuth",
-              url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+              url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
             }
           )).to have_been_made
         end
@@ -1227,8 +1227,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               creator: "Charlie",
               action_en: "Do stuff", action_gd: "Dèan stuth",
-              url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+              url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
             }
           )).to have_been_made
         end
@@ -1285,8 +1285,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 sponsor: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+                url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
               }
             )).to have_been_made
           end
@@ -1316,8 +1316,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 sponsor: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+                url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
               }
             )).to have_been_made
           end
@@ -1367,8 +1367,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 sponsor: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+                url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
               }
             )).to have_been_made
           end
@@ -1398,8 +1398,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 sponsor: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}"
+                url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}"
               }
             )).to have_been_made
           end
@@ -1453,8 +1453,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 creator: "Charlie", action: "Do stuff",
                 content_en: "There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.",
                 content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                 standards_url_en: "https://petitions.parliament.scot/help#standards",
                 standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
@@ -1481,8 +1481,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 creator: "Charlie", action: "Do stuff",
                 content_en: "It’s offensive, nonsense, a joke, or an advert.",
                 content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                 standards_url_en: "https://petitions.parliament.scot/help#standards",
                 standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
@@ -1509,8 +1509,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 creator: "Charlie", action_en: "Do stuff", action_gd: "Dèan stuth",
                 content_en: "It did not collect enough signatures to be referred to the Petitions Committee.\n\nPetitions need to receive at least 50 signatures before they can be considered in Parliament.",
                 content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                 standards_url_en: "https://petitions.parliament.scot/help#standards",
                 standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
@@ -1557,8 +1557,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 creator: "Charlie", action: "Dèan stuth",
                 content_en: "There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.",
                 content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                 standards_url_en: "https://petitions.parliament.scot/help#standards",
                 standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
@@ -1585,8 +1585,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 creator: "Charlie", action: "Dèan stuth",
                 content_en: "It’s offensive, nonsense, a joke, or an advert.",
                 content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                 standards_url_en: "https://petitions.parliament.scot/help#standards",
                 standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
@@ -1613,8 +1613,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 creator: "Charlie", action_en: "Do stuff", action_gd: "Dèan stuth",
                 content_en: "It did not collect enough signatures to be referred to the Petitions Committee.\n\nPetitions need to receive at least 50 signatures before they can be considered in Parliament.",
                 content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                 standards_url_en: "https://petitions.parliament.scot/help#standards",
                 standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
@@ -1684,8 +1684,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Do stuff",
                   content_en: "There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.",
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1718,8 +1718,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Do stuff",
                   content_en: "There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.",
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1757,8 +1757,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Do stuff",
                   content_en: "It’s offensive, nonsense, a joke, or an advert.",
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1791,8 +1791,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Do stuff",
                   content_en: "It’s offensive, nonsense, a joke, or an advert.",
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1830,8 +1830,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Dèan stuth",
                   content_en: "It did not collect enough signatures to be referred to the Petitions Committee.\n\nPetitions need to receive at least 50 signatures before they can be considered in Parliament.",
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1864,8 +1864,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Dèan stuth",
                   content_en: "It did not collect enough signatures to be referred to the Petitions Committee.\n\nPetitions need to receive at least 50 signatures before they can be considered in Parliament.",
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1923,8 +1923,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Dèan stuth",
                   content_en: "There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.",
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1957,8 +1957,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Dèan stuth",
                   content_en: "There’s already a petition about this issue. We cannot accept a new petition when we already have one about a very similar issue, or if the Petitions Committee has considered one in the last year.",
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -1996,8 +1996,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Dèan stuth",
                   content_en: "It’s offensive, nonsense, a joke, or an advert.",
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -2030,8 +2030,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action: "Dèan stuth",
                   content_en: "It’s offensive, nonsense, a joke, or an advert.",
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -2069,8 +2069,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Dèan stuth",
                   content_en: "It did not collect enough signatures to be referred to the Petitions Committee.\n\nPetitions need to receive at least 50 signatures before they can be considered in Parliament.",
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -2103,8 +2103,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   sponsor: "Suzie", action_en: "Do stuff", action_gd: "Dèan stuth",
                   content_en: "It did not collect enough signatures to be referred to the Petitions Committee.\n\nPetitions need to receive at least 50 signatures before they can be considered in Parliament.",
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
-                  url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{'PP%04d' % petition.id}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PP%04d' % petition.id}",
                   standards_url_en: "https://petitions.parliament.scot/help#standards",
                   standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
                 }
@@ -2819,8 +2819,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               name: "Charlie",
               action_en: "Do stuff", action_gd: "Dèan stuth",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               subject_en: "The Petitions committee will be discussing this petition",
               subject_gd: "Bidh comataidh nan Athchuingean a ’deasbad na h-athchuinge seo",
               body_en: "On the 21st July, the Petitions committee will be discussing this petition to see whether to recommend it for a debate in Parliament.",
@@ -2863,8 +2863,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               name: "Charlie",
               action_en: "Do stuff", action_gd: "Dèan stuth",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               subject_en: "The Petitions committee will be discussing this petition",
               subject_gd: "Bidh comataidh nan Athchuingean a ’deasbad na h-athchuinge seo",
               body_en: "On the 21st July, the Petitions committee will be discussing this petition to see whether to recommend it for a debate in Parliament.",
@@ -2929,8 +2929,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 subject_en: "The Petitions committee will be discussing this petition",
                 subject_gd: "Bidh comataidh nan Athchuingean a ’deasbad na h-athchuinge seo",
                 body_en: "On the 21st July, the Petitions committee will be discussing this petition to see whether to recommend it for a debate in Parliament.",
@@ -2957,8 +2957,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 subject_en: "The Petitions committee will be discussing this petition",
                 subject_gd: "Bidh comataidh nan Athchuingean a ’deasbad na h-athchuinge seo",
                 body_en: "On the 21st July, the Petitions committee will be discussing this petition to see whether to recommend it for a debate in Parliament.",
@@ -3005,8 +3005,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 subject_en: "The Petitions committee will be discussing this petition",
                 subject_gd: "Bidh comataidh nan Athchuingean a ’deasbad na h-athchuinge seo",
                 body_en: "On the 21st July, the Petitions committee will be discussing this petition to see whether to recommend it for a debate in Parliament.",
@@ -3033,8 +3033,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 subject_en: "The Petitions committee will be discussing this petition",
                 subject_gd: "Bidh comataidh nan Athchuingean a ’deasbad na h-athchuinge seo",
                 body_en: "On the 21st July, the Petitions committee will be discussing this petition to see whether to recommend it for a debate in Parliament.",
@@ -3089,8 +3089,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               name: "Charlie",
               action_en: "Do stuff", action_gd: "Dèan stuth",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               debate_date_en: "7 July 2020", debate_date_gd: "7 dhen Iuchar 2020",
               unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
               unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
@@ -3132,8 +3132,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
             personalisation: {
               name: "Charlie",
               action_en: "Do stuff", action_gd: "Dèan stuth",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               debate_date_en: "7 July 2020", debate_date_gd: "7 dhen Iuchar 2020",
               unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
               unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
@@ -3186,8 +3186,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 debate_date_en: "7 July 2020", debate_date_gd: "7 dhen Iuchar 2020",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
@@ -3211,8 +3211,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 debate_date_en: "7 July 2020", debate_date_gd: "7 dhen Iuchar 2020",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
@@ -3258,8 +3258,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 debate_date_en: "7 July 2020", debate_date_gd: "7 dhen Iuchar 2020",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
@@ -3283,8 +3283,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 name: "Suzie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 debate_date_en: "7 July 2020", debate_date_gd: "7 dhen Iuchar 2020",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
@@ -3339,8 +3339,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               action_en: "Do stuff", action_gd: "Dèan stuth",
               overview_en: "Because it was no longer relevant",
               overview_gd: "Oherwydd nad oedd yn berthnasol mwyach",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               petitions_committee_url_en: "https://petitions.parliament.scot/help#petitions-committee",
               petitions_committee_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#petitions-committee",
               unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
@@ -3385,8 +3385,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               action_en: "Do stuff", action_gd: "Dèan stuth",
               overview_en: "Because it was no longer relevant",
               overview_gd: "Oherwydd nad oedd yn berthnasol mwyach",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               petitions_committee_url_en: "https://petitions.parliament.scot/help#petitions-committee",
               petitions_committee_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#petitions-committee",
               unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
@@ -3444,8 +3444,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 action_en: "Do stuff", action_gd: "Dèan stuth",
                 overview_en: "Because it was no longer relevant",
                 overview_gd: "Oherwydd nad oedd yn berthnasol mwyach",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 petitions_committee_url_en: "https://petitions.parliament.scot/help#petitions-committee",
                 petitions_committee_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#petitions-committee",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
@@ -3472,8 +3472,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 action_en: "Do stuff", action_gd: "Dèan stuth",
                 overview_en: "Because it was no longer relevant",
                 overview_gd: "Oherwydd nad oedd yn berthnasol mwyach",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 petitions_committee_url_en: "https://petitions.parliament.scot/help#petitions-committee",
                 petitions_committee_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#petitions-committee",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
@@ -3522,8 +3522,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 action_en: "Do stuff", action_gd: "Dèan stuth",
                 overview_en: "Because it was no longer relevant",
                 overview_gd: "Oherwydd nad oedd yn berthnasol mwyach",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 petitions_committee_url_en: "https://petitions.parliament.scot/help#petitions-committee",
                 petitions_committee_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#petitions-committee",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
@@ -3550,8 +3550,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 action_en: "Do stuff", action_gd: "Dèan stuth",
                 overview_en: "Because it was no longer relevant",
                 overview_gd: "Oherwydd nad oedd yn berthnasol mwyach",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 petitions_committee_url_en: "https://petitions.parliament.scot/help#petitions-committee",
                 petitions_committee_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#petitions-committee",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
@@ -3619,8 +3619,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               video_url_gd: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
               debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
               debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
               unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
             }
@@ -3675,8 +3675,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               video_url_gd: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
               debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
               debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
-              petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+              petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+              petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
               unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
               unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
             }
@@ -3744,8 +3744,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 video_url_gd: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
                 debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
                 debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
               }
@@ -3776,8 +3776,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 video_url_gd: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
                 debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
                 debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
               }
@@ -3836,8 +3836,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 video_url_gd: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
                 debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
                 debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
               }
@@ -3868,8 +3868,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 video_url_gd: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
                 debate_pack_url_en: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
                 debate_pack_url_gd: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf",
-                petition_url_en: "https://petitions.parliament.scot/petitions/#{petition.id}",
-                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.id}",
+                petition_url_en: "https://petitions.parliament.scot/petitions/#{'PE%04d' % petition.pe_number_id}",
+                petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{'PE%04d' % petition.pe_number_id}",
                 unsubscribe_url_en: "https://petitions.parliament.scot/signatures/#{signature.id}/unsubscribe?token=#{signature.unsubscribe_token}",
                 unsubscribe_url_gd: "https://athchuingean.parlamaid-alba.scot/ainmean-sgriobhte/#{signature.id}/di-chlaradh?token=#{signature.unsubscribe_token}",
               }
