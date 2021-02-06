@@ -13,7 +13,7 @@ class FeedbackEmailJob < NotifyJob
     client.send_email(
       email_address: Site.feedback_address,
       template_id: "18fe5489-1e5b-4741-b840-5a1dddd97983",
-      reference: feedback.to_gid_param,
+      reference: feedback.reference,
       personalisation: {
         comment: feedback.comment,
         link_or_title: feedback.petition_link_or_title,

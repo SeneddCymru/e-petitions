@@ -1,8 +1,4 @@
-require 'notifications/client'
-
 class NotifyJob < ApplicationJob
-  class NotConfiguredError < RuntimeError; end
-
   include Rails.application.routes.url_helpers
 
   class_attribute :template
@@ -28,7 +24,7 @@ class NotifyJob < ApplicationJob
     SocketError
   ]
 
-  rescue_from NotifyJob::NotConfiguredError do |exception|
+  rescue_from Notifications::Client::NotConfiguredError do |exception|
     log_exception(exception)
   end
 
@@ -47,15 +43,16 @@ class NotifyJob < ApplicationJob
     log_exception(exception)
   end
 
-  # No need to notify Appsignal about these errors as they self heal.
-  # If we hit the rate limit just delay for five minutes or if we hit
-  # the daily limit delay until the start of the next day when it resets.
+  # No need to notify Appsignal about this errors as it self heals.
+  # If we hit the rate limit just delay for five minutes.
   rescue_from Notifications::Client::RateLimitError do |exception|
-    if exception.message =~ /TooManyRequests/
-      reschedule_job Date.tomorrow.beginning_of_day
-    else
-      reschedule_job 5.minutes.from_now
-    end
+    reschedule_job 5.minutes.from_now
+  end
+
+  # No need to notify Appsignal about this errors as it self heals.
+  # If we hit the daily limit delay until the start of the next day.
+  rescue_from Notifications::Client::LimitExceededError do |exception|
+    reschedule_job Date.tomorrow.beginning_of_day
   end
 
   # Likely something got deleted so just flag in Appsignal and drop the job.
@@ -74,14 +71,8 @@ class NotifyJob < ApplicationJob
 
   private
 
-  def api_key
-    ENV.fetch("NOTIFY_API_KEY")
-  rescue KeyError => e
-    raise NotifyJob::NotConfiguredError, "Notify API key not found"
-  end
-
   def client
-    @client ||= Notifications::Client.new(api_key)
+    @client ||= Notifications::Client.new
   end
 
   def template_id(signature)

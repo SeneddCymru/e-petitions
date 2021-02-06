@@ -17,3 +17,10 @@ Delayed::Web::ApplicationController.class_eval do
     main_app.admin_login_url
   end
 end
+
+# The gem still uses update_attributes! which has now been removed.
+class Delayed::Web::ActiveRecordDecorator < SimpleDelegator
+  def queue! now = Time.current
+    update! run_at: now, failed_at: nil, last_error: nil
+  end
+end

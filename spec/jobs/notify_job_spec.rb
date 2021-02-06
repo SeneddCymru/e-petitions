@@ -13,22 +13,33 @@ RSpec.describe NotifyJob, type: :job, notify: false do
   end
 
   let(:notify_url) do
-    "https://api.notifications.service.gov.uk/v2/notifications/email"
+    "https://email.eu-west-2.amazonaws.com/v2/email/outbound-emails"
   end
+
+  let(:notification) { Notifications::Notification.last! }
 
   def notify_request(args)
     request = {
-      email_address: args[:email_address],
-      template_id: args[:template_id],
-      reference: args[:reference],
-      personalisation: args[:personalisation].merge(
-        moderation_threshold: Site.formatted_threshold_for_moderation,
-        referral_threshold: Site.formatted_threshold_for_referral,
-        debate_threshold: Site.formatted_threshold_for_debate
-      )
+      FromEmailAddress: Site.email_from,
+      Destination: { ToAddresses: [ args[:email_address] ] },
+      Content: { Template: {
+        TemplateName: args[:template_id],
+        TemplateData: args[:personalisation].merge(
+          moderation_threshold: Site.formatted_threshold_for_moderation,
+          referral_threshold: Site.formatted_threshold_for_referral,
+          debate_threshold: Site.formatted_threshold_for_debate
+        ).to_json
+      }},
+      EmailTags: [
+        { Name: "reference", Value: args[:reference] },
+        { Name: "notification_id", Value: notification.id }
+      ],
+      ConfigurationSetName: "spets-test"
     }
 
-    a_request(:post, notify_url).with(body: request.to_json)
+    # We use JSON.generate to work around the fact that Active Support's
+    # JSON encoder will convert <> to unicode escape sequences.
+    a_request(:post, notify_url).with(body: JSON.generate(request))
   end
 
   shared_examples_for "a notify job" do
@@ -85,12 +96,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 500,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "Exception", message: "Internal server error" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "InternalServerError", message: "Internal server error" }.to_json
           )
         end
 
@@ -112,12 +119,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 400,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "BadRequestError", message: "Can't send to this recipient using a team-only API key" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "BadRequestException", message: "Can't send to this recipient using a team-only API key" }.to_json
           )
         end
 
@@ -139,12 +142,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 403,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "AuthError", message: "Invalid token: API key not found" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "InvalidNextTokenException", message: "Invalid token: API key not found" }.to_json
           )
         end
 
@@ -166,12 +165,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 404,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "NotFoundError", message: "Not Found" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "NotFoundException", message: "Not Found" }.to_json
           )
         end
 
@@ -193,12 +188,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 408,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "RequestTimeoutError", message: "Request Timeout" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "RequestTimeoutError", message: "Request Timeout" }.to_json
           )
         end
 
@@ -220,12 +211,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 429,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "RateLimitError", message: "Exceeded rate limit for key type LIVE of 3000 requests per 60 seconds" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "TooManyRequestsException", message: "Exceeded rate limit for key type LIVE of 3000 requests per 60 seconds" }.to_json
           )
         end
 
@@ -247,12 +234,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         before do
           stub_request(:post, notify_url).to_return(
             status: 429,
-            headers: {
-              "Content-Type" => "application/json"
-            },
-            body: { errors: [
-              { error: "TooManyRequestsError", message: "Exceeded send limits (250,000) for today" }
-            ]}.to_json
+            headers: { "Content-Type" => "application/json" },
+            body: { code: "LimitExceededException", message: "Exceeded send limits (250,000) for today" }.to_json
           )
         end
 
@@ -3020,19 +3003,26 @@ RSpec.describe NotifyJob, type: :job, notify: false do
           described_class.perform_later(feedback)
         end
 
-        json = {
-          email_address: "petitionscommittee@parliament.scot",
-          template_id: "18fe5489-1e5b-4741-b840-5a1dddd97983",
-          reference: feedback.to_gid_param,
-          personalisation: {
-            comment: "This is a test",
-            link_or_title: "https://petitions.parliament.scot/petitions/10000",
-            email: "suzie@example.com",
-            user_agent: "Mozilla/5.0"
-          }
-        }.to_json
+        request = {
+          FromEmailAddress: Site.email_from,
+          Destination: { ToAddresses: [ "petitionscommittee@parliament.scot" ] },
+          Content: { Template: {
+            TemplateName: "18fe5489-1e5b-4741-b840-5a1dddd97983",
+            TemplateData: {
+              comment: "This is a test",
+              link_or_title: "https://petitions.parliament.scot/petitions/10000",
+              email: "suzie@example.com",
+              user_agent: "Mozilla/5.0"
+            }.to_json
+          }},
+          EmailTags: [
+            { Name: "reference", Value: feedback.reference },
+            { Name: "notification_id", Value: notification.id }
+          ],
+          ConfigurationSetName: "spets-test"
+        }
 
-        expect(a_request(:post, notify_url).with(body: json)).to have_been_made
+        expect(a_request(:post, notify_url).with(body: JSON.generate(request))).to have_been_made
       end
 
       context "when feedback sending is disabled" do

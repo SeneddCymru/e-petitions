@@ -33,12 +33,12 @@ gem 'jbuilder'
 gem 'paperclip'
 gem 'maxminddb'
 gem 'redcarpet'
-gem 'notifications-ruby-client'
 gem 'scrypt'
 
-gem 'aws-sdk-codedeploy'
-gem 'aws-sdk-cloudwatchlogs'
-gem 'aws-sdk-s3'
+gem 'aws-sdk-codedeploy', require: false
+gem 'aws-sdk-cloudwatchlogs', require: false
+gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-sesv2', require: false
 
 group :development, :test do
   gem 'simplecov'
