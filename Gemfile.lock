@@ -92,6 +92,9 @@ GEM
     aws-sdk-sesv2 (1.16.0)
       aws-sdk-core (~> 3, >= 3.112.0)
       aws-sigv4 (~> 1.1)
+    aws-sdk-sqs (1.36.0)
+      aws-sdk-core (~> 3, >= 3.112.0)
+      aws-sigv4 (~> 1.1)
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.11)
@@ -358,6 +361,10 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     shellany (0.0.1)
+    shoryuken (5.1.0)
+      aws-sdk-core (>= 2)
+      concurrent-ruby
+      thor
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
     simplecov (0.16.1)
@@ -414,6 +421,7 @@ DEPENDENCIES
   aws-sdk-codedeploy
   aws-sdk-s3
   aws-sdk-sesv2
+  aws-sdk-sqs
   bcrypt
   brakeman
   bundler-audit
@@ -457,6 +465,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (< 6)
   scrypt
+  shoryuken
   shoulda-matchers
   simplecov
   slack-notifier

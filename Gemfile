@@ -39,6 +39,8 @@ gem 'aws-sdk-codedeploy', require: false
 gem 'aws-sdk-cloudwatchlogs', require: false
 gem 'aws-sdk-s3', require: false
 gem 'aws-sdk-sesv2', require: false
+gem 'aws-sdk-sqs', require: false
+gem 'shoryuken', require: false
 
 group :development, :test do
   gem 'simplecov'

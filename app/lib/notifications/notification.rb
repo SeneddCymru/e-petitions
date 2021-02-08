@@ -68,6 +68,11 @@ module Notifications
           end
         end
       end
+
+      def process!(event)
+        notification = find_by!(message_id: event.message_id)
+        notification.update!(event.type => event.payload)
+      end
     end
 
     def payload
