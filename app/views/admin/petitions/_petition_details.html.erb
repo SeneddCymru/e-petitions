@@ -24,10 +24,20 @@
       <small>(submitted on paper)</small>
     </dd>
   <% else %>
-    <%= link_to admin_petition_signatures_url(@petition) do %>
-      <dt>Signatures</dt>
-      <dd class="petition-meta-signature-count"><%= number_with_delimiter(@petition.signature_count) %></dd>
+    <% if @petition.collect_signatures %>
+      <%= link_to admin_petition_signatures_url(@petition) do %>
+        <dt>Signatures</dt>
+        <dd class="petition-meta-signature-count"><%= number_with_delimiter(@petition.signature_count) %></dd>
+      <% end %>
+    <% else %>
+      <dd>Not collecting signatures</dd>
     <% end %>
+  <% end %>
+<% else %>
+  <% if @petition.collect_signatures %>
+    <dd>Petitioner wants to collect signatures</dd>
+  <% else %>
+    <dd>Petitioner does not want to collect signatures</dd>
   <% end %>
 <% end %>
 

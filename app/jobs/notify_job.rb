@@ -66,7 +66,7 @@ class NotifyJob < ApplicationJob
   def perform(signature, *args)
     client.send_email(
       email_address: signature.email,
-      template_id: template_id(signature.locale),
+      template_id: template_id(signature),
       reference: reference(signature),
       personalisation: personalise(signature, *args)
     )
@@ -84,8 +84,8 @@ class NotifyJob < ApplicationJob
     @client ||= Notifications::Client.new(api_key)
   end
 
-  def template_id(locale)
-    I18n.t(template, scope: :"notify.templates", locale: locale)
+  def template_id(signature)
+    I18n.t(template, scope: :"notify.templates", locale: signature.locale)
   end
 
   def reference(signature)
