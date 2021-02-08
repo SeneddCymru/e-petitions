@@ -73,6 +73,7 @@ Rails.application.routes.draw do
 
     scope '/petitioners', controller: 'petitioners' do
       get '/:id/verify', action: 'verify', as: :verify_petitioner
+      get '/:id/thank-you', action: 'thank_you', as: :thank_you_petitioner
     end
 
     scope '/sponsors', controller: 'sponsors' do
