@@ -1,9 +1,9 @@
 <%= cache_for :petition do %>
   <h1>
     <% if @petition.completed? %>
-      <span class="heading-secondary"><%= t(:"ui.petitions.heading_completed") %></span>
+      <span class="heading-secondary"><%= t(:"ui.petitions.heading_completed") %> - <%= @petition.to_param %></span>
     <% else %>
-      <span class="heading-secondary"><%= t(:"ui.petitions.heading_closed") %></span>
+      <span class="heading-secondary"><%= t(:"ui.petitions.heading_closed") %> - <%= @petition.to_param %></span>
     <% end %>
     <%= petition.action %>
   </h1>

@@ -183,7 +183,8 @@ Then(/^I should see my search query already filled in as the action of the petit
 end
 
 Then(/^I can click on a link to return to the petition$/) do
-  expect(page).to have_css("a[href*='/petitions/#{@petition.id}']")
+  slug = ('PE%04d' % @petition.pe_number_id)
+  expect(page).to have_css("a[href*='/petitions/#{slug}']")
 end
 
 Then(/^I should receive an email telling me how to get an MP on board$/) do

@@ -255,19 +255,20 @@ RSpec.describe PetitionsController, type: :controller do
     let(:petition) { double }
 
     it "assigns the given petition" do
+      allow(petition).to receive(:pe_number_id).and_return(petition)
       allow(petition).to receive(:collecting_sponsors?).and_return(false)
       allow(petition).to receive(:in_moderation?).and_return(false)
       allow(petition).to receive(:moderated?).and_return(true)
-      allow(Petition).to receive_message_chain(:show, find: petition)
+      allow(Petition).to receive_message_chain(:show, find: petition.pe_number_id)
 
-      get :show, params: { id: 1 }
+      get :show, params: { id: "PE0002" }
       expect(assigns(:petition)).to eq(petition)
     end
 
     it "does not allow hidden petitions to be shown" do
       expect {
         allow(Petition).to receive_message_chain(:visible, :find).and_raise ActiveRecord::RecordNotFound
-        get :show, params: { id: 1 }
+        get :show, params: { id: "PP0001" }
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
@@ -323,6 +324,56 @@ RSpec.describe PetitionsController, type: :controller do
     it "is successful" do
       get :check_results, params: { q: "action" }
       expect(response).to be_successful
+    end
+  end
+
+  describe "GET /petitions/:id/moderation-info" do
+    let(:petition) { double }
+
+    context "when petitions do not need to collect sponsors to be submitted for moderation" do
+      before do
+        Site.instance.update!(
+          minimum_number_of_sponsors: 0,
+          threshold_for_moderation: 0
+        )
+      end
+
+      it "redirects to not found" do
+        allow(petition).to receive(:collecting_sponsors?).and_return(false)
+        allow(petition).to receive(:in_moderation?).and_return(false)
+        allow(petition).to receive(:moderated?).and_return(true)
+        allow(petition).to receive(:pe_number_id).and_return(petition)
+        allow(Petition).to receive_message_chain(:show, find: petition.pe_number_id)
+
+        expect {
+          get :moderation_info, params: { id: "PP0001" }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
+  describe "GET /petitions/:id/gathering-support" do
+    let(:petition) { double }
+
+    context "when petitions do not need to collect sponsors to be submitted for moderation" do
+      before do
+        Site.instance.update!(
+          minimum_number_of_sponsors: 0,
+          threshold_for_moderation: 0
+        )
+      end
+
+      it "redirects to not found" do
+        allow(petition).to receive(:collecting_sponsors?).and_return(false)
+        allow(petition).to receive(:in_moderation?).and_return(false)
+        allow(petition).to receive(:moderated?).and_return(true)
+        allow(petition).to receive(:pe_number_id).and_return(petition)
+        allow(Petition).to receive_message_chain(:show, find: petition.pe_number_id)
+
+        expect {
+          get :gathering_support, params: { id: "PP0001" }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 end

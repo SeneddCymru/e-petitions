@@ -26,11 +26,6 @@ RSpec.describe "routes for petitions", type: :routes do
       expect(post("/petitions")).not_to be_routable
     end
 
-    it "routes GET /petitions/:id to petitions#show" do
-      expect(get("/petitions/1")).to route_to(controller: "petitions", action: "show", id: "1")
-      expect(petition_path("1")).to eq("/petitions/1")
-    end
-
     it "doesn't route GET /petitions/:id/edit" do
       expect(patch("/petitions/1/edit")).not_to be_routable
     end
@@ -58,18 +53,32 @@ RSpec.describe "routes for petitions", type: :routes do
     end
 
     it "routes GET /petitions/:id/count to petitions#count" do
-      expect(get("/petitions/1/count")).to route_to(controller: "petitions", action: "count", id: "1")
-      expect(count_petition_path("1")).to eq("/petitions/1/count")
+      expect(get("/petitions/PE0001/count")).to route_to(controller: "petitions", action: "count", id: "PE0001")
+      expect(count_petition_path("PE0001")).to eq("/petitions/PE0001/count")
     end
 
     it "routes GET /petitions/:id/gathering-support to petitions#gathering_support" do
-      expect(get("/petitions/1/gathering-support")).to route_to(controller: "petitions", action: "gathering_support", id: "1")
-      expect(gathering_support_petition_path("1")).to eq("/petitions/1/gathering-support")
+      expect(get("/petitions/PE0001/gathering-support")).to route_to(controller: "petitions", action: "gathering_support", id: "PE0001")
+      expect(gathering_support_petition_path("PE0001")).to eq("/petitions/PE0001/gathering-support")
     end
 
     it "routes GET /petitions/:id/moderation-info to petitions#moderation_info" do
-      expect(get("/petitions/1/moderation-info")).to route_to(controller: "petitions", action: "moderation_info", id: "1")
-      expect(moderation_info_petition_path("1")).to eq("/petitions/1/moderation-info")
+      expect(get("/petitions/PE0001/moderation-info")).to route_to(controller: "petitions", action: "moderation_info", id: "PE0001")
+      expect(moderation_info_petition_path("PE0001")).to eq("/petitions/PE0001/moderation-info")
+    end
+
+    context "when petitions do not need to collect sponsors to be submitted for moderation" do
+      before do
+        Site.instance.update!(
+          minimum_number_of_sponsors: 0,
+          threshold_for_moderation: 0
+        )
+      end
+
+      it "routes GET /petitions/PE:id/count to petitions#count" do
+        expect(get("/petitions/PE0001/count")).to route_to(controller: "petitions", action: "count", id: "PE0001")
+        expect(count_petition_path("PE0001")).to eq("/petitions/PE0001/count")
+      end
     end
 
     describe "redirects" do
@@ -86,7 +95,7 @@ RSpec.describe "routes for petitions", type: :routes do
       end
 
       it "GET /athchuingean/:id" do
-        expect(get("/athchuingean/1")).to redirect_to("/petitions/1", 308)
+        expect(get("/athchuingean/PE0001")).to redirect_to("/petitions/PE0001", 308)
       end
 
       it "GET /athchuingean/thoir-suil" do
@@ -98,7 +107,7 @@ RSpec.describe "routes for petitions", type: :routes do
       end
 
       it "GET /athchuingean/:id/cunnt" do
-        expect(get("/athchuingean/1/cunnt")).to redirect_to("/petitions/1/count", 308)
+        expect(get("/athchuingean/PE0001/cunnt")).to redirect_to("/petitions/PE0001/count", 308)
       end
 
       it "GET /athchuingean/tapadh-leibh" do
@@ -106,11 +115,11 @@ RSpec.describe "routes for petitions", type: :routes do
       end
 
       it "GET /athchuingean/:id/cruinneachadh-taic" do
-        expect(get("/athchuingean/1/cruinneachadh-taic")).to redirect_to("/petitions/1/gathering-support", 308)
+        expect(get("/athchuingean/PE0001/cruinneachadh-taic")).to redirect_to("/petitions/PE0001/gathering-support", 308)
       end
 
       it "GET /athchuingean/:id/fiosrachadh-measaidh" do
-        expect(get("/athchuingean/1/fiosrachadh-measaidh")).to redirect_to("/petitions/1/moderation-info", 308)
+        expect(get("/athchuingean/PE0001/fiosrachadh-measaidh")).to redirect_to("/petitions/PE0001/moderation-info", 308)
       end
     end
   end
@@ -141,8 +150,8 @@ RSpec.describe "routes for petitions", type: :routes do
     end
 
     it "routes GET /athchuingean/:id to petitions#show" do
-      expect(get("/athchuingean/1")).to route_to(controller: "petitions", action: "show", id: "1")
-      expect(petition_path("1")).to eq("/athchuingean/1")
+      expect(get("/athchuingean/PE0001")).to route_to(controller: "petitions", action: "show", id: "PE0001")
+      expect(petition_path("PE0001")).to eq("/athchuingean/PE0001")
     end
 
     it "doesn't route GET /athchuingean/:id/deasaich" do
@@ -172,18 +181,18 @@ RSpec.describe "routes for petitions", type: :routes do
     end
 
     it "routes GET /athchuingean/:id/cunnt to petitions#count" do
-      expect(get("/athchuingean/1/cunnt")).to route_to(controller: "petitions", action: "count", id: "1")
-      expect(count_petition_path("1")).to eq("/athchuingean/1/cunnt")
+      expect(get("/athchuingean/PE0001/cunnt")).to route_to(controller: "petitions", action: "count", id: "PE0001")
+      expect(count_petition_path("PE0001")).to eq("/athchuingean/PE0001/cunnt")
     end
 
     it "routes GET /athchuingean/:id/cruinneachadh-taic to petitions#gathering_support" do
-      expect(get("/athchuingean/1/cruinneachadh-taic")).to route_to(controller: "petitions", action: "gathering_support", id: "1")
-      expect(gathering_support_petition_path("1")).to eq("/athchuingean/1/cruinneachadh-taic")
+      expect(get("/athchuingean/PE0001/cruinneachadh-taic")).to route_to(controller: "petitions", action: "gathering_support", id: "PE0001")
+      expect(gathering_support_petition_path("PE0001")).to eq("/athchuingean/PE0001/cruinneachadh-taic")
     end
 
     it "routes GET /athchuingean/:id/fiosrachadh-measaidh to petitions#moderation_info" do
-      expect(get("/athchuingean/1/fiosrachadh-measaidh")).to route_to(controller: "petitions", action: "moderation_info", id: "1")
-      expect(moderation_info_petition_path("1")).to eq("/athchuingean/1/fiosrachadh-measaidh")
+      expect(get("/athchuingean/PE0001/fiosrachadh-measaidh")).to route_to(controller: "petitions", action: "moderation_info", id: "PE0001")
+      expect(moderation_info_petition_path("PE0001")).to eq("/athchuingean/PE0001/fiosrachadh-measaidh")
     end
 
     describe "redirects" do
@@ -200,7 +209,7 @@ RSpec.describe "routes for petitions", type: :routes do
       end
 
       it "GET /petitions/:id" do
-        expect(get("/petitions/1")).to redirect_to("/athchuingean/1", 308)
+        expect(get("/petitions/PE0001")).to redirect_to("/athchuingean/PE0001", 308)
       end
 
       it "GET /petitions/check" do
@@ -212,7 +221,7 @@ RSpec.describe "routes for petitions", type: :routes do
       end
 
       it "GET /petitions/:id/count" do
-        expect(get("/petitions/1/count")).to redirect_to("/athchuingean/1/cunnt", 308)
+        expect(get("/petitions/PE0001/count")).to redirect_to("/athchuingean/PE0001/cunnt", 308)
       end
 
       it "GET /petitions/thank-you" do
@@ -220,11 +229,11 @@ RSpec.describe "routes for petitions", type: :routes do
       end
 
       it "GET /petitions/:id/gathering-support" do
-        expect(get("/petitions/1/gathering-support")).to redirect_to("/athchuingean/1/cruinneachadh-taic", 308)
+        expect(get("/petitions/PE0001/gathering-support")).to redirect_to("/athchuingean/PE0001/cruinneachadh-taic", 308)
       end
 
       it "GET /petitions/:id/moderation-info" do
-        expect(get("/petitions/1/moderation-info")).to redirect_to("/athchuingean/1/fiosrachadh-measaidh", 308)
+        expect(get("/petitions/PE0001/moderation-info")).to redirect_to("/athchuingean/PE0001/fiosrachadh-measaidh", 308)
       end
     end
   end

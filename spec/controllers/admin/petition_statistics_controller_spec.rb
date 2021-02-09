@@ -40,7 +40,7 @@ RSpec.describe Admin::PetitionStatisticsController, type: :controller, admin: tr
       end
 
       it "redirects to the petition page" do
-        expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+        expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
       end
 
       it "sets the flash notice message" do

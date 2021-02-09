@@ -129,7 +129,7 @@ RSpec.describe Admin::PetitionDetailsController, type: :controller, admin: true 
           it 'redirects to the edit petition page' do
             do_update
             petition.reload
-            expect(response).to redirect_to"https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}"
+            expect(response).to redirect_to"https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}"
           end
 
           it 'updates the petition' do

@@ -143,7 +143,7 @@ RSpec.describe Admin::DebateOutcomesController, type: :controller, admin: true d
           describe 'with valid params' do
             it 'redirects to the petition show page' do
               do_patch
-              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}"
+              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}"
             end
 
             it 'tells the moderator that their email will be sent overnight' do
@@ -355,7 +355,7 @@ RSpec.describe Admin::DebateOutcomesController, type: :controller, admin: true d
           describe 'with valid params' do
             it 'redirects to the petition show page' do
               do_patch
-              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}"
+              expect(response).to redirect_to "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}"
             end
 
             it 'tells the moderator that their changes were saved' do
@@ -492,6 +492,9 @@ RSpec.describe Admin::DebateOutcomesController, type: :controller, admin: true d
         before do
           debateable = double(:scope)
           allow(Petition).to receive(:debateable).and_return(debateable)
+          allow(Petition).to receive(:find).with(petition.pe_number_id.to_s).and_return(petition)
+          allow(Petition).to receive(:find).with(petition.id.to_s).and_return(petition)
+          allow(debateable).to receive(:find).with(petition.pe_number_id.to_s).and_return(petition)
           allow(debateable).to receive(:find).with(petition.id.to_s).and_return(petition)
         end
 

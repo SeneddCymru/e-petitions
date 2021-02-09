@@ -138,7 +138,7 @@ RSpec.describe Admin::TakeDownController, type: :controller, admin: true do
           end
 
           it 'redirects to the admin show page for the petition' do
-            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
           end
 
           it "sends an email to the petition creator" do
@@ -179,7 +179,7 @@ RSpec.describe Admin::TakeDownController, type: :controller, admin: true do
           end
 
           it 'redirects to the admin show page for the petition' do
-            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.id}")
+            expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
           end
 
           it "sends an email to the petition creator" do

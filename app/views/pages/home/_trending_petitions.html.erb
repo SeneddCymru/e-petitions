@@ -2,9 +2,9 @@
   <section class="trending" aria-labelledby="trending-heading">
     <h2 id="trending-heading"><%= t(:"ui.home_page.trending_petitions.heading") %></h2>
     <ul>
-      <% petitions.each do |id, action, signature_count| %>
+      <% petitions.each do |pe_number_id, action, signature_count| %>
         <li class="petition-item">
-          <h3><%= link_to truncate(action, length: 100), petition_path(id) %></h3>
+          <h3><%= link_to truncate(action, length: 100), petition_path(('PE%04d' % pe_number_id)) %></h3>
           <p><%= signature_count(:trending, signature_count) %></p>
         </li>
       <% end %>

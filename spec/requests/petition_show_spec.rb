@@ -10,12 +10,12 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
 
   describe "format" do
     it "responds to JSON" do
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
     end
 
     it "sets CORS headers" do
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
 
       expect(response).to be_successful
       expect(access_control_allow_origin).to eq('*')
@@ -24,7 +24,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     end
 
     it "does not respond to XML" do
-      get "/petitions/#{petition.id}.xml"
+      get "/petitions/#{petition.to_param}.xml"
       expect(response.status).to eq(406)
     end
   end
@@ -33,16 +33,16 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     let(:links) { json["links"] }
 
     it "returns a link to itself" do
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
 
       expect(response).to be_successful
-      expect(links).to include("self" => "https://petitions.parliament.scot/petitions/#{petition.id}.json")
+      expect(links).to include("self" => "https://petitions.parliament.scot/petitions/#{petition.to_param}.json")
     end
   end
 
   describe "data" do
     it "returns the petition with the expected fields" do
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -63,7 +63,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "returns the closed_at timestamp if the petition is closed" do
       petition = FactoryBot.create :closed_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -77,7 +77,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "returns the completed_at timestamp date if the petition is completed" do
       petition = FactoryBot.create :completed_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -91,7 +91,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "returns the archived_at timestamp date if the petition is archived" do
       petition = FactoryBot.create :archived_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -105,7 +105,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "returns the submitted_on date if the petition was submitted on paper" do
       petition = FactoryBot.create :paper_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -119,7 +119,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "doesn't include the rejection section for non-rejected petitions" do
       petition = FactoryBot.create :open_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -136,7 +136,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
           rejection_code: "duplicate",
           rejection_details: "This is a duplication of another petition"
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -157,7 +157,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
           referral_threshold_reached_at: 1.weeks.ago,
           debate_threshold_reached_at: 1.day.ago
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -172,7 +172,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "includes the date and time at which the petition was referred" do
       petition = FactoryBot.create :referred_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -185,7 +185,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     it "includes the date when a petition is scheduled for a debate" do
       petition = FactoryBot.create :scheduled_debate_petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -204,7 +204,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
           video_url: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
           debate_pack_url: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -228,7 +228,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
         FactoryBot.create :open_petition,
           topics: [topic.id]
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -247,7 +247,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000147", signature_count: 123, petition: petition
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000096", signature_count: 456, petition: petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -277,7 +277,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000147", signature_count: 123, petition: petition
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000096", signature_count: 456, petition: petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes.keys).not_to include("signatures_by_constituency")
@@ -289,7 +289,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
       FactoryBot.create :country_petition_journal, location_code: "GB-SCT", signature_count: 123456, petition: petition
       FactoryBot.create :country_petition_journal, location_code: "FR", signature_count: 789, petition: petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -316,7 +316,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
       FactoryBot.create :country_petition_journal, location_code: "GB-SCT", signature_count: 123456, petition: petition
       FactoryBot.create :country_petition_journal, location_code: "FR", signature_count: 789, petition: petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes.keys).not_to include("signatures_by_country")
@@ -331,7 +331,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000147", signature_count: 123, petition: petition
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000096", signature_count: 456, petition: petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes).to match(
@@ -361,7 +361,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000147", signature_count: 123, petition: petition
       FactoryBot.create :constituency_petition_journal, constituency_id: "S16000096", signature_count: 456, petition: petition
 
-      get "/petitions/#{petition.id}.json"
+      get "/petitions/#{petition.to_param}.json"
       expect(response).to be_successful
 
       expect(attributes.keys).not_to include("signatures_by_region")

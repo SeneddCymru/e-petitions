@@ -76,6 +76,7 @@ class Petition < ActiveRecord::Base
   accepts_nested_attributes_for :creator, update_only: true
 
   belongs_to :locked_by, class_name: 'AdminUser', optional: true
+  belongs_to :pe_number, optional: true
 
   has_one :debate_outcome, dependent: :destroy
   has_one :email_requested_receipt, dependent: :destroy
@@ -144,6 +145,25 @@ class Petition < ActiveRecord::Base
   after_create do
     Appsignal.increment_counter("petition.created")
   end
+
+  finders = Module.new do
+   def find_by_param(param)
+     case param
+     when /\APE(\d{4,7})\z/
+       all.find_by!(pe_number_id: $1)
+     when /\APP(\d{4,7})\z/
+       all.find_by!(id: $1)
+     else
+       all.find_by!(id: param)
+     end
+   end
+   def find(id)
+     id.is_a?(String) ? find_by_param(id) : super(id)
+   end
+ end
+
+ include finders
+ relation.class.include finders
 
   class << self
     def by_most_popular
@@ -474,6 +494,10 @@ class Petition < ActiveRecord::Base
     end
   end
 
+  def to_param
+    published? ? ('PE%04d' % pe_number_id) : ('PP%04d' % id)
+  end
+
   def statistics
     super || create_statistics!
   end
@@ -701,8 +725,10 @@ class Petition < ActiveRecord::Base
       errors.add :moderation, :translation_missing
       return false
     end
-
     Appsignal.increment_counter("petition.published", 1)
+
+    build_pe_number
+
     update(state: OPEN_STATE, open_at: time, closed_at: closing_date(time))
   end
 

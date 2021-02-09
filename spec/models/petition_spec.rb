@@ -784,6 +784,24 @@ RSpec.describe Petition, type: :model do
         expect(Petition.paper).not_to include(closed_petition)
       end
     end
+
+    describe ".find" do
+      let!(:validated_petition) { FactoryBot.create(:validated_petition) }
+      let!(:sponsored_petition) { FactoryBot.create(:sponsored_petition) }
+      let!(:rejected_petition) { FactoryBot.create(:rejected_petition) }
+      let!(:closed_petition) { FactoryBot.create(:closed_petition) }
+      let!(:open_petition) { FactoryBot.create(:open_petition) }
+      let!(:hidden_petition) { FactoryBot.create(:hidden_petition) }
+
+      it "returns the correct petition" do
+        expect(Petition.find(validated_petition.id)).to eq(validated_petition)
+        expect(Petition.find(sponsored_petition.id)).to eq(sponsored_petition)
+        expect(Petition.find(rejected_petition.id)).to eq(rejected_petition)
+        expect(Petition.find(closed_petition.id)).to eq(closed_petition)
+        expect(Petition.find(open_petition.id)).to eq(open_petition)
+        expect(Petition.find(hidden_petition.id)).to eq(hidden_petition)
+      end
+    end
   end
 
   it_behaves_like "a taggable model"
