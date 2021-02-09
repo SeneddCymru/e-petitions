@@ -8,70 +8,32 @@ RSpec.describe NotifyEveryoneOfModerationDecisionJob, type: :job do
   let(:creator) { petition.creator }
 
   context "when the petition is published" do
-    context "and is collecting signatures" do
-      before do
-        petition.publish
-      end
-
-      it "notifies the creator" do
-        expect {
-          described_class.perform_now(petition)
-        }.to have_enqueued_job(
-          NotifyCreatorThatPetitionIsPublishedWithSignaturesEmailJob
-        ).with(creator).on_queue("high_priority")
-      end
-
-      it "notifies the validated sponsors" do
-        expect {
-          described_class.perform_now(petition)
-        }.to have_enqueued_job(
-          NotifySponsorThatPetitionIsPublishedWithSignaturesEmailJob
-        ).with(validated_sponsor).on_queue("high_priority")
-      end
-
-      it "doesn't notify the pending sponsors" do
-        expect {
-          described_class.perform_now(petition)
-        }.not_to have_enqueued_job(
-          NotifySponsorThatPetitionIsPublishedWithSignaturesEmailJob
-        ).with(pending_sponsor).on_queue("high_priority")
-      end
+    before do
+      petition.publish
     end
 
-    context "and is not collecting signatures" do
-      let(:petition_not_collecting_signatures) { FactoryBot.create(:pending_petition, :translated, sponsor_count: 0, collect_signatures: false) }
-      let(:validated_sponsor) { FactoryBot.create(:sponsor, :validated, petition: petition_not_collecting_signatures) }
-      let(:pending_sponsor) { FactoryBot.create(:sponsor, :pending, petition: petition_not_collecting_signatures) }
+    it "notifies the creator" do
+      expect {
+        described_class.perform_now(petition)
+      }.to have_enqueued_job(
+        NotifyCreatorThatPetitionIsPublishedEmailJob
+      ).with(creator).on_queue("high_priority")
+    end
 
-      let(:creator) { petition_not_collecting_signatures.creator }
+    it "notifies the validated sponsors" do
+      expect {
+        described_class.perform_now(petition)
+      }.to have_enqueued_job(
+        NotifySponsorThatPetitionIsPublishedEmailJob
+      ).with(validated_sponsor).on_queue("high_priority")
+    end
 
-      before do
-        petition_not_collecting_signatures.publish
-      end
-
-      it "notifies the creator" do
-        expect {
-          described_class.perform_now(petition_not_collecting_signatures)
-        }.to have_enqueued_job(
-          NotifyCreatorThatPetitionIsPublishedWithoutSignaturesEmailJob
-        ).with(creator).on_queue("high_priority")
-      end
-
-      it "notifies the validated sponsors" do
-        expect {
-          described_class.perform_now(petition_not_collecting_signatures)
-        }.to have_enqueued_job(
-          NotifySponsorThatPetitionIsPublishedWithoutSignaturesEmailJob
-        ).with(validated_sponsor).on_queue("high_priority")
-      end
-
-      it "doesn't notify the pending sponsors" do
-        expect {
-          described_class.perform_now(petition_not_collecting_signatures)
-        }.not_to have_enqueued_job(
-          NotifySponsorThatPetitionIsPublishedWithoutSignaturesEmailJob
-        ).with(pending_sponsor).on_queue("high_priority")
-      end
+    it "doesn't notify the pending sponsors" do
+      expect {
+        described_class.perform_now(petition)
+      }.not_to have_enqueued_job(
+        NotifySponsorThatPetitionIsPublishedEmailJob
+      ).with(pending_sponsor).on_queue("high_priority")
     end
   end
 

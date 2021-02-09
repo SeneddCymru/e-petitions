@@ -420,7 +420,7 @@ Given(/^an? ?(pending|validated|sponsored|flagged|open)? petition "(.*?)" exists
 end
 
 Given(/^an? ?(pending|validated|sponsored|flagged|open)? petition "([^"]*)" exists with a custom closing date "([^"]*)"$/) do |state, action, date|
-  @petition = FactoryBot.create(:"#{state}_petition", action: action, closed_at: date.in_time_zone.end_of_day)
+  @petition = FactoryBot.create(:"#{state}_petition", action: action, closed_at: date.in_time_zone.end_of_day, collect_signatures: true)
 end
 
 Given(/^there are (\d+) petitions with a scheduled debate date$/) do |scheduled_debate_petitions_count|

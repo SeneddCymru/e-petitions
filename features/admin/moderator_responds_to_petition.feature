@@ -59,12 +59,20 @@ Feature: Moderator respond to petition
     When I follow "Cancel"
     Then I am on the admin petition page for "Blah"
 
-  Scenario: Moderator publishes petition
+  Scenario: Moderator publishes petition collecting signatures
     Given I am logged in as a moderator
     When I look at the next petition on my list
     And the petition is translated
     And I publish the petition
     Then the petition should be visible on the site for signing
+    And the creator should receive a notification email
+
+  Scenario: Moderator publishes petition not collecting signatures
+    Given I am logged in as a moderator
+    When I look at the next petition on my list that is not collecting signatures and has reached referral threshold
+    And the petition is translated
+    And I publish the petition
+    Then the petition should be visible on the site but not available for signing
     And the creator should receive a notification email
 
   Scenario: Moderator publishes petition when Gaelic is disabled

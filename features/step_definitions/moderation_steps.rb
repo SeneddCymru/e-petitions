@@ -1,5 +1,10 @@
 When(/^I look at the next petition on my list$/) do
-  @petition = FactoryBot.create(:sponsored_petition, :with_additional_details, :action => "Petition 1")
+  @petition = FactoryBot.create(:sponsored_petition, :with_additional_details, :action => "Petition 1", collect_signatures: true)
+  visit admin_petition_url(@petition)
+end
+
+When(/^I look at the next petition on my list that is not collecting signatures and has reached referral threshold$/) do
+  @petition = FactoryBot.create(:sponsored_petition, :with_additional_details, :action => "Petition 1", collect_signatures: false, referral_threshold_reached_at: Time.current)
   visit admin_petition_url(@petition)
 end
 
@@ -67,7 +72,13 @@ end
 
 Then /^the petition should be visible on the site for signing$/ do
   visit petition_url(@petition)
-  expect(page).to have_css("a", :text => "Sign")
+  expect(page).to have_css("a", :text => "Sign this petition")
+end
+
+
+Then(/^the petition should be visible on the site but not available for signing$/) do
+  visit petition_url(@petition)
+  expect(page).not_to have_css("a", :text => "Sign this petition")
 end
 
 Then(/^the petition can no longer be flagged$/) do
