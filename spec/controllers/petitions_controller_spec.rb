@@ -26,7 +26,8 @@ RSpec.describe PetitionsController, type: :controller do
         additional_details: "Global warming is upon us",
         name: "John Mcenroe", email: "john@example.com",
         phone_number: "0141 496 1234", address: "1 Nowhere Road, Cardiff",
-        postcode: "G34 0BX", location_code: "GB-SCT"
+        postcode: "G34 0BX", location_code: "GB-SCT",
+        privacy_notice: "1"
       }
     end
 
@@ -166,6 +167,15 @@ RSpec.describe PetitionsController, type: :controller do
           expect(response).to be_successful
         end
 
+        it "should not create a new petition if privacy_notice is not confirmed" do
+          perform_enqueued_jobs do
+            post :create, params: { stage: "replay_email", petition_creator: params.merge(privacy_notice: "0") }
+          end
+
+          expect(petition).to be_nil
+          expect(response).to be_successful
+        end
+
         it "has stage of 'petition' if there is an error on action" do
           perform_enqueued_jobs do
             post :create, params: { stage: "replay_email", petition_creator: params.merge(action: "") }
@@ -225,6 +235,14 @@ RSpec.describe PetitionsController, type: :controller do
         it "has stage of 'creator' if there are errors on email and we came from the 'creator' stage" do
           perform_enqueued_jobs do
             post :create, params: { stage: "creator", petition_creator: params.merge(email: "") }
+          end
+
+          expect(assigns[:new_petition].stage).to eq "creator"
+        end
+
+        it "has stage of 'creator' if there are errors on privacy_notice and we came from the 'creator' stage" do
+          perform_enqueued_jobs do
+            post :create, params: { stage: "creator", petition_creator: params.merge(privacy_notice: "0") }
           end
 
           expect(assigns[:new_petition].stage).to eq "creator"

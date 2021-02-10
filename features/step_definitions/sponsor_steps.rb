@@ -25,6 +25,7 @@ When(/^a sponsor supports my petition$/) do
     And I fill in "Name" with "Anonymous Sponsor"
     And I fill in "Email" with "#{sponsor_email}"
     And I fill in my postcode with "G34 0BX"
+    And I check "we need you to confirm you have read our privacy notice"
     And I select "Wales" from "Location"
     And I try to sign
     And I say I am happy with my email address
@@ -58,6 +59,7 @@ Given(/^there is a sponsor already from this IP address$/) do
     And I fill in "Email" with "existing@example.com"
     And I fill in my postcode with "SW14 9RQ"
     And I select "Wales" from "Location"
+    And I check "we need you to confirm you have read our privacy notice"
     And I try to sign
     And I say I am happy with my email address
     Then I am told to check my inbox to complete signing
@@ -109,6 +111,7 @@ When(/^I fill in my details as a sponsor(?: with email "(.*?)")?$/) do |email_ad
     And I fill in my postcode with "AB10 1AA"
     And I select "Scotland" from "Location"
     And I check "Email me whenever there’s an update about this petition"
+    And I check "we need you to confirm you have read our privacy notice"
   }
 end
 

@@ -45,6 +45,7 @@ When(/^I fill in my details(?: with email "([^"]+)")?$/) do |email_address|
       And I fill in my postcode with "G34 0BX"
       And I select "Scotland" from "Location"
       And I check "Email me whenever there’s an update about this petition"
+      And I check "we need you to confirm you have read our privacy notice"
     )
   else
     steps %Q(
@@ -53,6 +54,7 @@ When(/^I fill in my details(?: with email "([^"]+)")?$/) do |email_address|
       And I fill in my postcode with "G34 0BX"
       And I select "Scotland" from "Location"
       And I check "Email me whenever there’s an update about this petition"
+      And I check "we need you to confirm you have read our privacy notice"
     )
   end
 end
@@ -84,6 +86,7 @@ When(/^I fill in my details with postcode "(.*?)"?$/) do |postcode|
     And I fill in my postcode with "#{postcode}"
     And I select "Wales" from "Location"
     And I check "Email me whenever there’s an update about this petition"
+    And I check "we need you to confirm you have read our privacy notice"
   )
 end
 
@@ -101,11 +104,13 @@ When(/^I fill in my creator contact details$/) do
     steps %Q(
       And I fill in "Phone number" with "0141 496 1234"
       And I fill in "Address" with "1 Nowhere Road, Glasgow"
+      And I check "we need you to confirm you have read our privacy notice"
     )
   else
     steps %Q(
       And I fill in "Phone number" with "0141 496 1234"
       And I fill in "Address" with "1 Nowhere Road, Glasgow"
+      And I check "we need you to confirm you have read our privacy notice"
     )
   end
 end

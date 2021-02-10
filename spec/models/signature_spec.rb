@@ -117,7 +117,7 @@ RSpec.describe Signature, type: :model do
             :pending_signature,
             petition: petition,
             constituency_id: "S16000147",
-            location_code: "GB-SCT"
+            location_code: "GB-SCT",
           )
         }
 
@@ -151,7 +151,7 @@ RSpec.describe Signature, type: :model do
             :pending_signature,
             petition: petition,
             constituency_id: "S16000147",
-            location_code: "GB"
+            location_code: "GB",
           )
         }
 
@@ -190,7 +190,8 @@ RSpec.describe Signature, type: :model do
           name: "Suzy Signer",
           email: email,
           postcode: postcode,
-          location_code: location_code
+          location_code: location_code,
+          privacy_notice: "1"
         }
       end
 
@@ -324,6 +325,21 @@ RSpec.describe Signature, type: :model do
       it "does not allow postcodes longer than 255 characters for non-UK addresses" do
         s = FactoryBot.build(:signature, :location_code => "US", :postcode => "1" * 256)
         expect(s).not_to have_valid(:postcode)
+      end
+    end
+
+    describe "privacy_notice" do
+      it "requires acceptance of privacy_notice for a new record" do
+        expect(FactoryBot.build(:signature, privacy_notice: "1")).to be_valid
+        expect(FactoryBot.build(:signature, privacy_notice: "0")).not_to be_valid
+        expect(FactoryBot.build(:signature, privacy_notice: nil)).not_to be_valid
+      end
+
+      it "does not require acceptance of privacy_notice for old records" do
+        signature = FactoryBot.create(:signature)
+        signature.reload
+        signature.privacy_notice = "0"
+        expect(signature).to be_valid
       end
     end
   end
@@ -921,7 +937,7 @@ RSpec.describe Signature, type: :model do
           :pending_signature,
           petition: petition,
           constituency_id: "S16000147",
-          location_code: "GB-SCT"
+          location_code: "GB-SCT",
         )
       }
 
@@ -2110,7 +2126,8 @@ RSpec.describe Signature, type: :model do
           name: "Suzy Signer",
           email: "foo@example.com",
           postcode: "G34 0BX",
-          location_code: "GB-SCT"
+          location_code: "GB-SCT",
+          privacy_notice: "1"
         )
       end
 
@@ -2184,14 +2201,16 @@ RSpec.describe Signature, type: :model do
           name: "Suzy Signer",
           email: "foo@example.com",
           postcode: "G34 0BX",
-          location_code: "GB-SCT"
+          location_code: "GB-SCT",
+          privacy_notice: "1"
         )
 
         petition.signatures.create!(
           name: "Sam Signer",
           email: "foo@example.com",
           postcode: "G34 0BX",
-          location_code: "GB-SCT"
+          location_code: "GB-SCT",
+          privacy_notice: "1"
         )
       end
 
@@ -2220,7 +2239,8 @@ RSpec.describe Signature, type: :model do
         name: "Suzy Signer",
         email: "foo@example.com",
         postcode: "G34 0BX",
-        location_code: "GB-SCT"
+        location_code: "GB-SCT",
+        privacy_notice: "1"
       }
     end
 
