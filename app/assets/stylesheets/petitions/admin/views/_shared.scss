@@ -36,16 +36,24 @@
     }
   }
 
-  .search-petitions, .search-invalidations, .search-signatures {
+  .search-invalidations,
+  .search-petitions,
+  .search-signatures,
+  .search-tags,
+  .search-topics,
+  .search-users {
+    margin-top: $gutter-half;
     margin-bottom: $gutter-half;
+    overflow: hidden;
   }
 
   .character-count {
     margin-bottom: 0;
   }
 
-  .tabs {
-    margin-bottom: $gutter-half;
+  h1.tabs {
+    margin-top: $gutter;
+    margin-bottom: $gutter-two-thirds;
   }
 
   // Pagination
@@ -197,6 +205,11 @@
         }
       }
     }
+  }
+
+  .tabs {
+    border-bottom: 1px solid $grey-3;
+    padding-bottom: 30px;
   }
 
   .petition-content {
