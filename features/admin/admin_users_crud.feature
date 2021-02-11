@@ -9,6 +9,7 @@ Feature: Admin users index and crud
 
   Scenario: Accessing the admin users index
     When I go to the admin home page
+    And I follow "Settings"
     And I follow "Users"
     Then I should be on the admin users index page
     And I should be connected to the server via an ssl connection
@@ -19,10 +20,10 @@ Feature: Admin users index and crud
     When I go to the admin users index page
     Then I should see the following admin user table:
       | Name            | Email             | Role      | Disabled |
-      | Admin, Sys      | muddy@fox.com     | sysadmin  |          |
-      | Campbell, Naomi | naomi@example.com | moderator |          |
-      | Hunt, Helen     | helen@example.com | moderator | Yes      |
-      | Jacobi, Derek   | derek@example.com | moderator |          |
+      | Sys Admin       | muddy@fox.com     | sysadmin  |          |
+      | Naomi Campbell  | naomi@example.com | moderator |          |
+      | Helen Hunt      | helen@example.com | moderator | Yes      |
+      | Derek Jacobi    | derek@example.com | moderator |          |
     And the markup should be valid
 
   Scenario: Pagination of the users index
@@ -35,7 +36,7 @@ Feature: Admin users index and crud
 
   Scenario: Inspecting the new user form
     When I go to the admin users index page
-    And I follow "New user"
+    And I follow "New User"
     Then I should be on the admin new user page
     And I should be connected to the server via an ssl connection
     And I should see a "First name" text field
@@ -50,7 +51,7 @@ Feature: Admin users index and crud
 
   Scenario: Creating a new user
     When I go to the admin users index page
-    And I follow "New user"
+    And I follow "New User"
     And I fill in "First name" with "Derek"
     And I fill in "Last name" with "Jacobi"
     And I fill in "Email" with "derek@example.com"
@@ -60,20 +61,20 @@ Feature: Admin users index and crud
     And I press "Save"
     Then I should be on the admin users index page
     And I should see "derek@example.com"
-    When I follow "Jacobi, Derek"
+    When I follow "Derek Jacobi"
     Then the "sysadmin" radio button should be chosen
     And the "Account disabled" checkbox should not be checked
 
   Scenario: Updating a user
     When I go to the admin users index page
-    And I follow "Campbell, Naomi"
+    And I follow "Naomi Campbell"
     And I fill in "First name" with "Nolene"
     And I fill in "Email" with "helen@example.com"
     And I check "Account disabled"
     And I press "Save"
     Then I should be on the admin users index page
     And I should see "helen@example.com"
-    When I follow "Campbell, Nolene"
+    When I follow "Nolene Campbell"
     And the "Email" field should contain "helen@example.com"
     And the "Account disabled" checkbox should be checked
     And a moderator user should exist with email: "helen@example.com", failed_login_count: "5"
@@ -82,12 +83,12 @@ Feature: Admin users index and crud
   Scenario: Enabling a user's disabled account
     Given a moderator user exists with email: "derek@example.com", first_name: "Derek", last_name: "Jacobi", failed_login_count: "5"
     When I go to the admin users index page
-    And I follow "Jacobi, Derek"
+    And I follow "Derek Jacobi"
     And the "Account disabled" checkbox should be checked
     And I uncheck "Account disabled"
     And I press "Save"
     Then I should be on the admin users index page
-    When I follow "Jacobi, Derek"
+    When I follow "Derek Jacobi"
     And the "Account disabled" checkbox should not be checked
     And a moderator user should exist with email: "derek@example.com", failed_login_count: "0"
 

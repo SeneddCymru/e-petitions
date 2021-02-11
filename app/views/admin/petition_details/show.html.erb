@@ -6,7 +6,7 @@
     <h2 class="petition-action-heading">Edit petition</h2>
 
     <% unless Site.disable_gaelic_website? %>
-      <p class="tabs">
+      <p>
         <% if petition_locale == :"en-GB" %>
           English | <%= link_to "Gaelic", admin_petition_details_path(locale: "gd-GB") %>
         <% else %>

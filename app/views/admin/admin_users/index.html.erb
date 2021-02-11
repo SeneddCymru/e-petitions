@@ -1,4 +1,19 @@
-<%= link_to 'New user', new_admin_admin_user_path, class: "button" %>
+<%= render "admin/shared/setting_tabs" %>
+
+<div class="grid-row">
+  <%= form_tag admin_admin_users_path, method: :get, class: 'search-users' do %>
+    <div class="column-half">
+      <div class="search-inline">
+        <%= label_tag :q, "Search users", class: "visuallyhidden" %>
+        <%= search_field_tag 'q', params[:q], class: 'form-control', placeholder:"Enter a search query" %>
+        <%= submit_tag 'Search', class: 'inline-submit', name: nil %>
+      </div>
+    </div>
+    <div class="column-half actions-right search-inline">
+      <%= link_to "New User", new_admin_admin_user_path, class: 'button inline-button' %>
+    </div>
+  <% end %>
+</div>
 
 <table class="user-list">
   <tr>
@@ -10,7 +25,7 @@
   </tr>
   <%- @users.each do |user| -%>
     <tr class="user-list-user">
-      <td><%= link_to user.name, edit_admin_admin_user_path(user) %></td>
+      <td><%= link_to user.pretty_name, edit_admin_admin_user_path(user) %></td>
       <td><%= mail_to user.email %></td>
       <td><%= user.role %></td>
       <td><%= user.account_disabled ? 'Yes' : '' %></td>

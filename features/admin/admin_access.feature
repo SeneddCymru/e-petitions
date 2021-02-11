@@ -24,7 +24,7 @@ Feature: Restricted access to the admin console
     Then I should be on the admin home page
     And I should be connected to the server via an ssl connection
     And the markup should be valid
-    And I should see "Users"
+    And I should see "Settings"
     And I should see "John Admin"
     And I follow "Logout"
     And I should be on the admin login page

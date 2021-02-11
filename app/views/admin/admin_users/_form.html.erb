@@ -1,15 +1,20 @@
 <%= form_for [:admin, @user] do |f| -%>
-  <%= form_row for: [f.object, :first_name] do %>
-    <%= f.label :first_name, class: 'form-label form-label-inline' %><%= mandatory_field %>
-    <%= error_messages_for_field f.object, :first_name %>
-    <%= f.text_field :first_name, tabindex: increment, class: 'form-control', autofocus: 'autofocus' %>
-  <% end %>
-
-  <%= form_row for: [f.object, :last_name] do %>
-    <%= f.label :last_name, class: 'form-label form-label-inline' %><%= mandatory_field %>
-    <%= error_messages_for_field f.object, :last_name %>
-    <%= f.text_field :last_name, tabindex: increment, class: 'form-control' %>
-  <% end %>
+  <div class="grid-row">
+    <div class="column-half extra-gutter">
+      <%= form_row for: [f.object, :first_name] do %>
+        <%= f.label :first_name, class: 'form-label form-label-inline' %><%= mandatory_field %>
+        <%= error_messages_for_field f.object, :first_name %>
+        <%= f.text_field :first_name, tabindex: increment, class: 'form-control', autofocus: 'autofocus' %>
+      <% end %>
+    </div>
+    <div class="column-half">
+      <%= form_row for: [f.object, :last_name] do %>
+        <%= f.label :last_name, class: 'form-label form-label-inline' %><%= mandatory_field %>
+        <%= error_messages_for_field f.object, :last_name %>
+        <%= f.text_field :last_name, tabindex: increment, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
 
   <%= form_row for: [f.object, :email] do %>
     <%= f.label :email, class: 'form-label form-label-inline' %><%= mandatory_field %>

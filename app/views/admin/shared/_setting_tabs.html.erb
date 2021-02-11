@@ -1,0 +1,41 @@
+<div class="grid-row">
+  <div class="grid-column">
+    <h1 class="tabs">
+      <% if controller_name.in? %w[sites holidays domains rejection_reasons] %>
+        Site |
+      <% else %>
+        <%= link_to "Site", edit_admin_site_path %> |
+      <% end %>
+
+      <% if controller_name == "invalidations" %>
+        Invalidations |
+      <% else %>
+        <%= link_to "Invalidations", admin_invalidations_path %> |
+      <% end %>
+
+      <% if controller_name == "rate_limits" %>
+        Rate Limits |
+      <% else %>
+        <%= link_to "Rate Limits", edit_admin_rate_limits_path %> |
+      <% end %>
+
+      <% if controller_name == "tags" %>
+        Tags |
+      <% else %>
+        <%= link_to "Tags", admin_tags_path %> |
+      <% end %>
+
+      <% if controller_name == "topics" %>
+        Topics |
+      <% else %>
+        <%= link_to "Topics", admin_topics_path %> |
+      <% end %>
+
+      <% if controller_name == "admin_users" %>
+        Users
+      <% else %>
+        <%= link_to "Users", admin_admin_users_path %>
+      <% end %>
+    </h1>
+  </div>
+</div>
