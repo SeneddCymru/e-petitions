@@ -56,7 +56,7 @@ Then /^the explanation is displayed on the petition for viewing by the public$/ 
 end
 
 Then /^the petition is not available for searching or viewing$/ do
-  step %{I search for "Rejected petitions" with "#{@petition.action}"}
+  step %{I search for "All petitions" with "#{@petition.action}"}
   step %{I should not see the petition "#{@petition.action}"}
 end
 

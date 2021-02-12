@@ -16,7 +16,6 @@ en-GB:
         - :debated
         - :not_debated
         - :completed
-        - :rejected
       admin:
         - :all
         - :collecting_sponsors
