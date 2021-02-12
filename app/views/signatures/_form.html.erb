@@ -31,6 +31,14 @@
   </div>
 <% end %>
 
+<%= form_row for: [signature, :privacy_notice] do %>
+  <div class="multiple-choice">
+    <%= error_messages_for_field signature, :privacy_notice %>
+    <%= form.check_box :privacy_notice %>
+    <%= form.label :privacy_notice, t(:"ui.petitions.create.creator_stage.privacy_notice.label").try(:html_safe), class: "privacy-notice" %>
+  </div>
+<% end %>
+
 <span>
   <%= t(:"ui.signatures.new.continue_html") %>
 </span>

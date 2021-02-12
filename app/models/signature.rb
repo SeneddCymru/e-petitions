@@ -45,12 +45,14 @@ class Signature < ActiveRecord::Base
   validates :postcode, presence: true, postcode: true, if: :united_kingdom?
   validates :postcode, length: { maximum: 255 }, allow_blank: true
   validates :constituency_id, length: { maximum: 255 }
+  validates :privacy_notice, acceptance: true, unless: :persisted?, allow_nil: false
 
   validate do
     errors.add(:name, :invalid) if name.to_s =~ /\A[-=+@]/
   end
 
   attr_readonly :sponsor, :creator
+  attr_accessor :privacy_notice
   attribute :locale, :string, default: -> { I18n.locale }
 
   before_validation if: :autocorrect_domain do
