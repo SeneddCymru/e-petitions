@@ -133,7 +133,8 @@ RSpec.describe SponsorsController, type: :controller do
         name: "Ted Berry",
         email: "ted@example.com",
         postcode: "G34 0BX",
-        location_code: "GB-SCT"
+        location_code: "GB-SCT",
+        privacy_notice: "1"
       }
     end
 
@@ -255,7 +256,8 @@ RSpec.describe SponsorsController, type: :controller do
               name: "Ted Berry",
               email: "",
               postcode: "12345",
-              location_code: "GB-SCT"
+              location_code: "GB-SCT",
+              privacy_notice: "1"
             }
           end
 
@@ -289,7 +291,8 @@ RSpec.describe SponsorsController, type: :controller do
         name: "Ted Berry",
         email: "ted@example.com",
         postcode: "G34 0BX",
-        location_code: "GB-SCT"
+        location_code: "GB-SCT",
+        privacy_notice: "1"
       }
     end
 
@@ -419,7 +422,8 @@ RSpec.describe SponsorsController, type: :controller do
                 name: "Ted Berry",
                 email: "",
                 postcode: "G34 0BX",
-                location_code: "GB-SCT"
+                location_code: "GB-SCT",
+                privacy_notice: "1"
               }
             end
 

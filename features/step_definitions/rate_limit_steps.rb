@@ -37,6 +37,7 @@ Given(/^there is a signature already from this IP address$/) do
     And I fill in "Email" with "existing@example.com"
     And I fill in my postcode with "SW14 9RQ"
     And I select "Wales" from "Location"
+    And I check "we need you to confirm you have read our privacy notice"
     And I try to sign
     And I say I am happy with my email address
     Then I am told to check my inbox to complete signing

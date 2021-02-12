@@ -161,7 +161,8 @@ class PaperPetition
   def signature_params
     {
       name: name, email: email, postcode: postcode,
-      location_code: location_code, locale: locale
+      location_code: location_code, locale: locale,
+      privacy_notice: "1"
     }
   end
 

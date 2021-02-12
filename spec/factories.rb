@@ -403,6 +403,7 @@ FactoryBot.define do
     postcode { "G34 0BX" }
     location_code { "GB-SCT" }
     notify_by_email { "1" }
+    privacy_notice { "1" }
     state { Signature::VALIDATED_STATE }
 
     after(:build) do |signature, evaluator|

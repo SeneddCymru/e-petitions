@@ -167,6 +167,7 @@ Scenario: Charlie tries to submit an invalid petition
   And I should see "Postcode must be completed"
   And I should see "Phone number must be completed"
   And I should see "Address must be completed"
+  And I should see "Privacy notice must be accepted"
 
   When I fill in "Address" with text longer than 500 characters
   And I fill in "Phone number" with "32000000000000000000000000000000"

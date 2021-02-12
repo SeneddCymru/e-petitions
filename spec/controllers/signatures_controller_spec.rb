@@ -90,7 +90,8 @@ RSpec.describe SignaturesController, type: :controller do
         name: "Ted Berry",
         email: "ted@example.com",
         postcode: "G34 0BX",
-        location_code: "GB-SCT"
+        location_code: "GB-SCT",
+        privacy_notice: "1"
       }
     end
 
@@ -167,6 +168,7 @@ RSpec.describe SignaturesController, type: :controller do
         expect(assigns[:signature].email).to eq("ted@example.com")
         expect(assigns[:signature].postcode).to eq("G340BX")
         expect(assigns[:signature].location_code).to eq("GB-SCT")
+        expect(assigns[:signature].privacy_notice).to eq("1")
       end
 
       it "records the IP address on the signature" do
@@ -216,7 +218,8 @@ RSpec.describe SignaturesController, type: :controller do
         name: "Ted Berry",
         email: "ted@example.com",
         postcode: "G34 0BX",
-        location_code: "GB-SCT"
+        location_code: "GB-SCT",
+        privacy_notice: "1"
       }
     end
 
@@ -296,6 +299,7 @@ RSpec.describe SignaturesController, type: :controller do
           expect(assigns[:signature].email).to eq("ted@example.com")
           expect(assigns[:signature].postcode).to eq("G340BX")
           expect(assigns[:signature].location_code).to eq("GB-SCT")
+          expect(assigns[:signature].privacy_notice).to eq("1")
         end
 
         it "records the IP address on the signature" do

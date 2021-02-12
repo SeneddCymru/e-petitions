@@ -359,6 +359,18 @@ select, input[type=text] {
     }
   }
 
+  .privacy-notice {
+    padding: 0px 12px 9px 12px;
+
+    @include media(tablet) {
+      padding-top: 0px;
+    }
+  }
+
+  .error-message {
+    padding-left: 12px;
+  }
+
   .form-hint {
     float: left;
     clear: left;

@@ -9,10 +9,10 @@ class PetitionCreator
   STAGES = %w[petition replay_petition signature_collection creator replay_email]
 
   PETITION_PARAMS     = [:action, :background, :additional_details, :collect_signatures]
-  SIGNATURE_PARAMS    = [:name, :email, :phone_number, :address, :postcode, :location_code]
+  SIGNATURE_PARAMS    = [:name, :email, :phone_number, :address, :postcode, :location_code, :privacy_notice]
   PERMITTED_PARAMS    = [:q, :stage, :move_back, :move_next, petition_creator: PETITION_PARAMS + SIGNATURE_PARAMS]
 
-  attr_reader :params, :errors, :request
+  attr_reader :params, :errors, :request, :privacy_notice
 
   def initialize(params, request)
     @params = params.permit(*PERMITTED_PARAMS)
@@ -64,6 +64,7 @@ class PetitionCreator
           c.constituency_id = constituency_id
           c.notify_by_email = true
           c.ip_address = request.remote_ip
+          c.privacy_notice = privacy_notice
         end
       end
 
@@ -143,6 +144,10 @@ class PetitionCreator
     petition_creator_params[:location_code] || "GB-SCT"
   end
 
+  def privacy_notice
+    petition_creator_params[:privacy_notice] || "0"
+  end
+
   private
 
   def query_param
@@ -204,6 +209,7 @@ class PetitionCreator
     errors.add(:address, :too_long, count: 500) if address.length > 500
     errors.add(:postcode, :too_long, count: 255) if postcode.length > 255
     errors.add(:name, :has_uri) if URI::regexp =~ name
+    errors.add(:privacy_notice, :accepted) unless privacy_notice == "1"
 
     if email.present?
       email_validator.validate(self)

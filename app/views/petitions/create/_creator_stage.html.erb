@@ -51,6 +51,14 @@
   <%= form.text_field :postcode, class: "form-control small" %>
 <% end %>
 
+<%= form_row for: [petition, :privacy_notice] do %>
+  <div class="multiple-choice">
+    <%= error_messages_for_field petition, :privacy_notice %>
+    <%= form.check_box :privacy_notice %>
+    <%= form.label :privacy_notice, t(:"ui.petitions.create.creator_stage.privacy_notice.label").try(:html_safe), class: "privacy-notice" %>
+  </div>
+<% end %>
+
 <span>
   <%= t(:"ui.petitions.create.creator_stage.continue_html") %>
 </span>

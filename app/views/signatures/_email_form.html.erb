@@ -4,6 +4,7 @@
 <%= form.hidden_field :postcode %>
 <%= form.hidden_field :location_code %>
 <%= form.hidden_field :notify_by_email %>
+<%= form.hidden_field :privacy_notice %>
 
 <%= form_row for: [signature, :email] do %>
   <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label"), class: "form-label visuallyhidden" %>

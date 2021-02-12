@@ -164,11 +164,11 @@ class Admin::SignaturesController < Admin::AdminController
   end
 
   def signature_params_for_create
-    signature_params.merge(ip_address: request.remote_ip)
+    signature_params.merge(ip_address: request.remote_ip, privacy_notice: "1")
   end
 
   def signature_attributes
-    %i[name postcode location_code autogenerate_email]
+    %i[name postcode location_code autogenerate_email privacy_notice]
   end
 
   def search_params
