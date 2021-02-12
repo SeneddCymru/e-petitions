@@ -1,19 +1,20 @@
 id: "cbf205c3-9d3a-4d97-8dd6-c367ecaeb8cd"
-name: "email_confirmation_for_creator_en"
+name: "email_confirmation_for_creator_gd"
 subject: "Please confirm your email"
 body: |-
   Click this link to confirm your email:
-
-  # ((action_en))
-
-  ((url_en))
-
-  After you have confirmed your email, we will check your petition to make sure it meets the petition criteria.
+  
+    # ((action_gd))
+  
+    ((url_gd))
+  
+  After you have confirmed your email, we will check your petition to make sure it meets the petition criteria. 
+  
   If it does, we’ll publish it and let you know. This usually takes a week or less.
-
-  Find out how we check petitions before we publish them:
+  
+  Find out how we check petitions before we publish them
   ((moderation_info_url_gd))
-
-  Thanks,
-  The Petitions team
-  The Scottish Parliament
+  
+    Thanks,
+    The Petitions team
+    The Scottish Parliament
