@@ -3,6 +3,8 @@ class RejectionReason < ActiveRecord::Base
 
   translate :description
 
+  alias_attribute :label, :title
+
   with_options presence: true, uniqueness: true do
     validates :code, length: { maximum: 30 }, format: { with: /\A[-a-z]+\z/ }
     validates :title, length: { maximum: 100 }
@@ -36,10 +38,6 @@ class RejectionReason < ActiveRecord::Base
     def hidden_codes
       hidden.pluck(:code)
     end
-  end
-
-  def label
-    hidden ? "#{title} (will be hidden)" : title
   end
 
   def used?

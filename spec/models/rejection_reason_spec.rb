@@ -84,20 +84,10 @@ RSpec.describe RejectionReason, type: :model do
   end
 
   describe "#label" do
-    context "when the code is not hidden" do
-      let(:reason) { rejection_reasons(:duplicate) }
+    let(:reason) { rejection_reasons(:duplicate) }
 
-      it "returns the title" do
-        expect(reason.label).to eq("Duplicate petition")
-      end
-    end
-
-    context "when the code is hidden" do
-      let(:reason) { rejection_reasons(:offensive) }
-
-      it "appends (will be hidden) to the title" do
-        expect(reason.label).to eq("Offensive, nonsense, joke or advert (will be hidden)")
-      end
+    it "returns the title" do
+      expect(reason.label).to eq("Duplicate petition")
     end
   end
 
