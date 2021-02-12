@@ -13,7 +13,8 @@ RSpec.describe Admin::ModerationController, type: :controller, admin: true do
           email: "bazbutler@gmail.com"
         },
         sponsor_count: 5,
-        moderation_threshold_reached_at: 4.days.ago
+        moderation_threshold_reached_at: 4.days.ago,
+        collect_signatures: true
       )
     end
 

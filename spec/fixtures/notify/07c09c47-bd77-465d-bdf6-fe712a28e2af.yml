@@ -1,0 +1,15 @@
+id: "07c09c47-bd77-465d-bdf6-fe712a28e2af"
+name: "email_creator_petition_closed_by_committee"
+subject: "Your petition “((action_gd))” has been closed by the Public Petitions Committee"
+body: |-
+  Dear ((creator)), 
+  
+  Your petition ((action)) has been formally closed by the Public Petitions Committee. Full details regarding this will have been issued to you by the Petitions Team. 
+  
+  This email is to confirm our online system has now been updated to reflect petition closure. 
+  
+  Should you require any further information, please do not hesitate to contact us. 
+  
+  Thank you, 
+  The Petitions team
+  The Scottish Parliament

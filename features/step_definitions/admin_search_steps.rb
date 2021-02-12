@@ -22,6 +22,17 @@ Given(/^a petition "(.*?)" signed by "([^"]*)"$/) do |action, name_or_email|
   @signature = FactoryBot.create(:validated_signature, attrs.merge(petition: @petition))
 end
 
+Given(/^a petition "([^"]*)" signed by "([^"]*)" that is collecting signatures$/) do |action, name_or_email|
+  if name_or_email =~ /\A[^@]+@[^@]+\z/
+    attrs = { email: name_or_email }
+  else
+    attrs = { name: name_or_email }
+  end
+
+  @petition = FactoryBot.create(:open_petition, action: action, collect_signatures: true)
+  @signature = FactoryBot.create(:validated_signature, attrs.merge(petition: @petition))
+end
+
 Given(/^(\d+) petitions? signed from "([^"]*)"$/) do |petition_count, ip_address|
   petition_count.times do
     petition = FactoryBot.create(:open_petition)

@@ -2029,21 +2029,50 @@ RSpec.describe Petition, type: :model do
   end
 
   describe '#publish' do
-    subject(:petition) { FactoryBot.create(:petition, :translated) }
     let(:now) { Time.current }
     let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
 
-    before do
-      petition.publish
+    context "when petition is collecting signatures" do
+      subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: true) }
+
+      before do
+        petition.publish
+      end
+
+      it "sets the state to OPEN" do
+        expect(petition.state).to eq(Petition::OPEN_STATE)
+      end
+
+      it "sets the open date to now" do
+        expect(petition.open_at).to be_within(1.second).of(now)
+      end
     end
 
-    it "sets the state to OPEN" do
-      expect(petition.state).to eq(Petition::OPEN_STATE)
-    end
+    context "when petition is not collecting signatures" do
+      subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: false) }
 
-    it "sets the open date to now" do
-      expect(petition.open_at).to be_within(1.second).of(now)
+      before do
+        Site.instance.update!(
+          minimum_number_of_sponsors: 0,
+          threshold_for_moderation: 0,
+          threshold_for_referral: 1
+        )
+
+        petition.publish
+      end
+
+      it "sets the state to CLOSED" do
+        expect(petition.state).to eq(Petition::CLOSED_STATE)
+      end
+
+      it "sets the closed date to now" do
+        expect(petition.closed_at).to be_within(1.second).of(now)
+      end
+
+      it "sets the referred date to now" do
+        expect(petition.referred_at).to be_within(1.second).of(now)
+      end
     end
   end
 

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NotifyJob, type: :job, notify: false do
+  include DateTimeHelper
   let(:success) do
     {
       status: 200,
@@ -1158,79 +1159,173 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         let(:arguments) { [signature] }
       end
 
-      context "when the petition was created in English" do
-        let(:petition) do
-          FactoryBot.create(
-            :open_petition,
-            action_en: "Do stuff",
-            background_en: "Because of reasons",
-            additional_details_en: "Here's some more reasons",
-            action_gd: "Dèan stuth",
-            background_gd: "Air sgàth adhbharan",
-            additional_details_gd: "Seo beagan a bharrachd adhbharan",
-            locale: "en-GB",
-            creator_name: "Charlie",
-            creator_email: "charlie@example.com",
-            creator_attributes: {
-              locale: "en-GB"
-            }
-          )
-        end
-
-        it "sends an email via GOV.UK Notify with the English template" do
-          perform_enqueued_jobs do
-            described_class.perform_later(signature)
+      context "when the petition is collecting signatures" do
+        context "when the petition was created in English" do
+          let(:petition) do
+            FactoryBot.create(
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
+              locale: "en-GB",
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              collect_signatures: true,
+              creator_attributes: {
+                locale: "en-GB"
+              }
+            )
           end
 
-          expect(notify_request(
-            email_address: "charlie@example.com",
-            template_id: "f23547af-65d8-4d9d-82cb-6f247112217e",
-            reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
-            personalisation: {
-              creator: "Charlie",
-              action_en: "Do stuff", action_gd: "Dèan stuth",
-              url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
-              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}"
-            }
-          )).to have_been_made
+          it "sends an email via GOV.UK Notify with the English template" do
+            perform_enqueued_jobs do
+              described_class.perform_later(signature)
+            end
+
+            expect(notify_request(
+              email_address: "charlie@example.com",
+              template_id: "f23547af-65d8-4d9d-82cb-6f247112217e",
+              reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
+              personalisation: {
+                creator: "Charlie",
+                action_en: "Do stuff", action_gd: "Dèan stuth",
+                closing_date: "#{short_date_format(petition.closed_at)}",
+                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                petition_website_url_en: "https://petitions.parliament.scot/",
+                petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+              }
+            )).to have_been_made
+          end
+        end
+
+        context "when the petition was created in Gaelic" do
+          let(:petition) do
+            FactoryBot.create(
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
+              locale: "gd-GB",
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              collect_signatures: true,
+              creator_attributes: {
+                locale: "gd-GB"
+              }
+            )
+          end
+
+          it "sends an email via GOV.UK Notify with the Gaelic template" do
+            perform_enqueued_jobs do
+              described_class.perform_later(signature)
+            end
+
+            expect(notify_request(
+              email_address: "charlie@example.com",
+              template_id: "a18a2bbf-df46-4f7f-8202-dcfe2c9ba188",
+              reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
+              personalisation: {
+                creator: "Charlie",
+                action_en: "Do stuff", action_gd: "Dèan stuth",
+                closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
+                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                petition_website_url_en: "https://petitions.parliament.scot/",
+                petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+              }
+            )).to have_been_made
+          end
         end
       end
 
-      context "when the petition was created in Gaelic" do
-        let(:petition) do
-          FactoryBot.create(
-            :open_petition,
-            action_en: "Do stuff",
-            background_en: "Because of reasons",
-            additional_details_en: "Here's some more reasons",
-            action_gd: "Dèan stuth",
-            background_gd: "Air sgàth adhbharan",
-            additional_details_gd: "Seo beagan a bharrachd adhbharan",
-            locale: "gd-GB",
-            creator_name: "Charlie",
-            creator_email: "charlie@example.com",
-            creator_attributes: {
-              locale: "gd-GB"
-            }
-          )
-        end
-
-        it "sends an email via GOV.UK Notify with the Gaelic template" do
-          perform_enqueued_jobs do
-            described_class.perform_later(signature)
+      context "when the petition is not collecting signatures" do
+        context "when the petition was created in English" do
+          let(:petition) do
+            FactoryBot.create(
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
+              locale: "en-GB",
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              creator_attributes: {
+                locale: "en-GB"
+              }
+            )
           end
 
-          expect(notify_request(
-            email_address: "charlie@example.com",
-            template_id: "a18a2bbf-df46-4f7f-8202-dcfe2c9ba188",
-            reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
-            personalisation: {
-              creator: "Charlie",
-              action_en: "Do stuff", action_gd: "Dèan stuth",
-              url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
-              url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}"
-            }
-          )).to have_been_made
+          it "sends an email via GOV.UK Notify with the English template" do
+            perform_enqueued_jobs do
+              described_class.perform_later(signature)
+            end
+
+            expect(notify_request(
+              email_address: "charlie@example.com",
+              template_id: "f13efab8-fa6d-4504-8be3-75eac3c8dd14",
+              reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
+              personalisation: {
+                creator: "Charlie",
+                action_en: "Do stuff", action_gd: "Dèan stuth",
+                closing_date: "#{short_date_format(petition.closed_at)}",
+                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                petition_website_url_en: "https://petitions.parliament.scot/",
+                petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+              }
+            )).to have_been_made
+          end
+        end
+
+        context "when the petition was created in Gaelic" do
+          let(:petition) do
+            FactoryBot.create(
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
+              locale: "gd-GB",
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              creator_attributes: {
+                locale: "gd-GB"
+              }
+            )
+          end
+
+          it "sends an email via GOV.UK Notify with the Gaelic template" do
+            perform_enqueued_jobs do
+              described_class.perform_later(signature)
+            end
+
+            expect(notify_request(
+              email_address: "charlie@example.com",
+              template_id: "58995764-cee9-49c5-a381-ce4871bda223",
+              reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
+              personalisation: {
+                creator: "Charlie",
+                action_en: "Do stuff", action_gd: "Dèan stuth",
+                closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
+                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                petition_website_url_en: "https://petitions.parliament.scot/",
+                petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+              }
+            )).to have_been_made
+          end
         end
       end
     end
@@ -1242,166 +1337,360 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         let(:arguments) { [signature] }
       end
 
-      context "when the petition was created in English" do
-        let(:petition) do
-          FactoryBot.create(
-            :open_petition,
-            action_en: "Do stuff",
-            background_en: "Because of reasons",
-            additional_details_en: "Here's some more reasons",
-            action_gd: "Dèan stuth",
-            background_gd: "Air sgàth adhbharan",
-            additional_details_gd: "Seo beagan a bharrachd adhbharan",
-            locale: "en-GB",
-            creator_name: "Charlie",
-            creator_email: "charlie@example.com",
-            creator_attributes: {
-              locale: "en-GB"
-            }
-          )
-        end
-
-        context "and the sponsor signed in English" do
-          let(:signature) do
+      context "when the petition is collecting signatures" do
+        context "when the petition was created in English" do
+          let(:petition) do
             FactoryBot.create(
-              :validated_signature,
-              name: "Suzie",
-              email: "suzie@example.com",
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
               locale: "en-GB",
-              sponsor: true,
-              petition: petition
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              collect_signatures: true,
+              creator_attributes: {
+                locale: "en-GB"
+              }
             )
           end
 
-          it "sends an email via GOV.UK Notify with the English template" do
-            perform_enqueued_jobs do
-              described_class.perform_later(signature)
+          context "and the sponsor signed in English" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "en-GB",
+                sponsor: true,
+                petition: petition
+              )
             end
 
-            expect(notify_request(
-              email_address: "suzie@example.com",
-              template_id: "f622a170-c0cf-42ca-aef6-66deb7f25611",
-              reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
-              personalisation: {
-                sponsor: "Suzie",
-                action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}"
-              }
-            )).to have_been_made
+            it "sends an email via GOV.UK Notify with the English template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "f622a170-c0cf-42ca-aef6-66deb7f25611",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{short_date_format(petition.closed_at)}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
+          end
+
+          context "and the sponsor signed in Gaelic" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "gd-GB",
+                sponsor: true,
+                petition: petition
+              )
+            end
+
+            it "sends an email via GOV.UK Notify with the Gaelic template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "0ad7a912-1444-49c9-b915-f4969f24376f",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
           end
         end
 
-        context "and the sponsor signed in Gaelic" do
-          let(:signature) do
+        context "when the petition was created in Gaelic" do
+          let(:petition) do
             FactoryBot.create(
-              :validated_signature,
-              name: "Suzie",
-              email: "suzie@example.com",
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
               locale: "gd-GB",
-              sponsor: true,
-              petition: petition
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              collect_signatures: true,
+              creator_attributes: {
+                locale: "gd-GB"
+              }
             )
           end
 
-          it "sends an email via GOV.UK Notify with the Gaelic template" do
-            perform_enqueued_jobs do
-              described_class.perform_later(signature)
+          context "and the sponsor signed in English" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "en-GB",
+                sponsor: true,
+                petition: petition
+              )
             end
 
-            expect(notify_request(
-              email_address: "suzie@example.com",
-              template_id: "0ad7a912-1444-49c9-b915-f4969f24376f",
-              reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
-              personalisation: {
-                sponsor: "Suzie",
-                action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}"
-              }
-            )).to have_been_made
+            it "sends an email via GOV.UK Notify with the English template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "f622a170-c0cf-42ca-aef6-66deb7f25611",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{short_date_format(petition.closed_at)}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
+          end
+
+          context "and the sponsor signed in Gaelic" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "gd-GB",
+                sponsor: true,
+                petition: petition
+              )
+            end
+
+            it "sends an email via GOV.UK Notify with the Gaelic template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "0ad7a912-1444-49c9-b915-f4969f24376f",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
           end
         end
       end
 
-      context "when the petition was created in Gaelic" do
-        let(:petition) do
-          FactoryBot.create(
-            :open_petition,
-            action_en: "Do stuff",
-            background_en: "Because of reasons",
-            additional_details_en: "Here's some more reasons",
-            action_gd: "Dèan stuth",
-            background_gd: "Air sgàth adhbharan",
-            additional_details_gd: "Seo beagan a bharrachd adhbharan",
-            locale: "gd-GB",
-            creator_name: "Charlie",
-            creator_email: "charlie@example.com",
-            creator_attributes: {
-              locale: "gd-GB"
-            }
-          )
-        end
-
-        context "and the sponsor signed in English" do
-          let(:signature) do
+      context "when the petition is not collecting signatures" do
+        context "when the petition was created in English" do
+          let(:petition) do
             FactoryBot.create(
-              :validated_signature,
-              name: "Suzie",
-              email: "suzie@example.com",
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
               locale: "en-GB",
-              sponsor: true,
-              petition: petition
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              creator_attributes: {
+                locale: "en-GB"
+              }
             )
           end
 
-          it "sends an email via GOV.UK Notify with the English template" do
-            perform_enqueued_jobs do
-              described_class.perform_later(signature)
+          context "and the sponsor signed in English" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "en-GB",
+                sponsor: true,
+                petition: petition
+              )
             end
 
-            expect(notify_request(
-              email_address: "suzie@example.com",
-              template_id: "f622a170-c0cf-42ca-aef6-66deb7f25611",
-              reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
-              personalisation: {
-                sponsor: "Suzie",
-                action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}"
-              }
-            )).to have_been_made
+            it "sends an email via GOV.UK Notify with the English template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "cca515de-ba0a-492f-b23a-1bafd8a803b8",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{short_date_format(petition.closed_at)}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
+          end
+
+          context "and the sponsor signed in Gaelic" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "gd-GB",
+                sponsor: true,
+                petition: petition
+              )
+            end
+
+            it "sends an email via GOV.UK Notify with the Gaelic template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "ee19da6b-d626-4a52-9e96-8ec631db250c",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
           end
         end
 
-        context "and the sponsor signed in Gaelic" do
-          let(:signature) do
+        context "when the petition was created in Gaelic" do
+          let(:petition) do
             FactoryBot.create(
-              :validated_signature,
-              name: "Suzie",
-              email: "suzie@example.com",
+              :open_petition,
+              action_en: "Do stuff",
+              background_en: "Because of reasons",
+              additional_details_en: "Here's some more reasons",
+              action_gd: "Dèan stuth",
+              background_gd: "Air sgàth adhbharan",
+              additional_details_gd: "Seo beagan a bharrachd adhbharan",
               locale: "gd-GB",
-              sponsor: true,
-              petition: petition
+              creator_name: "Charlie",
+              creator_email: "charlie@example.com",
+              creator_attributes: {
+                locale: "gd-GB"
+              }
             )
           end
 
-          it "sends an email via GOV.UK Notify with the Gaelic template" do
-            perform_enqueued_jobs do
-              described_class.perform_later(signature)
+          context "and the sponsor signed in English" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "en-GB",
+                sponsor: true,
+                petition: petition
+              )
             end
 
-            expect(notify_request(
-              email_address: "suzie@example.com",
-              template_id: "0ad7a912-1444-49c9-b915-f4969f24376f",
-              reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
-              personalisation: {
-                sponsor: "Suzie",
-                action_en: "Do stuff", action_gd: "Dèan stuth",
-                url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}"
-              }
-            )).to have_been_made
+            it "sends an email via GOV.UK Notify with the English template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "cca515de-ba0a-492f-b23a-1bafd8a803b8",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{short_date_format(petition.closed_at)}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
+          end
+
+          context "and the sponsor signed in Gaelic" do
+            let(:signature) do
+              FactoryBot.create(
+                :validated_signature,
+                name: "Suzie",
+                email: "suzie@example.com",
+                locale: "gd-GB",
+                sponsor: true,
+                petition: petition
+              )
+            end
+
+            it "sends an email via GOV.UK Notify with the Gaelic template" do
+              perform_enqueued_jobs do
+                described_class.perform_later(signature)
+              end
+
+              expect(notify_request(
+                email_address: "suzie@example.com",
+                template_id: "ee19da6b-d626-4a52-9e96-8ec631db250c",
+                reference: "a87bda8d-19ac-5df8-ac83-075f189db982",
+                personalisation: {
+                  sponsor: "Suzie",
+                  action_en: "Do stuff", action_gd: "Dèan stuth",
+                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
+                  url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
+                  petition_website_url_en: "https://petitions.parliament.scot/",
+                  petition_website_url_gd: "https://athchuingean.parlamaid-alba.scot/"
+                }
+              )).to have_been_made
+            end
           end
         end
       end

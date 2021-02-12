@@ -222,7 +222,7 @@ Then(/^"([^"]*)" should be emailed a link for validating their signature$/) do |
     When they open the email with subject "Please confirm your email"
   }
   steps %{
-    Then they should see /Click this link to confirm your email/ in the email body
+    Then they should see /Please click this link to confirm your email/ in the email body
   }
 end
 

@@ -1,15 +1,13 @@
-id: "0ad7a912-1444-49c9-b915-f4969f24376f"
-name: "notify_sponsor_that_petition_is_published_gd"
+id: "ee19da6b-d626-4a52-9e96-8ec631db250c"
+name: "notify_sponsor_that_petition_is_published_without_signatures_gd"
 subject: "We published the petition “((action_gd))” that you supported"
 body: |-
   Dear ((sponsor)),
   
-  The petition “((action_gd))” is now published and ready to collect signatures.
+  The petition “((action_gd))” is now published and will be scheduled for consideration by the Public Petitions Committee.
   
   Click this link to see the petition and start sharing it:
-  ((url_gd))
-  
-  The petition will be open for gathering signatures until ((closing_date)) After this, the petition will be scheduled for consideration by the Public Petitions Committee.
+   ((url_gd))
   
   Information gathered and reported by the Public Petitions Committee regarding the petition will be updated on the Scottish Parliament Website here: ((petition_website_url_gd))
   

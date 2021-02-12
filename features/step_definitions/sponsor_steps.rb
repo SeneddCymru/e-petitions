@@ -163,11 +163,13 @@ Then(/^(I|they|".*?") should be emailed a link for gathering support from sponso
 
   if I18n.locale == :"gd-GB"
     steps %{
+      Then they should see "Forward the email below to your potential supporters" in the email body
       Then they should see /\/athchuingean\/PP\\d+\/luchd-taic\/[A-Za-z0-9]+/ in the email body
     }
   else
     steps %{
       Then they should see /\/petitions\/PP\\d+\/sponsors\/[A-Za-z0-9]+/ in the email body
+      Then they should see "Forward the email below to your potential supporters" in the email body
     }
   end
 end

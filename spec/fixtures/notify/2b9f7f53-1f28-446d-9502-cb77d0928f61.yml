@@ -1,19 +1,20 @@
 id: "2b9f7f53-1f28-446d-9502-cb77d0928f61"
 name: "email_confirmation_for_creator_en"
-subject: "Please confirm your email"
+subject: "Scottish Parliament Public Petition: Please confirm your email"
 body: |-
-  Click this link to confirm your email:
-
+  Thank You for submitting a petition to the Scottish Parliament. 
+  
+  To allow us to review your petition, we need to first confirm your email address. Please click this link to confirm your email:
+  
   # ((action_en))
-
   ((url_en))
-
-  After you have confirmed your email, we will check your petition to make sure it meets the petition criteria.
-  If it does, we’ll publish it and let you know. This usually takes a week or less.
-
-  Find out how we check petitions before we publish them:
+  
+  After you have confirmed your email, the Public Petitions team will review your petition and contact you to discuss the next steps.
+  
+  Find out how we check petitions before we publish them
   ((moderation_info_url_en))
-
+  
+  
   Thanks,
-  The Petitions team
+  The Public Petitions team
   The Scottish Parliament

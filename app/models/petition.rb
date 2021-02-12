@@ -737,7 +737,20 @@ class Petition < ActiveRecord::Base
 
     build_pe_number
 
-    update(state: OPEN_STATE, open_at: time, closed_at: closing_date(time))
+    transaction do
+      update!(state: OPEN_STATE, open_at: time, closed_at: closing_date(time))
+
+      if !collect_signatures?
+        if at_threshold_for_referral?
+          update!(referral_threshold_reached_at: time)
+        end
+
+        close!(time)
+        refer_or_reject!(time)
+      else
+        true
+      end
+    end
   end
 
   def reject(attributes)
@@ -1030,7 +1043,7 @@ class Petition < ActiveRecord::Base
   end
 
   def closing_date(time)
-    closed_at || Site.closed_at_for_opening(time)
+    closed_at || (collect_signatures? ? Site.closed_at_for_opening(time) : time )
   end
 
   def sponsor_count
