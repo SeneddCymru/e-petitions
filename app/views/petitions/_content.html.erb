@@ -1,16 +1,16 @@
 <h1>
   <% if petition.open? %>
-    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open")%> - <%= petition.to_param %></span>
+    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open")%></span>
   <% elsif petition.rejected? %>
     <span class="heading-secondary"><%= t(:"ui.petitions.heading_rejected") %></span>
   <% else %>
     <% if petition.completed? %>
-      <span class="heading-secondary"><%= t(:"ui.petitions.heading_completed") %> - <%= petition.to_param %></span>
+      <span class="heading-secondary"><%= t(:"ui.petitions.heading_completed") %></span>
     <% else %>
-      <span class="heading-secondary"><%= t(:"ui.petitions.heading_closed") %> - <%= petition.to_param %></span>
+      <span class="heading-secondary"><%= t(:"ui.petitions.heading_closed") %></span>
     <% end %>
   <% end %>
-  <%= petition.action %>
+  <%= petition.to_param %>: <%= petition.action %>
 </h1>
 
 <% if petition.committee_note? %>
