@@ -82,18 +82,10 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
       expect(links).to include("next" => nil)
     end
 
-    it "returns the last link == first link for empty results" do
+    it "redirects to all petitions if the provided state isn't valid" do
       get "/petitions.json?count=2&page=2&state=rejected"
 
-      expect(response).to be_successful
-      expect(links).to include("last" => "https://petitions.parliament.scot/petitions.json?count=2&state=rejected")
-    end
-
-    it "returns previous page link == last link when paging off the end of the results" do
-      get "/petitions.json?count=2&page=3&state=rejected"
-
-      expect(response).to be_successful
-      expect(links).to include("prev" => "https://petitions.parliament.scot/petitions.json?count=2&state=rejected")
+      expect(response).to redirect_to('/petitions?page=2&state=all')
     end
   end
 
