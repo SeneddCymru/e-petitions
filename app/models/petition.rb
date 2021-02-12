@@ -701,10 +701,6 @@ class Petition < ActiveRecord::Base
     )
   end
 
-  def will_be_hidden?
-    rejection && rejection.hide_petition?
-  end
-
   def moderate(params)
     self.moderation = params[:moderation]
 
