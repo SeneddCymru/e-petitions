@@ -49,8 +49,8 @@ group :development, :test do
   gem 'jasmine_selenium_runner', require: false
   gem 'pry'
   gem 'guard'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
+  gem 'guard-cucumber', require: false
+  gem 'guard-rspec', require: false
 end
 
 group :test do
