@@ -15,4 +15,4 @@ test:
 production:
   <<: *default
   database: spets_production
-  pool: <%= ENV.fetch('WEB_CONCURRENCY_MAX_THREADS') { 32 }.to_i %>
+  pool: <%= ENV.fetch('WEB_CONCURRENCY_MAX_THREADS') { 8 }.to_i %>
