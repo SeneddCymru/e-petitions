@@ -9,7 +9,7 @@ module Delayed
       class Job < ::ActiveRecord::Base
         QUEUE_PRIORITIES = {
           "counter"          => 0,
-          "highest_priority" => 0,
+          "highest_priority" => 5,
           "high_priority"    => 10,
           "low_priority"     => 50
         }

@@ -19,6 +19,22 @@ RSpec.describe "setting job priorities" do
       job_class.perform_later
     end
 
+    describe 'the counter job' do
+      let(:job_class) do
+        Class.new(ActiveJob::Base) do
+          queue_as :counter
+
+          def perform
+            logger.info("Counter job")
+          end
+        end
+      end
+
+      it "is queued with a priority of 0" do
+        expect(priority).to eq(0)
+      end
+    end
+
     describe 'the highest priority job' do
       let(:job_class) do
         Class.new(ActiveJob::Base) do
@@ -30,8 +46,8 @@ RSpec.describe "setting job priorities" do
         end
       end
 
-      it "is queued with a priority of 0" do
-        expect(priority).to eq(0)
+      it "is queued with a priority of 5" do
+        expect(priority).to eq(5)
       end
     end
 
