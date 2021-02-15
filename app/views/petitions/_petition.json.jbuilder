@@ -1,5 +1,5 @@
 json.type "petition"
-json.id petition.id
+json.pe_number petition.to_param
 
 json.links do
   json.self petition_url(petition, format: :json)

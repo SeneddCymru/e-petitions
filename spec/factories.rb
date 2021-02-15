@@ -45,7 +45,7 @@ FactoryBot.define do
     end
 
     before(:create) do |petition|
-      petition.build_pe_number if petition.visible?
+      petition.build_pe_number if petition.published?
     end
 
     after(:build) do |petition, evaluator|
