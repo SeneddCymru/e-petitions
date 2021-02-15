@@ -40,7 +40,8 @@ RSpec.describe PetitionCSVPresenter do
     [
       "https://petitions.parliament.scot/petitions/#{petition.to_param}",
       "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}",
-      petition.id,
+      ('PP%04d' % petition.id),
+      petition.pe_number_id,
       petition.action,
       petition.background,
       petition.additional_details,
@@ -74,7 +75,8 @@ RSpec.describe PetitionCSVPresenter do
     [
       "https://petitions.parliament.scot/petitions/#{petition.to_param}",
       "https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}",
-      petition.id,
+      ('PP%04d' % petition.id),
+      ('PE%04d' % petition.pe_number_id),
       petition.action,
       petition.background,
       petition.additional_details,
