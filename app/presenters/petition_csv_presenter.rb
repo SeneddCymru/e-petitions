@@ -26,7 +26,7 @@ class PetitionCSVPresenter
   end
 
   def self.attributes
-    [:id,
+    [:pp_number, :pe_number,
       :action, :background, :additional_details, :state,
       :creator_name, :creator_email, :signature_count, :rejection_code, :rejection_details,
       :debate_date, :debate_transcript_url, :debate_video_url, :debate_pack_url, :debate_overview
@@ -59,7 +59,17 @@ class PetitionCSVPresenter
 
   attributes.each do |attribute|
     define_method attribute do
-      csv_escape petition.send attribute
+      if attribute == :pp_number
+        pp_number = ('PP%04d' % petition.send("id"))
+        csv_escape pp_number
+      elsif attribute == :pe_number
+        unless petition.send("pe_number_id").nil?
+          pe_number = ('PE%04d' % petition.send("pe_number_id"))
+          csv_escape pe_number
+        end
+      else
+        csv_escape petition.send attribute
+      end
     end
   end
 
