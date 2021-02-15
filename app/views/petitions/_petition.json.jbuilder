@@ -6,9 +6,10 @@ json.links do
 end if defined?(is_collection)
 
 json.attributes do
-  json.action petition.action
-  json.background petition.background
-  json.additional_details petition.additional_details
+  json.title petition.action
+  json.summary petition.background
+  json.previous_action petition.previous_action
+  json.background_information petition.additional_details
   json.petitioner petition.creator.name
   json.committee_note petition.committee_note
   json.state petition.state
