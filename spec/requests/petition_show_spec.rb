@@ -47,9 +47,11 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
 
       expect(attributes).to match(
         a_hash_including(
-          "action" => a_string_matching(petition.action),
-          "background" => a_string_matching(petition.background),
-          "additional_details" => a_string_matching(petition.additional_details),
+          "title" => a_string_matching(petition.action),
+          "summary" => a_string_matching(petition.background),
+          "previous_action" => a_string_matching(petition.previous_action),
+          "background_information" => a_string_matching(petition.additional_details),
+          "petitioner" => a_string_matching(petition.creator.name),
           "committee_note" => a_string_matching(petition.committee_note),
           "state" => a_string_matching(petition.state),
           "signature_count" => eq_to(petition.signature_count),

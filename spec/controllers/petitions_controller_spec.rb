@@ -23,6 +23,7 @@ RSpec.describe PetitionsController, type: :controller do
       {
         action: "Save the planet",
         background: "Limit temperature rise at two degrees",
+        previous_action: "I spoke to my local MP",
         additional_details: "Global warming is upon us",
         name: "John Mcenroe", email: "john@example.com",
         phone_number: "0141 496 1234", address: "1 Nowhere Road, Cardiff",

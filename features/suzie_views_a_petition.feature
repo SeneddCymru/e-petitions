@@ -35,7 +35,7 @@ Feature: Suzie views a petition
 
   Scenario: Suzie views an open, untranslated petition on the English-only website
     Given the Gaelic website is disabled
-    And an open, untranslated petition exists with action: "Raise benefits", background: "They're too low"
+    And an open, untranslated petition exists with action: "Raise benefits", background: "They're too low", previous_action: "I spoke to my MP"
     When I go to the petition page for "Raise benefits"
     Then I should not see both petitions content
 

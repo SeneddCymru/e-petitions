@@ -139,6 +139,7 @@ end
 Then(/^I should see the petition details$/) do
   expect(page).to have_content(@petition.action)
   expect(page).to have_content(@petition.background) if @petition.background?
+  expect(page).to have_content(@petition.previous_action) if @petition.previous_action?
   expect(page).to have_content(@petition.additional_details) if @petition.additional_details?
 end
 
@@ -170,7 +171,7 @@ Then(/^I should see the reason for rejection$/) do
 end
 
 Then(/^I should be asked to search for a new petition$/) do
-  expect(page).to have_content("What do you want us to do?")
+  expect(page).to have_content("Title")
   expect(page).to have_css("form textarea[name=q]")
 end
 
@@ -179,7 +180,7 @@ Then(/^I should see a list of (\d+) petitions$/) do |petition_count|
 end
 
 Then(/^I should see my search query already filled in as the action of the petition$/) do
-  expect(page).to have_field("What do you want us to do?", text: "Rioters should loose benefits")
+  expect(page).to have_field("Title", text: "Rioters should loose benefits")
 end
 
 Then(/^I can click on a link to return to the petition$/) do
@@ -218,15 +219,17 @@ end
 When(/^I fill in the petition details/) do
   if I18n.locale == :"en-GB"
     steps %Q(
-      When I fill in "What do you want us to do?" with "The wombats of wimbledon rock."
-      And I fill in "Background" with "Give half of Wimbledon rock to wombats!"
-      And I fill in "Additional details" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
+      When I fill in "Title" with "The wombats of wimbledon rock."
+      And I fill in "Summary" with "Give half of Wimbledon rock to wombats!"
+      And I fill in "Previous action" with "I asked my local MP and she said to create a petition"
+      And I fill in "Background information" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
     )
   else
     steps %Q(
-      When I fill in "What do you want us to do?" with "The wombats of wimbledon rock."
-      And I fill in "Background" with "Give half of Wimbledon rock to wombats!"
-      And I fill in "Additional details" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
+      When I fill in "Title" with "The wombats of wimbledon rock."
+      And I fill in "Summary" with "Give half of Wimbledon rock to wombats!"
+      And I fill in "Previous action" with "I asked my local MP and she said to create a petition"
+      And I fill in "Background information" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
     )
   end
 end
@@ -469,7 +472,7 @@ Then(/^I should see both petitions content$/) do
 end
 
 Then(/^I should not see both petitions content$/) do
-  expect(page).to have_selector(:css, ".petition-content", count: 1)
+  expect(page).to have_selector(:css, ".petition-content", count: 2)
 end
 
 When(/^I search all petitions for "(.*?)"$/) do |search_term|

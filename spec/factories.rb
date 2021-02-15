@@ -34,6 +34,7 @@ FactoryBot.define do
 
     sequence(:action) { |n| "Petition #{n}" }
     background { "Petition background" }
+    previous_action { "Previous action" }
     collect_signatures { false }
 
     trait :english do
