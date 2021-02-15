@@ -21,18 +21,6 @@ Feature: Suzy Signer views all petitions
      | Free the wombles                                    |
     And the markup should be valid
 
-  Scenario: Suzie browses rejected petitions
-    Given a petition "Free the wombles" has been rejected
-    And a petition "Force supermarkets to give unsold food to charities" has been rejected
-    And a petition "Make every monday bank holiday" has been rejected
-    When I browse to see only "Rejected" petitions
-    Then I should see "3 petitions"
-    And I should see the following ordered list of petitions:
-     | Make every monday bank holiday                      |
-     | Force supermarkets to give unsold food to charities |
-     | Free the wombles                                    |
-    And the markup should be valid
-
   Scenario: Suzie browses petitions which have been debated
     Given a petition "Free the wombles" has been debated yesterday
     And a petition "Ban Badger Baiting" has been debated 2 days ago

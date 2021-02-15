@@ -31,20 +31,5 @@
   <% end %>
 <% end %>
 
-<h3>Should this rejection reason hide the petition?</h3>
-
-<%= form_row class: 'inline' do %>
-  <div class="multiple-choice">
-    <%= form.radio_button :hidden, true %>
-    <%= form.label :hidden_true, "Yes", for: "hidden_true" %>
-  </div>
-
-  <div class="multiple-choice">
-    <%= form.radio_button :hidden, false %>
-    <%= form.label :hidden_false, "No", for: "hidden_false" %>
-  </div>
-  <%= error_messages_for_field @rejection_reason, :hidden %>
-<% end %>
-
 <%= form.submit 'Save', class: 'button' %>
 <%= link_to 'Cancel', admin_rejection_reasons_path, class: 'button-secondary' %>

@@ -64,8 +64,6 @@ Feature: Suzy Singer searches by free text
     And I fill in "Wombles" as my search term
     And I press "Search"
     Then I should see an "open" petition count of 4
-    Then I should see a "referred" petition count of 3
-    Then I should see a "rejected" petition count of 1
 
   Scenario: Search for open petitions using multiple search terms
     When I search for "Open petitions" with "overthrow the"
@@ -77,11 +75,6 @@ Feature: Suzy Singer searches by free text
     When I search for "All petitions" with "Thoir thairis"
     Then I should see the following search results:
       | Thoir thairis na Wombles | 1 signature |
-
-  Scenario: Search for rejected petitions
-    When I search for "Rejected petitions" with "WOMBLES"
-    Then I should see the following search results:
-      | Eavis vs the Wombles |
 
   Scenario: Search for referred petitions
     When I search for "Referred to the Committee" with "WOMBLES"

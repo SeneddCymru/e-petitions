@@ -6,7 +6,7 @@ RSpec.describe RejectionReason, type: :model do
     it { is_expected.to have_db_column(:title).of_type(:string).with_options(limit: 100, null: false) }
     it { is_expected.to have_db_column(:description_en).of_type(:string).with_options(limit: 2000, null: false) }
     it { is_expected.to have_db_column(:description_gd).of_type(:string).with_options(limit: 2000) }
-    it { is_expected.to have_db_column(:hidden).of_type(:boolean).with_options(null: false, default: false) }
+    it { is_expected.to have_db_column(:hidden).of_type(:boolean).with_options(null: false, default: true) }
     it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
   end
@@ -84,20 +84,10 @@ RSpec.describe RejectionReason, type: :model do
   end
 
   describe "#label" do
-    context "when the code is not hidden" do
-      let(:reason) { rejection_reasons(:duplicate) }
+    let(:reason) { rejection_reasons(:duplicate) }
 
-      it "returns the title" do
-        expect(reason.label).to eq("Duplicate petition")
-      end
-    end
-
-    context "when the code is hidden" do
-      let(:reason) { rejection_reasons(:offensive) }
-
-      it "appends (will be hidden) to the title" do
-        expect(reason.label).to eq("Offensive, nonsense, joke or advert (will be hidden)")
-      end
+    it "returns the title" do
+      expect(reason.label).to eq("Duplicate petition")
     end
   end
 

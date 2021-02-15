@@ -107,7 +107,6 @@ Feature: Moderator respond to petition
     When I look at the next petition on my list
     And I reject the petition with a reason code "Not Parliament/Government’s responsibility"
     Then the petition is not available for signing
-    But the petition is still available for searching or viewing
 
   @javascript
   Scenario: Moderator previews reason description
