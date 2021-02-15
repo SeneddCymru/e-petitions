@@ -13,6 +13,10 @@
     <%= apply_formatting(@petition, :background) %>
   <% end %>
 
+  <% if @petition.previous_action? %>
+    <%= apply_formatting(@petition, :previous_action) %>
+  <% end %>
+
   <% if @petition.in_todo_list? %>
     <% if @petition.additional_details? %>
       <%= apply_formatting(@petition, :additional_details) %>

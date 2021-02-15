@@ -22,6 +22,9 @@
 <% if petition.background? %>
   <div class="petition-content"><%= apply_formatting(petition, :background) %></div>
 <% end %>
+<% if petition.previous_action? %>
+  <div class="petition-content"><%= apply_formatting(petition, :previous_action) %></div>
+<% end %>
 <% if petition.additional_details? %>
   <details>
     <summary><span class="summary"><%= t(:"ui.petitions.more_details") %></span></summary>

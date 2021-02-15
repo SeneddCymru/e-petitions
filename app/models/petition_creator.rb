@@ -8,7 +8,7 @@ class PetitionCreator
 
   STAGES = %w[petition replay_petition signature_collection creator replay_email]
 
-  PETITION_PARAMS     = [:action, :background, :additional_details, :collect_signatures]
+  PETITION_PARAMS     = [:action, :background, :previous_action, :additional_details, :collect_signatures]
   SIGNATURE_PARAMS    = [:name, :email, :phone_number, :address, :postcode, :location_code, :privacy_notice]
   PERMITTED_PARAMS    = [:q, :stage, :move_back, :move_next, petition_creator: PETITION_PARAMS + SIGNATURE_PARAMS]
 
@@ -49,6 +49,7 @@ class PetitionCreator
       @petition = Petition.new do |p|
         p.action = action
         p.background = background
+        p.previous_action = previous_action
         p.additional_details = additional_details
         p.collect_signatures = collect_signatures
 
@@ -106,6 +107,10 @@ class PetitionCreator
 
   def background?
     background.present?
+  end
+
+  def previous_action
+    petition_creator_params[:previous_action].to_s.strip
   end
 
   def additional_details
@@ -185,6 +190,9 @@ class PetitionCreator
     errors.add(:background, :invalid) if background =~ /\A[-=+@]/
     errors.add(:background, :blank) unless background.present?
     errors.add(:background, :too_long, count: 500) if background.length > 500
+    errors.add(:previous_action, :blank) unless previous_action.present?
+    errors.add(:previous_action, :invalid) if previous_action =~ /\A[-=+@]/
+    errors.add(:previous_action, :too_long, count: 500) if previous_action.length > 500
     errors.add(:additional_details, :invalid) if additional_details =~ /\A[-=+@]/
     errors.add(:additional_details, :too_long, count: 1100) if additional_details.length > 1100
 
