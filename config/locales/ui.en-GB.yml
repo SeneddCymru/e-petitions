@@ -385,7 +385,7 @@ en-GB:
               Email me whenever there’s an update about this petition
           privacy_notice:
             label: |-
-              Under data protection laws, we need you to confirm you have read our <a href="/privacy">privacy notice</a> and are content for us to use your data in the way described.
+              Under data protection laws, we need you to confirm you have read our <a href="/privacy" target="_blank">privacy notice</a> (opens in a new tab) and are content for us to use your data in the way described.
           about_published_data_html: |-
             <div class="secondary">
               <p>Your name will be published on this petition as the petition creator.</p>
