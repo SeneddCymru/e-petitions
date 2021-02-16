@@ -78,6 +78,11 @@ en-GB:
 
 
   activerecord:
+    attributes:
+      petition:
+        action: Title
+        background: Summary
+        additional_details: Background information
     errors:
       models:
         admin_user:
@@ -110,7 +115,7 @@ en-GB:
               invalid: "The submitted tags were invalid - please reselect and try again"
             topics:
               invalid: "The submitted topics were invalid - please reselect and try again"
-               
+
         petition/email:
           attributes:
             subject_en:

@@ -13,6 +13,11 @@ When(/^I visit a sponsored petition with action: "([^"]*)", that has background:
   visit admin_petition_url(@sponsored_petition)
 end
 
+When(/^I visit a sponsored petition with action: "([^"]*)", that has background: "([^"]*)", and previous action: "([^"]*)", and additional details: "([^"]*)"$/) do |petition_action, background, previous_action, additional_details|
+  @sponsored_petition = FactoryBot.create(:sponsored_petition, action: petition_action, background: background, previous_action: previous_action, additional_details: additional_details)
+  visit admin_petition_url(@sponsored_petition)
+end
+
 When(/^I reject the petition with a reason code "([^"]*)"$/) do |reason_code|
   choose "Reject"
   select reason_code, :from => :petition_rejection_code

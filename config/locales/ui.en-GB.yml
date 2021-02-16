@@ -340,7 +340,7 @@ en-GB:
         member_name_link_html: |-
           Your Member of the Scottish Parliament for the <strong>%{constituency_name}</strong> constituency is %{member_name_link}
       action:
-        label: "What do you want us to do?"
+        label: "Title"
         help_html: |-
           <p class="form-hint">Example: Introduce a 10p charge for single use plastic bags</p>
           <details class="form-group-help">
@@ -472,11 +472,21 @@ en-GB:
           Your petition will only go live after %{count} people confirm their support
         n_sponsors_needed_heading: |-
           You need %{count} supporters
-      background:
-        label: "Background"
+      previous_action:
+        label: "Previous action"
         help_html: |-
           <details class="form-group-help">
-            <summary><span class="summary">Help writing background</span></summary>
+            <summary><span class="summary">Help writing previous action</span></summary>
+            <div class="panel-indent">
+              <p>Use this section to explain the previous action you've taken prior to creating a petition.</p>
+              <p>For example, you may have contacted your local MP to discuss this matter.</p>
+            </div>
+          </details>
+      background:
+        label: "Summary"
+        help_html: |-
+          <details class="form-group-help">
+            <summary><span class="summary">Help writing summary</span></summary>
             <div class="panel-indent">
               <p>Use this section to back up why you want action. Some people include a personal story here.</p>
               <p>Remember that people won’t always know that much about the issue you’re petitioning about - explain it.</p>
@@ -510,7 +520,7 @@ en-GB:
       petition_duration: "This petition ran for %{duration}"
       parliament_debated_on: "Parliament debated this petition on %{date}"
       additional_details:
-        label: "Additional details"
+        label: "Background information"
         help_html: ""
         hint_optional: "Optional - background information, evidence and references"
       referral_threshold:

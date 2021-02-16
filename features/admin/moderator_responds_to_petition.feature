@@ -14,29 +14,33 @@ Feature: Moderator respond to petition
 
   Scenario: Moderator edits petition before publishing
     Given I am logged in as a moderator
-    And I visit a sponsored petition with action: "wee need to save our plaanet", that has background: "Reduce polootion" and additional details: "Enforce Kyotoe protocol in more countries"
+    And I visit a sponsored petition with action: "wee need to save our plaanet", that has background: "Reduce polootion", and previous action: "I call-led my loocal MMPPP", and additional details: "Enforce Kyotoe protocol in more countries"
     And I follow "English"
     Then I am on the admin petition edit details page for "wee need to save our plaanet"
     And the markup should be valid
-    And the "Action" field should contain "wee need to save our plaanet"
-    And the "Background" field should contain "Reduce polootion"
-    And the "Additional details" field should contain "Enforce Kyotoe protocol in more countries"
-    Then I fill in "Action" with "We need to save our planet"
-    And I fill in "Background" with "Reduce pollution"
-    And I fill in "Additional details" with "Enforce Kyoto Protocol in more countries"
+    And the "Title" field should contain "wee need to save our plaanet"
+    And the "Summary" field should contain "Reduce polootion"
+    And the "Previous action" field should contain "I call-led my loocal MMPPP"
+    And the "Background information" field should contain "Enforce Kyotoe protocol in more countries"
+    Then I fill in "Title" with "We need to save our planet"
+    And I fill in "Summary" with "Reduce pollution"
+    And I fill in "Previous action" with "I called my local MP"
+    And I fill in "Background information" with "Enforce Kyoto Protocol in more countries"
     And I press "Save"
     Then I am on the admin petition page for "We need to save our planet"
     And I should see "We need to save our planet"
     And I should see "Reduce pollution"
+    And I should see "I called my local MP"
     And I should see "Enforce Kyoto Protocol in more countries"
 
   Scenario: Moderator translates petition
     Given I am logged in as a moderator
-    And I visit a sponsored petition with action: "wee need to save our plaanet", that has background: "Reduce polootion" and additional details: "Enforce Kyotoe protocol in more countries"
+    And I visit a sponsored petition with action: "wee need to save our plaanet", that has background: "Reduce polootion", and previous action: "I called my local MP", and additional details: "Enforce Kyotoe protocol in more countries"
     And I follow "Gaelic"
-    And I fill in "Action" with "Mae angen i ni achub ein planed"
-    And I fill in "Background" with "Lleihau llygredd"
-    And I fill in "Additional details" with "Gorfodi Protocol Kyoto mewn mwy o wledydd"
+    And I fill in "Title" with "Mae angen i ni achub ein planed"
+    And I fill in "Summary" with "Lleihau llygredd"
+    And I fill in "Previous action" with "Dh ’ainmich mi mo BhP ionadail"
+    And I fill in "Background information" with "Gorfodi Protocol Kyoto mewn mwy o wledydd"
     And I press "Save"
     Then I am on the admin petition page for "wee need to save our plaanet"
 
@@ -44,12 +48,14 @@ Feature: Moderator respond to petition
     Given I am logged in as a moderator
     And I visit a sponsored petition with action: "wee need to save our plaanet", that has background: "Reduce polootion" and additional details: "Enforce Kyotoe protocol in more countries"
     And I follow "English"
-    Then I fill in "Action" with ""
-    And I fill in "Background" with ""
-    And I fill in "Additional details" with ""
+    Then I fill in "Title" with ""
+    And I fill in "Summary" with ""
+    And I fill in "Previous action" with ""
+    And I fill in "Background information" with ""
     And I press "Save"
-    Then I should see "Action must be completed"
-    And I should see "Background must be completed"
+    Then I should see "Title must be completed"
+    And I should see "Summary must be completed"
+    And I should see "Previous action must be completed"
 
   Scenario: Moderator cancel editing petition
     Given I am logged in as a moderator

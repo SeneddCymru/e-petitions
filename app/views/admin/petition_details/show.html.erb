@@ -34,6 +34,14 @@
         <% end %>
       <% end %>
 
+      <%= form_row for: [f.object, :previous_action] do %>
+        <%= f.label :previous_action, class: 'form-label' %>
+        <%= error_messages_for_field @petition, :previous_action %>
+        <% I18n.with_locale petition_locale do %>
+          <%= f.text_area :previous_action, tabindex: increment, rows: 5, class: 'form-control' %>
+        <% end %>
+      <% end %>
+
       <%= form_row for: [f.object, :additional_details] do %>
         <%= f.label :additional_details, class: 'form-label' %>
         <%= error_messages_for_field @petition, :additional_details %>

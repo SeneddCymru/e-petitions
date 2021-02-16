@@ -27,7 +27,7 @@ class PetitionCSVPresenter
 
   def self.attributes
     [:pp_number, :pe_number,
-      :action, :background, :additional_details, :state,
+      :action, :background, :previous_action, :additional_details, :state,
       :creator_name, :creator_email, :signature_count, :rejection_code, :rejection_details,
       :debate_date, :debate_transcript_url, :debate_video_url, :debate_pack_url, :debate_overview
     ]

@@ -35,7 +35,7 @@ class Petition < ActiveRecord::Base
 
   has_perishable_token called: 'sponsor_token'
 
-  translate :action, :additional_details, :background, :abms_link
+  translate :action, :additional_details, :background, :previous_action, :abms_link
 
   before_save :update_debate_state, if: :scheduled_debate_date_changed?
   before_save :update_moderation_lag, unless: :moderation_lag?
@@ -97,7 +97,7 @@ class Petition < ActiveRecord::Base
   has_many :signatures_by_constituency, -> { preload(constituency: :region) }, class_name: "ConstituencyPetitionJournal"
 
   Translation = Struct.new(:petition, :locale) do
-    %i[action background additional_details].each do |name|
+    %i[action background previous_action additional_details].each do |name|
       define_method name do
         translated_method(name)
       end
@@ -121,9 +121,11 @@ class Petition < ActiveRecord::Base
     errors.add :action, :blank unless t.action.present?
     errors.add :action, :too_long, count: 255 if t.action.length > 255
     errors.add :background, :blank unless t.background.present?
+    errors.add :previous_action, :blank unless t.previous_action.present?
     # allow extra characters to account for carriage returns
     errors.add :background, :too_long, count: 3000 if t.background.length > 3000
     errors.add :additional_details, :too_long, count: 5000 if t.additional_details.length > 5000
+    errors.add :previous_action, :too_long, count: 500 if t.previous_action.length > 500
   end
 
   validates :committee_note, length: { maximum: 800, allow_blank: true }

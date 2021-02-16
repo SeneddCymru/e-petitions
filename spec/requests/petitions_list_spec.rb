@@ -109,9 +109,9 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
 
       expect(data).to match(
         a_collection_containing_exactly(
-          a_hash_including("attributes" => a_hash_including("action" => petition_2.action)),
-          a_hash_including("attributes" => a_hash_including("action" => petition_3.action)),
-          a_hash_including("attributes" => a_hash_including("action" => petition_1.action))
+          a_hash_including("attributes" => a_hash_including("title" => petition_2.action)),
+          a_hash_including("attributes" => a_hash_including("title" => petition_3.action)),
+          a_hash_including("attributes" => a_hash_including("title" => petition_1.action))
         )
       )
     end
