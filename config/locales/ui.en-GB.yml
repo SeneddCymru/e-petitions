@@ -275,6 +275,8 @@ en-GB:
     petitions:
       check:
         heading: "Start a petition"
+        action:
+          label: "What do you want us to do?"
         results:
           back: "Back"
           unique:
