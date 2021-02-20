@@ -34,7 +34,7 @@ gem 'paperclip'
 gem 'maxminddb'
 gem 'redcarpet'
 gem 'notifications-ruby-client'
-gem "scrypt"
+gem 'scrypt'
 
 gem 'aws-sdk-codedeploy'
 gem 'aws-sdk-cloudwatchlogs'
@@ -49,8 +49,8 @@ group :development, :test do
   gem 'jasmine_selenium_runner', require: false
   gem 'pry'
   gem 'guard'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
+  gem 'guard-cucumber', require: false
+  gem 'guard-rspec', require: false
 end
 
 group :test do
@@ -69,5 +69,5 @@ group :test do
 end
 
 group :production do
-  gem 'puma', '< 5'
+  gem 'puma'
 end

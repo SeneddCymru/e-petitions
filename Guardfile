@@ -77,6 +77,8 @@ cucumber_options = {
 }
 
 guard "cucumber", cucumber_options do
+  require "guard/cucumber"
+
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$}) { "features" }
 
