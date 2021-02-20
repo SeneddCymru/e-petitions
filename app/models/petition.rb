@@ -727,10 +727,10 @@ class Petition < ActiveRecord::Base
   end
 
   def publish(time = Time.current)
-    unless translated?
-      errors.add :moderation, :translation_missing
-      return false
-    end
+    errors.add :moderation, :translation_missing unless translated?
+    errors.add :moderation, :still_pending if pending?
+    return false if errors.any?
+
     Appsignal.increment_counter("petition.published", 1)
 
     build_pe_number
