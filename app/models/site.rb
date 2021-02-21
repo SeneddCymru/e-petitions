@@ -23,6 +23,7 @@ class Site < ActiveRecord::Base
     show_holding_page
     disable_notify_by_email
     disable_local_petitions
+    disable_register_to_vote
   ]
 
   class << self

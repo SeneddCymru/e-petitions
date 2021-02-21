@@ -52,6 +52,18 @@ Feature: Suzie signs a petition
     And I should not see "Your Member of the Scottish Parliament for the Glasgow Provan constituency is Ivan McKee MSP"
     And I should not see "Your Members of the Scottish Parliament for the Glasgow region are:"
 
+  Scenario: Suzie signs a petition after validating her email when the register to vote link is disabled
+    Given the site has disabled the register to vote link
+    When I decide to sign the petition
+    And I fill in my details
+    And I try to sign
+    And I say I am happy with my email address
+    Then I am told to check my inbox to complete signing
+    And "womboid@wimbledon.com" should receive 1 email
+    When I confirm my email address
+    Then I should have signed the petition
+    And I should not see "Register to vote"
+
   Scenario: Suzie signs a petition with an invalid name
     When I go to the new signature page for "Do something!"
     And I fill in "Name" with "=cmd"

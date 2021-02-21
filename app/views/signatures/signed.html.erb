@@ -36,4 +36,6 @@
   <% end %>
 <% end %>
 
-<%= t(:"ui.signatures.signed.register_to_vote_html") %>
+<% unless Site.disable_register_to_vote? %>
+  <%= t(:"ui.signatures.signed.register_to_vote_html") %>
+<% end %>
