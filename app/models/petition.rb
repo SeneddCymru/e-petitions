@@ -25,7 +25,7 @@ class Petition < ActiveRecord::Base
   CURRENT_STATES    = %w[open closed]
   ARCHIVABLE_STATES = %w[completed rejected hidden]
 
-  IN_MODERATION_STATES       = %w[sponsored flagged]
+  MODERATION_STATES       = %w[sponsored flagged]
   TODO_LIST_STATES           = %w[pending validated sponsored flagged]
   COLLECTING_SPONSORS_STATES = %w[pending validated]
 
@@ -37,6 +37,7 @@ class Petition < ActiveRecord::Base
 
   translate :action, :additional_details, :background, :previous_action, :abms_link
 
+  before_save :build_pe_number, if: :publishing?
   before_save :update_debate_state, if: :scheduled_debate_date_changed?
   before_save :update_moderation_lag, unless: :moderation_lag?
   after_create :update_last_petition_created_at
@@ -60,6 +61,7 @@ class Petition < ActiveRecord::Base
   facet :debated,              -> { not_archived.debated.by_most_recent_debate_outcome }
   facet :not_debated,          -> { not_archived.not_debated.by_most_recent_debate_outcome }
 
+  facet :pending,              -> { pending_state.by_most_recent }
   facet :collecting_sponsors,  -> { collecting_sponsors.by_most_recent }
   facet :in_moderation,        -> { in_moderation.by_most_recent_moderation_threshold_reached }
   facet :in_debate_queue,      -> { in_debate_queue.by_waiting_for_debate_longest }
@@ -232,6 +234,14 @@ class Petition < ActiveRecord::Base
       where(state: SPONSORED_STATE)
     end
 
+    def validated_state
+      where(state: VALIDATED_STATE)
+    end
+
+    def pending_state
+      where(state: PENDING_STATE)
+    end
+
     def awaiting_debate
       where(debate_state: %w[awaiting scheduled])
     end
@@ -241,11 +251,11 @@ class Petition < ActiveRecord::Base
     end
 
     def referred
-      where(arel_table[:referred_at].not_eq(nil))
+      thresholds_disabled? ? all : where(arel_table[:referred_at].not_eq(nil))
     end
 
     def not_referred
-      where(arel_table[:referred_at].eq(nil))
+      thresholds_disabled? ? all : where(arel_table[:referred_at].eq(nil))
     end
 
     def archived
@@ -282,13 +292,13 @@ class Petition < ActiveRecord::Base
 
     def in_moderation(from: nil, to: nil)
       if from && to
-        where(state: IN_MODERATION_STATES).where(moderation_threshold_reached_at.between(from..to))
+        where(state: MODERATION_STATES).where(moderation_threshold_reached_at.between(from..to))
       elsif from
-        where(state: IN_MODERATION_STATES).where(moderation_threshold_reached_at.gt(from))
+        where(state: MODERATION_STATES).where(moderation_threshold_reached_at.gt(from))
       elsif to
-        where(state: IN_MODERATION_STATES).where(moderation_threshold_reached_at.lt(to))
+        where(state: MODERATION_STATES).where(moderation_threshold_reached_at.lt(to))
       else
-        where(state: IN_MODERATION_STATES)
+        where(state: MODERATION_STATES)
       end
     end
 
@@ -494,6 +504,10 @@ class Petition < ActiveRecord::Base
     def scheduled_debate_state
       arel_table[:debate_state].eq('scheduled')
     end
+
+    def thresholds_disabled?
+      Site.disable_thresholds_and_debates?
+    end
   end
 
   def to_param
@@ -541,13 +555,15 @@ class Petition < ActiveRecord::Base
         updates << "state = '#{VALIDATED_STATE}'"
       end
 
-      if at_threshold_for_referral?
-        updates << "referral_threshold_reached_at = :now"
-      end
+      unless thresholds_disabled?
+        if at_threshold_for_referral?
+          updates << "referral_threshold_reached_at = :now"
+        end
 
-      if at_threshold_for_debate?
-        updates << "debate_threshold_reached_at = :now"
-        updates << "debate_state = 'awaiting'"
+        if at_threshold_for_debate?
+          updates << "debate_threshold_reached_at = :now"
+          updates << "debate_state = 'awaiting'"
+        end
       end
 
       updates = updates.join(", ")
@@ -751,22 +767,11 @@ class Petition < ActiveRecord::Base
 
     Appsignal.increment_counter("petition.published", 1)
 
-    build_pe_number
-
-    transaction do
-      update!(state: OPEN_STATE, open_at: time, closed_at: closing_date(time))
-
-      if !collect_signatures?
-        if at_threshold_for_referral?
-          update!(referral_threshold_reached_at: time)
-        end
-
-        close!(time)
-        refer_or_reject!(time)
-      else
-        true
-      end
-    end
+    update!(
+      state: state_for_publishing,
+      referred_at: referred_at_for_publishing(time),
+      open_at: time, closed_at: closing_date(time)
+    )
   end
 
   def reject(attributes)
@@ -782,13 +787,15 @@ class Petition < ActiveRecord::Base
           update_columns(
             action_gd: action_en,
             background_gd: background_en,
-            additional_details_gd: additional_details_en
+            additional_details_gd: additional_details_en,
+            previous_action_gd: previous_action_en
           )
         else
           update_columns(
             action_en: action_gd,
             background_en: background_gd,
-            additional_details_en: additional_details_gd
+            additional_details_en: additional_details_gd,
+            previous_action_en: previous_action_gd
           )
         end
       end
@@ -839,7 +846,7 @@ class Petition < ActiveRecord::Base
       if will_be_referred?
         Appsignal.increment_counter("petition.referred", 1)
         update!(referred_at: time)
-      else
+      elsif RejectionReason.exists?(code: "insufficient")
         reject!(code: "insufficient", rejected_at: time)
         NotifyEveryoneOfFailureToGetEnoughSignaturesJob.perform_later(self)
       end
@@ -870,7 +877,7 @@ class Petition < ActiveRecord::Base
   end
 
   def in_moderation?
-    state.in?(IN_MODERATION_STATES)
+    state.in?(MODERATION_STATES)
   end
 
   def moderated?
@@ -924,6 +931,10 @@ class Petition < ActiveRecord::Base
 
   def published?
     state.in?(PUBLISHED_STATES)
+  end
+
+  def publishing?
+    state_was.in?(MODERATION_STATES) && state.in?(PUBLISHED_STATES)
   end
 
   def visible?
@@ -1064,5 +1075,17 @@ class Petition < ActiveRecord::Base
 
   def sponsor_count
     @sponsor_count ||= sponsors.validated.count
+  end
+
+  def state_for_publishing
+    collect_signatures? ? OPEN_STATE : CLOSED_STATE
+  end
+
+  def referred_at_for_publishing(time)
+    (thresholds_disabled? || collect_signatures?) ? nil : time
+  end
+
+  def thresholds_disabled?
+    Site.disable_thresholds_and_debates?
   end
 end

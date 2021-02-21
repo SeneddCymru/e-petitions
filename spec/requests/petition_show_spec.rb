@@ -368,5 +368,35 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
 
       expect(attributes.keys).not_to include("signatures_by_region")
     end
+
+    context "when thresholds are disabled" do
+      before do
+        Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
+      end
+
+      it "doesn't include any threshold or debate data" do
+        petition = \
+          FactoryBot.create :debated_petition,
+            debated_on: 1.day.ago,
+            overview: "What happened in the debate",
+            transcript_url: "https://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf",
+            video_url: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
+            debate_pack_url: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
+
+        get "/petitions/#{petition.to_param}.json"
+        expect(response).to be_successful
+
+        expect(attributes.keys).not_to include(
+          "moderation_threshold_reached_at",
+          "referral_threshold_reached_at",
+          "referred_at",
+          "debate_threshold_reached_at",
+          "scheduled_debate_date",
+          "debate_outcome_at",
+          "moderation_threshold_reached_at",
+          "debate"
+        )
+      end
+    end
   end
 end

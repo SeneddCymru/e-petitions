@@ -59,15 +59,20 @@ module AdminHubHelper
     end
 
     def generate_counts
-      counts = []
-      counts << [:referred, Petition.referred.count]
-      counts << [:in_debate_queue, Petition.in_debate_queue.count]
+      [].tap do |counts|
+        counts << [:referred, Petition.facet_count(:referred)]
+
+        if Site.disable_thresholds_and_debates?
+          counts << [:completed, Petition.facet_count(:completed)]
+        else
+          counts << [:in_debate_queue, Petition.facet_count(:in_debate_queue)]
+        end
+      end
     end
   end
 
   def action_counts(&block)
-    counts = ActionCountsDecorator.new
-    yield counts
+    yield ActionCountsDecorator.new
   end
 
   def action_count(key, count)

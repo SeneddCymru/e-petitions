@@ -130,6 +130,19 @@
       </div>
     <% end %>
 
+    <%= form_row for: [form.object, :disable_thresholds_and_debates], class: "inline" do %>
+      <%= form.label :disable_thresholds_and_debates, "Disable thresholds and debates?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_thresholds_and_debates %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_thresholds_and_debates, true %>
+        <%= form.label :disable_thresholds_and_debates, "Yes", for: "site_disable_thresholds_and_debates_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_thresholds_and_debates, false %>
+        <%= form.label :disable_thresholds_and_debates, "No", for: "site_disable_thresholds_and_debates_false" %>
+      </div>
+    <% end %>
+
     <%= form_row for: [form.object, :disable_other_business], class: "inline" do %>
       <%= form.label :disable_other_business, "Disable other parliamentary business?", class: "form-label" %>
       <%= error_messages_for_field @site, :disable_other_business %>

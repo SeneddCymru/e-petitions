@@ -1210,7 +1210,7 @@ RSpec.describe Petition, type: :model do
 
   describe "#in_moderation?" do
     context "for in moderation states" do
-      Petition::IN_MODERATION_STATES.each do |state|
+      Petition::MODERATION_STATES.each do |state|
         let(:petition) { FactoryBot.build(:petition, state: state) }
 
         it "is in moderation when state is #{state}" do
@@ -1220,7 +1220,7 @@ RSpec.describe Petition, type: :model do
     end
 
     context "for other states" do
-      (Petition::STATES - Petition::IN_MODERATION_STATES).each do |state|
+      (Petition::STATES - Petition::MODERATION_STATES).each do |state|
         let(:petition) { FactoryBot.build(:petition, state: state) }
 
         it "is not in moderation when state is #{state}" do
@@ -1734,7 +1734,7 @@ RSpec.describe Petition, type: :model do
       end
     end
 
-    context "when the signature count crosses the threshold for a response" do
+    context "when the signature count crosses the threshold for referral" do
       let(:signature_count) { 9 }
 
       before do
@@ -1773,6 +1773,54 @@ RSpec.describe Petition, type: :model do
         }.to change {
           petition.debate_state
         }.from("pending").to("awaiting")
+      end
+    end
+
+    context "when thresholds are disabled" do
+      before do
+        Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
+      end
+
+      context "and the signature count crosses the threshold for referral" do
+        let(:signature_count) { 9 }
+
+        before do
+          expect(Site).not_to receive(:threshold_for_referral)
+          FactoryBot.create(:validated_signature, petition: petition, increment: false)
+        end
+
+        it "doesn't record the time it happened" do
+          expect {
+            petition.increment_signature_count!
+          }.not_to change {
+            petition.referral_threshold_reached_at
+          }.from(nil)
+        end
+      end
+
+      context "and the signature count crosses the threshold for a debate" do
+        let(:signature_count) { 99 }
+
+        before do
+          expect(Site).not_to receive(:threshold_for_debate)
+          FactoryBot.create(:validated_signature, petition: petition, increment: false)
+        end
+
+        it "doesn't record the time it happened" do
+          expect {
+            petition.increment_signature_count!
+          }.not_to change {
+            petition.debate_threshold_reached_at
+          }.from(nil)
+        end
+
+        it "doesn't set the debate_state to 'awaiting'" do
+          expect {
+            petition.increment_signature_count!
+          }.not_to change {
+            petition.debate_state
+          }.from("pending")
+        end
       end
     end
   end
@@ -2038,7 +2086,7 @@ RSpec.describe Petition, type: :model do
     let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
 
-    context "when petition is collecting signatures" do
+    context "when the petition is collecting signatures" do
       subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: true) }
 
       before do
@@ -2054,7 +2102,7 @@ RSpec.describe Petition, type: :model do
       end
     end
 
-    context "when petition is not collecting signatures" do
+    context "when the petition is not collecting signatures" do
       subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: false) }
 
       before do
@@ -2077,6 +2125,32 @@ RSpec.describe Petition, type: :model do
 
       it "sets the referred date to now" do
         expect(petition.referred_at).to be_within(1.second).of(now)
+      end
+    end
+
+    context "when thresholds are disabled" do
+      before do
+        Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
+      end
+
+      context "and the petition is not collecting signatures" do
+        subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: false) }
+
+        before do
+          petition.publish
+        end
+
+        it "sets the state to CLOSED" do
+          expect(petition.state).to eq(Petition::CLOSED_STATE)
+        end
+
+        it "sets the closed date to now" do
+          expect(petition.closed_at).to be_within(1.second).of(now)
+        end
+
+        it "doesn't set the referred date" do
+          expect(petition.referred_at).to be_nil
+        end
       end
     end
   end

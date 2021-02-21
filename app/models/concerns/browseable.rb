@@ -248,5 +248,9 @@ module Browseable
     def search(params)
       Search.new(all, params)
     end
+
+    def facet_count(facet)
+      search(state: facet.to_s).count
+    end
   end
 end

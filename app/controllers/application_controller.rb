@@ -102,7 +102,11 @@ class ApplicationController < ActionController::Base
   end
 
   def public_petition_facets
-    I18n.t('public', scope: :"petitions.facets")
+    if Site.disable_thresholds_and_debates?
+      I18n.t('public', scope: :"petitions.facets.alternate")
+    else
+      I18n.t('public', scope: :"petitions.facets")
+    end
   end
 
   def do_not_cache
