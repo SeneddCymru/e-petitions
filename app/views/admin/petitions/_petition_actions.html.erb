@@ -46,7 +46,7 @@
         </li>
       <% end %>
 
-      <% if @petition.moderated? %>
+      <% if !Site.disable_other_business? && @petition.moderated? %>
         <li class="petition-action">
           <%= render 'petition_action_email_petitioners', petition: @petition %>
         </li>

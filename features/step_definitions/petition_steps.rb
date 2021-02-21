@@ -455,6 +455,14 @@ Then(/^I should see the other parliamentary business items$/) do
   )
 end
 
+Then(/^I should not see the other parliamentary business items$/) do
+  steps %Q(
+    Then I should not see "Other parliamentary business"
+    And I should not see "Committee to discuss #{@petition.action}"
+    And I should not see "The Petition Committee will discuss #{@petition.action} on the #{Date.tomorrow}"
+  )
+end
+
 Then(/^the petition should be copied over$/) do
   @petition.reload
 

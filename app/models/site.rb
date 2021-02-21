@@ -24,6 +24,7 @@ class Site < ActiveRecord::Base
     disable_notify_by_email
     disable_local_petitions
     disable_register_to_vote
+    disable_other_business
   ]
 
   class << self

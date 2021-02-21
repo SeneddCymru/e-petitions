@@ -129,5 +129,18 @@
         <%= form.label :disable_register_to_vote, "No", for: "site_disable_register_to_vote_false" %>
       </div>
     <% end %>
+
+    <%= form_row for: [form.object, :disable_other_business], class: "inline" do %>
+      <%= form.label :disable_other_business, "Disable other parliamentary business?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_other_business %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_other_business, true %>
+        <%= form.label :disable_other_business, "Yes", for: "site_disable_other_business_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_other_business, false %>
+        <%= form.label :disable_other_business, "No", for: "site_disable_other_business_false" %>
+      </div>
+    <% end %>
   </div>
 </div>
