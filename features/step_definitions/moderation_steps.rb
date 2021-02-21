@@ -175,13 +175,15 @@ Given /^the petition is translated$/ do
       petition.update!(
         action_gd: petition.action_en,
         background_gd: petition.background_en,
-        additional_details_gd: petition.additional_details_en
+        additional_details_gd: petition.additional_details_en,
+        previous_action_gd: petition.previous_action_en
       )
     else
       petition.update!(
         action_en: petition.action_gd,
         background_en: petition.background_gd,
-        additional_details_en: petition.additional_details_gd
+        additional_details_en: petition.additional_details_gd,
+        previous_action_en: petition.previous_action_gd
       )
     end
   end

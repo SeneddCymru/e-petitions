@@ -38,7 +38,11 @@
   <%= link_to 'Gaelic', admin_petition_details_path(@petition, locale: "gd-GB") %>
 
   <% if Site.disable_gaelic_website? %>
-    <%= button_to 'Copy content to Gaelic petition', copy_content_admin_petition_path(@petition), class: 'button' %>
+    <% if @petition.gaelic_translated? %>
+      <%= button_to 'Remove Gaelic petition content', admin_petition_content_path(@petition), method: :delete, class: 'button button-warning', data: { confirm: 'Are you sure? This will remove any content in the Gaelic fields.'} %>
+    <% else %>
+      <%= button_to 'Copy content to Gaelic petition', admin_petition_content_path(@petition), method: :post, class: 'button', data: { confirm: 'Are you sure? This will copy the content in the English fields over any content in the Gaelic fields.'} %>
+    <% end %>
   <% end %>
 </p>
 

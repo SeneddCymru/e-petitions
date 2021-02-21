@@ -106,10 +106,12 @@ FactoryBot.define do
           petition.action_gd ||= petition.action_en
           petition.background_gd ||= petition.background_en
           petition.additional_details_gd ||= petition.additional_details_en
+          petition.previous_action_gd ||= petition.previous_action_en
         else
           petition.action_en ||= petition.action_gd
           petition.background_en ||= petition.background_gd
           petition.additional_details_en ||= petition.additional_details_gd
+          petition.previous_action_en ||= petition.previous_action_gd
         end
       end
     end

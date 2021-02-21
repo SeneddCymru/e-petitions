@@ -463,11 +463,19 @@ Then(/^I should not see the other parliamentary business items$/) do
   )
 end
 
-Then(/^the petition should be copied over$/) do
+Then(/^the petition content should be copied over$/) do
   @petition.reload
 
-  %i[action details additional_details].each do |attr|
+  %i[action details previous_action additional_details].each do |attr|
     expect(@petition["#{attr}_gd"]).to eq @petition["#{attr}_en"]
+  end
+end
+
+Then(/^the petition content should be reset$/) do
+  @petition.reload
+
+  %i[action details previous_action additional_details].each do |attr|
+    expect(@petition["#{attr}_gd"]).to be_nil
   end
 end
 

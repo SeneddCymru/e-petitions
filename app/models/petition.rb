@@ -680,26 +680,44 @@ class Petition < ActiveRecord::Base
   end
 
   def english_translated?
-    action_en? && background_en? && additional_details_en_translated?
+    action_en? && background_en? && previous_action_en_translated? && additional_details_en_translated?
   end
 
   def additional_details_en_translated?
     english? ? true : !additional_details_gd? || additional_details_en?
   end
 
+  def previous_action_en_translated?
+    english? ? true : !previous_action_gd? || previous_action_en?
+  end
+
   def gaelic_translated?
-    action_gd? && background_gd? && additional_details_gd_translated?
+    action_gd? && background_gd? && previous_action_gd_translated? && additional_details_gd_translated?
   end
 
   def additional_details_gd_translated?
     gaelic? ? true : !additional_details_en? || additional_details_gd?
   end
 
+  def previous_action_gd_translated?
+    gaelic? ? true : !previous_action_en? || previous_action_gd?
+  end
+
   def copy_content!
     update!(
-      action_gd:  action_en,
-      background_gd:  background_en,
-      additional_details_gd:  additional_details_en,
+      action_gd: action_en,
+      background_gd: background_en,
+      additional_details_gd: additional_details_en,
+      previous_action_gd: previous_action_en
+    )
+  end
+
+  def reset_content!
+    update!(
+      action_gd: nil,
+      background_gd: nil,
+      additional_details_gd: nil,
+      previous_action_gd: nil
     )
   end
 

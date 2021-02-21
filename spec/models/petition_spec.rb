@@ -2803,17 +2803,89 @@ RSpec.describe Petition, type: :model do
     end
   end
 
-  describe "copy_content!" do
-    let(:petition) { FactoryBot.create(:petition, :english) }
-
-    before do
-      petition.copy_content!
+  describe "#copy_content!" do
+    let(:petition) do
+      FactoryBot.create(:petition, :english,
+        action_en: "Do stuff",
+        background_en: "Because of reasons",
+        additional_details_en: "Learn more at https://www.example.com",
+        previous_action_en: "I've campaigned about it for years"
+      )
     end
 
-    it "copies the petition's content over to the Gaelic fields" do
-      [:action, :background, :additional_details].each do |field|
-        expect(petition["#{field}_gd".to_s]).to eq petition["#{field}_en".to_s]
-      end
+    it "copies over the action" do
+      expect {
+        petition.copy_content!
+      }.to change {
+        petition.reload.action_gd
+      }.from(nil).to("Do stuff")
+    end
+
+    it "copies over the background" do
+      expect {
+        petition.copy_content!
+      }.to change {
+        petition.reload.background_gd
+      }.from(nil).to("Because of reasons")
+    end
+
+    it "copies over the additional details" do
+      expect {
+        petition.copy_content!
+      }.to change {
+        petition.reload.additional_details_gd
+      }.from(nil).to("Learn more at https://www.example.com")
+    end
+
+    it "copies over the previous action" do
+      expect {
+        petition.copy_content!
+      }.to change {
+        petition.reload.previous_action_gd
+      }.from(nil).to("I've campaigned about it for years")
+    end
+  end
+
+  describe "#reset_content!" do
+    let(:petition) do
+      FactoryBot.create(:petition, :english, :translated,
+        action_en: "Do stuff",
+        background_en: "Because of reasons",
+        additional_details_en: "Learn more at https://www.example.com",
+        previous_action_en: "I've campaigned about it for years"
+      )
+    end
+
+    it "resets the action" do
+      expect {
+        petition.reset_content!
+      }.to change {
+        petition.reload.action_gd
+      }.from("Do stuff").to(nil)
+    end
+
+    it "resets the background" do
+      expect {
+        petition.reset_content!
+      }.to change {
+        petition.reload.background_gd
+      }.from("Because of reasons").to(nil)
+    end
+
+    it "resets the additional details" do
+      expect {
+        petition.reset_content!
+      }.to change {
+        petition.reload.additional_details_gd
+      }.from("Learn more at https://www.example.com").to(nil)
+    end
+
+    it "resets the previous action" do
+      expect {
+        petition.reset_content!
+      }.to change {
+        petition.reload.previous_action_gd
+      }.from("I've campaigned about it for years").to(nil)
     end
   end
 end
