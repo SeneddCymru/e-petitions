@@ -38,6 +38,20 @@ Feature: Suzie signs a petition
     When I follow "Do something!"
     Then I should see "2 signatures"
 
+  Scenario: Suzie signs a petition after validating her email when local petitions are disabled
+    Given the site has disabled local petitions
+    When I decide to sign the petition
+    And I fill in my details
+    And I try to sign
+    And I say I am happy with my email address
+    Then I am told to check my inbox to complete signing
+    And "womboid@wimbledon.com" should receive 1 email
+    When I confirm my email address
+    Then I should have signed the petition
+    And I should not see "Contact your Members of the Scottish Parliament"
+    And I should not see "Your Member of the Scottish Parliament for the Glasgow Provan constituency is Ivan McKee MSP"
+    And I should not see "Your Members of the Scottish Parliament for the Glasgow region are:"
+
   Scenario: Suzie signs a petition with an invalid name
     When I go to the new signature page for "Do something!"
     And I fill in "Name" with "=cmd"

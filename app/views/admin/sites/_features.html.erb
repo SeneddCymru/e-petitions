@@ -2,7 +2,7 @@
 <%= hidden_field_tag :"site[features]", "" %>
 
 <div class="grid-row">
-  <div class="column-half">
+  <div class="column-third">
     <%= form_row for: [form.object, :disable_daily_update_statistics_job], class: "inline" do %>
       <%= form.label :disable_daily_update_statistics_job, "Disable updating of petition statistics?", class: "form-label" %>
       <%= error_messages_for_field @site, :disable_daily_update_statistics_job %>
@@ -49,7 +49,7 @@
     <% end %>
   </div>
 
-  <div class="column-half">
+  <div class="column-third">
     <%= form_row for: [form.object, :disable_plus_address_check], class: "inline" do %>
       <%= form.label :disable_plus_address_check, "Disable check for '+' email addressing?", class: "form-label" %>
       <%= error_messages_for_field @site, :disable_plus_address_check %>
@@ -99,6 +99,21 @@
       <div class="multiple-choice">
         <%= form.radio_button :disable_notify_by_email, false %>
         <%= form.label :disable_notify_by_email, "No", for: "site_disable_notify_by_email_false" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="column-third">
+    <%= form_row for: [form.object, :disable_local_petitions], class: "inline" do %>
+      <%= form.label :disable_local_petitions, "Disable local petitions?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_local_petitions %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_local_petitions, true %>
+        <%= form.label :disable_local_petitions, "Yes", for: "site_disable_local_petitions_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_local_petitions, false %>
+        <%= form.label :disable_local_petitions, "No", for: "site_disable_local_petitions_false" %>
       </div>
     <% end %>
   </div>

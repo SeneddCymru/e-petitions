@@ -22,6 +22,7 @@ class Site < ActiveRecord::Base
     disable_gaelic_website
     show_holding_page
     disable_notify_by_email
+    disable_local_petitions
   ]
 
   class << self

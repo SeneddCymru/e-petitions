@@ -65,6 +65,9 @@ module NavigationHelpers
     when /^the all local petitions JSON page$/
       all_local_petition_url(@my_constituency.id, :json)
 
+    when /^the constituency page for "([^\"]*)"$/
+      local_petition_url(Constituency.find_by!(name: $1).id)
+
     else
       begin
         page_name =~ /^the (.*) page$/
