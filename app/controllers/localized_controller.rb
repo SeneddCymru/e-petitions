@@ -86,4 +86,8 @@ class LocalizedController < ApplicationController
       redirect_to holding_url if Site.show_holding_page?
     end
   end
+
+  def raise_routing_error
+    raise ActionController::RoutingError, "No route matches #{request.path}"
+  end
 end

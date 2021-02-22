@@ -11,12 +11,14 @@
     <p class="signature-count-number">
       <%= signature_count(:default, petition.signature_count) %>
     </p>
-    <div class="signature-count-graph" aria-hidden="true">
-      <span class="signature-count-current" style="width: <%= signatures_threshold_percentage(petition) %>"></span>
-    </div>
-    <p class="signature-count-goal">
-      <%= number_with_delimiter(current_threshold(petition)) %>
-    </p>
+    <% unless Site.disable_thresholds_and_debates? %>
+      <div class="signature-count-graph" aria-hidden="true">
+        <span class="signature-count-current" style="width: <%= signatures_threshold_percentage(petition) %>"></span>
+      </div>
+      <p class="signature-count-goal">
+        <%= number_with_delimiter(current_threshold(petition)) %>
+      </p>
+    <% end %>
   </div>
 
   <%= render 'threshold_details', petition: petition %>

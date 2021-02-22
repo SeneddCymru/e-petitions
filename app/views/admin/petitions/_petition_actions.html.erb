@@ -34,7 +34,7 @@
         <%= render 'petition_action_abms_link', petition: @petition %>
       </li>
 
-      <% if @petition.can_have_debate_added? %>
+      <% if !Site.disable_thresholds_and_debates? && @petition.can_have_debate_added? %>
         <% unless @petition.completed? %>
           <li class="petition-action">
             <%= render 'petition_action_debate_date', petition: @petition %>
@@ -46,7 +46,7 @@
         </li>
       <% end %>
 
-      <% if @petition.moderated? %>
+      <% if !Site.disable_other_business? && @petition.moderated? %>
         <li class="petition-action">
           <%= render 'petition_action_email_petitioners', petition: @petition %>
         </li>

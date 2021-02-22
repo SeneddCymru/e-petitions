@@ -1,93 +1,97 @@
-<%= hidden_field_tag :tab, "access" %>
-
 <div class="grid-row">
-  <div class="column-half">
-    <%= form_row for: [form.object, :protected], class: "inline" do %>
-      <%= form.label :protected, "Password protect public website?", class: "form-label" %>
-      <%= error_messages_for_field @site, :protected %>
-      <div class="multiple-choice">
-        <%= form.radio_button :protected, true %>
-        <%= form.label :protected, "Yes", for: "site_protected_true" %>
-      </div>
-      <div class="multiple-choice">
-        <%= form.radio_button :protected, false %>
-        <%= form.label :protected, "No", for: "site_protected_false" %>
-      </div>
-    <% end %>
+  <div class="column-two-thirds extra-gutter">
+    <%= hidden_field_tag :tab, "access" %>
 
-    <div id="protected-fields">
-      <%= form_row for: [form.object, :username] do %>
-        <%= form.label :username, class: "form-label" %>
-        <%= error_messages_for_field @site, :username %>
-        <%= form.text_field :username, tabindex: increment, maxlength: 50, class: "form-control" %>
-      <% end %>
+    <div class="grid-row">
+      <div class="column-half">
+        <%= form_row for: [form.object, :protected], class: "inline" do %>
+          <%= form.label :protected, "Password protect public website?", class: "form-label" %>
+          <%= error_messages_for_field @site, :protected %>
+          <div class="multiple-choice">
+            <%= form.radio_button :protected, true %>
+            <%= form.label :protected, "Yes", for: "site_protected_true" %>
+          </div>
+          <div class="multiple-choice">
+            <%= form.radio_button :protected, false %>
+            <%= form.label :protected, "No", for: "site_protected_false" %>
+          </div>
+        <% end %>
 
-      <%= form_row for: [form.object, :password] do %>
-        <%= form.label :password, class: "form-label" %>
-        <%= error_messages_for_field @site, :password %>
-        <%= form.password_field :password, tabindex: increment, maxlength: 50, class: "form-control" %>
-      <% end %>
+        <div id="protected-fields">
+          <%= form_row for: [form.object, :username] do %>
+            <%= form.label :username, class: "form-label" %>
+            <%= error_messages_for_field @site, :username %>
+            <%= form.text_field :username, tabindex: increment, maxlength: 50, class: "form-control" %>
+          <% end %>
+
+          <%= form_row for: [form.object, :password] do %>
+            <%= form.label :password, class: "form-label" %>
+            <%= error_messages_for_field @site, :password %>
+            <%= form.password_field :password, tabindex: increment, maxlength: 50, class: "form-control" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="column-half">
+        <%= form_row for: [form.object, :enabled], class: "inline" do %>
+          <%= form.label :enabled, "Disable public website?", class: "form-label" %>
+          <%= error_messages_for_field @site, :enabled %>
+          <div class="multiple-choice">
+            <%= form.radio_button :enabled, false %>
+            <%= form.label :enabled, "Yes", for: "site_enabled_false" %>
+          </div>
+          <div class="multiple-choice">
+            <%= form.radio_button :enabled, true %>
+            <%= form.label :enabled, "No", for: "site_enabled_true" %>
+          </div>
+        <% end %>
+
+        <%= form_row for: [form.object, :show_holding_page], class: "inline" do %>
+          <%= form.label :show_holding_page, "Show holding page?", class: "form-label" %>
+          <%= error_messages_for_field @site, :enabled %>
+          <div class="multiple-choice">
+            <%= form.radio_button :show_holding_page, true %>
+            <%= form.label :show_holding_page, "Yes", for: "show_holding_page_true" %>
+          </div>
+          <div class="multiple-choice">
+            <%= form.radio_button :show_holding_page, false %>
+            <%= form.label :show_holding_page, "No", for: "show_holding_page_false" %>
+          </div>
+        <% end %>
+
+        <% if Site.show_holding_page? %>
+          <p>
+            Bypass: <%= link_to "English", home_en_url(bypass: Site.bypass_token), target: "_blank" %> |
+            <%= link_to "Gaelic", home_gd_url(bypass: Site.bypass_token), target: "_blank" %>
+          </p>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="column-half">
-    <%= form_row for: [form.object, :enabled], class: "inline" do %>
-      <%= form.label :enabled, "Disable public website?", class: "form-label" %>
-      <%= error_messages_for_field @site, :enabled %>
-      <div class="multiple-choice">
-        <%= form.radio_button :enabled, false %>
-        <%= form.label :enabled, "Yes", for: "site_enabled_false" %>
-      </div>
-      <div class="multiple-choice">
-        <%= form.radio_button :enabled, true %>
-        <%= form.label :enabled, "No", for: "site_enabled_true" %>
-      </div>
-    <% end %>
+    <%= javascript_tag do %>
+      $().ready(function() {
+        var $protected_fields = $('#protected-fields'),
+            $true_control = $('input[name="site[protected]"][value=true]'),
+            $false_control = $('input[name="site[protected]"][value=false]'),
+            $all_controls = $('input[name="site[protected]"][type=radio]');
 
-    <%= form_row for: [form.object, :show_holding_page], class: "inline" do %>
-      <%= form.label :show_holding_page, "Show holding page?", class: "form-label" %>
-      <%= error_messages_for_field @site, :enabled %>
-      <div class="multiple-choice">
-        <%= form.radio_button :show_holding_page, true %>
-        <%= form.label :show_holding_page, "Yes", for: "show_holding_page_true" %>
-      </div>
-      <div class="multiple-choice">
-        <%= form.radio_button :show_holding_page, false %>
-        <%= form.label :show_holding_page, "No", for: "show_holding_page_false" %>
-      </div>
-    <% end %>
+        if ($true_control.is(':checked')) {
+          $protected_fields.show();
+        } else {
+          $protected_fields.hide();
+        }
 
-    <% if Site.show_holding_page? %>
-      <p>
-        Bypass: <%= link_to "English", home_en_url(bypass: Site.bypass_token), target: "_blank" %> |
-        <%= link_to "Gaelic", home_gd_url(bypass: Site.bypass_token), target: "_blank" %>
-      </p>
-    <% end %>
+        $all_controls.keyup(function() {
+          this.blur();
+          this.focus();
+        }).change(function() {
+          if ($true_control.is(':checked')) {
+            $protected_fields.show();
+          } else {
+            $protected_fields.hide();
+          }
+        });
+      });
+    <% end -%>
   </div>
 </div>
-
-<%= javascript_tag do %>
-  $().ready(function() {
-    var $protected_fields = $('#protected-fields'),
-        $true_control = $('input[name="site[protected]"][value=true]'),
-        $false_control = $('input[name="site[protected]"][value=false]'),
-        $all_controls = $('input[name="site[protected]"][type=radio]');
-
-    if ($true_control.is(':checked')) {
-      $protected_fields.show();
-    } else {
-      $protected_fields.hide();
-    }
-
-    $all_controls.keyup(function() {
-      this.blur();
-      this.focus();
-    }).change(function() {
-      if ($true_control.is(':checked')) {
-        $protected_fields.show();
-      } else {
-        $protected_fields.hide();
-      }
-    });
-  });
-<% end -%>

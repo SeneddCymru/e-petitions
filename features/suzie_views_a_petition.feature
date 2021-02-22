@@ -108,6 +108,12 @@ Feature: Suzie views a petition
     When I view the petition
     Then I should see the other parliamentary business items
 
+  Scenario: Suzie does not see information about other parliamentary business when it is disabled
+    Given a petition "Ban Badger Baiting" has other parliamentary business
+    And the site has disabled other parliamentary business
+    When I view the petition
+    Then I should not see the other parliamentary business items
+
   Scenario: Suzie sees information about the outcomes when viewing a debated petition
     Given a petition "Ban Badger Baiting" has been debated 2 days ago
     When I view the petition

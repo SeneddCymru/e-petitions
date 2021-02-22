@@ -1,4 +1,4 @@
-<% unless petition.emails.empty? %>
+<% unless Site.disable_other_business? || petition.emails.empty? %>
   <section class="about-item about-item-other-parliamentary-business" id="other-parliamentary-business" aria-labelledby="other-parliamentary-business-heading">
     <h2 id="other-parliamentary-business-heading"><%= t(:"ui.petitions.other_parliamentary_business") %></h2>
 

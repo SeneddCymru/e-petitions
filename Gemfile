@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Load environment variables
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
-gem 'rails', '6.1.2.1'
+gem 'rails', '6.1.3'
 
 gem 'rake'
 gem 'pg'
@@ -16,7 +16,7 @@ gem 'appsignal'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'net-http-persistent'
-gem 'sassc-rails'
+gem 'sass-rails', '< 6'
 gem 'textacular'
 gem 'uglifier'
 gem 'bcrypt'

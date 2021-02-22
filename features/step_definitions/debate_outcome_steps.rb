@@ -11,7 +11,7 @@ Given(/^a petition "(.*?)" has been debated (\d+) days ago?$/) do |petition_acti
 end
 
 Given(/^a petition "(.*?)" has been debated yesterday$/) do |petition_action|
-  @petition = FactoryBot.create(:open_petition,
+  @petition = FactoryBot.create(:closed_petition,
     action: petition_action,
     scheduled_debate_date: 1.day.ago,
     debate_state: 'debated'

@@ -5,7 +5,16 @@ Feature: Suzie sees actioned petitions
 
   Scenario: There are no actioned petitions
     Given I am on the home page
-    Then I should see an empty referral threshold section
+    Then I should see an empty open petitions section
+    And I should see an empty referral threshold section
+    And I should see an empty debate threshold section
+
+  Scenario: There are petitions collecting signatures
+    Given there are 2 petitions collecting signatures
+    And I am on the home page
+    Then I should see 2 petitions counted in the open petitions section
+    And I should see 2 petitions listed in the open petitions section
+    And I should see an empty referral threshold section
     And I should see an empty debate threshold section
 
   Scenario: There are petitions referred to the committee

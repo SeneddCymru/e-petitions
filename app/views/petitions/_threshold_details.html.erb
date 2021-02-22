@@ -1,9 +1,11 @@
-<div class="about-petitions">
-  <%-
-    order = ['referral_threshold', 'debate_threshold']
-    order.reverse! if petition.debate_outcome? or petition.scheduled_debate_date? or petition.debate_threshold_reached_at?
-  -%>
-  <% order.each do |partial_name| -%>
-    <%= render "petitions/#{partial_name}", petition: petition %>
-  <% end -%>
-</div>
+<% unless Site.disable_thresholds_and_debates? %>
+  <div class="about-petitions">
+    <%-
+      order = ['referral_threshold', 'debate_threshold']
+      order.reverse! if petition.debate_outcome? or petition.scheduled_debate_date? or petition.debate_threshold_reached_at?
+    -%>
+    <% order.each do |partial_name| -%>
+      <%= render "petitions/#{partial_name}", petition: petition %>
+    <% end -%>
+  </div>
+<% end %>

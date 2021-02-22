@@ -11,6 +11,15 @@ en-GB:
       app_name: "Petitions"
       app_tooltip: "Scottish Parliament"
     counts:
+      open_html:
+        one: |-
+          <span class="count">1</span> petition is currently collecting signatures
+        two: |-
+          <span class="count">2</span> petitions are currently collecting signatures
+        zero: |-
+          <span class="count">0</span> petitions are currently collecting signatures
+        other: |-
+          <span class="count">%{num}</span> petitions are currently collecting signatures
       referred_html:
         one: |-
           <span class="count">1</span> petition was referred to the Petitions Committee
@@ -24,6 +33,8 @@ en-GB:
         See all petitions debated by Parliament (%{num})
       referred_explanation_html: |-
         See all petitions referred to the Petitions Committee (%{num})
+      open_explanation_html: |-
+        See all petitions collecting signatures (%{num})
       with_debated_outcome_html:
         one: |-
           <span class="count">%{num}</span> petition was debated by Parliament
@@ -267,14 +278,26 @@ en-GB:
         none_debated: "Parliament has not debated any petitions yet"
         topic_debated_date: "This topic was debated on %{date}"
       referred_petitions:
+        title: "Under consideration"
+        description: |-
+          All petitions accepted for publication will be lodged with the committee irrespective of the number of signatures they gather
         none_referred: |-
           No petitions have been referred to the Petitions Committee yet
         referred_date: "Referred to the Petitions Committee on %{date}"
       trending_petitions:
         heading: "Popular petitions"
+      open_petitions:
+        heading: "Collecting signatures"
+        description: |-
+          These petitions are currently collecting signatures but all of them will be considered by the Petitions Committee once they have closed
+        none_open: |-
+          There are no petitions currently collecting signatures
+        open_date: "Collecting signatures until %{date}"
     petitions:
       check:
         heading: "Start a petition"
+        action:
+          label: "What do you want us to do?"
         results:
           back: "Back"
           unique:

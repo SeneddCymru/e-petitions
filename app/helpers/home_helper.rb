@@ -1,6 +1,7 @@
 module HomeHelper
   class ActionedPetitionsDecorator
     FACETS = [
+      :open,
       :referred,
       :with_debated_outcome,
       :not_debated
@@ -17,7 +18,11 @@ module HomeHelper
     end
 
     def with_result
-      {:referred => actioned[:referred], :with_debated_outcome => actioned[:with_debated_outcome]}
+      {
+        :open => actioned[:open],
+        :referred => actioned[:referred],
+        :with_debated_outcome => actioned[:with_debated_outcome]
+      }
     end
 
     private

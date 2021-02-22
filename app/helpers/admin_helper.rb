@@ -122,7 +122,11 @@ module AdminHelper
   private
 
   def admin_petition_facets
-    I18n.t(:admin, scope: :"petitions.facets")
+    if Site.disable_thresholds_and_debates?
+      I18n.t(:admin, scope: :"petitions.facets.alternate")
+    else
+      I18n.t(:admin, scope: :"petitions.facets")
+    end
   end
 
   def admin_invalidation_facets

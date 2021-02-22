@@ -34,9 +34,31 @@ en-GB:
         - :in_debate_queue
         - :completed
         - :archived
+      alternate:
+        public:
+          - :all
+          - :open
+          - :referred
+          - :completed
+        admin:
+          - :all
+          - :pending
+          - :in_moderation
+          - :recently_in_moderation
+          - :nearly_overdue_in_moderation
+          - :overdue_in_moderation
+          - :tagged_in_moderation
+          - :untagged_in_moderation
+          - :open
+          - :referred
+          - :rejected
+          - :hidden
+          - :completed
+          - :archived
       names:
         admin:
           all: "All petitions (%{quantity})"
+          pending: "Pending (%{quantity})"
           collecting_sponsors: "Collecting sponsors (%{quantity})"
           in_moderation: "Awaiting moderation (%{quantity})"
           recently_in_moderation: "Awaiting moderation - recent (%{quantity})"
@@ -58,4 +80,5 @@ en-GB:
       in_moderation_html: "<span class=\"count\">%{formatted_count}</span> Moderation queue"
       referred_html: "<span class=\"count\">%{formatted_count}</span> Referred queue"
       in_debate_queue_html: "<span class=\"count\">%{formatted_count}</span> Debate queue"
+      completed_html: "<span class=\"count\">%{formatted_count}</span> Completed"
       all_html: "<span class=\"count\">%{formatted_count}</span> All petitions"

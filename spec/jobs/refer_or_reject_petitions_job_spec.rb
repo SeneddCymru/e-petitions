@@ -146,4 +146,44 @@ RSpec.describe ReferOrRejectPetitionsJob, type: :job do
       end
     end
   end
+
+  context "when thresholds are disabled" do
+    let(:open_at) { "2016-06-01T10:00:00Z" }
+
+    before do
+      Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
+    end
+
+    context "and the closing date has passed yesterday" do
+      let(:now) { "2016-06-30T07:05:00Z".in_time_zone }
+
+      context "and the petition reached the referral threshold" do
+        let(:referred) { true }
+
+        it "doesn't refer the petition" do
+          expect{
+            perform_enqueued_jobs {
+              described_class.perform_later(Date.tomorrow.beginning_of_day.iso8601)
+            }
+          }.not_to change {
+            petition.reload.referred_at
+          }.from(nil)
+        end
+      end
+
+      context "and the petition did not reach the referral threshold" do
+        let(:referred) { false }
+
+        it "doesn't reject the petition" do
+          expect{
+            perform_enqueued_jobs {
+              described_class.perform_later(Date.tomorrow.beginning_of_day.iso8601)
+            }
+          }.not_to change {
+            petition.reload.state
+          }.from("closed")
+        end
+      end
+    end
+  end
 end

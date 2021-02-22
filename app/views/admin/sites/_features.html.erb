@@ -2,7 +2,7 @@
 <%= hidden_field_tag :"site[features]", "" %>
 
 <div class="grid-row">
-  <div class="column-half">
+  <div class="column-third">
     <%= form_row for: [form.object, :disable_daily_update_statistics_job], class: "inline" do %>
       <%= form.label :disable_daily_update_statistics_job, "Disable updating of petition statistics?", class: "form-label" %>
       <%= error_messages_for_field @site, :disable_daily_update_statistics_job %>
@@ -49,7 +49,7 @@
     <% end %>
   </div>
 
-  <div class="column-half">
+  <div class="column-third">
     <%= form_row for: [form.object, :disable_plus_address_check], class: "inline" do %>
       <%= form.label :disable_plus_address_check, "Disable check for '+' email addressing?", class: "form-label" %>
       <%= error_messages_for_field @site, :disable_plus_address_check %>
@@ -99,6 +99,60 @@
       <div class="multiple-choice">
         <%= form.radio_button :disable_notify_by_email, false %>
         <%= form.label :disable_notify_by_email, "No", for: "site_disable_notify_by_email_false" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="column-third">
+    <%= form_row for: [form.object, :disable_local_petitions], class: "inline" do %>
+      <%= form.label :disable_local_petitions, "Disable local petitions?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_local_petitions %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_local_petitions, true %>
+        <%= form.label :disable_local_petitions, "Yes", for: "site_disable_local_petitions_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_local_petitions, false %>
+        <%= form.label :disable_local_petitions, "No", for: "site_disable_local_petitions_false" %>
+      </div>
+    <% end %>
+
+    <%= form_row for: [form.object, :disable_register_to_vote], class: "inline" do %>
+      <%= form.label :disable_register_to_vote, "Disable register to vote link?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_register_to_vote %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_register_to_vote, true %>
+        <%= form.label :disable_register_to_vote, "Yes", for: "site_disable_register_to_vote_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_register_to_vote, false %>
+        <%= form.label :disable_register_to_vote, "No", for: "site_disable_register_to_vote_false" %>
+      </div>
+    <% end %>
+
+    <%= form_row for: [form.object, :disable_thresholds_and_debates], class: "inline" do %>
+      <%= form.label :disable_thresholds_and_debates, "Disable thresholds and debates?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_thresholds_and_debates %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_thresholds_and_debates, true %>
+        <%= form.label :disable_thresholds_and_debates, "Yes", for: "site_disable_thresholds_and_debates_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_thresholds_and_debates, false %>
+        <%= form.label :disable_thresholds_and_debates, "No", for: "site_disable_thresholds_and_debates_false" %>
+      </div>
+    <% end %>
+
+    <%= form_row for: [form.object, :disable_other_business], class: "inline" do %>
+      <%= form.label :disable_other_business, "Disable other parliamentary business?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_other_business %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_other_business, true %>
+        <%= form.label :disable_other_business, "Yes", for: "site_disable_other_business_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_other_business, false %>
+        <%= form.label :disable_other_business, "No", for: "site_disable_other_business_false" %>
       </div>
     <% end %>
   </div>

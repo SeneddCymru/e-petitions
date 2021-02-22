@@ -14,7 +14,7 @@ When(/^I navigate to the next page of petitions$/) do
   click_link "Next"
 end
 
-Given(/^an? ?(pending|validated|sponsored|flagged|open|rejected)? petition "([^"]*)"$/) do |state, action|
+Given(/^an? ?(pending|validated|sponsored|flagged|open|rejected)? petition "([^"]*)"(?: exists)?$/) do |state, action|
   @petition = FactoryBot.create(:"#{state || 'open'}_petition", action: action)
 end
 
@@ -171,7 +171,7 @@ Then(/^I should see the reason for rejection$/) do
 end
 
 Then(/^I should be asked to search for a new petition$/) do
-  expect(page).to have_content("Title")
+  expect(page).to have_content("What do you want us to do?")
   expect(page).to have_css("form textarea[name=q]")
 end
 
@@ -455,11 +455,27 @@ Then(/^I should see the other parliamentary business items$/) do
   )
 end
 
-Then(/^the petition should be copied over$/) do
+Then(/^I should not see the other parliamentary business items$/) do
+  steps %Q(
+    Then I should not see "Other parliamentary business"
+    And I should not see "Committee to discuss #{@petition.action}"
+    And I should not see "The Petition Committee will discuss #{@petition.action} on the #{Date.tomorrow}"
+  )
+end
+
+Then(/^the petition content should be copied over$/) do
   @petition.reload
 
-  %i[action details additional_details].each do |attr|
+  %i[action details previous_action additional_details].each do |attr|
     expect(@petition["#{attr}_gd"]).to eq @petition["#{attr}_en"]
+  end
+end
+
+Then(/^the petition content should be reset$/) do
+  @petition.reload
+
+  %i[action details previous_action additional_details].each do |attr|
+    expect(@petition["#{attr}_gd"]).to be_nil
   end
 end
 

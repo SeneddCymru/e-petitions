@@ -91,6 +91,7 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
 
   describe "data" do
     let(:data) { json["data"] }
+    let(:attributes) { data.dig(0, "attributes") }
 
     it "returns an empty response if no petitions are public" do
       get "/petitions.json"
@@ -250,6 +251,36 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
           )
         )
       )
+    end
+
+    context "when thresholds are disabled" do
+      before do
+        Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
+      end
+
+      it "doesn't include any threshold or debate data" do
+        petition = \
+          FactoryBot.create :debated_petition,
+            debated_on: 1.day.ago,
+            overview: "What happened in the debate",
+            transcript_url: "https://www.parliament.scot/S5_BusinessTeam/Chamber_Minutes_20210127.pdf",
+            video_url: "https://www.scottishparliament.tv/meeting/public-petitions-committee-january-27-2021",
+            debate_pack_url: "http://www.parliament.scot/S5_PublicPetitionsCommittee/Reports/PPCS052020R2.pdf"
+
+        get "/petitions.json"
+        expect(response).to be_successful
+
+        expect(attributes.keys).not_to include(
+          "moderation_threshold_reached_at",
+          "referral_threshold_reached_at",
+          "referred_at",
+          "debate_threshold_reached_at",
+          "scheduled_debate_date",
+          "debate_outcome_at",
+          "moderation_threshold_reached_at",
+          "debate"
+        )
+      end
     end
   end
 end
