@@ -7,7 +7,8 @@ module NotifyMock
 
       def call(env)
         params = JSON.parse(env["rack.input"].read)
-        template = templates.fetch(params.dig("Content", "Template", "TemplateName"))
+        name = params.dig("Content", "Template", "TemplateName")
+        template = templates.fetch(name.to_s.split("-", 2).last)
         personalisation = JSON.parse(params.dig("Content", "Template", "TemplateData"))
 
         message = Mail::Message.new

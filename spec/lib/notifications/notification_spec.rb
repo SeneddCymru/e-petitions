@@ -73,7 +73,7 @@ RSpec.describe Notifications::Notification, type: :model do
           ),
           "Content" => hash_including(
             "Template" => hash_including(
-              "TemplateName" => "58d83355-5e19-431f-a750-4479d5cc5cd3"
+              "TemplateName" => "test-58d83355-5e19-431f-a750-4479d5cc5cd3"
             )
           )
         )
@@ -276,7 +276,7 @@ RSpec.describe Notifications::Notification, type: :model do
         destination: { to_addresses: ["user@example.com"] },
         configuration_set_name: "spets-test",
         content: { template: {
-          template_name: "01731224-9a4b-45d7-a802-7d6853b0ab6d",
+          template_name: "test-01731224-9a4b-45d7-a802-7d6853b0ab6d",
           template_data: '{"foo":"bar"}'
         }},
         email_tags: [
@@ -295,7 +295,7 @@ RSpec.describe Notifications::Notification, type: :model do
         ),
         "Content" => hash_including(
           "Template" => hash_including(
-            "TemplateName" => "58d83355-5e19-431f-a750-4479d5cc5cd3"
+            "TemplateName" => "test-58d83355-5e19-431f-a750-4479d5cc5cd3"
           )
         )
       )

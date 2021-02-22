@@ -46,21 +46,25 @@ module Notifications
       end
     end
 
+    def template_id_for_ses
+      "%s-%s" % [Site.env, id]
+    end
+
     def delete_template_from_ses
-      client.delete_email_template(template_name: id)
+      client.delete_email_template(template_name: template_id_for_ses)
     rescue Aws::SESV2::Errors::NotFoundException
       true
     end
 
     def template_exists_in_ses?
-      client.get_email_template(template_name: id)
+      client.get_email_template(template_name: template_id_for_ses)
     rescue Aws::SESV2::Errors::NotFoundException
       false
     end
 
     def payload_for_ses
       {
-        template_name: id,
+        template_name: template_id_for_ses,
         template_content: {
           subject: subject_for_ses,
           text: text, html: html

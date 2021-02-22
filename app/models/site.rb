@@ -1,6 +1,7 @@
 require 'bcrypt'
 require 'uri'
 require 'active_support/number_helper'
+require 'active_support/string_inquirer'
 
 class Site < ActiveRecord::Base
   class ServiceUnavailable < StandardError; end
@@ -29,6 +30,10 @@ class Site < ActiveRecord::Base
   ]
 
   class << self
+    def env
+      @env ||= ActiveSupport::StringInquirer.new(ENV["APP_ENV"].presence || "development")
+    end
+
     def table_exists?
       @table_exists ||= connection.table_exists?(table_name)
     rescue ActiveRecord::NoDatabaseError => e

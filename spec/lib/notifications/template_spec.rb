@@ -45,7 +45,7 @@ RSpec.describe Notifications::Template, type: :model do
   describe "callbacks" do
     let(:aws_region) { "https://email.eu-west-2.amazonaws.com" }
     let(:template_api) { "#{aws_region}/v2/email/templates" }
-    let(:template_url) { "#{template_api}/d1f5e610-5455-41ec-b71d-776c61ad9cac"}
+    let(:template_url) { "#{template_api}/test-d1f5e610-5455-41ec-b71d-776c61ad9cac"}
 
     let(:template) do
       FactoryBot.build(:template,
@@ -70,7 +70,7 @@ RSpec.describe Notifications::Template, type: :model do
 
     let(:create_template) do
       hash_including(
-        "TemplateName" => "d1f5e610-5455-41ec-b71d-776c61ad9cac",
+        "TemplateName" => "test-d1f5e610-5455-41ec-b71d-776c61ad9cac",
         "TemplateContent" => hash_including(
           "Subject" => "‘{{action_en}}’ - please confirm your signature",
           "Text" => a_string_matching("Click this link to sign the petition"),

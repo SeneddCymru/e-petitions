@@ -81,7 +81,7 @@ module Notifications
         destination: { to_addresses: [to] },
         configuration_set_name: configuration_set,
         content: { template: {
-          template_name: template_id,
+          template_name: template_id_for_ses,
           template_data: personalisation.to_json
         }},
         email_tags: [
@@ -108,6 +108,10 @@ module Notifications
       ENV.fetch("EMAIL_CONFIG")
     rescue KeyError => e
       raise Client::NotConfiguredError, "Email configuration set not found"
+    end
+
+    def template_id_for_ses
+      "%s-%s" % [Site.env, template_id]
     end
   end
 end

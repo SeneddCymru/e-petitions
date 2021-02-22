@@ -23,7 +23,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
       FromEmailAddress: Site.email_from,
       Destination: { ToAddresses: [ args[:email_address] ] },
       Content: { Template: {
-        TemplateName: args[:template_id],
+        TemplateName: "test-#{args[:template_id]}",
         TemplateData: args[:personalisation].merge(
           moderation_threshold: Site.formatted_threshold_for_moderation,
           referral_threshold: Site.formatted_threshold_for_referral,
@@ -3007,7 +3007,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
           FromEmailAddress: Site.email_from,
           Destination: { ToAddresses: [ "petitionscommittee@parliament.scot" ] },
           Content: { Template: {
-            TemplateName: "18fe5489-1e5b-4741-b840-5a1dddd97983",
+            TemplateName: "test-18fe5489-1e5b-4741-b840-5a1dddd97983",
             TemplateData: {
               comment: "This is a test",
               link_or_title: "https://petitions.parliament.scot/petitions/10000",
