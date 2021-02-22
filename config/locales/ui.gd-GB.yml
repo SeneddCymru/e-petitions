@@ -11,6 +11,15 @@ gd-GB:
       app_name: "Petitions"
       app_tooltip: "Scottish Parliament"
     counts:
+      open_html:
+        one: |-
+          <span class="count">1</span> petition is currently collecting signatures
+        two: |-
+          <span class="count">2</span> petitions are currently collecting signatures
+        zero: |-
+          <span class="count">0</span> petitions are currently collecting signatures
+        other: |-
+          <span class="count">%{num}</span> petitions are currently collecting signatures
       referred_html:
         one: |-
           <span class="count">1</span> petition was referred to the Petitions Committee
@@ -24,6 +33,8 @@ gd-GB:
         See all petitions debated by Parliament (%{num})
       referred_explanation_html: |-
         See all petitions referred to the Petitions Committee (%{num})
+      open_explanation_html: |-
+        See all petitions collecting signatures (%{num})
       with_debated_outcome_html:
         one: |-
           <span class="count">%{num}</span> petition was debated by Parliament
@@ -275,6 +286,9 @@ gd-GB:
         referred_date: "Referred to the Petitions Committee on %{date}"
       trending_petitions:
         heading: "Popular petitions"
+      open_petitions:
+        heading: "Collecting signatures"
+        all_open_link: "View all petitions collecting signatures"
     petitions:
       check:
         heading: "Start a petition"

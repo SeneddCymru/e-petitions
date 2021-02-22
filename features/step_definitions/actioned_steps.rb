@@ -27,6 +27,12 @@ Given(/^there are (\d+) petitions that have been referred$/) do |referred_count|
   end
 end
 
+Given(/^there are (\d+) petitions collecting signatures$/) do |open_count|
+  open_count.times do |count|
+    petition = FactoryBot.create(:open_petition, :action => "Petition #{count}")
+  end
+end
+
 Then(/^I should not see the actioned petitions totals section$/) do
   expect(page).to_not have_css(".actioned-petitions")
 end
@@ -37,6 +43,13 @@ end
 
 Then(/^I should see a total showing (.*?) petitions debated by Parliament$/) do |debated_count|
   expect(page).to have_css(".actioned-petitions ul li:last-child .count", :text => debated_count)
+end
+
+Then(/^I should see an empty open petitions section$/) do
+  within(:css, "section[aria-labelledby=open-petitions-heading]") do
+    expect(page).to have_no_css("a[href='#{petitions_path(state: :open)}']")
+    expect(page).to have_content("There are no petitions currently collecting signatures")
+  end
 end
 
 Then(/^I should see an empty referral threshold section$/) do
@@ -50,6 +63,19 @@ Then(/^I should see an empty debate threshold section$/) do
   within(:css, "section[aria-labelledby=debate-threshold-heading]") do
     expect(page).to have_no_css("a[href='#{petitions_path(state: :with_debate_outcome)}']")
     expect(page).to have_content("Parliament has not debated any petitions yet")
+  end
+end
+
+Then(/^I should see (\d+) petitions counted in the open petitions section$/) do |count|
+  within(:css, "section[aria-labelledby=open-petitions-heading]") do
+    link_text = "See all petitions collecting signatures (#{count})"
+    expect(page).to have_link(link_text, href: petitions_path(state: :open))
+  end
+end
+
+Then(/^I should see (\d+) petitions listed in the open petitions section$/) do |count|
+  within(:css, "section[aria-labelledby=open-petitions-heading] .threshold-petitions") do
+    expect(page).to have_css(".petition-item", :count => count)
   end
 end
 

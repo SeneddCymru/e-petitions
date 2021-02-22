@@ -92,7 +92,6 @@ RSpec.describe HomeHelper, type: :helper do
   describe "#any_actioned_petitions?" do
     let!(:pending_petition) { FactoryBot.create :pending_petition }
     let!(:hidden_petition) { FactoryBot.create :hidden_petition }
-    let!(:open_petition) { FactoryBot.create :open_petition }
 
     describe "when there is an actioned petition" do
       let!(:referred_petition) { FactoryBot.create :referred_petition }
