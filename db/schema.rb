@@ -229,6 +229,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_074228) do
     t.jsonb "events", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "to_tsvector('simple'::regconfig, (\"to\")::text)", name: "ft_index_notifications_on_to", using: :gin
+    t.index "to_tsvector('simple'::regconfig, (reference)::text)", name: "ftindex_notifications_on_reference", using: :gin
     t.index ["created_at"], name: "index_notifications_on_created_at"
     t.index ["message_id"], name: "index_notifications_on_message_id", unique: true
     t.index ["reference"], name: "index_notifications_on_reference"

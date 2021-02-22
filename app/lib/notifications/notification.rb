@@ -1,7 +1,15 @@
 require 'aws-sdk-sesv2'
+require 'textacular/searchable'
 
 module Notifications
   class Notification < ActiveRecord::Base
+    extend Searchable(:to, :reference)
+    include Browseable
+
+    self.default_page_size = 10
+
+    facet :all, -> { by_latest }
+
     enum status: {
       created:    0,
       sending:    1,
@@ -12,6 +20,8 @@ module Notifications
       failed:     6
     }
 
+    FAILURES = %w[bounced rejected complained failed]
+    PLACEHOLDER = /\(\(([a-zA-Z][_a-zA-Z0-9]*)\)\)/
     UUID = /\A[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\z/
 
     VALID_KEYS = %i[
@@ -24,6 +34,10 @@ module Notifications
     validates :to, presence: true, email: true
     validates :template_id, presence: true, format: { with: UUID }
     validates :reference, presence: true, length: { maximum: 100 }
+
+    delegate :name, to: :template, prefix: true
+
+    belongs_to :template, optional: true
 
     before_validation do
       self.personalisation ||= {}
@@ -54,6 +68,10 @@ module Notifications
     store_accessor :events, :failure
 
     class << self
+      def by_latest
+        preload(:template).order(created_at: :desc)
+      end
+
       def send!(options)
         options.assert_valid_keys(*VALID_KEYS)
 
@@ -72,6 +90,74 @@ module Notifications
       def process!(event)
         notification = find_by!(message_id: event.message_id)
         notification.update!(event.type => event.payload)
+      end
+    end
+
+    def subject
+      return unless template.present?
+
+      template.subject.dup.tap do |subject|
+        personalisation.each do |key, value|
+          subject.gsub!("((#{key}))", value.to_s)
+        end
+      end
+    end
+
+    def body
+      return unless template.present?
+
+      body = template.body.dup
+
+      personalisation.each do |key, value|
+        body.gsub!("((#{key}))", value.to_s)
+      end
+
+      view = TemplateView.new(body: body)
+      view.render(inline: "<%= markdown_to_html(@body) %>")
+    end
+
+    def timestamp
+      case status
+      when "sending"
+        created_at
+      when "delivered"
+        delivery["timestamp"].in_time_zone
+      when "bounced"
+        bounce["timestamp"].in_time_zone
+      when "rejected"
+        reject["timestamp"].in_time_zone
+      when "complained"
+        complaint["timestamp"].in_time_zone
+      when "failed"
+        failure["timestamp"].in_time_zone
+      end
+    end
+
+    def message
+      case status
+      when "sending"
+        timestamp.strftime("Sending since %-d %B at %-I:%M%P")
+      when "delivered"
+        timestamp.strftime("Delivered %-d %B at %-I:%M%P")
+      else
+        timestamp.strftime("%-d %B at %-I:%M%P")
+      end
+    end
+
+    def failure?
+      status.in?(FAILURES)
+    end
+
+    def error
+      case status
+      when "bounced"
+        I18n.t bounce["bounceSubType"], scope: "admin.ses.bounced.#{bounce['bounceType']}"
+      when "complained"
+        I18n.t "complained", scope: "admin.ses"
+      when "rejected"
+        I18n.t "rejected", scope: "admin.ses"
+      when "failed"
+        I18n.t "failed", scope: "admin.ses"
       end
     end
 
@@ -100,6 +186,10 @@ module Notifications
           update!(message_id: response.message_id, events: {})
         end
       end
+    end
+
+    def to_partial_path
+      "admin/notifications/notification"
     end
 
     private

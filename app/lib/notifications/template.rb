@@ -1,7 +1,13 @@
 require 'aws-sdk-sesv2'
+require 'textacular/searchable'
 
 module Notifications
   class Template < ActiveRecord::Base
+    extend Searchable(:name, :subject)
+    include Browseable
+
+    self.default_page_size = 10
+
     PLACEHOLDER = /\(\(([a-zA-Z][_a-zA-Z0-9]*)\)\)/
 
     validates :name, :subject, :body, presence: true
@@ -12,12 +18,24 @@ module Notifications
     after_save :sync_template_to_ses
     after_destroy :delete_template_from_ses
 
+    facet :all, -> { by_name }
+
+    class << self
+      def by_name
+        order(name: :asc)
+      end
+    end
+
     def html
       view.render(template: "layouts/notification", formats: [:html], layout: false)
     end
 
     def text
       view.render(template: "layouts/notification", formats: [:text], layout: false)
+    end
+
+    def to_partial_path
+      "admin/templates/template"
     end
 
     private

@@ -1,0 +1,17 @@
+<div class="grid-row">
+  <div class="grid-column">
+    <h1 class="tabs">
+      <% if controller_name == "notifications" %>
+        Emails |
+      <% else %>
+        <%= link_to "Emails", admin_notifications_path %> |
+      <% end %>
+
+      <% if controller_name == "templates" %>
+        Templates
+      <% else %>
+        <%= link_to "Templates", admin_templates_path %>
+      <% end %>
+    </h1>
+  </div>
+</div>

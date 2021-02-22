@@ -192,6 +192,9 @@ Rails.application.routes.draw do
       resources :tags, except: %i[show]
       resources :topics, except: %i[show]
 
+      resources :notifications, only: %i[index show]
+      resources :templates, except: %i[show]
+
       scope 'stats', controller: 'statistics' do
         get '/', action: 'index', as: :stats
         get '/moderation/:period', action: 'moderation', as: :moderation_stats, period: /week|month/

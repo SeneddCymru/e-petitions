@@ -200,4 +200,62 @@
     padding: 3px;
     vertical-align: 1px;
   }
+
+  .notification-list {
+    address {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1.25;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    small {
+      display: block;
+      font-size: 14px;
+      line-height: 1.25;
+      color: $grey-1;
+      margin-top: 3px;
+    }
+
+    time {
+      display: block;
+      font-size: 14px;
+      line-height: 1.25;
+
+      &.sending {
+        color: $grey-1;
+      }
+
+      &.delivered {
+        color: $black;
+      }
+
+      &.bounced, &.rejected, &.complained {
+        color: $red;
+      }
+    }
+
+    strong {
+      color: $red;
+    }
+
+    td {
+      padding: 12px;
+      vertical-align: bottom;
+    }
+
+    th:last-child, td:last-child {
+      text-align: right;
+      padding-right: 0;
+    }
+
+    th:first-child, td:first-child {
+      text-align: left;
+      padding-left: 0;
+    }
+  }
 }

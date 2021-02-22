@@ -1,0 +1,25 @@
+<div class="grid-row">
+  <div class="column-two-thirds extra-gutter">
+    <%= form_row for: [form.object, :name] do %>
+      <%= form.label :name, "Name", class: 'form-label' %>
+      <%= error_messages_for_field @template, :name %>
+      <%= form.text_field :name, tabindex: increment, maxlength: 100, autofocus: true, class: 'form-control' %>
+    <% end %>
+
+    <%= form_row for: [form.object, :subject] do %>
+      <%= form.label :subject, "Subject", class: 'form-label' %>
+      <%= error_messages_for_field @template, :subject %>
+      <%= form.text_field :subject, tabindex: increment, maxlength: 100, class: 'form-control' %>
+    <% end %>
+
+    <%= form_row for: [form.object, :body] do %>
+      <%= form.label :body, "Body", class: 'form-label' %>
+      <%= error_messages_for_field @template, :body %>
+      <%= form.text_area :body, tabindex: increment, rows: 15, class: 'form-control' %>
+      <p><small>Read the <a href="https://www.notifications.service.gov.uk/using-notify/guidance">GOV.UK Notify guidance</a> for how to format templates</small><p>
+    <% end %>
+  </div>
+</div>
+
+<%= form.submit 'Save', class: 'button' %>
+<%= link_to 'Cancel', admin_templates_path, class: 'button-secondary' %>

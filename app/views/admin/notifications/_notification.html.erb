@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <address><%= link_to notification.to, admin_notification_path(notification.id) %></address>
+    <small><%= notification.subject %></small>
+  </td>
+  <td>
+    <% if notification.failure? %>
+      <strong><%= notification.error %></strong>
+    <% end %>
+    <%= time_tag(notification.timestamp, class: notification.status) do %>
+      <%= notification.message %>
+    <% end %>
+  </td>
+</tr>

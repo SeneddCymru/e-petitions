@@ -1,0 +1,39 @@
+<%= link_to "Back", admin_notifications_path, class: "back-link" %>
+
+<h1>Email</h1>
+<div class="grid-row">
+  <div class="column-two-thirds extra-gutter">
+    <p>
+      <%= link_to "‘#{@notification.template_name}’", admin_template_path(@notification.template_id) %>
+      was sent <%= distance_of_time_in_words_to_now(@notification.created_at) %> ago
+    </p>
+
+    <table class="email-preview">
+      <thead>
+        <tr>
+          <th>From</th>
+          <td><%= Site.email_from %></td>
+        </tr>
+        <tr>
+          <th>To</th>
+          <td><%= @notification.to %></td>
+        </tr>
+        <tr>
+          <th>Subject</th>
+          <td><%= @notification.subject %></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">
+            <%= raw @notification.body %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <% if @notification.failure? %>
+      <p class="notification-error"><strong><%= @notification.error %></strong></p>
+    <% end %>
+  </div>
+</div>

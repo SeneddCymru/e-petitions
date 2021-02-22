@@ -120,6 +120,10 @@ en-GB:
       tag_created: "Tag created successfully"
       tag_updated: "Tag updated successfully"
       tag_deleted: "Tag removed successfully"
+      template_created: "Template created successfully"
+      template_updated: "Template updated successfully"
+      template_deleted: "Template removed successfully"
+      template_not_deleted: "Template could not be removed - please contact support"
       topic_created: "Topic created successfully"
       topic_updated: "Topic updated successfully"
       topic_deleted: "Topic removed successfully"
@@ -132,3 +136,22 @@ en-GB:
       submitted_paper_petition: "Paper petition submitted successfully"
       unable_to_submit_paper_petition: "Unable to submit paper petition - please check the form for errors"
       unable_to_create_petition_email: "Unable to create other parliamentary business - please check the form for errors"
+
+    ses:
+      bounced:
+        Undetermined:
+          Undetermined: "Delivery failed for an unknown reason"
+        Permanent:
+          General: "Email address does not exist"
+          NoEmail: "Email address does not exist"
+          Suppressed: "Email address does not exist"
+          OnAccountSuppressionList: "Email address does not exist"
+        Transient:
+          General: "Inbox not accepting messages right now"
+          MailboxFull: "Inbox not accepting messages right now"
+          MessageTooLarge: "Inbox not accepting messages right now"
+          ContentRejected: "Inbox not accepting messages right now"
+          AttachmentRejected: "Inbox not accepting messages right now"
+      complained: "Complaint report received"
+      rejected: "The message was rejected by Amazon SES"
+      failure: "Amazon SES failed to render the message"

@@ -1,0 +1,7 @@
+<% if @notifications.present? %>
+  <%= render @notifications.to_a %>
+<% else %>
+  <tr>
+    <td colspan="2">No notifications found</td>
+  </tr>
+<% end %>
