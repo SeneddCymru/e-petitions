@@ -55,7 +55,7 @@ end
 Then(/^I should see an empty referral threshold section$/) do
   within(:css, "section[aria-labelledby=referral-threshold-heading]") do
     expect(page).to have_no_css("a[href='#{petitions_path(state: :referred)}']")
-    expect(page).to have_content("No petitions have been referred to the Petitions Committee yet")
+    expect(page).to have_content("No petitions have been referred to the Public Petitions Committee yet")
   end
 end
 
@@ -81,7 +81,7 @@ end
 
 Then(/^I should see (\d+) petitions counted in the referral threshold section$/) do |count|
   within(:css, "section[aria-labelledby=referral-threshold-heading]") do
-    link_text = "See all petitions referred to the Petitions Committee (#{count})"
+    link_text = "See all petitions referred to the Public Petitions Committee (#{count})"
     expect(page).to have_link(link_text, href: petitions_path(state: :referred))
   end
 end

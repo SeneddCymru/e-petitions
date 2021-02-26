@@ -24,12 +24,12 @@ Feature: Suzy Singer searches by free text
     Then I should see my search term "Wombles" filled in the search field
     And I should see "6 petitions"
     And I should see the following search results:
-      | Wombles                      |                                     |
-      | Overthrow the Wombles        |                                     |
-      | Uncle Bulgaria               |                                     |
-      | Common People                |                                     |
-      | The Wombles will rock Glasto | Referred to the Petitions Committee |
-      | Eavis vs the Wombles         | Rejected                            |
+      | Wombles                      |                                            |
+      | Overthrow the Wombles        |                                            |
+      | Uncle Bulgaria               |                                            |
+      | Common People                |                                            |
+      | The Wombles will rock Glasto | Referred to the Public Petitions Committee |
+      | Eavis vs the Wombles         | Rejected                                   |
     And the markup should be valid
 
   @gaelic
@@ -38,12 +38,12 @@ Feature: Suzy Singer searches by free text
     Then I should see my search term "Wombles" filled in the search field
     And I should see "6 petitions"
     And I should see the following search results:
-      | Wombles                         |                                     |
-      | Thoir thairis na Wombles        |                                     |
-      | Uncle Bulgaria                  |                                     |
-      | Daoine Cumanta                  |                                     |
-      | Bidh na Wombles a ’creag Glasto | Referred to the Petitions Committee |
-      | Eavis vs na Wombles             | Rejected                            |
+      | Wombles                         |                                            |
+      | Thoir thairis na Wombles        |                                            |
+      | Uncle Bulgaria                  |                                            |
+      | Daoine Cumanta                  |                                            |
+      | Bidh na Wombles a ’creag Glasto | Referred to the Public Petitions Committee |
+      | Eavis vs na Wombles             | Rejected                                   |
     And the markup should be valid
 
   Scenario: Search for petitions collecting signatures

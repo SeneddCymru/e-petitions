@@ -22,17 +22,17 @@ en-GB:
           <span class="count">%{num}</span> petitions are currently collecting signatures
       referred_html:
         one: |-
-          <span class="count">1</span> petition was referred to the Petitions Committee
+          <span class="count">1</span> petition was referred to the Public Petitions Committee
         two: |-
-          <span class="count">2</span> petitions were referred to the Petitions Committee
+          <span class="count">2</span> petitions were referred to the Public Petitions Committee
         zero: |-
-          <span class="count">0</span> petitions were referred to the Petitions Committee
+          <span class="count">0</span> petitions were referred to the Public Petitions Committee
         other: |-
-          <span class="count">%{num}</span> petitions were referred to the Petitions Committee
+          <span class="count">%{num}</span> petitions were referred to the Public Petitions Committee
       debated_explanation_html: |-
         See all petitions debated by Parliament (%{num})
       referred_explanation_html: |-
-        See all petitions referred to the Petitions Committee (%{num})
+        See all petitions referred to the Public Petitions Committee (%{num})
       open_explanation_html: |-
         See all petitions collecting signatures (%{num})
       with_debated_outcome_html:
@@ -90,7 +90,7 @@ en-GB:
               <p>You can email the %{petitions_committee_link} directly.</p>
               <p>They can help you to understand how Parliament handles petitions. They can also provide a template for you to use to collect signatures on paper and help with some technical problems using this service. They can’t forward your feedback to the people who started a petition or comment on the ideas raised in a specific petition.</p>
               <p>Email: <a href="mailto:petitionscommittee@parliament.scot">petitionscommittee@parliament.scot</a></p>
-            petitions_committee_link: "Petitions Committee"
+            petitions_committee_link: "Public Petitions Committee"
           phone:
             heading: "Phone"
             body_html: |-
@@ -153,7 +153,7 @@ en-GB:
 
         <p>You can submit a petition using our online petitions system, on paper, or a combination of the two.</p>
 
-        <p><u>Petitions from other websites are not accepted by the Petitions Committee.</u></p>
+        <p><u>Petitions from other websites are not accepted by the Public Petitions Committee.</u></p>
 
         <p>If you are considering collecting signatures on paper, you should <a href="mailto:petitionscommittee@parliament.scot">contact us</a> in advance for advice. A template can also be provided.</p>
 
@@ -164,13 +164,13 @@ en-GB:
           <li>You get %{moderation_threshold} people to support your petition. We’ll tell you how to do this when you’ve created your petition.</li>
           <li>We check your petition, then publish it in Gaelic and English. We only reject petitions that don’t meet the standards for petitions (see below).</li>
           <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature. People cannot sign both an online and a paper petition.</li>
-          <li>The Petitions Committee reviews all petitions that collect over %{referral_threshold} signatures. They will decide what they can do to help take the petition forward. This can include exploring the issue and pressing for action from the Scottish Government and others.</li>
-          <li>If your petition gets over %{debate_threshold} signatures, the Petitions Committee will consider asking for a debate in the Parliament chamber. The Committee will consider a number of factors, including the issues raised by the petition, the urgency of the situation and the proportion of signatures which come from within Wales.</li>
+          <li>The Public Petitions Committee reviews all petitions that collect over %{referral_threshold} signatures. They will decide what they can do to help take the petition forward. This can include exploring the issue and pressing for action from the Scottish Government and others.</li>
+          <li>If your petition gets over %{debate_threshold} signatures, the Public Petitions Committee will consider asking for a debate in the Parliament chamber. The Committee will consider a number of factors, including the issues raised by the petition, the urgency of the situation and the proportion of signatures which come from within Wales.</li>
         </ol>
 
-        <h2 id="the-petitions-committee">The Petitions Committee</h2>
+        <h2 id="the-petitions-committee">The Public Petitions Committee</h2>
 
-        <p>As part of their consideration of your petition, the <a href="https://beta.parliament.scot/chamber-and-committees/committees/current-committees/public-petitions-committee">Petitions Committee</a> can:</p>
+        <p>As part of their consideration of your petition, the <a href="https://beta.parliament.scot/chamber-and-committees/committees/current-committees/public-petitions-committee">Public Petitions Committee</a> can:</p>
 
         <ul class="list-bullet">
           <li>write to you for more information;</li>
@@ -195,7 +195,7 @@ en-GB:
         <p>We’ll have to reject your petition if:</p>
 
         <ul class="list-bullet">
-          <li>It calls for the same action as a petition that’s already open, or one which was closed by the Petitions Committee less than a year earlier;</li>
+          <li>It calls for the same action as a petition that’s already open, or one which was closed by the Public Petitions Committee less than a year earlier;</li>
           <li>It doesn’t ask for a clear action from Parliament or Scottish Government;</li>
           <li>
             <p>It’s about something the Scottish Government or Parliament is not responsible for;</p>
@@ -253,7 +253,7 @@ en-GB:
         debate: |-
           If a petition gets %{formatted_count} signatures, it will be considered for a debate in Parliament
         referred: |-
-          All petitions with more than %{formatted_count} signatures are discussed by the Petitions Committee
+          All petitions with more than %{formatted_count} signatures are discussed by the Public Petitions Committee
       local_petitions:
         heading: "Local to you"
         find_local_petitions: "Find petitions being signed by people near you"
@@ -283,14 +283,14 @@ en-GB:
         description: |-
           All petitions accepted for publication will be lodged with the committee irrespective of the number of signatures they gather
         none_referred: |-
-          No petitions have been referred to the Petitions Committee yet
-        referred_date: "Referred to the Petitions Committee on %{date}"
+          No petitions have been referred to the Public Petitions Committee yet
+        referred_date: "Referred to the Public Petitions Committee on %{date}"
       trending_petitions:
         heading: "Popular petitions"
       open_petitions:
         heading: "Collecting signatures"
         description: |-
-          These petitions are currently collecting signatures but all of them will be considered by the Petitions Committee once they have closed
+          These petitions are currently collecting signatures but all of them will be considered by the Public Petitions Committee once they have closed
         none_open: |-
           There are no petitions currently collecting signatures
         open_date: "Collecting signatures until %{date}"
@@ -313,8 +313,6 @@ en-GB:
               If there’s already a petition on the same topic, your petition is likely to be rejected
             sign_if_match: |-
               If one of these petitions matches yours, sign it and share it instead.
-            sign_if_match_reason: |-
-              Your petition is more likely to get to %{referral_threshold} and %{debate_threshold} signatures that way.
       index:
         page_titles:
           all: "All petitions"
@@ -322,7 +320,7 @@ en-GB:
           collecting_signatures: "Petitions collecting signatures"
           closed: "Closed petitions"
           debated: "Petitions debated by Parliament"
-          referred: "Petitions referred to the Petitions Committee"
+          referred: "Petitions referred to the Public Petitions Committee"
           rejected: "Rejected petitions"
           completed: "Completed petitions"
           published: "Published petitions"
@@ -447,8 +445,8 @@ en-GB:
             <button type="submit" name="move_back" class="button-secondary back" data-disable-with="Go back and make changes">Go back and make changes</button>
           submit_warning_html: |-
             <p class="secondary">You can’t change your petition after this point.</p>
-            <p class="secondary">This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published.</p>
-            <p class="secondary">Published petitions can only be removed from the site with the agreement of the Petitions Committee.</p>
+            <p class="secondary">This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job or any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) think carefully about whether you are happy for this to be published.</p>
+            <p class="secondary">Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>"
         collect_signatures_stage:
           heading: Would you like to collect signatures on your petition?
           help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for four weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, <strong>it will not affect how your petition is looked at by the Committee</strong>.</p>"
@@ -470,15 +468,15 @@ en-GB:
               until: "Collecting signatures until %{date}"
             facet_all:
               rejected: "Rejected"
-              completed: "Completed by the Petitions Committee on %{date}"
+              completed: "Completed by the Public Petitions Committee on %{date}"
               closed: "Closed for new signatures"
-              referred: "Referred to the Petitions Committee"
+              referred: "Referred to the Public Petitions Committee"
             facet_debated:
               debated_date: "Debated on %{date}"
             facet_referred:
-              referred_date: "Referred to the Petitions Committee on %{date}"
+              referred_date: "Referred to the Public Petitions Committee on %{date}"
             facet_completed:
-              completed_date: "Closed by the Petitions Committee on %{date}"
+              completed_date: "Closed by the Scottish Parliament on %{date}"
           no_match: "No petitions could be found matching your search terms."
         filtered_result_count:
           one: "1 petition"
@@ -532,7 +530,7 @@ en-GB:
       date_completed: "Date closed"
       heading_closed: "Under consideration"
       heading_completed: "Closed petition"
-      standards_link: "petition standards"
+      standards_link: "rules for petitions"
       for_debate_date: "for a debate date"
       moderation_info:
         heading: "We’re checking this petition"
@@ -557,11 +555,11 @@ en-GB:
         hint_optional: "Optional - background information, evidence and references"
       referral_threshold:
         waiting:
-          heading: "The Petitions Committee will consider this petition"
+          heading: "The Public Petitions Committee will consider this petition"
           referral_threshold: |-
-            All petitions with more than %{threshold} signatures will be discussed by the Petitions Committee after they have finished collecting signatures
+            All petitions with more than %{threshold} signatures will be discussed by the Public Petitions Committee after they have finished collecting signatures
           referral_waiting_time: |-
-            for the Petitions Committee to consider this petition
+            for the Public Petitions Committee to consider this petition
         closed:
           heading: "Closed for new signatures"
           description: |-
@@ -570,18 +568,16 @@ en-GB:
           heading: |-
             This petition is now under consideration by the Petitions Committee
           link_html: |-
-            <a href="%{link}">Find out about the Petitions Committee’s discussion of this petition</a>
-          referral_threshold: |-
-            Petitions that collect more than %{threshold} signatures are discussed by the Petitions Committee
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         completed:
           heading: |-
-            This petition was considered by the Petitions Committee
+            This petition was considered by the Public Petitions Committee
           link_html: |-
-            <a href="%{link}">Find out about the Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         needs_more_signatures:
           heading: "At %{threshold} signatures…"
           referral_threshold: |-
-            All petitions with more than %{threshold} signatures will be discussed by the Petitions Committee
+            All petitions with more than %{threshold} signatures will be discussed by the Public Petitions Committee
       parliament_will_debate: |-
         Parliament will debate this petition
       sign_this_petition: |-
@@ -595,7 +591,7 @@ en-GB:
       reject_reason_heading: |-
         Why was this petition rejected?
       parliament_debate_heading: |-
-        The Petitions Committee will consider this for a debate
+        The Public Petitions Committee will consider this for a debate
       parliament_will_debate_on: |-
         Parliament will debate this petition on %{date}.
       closed_due_to_election: |-
@@ -620,7 +616,7 @@ en-GB:
           </div>
         </details>
       parliament_debate_description: |-
-        The Petitions Committee considers all petitions that get more than %{threshold} signatures for a debate
+        The Public Petitions Committee considers all petitions that get more than %{threshold} signatures for a debate
       need_sponsors_later_heading: |-
         Just so you know
       watch_online_parliament_tv_html: |-
@@ -631,7 +627,7 @@ en-GB:
         <p>We only reject petitions that don’t meet the %{standards_link}</p>
         <p>Rejected petitions are published in the language in which they were submitted</p>
       committee_decided_not_to_debate: |-
-        The Petitions Committee decided not to refer this petition for a debate
+        The Public Petitions Committee decided not to refer this petition for a debate
       at_threshold_for_debate_ellipsis: |-
         At %{threshold} signatures…
       watch_online_youtube_channel_html: |-
@@ -735,19 +731,19 @@ en-GB:
       share_this_petition: |-
         Share this petition
       twitter_card_description: |-
-        Official online petitions in response to issues of the day, listing the number that were referred to the Petitions Committee, and those that have been debated by the Scottish Parliament
+        Official online petitions in response to issues of the day, listing the number that were referred to the Public Petitions Committee, and those that have been debated by the Scottish Parliament
     share_title: "Petition: %{petition}"
     list_headers:
       open_html: |-
         <p class="text-secondary">These petitions are collecting signatures</p>
       referred_html: |-
-        <p class="text-secondary">These petitions are currently being considered by the Petitions Committee</p>
+        <p class="text-secondary">These petitions are currently being considered by the Public Petitions Committee</p>
       debated_html: |-
         <p class="text-secondary">These petitions were debated by Parliament in Plenary</p>
       not_debated_html: |-
-        <p class="text-secondary">The Petitions Committee decided not to request a Plenary debate on these petitions</p>
+        <p class="text-secondary">The Public Petitions Committee decided not to request a Plenary debate on these petitions</p>
       completed_html: |-
-        <p class="text-secondary">The Petitions Committee has finished considering these petitions</p>
+        <p class="text-secondary">The Public Petitions Committee has finished considering these petitions</p>
       rejected_html: |-
         <p class="text-secondary">These petitions did not meet the <a href="/help#standards">petition standards</a>. They are published in the language in which they were submitted.</p>
     local_search:
@@ -817,15 +813,15 @@ en-GB:
 
           <p>We use your personal information to process the petition you have started or signed.</p>
 
-          <p>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We won’t publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the official record of Parliament’s petitions process.</p>
+          <p>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We won’t publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the official record of Parliament’s petitions process.</p>
 
           <p>If you’ve signed a petition, we won’t publish any personal information about you.</p>
 
           <p>We’ll use your postcode to work out how many people in Scotland and within each Parliament constituency and region have signed a petition.</p>
 
-          <p>We will retain your personal data from the date you start or sign a petition until 12 months after it is no longer being considered by the Petitions Committee, i.e. until 12 months after the Committee considers the petition to be completed, apart from any personal data which has been published.</p>
+          <p>We will retain your personal data from the date you start or sign a petition until 12 months after it is no longer being considered by the Public Petitions Committee, i.e. until 12 months after the Committee considers the petition to be completed, apart from any personal data which has been published.</p>
 
-          <p>Any information which has been published will remain permanently online in the records of Parliament’s petitions process, including in any material published by the Petitions Committee.</p>
+          <p>Any information which has been published will remain permanently online in the records of Parliament’s petitions process, including in any material published by the Public Petitions Committee.</p>
 
           <p>IP addresses are used to protect the petitions site and prevent fraudulent activity.</p>
 
@@ -833,7 +829,7 @@ en-GB:
 
           <h3>What we’ll email you about</h3>
 
-          <p>If a petition you’ve started is referred to the Petitions Committee, we’ll use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
+          <p>If a petition you’ve started is referred to the Public Petitions Committee, we’ll use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
 
           <p>You will receive automated confirmation emails when you set up or sign a petition.</p>
 
@@ -1033,7 +1029,7 @@ en-GB:
         <ol class="list-number">
           <li>
             <h2>Means and format for submission</h2>
-            <p>Petitions may be submitted on paper or electronically using the Senedd’s online petitions system. Petitions may collect signatures for a maximum period of four weeks.</p>
+            <p>Petitions may be submitted on paper or electronically using Parliament’s online petitions system. Petitions may collect signatures for a maximum period of four weeks.</p>
             <p>For a paper petition the petition wording should be set out in full on each sheet (or side of a sheet) where signatures are asked for. A template is available on request.</p>
           </li>
 
