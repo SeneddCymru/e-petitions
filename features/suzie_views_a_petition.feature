@@ -7,13 +7,13 @@ Feature: Suzie views a petition
     Given a validated petition "Spend more money on Defence"
     When I view the petition
     Then I should see "This petition is gathering support"
-    And I should see a link called "petition standards" linking to "/help#standards"
+    And I should see a link called "rules for petitions" linking to "/help#standards"
 
   Scenario: Suzie views a petition waiting to be moderated
     Given a sponsored petition "Spend more money on Defence"
     When I view the petition
     Then I should see "We’re checking this petition"
-    And I should see a link called "petition standards" linking to "/help#standards"
+    And I should see a link called "rules for petitions" linking to "/help#standards"
 
   Scenario: Suzie views an open petition
     Given an open petition "Spend more money on Defence"
@@ -130,7 +130,7 @@ Feature: Suzie views a petition
   Scenario: Suzie views a petition which will not be debated
     Given a petition "Spend more money on Defence" with a negative debate outcome
     When I view the petition
-    Then I should see "The Petitions Committee decided not to refer this petition for a debate"
+    Then I should see "The Public Petitions Committee decided not to refer this petition for a debate"
 
   Scenario: Suzie views a petition which was debated yesterday
     Given the date is the "27/10/2015"

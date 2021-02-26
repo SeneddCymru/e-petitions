@@ -11,10 +11,6 @@
         <% end %>
       </h2>
 
-      <% unless @petition.completed? %>
-        <p><%= t(:"ui.petitions.referral_threshold.referred.referral_threshold", threshold: Site.formatted_threshold_for_referral) %></p>
-      <% end %>
-
       <% if @petition.abms_link? %>
         <p class="secondary"><%= t(:"ui.petitions.referral_threshold.referred.link_html", link: @petition.abms_link) %></p>
       <% end %>
