@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     scope controller: 'pages' do
       get '/',        action: 'index',   as: :home
+      get '/contact', action: 'contact', as: :contact
       get '/help',    action: 'help',    as: :help
       get '/privacy', action: 'privacy', as: :privacy
       get '/rules',   action: 'rules',   as: :rules

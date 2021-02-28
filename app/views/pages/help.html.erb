@@ -1,5 +1,6 @@
 <div class="text-page">
   <%= t(:"ui.help_page.body_html",
+    contact_link: link_to(t(:"ui.help_page.contact_link"), contact_path),
     feedback_link: link_to(t(:"ui.help_page.feedback_link"), feedback_path),
     moderation_threshold: Site.formatted_threshold_for_moderation,
     referral_threshold: Site.formatted_threshold_for_referral,

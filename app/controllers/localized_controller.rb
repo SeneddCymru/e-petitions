@@ -90,4 +90,8 @@ class LocalizedController < ApplicationController
   def raise_routing_error
     raise ActionController::RoutingError, "No route matches #{request.path}"
   end
+
+  def feedback_disabled?
+    Site.disable_feedback_sending?
+  end
 end

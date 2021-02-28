@@ -33,5 +33,6 @@ gd-GB:
       thank_you: "%{petition} - Thank you for supporting this petition - Petitions"
     pages:
       index: "Petitions - The Scottish Parliament"
+      contact: "Contact"
       help: "How petitions work"
       privacy: "Privacy and cookies"

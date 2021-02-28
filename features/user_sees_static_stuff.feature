@@ -21,6 +21,14 @@ Feature: User views static pages
     And I should see "Privacy and cookies" in the browser page title
     And the markup should be valid
 
+  Scenario: I navigate to Contact
+    Given the feedback page is disabled
+    When I go to the home page
+    And I follow "Contact"
+    Then I should be on the contact page
+    And I should see "Contact" in the browser page title
+    And the markup should be valid
+
   Scenario: The language switcher is disabled
     Given the Gaelic website is disabled
     When I go to the home page
