@@ -1,8 +1,6 @@
 class EmailConfirmationForCreatorEmailJob < NotifyJob
   self.template = :email_confirmation_for_creator
 
-  include RateLimiting
-
   def personalisation(signature, petition)
     {
       action_en:  petition.action_en, action_gd: petition.action_gd,
