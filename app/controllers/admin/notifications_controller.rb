@@ -1,6 +1,6 @@
 class Admin::NotificationsController < Admin::AdminController
   before_action :find_notifications, only: [:index]
-  before_action :find_notification, only: [:show, :update, :destroy]
+  before_action :find_notification, only: [:show, :forward]
 
   before_action only: :index do
     request.format = :js if request.xhr?
@@ -16,6 +16,14 @@ class Admin::NotificationsController < Admin::AdminController
   def show
     respond_to do |format|
       format.html
+    end
+  end
+
+  def forward
+    if @notification.forward!(current_user.email)
+      redirect_to admin_notification_url(@notification), notice: :email_forwarded
+    else
+      redirect_to admin_notification_url(@notification), alert: :email_not_forwarded
     end
   end
 

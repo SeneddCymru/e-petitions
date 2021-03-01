@@ -192,6 +192,27 @@ module Notifications
       end
     end
 
+    def forward!(recipient)
+      client = Aws::SESV2::Client.new
+
+      preview = client.test_render_email_template({
+        template_name: template_id_for_ses,
+        template_data: personalisation.to_json
+      })
+
+      unless preview.successful?
+        raise RuntimeError, "Unable to render email template '#{template_id_for_ses}'"
+      end
+
+      response = client.send_email(
+        from_email_address: Site.email_from,
+        destination: { to_addresses: [recipient] },
+        content: { raw: { data: preview.rendered_template } }
+      )
+
+      response.successful?
+    end
+
     def to_partial_path
       "admin/notifications/notification"
     end

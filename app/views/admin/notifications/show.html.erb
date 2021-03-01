@@ -35,5 +35,9 @@
     <% if @notification.failure? %>
       <p class="notification-error"><strong><%= @notification.error %></strong></p>
     <% end %>
+
+    <%= form_for @notification, url: forward_admin_notification_path(@notification), method: :post do |form| %>
+      <p><%= form.submit "Forward", class: "button", data: { confirm: "Forward email to yourself?" } %></p>
+    <% end %>
   </div>
 </div>
