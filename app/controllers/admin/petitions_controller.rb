@@ -33,12 +33,6 @@ class Admin::PetitionsController < Admin::AdminController
     redirect_to admin_petition_url(@petition), notice: :email_resent_to_creator
   end
 
-  def copy_content
-    @petition.copy_content!
-
-    redirect_to admin_petition_url(@petition), notice: :petition_content_copied
-  end
-
   protected
 
   def feedback_signature
