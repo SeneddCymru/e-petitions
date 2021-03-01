@@ -127,8 +127,13 @@ RSpec.describe Admin::PetitionsController, type: :controller, admin: true do
 
       context "when the petition exists" do
         let!(:petition) { FactoryBot.create(:petition, action: "Do Stuff!", creator_attributes: { email: "bob@example.com" }) }
+        let(:minimum_number_of_sponsors) { 2 }
 
-        before { perform_enqueued_jobs { post :resend, params: { id: petition.to_param } } }
+        before do
+          Site.instance.update!(minimum_number_of_sponsors: minimum_number_of_sponsors)
+
+          perform_enqueued_jobs { post :resend, params: { id: petition.to_param } }
+        end
 
         it "redirects to the admin petition page" do
           expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
@@ -138,12 +143,28 @@ RSpec.describe Admin::PetitionsController, type: :controller, admin: true do
           expect(flash[:notice]).to eq("Resent the email to the petition creator and forwarded a copy to the feedback address")
         end
 
-        it "resends the email to the petition creator" do
-          expect(mailbox_for("bob@example.com").last).to have_subject(/Action required: Petition “Do Stuff!”/)
+        context "and the site is collecting sponsors" do
+          let(:minimum_number_of_sponsors) { 2 }
+
+          it "resends the gather sponsors email to the petition creator" do
+            expect(mailbox_for("bob@example.com").last).to have_subject(/Action required: Petition “Do Stuff!”/)
+          end
+
+          it "sends a copy of the email to the feedback address" do
+            expect(mailbox_for("petitionscommittee@parliament.scot").last).to have_subject(/Action required: Petition “Do Stuff!”/)
+          end
         end
 
-        it "sends a copy of the email to the feedback address" do
-          expect(mailbox_for("petitionscommittee@parliament.scot").last).to have_subject(/Action required: Petition “Do Stuff!”/)
+        context "and the site is not collecting sponsors" do
+          let(:minimum_number_of_sponsors) { 0 }
+
+          it "resends the email to the petition creator" do
+            expect(mailbox_for("bob@example.com").last).to have_subject(/Please confirm your email/)
+          end
+
+          it "doesn't send a copy of the email to the feedback address" do
+            expect(mailbox_for("petitionscommittee@parliament.scot")).to be_empty
+          end
         end
       end
     end

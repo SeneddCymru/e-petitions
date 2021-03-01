@@ -23,8 +23,12 @@ class Admin::PetitionsController < Admin::AdminController
   end
 
   def resend
-    GatherSponsorsForPetitionEmailJob.perform_later(@petition.creator)
-    GatherSponsorsForPetitionEmailJob.perform_later(feedback_signature)
+    if Site.collecting_sponsors?
+      GatherSponsorsForPetitionEmailJob.perform_later(@petition.creator)
+      GatherSponsorsForPetitionEmailJob.perform_later(feedback_signature)
+    else
+      EmailConfirmationForCreatorEmailJob.perform_later(@petition.creator)
+    end
 
     redirect_to admin_petition_url(@petition), notice: :email_resent_to_creator
   end
