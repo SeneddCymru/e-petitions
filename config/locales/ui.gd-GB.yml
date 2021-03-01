@@ -575,11 +575,11 @@ gd-GB:
         waiting:
           heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
-            <a href=\"%{link}\">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         closed:
           heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
-            <a href=\"%{link}\">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         referred:
           heading: |-
             This petition is now under consideration by the Public Petitions Committee
@@ -589,7 +589,7 @@ gd-GB:
           heading: |-
             This petition was considered by the Scottish Parliament
           link_html: |-
-            <a href=\"%{link}\">Find out about the Scottish Parliament’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Scottish Parliament’s discussion of this petition</a>
         needs_more_signatures:
           heading: "At %{threshold} signatures…"
           referral_threshold: |-
