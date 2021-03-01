@@ -9,9 +9,8 @@
     <% end %>
     <%= t(:"ui.petitions.reject_reason_standards_html", standards_link: petition_standards_link) %>
   </section>
-
   <ul class="petition-meta">
-    <li>
+    <li class="meta-deadline">
       <span class="label"><%= t(:"ui.petitions.date_submitted") %></span> <%= short_date_format petition.created_at %>
     </li>
     <li class="meta-json">
