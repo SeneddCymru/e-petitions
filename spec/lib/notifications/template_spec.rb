@@ -254,7 +254,7 @@ RSpec.describe Notifications::Template, type: :model do
 
           # branding
           assert_select "table:nth-child(2)" do
-            assert_select "img:match('src', ?)", "https://petitions.parliament.scot/assets/email/header.png"
+            assert_select "img:match('src', ?)", "https://petitions.parliament.scot/email-header.png"
             assert_select "img:match('alt', ?)", "The Scottish Parliament / Pàrlamaid na h-Alba"
             assert_select "img:match('style', ?)", "display: block; border: 0"
             assert_select "img:match('height', ?)", "54"
