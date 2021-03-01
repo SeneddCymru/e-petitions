@@ -464,7 +464,7 @@ en-GB:
           submit_warning_html: |-
             <p class="secondary">You can’t change your petition after this point.</p>
             <p class="secondary">This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job or any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) think carefully about whether you are happy for this to be published.</p>
-            <p class="secondary">Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>"
+            <p class="secondary">Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>
         collect_signatures_stage:
           heading: Would you like to collect signatures on your petition?
           help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for four weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, <strong>it will not affect how your petition is looked at by the Committee</strong>.</p>"
@@ -572,14 +572,18 @@ en-GB:
         help_html: ""
         hint_optional: "Background information, evidence and references"
       referral_threshold:
+        open:
+          heading: "What happens next?"
+          link_html: |-
+            <a href="%{link}">The petition will be considered by the Public Petitions Committee after it stops collecting signatures</a>
         waiting:
           heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
-            <a href=\"%{link}\">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         closed:
           heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
-            <a href=\"%{link}\">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         referred:
           heading: |-
             This petition is now under consideration by the Public Petitions Committee
@@ -589,7 +593,7 @@ en-GB:
           heading: |-
             This petition was considered by the Scottish Parliament
           link_html: |-
-            <a href=\"%{link}\">Find out about the Scottish Parliament’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Scottish Parliament’s discussion of this petition</a>
         needs_more_signatures:
           heading: "At %{threshold} signatures…"
           referral_threshold: |-

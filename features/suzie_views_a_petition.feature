@@ -76,10 +76,10 @@ Feature: Suzie views a petition
     When I view the petition
     Then I should see "Under consideration"
 
-  Scenario: Suzie does not see the creator when viewing a closed petition
+  Scenario: Suzie sees the creator when viewing a closed petition
     Given a petition "Spend more money on Defence" has been closed
     When I view the petition
-    Then I should not see the petition creator
+    Then I should see the petition creator
 
   Scenario: Suzie cannot sign a completed petition
     Given a petition "Spend more money on Defence" has been completed
@@ -92,10 +92,10 @@ Feature: Suzie views a petition
     When I view the petition
     Then I should see "Closed petition"
 
-  Scenario: Suzie does not see the creator when viewing a completed petition
+  Scenario: Suzie sees the creator when viewing a completed petition
     Given a petition "Spend more money on Defence" has been completed
     When I view the petition
-    Then I should not see the petition creator
+    Then I should see the petition creator
 
   Scenario: Suzie does not see information about other parliamentary business when there is none
     Given an open petition "Ban Badger Baiting"

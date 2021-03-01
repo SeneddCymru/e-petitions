@@ -167,6 +167,18 @@ class Signature < ActiveRecord::Base
       where(petition_id: id)
     end
 
+    def for_pp_number(number)
+      where(petition_id: number.gsub(/PP0*/, ''))
+    end
+
+    def for_pe_number(number)
+      if petition = Petition.find_by(pe_number_id: number.gsub(/PE0*/, ''))
+        where(petition_id: petition.id)
+      else
+        none
+      end
+    end
+
     def for_postcode(postcode)
       where(postcode: PostcodeSanitizer.call(postcode))
     end
@@ -247,6 +259,10 @@ class Signature < ActiveRecord::Base
         scope = scope.for_domain(query)
       elsif email_search?(query)
         scope = scope.for_email(query)
+      elsif pp_search?(query)
+        scope = scope.for_pp_number(query)
+      elsif pe_search?(query)
+        scope = scope.for_pe_number(query)
       elsif petition_search?(query)
         scope = scope.for_petition(query)
       elsif postcode_search?(query)
@@ -429,6 +445,14 @@ class Signature < ActiveRecord::Base
 
     def email_search?(query)
       query.include?('@')
+    end
+
+    def pe_search?(query)
+      query =~ /\APE\d+\z/
+    end
+
+    def pp_search?(query)
+      query =~ /\APP\d+\z/
     end
 
     def petition_search?(query)

@@ -33,12 +33,6 @@ class Admin::PetitionsController < Admin::AdminController
     redirect_to admin_petition_url(@petition), notice: :email_resent_to_creator
   end
 
-  def copy_content
-    @petition.copy_content!
-
-    redirect_to admin_petition_url(@petition), notice: :petition_content_copied
-  end
-
   protected
 
   def feedback_signature
@@ -46,11 +40,11 @@ class Admin::PetitionsController < Admin::AdminController
   end
 
   def petition_id?
-    /^\d+$/ =~ params[:q].to_s
+    /\A(PP|PE)?\d+\z/ =~ params[:q].to_s
   end
 
   def redirect_to_show_page
-    redirect_to admin_petition_url(params[:q].to_i)
+    redirect_to admin_petition_url(params[:q])
   end
 
   def tag_scope(current)

@@ -21,6 +21,16 @@
     <% end %>
   </div>
 
+  <section class="referral-notice" aria-labelledby="referral-notice-heading">
+    <h2 id="referral-notice-heading">
+      <%= t(:"ui.petitions.referral_threshold.open.heading") %>
+    </h2>
+
+    <% if @petition.scot_parl_link? %>
+      <p><%= t(:"ui.petitions.referral_threshold.open.link_html", link: @petition.scot_parl_link) %></p>
+    <% end %>
+  </section>
+
   <%= render 'threshold_details', petition: petition %>
   <%= render 'other_parliamentary_business_details', petition: petition %>
   <%= render 'share_petition', petition: petition %>
