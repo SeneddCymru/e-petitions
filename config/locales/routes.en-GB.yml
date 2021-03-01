@@ -15,6 +15,9 @@ en-GB:
     "/constituencies":
       en-GB: "/constituencies"
       gd-GB: "/roinnean-parlamaid"
+    "/contact":
+      en-GB: "/contact"
+      gd-GB: "/cuir-fios-gu"
     "/feedback":
       en-GB: "/feedback"
       gd-GB: "/fiosrachadh-air-ais"

@@ -1,4 +1,6 @@
 class PagesController < LocalizedController
+  before_action :raise_routing_error, only: :contact, unless: :feedback_disabled?
+
   def index
     respond_to do |format|
       format.html
@@ -6,6 +8,12 @@ class PagesController < LocalizedController
   end
 
   def accessibility
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def contact
     respond_to do |format|
       format.html
     end

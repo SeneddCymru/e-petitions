@@ -1,3 +1,7 @@
+Given(/^the feedback page is disabled$/) do
+  Site.instance.update! feature_flags: { disable_feedback_sending: true }
+end
+
 Then(/^I should be able to submit feedback$/) do
   page.driver.browser.header('User-Agent', 'Chrome')
 

@@ -50,6 +50,7 @@ en-GB:
       nav:
         home: "Home"
         privacy: "Privacy"
+        contact: "Contact"
         feedback: "Feedback"
         cookies: "Cookies"
         all_petitions: "All petitions"
@@ -230,8 +231,25 @@ en-GB:
 
         <p>You can find the full rules governing the petitions process <a href="/rules">here</a>.</p>
 
-        <p>If you have any other questions, please %{feedback_link}.</p>
+        <p>If you have any other questions, please %{contact_link}.</p>
       feedback_link: "get in touch"
+      contact_link: "get in touch"
+    contact_page:
+      body_html: |-
+        <h1 class="page-title" id="contact">Contact</h1>
+        <p><strong>If you have any questions, the public petitions team are available to help.</strong></p>
+        <p><strong>Due to the COVID-19 public health emergency, the team are working from home and therefore response times will be affected.</strong></p>
+        <p><strong>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</strong></p>
+
+        <h2 id="email">Email</h2>
+        <p>The quickest way to contact the public petitions team is by email at <a href="mailto:petitions@parliament.scot">petitions@parliament.scot</a>.</p>
+
+        <h2 id="phone">Phone</h2>
+        <p>If you are unable to contact us by email, you can phone us.</p>
+        <p>Phone calls are handled by the public petitions team who are all currently working from home.</p>
+        <p>If you leave us a message and a contact number, one of the team will get back to you, as soon as possible.</p>
+        <p>Please note the voicemail service may only be checked intermittently.</p>
+        <p>Telephone: <a href="tel:01313485254">0131 348 5254</a></p>
     home_page:
       notice:
         get_involved_html: |-
@@ -458,7 +476,7 @@ en-GB:
           go_back_html: |-
             <button type="submit" name="move_back" class="button-secondary back" data-disable-with="Go back and change it">Go back and change it</button>
           submit_warning_html: |-
-            <p class="secondary">After this point you can only change the closing date by contacting the <a href="https://gaelic.epetitions.website/feedback#contact">petitions team</a>.</p>
+            <p class="secondary">After this point you can only change the closing date by contacting the <a href="/contact">petitions team</a>.</p>
       search:
         submit_button_html: |-
           <input type="submit" value="Search" class="inline-submit" data-disable-with="Search" tabindex="%{tabindex}">
@@ -1123,7 +1141,7 @@ en-GB:
 
         <h2>How to request content in a different format</h2>
 
-        <p>If you need information in a different format please <a href="/feedback">contact us</a> and tell us:</p>
+        <p>If you need information in a different format please <a href="/contact">contact us</a> and tell us:</p>
 
         <ul class="list-bullet">
           <li>the web address (URL) of the content that you need</p>

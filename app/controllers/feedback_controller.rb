@@ -1,4 +1,5 @@
 class FeedbackController < LocalizedController
+  before_action :raise_routing_error, if: :feedback_disabled?
   before_action :build_feedback, only: [:new, :create]
 
   def new

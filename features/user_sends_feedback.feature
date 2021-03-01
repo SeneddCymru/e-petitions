@@ -11,3 +11,9 @@ Feature: User sends feedback
   Scenario: User must supply fields
     Given I am on the feedback page
     Then I cannot submit feedback without filling in the required fields
+
+  @allow-rescue
+  Scenario: Feedback page is disabled
+    Given the feedback page is disabled
+    And I am on the feedback page
+    Then I will see 404 error page
