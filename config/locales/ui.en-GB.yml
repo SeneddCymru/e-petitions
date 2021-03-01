@@ -572,6 +572,10 @@ en-GB:
         help_html: ""
         hint_optional: "Background information, evidence and references"
       referral_threshold:
+        open:
+          heading: "What happens next?"
+          link_html: |-
+            <a href="%{link}">The petition will be considered by the Public Petitions Committee after it stops collecting signatures</a>
         waiting:
           heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
