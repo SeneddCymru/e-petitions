@@ -33,4 +33,11 @@ namespace :notify do
       sleep(0.5) # Otherwise we'll trigger a TooManyRequestsException
     end
   end
+
+  task cleanup: :environment do
+    Task.run("notify:cleanup") do
+      time = 180.days.ago.beginning_of_day
+      CleanupNotificationsJob.set(wait_until: time).perform_later(time.iso8601)
+    end
+  end
 end

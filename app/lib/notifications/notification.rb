@@ -91,6 +91,10 @@ module Notifications
         notification = find_by!(message_id: event.message_id)
         notification.update!(event.type => event.payload)
       end
+
+      def cleanup!(time)
+        where(arel_table[:created_at].lt(time)).delete_all
+      end
     end
 
     def subject
