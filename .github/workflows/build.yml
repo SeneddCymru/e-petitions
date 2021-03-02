@@ -45,7 +45,7 @@ jobs:
         path: vendor/bundle
         key: ubuntu-20.04-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-gems-
+          ubuntu-20.04-gems-
 
     - name: Install gems
       run: |
