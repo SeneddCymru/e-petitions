@@ -715,4 +715,16 @@ FactoryBot.define do
 
   factory :pe_number do
   end
+
+  factory :notification, class: "Notifications::Notification" do
+    sequence(:to) { |n| "user#{n}@example.com" }
+    reference { SecureRandom.uuid }
+    template_id { SecureRandom.uuid }
+  end
+
+  factory :template, class: "Notifications::Template" do
+    sequence(:name) { |n| "template_#{n}" }
+    subject { "Email Subject" }
+    body { "Email Body" }
+  end
 end

@@ -128,6 +128,7 @@ class PackageBuilder
   def create_deployments!
     create_deployment!("Workers")
     create_deployment!("Counter")
+    create_deployment!("Mailer")
     create_deployment!("Webservers") do
       notify_appsignal
     end

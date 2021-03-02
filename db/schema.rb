@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_074228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "admin_users", force: :cascade do |t|
@@ -216,6 +217,25 @@ ActiveRecord::Schema.define(version: 2021_03_01_074228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["petition_id"], name: "index_notes_on_petition_id", unique: true
+  end
+
+  create_table "notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "to", null: false
+    t.uuid "template_id", null: false
+    t.string "reference", limit: 100, null: false
+    t.string "message_id", limit: 100
+    t.jsonb "personalisation", null: false
+    t.integer "status", default: 0, null: false
+    t.jsonb "events", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "to_tsvector('simple'::regconfig, (\"to\")::text)", name: "ft_index_notifications_on_to", using: :gin
+    t.index "to_tsvector('simple'::regconfig, (reference)::text)", name: "ftindex_notifications_on_reference", using: :gin
+    t.index ["created_at"], name: "index_notifications_on_created_at"
+    t.index ["message_id"], name: "index_notifications_on_message_id", unique: true
+    t.index ["reference"], name: "index_notifications_on_reference"
+    t.index ["status"], name: "index_notifications_on_status"
+    t.index ["template_id"], name: "index_notifications_on_template_id"
   end
 
   create_table "pe_numbers", force: :cascade do |t|
@@ -478,6 +498,15 @@ ActiveRecord::Schema.define(version: 2021_03_01_074228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tasks_on_name", unique: true
+  end
+
+  create_table "templates", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "subject", null: false
+    t.text "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_templates_on_name", unique: true
   end
 
   create_table "topics", force: :cascade do |t|

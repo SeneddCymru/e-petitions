@@ -48,7 +48,7 @@ RSpec.describe Browseable, type: :model do
   describe Browseable::Search do
     let(:scopes)  { { all: -> { self }, open: -> { self } } }
     let(:filters) { {} }
-    let(:klass)   { double(:klass, facet_definitions: scopes, filter_definitions: filters) }
+    let(:klass)   { double(:klass, facet_definitions: scopes, filter_definitions: filters, default_page_size: 50, max_page_size: 50) }
     let(:params)  { { q: 'search', page: '3'} }
     let(:search)  { described_class.new(klass, params) }
 

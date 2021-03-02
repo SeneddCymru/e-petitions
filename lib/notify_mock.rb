@@ -1,5 +1,5 @@
 module NotifyMock
-  URL = "https://api.notifications.service.gov.uk/v2/notifications/email"
+  URL = "https://email.eu-west-2.amazonaws.com/v2/email/outbound-emails"
 
   APPLICATION = Module.new do
     class << self
@@ -7,13 +7,15 @@ module NotifyMock
 
       def call(env)
         params = JSON.parse(env["rack.input"].read)
-        template = templates.fetch(params["template_id"])
+        name = params.dig("Content", "Template", "TemplateName")
+        template = templates.fetch(name.to_s.split("-", 2).last)
+        personalisation = JSON.parse(params.dig("Content", "Template", "TemplateData"))
 
         message = Mail::Message.new
         subject = template["subject"].dup
         body    = template["body"].dup
 
-        params["personalisation"].each do |key, value|
+        personalisation.each do |key, value|
           subject.gsub!("((#{key}))", value.to_s)
           body.gsub!("((#{key}))", value.to_s)
         end
@@ -23,7 +25,7 @@ module NotifyMock
 
         message.message_id = "#{SecureRandom.uuid}@#{Site.host}"
         message.from = Site.email_from
-        message.to = params["email_address"]
+        message.to = params.dig("Destination", "ToAddresses").first
         message.subject = subject
         message.text_part = text_part
         message.html_part = html_part

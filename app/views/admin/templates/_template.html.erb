@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= link_to template.name, edit_admin_template_path(template) %>
+  </td>
+  <td>
+    <%= template.subject %>
+  </td>
+  <td>
+    <%= button_to 'Edit', edit_admin_template_path(template), method: :get, class: 'button edit-action' %>
+    <% if current_user.is_a_sysadmin? %>
+      <%= button_to 'Delete', admin_template_path(template, params.permit(:q)), method: :delete, class: 'button-warning', data: { confirm: 'Delete template?' } %>
+    <% end %>
+  </td>
+</tr>

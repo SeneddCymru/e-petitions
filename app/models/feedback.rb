@@ -10,4 +10,8 @@ class Feedback < ActiveRecord::Base
   def petition_link?
     petition_link_or_title =~ /\A#{Regexp.escape(Site.url)}/
   end
+
+  def reference
+    Digest::UUID.uuid_v5(Digest::UUID::URL_NAMESPACE, to_gid.to_s)
+  end
 end

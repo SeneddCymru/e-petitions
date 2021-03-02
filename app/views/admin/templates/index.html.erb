@@ -1,0 +1,41 @@
+<%= render "admin/shared/notifications_tabs" %>
+
+<div class="grid-row">
+  <%= form_tag admin_templates_path, method: :get, class: 'search-templates' do -%>
+    <div class="column-half">
+      <div class="search-inline">
+        <%= label_tag :q, "Search templates", class: "visuallyhidden" %>
+        <%= search_field_tag 'q', params[:q], class: 'form-control', placeholder: "Enter a name or subject" %>
+        <%= submit_tag 'Search', class: 'inline-submit' %>
+      </div>
+    </div>
+    <% if current_user.is_a_sysadmin? %>
+      <div class="column-half actions-right search-inline">
+        <%= link_to "New Template", new_admin_template_path, class: 'button inline-button' %>
+      </div>
+    <% end %>
+  <% end -%>
+</div>
+
+<%= will_paginate @templates %>
+
+<table class="template-list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Subject</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @templates.present? %>
+      <%= render @templates.to_a %>
+    <% else %>
+      <tr>
+        <td colspan="3">No templates defined</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @templates %>

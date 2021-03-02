@@ -41,6 +41,10 @@ every :day, at: '7.05am' do
   rake "spets:petitions:refer_or_reject", output: nil
 end
 
+every :day, at: '7.10am' do
+  rake "notify:cleanup", output: nil
+end
+
 every :day, at: '7.15am' do
   rake "spets:petitions:debated", output: nil
 end

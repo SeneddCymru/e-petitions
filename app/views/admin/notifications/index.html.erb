@@ -1,0 +1,37 @@
+<%= render "admin/shared/notifications_tabs" %>
+
+<div class="grid-row">
+  <%= form_tag admin_notifications_path, method: :get, class: 'search-notifications' do -%>
+    <div class="column-half">
+      <div class="search-inline">
+        <%= label_tag :q, "Search notifications", class: "visuallyhidden" %>
+        <%= search_field_tag 'q', params[:q], class: 'form-control', placeholder: "Enter an email address or reference" %>
+        <%= submit_tag 'Search', class: 'inline-submit' %>
+      </div>
+    </div>
+  <% end -%>
+</div>
+
+<%= will_paginate @notifications %>
+
+<table class="notification-list">
+  <thead>
+    <tr>
+      <th>Recipient</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="notifications">
+    <%= render "notifications" %>
+  </tbody>
+</table>
+
+<%= will_paginate @notifications %>
+
+<script>
+  $(document).ready(function() {
+    setInterval(function() {
+      $('#notifications').load(window.location.href);
+    }, 5000);
+  });
+</script>
