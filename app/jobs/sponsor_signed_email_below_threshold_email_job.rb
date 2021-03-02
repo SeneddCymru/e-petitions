@@ -15,8 +15,8 @@ class SponsorSignedEmailBelowThresholdEmailJob < NotifyJob
         action:  petition.action,
         sponsor_count_en: sponsor_count(petition, :"en-GB"),
         sponsor_count_gd: sponsor_count(petition, :"gd-GB"),
-        url_en:  help_en_url(anchor: 'standards'),
-        url_gd:  help_gd_url(anchor: 'standards')
+        url_en:  help_en_url(anchor: 'rules'),
+        url_gd:  help_gd_url(anchor: 'rules')
       }
     end
   end

@@ -141,95 +141,77 @@ gd-GB:
       body_html: |-
         <h1 class="page-title" id="creating-a-petition">Creating a petition</h1>
 
-        <p>Petitioning is one of the most direct ways to suggest how something could change. Petitions can:</p>
+        <p>Petitions are a way to bring something to the attention of the Scottish Parliament. Petitions can:</p>
 
         <ul class="list-bullet">
           <li>Raise awareness of an issue;</li>
-          <li>Bring about a change in Scottish Government policy or a different way of delivering services;</li>
-          <li>Propose or influence a new law;</li>
-          <li>Prompt a Parliament Committee to hold an inquiry;</li>
-          <li>Lead to, or influence, a debate in Parliament;</li>
-          <li>Prompt a Committee or individual Members of the Scottish Parliament to take further action themselves, for instance by asking questions.</li>
+          <li>Bring about a change in Scottish Government policy or a different way of delivering national services;</li>
+          <li>Propose a new law;</li>
+          <li>Lead to, or influence, a debate in the Chamber.</li>
         </ul>
 
-        <p>You can submit a petition using our online petitions system, on paper, or a combination of the two.</p>
-
-        <p><u>Petitions from other websites are not accepted by the Public Petitions Committee.</u></p>
-
-        <p>If you are considering collecting signatures on paper, you should <a href="mailto:petitionscommittee@parliament.scot">contact us</a> in advance for advice. A template can also be provided.</p>
+        <p>All petitions should be made using our online petitions system. If you can’t use the system, please get in touch with the <strong>public petitions team</strong>.</p>
 
         <h1 class="page-title" id="how-petitions-work">How petitions work</h1>
 
         <ol class="list-number">
-          <li>You create a petition. Only people or organisations with an address in Wales can create a petition.</li>
-          <li>You get %{moderation_threshold} people to support your petition. We’ll tell you how to do this when you’ve created your petition.</li>
-          <li>We check your petition, then publish it in Gaelic and English. We only reject petitions that don’t meet the standards for petitions (see below).</li>
-          <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature. People cannot sign both an online and a paper petition.</li>
-          <li>The Public Petitions Committee reviews all petitions that collect over %{referral_threshold} signatures. They will decide what they can do to help take the petition forward. This can include exploring the issue and pressing for action from the Scottish Government and others.</li>
-          <li>If your petition gets over %{debate_threshold} signatures, the Public Petitions Committee will consider asking for a debate in the Parliament chamber. The Committee will consider a number of factors, including the issues raised by the petition, the urgency of the situation and the proportion of signatures which come from within Wales.</li>
+          <li>Petitions are open to everyone. You don’t have to be a certain age or live in Scotland, but your petition must be about something that is <strong>“devolved”</strong> (within the Scottish Parliament’s powers).</li>
+          <li>You don’t need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the public petitions team and run for four weeks.</li>
+          <li>Once we have received your petition, the public petitions team will check to make sure it meets the <strong>Parliament’s rules</strong> and is clear. Petitions that don’t meet these rules will be rejected.</li>
+          <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature.</li>
         </ol>
 
         <h2 id="the-petitions-committee">The Public Petitions Committee</h2>
 
-        <p>As part of their consideration of your petition, the <a href="https://beta.parliament.scot/chamber-and-committees/committees/current-committees/public-petitions-committee">Public Petitions Committee</a> can:</p>
+        <p>The <strong>Public Petitions Committee</strong> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
 
         <ul class="list-bullet">
-          <li>write to you for more information;</li>
-          <li>invite you to talk to the Committee in person about the petition;</li>
-          <li>ask for evidence from the Scottish Government or other relevant people or organisations;</li>
-          <li>press the Scottish Government for action;</li>
-          <li>raise the petition with another Parliament committee;</li>
-          <li>put forward the petition for debate;</li>
-          <li>run a detailed inquiry and publish a report on the topic.</li>
+          <li>asking for evidence from the Scottish Government or other relevant organisations;</li>
+          <li>writing to the petitioner for more information or inviting them to talk to the Committee in person about the petition;</li>
+          <li>“referring” (sending) the petition to another committee</li>
+          <li>recommending actions for the Scottish Government</li>
+          <li>asking for a debate about the petition in the Chamber</li>
+          <li>closing the petition.</li>
         </ul>
 
-        <h2 id="standards">Standards for petitions</h2>
+        <h2 id="rules">Rules about petitions</h2>
 
-        <p>You can submit a petition on any issue that is the responsibility of Parliament or the Scottish Government.</p>
-
-        <p>Petitions must call for a specific action from Parliament or Scottish Government.</p>
-
-        <p>Petitions can disagree with the Scottish Government and can ask for it to change its policies. Petitions can be critical of Parliament or Scottish Government.</p>
-
-        <p>We reject petitions that don’t meet the rules. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue.</p>
-
-        <p>We’ll have to reject your petition if:</p>
+        <p>Petitions must be about:</p>
 
         <ul class="list-bullet">
-          <li>It calls for the same action as a petition that’s already open, or one which was closed by the Public Petitions Committee less than a year earlier;</li>
-          <li>It doesn’t ask for a clear action from Parliament or Scottish Government;</li>
+          <li>something that is within the powers of the Scottish Parliament</li>
+          <li>an issue of national policy or practice</li>
+        </ul>
+
+        <p>Petitions can’t ask the Scottish Parliament to become involved in a local or individual matter, or to intervene in a decision that should be taken by another organisation.</p>
+
+        <p>Petitions must call for a specific action that the Scottish Parliament should take.</p>
+
+        <p>Petitions can disagree with the Scottish Government and can ask for it to change its policies. Petitions can be critical of the Scottish Government.</p>
+
+        <h2 id="rejections">Why we might reject your petition</h2>
+
+        <p>The public petitions team reject petitions that don’t meet the <strong>rules</strong>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue.</p>
+
+        <ul class="list-bullet">
           <li>
-            <p>It’s about something the Scottish Government or Parliament is not responsible for;</p>
+            <p>It’s about something that’s not within the powers of the Scottish Parliament.</p>
             <p>That includes: something that your local council is responsible for (including planning decisions); something that the UK Government or Parliament is responsible for; and something that an independent organisation has done.</p>
           </li>
-          <li>It contains language which is offensive, intemperate, or provocative. This not only includes obvious profanities, swear words and insults, but any language which a reasonable person would regard as offensive;</li>
-          <li>It contains potentially false or potentially defamatory statements;</li>
-          <li>It refers to a case that’s active in the UK courts;</li>
-          <li>It contains material that is prohibited from being published by an order of a court or a body or person with similar power;</li>
-          <li>It accuses an identifiable person or organisation of a crime;</li>
-          <li>It contains material that could be confidential or commercially sensitive;</li>
-          <li>It could cause personal distress or loss;</li>
-          <li>It names individual officials of public bodies, unless they are senior managers;</li>
-          <li>It names family members of elected representatives or officials of public bodies;</li>
-          <li>It’s an advert, spam, or promotes a specific product or service;</li>
-          <li>It’s nonsense or a joke;</li>
-          <li>
-            <p>It concerns an issue for which a petition is not the appropriate channel.</p>
-            <p>That includes: correspondence about a personal issue and petitions which ask for someone to be given a job, lose their job or resign, or which call for a vote of no confidence.</p>
-          </li>
+          <li>It does not include details of relevant previous action taken to address the issue, such as raising it with the Scottish Government or one of your MSP’s.</li>
+          <li>It contains language which is defamatory, offensive or inappropriate. This not only includes obvious profanities, swear words and insults, but any language which a reasonable person would regard as offensive.</li>
+          <li>It names individuals or otherwise contains information that could lead to the identification of any individual. This excludes MSPs and senior leaders of public bodies.</li>
+          <li>It contains any false statements. It is the responsibility of the petitioner to ensure that statements are accurate.</li>
+          <li>It refers to a matter that is the subject of continuing court proceedings.</li>
+          <li>It seeks a decision on an individual or commercial matter.</li>
         </ul>
 
-        <p>We publish the text of petitions that we reject, as long as they’re not:</p>
+        <p>The full rules for petitions are in:</p>
 
         <ul class="list-bullet">
-          <li>defamatory, libellous or illegal in another way;</li>
-          <li>about a case that is active in the UK courts or about something that a court has issued an injunction over;</li>
-          <li>offensive or extreme;</li>
-          <li>confidential or likely to cause personal distress; or</li>
-          <li>a joke, an advert or nonsense.</li>
+          <li>the <strong>Standing Orders</strong> of the Scottish Parliament (the rules for how the Parliament works)</li>
+          <li>a <strong>determination</strong> agreed by the Public Petitions Committee</li>
         </ul>
-
-        <p>You can find the full rules governing the petitions process <a href="/rules">here</a>.</p>
 
         <p>If you have any other questions, please %{contact_link}.</p>
       feedback_link: "get in touch"
@@ -765,7 +747,7 @@ gd-GB:
       completed_html: |-
         <p class="text-secondary">The Public Petitions Committee has finished considering these petitions</p>
       rejected_html: |-
-        <p class="text-secondary">These petitions did not meet the <a href="/help#standards">petition standards</a>. They are published in the language in which they were submitted.</p>
+        <p class="text-secondary">These petitions did not meet the <a href="/help#rules">rules for petitions</a>. They are published in the language in which they were submitted.</p>
     local_search:
       submit_button_html: |-
         <input type="submit" value="Search" class="inline-submit" data-disable-with="Search" tabindex="%{tabindex}">

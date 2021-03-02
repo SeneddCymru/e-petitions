@@ -1727,8 +1727,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                standards_url_en: "https://petitions.parliament.scot/help#standards",
-                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
+                standards_url_en: "https://petitions.parliament.scot/help#rules",
+                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
                 new_petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/thoir-suil"
               }
@@ -1755,8 +1755,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                standards_url_en: "https://petitions.parliament.scot/help#standards",
-                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
+                standards_url_en: "https://petitions.parliament.scot/help#rules",
+                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
                 new_petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/thoir-suil"
               }
@@ -1783,8 +1783,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                standards_url_en: "https://petitions.parliament.scot/help#standards",
-                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
+                standards_url_en: "https://petitions.parliament.scot/help#rules",
+                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
                 new_petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/thoir-suil"
               }
@@ -1831,8 +1831,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                standards_url_en: "https://petitions.parliament.scot/help#standards",
-                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
+                standards_url_en: "https://petitions.parliament.scot/help#rules",
+                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
                 new_petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/thoir-suil"
               }
@@ -1859,8 +1859,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                standards_url_en: "https://petitions.parliament.scot/help#standards",
-                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
+                standards_url_en: "https://petitions.parliament.scot/help#rules",
+                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
                 new_petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/thoir-suil"
               }
@@ -1887,8 +1887,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                standards_url_en: "https://petitions.parliament.scot/help#standards",
-                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards",
+                standards_url_en: "https://petitions.parliament.scot/help#rules",
+                standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules",
                 new_petition_url_en: "https://petitions.parliament.scot/petitions/check",
                 new_petition_url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/thoir-suil"
               }
@@ -1958,8 +1958,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -1992,8 +1992,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2031,8 +2031,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2065,8 +2065,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2104,8 +2104,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2138,8 +2138,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2197,8 +2197,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2231,8 +2231,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha athchuinge ann mu thràth mun chùis seo. Chan urrainn dhuinn gabhail ri athchuinge ùr nuair a tha fear againn mu chùis glè choltach mu thràth, no ma tha Comataidh nan Athchuingean air beachdachadh air fear sa bhliadhna a dh ’fhalbh.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2270,8 +2270,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2304,8 +2304,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Tha e oilbheumach, neoni, fealla-dhà no sanas.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2343,8 +2343,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2377,8 +2377,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                   content_gd: "Cha do chruinnich e ainmean-sgrìobhte gu leòr airson an cur gu Comataidh nan Athchuingean.\n\nFeumaidh athchuingean co-dhiù 50 ainm-sgrìobhte fhaighinn mus tèid beachdachadh orra anns a ’Phàrlamaid.",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
-                  standards_url_en: "https://petitions.parliament.scot/help#standards",
-                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  standards_url_en: "https://petitions.parliament.scot/help#rules",
+                  standards_url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2437,8 +2437,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
                 sponsor_count_en: "You have 1 supporter so far",
                 sponsor_count_gd: "You have 1 supporter so far",
-                url_en: "https://petitions.parliament.scot/help#standards",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                url_en: "https://petitions.parliament.scot/help#rules",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
               }
             )).to have_been_made
           end
@@ -2469,8 +2469,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
                 sponsor_count_en: "You have 1 supporter so far",
                 sponsor_count_gd: "You have 1 supporter so far",
-                url_en: "https://petitions.parliament.scot/help#standards",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                url_en: "https://petitions.parliament.scot/help#rules",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
               }
             )).to have_been_made
           end
@@ -2518,8 +2518,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
                 sponsor_count_en: "You have 1 supporter so far",
                 sponsor_count_gd: "You have 1 supporter so far",
-                url_en: "https://petitions.parliament.scot/help#standards",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                url_en: "https://petitions.parliament.scot/help#rules",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
               }
             )).to have_been_made
           end
@@ -2550,8 +2550,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
                 sponsor_count_en: "You have 1 supporter so far",
                 sponsor_count_gd: "You have 1 supporter so far",
-                url_en: "https://petitions.parliament.scot/help#standards",
-                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                url_en: "https://petitions.parliament.scot/help#rules",
+                url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
               }
             )).to have_been_made
           end
@@ -2608,8 +2608,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2638,8 +2638,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2672,8 +2672,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2702,8 +2702,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2736,8 +2736,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2766,8 +2766,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Do stuff",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2815,8 +2815,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2845,8 +2845,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2879,8 +2879,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2909,8 +2909,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2943,8 +2943,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end
@@ -2973,8 +2973,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 reference: "d85a62b0-efb6-51a2-9087-a10881e6728e",
                 personalisation: {
                   sponsor: "Suzie", creator: "Charlie", action: "Dèan stuth",
-                  url_en: "https://petitions.parliament.scot/help#standards",
-                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#standards"
+                  url_en: "https://petitions.parliament.scot/help#rules",
+                  url_gd: "https://athchuingean.parlamaid-alba.scot/cuideachadh#rules"
                 }
               )).to have_been_made
             end

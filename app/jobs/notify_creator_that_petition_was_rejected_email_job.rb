@@ -9,8 +9,8 @@ class NotifyCreatorThatPetitionWasRejectedEmailJob < NotifyJob
           action_en: petition.action_en, action_gd: petition.action_gd,
           content_en: rejection.content_en, content_gd: rejection.content_gd,
           url_en: petition_en_url(petition), url_gd: petition_gd_url(petition),
-          standards_url_en: help_en_url(anchor: "standards"),
-          standards_url_gd: help_gd_url(anchor: "standards"),
+          standards_url_en: help_en_url(anchor: "rules"),
+          standards_url_gd: help_gd_url(anchor: "rules"),
           new_petition_url_en: check_petitions_en_url,
           new_petition_url_gd: check_petitions_gd_url
         }
@@ -19,8 +19,8 @@ class NotifyCreatorThatPetitionWasRejectedEmailJob < NotifyJob
           creator: signature.name, action: petition.action,
           content_en: rejection.content_en, content_gd: rejection.content_gd,
           url_en: petition_en_url(petition), url_gd: petition_gd_url(petition),
-          standards_url_en: help_en_url(anchor: "standards"),
-          standards_url_gd: help_gd_url(anchor: "standards"),
+          standards_url_en: help_en_url(anchor: "rules"),
+          standards_url_gd: help_gd_url(anchor: "rules"),
           new_petition_url_en: check_petitions_en_url,
           new_petition_url_gd: check_petitions_gd_url
         }

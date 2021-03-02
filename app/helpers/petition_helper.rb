@@ -23,7 +23,7 @@ module PetitionHelper
   end
 
   def petition_standards_link(*args)
-    link_to(t(:"ui.petitions.standards_link"), help_path(anchor: 'standards'))
+    link_to(t(:"ui.petitions.standards_link"), help_path(anchor: 'rules'))
   end
 
   def apply_formatting(petition, attribute)
