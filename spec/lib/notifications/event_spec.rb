@@ -69,6 +69,14 @@ RSpec.describe Notifications::Event do
       end
     end
 
+    describe "duck typing" do
+      subject { described_class.parse(sns) }
+
+      it "quacks like a Hash" do
+        expect(subject).to be_a(Hash)
+      end
+    end
+
     describe "instance methods" do
       subject { described_class.parse(sns) }
 
