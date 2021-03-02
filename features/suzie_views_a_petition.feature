@@ -7,7 +7,7 @@ Feature: Suzie views a petition
     Given a validated petition "Spend more money on Defence"
     When I view the petition
     Then I should see "This petition is gathering support"
-    And I should see a link called "rules for petitions" linking to "/help#standards"
+    And I should see a link called "rules for petitions" linking to "/help#rules"
 
   Scenario: Suzie views a petition waiting to be moderated
     Given a sponsored petition "Spend more money on Defence"
