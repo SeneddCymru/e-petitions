@@ -1,5 +1,5 @@
 module Notifications
-  class Event
+  class Event < Hash
     TYPES = {
       "Delivery"          => "delivery",
       "Bounce"            => "bounce",
@@ -17,27 +17,25 @@ module Notifications
       end
     end
 
-    attr_reader :data, :mail
-
     def initialize(data)
-      @data = data
-      @mail = @data.fetch("mail")
+      super()
+      update(data)
     end
 
     def message_id
-      mail.fetch("messageId")
+      @message_id ||= dig("mail", "messageId")
     end
 
     def timestamp
-      @timestamp ||= mail.fetch("timestamp").in_time_zone
+      @timestamp ||= dig("mail", "timestamp").in_time_zone
     end
 
     def type
-      @type ||= TYPES[data.fetch("eventType")]
+      @type ||= TYPES[fetch("eventType")]
     end
 
     def payload
-      @payload ||= data.fetch(type)
+      @payload ||= fetch(type)
     end
   end
 end
