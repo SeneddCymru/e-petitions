@@ -22,6 +22,6 @@ RSpec.describe "errors:precompile", type: :task do
     expect(public_files).to include('422.html')
     expect(public_files).to include('500.html')
     expect(public_files).to include('503.html')
-    expect(public_files).to include('error.css')
+    expect(public_files).to include('FuturaBT-Book.ttf')
   end
 end
