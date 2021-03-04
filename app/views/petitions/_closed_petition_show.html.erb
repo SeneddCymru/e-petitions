@@ -35,7 +35,7 @@
     <% if petition.collect_signatures? %>
       <p class="signature-count-number"><%= signature_count(:default, petition.signature_count) %></p>
     <% else %>
-      <p class="signature-count-number"><%= t(:"ui.signature_counts.not_applicable") %></p>
+      <p class="no-signature-count"><%= t(:"ui.signature_counts.not_applicable") %></p>
     <% end %>
 
     <% unless Site.disable_thresholds_and_debates? %>

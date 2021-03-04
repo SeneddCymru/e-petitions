@@ -3,6 +3,10 @@
 .signature-count {
   @extend %contain-floats;
 
+  .no-signature-count {
+    @include bold-48();
+  }
+
   .signature-count-number {
     @include bold-48();
     font-weight: 700;
