@@ -285,7 +285,7 @@ en-GB:
         introduction: |-
           The Public Petitions Committee looks at all published petitions, regardless of whether signatures are collected.
         none_referred: |-
-          No petitions have been referred to the Public Petitions Committee yet
+          No petitions are being considered yet
         referred_date: "Under consideration from %{date}"
       trending_petitions:
         heading: "Popular petitions"
