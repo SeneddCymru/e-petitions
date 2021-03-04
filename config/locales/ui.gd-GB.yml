@@ -815,6 +815,7 @@ gd-GB:
           <p>In addition, for people who start a petition we will also collect:</p>
 
           <ul class="list-bullet">
+            <li>organisation you are petitioning on behalf of (if applicable)</li>
             <li>your postal address</li>
             <li>your contact telephone number</li>
             <li>any personal information or details that you provide within the petition itself.</li>
@@ -831,7 +832,6 @@ gd-GB:
             <li>make sure that people only sign a petition once</li>
             <li>check that your petition is admissible</li>
             <li>contact you about petitions you start</li>
-            <li>if you choose to sign up to email updates about what happens in Parliament on petitions you’ve signed</li>
             <li>we may occasionally contact people who start or submit petitions to seek feedback on the petitions process and how it could be improved.</li>
           </ul>
 
