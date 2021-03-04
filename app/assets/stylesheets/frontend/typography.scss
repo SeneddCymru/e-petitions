@@ -1,0 +1,28 @@
+@mixin font-size($mobile, $desktop) {
+  font-size: $mobile;
+
+  @include media(tablet) {
+    font-size: $desktop;
+  }
+}
+
+body {
+  color: $black;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.4375;
+  margin: $gutter-quarter 0 $gutter-three-quarters 0;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

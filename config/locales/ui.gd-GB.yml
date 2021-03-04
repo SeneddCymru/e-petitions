@@ -60,13 +60,18 @@ gd-GB:
       main_website_html: |-
         <a rel="external" href="https://beta.parliament.scot">Parliament Homepage</a>
       ogl_html: |-
-        <h3><a class="logo" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="external license">Open Government Licence</a></h3>
+        <p>
+          <a class="logo" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="external license">
+            <svg aria-hidden="true"><use xlink:href="#svg--ogl_logo"></use></svg>
+            <span class="visually-hidden">Open Government Licence</span>
+          </a>
+        </p>
         <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="external license">Open Government Licence v3.0</a>, except where otherwise stated</p>
     header:
       brand_html: |-
         <a href="https://beta.parlamaid-alba.scot" rel="external">
-          <p>The Scottish Parliament</p>
-          <p>Pàrlamaid na h-Alba</p>
+          <svg class="svg--logo" aria-hidden="true"><use xlink:href="#svg--logo"></use></svg>
+          <span class="visually-hidden">The Scottish Parliament | Pàrlamaid na h-Alba</span>
         </a>
       title: "Petitions"
       title_link_html: |-

@@ -1,0 +1,49 @@
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+$black: #1c1c1c;
+$white: #ffffff;
+$magenta: #b0008e;
+$red: #e40046;
+$orange: #e87722;
+$jade: #108765;
+
+$purple: #500778;
+$purple-10: tint($purple, 90%);
+$purple-20: tint($purple, 80%);
+$purple-30: tint($purple, 70%);
+$purple-40: tint($purple, 60%);
+$purple-50: tint($purple, 50%);
+$purple-60: tint($purple, 40%);
+$purple-70: tint($purple, 30%);
+$purple-80: tint($purple, 20%);
+$purple-90: tint($purple, 10%);
+
+$silver: #848789;
+$silver-10: tint($silver, 90%);
+$silver-20: tint($silver, 80%);
+$silver-30: tint($silver, 70%);
+$silver-40: tint($silver, 60%);
+$silver-50: tint($silver, 50%);
+$silver-60: tint($silver, 40%);
+$silver-70: tint($silver, 30%);
+$silver-80: tint($silver, 20%);
+$silver-90: tint($silver, 10%);
+
+$border-color: $silver-40;
+$background-color: $silver-10;
+$link-color: $purple;
+$focus-color: $jade;
+
+body {
+  background-color: $background-color;
+}
+
+a {
+  color: $link-color;
+}
+
+svg {
+  fill: currentColor;
+}

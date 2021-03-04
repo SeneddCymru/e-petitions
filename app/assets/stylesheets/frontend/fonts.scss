@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "FuturaBT-Book";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: font-url("FuturaBT-Book.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FuturaBT-Bold";
+  font-style: normal;
+  font-weight: bold;
+  font-display: auto;
+  src: font-url("FuturaBT-Bold.ttf") format("truetype");
+}
+
+$futura-book: FuturaBT-Book, sans-serif;
+$futura-bold: FuturaBT-Bold, sans-serif;
+$arial: Arial, Helvetica, sans-serif;
+
+body {
+  font-family: $arial;
+}
+
+h1, h2, h3 {
+  font-family: $futura-book;
+  font-weight: normal;
+}

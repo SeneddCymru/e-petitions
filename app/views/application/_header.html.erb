@@ -1,20 +1,20 @@
 <header role="banner">
-  <div class="wrapper">
-    <% if show_language_switcher? %>
-      <%= language_switcher_tag %>
-    <% end %>
+  <div class="brand">
+    <p class="wrapper">
+      <%= t(:"ui.header.brand_html") %>
 
-    <div class="brand">
-      <div class="logo">
-        <%= t(:"ui.header.brand_html") %>
-      </div>
-      <p class="service">
-        <% if home_page? || holding_page? %>
-          <%= t(:"ui.header.title") %>
-        <% else %>
-          <%= t(:"ui.header.title_link_html", url: home_path) %>
-        <% end %>
-      </p>
-    </div>
+      <% if show_language_switcher? %>
+        <%= language_switcher_tag %>
+      <% end %>
+    </p>
+  </div>
+  <div class="service">
+    <p class="wrapper">
+      <% if home_page? || holding_page? %>
+        <%= t(:"ui.header.title") %>
+      <% else %>
+        <%= t(:"ui.header.title_link_html", url: home_path) %>
+      <% end %>
+    </p>
   </div>
 </header>

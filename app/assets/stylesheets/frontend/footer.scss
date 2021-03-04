@@ -1,0 +1,59 @@
+body > footer {
+  background-image: linear-gradient(-45deg, $magenta 0%, $purple 100%);
+  color: $white;
+  width: 100%;
+  padding: 0 0 $gutter-half 0;
+
+  .wrapper {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: $site-width;
+    padding: $gutter;
+
+    @include media(tablet) {
+      padding: $gutter $extra-gutter;
+    }
+  }
+
+  a {
+    color: $white;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0 0 $gutter-three-quarters 0;
+    padding: 0;
+    line-height: 1.375;
+
+    li {
+      margin-top: $gutter-half;
+    }
+
+    a {
+      font-family: $futura-book;
+      font-size: 1.125rem;
+      font-weight: normal;
+      line-height: 1.375;
+    }
+  }
+
+  .open-government-licence {
+    margin-top: $extra-gutter;
+
+    .logo {
+      display: inline-block;
+    }
+
+    p {
+      @include font-size(0.625rem, 0.75rem);
+      line-height: 1.375;
+      margin: $gutter-quarter 0 0 0;
+    }
+
+    svg {
+      display: block;
+      width: 41px;
+      height: 17px;
+    }
+  }
+}
