@@ -1116,31 +1116,23 @@ en-GB:
       body_html: |-
         <h1 class="page-title">Accessibility statement</h1>
 
-        <p><strong>We’re committed to making this website accessible so it can be used by as many people as possible.</strong></p>
+        <p><strong>We’re committed to making this website accessible, so it can be used by as many people as possible.</strong></p>
 
-        <p>This statement applies to content published within the Scottish Parliament Petitions website.</p>
+        <p>This statement applies to the Scottish Parliament’s Public Petitions website. This domain is owned by the Scottish Parliament (referred to hereafter as Parliament).</p>
 
-        <p>This domain is owned by the Scottish Parliament (referred to hereafter as Parliament).</p>
+        <p>This Parliament website shares common underlying design schema and is linked to the Parliament’s full website. The associated accessibility statement can be found <a href="https://beta.parliament.scot/accessibility">here</a>.</p>
 
-        <p>We aim to make this websites accessible to the widest possible audience. This means, for example, that you should be able to:</p>
+        <p>We want as many people as possible to be able to use this website. For example, that means you should be able to:</p>
 
         <ul class="list-bullet">
           <li>change colours, contrast levels and fonts</li>
           <li>zoom in up to 300% without the text spilling off the screen</li>
           <li>navigate the website using a keyboard</li>
           <li>navigate the website using speech recognition software</li>
-          <li>listen to the website using a screen reader</li>
+          <li>listen to the website using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)</li>
         </ul>
 
-        <h2>What we’re doing to improve accessibility</h2>
-
-        <p>To make Parliament websites accessible, we:</p>
-
-        <ul class="list-bullet">
-          <li>integrate accessibility into our procurement procedures</li>
-          <li>provide accessibility training for our staff</li>
-          <li>include individuals with disabilities in our design personas</li>
-        </ul>
+        <p><a href="https://mcmw.abilitynet.org.uk/">AbilityNet</a> has advice on making your device easier to use if you have a disability.</p>
 
         <h2>How accessible is this website?</h2>
 
@@ -1148,12 +1140,12 @@ en-GB:
 
         <h2>How to request content in a different format</h2>
 
-        <p>If you need information in a different format please <a href="/contact">contact us</a> and tell us:</p>
+        <p>If you need information in a different format, please contact us and tell us:</p>
 
         <ul class="list-bullet">
-          <li>the web address (URL) of the content that you need</p>
-          <li>your contact name and email address</p>
-          <li>the type of format you need</p>
+          <li>the web address (URL) of the content that you need</li>
+          <li>your contact name and email address</li>
+          <li>the type of format you need</li>
         </ul>
 
         <h2>Reporting accessibility problems with this website</h2>
@@ -1164,7 +1156,7 @@ en-GB:
 
         <p>If you contact us with a complaint and you’re not happy with our response contact the Equality Advisory and Support Service (EASS).</p>
 
-        <p>The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’).</p>
+        <p>The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint, contact the <a href="https://www.equalityadvisoryservice.com/">Equality Advisory and Support Service (EASS)</a>.</p>
 
         <h2>Technical information about this website’s accessibility</h2>
 
@@ -1180,6 +1172,6 @@ en-GB:
 
         <h2>Preparation of this accessibility statement</h2>
 
-        <p>This statement was prepared on 12 November 2020.</p>
+        <p>This statement was prepared on 4 March 2021.</p>
 
         <p>This website is tested on an ongoing basis via a combination of accessibility tools.</p>
