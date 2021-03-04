@@ -784,21 +784,21 @@ en-GB:
 
           <h2 id="privacy-heading">Privacy notice: how we use your data</h2>
 
-          <p>Last update: 13 November 2020</p>
+          <p>Last update: 4 March 2021</p>
 
-          <p>The Petitions site lets you start and sign petitions to raise issues with the Scottish Parliament (referred to hereafter as Parliament).</p>
+          <p>The Petitions site lets you start and sign public petitions to raise issues with the Scottish Parliament.</p>
 
-          <p>The Petitions service is provided by Parliament. We need to collect, process and store some personal data to enable you to do this.</p>
+          <p>The Public Petitions process is provided by the Scottish Parliament. We need to collect, process and store some personal data to enable you to do this.</p>
 
           <h3>Data Controller</h3>
 
-          <p>The Scottish Parliament is the data controller of the information you provide, and will ensure it is protected and used in line with data protection legislation.</p>
+          <p>The Scottish Parliamentary Corporate Body (SPCB) is the data controller of the information you provide and will ensure it is protected and used in line with data protection legislation.</p>
 
           <h3>Our Contact Details</h3>
 
           <p>Any queries regarding our use of your information should be sent to the Data Protection Officer at:</p>
 
-          <p>dataprotection@parliament.scot 0131 348 6913</p>
+          <p><a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a> — <a href="tel:01313486913">0131 348 6913</a></p>
 
           <h3>What data we collect from you</h3>
 
@@ -820,16 +820,16 @@ en-GB:
             <li>any personal information or details that you provide within the petition itself.</li>
           </ul>
 
-          <p>We sometimes receive information relating to people who have signed petitions on paper. Paper petitions are securely stored and retained for the same period as personal data received through our own electronic petitions system. They are destroyed in a secure manner at the end of the retention period.</p>
+          <p>We sometimes receive information relating to people who have submitted petitions in writing. These petitions are securely stored and retained for the same period as personal data received through our own electronic petitions system. They are destroyed in a secure manner at the end of the retention period.</p>
 
           <h3>Why we need your data</h3>
 
           <p>We use this information to:</p>
 
           <ul class="list-bullet">
-            <li>facilitate the petitions process</li>
+            <li>facilitate the public petitions process</li>
             <li>make sure that people only sign a petition once</li>
-            <li>check that you’re eligible to start a petition</li>
+            <li>check that your petition is admissible</li>
             <li>contact you about petitions you start</li>
             <li>if you choose to sign up to email updates about what happens in Parliament on petitions you’ve signed</li>
             <li>we may occasionally contact people who start or submit petitions to seek feedback on the petitions process and how it could be improved.</li>
@@ -839,43 +839,33 @@ en-GB:
 
           <p>We use your personal information to process the petition you have started or signed.</p>
 
-          <p>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We won’t publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the official record of Parliament’s petitions process.</p>
+          <p>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We will not publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the official record of the Scottish Parliament’s petitions process. This information is also published by the National Archives of Scotland as public record.</p>
 
-          <p>If you’ve signed a petition, we won’t publish any personal information about you.</p>
+          <p>Your petition, including your name, will be included in data about parliamentary business that will be available on the Parliament’s Open Data Portal on an ongoing basis. The Open Data Portal can be accessed here: <a href="https://data.parliament.scot/#/home">data.parliament.scot/#/home</a></p>
 
-          <p>We’ll use your postcode to work out how many people in Scotland and within each Parliament constituency and region have signed a petition.</p>
+          <p>If you’ve signed a petition, we will not publish any personal information about you.</p>
 
-          <p>We will retain your personal data from the date you start or sign a petition until 12 months after it is no longer being considered by the Public Petitions Committee, i.e. until 12 months after the Committee considers the petition to be completed, apart from any personal data which has been published.</p>
-
-          <p>Any information which has been published will remain permanently online in the records of Parliament’s petitions process, including in any material published by the Public Petitions Committee.</p>
+          <p>Any information which has been published will remain permanently online in the records of the Scottish Parliament’s petitions process, including in any material published by the Public Petitions Committee.</p>
 
           <p>IP addresses are used to protect the petitions site and prevent fraudulent activity.</p>
 
-          <p>We will share your data if we’re required to do so by law – for example, by court order, or to prevent fraud or other crime.</p>
-
           <h3>What we’ll email you about</h3>
 
-          <p>If a petition you’ve started is referred to the Public Petitions Committee, we’ll use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
+          <p>If a petition you’ve started is referred to the Public Petitions Committee, we will use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
 
           <p>You will receive automated confirmation emails when you set up or sign a petition.</p>
 
-          <p>If you’ve signed a petition, you can choose to receive updates about the progress of the petition. This might include contacting you to let you know what is happening in Parliament in relation to your petition, such as: debates that you can watch or read, chances to respond to a consultation, or ways to let committees and Members of the Scottish Parliament know why the petition is important to you.</p>
-
-          <p>We may occasionally use your contact details to seek your views on Parliament’s petitions process.</p>
-
-          <p>You can stop these emails at any time by clicking the “unsubscribe” link in the email.</p>
-
           <h3>Who has access to the data and where is it processed and stored</h3>
 
-          <p>Scottish Parliament staff administering the petitions process will have access to your personal information.</p>
+          <p>The Scottish Parliament’s staff administering the petitions process will have access to your personal information.</p>
 
           <p>Unboxed Consulting Limited who provide technical support for the petitions system will also have access to the system for troubleshooting and maintenance purposes only.</p>
 
-          <p>Electronic information will be stored on Parliament ICT systems, which includes third party cloud services provided by Microsoft. Any transfer of data by Microsoft outside of the EEA is covered by contractual clauses under which Microsoft ensure that personal data is treated in line with European legislation.</p>
+          <p>Electronic information will be stored on Scottish Parliament ICT systems, which includes third party cloud services provided by Microsoft. Any transfer of data by Microsoft outside of the EEA is covered by contractual clauses under which Microsoft ensure that personal data is treated in line with European legislation.</p>
 
-          <p>The petitions system uses Amazon Web Services (AWS) cloud storage to store your data. AWS store data within the European Economic Area (EEA).</p>
+          <p>The petitions system uses Amazon Web Services (AWS) cloud storage to store your data and to send emails relating to the petitions process. AWS store data within the European Economic Area (EEA). Emails sent are stored for 7 days. The privacy notice for Amazon Web Services (AWS) is available here: <a href="https://aws.amazon.com/privacy/">aws.amazon.com/privacy</a>.</p>
 
-          <p>The petitions system uses the GOV.UK Notify service to send emails relating to the petitions process including updates. Emails sent are stored for 7 days. The privacy notice for the GOV.UK Notify service is available here: <a href="https://www.notifications.service.gov.uk/privacy">www.notifications.service.gov.uk/privacy</a>.
+          <p>Petitions will be transferred to the national Records of Scotland (NRS) according to the SPCB’s document retention schedule and will continue to be publicly searchable on a permanent basis both via the Parliament’s website and the NRS.</p>
 
           <h3>How we protect your data and keep it secure</h3>
 
@@ -885,21 +875,13 @@ en-GB:
 
           <p>Data protection law sets out various legal bases (or ‘conditions’) which allow us to collect, hold and use your personal information.</p>
 
-          <p>We consider that our collection and use of your information is necessary to help us facilitate the petitions process and allow the public the chance to raise and show support for issues with Parliament.</p>
+          <p>The collection and use of your information are necessary to help us facilitate the public petitions process and allow the public the chance to raise and show support for issues with The Scottish Parliament.</p>
 
           <p>As such, personal data is processed on the basis that it is necessary for the performance of a task carried out in the public interest in accordance with Article 6(1)(e) of the General Data Protection Regulation (GDPR), read together with section 8(d) of the Data Protection Act 2018.</p>
 
-          <p>Where we are required to process personal data in order to comply with a legal obligation, such as a request under access to information legislation or a court order, we will do so on the basis that processing is necessary for compliance with a legal obligation pursuant to Article 6(1)(c) of the GDPR.</p>
+          <p>Finally, we may process special categories of personal data of those who start and/or contribute to its passage through the Scottish Parliament’s petitions process. Special category personal data is defined in Article 9(1) of the GDPR as the processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade-union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or a natural person’s sex life or sexual orientation.</p>
 
-          <p>We may process personal data relating to criminal convictions and offences. In order to comply with Article 10 of the GDPR, this data will be processed in accordance with our Article 6 legal basis, as outlined above, and section 10 of, and paragraph 6 of Schedule 1 to, the Data Protection Act 2018.</p>
-
-          <p>Finally, we may process special categories of personal data of those who start or sign a petition, and/or contribute to its passage through Parliament’s petitions process. Special category personal data is defined in Article 9(1) of the GDPR as the processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade-union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or a natural person’s sex life or sexual orientation.</p>
-
-          <p>Special category personal data will usually be processed on the basis that it is necessary for reasons of substantial public interest, pursuant to Article 9(2)(g) of the GDPR read in conjunction with section 10 of, and paragraph 6 of Schedule 1 to, the Data Protection Act 2018. However, where your special category personal data is made public by you, it may be processed on the basis that it has already been manifestly made public by you, pursuant to Article 9(2)(e) of the GDPR.</p>
-
-          <h3>Requests for information made to the Commission</h3>
-
-          <p>Parliament is subject to access to information legislation. In the event of a request for information being made under access to information legislation, it may be necessary to disclose all or part of the information that you provide. However, we will only do this if we are required to do so by law.</p>
+          <p>Special category personal data will usually be processed on the basis that it is necessary for reasons of substantial public interest, pursuant to Article 9(2)(g) of the GDPR read in conjunction with section 10(3) of, and paragraph 6(2)(b), part 2, of Schedule 1 to, the Data Protection Act 2018.</p>
 
           <h3>What are your rights</h3>
 
@@ -913,29 +895,31 @@ en-GB:
             <li>The right to object to the use of your personal information in certain circumstances.</li>
           </ul>
 
-          <p>If you would like to engage any of these rights, please email dataprotection@parliament.scot</p>
+          <p>If you would like to engage any of these rights, please email <a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a></p>
+
+          <h3>Children and Young People Safeguarding and Child Protection</h3>
+
+          <p>In line with the principles underlying the National Guidance for Child protection in Scotland (2014), published by the Scottish Government, our staff may report a concern to the relevant authorities if they come across an issue during their work which causes them to think that a child may be at risk of abuse or harm.</p>
 
           <h3>Changes to this notice</h3>
 
-          <p>We may change this privacy notice. In that case the ‘last updated’ date at the top of this page will also change. Any changes to this privacy notice will apply to you and your data immediately. If these changes affect how your personal data is processed, we will take reasonable steps to make sure you know.</p>
+          <p>We keep this privacy notice under regular review. We may change this privacy notice. In that case the ‘last updated’ date at the top of this page will also change. Any changes to this privacy notice will apply to you and your data immediately. If these changes affect how your personal data is processed, we will take reasonable steps to make sure you know.</p>
 
-          <h3>How to complain</h3>
+          <h3>Contact information and further advice</h3>
 
           <p>You can also complain to the ICO if you are unhappy with how we have used your data.</p>
 
-          <p>The ICO’s address:</p>
+          <p>The Scottish Parliament’s Head of Information and Governances address:</p>
 
           <p>
-            Information Commissioner’s Office<br>
-            Wycliffe House<br>
-            Water Lane<br>
-            Wilmslow<br>
-            Cheshire<br>
-            SK9 5AF<br>
-            Helpline number: 0303 123 1113<br>
-            <br>
-            casework@ico.org.uk
+            The Scottish Parliament<br>
+            Edinburgh<br>
+            EH99 1SP<br>
+            <a href="tel:013133486913">01313 348 6913</a><br>
+            <a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a>
           </p>
+
+          <p>Calls are welcome through the Text Relay Service or in British Sign Language through <a href="https://contactscotland-bsl.org/">contactSCOTLAND-BSL</a>.</p>
         </section>
 
         <section id="cookies" aria-labelledby="cookies-heading">
@@ -947,7 +931,7 @@ en-GB:
 
           <ul class="list-bullet">
             <li>measure how you use the petitions service so it can be updated and improved based on your needs</li>
-            <li>remember the notifications you’ve seen so that we don’t show them to you again</li>
+            <li>remember the notifications you’ve seen so that we do not show them to you again</li>
             <li>help prevent people from fraudulently signing petitions</li>
           </ul>
 
@@ -959,32 +943,45 @@ en-GB:
 
           <p>We use Google Analytics to collect information about how you use the service. This information helps us to improve the service and prevent fraudulent signing. When you first visit the site on a new device an option is provided to opt-in to analytics cookies.</p>
 
-          <p>The Google analytics cookie collects and stores information about:</p>
+          <p>The Google Analytics cookies collect and store information about:</p>
 
           <ul class="list-bullet">
             <li>unique users</li>
             <li>informing referring sites</li>
-            <li>vistor and session counts</li>
+            <li>visitor and session counts</li>
           </ul>
 
           <table>
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Purpose</th>
-                <th>Expires</th>
+                <th>What it does</th>
+                <th>When it expires</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>_ga</td>
-                <td>A randomly generated reference is used to identify unique users and inform referring sites, visitor and session counts</td>
+                <td><strong>_ga</strong></td>
+                <td>It registers a unique ID that is used to generate statistical data on how you use the website</td>
                 <td>2 years</td>
+              </tr>
+              <tr>
+                <td><strong>_gat</strong></td>
+                <td>It is used by Google Analytics to 'throttle the request rate'</td>
+                <td>1 day</td>
+              </tr>
+              <tr>
+                <td><strong>_gid</strong></td>
+                <td>It registers a unique ID that is used to generate statistical data on how you use the website</td>
+                <td>1 day</td>
+              </tr>
+              <tr>
+                <td><strong>collect</strong></td>
+                <td>It is used send data to Google Analytics about your device and browsing behaviour.</td>
+                <td>It stores your session temporarily until you close your browser down</td>
               </tr>
             </tbody>
           </table>
-
-          <p>Google isn’t allowed to use or share our analytics data with anyone, but you can opt out of Google Analytics cookies.</p>
 
           <h3>Session cookies</h3>
           <p>We store a session cookie on your computer to help keep your information secure while you use the service.</p>
@@ -993,8 +990,8 @@ en-GB:
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Purpose</th>
-                <th>Expires</th>
+                <th>What it does</th>
+                <th>When it expires</th>
               </tr>
             </thead>
             <tbody>
