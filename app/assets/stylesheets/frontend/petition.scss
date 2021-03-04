@@ -42,6 +42,10 @@
 .signature-count {
   @extend %contain-floats;
 
+  .no-signature-count {
+    font-weight: bold;
+  }
+
   .signature-count-number {
     @include font-size(2rem, 3rem);
 
