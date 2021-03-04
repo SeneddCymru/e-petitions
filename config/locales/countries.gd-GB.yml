@@ -1,10 +1,10 @@
 gd-GB:
   priority_countries:
-    - ["Wales", "GB-WLS"]
-    - ["England", "GB-ENG"]
     - ["Scotland", "GB-SCT"]
+    - ["England", "GB-ENG"]
+    - ["Wales", "GB-WLS"]
     - ["Northern Ireland", "GB-NIR"]
-  
+
   countries:
     - ["Falkland Islands", "FK"]
     - ["Gibraltar", "GI"]
