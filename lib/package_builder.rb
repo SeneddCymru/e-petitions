@@ -107,7 +107,7 @@ class PackageBuilder
     args.concat ['.']
 
     info "Building package ..."
-    Kernel.system(*args)
+    run(*args)
   end
 
   def ci?
@@ -122,7 +122,7 @@ class PackageBuilder
     args.concat [treeish]
 
     info "Creating archive ..."
-    Kernel.system(*args)
+    run(*args)
   end
 
   def create_deployments!
@@ -217,7 +217,7 @@ class PackageBuilder
     args.concat ['-xf', archive_file]
 
     info "Extracting archive ..."
-    Kernel.system(*args)
+    run(*args)
   end
 
   def info(message)
@@ -234,7 +234,7 @@ class PackageBuilder
     info "Packaging gems ..."
 
     with_build_env do
-      Kernel.system(*args)
+      run(*args)
     end
   end
 
@@ -313,7 +313,7 @@ class PackageBuilder
     args.concat [archive_file]
 
     info "Removing archive ..."
-    Kernel.system(*args)
+    run(*args)
   end
 
   def remove_artifacts
@@ -321,7 +321,7 @@ class PackageBuilder
     args.concat %w[.bundle log tmp]
 
     info "Removing build artifacts ..."
-    Kernel.system(*args)
+    run(*args)
   end
 
   def revision_file
@@ -497,5 +497,11 @@ class PackageBuilder
     yield
   ensure
     ENV.replace(backup)
+  end
+
+  def run(*args)
+    unless Kernel.system(*args)
+      abort("Error running `#{args.join(' ')}`")
+    end
   end
 end
