@@ -3,7 +3,7 @@ gd-GB:
   ui:
     holding_page:
       body_html: |-
-        <h1 class="page-title">A new petitions site is coming on 30 April</h1>
+        <h1 id="page-heading">A new petitions site is coming on 30 April</h1>
         <p>Sorry, the petitions service is currently unavailable. We are launching a new, improved website for petitions on 30 April.</p>
         <p>Please accept our apologies for any inconvenience.</p>
         <p>Click here to find out more about the work of the <a href="https://beta.parliament.scot/chamber-and-committees/committees/current-committees/public-petitions-committee">Public Petitions Committee</a>.</p>
@@ -144,7 +144,7 @@ gd-GB:
           <p>When it goes live, we’ll email you a link so you can start sharing it.</p>
     help_page:
       body_html: |-
-        <h1 class="page-title" id="creating-a-petition">Creating a petition</h1>
+        <h1 id="page-header">Creating a petition</h1>
 
         <p>Petitions are a way to ask the Parliament to do something. Petitions can:</p>
 
@@ -157,75 +157,83 @@ gd-GB:
 
         <p>All petitions should be made using our online petitions system. If you cannot use the system, please get in touch with the <a href="/contact">Public Petitions team</a>.</p>
 
-        <h1 class="page-title" id="how-petitions-work">How petitions work</h1>
+        <section aria-labelledby="how-petitions-work">
+          <h2 id="how-petitions-work">How petitions work</h2>
 
-        <ol class="list-number">
-          <li>Any person or organisation can submit a petition. You do not have to be a certain age or live in Scotland (but your petition must be about something that is <a href="https://beta.parliament.scot/about/how-parliament-works/powers-of-the-scottish-parliament">“devolved”</a> within the Scottish Parliament’s powers).</li>
-          <li>You do not need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the Public Petitions team and run for four weeks.</li>
-          <li>Once we have received your petition, the Public Petitions team will check to make sure it meets the <a href="/rules">Parliament’s rules</a> and is clear. Petitions that don’t meet these rules will be rejected.</li>
-          <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature.</li>
-        </ol>
+          <ol class="list-number">
+            <li>Any person or organisation can submit a petition. You do not have to be a certain age or live in Scotland (but your petition must be about something that is <a href="https://beta.parliament.scot/about/how-parliament-works/powers-of-the-scottish-parliament">“devolved”</a> within the Scottish Parliament’s powers).</li>
+            <li>You do not need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the Public Petitions team and run for four weeks.</li>
+            <li>Once we have received your petition, the Public Petitions team will check to make sure it meets the <a href="/rules">Parliament’s rules</a> and is clear. Petitions that don’t meet these rules will be rejected.</li>
+            <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature.</li>
+          </ol>
+        </section>
 
-        <h2 id="the-petitions-committee">The Public Petitions Committee</h2>
+        <section aria-labelledby="the-petitions-committee">
+          <h2 id="the-petitions-committee">The Public Petitions Committee</h2>
 
-        <p>The <a href="/contact">Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
+          <p>The <a href="/contact">Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
 
-        <ul class="list-bullet">
-          <li>asking for evidence from the Scottish Government, other organisations, or people</li>
-          <li>writing to the petitioner for more information or inviting them to talk to the Committee about the petition</li>
-          <li>“referring” (sending) the petition to another committee</li>
-          <li>recommending actions for the Scottish Government</li>
-          <li>asking for a debate about the petition in the Chamber</li>
-          <li>closing the petition.</li>
-        </ul>
+          <ul class="list-bullet">
+            <li>asking for evidence from the Scottish Government, other organisations, or people</li>
+            <li>writing to the petitioner for more information or inviting them to talk to the Committee about the petition</li>
+            <li>“referring” (sending) the petition to another committee</li>
+            <li>recommending actions for the Scottish Government</li>
+            <li>asking for a debate about the petition in the Chamber</li>
+            <li>closing the petition.</li>
+          </ul>
+        </section>
 
-        <h2 id="rules">Rules about petitions</h2>
+        <section aria-labelledby="rules">
+          <h2 id="rules">Rules about petitions</h2>
 
-        <p>Petitions must be about:</p>
+          <p>Petitions must be about:</p>
 
-        <ul class="list-bullet">
-          <li>something that is within the powers of the Scottish Parliament</li>
-          <li>an issue of national policy or practice</li>
-        </ul>
+          <ul class="list-bullet">
+            <li>something that is within the powers of the Scottish Parliament</li>
+            <li>an issue of national policy or practice</li>
+          </ul>
 
-        <p>Petitions cannot ask the Scottish Parliament to become involved in a local or individual matter, or to intervene in a decision that should be taken by another organisation.</p>
+          <p>Petitions cannot ask the Scottish Parliament to become involved in a local or individual matter, or to intervene in a decision that should be taken by another organisation.</p>
 
-        <p>Petitions must call for a specific action that the Scottish Parliament should take.</p>
+          <p>Petitions must call for a specific action that the Scottish Parliament should take.</p>
 
-        <p>Petitions can disagree with the Scottish Government and can ask for it to change its policies. Petitions can be critical of the Scottish Government.</p>
+          <p>Petitions can disagree with the Scottish Government and can ask for it to change its policies. Petitions can be critical of the Scottish Government.</p>
+        </section>
 
-        <h2 id="rejections">Why we might reject your petition</h2>
+        <section aria-labelledby="rejections">
+          <h2 id="rejections">Why we might reject your petition</h2>
 
-        <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue..</p>
+          <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue..</p>
 
-        <p>We'll have to reject your petition if:</p>
+          <p>We'll have to reject your petition if:</p>
 
-        <ul class="list-bullet">
-          <li>
-            <p>It’s about something that’s not within the powers of the Scottish Parliament.</p>
-            <p>That includes: something that your local council is responsible for (including planning decisions); something that the UK Government or Parliament is responsible for; and something that an independent organisation has done.</p>
-          </li>
-          <li>It does not include details of relevant previous action taken to address the issue, such as raising it with the Scottish Government or one of your MSP’s.</li>
-          <li>It contains language which is defamatory, offensive or inappropriate. This not only includes obvious profanities, swear words and insults, but any language which a reasonable person would regard as offensive.</li>
-          <li>It names individuals or otherwise contains information that could lead to the identification of any individual. This excludes MSPs and senior leaders of public bodies.</li>
-          <li>It contains any false statements. It is the responsibility of the petitioner to ensure that statements are accurate.</li>
-          <li>It refers to a matter that is the subject of continuing court proceedings.</li>
-          <li>It seeks a decision on an individual or commercial matter.</li>
-        </ul>
+          <ul class="list-bullet">
+            <li>
+              <p>It’s about something that’s not within the powers of the Scottish Parliament.</p>
+              <p>That includes: something that your local council is responsible for (including planning decisions); something that the UK Government or Parliament is responsible for; and something that an independent organisation has done.</p>
+            </li>
+            <li>It does not include details of relevant previous action taken to address the issue, such as raising it with the Scottish Government or one of your MSP’s.</li>
+            <li>It contains language which is defamatory, offensive or inappropriate. This not only includes obvious profanities, swear words and insults, but any language which a reasonable person would regard as offensive.</li>
+            <li>It names individuals or otherwise contains information that could lead to the identification of any individual. This excludes MSPs and senior leaders of public bodies.</li>
+            <li>It contains any false statements. It is the responsibility of the petitioner to ensure that statements are accurate.</li>
+            <li>It refers to a matter that is the subject of continuing court proceedings.</li>
+            <li>It seeks a decision on an individual or commercial matter.</li>
+          </ul>
 
-        <p>The full rules for petitions are in:</p>
+          <p>The full rules for petitions are in:</p>
 
-        <ul class="list-bullet">
-          <li>the <a href="/rules#standing-orders">Standing Orders</a> of the Scottish Parliament (the rules for how the Parliament works)</li>
-          <li>a <a href="/rules#determination">determination</a> agreed by the Public Petitions Committee</li>
-        </ul>
+          <ul class="list-bullet">
+            <li>the <a href="/rules#standing-orders">Standing Orders</a> of the Scottish Parliament (the rules for how the Parliament works)</li>
+            <li>a <a href="/rules#determination">determination</a> agreed by the Public Petitions Committee</li>
+          </ul>
 
-        <p>If you have any other questions, please %{contact_link}.</p>
+          <p>If you have any other questions, please %{contact_link}.</p>
+        </section>
       feedback_link: "get in touch"
       contact_link: "get in touch"
     contact_page:
       body_html: |-
-        <h1 class="page-title" id="contact">Contact</h1>
+        <h1 id="page-heading" id="contact">Contact</h1>
         <p><strong>If you have any questions, the Public Petitions team are available to help.</strong></p>
         <p><strong>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</strong></p>
         <p><strong>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</strong></p>
@@ -785,11 +793,11 @@ gd-GB:
       body_html: |-
         <h1>Privacy and cookies</h1>
 
+        <p>Last update: 4 March 2021</p>
+
         <section id="privacy" aria-labelledby="privacy-heading">
 
           <h2 id="privacy-heading">Privacy notice: how we use your data</h2>
-
-          <p>Last update: 4 March 2021</p>
 
           <p>The Petitions site lets you start and sign public petitions to raise issues with the Scottish Parliament.</p>
 
@@ -1116,7 +1124,7 @@ gd-GB:
         </section>
     accessibility_page:
       body_html: |-
-        <h1 class="page-title">Accessibility statement</h1>
+        <h1 id="page-heading">Accessibility statement</h1>
 
         <p><strong>We’re committed to making this website accessible, so it can be used by as many people as possible.</strong></p>
 

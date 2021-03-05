@@ -76,6 +76,25 @@ main {
     & > *:last-child {
       margin-bottom: 0;
     }
+
+    & > section {
+      border-top: 1px solid $border-color;
+      margin-left: -$gutter;
+      margin-right: -$gutter;
+      margin-top: $gutter;
+      padding: 0 $gutter;
+
+      & > *:last-child {
+        margin-bottom: 0;
+      }
+
+      @include media(tablet) {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        margin-top: $extra-gutter;
+      }
+    }
   }
 
   & > section:last-child {

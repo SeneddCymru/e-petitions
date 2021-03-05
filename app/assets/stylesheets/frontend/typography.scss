@@ -13,27 +13,27 @@ body {
 }
 
 h1 {
-  @include font-size(2.5rem, 2.5rem);
+  @include font-size(2rem, 2.5rem);
   line-height: 1.125;
-  margin: $gutter 0 $gutter-half 0;
+  margin: $gutter 0;
 }
 
 h2 {
-  @include font-size(2rem, 2rem);
+  @include font-size(1.625rem, 2rem);
   line-height: 1.125;
-  margin: $gutter 0 $gutter-half 0;
+  margin: $gutter 0 $gutter-quarter 0;
 }
 
 h3 {
-  @include font-size(1.5rem, 1.5rem);
+  @include font-size(1.25rem, 1.5rem);
   line-height: 1.25;
   margin: $gutter 0 0 0;
 }
 
 p {
   font-size: 1rem;
-  line-height: 1.4375;
-  margin: $gutter-quarter 0 $gutter-three-quarters 0;
+  line-height: 1.375;
+  margin: $gutter-half 0 $gutter-three-quarters 0;
 }
 
 p + ul, p + ol {
@@ -69,3 +69,80 @@ h1, h2, h3 {
   }
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 0 $gutter-three-quarters 0
+}
+
+th, td {
+  border-bottom: 1px solid $border-color;
+  padding: $gutter-quarter $gutter-three-quarters;
+  text-align: left;
+  vertical-align: top;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
+.list-bullet {
+  & > li {
+    margin-top: $gutter-half;
+    padding-left: $gutter;
+    position: relative;
+
+    &::before {
+      box-sizing: border-box;
+      background-color: $black;
+      content: "";
+      position: absolute;
+      left: 2px;
+      border-radius: 4px;
+      height: 7px;
+      width: 7px;
+      top: 7px;
+    }
+
+    & > p {
+      margin: 0 0 $gutter-half 0;
+    }
+  }
+
+  .list-bullet > li {
+    &::before {
+      background-color: $white;
+      border: 1px solid $black;
+    }
+  }
+}
+
+.list-number {
+  counter-reset: ordered-list;
+
+  & > li {
+    margin-top: $gutter-half;
+    padding-left: $gutter;
+    position: relative;
+
+    &::before {
+      counter-increment: ordered-list;
+      content: counter(ordered-list) ".";
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+.list-alpha > li {
+  margin-top: $gutter-half;
+  padding-left: $gutter + $gutter-three-quarters;
+  position: relative;
+
+  & > span {
+    position: absolute;
+    left: 0;
+    text-align: left;
+  }
+}
