@@ -69,12 +69,12 @@ main {
       padding: $extra-gutter;
     }
 
-    & > *:first-child {
-      margin-top: 0;
+    *:last-child {
+      margin-bottom: 0;
     }
 
-    & > *:last-child {
-      margin-bottom: 0;
+    & > *:first-child {
+      margin-top: 0;
     }
 
     & > section {
@@ -84,8 +84,12 @@ main {
       margin-top: $gutter;
       padding: 0 $gutter;
 
-      & > *:last-child {
-        margin-bottom: 0;
+      & > *:first-child {
+        margin-top: 20px;
+
+        @include media(tablet) {
+          margin-top: 30px;
+        }
       }
 
       @include media(tablet) {

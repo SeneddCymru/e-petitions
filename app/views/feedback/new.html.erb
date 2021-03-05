@@ -1,29 +1,33 @@
-<div class="text-page">
-  <h1 class="page-title"><%= t(:"ui.feedback.new.heading") %></h1>
-  <h2><%= t(:"ui.feedback.new.feedback.heading") %></h2>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading"><%= t(:"ui.feedback.new.heading") %></h1>
 
   <%= form_for @feedback, url: feedback_path, html: { class: "wizard_form new_petition_form" } do |f| %>
-
     <%= form_row for: [@feedback, :comment] do %>
-      <%= f.label :comment, t(:"ui.feedback.new.feedback.comments.label"), class: "form-label" %>
+      <div class="field">
+        <%= f.text_area :comment, style: "height: 156px", placeholder: " " %>
+        <%= f.label :comment, t(:"ui.feedback.new.feedback.comments.label"), class: "form-label" %>
+      </div>
       <%= error_messages_for_field @feedback, :comment %>
-      <%= f.text_area :comment, rows: 6, class: "form-control" %>
     <% end %>
 
     <%= form_row for: [@feedback, :petition_link_or_title] do %>
-      <%= f.label :petition_link_or_title, class: "form-label" do %>
-        <%= t(:"ui.feedback.new.feedback.petition_link_or_title.label_html") %>
-      <% end %>
+      <div class="field">
+        <%= f.text_field :petition_link_or_title, placeholder: " " %>
+        <%= f.label :petition_link_or_title, class: "form-label" do %>
+          <%= t(:"ui.feedback.new.feedback.petition_link_or_title.label_html") %>
+        <% end %>
+      </div>
       <%= error_messages_for_field @feedback, :petition_link_or_title %>
-      <%= f.text_field :petition_link_or_title, class: "form-control" %>
     <% end %>
 
-    <h3><%= t(:"ui.feedback.new.feedback.want_reply.heading") %></h3>
-
     <%= form_row for: [@feedback, :email] do %>
-      <%= f.label :email, t(:"ui.feedback.new.feedback.want_reply.email.label"), class: "form-label" %>
+      <p><%= t(:"ui.feedback.new.feedback.want_reply.heading") %></p>
+
+      <div class="field">
+        <%= f.text_field :email, inputmode: "email", placeholder: " " %>
+        <%= f.label :email, t(:"ui.feedback.new.feedback.want_reply.email.label") %>
+      </div>
       <%= error_messages_for_field @feedback, :email %>
-      <%= f.text_field :email, inputmode: "email", class: "form-control" %>
     <% end %>
 
     <div>
@@ -31,21 +35,24 @@
     </div>
   <% end %>
 
-  <section class="inline-terms">
+  <div class="inline-terms">
     <%= t(:"ui.feedback.new.feedback.terms_html") %>
+  </div>
+
+  <section aria-labelledby="email-heading">
+    <a name="contact"></a>
+    <h2 id="email-heading"><%= t(:"ui.feedback.new.contact.email.heading") %></hh23>
+
+    <div>
+      <%= t(:"ui.feedback.new.contact.email.body_html", petitions_committee_link: link_to(t(:"ui.feedback.new.contact.email.petitions_committee_link"), help_url(anchor: 'the-petitions-committee'))) %>
+    </div>
   </section>
 
-  <h2><%= t(:"ui.feedback.new.contact.heading") %></h2>
+  <section aria-labelledby="phone-heading">
+    <h2><%= t(:"ui.feedback.new.contact.phone.heading") %></h3>
 
-  <h3><%= t(:"ui.feedback.new.contact.email.heading") %></h3>
-
-  <div>
-    <%= t(:"ui.feedback.new.contact.email.body_html", petitions_committee_link: link_to(t(:"ui.feedback.new.contact.email.petitions_committee_link"), help_url(anchor: 'petitions-committee'))) %>
-  </div>
-
-  <h3><%= t(:"ui.feedback.new.contact.phone.heading") %></h3>
-
-  <div>
-    <%= t(:"ui.feedback.new.contact.phone.body_html") %>
-  </div>
-</div>
+    <div>
+      <%= t(:"ui.feedback.new.contact.phone.body_html") %>
+    </div>
+  </section>
+</section>
