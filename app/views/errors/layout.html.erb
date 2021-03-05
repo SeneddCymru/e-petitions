@@ -17,12 +17,10 @@
       src: url(/FuturaBT-Book.ttf) format("truetype");
     }
 
-    @font-face {
-      font-family: "FuturaBT-Bold";
-      font-style: normal;
-      font-weight: bold;
-      font-display: auto;
-      src: url(/FuturaBT-Bold.ttf) format("truetype");
+    *:focus {
+      outline: none;
+      outline-offset: 0px;
+      -moz-outline-offset: 0px;
     }
 
     body {
@@ -116,10 +114,16 @@
       color: #500778;
       font-weight: bold;
       text-decoration: none;
+      transition: box-shadow 0.2s;
     }
 
     a:hover {
       text-decoration: underline;
+    }
+
+    a:focus {
+      box-shadow: 0 0 0 4px #108765;
+      border-radius: 2px;
     }
 
     .wrapper {
@@ -147,7 +151,8 @@
       justify-content: space-between;
     }
 
-    .brand .svg--logo {
+    .brand svg {
+      display: block;
       width: 175px;
       height: 47px;
     }
@@ -166,18 +171,26 @@
       padding-top: 25px;
     }
 
+    .service a {
+      color: #ffffff;
+      font-weight: normal;
+    }
+
     .open-government-licence {
       margin-top: 30px;
     }
 
     .open-government-licence p {
       font-size: 0.625rem;
-      margin: 0;
+      margin: 5px 0 0 0;
+    }
+
+    .open-government-licence .logo {
+      display: inline-block;
     }
 
     .open-government-licence svg {
       display: block;
-      margin: 0 0 10px 0;
       width: 41px;
       height: 17px;
     }
@@ -224,12 +237,14 @@
   <header role="banner">
     <div class="brand">
       <p class="wrapper">
-        <svg class="svg--logo" aria-hidden="true"><use xlink:href="#svg--logo"></use></svg>
-        <span class="visually-hidden">The Scottish Parliament | Pàrlamaid na h-Alba</span>
+        <a href="https://beta.parliament.scot" rel="external">
+          <svg aria-hidden="true"><use xlink:href="#svg--logo"></use></svg>
+          <span class="visually-hidden">The Scottish Parliament | Pàrlamaid na h-Alba</span>
+        </a>
       </p>
     </div>
     <div class="service">
-      <p class="wrapper">Petitions</p>
+      <p class="wrapper"><a href="/">Petitions</a></p>
     </div>
   </header>
 
@@ -246,7 +261,7 @@
         <li><a href="/petitions">All petitions</a></li>
         <li><a href="/petitions/check">Start a petition</a></li>
         <li><a href="/help">How petitions work</a></li>
-        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/privacy">Privacy and cookies</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/accessibility">Accessibility statement</a></li>
         <li><a rel="external" href="https://beta.parliament.scot">Parliament Homepage</a></li>
@@ -254,8 +269,8 @@
 
       <div class="open-government-licence">
         <p>
-          <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="external license">
-            <svg class="svg--ogl_logo" aria-hidden="true"><use xlink:href="#svg--ogl_logo"></use></svg>
+          <a class="logo" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="external license">
+            <svg aria-hidden="true"><use xlink:href="#svg--ogl_logo"></use></svg>
             <span class="visually-hidden">Open Government Licence</span>
           </a>
         </p>
