@@ -157,8 +157,8 @@ en-GB:
 
         <p>All petitions should be made using our online petitions system. If you cannot use the system, please get in touch with the <a href="/contact">Public Petitions team</a>.</p>
 
-        <section aria-labelledby="how-petitions-work">
-          <h2 id="how-petitions-work">How petitions work</h2>
+        <section aria-labelledby="how-petitions-work-heading">
+          <h2 id="how-petitions-work-heading"><a name="how-petitions-work"></a>How petitions work</h2>
 
           <ol class="list-number">
             <li>Any person or organisation can submit a petition. You do not have to be a certain age or live in Scotland (but your petition must be about something that is <a href="https://beta.parliament.scot/about/how-parliament-works/powers-of-the-scottish-parliament">“devolved”</a> within the Scottish Parliament’s powers).</li>
@@ -168,8 +168,8 @@ en-GB:
           </ol>
         </section>
 
-        <section aria-labelledby="the-petitions-committee">
-          <h2 id="the-petitions-committee">The Public Petitions Committee</h2>
+        <section aria-labelledby="the-petitions-committee-heading">
+          <h2 id="the-petitions-committee-heading"><a name="the-petitions-committee"></a>The Public Petitions Committee</h2>
 
           <p>The <a href="/contact">Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
 
@@ -183,8 +183,8 @@ en-GB:
           </ul>
         </section>
 
-        <section aria-labelledby="rules">
-          <h2 id="rules">Rules about petitions</h2>
+        <section aria-labelledby="rules-heading">
+          <h2 id="rules-heading"><a name="rules"></a>Rules about petitions</h2>
 
           <p>Petitions must be about:</p>
 
@@ -200,8 +200,8 @@ en-GB:
           <p>Petitions can disagree with the Scottish Government and can ask for it to change its policies. Petitions can be critical of the Scottish Government.</p>
         </section>
 
-        <section aria-labelledby="rejections">
-          <h2 id="rejections">Why we might reject your petition</h2>
+        <section aria-labelledby="rejections-heading">
+          <h2 id="rejections-heading"><a name="rejections"></a>Why we might reject your petition</h2>
 
           <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue..</p>
 
@@ -238,15 +238,19 @@ en-GB:
         <p><strong>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</strong></p>
         <p><strong>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</strong></p>
 
-        <h2 id="email">Email</h2>
-        <p>The quickest way to contact the Public Petitions team is by email at <a href="mailto:petitions@parliament.scot">petitions@parliament.scot</a>.</p>
+        <section aria-labelled="email-heading">
+          <h2 id="email-heading"><a name="email"></a>Email</h2>
+          <p>The quickest way to contact the Public Petitions team is by email at <a href="mailto:petitions@parliament.scot">petitions@parliament.scot</a>.</p>
+        </section>
 
-        <h2 id="phone">Phone</h2>
-        <p>If you are unable to contact us by email, you can phone us.</p>
-        <p>Phone calls are handled by the Public Petitions team who are all currently working from home.</p>
-        <p>If you leave us a message and a contact number, one of the team will get back to you as soon as possible.</p>
-        <p>Please note the voicemail service is only checked intermittently.</p>
-        <p>Telephone: <a href="tel:01313485254">0131 348 5254</a></p>
+        <section aria-labelled="phone-heading">
+          <h2 id="phone-heading"><a name="phone"></a>Phone</h2>
+          <p>If you are unable to contact us by email, you can phone us.</p>
+          <p>Phone calls are handled by the Public Petitions team who are all currently working from home.</p>
+          <p>If you leave us a message and a contact number, one of the team will get back to you as soon as possible.</p>
+          <p>Please note the voicemail service is only checked intermittently.</p>
+          <p>Telephone: <a href="tel:01313485254">0131 348 5254</a></p>
+        </section>
     home_page:
       notice:
         get_involved_html: |-
@@ -795,9 +799,8 @@ en-GB:
 
         <p>Last update: 4 March 2021</p>
 
-        <section id="privacy" aria-labelledby="privacy-heading">
-
-          <h2 id="privacy-heading">Privacy notice: how we use your data</h2>
+        <section aria-labelledby="privacy-heading">
+          <h2 id="privacy-heading"><a name="privacy"></a>Privacy notice: how we use your data</h2>
 
           <p>The Petitions site lets you start and sign public petitions to raise issues with the Scottish Parliament.</p>
 
@@ -935,8 +938,8 @@ en-GB:
           <p>Calls are welcome through the Text Relay Service or in British Sign Language through <a href="https://contactscotland-bsl.org/">contactSCOTLAND-BSL</a>.</p>
         </section>
 
-        <section id="cookies" aria-labelledby="cookies-heading">
-          <h2 id="cookies-heading">Cookies</h2>
+        <section aria-labelledby="cookies-heading">
+          <h2 id="cookies-heading"><a name="cookies"></a>Cookies</h2>
 
           <p>This website puts small files (known as ‘cookies’) onto your computer to collect information about how you browse the site.</p>
 
@@ -1068,8 +1071,8 @@ en-GB:
           <li>a “determination” (rules) agreed by the Public Petitions Committee</li>
         </ul>
 
-        <section aria-labelledby="standing-orders">
-          <h2 id="standing-orders">Standing Orders Rules</h2>
+        <section aria-labelledby="standing-orders-heading">
+          <h2 id="standing-orders-heading"><a name="standing-orders"></a>Standing Orders Rules</h2>
 
           <h3>Rule 15.4.2</h3>
           <p>A petition must clearly state:</p>
@@ -1093,8 +1096,8 @@ en-GB:
           </ol>
         </section>
 
-        <section aria-labelledby="determination">
-          <h2 id="determination">Determination on proper form of petitions</h2>
+        <section aria-labelledby="determination-heading">
+          <h2 id="determination-heading"><a name="determination"></a>Determination on proper form of petitions</h2>
 
           <p>To be read alongside the Parliament’s rules on public petitions, the Public Petitions Committee has made the following determination under Rule 15.4.3 on proper form of petitions.</p>
 

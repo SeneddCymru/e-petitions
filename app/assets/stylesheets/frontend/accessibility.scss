@@ -4,6 +4,16 @@
   -moz-outline-offset: 0px;
 }
 
+a[name] {
+  display: block;
+  position: relative;
+  top: -105px;
+
+  @include media(tablet) {
+    top: -115px;
+  }
+}
+
 a {
   transition: box-shadow 0.2s;
 
