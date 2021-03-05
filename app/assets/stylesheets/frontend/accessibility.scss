@@ -1,0 +1,31 @@
+*:focus {
+  outline: none;
+  outline-offset: 0px;
+  -moz-outline-offset: 0px;
+}
+
+a {
+  transition: box-shadow 0.2s;
+
+  &:focus {
+    box-shadow: 0 0 0 4px $focus-color;
+    border-radius: 2px;
+  }
+}
+
+.button {
+  transition: box-shadow 0.2s;
+
+  &:focus {
+    box-shadow: 0 0 0 4px $focus-color;
+    z-index: 1;
+  }
+}
+
+.field {
+  transition: box-shadow 0.2s;
+
+  input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 4px $focus-color;
+  }
+}

@@ -16,9 +16,7 @@
         <% end %>
       <% end %>
     <% end %>
-    <div class="section-panel-borderless">
-      <%= render "pages/home/referred_petitions", actioned: actioned %>
-    </div>
+    <%= render "pages/home/referred_petitions", actioned: actioned %>
   </section>
 
   <% unless Site.disable_thresholds_and_debates? %>
@@ -32,9 +30,7 @@
           <h2 id="debate-threshold-heading" data-threshold="<%= Site.formatted_threshold_for_debate %>"><%= t(:"ui.home_page.thresholds.debate", formatted_count: Site.formatted_threshold_for_debate) %></h2>
         <% end %>
       <% end %>
-      <div class="section-panel-borderless">
-        <%= render "pages/home/debated_petitions", actioned: actioned %>
-      </div>
+      <%= render "pages/home/debated_petitions", actioned: actioned %>
     </section>
   <% end %>
 <% end %>

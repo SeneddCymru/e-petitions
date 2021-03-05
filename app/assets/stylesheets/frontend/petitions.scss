@@ -1,0 +1,27 @@
+.threshold-petitions {
+  margin-bottom: $gutter;
+
+  .intro {
+    color: $silver;
+    line-height: 1.375;
+    margin: 0;
+  }
+}
+
+section {
+  & > .lede:first-child {
+    @include font-size(1rem, 1.125rem);
+    line-height: 1.5;
+
+    background-color: $dark-blue;
+    color: $white;
+    font-weight: bold;
+    margin: (-$gutter) (-$gutter) $gutter (-$gutter);
+    padding: $gutter;
+
+    @include media(tablet) {
+      margin: (-$extra-gutter) (-$extra-gutter) $extra-gutter (-$extra-gutter);
+      padding: $extra-gutter;
+    }
+  }
+}

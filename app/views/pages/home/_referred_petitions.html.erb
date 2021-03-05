@@ -1,5 +1,5 @@
 <% if Site.disable_thresholds_and_debates? %>
-  <p id="referred-petitions-intro"><%= t(:"ui.home_page.referred_petitions.introduction") %></h2>
+  <p class="lede"><%= t(:"ui.home_page.referred_petitions.introduction") %></p>
   <h2 id="referral-threshold-heading"><%= t(:"ui.home_page.referred_petitions.title") %></h2>
 <% end %>
 <% if actioned[:referred][:count].zero? %>
@@ -13,5 +13,10 @@
       </li>
     <% end -%>
   </ol>
-  <p><%= link_to petition_count(:referred_explanation, actioned[:referred][:count]), petitions_path(state: :under_consideration), class: "view-all" %></p>
+  <p>
+    <%= link_to petitions_path(state: :under_consideration), class: "forward" do %>
+      <svg class="svg-icon" aria-hidden="true"><use xlink:href="#svg--arrow-circle-right"></use></svg>
+      <span><%= petition_count(:referred_explanation, actioned[:referred][:count]) %></span>
+    <% end %>
+  </p>
 <% end %>

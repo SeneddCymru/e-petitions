@@ -9,5 +9,10 @@
       </li>
     <% end -%>
   </ol>
-  <p><%= link_to petition_count(:open_explanation, actioned[:open][:count]), petitions_path(state: :collecting_signatures), class: "view-all" %></p>
+  <p>
+    <%= link_to petitions_path(state: :collecting_signatures), class: "forward" do %>
+      <svg class="svg-icon" aria-hidden="true"><use xlink:href="#svg--arrow-circle-right"></use></svg>
+      <span><%= petition_count(:open_explanation, actioned[:open][:count]) %></span>
+    <% end %>
+  </p>
 <% end %>

@@ -516,7 +516,7 @@ Then(/^I should see the petition's (\w+) timestamp$/) do |attribute|
 end
 
 When(/^I search all petitions for "(.*?)"$/) do |search_term|
-  within :css, '.search-petitions' do
+  within :css, 'section[aria-labelledby=search-petitions-heading]' do
     fill_in :search, with: search_term
 
     if I18n.locale == :"en-GB"

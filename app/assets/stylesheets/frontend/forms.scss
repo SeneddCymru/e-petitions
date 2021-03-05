@@ -1,0 +1,104 @@
+.field {
+  background-color: $silver-10;
+  display: flex;
+  flex-flow: column-reverse;
+  position: relative;
+
+  label, input[type=text] {
+    transition: all 0.2s;
+  }
+
+  label {
+    color: $silver-80;
+    font-size: 0.75rem;
+    height: 18px;
+    margin-top: -18px;
+  }
+
+  input[type=text] {
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 2px;
+    font-size: 1rem;
+    line-height: 1;
+    height: 56px;
+    padding: 26px 16px 10px 16px;
+  }
+
+  input[type=text]:placeholder-shown ~ label {
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: text;
+    transform-origin: left bottom;
+    transform: translate(16px, 42px) scale(1.5);
+  }
+
+  ::-webkit-input-placeholder {
+    transition: inherit;
+    opacity: 0;
+  }
+
+  input[type=text]:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+
+  input[type=text]:not(:placeholder-shown) ~ label,
+  input[type=text]:focus ~ label {
+    transform: translate(16px, 26px) scale(1);
+    cursor: pointer;
+  }
+
+  input[type=text]:not(:placeholder-shown) ~ label {
+    color: $silver;
+  }
+
+  input[type=text]:focus ~ label {
+    color: $purple;
+  }
+}
+
+.button {
+  background-color: $purple;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 2px;
+  color: $white;
+  display: inline-block;
+  font-size: 1.125rem;
+  line-height: 1;
+  font-family: $futura-bold;
+  font-weight: normal;
+  height: 56px;
+  padding: 18px;
+
+  &:hover {
+    background-color: $purple-60;
+  }
+
+  &:active {
+    background-color: $purple-80;
+  }
+}
+
+.field-group {
+  display: flex;
+
+  .field {
+    flex-grow: 1;
+
+    input {
+      border-radius: 2px 0 0 2px;
+    }
+  }
+
+  .button {
+    border-radius: 0 2px 2px 0;
+  }
+}
+
+.form-group {
+  margin: 0 0 $gutter 0;
+}

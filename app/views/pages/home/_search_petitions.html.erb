@@ -1,14 +1,11 @@
-<section class="search-petitions" aria-labelledby="search-petitions-heading">
+<section aria-labelledby="search-petitions-heading">
   <%= form_tag search_path, method: 'get', enforce_utf8: false do %>
-    <h2 id="search-petitions-heading">
-      <label for="search"><%= t(:"ui.home_page.search_petitions.heading") %></label>
-    </h2>
-
-    <div class="search-inline">
-      <%= text_field_tag 'q', nil, autocomplete: 'off', class: 'form-control', id: 'search' %>
+    <div class="field-group">
+      <div class="field">
+        <%= text_field_tag 'q', nil, autocomplete: 'off', id: 'search', placeholder: ' ' %>
+        <label for="search" id="search-petitions-heading"><%= t(:"ui.home_page.search_petitions.heading") %></label>
+      </div>
       <%= t(:"ui.home_page.search_petitions.submit_button_html") %>
     </div>
   <% end %>
-
-  <%= link_to t(:"ui.home_page.search_petitions.all_petitions_link"), petitions_path, :class => 'view-all' %>
 </section>

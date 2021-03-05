@@ -12,10 +12,46 @@ body {
   line-height: 1.5;
 }
 
+h1 {
+  @include font-size(2.5rem, 2.5rem);
+  line-height: 1.125;
+  margin: $gutter 0 $gutter-half 0;
+}
+
+h2 {
+  @include font-size(2rem, 2rem);
+  line-height: 1.125;
+  margin: $gutter 0 $gutter-half 0;
+}
+
+h3 {
+  @include font-size(1.5rem, 1.5rem);
+  line-height: 1.25;
+  margin: $gutter 0 0 0;
+}
+
 p {
   font-size: 1rem;
   line-height: 1.4375;
   margin: $gutter-quarter 0 $gutter-three-quarters 0;
+}
+
+p + ul, p + ol {
+  margin-top: -5px;
+}
+
+ul, ol {
+  font-size: 1rem;
+  line-height: 1.4375;
+  list-style: none;
+  margin: 0 0 $gutter-three-quarters 0;
+  padding: 0;
+}
+
+li {
+  font-size: 1rem;
+  line-height: 1.4375;
+  margin-top: $gutter-half;
 }
 
 a {
@@ -26,3 +62,10 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+h1, h2, h3 {
+  & > a {
+    font-weight: normal;
+  }
+}
+

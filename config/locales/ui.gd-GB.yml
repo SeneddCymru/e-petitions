@@ -267,7 +267,7 @@ gd-GB:
       search_petitions:
         heading: "Search petitions"
         submit_button_html: |-
-          <input type="submit" value="Search" class="inline-submit" data-disable-with="Search" tabindex="%{tabindex}">
+          <input type="submit" class="button" value="Search" data-disable-with="Search">
         all_open_link: "View all open petitions"
         all_petitions_link: "View all petitions"
       debated_petitions:
@@ -779,7 +779,7 @@ gd-GB:
         <p class="text-secondary">These petitions did not meet the <a href="/help#rules">rules for petitions</a>. They are published in the language in which they were submitted.</p>
     local_search:
       submit_button_html: |-
-        <input type="submit" value="Search" class="inline-submit" data-disable-with="Search" tabindex="%{tabindex}">
+        <input type="submit" class="button" value="Search" data-disable-with="Search">
       postcode: "Scottish postcode"
     privacy_page:
       body_html: |-

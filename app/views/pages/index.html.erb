@@ -1,10 +1,10 @@
 <%= cache_for :home_page do %>
-  <h1 class="visuallyhidden"><%= t(:"ui.home_page.heading") %></h1>
+  <h1 class="visually-hidden"><%= t(:"ui.home_page.heading") %></h1>
 
   <% if no_petitions_yet? %>
-    <div class="section-panel-borderless no-petitions-yet">
-      <p class="lede"><%= t(:"ui.home_page.opened.lede") %></p>
-    </div>
+    <section aria-labelledby="petitions-opened-heading">
+      <h2 id="petitions-opened-heading"><%= t(:"ui.home_page.opened.lede") %></h2>
+    </section>
   <% end %>
 
   <% unless no_petitions_yet? %>
@@ -18,9 +18,14 @@
     <%= render "pages/home/local_petitions" %>
   <% end %>
 
-  <section class="section-panel start-petition" aria-labelledby="start-a-petition-heading">
+  <section aria-labelledby="start-a-petition-heading">
     <h2 id="start-a-petition-heading"><%= t(:"ui.home_page.opened.start_a_petition.heading") %></h2>
     <p><%= t(:"ui.home_page.opened.start_a_petition.requirements") %></p>
-    <%= link_to t(:"ui.home_page.opened.start_a_petition.link"), check_petitions_path, class: "button forward" %>
+    <p>
+      <%= link_to check_petitions_path, class: "forward" do %>
+        <svg class="svg-icon" aria-hidden="true"><use xlink:href="#svg--arrow-circle-right"></use></svg>
+        <span><%= t(:"ui.home_page.opened.start_a_petition.link") %></span>
+      <% end %>
+    </p>
   </section>
 <% end %>
