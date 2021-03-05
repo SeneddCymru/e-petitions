@@ -1,15 +1,17 @@
-<h1 class="page-title">
-  <% if @postcode.present? %>
-    <%= t(:"ui.petitions.local.index.postcode_bad.heading") %>
+<section aria-labelledby="page-heading">
+  <h1 class="page-heading">
+    <% if @postcode.present? %>
+      <%= t(:"ui.petitions.local.index.postcode_bad.heading") %>
+    <% else %>
+      <%= t(:"ui.petitions.local.index.postcode_blank.heading") %>
+    <% end %>
+  </h1>
+
+  <% if @postcode.blank? %>
+    <p><%= t(:"ui.petitions.local.index.postcode_blank.find_local_petitions") %></p>
   <% else %>
-    <%= t(:"ui.petitions.local.index.postcode_blank.heading") %>
+    <p><%= t(:"ui.petitions.local.index.postcode_bad.couldnt_find_postcode_html", postcode: params[:postcode]) %></p>
   <% end %>
-</h1>
 
-<% if @postcode.blank? %>
-  <p><%= t(:"ui.petitions.local.index.postcode_blank.find_local_petitions") %></p>
-<% else %>
-  <p><%= t(:"ui.petitions.local.index.postcode_bad.couldnt_find_postcode_html", postcode: params[:postcode]) %></p>
-<% end %>
-
-<%= render 'local_search' %>
+  <%= render 'local_search' %>
+</section>

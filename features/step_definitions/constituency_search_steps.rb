@@ -52,7 +52,7 @@ When(/^I search for petitions local to me in "(.*?)"$/) do |postcode|
     @my_member.destroy
   end
 
-  within :css, '.local-to-you' do
+  within :css, 'section[aria-labelledby=local-to-you-heading]' do
     fill_in "Scottish postcode", with: postcode
     click_on "Search"
   end
