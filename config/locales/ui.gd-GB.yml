@@ -314,7 +314,7 @@ gd-GB:
     petitions:
       check:
         intro_html: |-
-          <h1 class="page-title">Start a petition</h1>
+          <h1 id="page-heading">Start a petition</h1>
           <p>Remember, your petition must meet the <a href="/rules">rules for petitions</a></p>
         action:
           label: "What do you want us to do?"

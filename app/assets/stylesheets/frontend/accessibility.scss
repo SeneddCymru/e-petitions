@@ -14,7 +14,7 @@ a[name] {
   }
 }
 
-a {
+a, summary {
   transition: box-shadow 0.2s;
 
   &:focus {

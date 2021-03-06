@@ -72,6 +72,20 @@ form {
   input[type=text]:focus ~ label {
     color: $purple;
   }
+
+  .character-count {
+    position: absolute;
+    right: $gutter-half;
+    bottom: $gutter-half;
+    text-align: right;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .too-many-characters {
+    color: $red;
+  }
 }
 
 .field + .error-message {

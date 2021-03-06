@@ -87,6 +87,21 @@ td:first-child {
   padding-left: 0;
 }
 
+details {
+  margin: 0 0 $gutter 0;
+
+  summary {
+    color: $link-color;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 0 $gutter-half 0;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
 .list-bullet {
   & > li {
     margin-top: $gutter-half;
