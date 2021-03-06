@@ -4,7 +4,7 @@
   <form method="get" action="/petitions/check-results">
     <div class="form-group">
       <div class="field">
-        <textarea name="q" id="action" placeholder=" " maxlength="140" data-max-length="100" style="height: 96px;"><%= @new_petition.action %></textarea>
+        <textarea name="q" id="action" placeholder=" " data-max-length="100"><%= @new_petition.action %></textarea>
         <p class="character-count"><%= t(:"ui.application.character_count", count: 100) %></p>
         <label for="action" class="form-label"><%= t(:"ui.petitions.check.action.label") %></label>
       </div>

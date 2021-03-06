@@ -4,7 +4,7 @@
   <%= form_for @feedback, url: feedback_path, html: { class: "wizard_form new_petition_form" } do |f| %>
     <%= form_row for: [@feedback, :comment] do %>
       <div class="field">
-        <%= f.text_area :comment, style: "height: 156px", placeholder: " " %>
+        <%= f.text_area :comment, style: "min-height: 156px", placeholder: " " %>
         <%= f.label :comment, t(:"ui.feedback.new.feedback.comments.label"), class: "form-label" %>
       </div>
       <%= error_messages_for_field @feedback, :comment %>

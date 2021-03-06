@@ -22,18 +22,23 @@ form {
   input[type=text], textarea {
     background-color: transparent;
     box-sizing: border-box;
-    border: 0;
+    border: 1px solid $silver-10;
     border-radius: 2px;
     font-size: 1rem;
     line-height: 1;
     height: 56px;
-    padding: 26px 16px 10px 16px;
+    padding: 25px 15px 9px 15px;
   }
 
   textarea {
+    transition: height 0s;
     line-height: 1.25;
     overflow: hidden;
     resize: vertical;
+  }
+
+  textarea[data-max-length] {
+    padding-bottom: 30px;
   }
 
   textarea:placeholder-shown ~ label,
@@ -161,4 +166,8 @@ form {
   p:first-child {
     margin: 0 0 $gutter-quarter 0;
   }
+}
+
+textarea[data-max-length='100'] {
+  min-height: 118px;
 }
