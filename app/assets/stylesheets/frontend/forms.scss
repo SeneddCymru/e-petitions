@@ -130,13 +130,16 @@ form {
   font-weight: normal;
   height: 56px;
   padding: 18px;
+  text-decoration: none;
 
   &:hover {
     background-color: $purple-60;
+    text-decoration: none;
   }
 
   &:active {
     background-color: $purple-80;
+    text-decoration: none;
   }
 }
 
