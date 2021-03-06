@@ -14,9 +14,8 @@
     <% end -%>
   </ol>
   <p>
-    <%= link_to petitions_path(state: :under_consideration), class: "forward" do %>
-      <svg class="svg-icon" aria-hidden="true"><use xlink:href="#svg--arrow-circle-right"></use></svg>
-      <span><%= petition_count(:referred_explanation, actioned[:referred][:count]) %></span>
+    <%= link_to petitions_path(state: :under_consideration), class: "forward-page" do %>
+      <%= petition_count(:referred_explanation, actioned[:referred][:count]) %>
     <% end %>
   </p>
 <% end %>

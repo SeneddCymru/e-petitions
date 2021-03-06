@@ -18,15 +18,7 @@ module FormHelper
 
   def error_messages_for_field(object, field_name, options = {})
     if errors = object && object.errors[field_name].presence
-      if controller.admin_request?
-        content_tag :span, errors.first, { class: 'error-message' }.merge(options)
-      else
-        icon = content_tag(:use, '', 'xlink:href': '#svg--warning')
-        svg = content_tag(:svg, icon, class: 'svg-icon')
-        error = content_tag(:span, errors.first)
-
-        content_tag :div, svg + error, { class: 'error-message' }.merge(options)
-      end
+      content_tag :span, errors.first, { class: 'error-message' }.merge(options)
     end
   end
 end

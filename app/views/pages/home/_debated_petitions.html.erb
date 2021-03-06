@@ -22,6 +22,14 @@
       </li>
     <% end -%>
   </ol>
-  <p><%= link_to petition_count(:debated_explanation, actioned[:with_debated_outcome][:count]), petitions_path(state: :debated), class: "view-all" %></p>
-  <p><%= link_to petition_count(:not_debated_explanation, actioned[:not_debated][:count]), petitions_path(state: :not_debated), class: "view-all" %></p>
+  <p>
+    <%= link_to petitions_path(state: :debated), class: "forward-page" do %>
+      <%= petition_count(:debated_explanation, actioned[:with_debated_outcome][:count]) %>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to petitions_path(state: :not_debated), class: "forward-page" do %>
+      <%= petition_count(:not_debated_explanation, actioned[:not_debated][:count]) %>
+    <% end %>
+  </p>
 <% end %>

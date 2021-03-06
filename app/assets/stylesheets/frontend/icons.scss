@@ -1,13 +1,25 @@
-.svg-icon {
-  fill: currentColor;
-  width: 18px;
-  height: 18px;
-  margin-right: 5px;
-  flex-grow: 0;
-  flex-shrink: 0;
+%icon-prefix {
+  display: inline-flex;
+
+  &::before {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+  }
 }
 
-a.forward {
-  display: inline-flex;
-  line-height: 1.25;
+a.forward-page {
+  @extend %icon-prefix;
+
+  &::before {
+    content: image-url('frontend/sprite.svg#arrow-right');
+  }
+}
+
+a.back-page {
+  @extend %icon-prefix;
+
+  &::before {
+    content: image-url('frontend/sprite.svg#arrow-left');
+  }
 }

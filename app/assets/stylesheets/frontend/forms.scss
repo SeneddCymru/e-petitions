@@ -27,7 +27,7 @@ form {
     font-size: 1rem;
     line-height: 1;
     height: 56px;
-    padding: 25px 15px 9px 15px;
+    padding: 25px 53px 9px 15px;
   }
 
   textarea {
@@ -89,7 +89,7 @@ form {
   }
 
   .too-many-characters {
-    color: $red;
+    color: $error;
   }
 }
 
@@ -99,18 +99,28 @@ form {
 
 .error {
   .field {
+    &::after {
+      content: image-url('frontend/sprite.svg#alert-red');
+      display: block;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: 16px;
+      right: 16px;
+    }
+
     input[type=text], textarea {
-      border: 1px solid $red;
+      border: 1px solid $error;
 
       &:focus {
-        box-shadow: 0 0 0 3px $red;
+        box-shadow: 0 0 0 3px $error;
       }
     }
   }
 
   .field + .error-message {
-    display: inline-flex;
-    color: $red;
+    display: block;
+    color: $error;
     font-size: 1rem;
     line-height: 1.25;
     margin: $gutter-half 0 $gutter-three-quarters 0;

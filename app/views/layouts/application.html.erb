@@ -8,6 +8,7 @@
       <%= stylesheet_link_tag 'print', media: 'print' %>
       <%= preload_link_tag font_path('FuturaBT-Book.ttf') %>
       <%= preload_link_tag font_path('FuturaBT-Bold.ttf') %>
+      <%= preload_link_tag image_path('frontend/sprite.svg'), as: 'image' %>
       <meta name="viewport" content="width = device-width" />
       <%= render 'application/os' %>
       <%= render 'application/social_meta' %>
@@ -18,7 +19,6 @@
     <%= yield :head %>
   </head>
   <body>
-    <%= render 'application/svg' %>
     <%= render 'application/header' %>
 
     <main id="content" role="main">
