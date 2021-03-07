@@ -536,6 +536,7 @@ gd-GB:
         n_sponsors_needed_heading: |-
           You need %{count} supporters
       previous_action:
+        heading: "Previous action taken"
         label: "What action have you taken previously to resolve this issue?"
         help_html: |-
           <details>
@@ -595,6 +596,7 @@ gd-GB:
       petition_duration: "This petition ran for %{duration}"
       parliament_debated_on: "Parliament debated this petition on %{date}"
       additional_details:
+        heading: "Background information"
         label: "Background information"
         help_html: |-
           <details>

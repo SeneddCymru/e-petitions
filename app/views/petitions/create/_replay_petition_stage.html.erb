@@ -5,30 +5,27 @@
 <%= form.hidden_field :previous_action %>
 <%= form.hidden_field :additional_details %>
 
-<h1 class="page-title"><%= t(:"ui.petitions.create.replay_petition_stage.heading") %></h1>
+<h1 id="page-heading"><%= t(:"ui.petitions.create.replay_petition_stage.heading") %></h1>
 
-<hr>
-
-<div class="panel-indent">
-  <h1><%= petition.action %></h1>
-  <div><%= auto_link(simple_format(h(petition.background)), html: { rel: "nofollow" }) %></div>
-  <div><%= petition.previous_action %></div>
-  <% if petition.additional_details.present? %>
-    <details>
-      <summary><span class="summary"><%= t(:"ui.petitions.more_details") %></span></summary>
-      <div><%= auto_link(simple_format(h(petition.additional_details)), html: { rel: "nofollow" }) %></div>
-    </details>
-  <% end %>
+<div class="preview-petition">
+  <h2 class="action"><%= petition.action %></h2>
+  <div class="background">
+    <h3><%= t(:"ui.petitions.background.preamble") %></h3>
+    <%= auto_link(simple_format(h(petition.background)), html: { rel: "nofollow" }) %>
+  </div>
+  <div class="previous-action">
+    <h3><%= t(:"ui.petitions.previous_action.heading") %></h3>
+    <%= auto_link(simple_format(h(petition.previous_action)), html: { rel: "nofollow" }) %>
+  </div>
+  <div class="additional-details">
+    <h3><%= t(:"ui.petitions.additional_details.heading") %></h3>
+    <%= auto_link(simple_format(h(petition.additional_details)), html: { rel: "nofollow" }) %>
+  </div>
 </div>
 
 <div class="button-group">
-  <div>
-    <%= t(:"ui.petitions.create.replay_petition_stage.go_back_html") %>
-  </div>
-
-  <div>
-    <%= t(:"ui.petitions.create.replay_petition_stage.submit_html") %>
-  </div>
+  <div><%= t(:"ui.petitions.create.replay_petition_stage.go_back_html") %></div>
+  <div><%= t(:"ui.petitions.create.replay_petition_stage.submit_html") %></div>
 </div>
 
 <hr>

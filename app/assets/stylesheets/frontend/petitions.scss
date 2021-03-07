@@ -140,3 +140,52 @@ section {
     }
   }
 }
+
+.preview-petition {
+  border-top: 1px solid $border-color;
+  margin: $gutter (-$gutter);
+  padding: $gutter $gutter 0;
+
+  @include media(tablet) {
+    margin: $extra-gutter 0;
+    padding: $extra-gutter 0 0;
+  }
+
+  .action {
+    color: $purple;
+    margin: 0 0 $gutter-half 0;
+  }
+
+  .background {
+    margin-top: $gutter;
+
+    h3 {
+      margin: $gutter-half 0 $gutter-quarter 0;
+      font-size: 1.125rem;
+    }
+
+    p {
+      font-family: $futura-book;
+      font-size: 1.125rem;
+      margin: $gutter-quarter 0 $gutter-half 0;
+    }
+  }
+
+  .previous-action, .additional-details {
+    margin-top: $gutter;
+
+    h3 {
+      font-family: $futura-bold;
+      font-size: 1rem;
+      margin: $gutter-three-quarters 0 $gutter-quarter 0;
+    }
+
+    p {
+      margin: 0 0 $gutter-half 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
