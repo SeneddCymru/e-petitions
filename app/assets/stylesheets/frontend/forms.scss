@@ -14,7 +14,7 @@ form {
   }
 
   label {
-    color: $silver-80;
+    color: $dark-grey;
     font-size: 0.75rem;
     height: 18px;
     margin-top: -18px;
@@ -72,10 +72,13 @@ form {
     cursor: pointer;
   }
 
+  select + label,
+  textarea:not(:placeholder-shown) ~ label,
   input[type=text]:not(:placeholder-shown) ~ label {
-    color: $silver;
+    color: $darker-grey;
   }
 
+  select:focus + label,
   textarea:focus ~ label,
   input[type=text]:focus ~ label {
     color: $purple;
@@ -96,7 +99,7 @@ form {
   }
 
   select ~ label {
-    color: $silver;
+    color: $darker-grey;
   }
 
   .character-count {
