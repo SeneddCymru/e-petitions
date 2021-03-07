@@ -102,6 +102,17 @@ details {
   }
 }
 
+hr {
+  background-color: $border-color;
+  border: none;
+  height: 1px;
+  margin: $gutter (-$gutter);
+
+  @include media(tablet) {
+    margin: $extra-gutter 0;
+  }
+}
+
 .list-bullet {
   & > li {
     margin-top: $gutter-half;
