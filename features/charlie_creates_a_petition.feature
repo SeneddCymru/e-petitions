@@ -153,7 +153,6 @@ Scenario: Charlie tries to submit an invalid petition
   Then I should see a heading called "Check your petition"
 
   And I should see "The wombats of wimbledon rock."
-  And I expand "More details"
   And I should see "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
 
   And I press "Go back and make changes"
