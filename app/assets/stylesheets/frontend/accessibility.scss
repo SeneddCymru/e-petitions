@@ -15,11 +15,10 @@ a[name] {
 }
 
 a, summary {
-  transition: box-shadow 0.2s;
-
   &:focus {
-    box-shadow: 0 0 0 4px $focus-color;
-    border-radius: 2px;
+    outline: 4px solid $focus-color;
+    outline-offset: 4px;
+    -moz-outline-offset: 4px;
   }
 }
 
