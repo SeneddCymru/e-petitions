@@ -1,14 +1,14 @@
 <section aria-labelledby="page-heading">
-  <h1 id="page-heading"><%= t(:"ui.petitions.thank_you.heading") %></h1>
+  <h1 id="page-heading" class="email-heading"><%= t(:"ui.petitions.thank_you.heading") %></h1>
 
   <% if Site.collecting_sponsors? %>
-    <p class="lede"><%= t(:"ui.petitions.thank_you.link_emailed") %></p>
+    <p><%= t(:"ui.petitions.thank_you.link_emailed") %></p>
     <h2><%= t(:"ui.petitions.thank_you.n_sponsors_needed_heading", count: Site.minimum_number_of_sponsors) %></h2>
     <p><%= t(:"ui.petitions.thank_you.n_sponsors_needed", count: Site.minimum_number_of_sponsors) %></p>
 
     <%= render 'notification', message: t(:"ui.petitions.thank_you.n_sponsors_needed_notice", count: Site.minimum_number_of_sponsors) %>
   <% else %>
-    <p class="lede"><%= t(:"ui.petitions.thank_you.confirmation_link_emailed") %></p>
-    <p><%= t(:"ui.petitions.thank_you.confirmation_needed") %></p>
+    <p><%= t(:"ui.petitions.thank_you.confirmation_link_emailed") %></p>
+    <%= render "notification", message: t(:"ui.petitions.thank_you.confirmation_needed") %>
   <% end %>
 </section>

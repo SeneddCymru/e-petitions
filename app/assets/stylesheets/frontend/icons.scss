@@ -36,3 +36,22 @@
     content: image-url('frontend/sprite.svg#arrow-left');
   }
 }
+
+.email-heading {
+  display: flex;
+
+  &::before {
+    content: image-url('frontend/sprite.svg#email');
+    flex-shrink: 0;
+    margin-right: $gutter-three-quarters;
+    width: 34px;
+    height: 25px;
+  }
+
+  @include media(tablet) {
+    &::before {
+      width: 40px;
+      height: 29px;
+    }
+  }
+}

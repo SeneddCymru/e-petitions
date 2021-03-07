@@ -1,5 +1,3 @@
-<h1 class="page-title"><%= t(:"ui.petitions.create.replay_email_stage.heading") %></h1>
-
 <%= form.hidden_field :name %>
 <%= form.hidden_field :postcode %>
 <%= form.hidden_field :location_code %>
@@ -7,13 +5,17 @@
 <%= form.hidden_field :privacy_notice %>
 
 <%= form_row for: [signature, :email] do %>
-  <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label"), class: "form-label visuallyhidden" %>
+  <div class="field">
+    <%= form.text_field :email, inputmode: "email", placeholder: " " %>
+    <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label") %>
+  </div>
   <%= error_messages_for_field signature, :email %>
-  <%= form.text_field :email, inputmode: "email", class: "form-control" %>
 <% end %>
 
-<span>
-   <%= t(:"ui.signatures.confirm.email_form.submit_html") %>
-</span>
-
 <p><%= t(:"ui.signatures.confirm.email_form.fix_email_if_wrong") %></p>
+
+<div class="button-group">
+  <div>
+   <%= t(:"ui.signatures.confirm.email_form.submit_html") %>
+  </div>
+</div>

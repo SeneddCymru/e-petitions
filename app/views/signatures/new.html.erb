@@ -1,5 +1,8 @@
-<%= form_for @signature, url: confirm_petition_signatures_path(@petition) do |form| %>
-  <h1 class="page-title"><%= t(:"ui.signatures.new.heading") %></h1>
-  <h2 class="page-subtitle"><%= @petition.action %></h2>
-  <%= render "form", form: form, signature: @signature %>
-<% end %>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading"><%= t(:"ui.signatures.new.heading") %></h1>
+
+  <%= form_for @signature, url: confirm_petition_signatures_path(@petition) do |form| %>
+    <h2><%= @petition.action %></h2>
+    <%= render "form", form: form, signature: @signature %>
+  <% end %>
+</section>

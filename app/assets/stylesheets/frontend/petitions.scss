@@ -82,6 +82,10 @@ section {
     margin: 0;
     padding-left: $extra-gutter;
   }
+
+  & + details {
+    margin-top: $gutter;
+  }
 }
 
 .duplicate-petitions {
