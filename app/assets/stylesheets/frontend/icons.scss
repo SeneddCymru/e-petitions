@@ -8,7 +8,7 @@
   }
 }
 
-a.forward-page {
+.forward-page {
   @extend %icon-prefix;
 
   &::before {
@@ -16,7 +16,7 @@ a.forward-page {
   }
 }
 
-a.back-page {
+.back-page {
   @extend %icon-prefix;
 
   &::before {

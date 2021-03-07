@@ -1,41 +1,51 @@
-<%= link_to check_results_petitions_path(q: petition.action), class: "back-page" do %>
-  <%= t(:"ui.application.back") %>
-<% end %>
+<p>
+  <%= link_to check_results_petitions_path(q: petition.action), class: "back-page" do %>
+    <%= t(:"ui.application.back") %>
+  <% end %>
+</p>
 
 <%= t(:"ui.petitions.create.petition_stage.intro_html") %>
 
 <%= render "petitions/create/error_summary", form: form %>
 
 <%= form_row for: [petition, :action] do %>
-  <%= form.label :action, t(:"ui.petitions.action.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_area :action, data: { max_length: 100 }, placeholder: " " %>
+    <p class="character-count"><%= t(:"ui.application.character_count", count: 100) %></p>
+    <%= form.label :action, t(:"ui.petitions.action.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :action %>
-  <%= form.text_area :action, rows: 3, data: { max_length: 100 }, class: "form-control" %>
-  <p class="character-count"><%= t(:"ui.application.character_count", count: 100) %></p>
   <%= t(:"ui.petitions.action.help_html") %>
 <% end %>
 
 <%= form_row for: [petition, :background] do %>
-  <%= form.label :background, t(:"ui.petitions.background.label"), class: "form-label" %>
   <p><%= t(:"ui.petitions.background.preamble") %></p>
+  <div class="field">
+    <%= form.text_area :background, data: { max_length: 500 }, placeholder: " " %>
+    <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
+    <%= form.label :background, t(:"ui.petitions.background.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :background %>
-  <%= form.text_area :background, rows: 5, data: { max_length: 500 }, class: "form-control" %>
-  <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
   <%= t(:"ui.petitions.background.help_html") %>
 <% end %>
 
 <%= form_row for: [petition, :previous_action] do %>
-  <%= form.label :previous_action, t(:"ui.petitions.previous_action.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_area :previous_action, data: { max_length: 500 }, placeholder: " " %>
+    <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
+    <%= form.label :previous_action, t(:"ui.petitions.previous_action.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :previous_action %>
-  <%= form.text_area :previous_action, rows: 7, data: { max_length: 500 }, class: "form-control" %>
-  <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
   <%= t(:"ui.petitions.previous_action.help_html") %>
 <% end %>
 
 <%= form_row for: [petition, :additional_details] do %>
-  <%= form.label :additional_details, t(:"ui.petitions.additional_details.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_area :additional_details, data: { max_length: 1000 }, placeholder: " " %>
+    <p class="character-count"><%= t(:"ui.application.character_count", count: 1000) %></p>
+    <%= form.label :additional_details, t(:"ui.petitions.additional_details.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :additional_details %>
-  <%= form.text_area :additional_details, rows: 7, data: { max_length: 1000 }, class: "form-control" %>
-  <p class="character-count"><%= t(:"ui.application.character_count", count: 1000) %></p>
   <%= t(:"ui.petitions.additional_details.help_html") %>
 <% end %>
 

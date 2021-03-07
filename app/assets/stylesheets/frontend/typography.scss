@@ -54,12 +54,19 @@ li {
   margin-top: $gutter-half;
 }
 
-a {
+a, button.link {
+  border: none;
+  background: transparent;
+  color: $purple;
+  cursor: pointer;
+  font-size: inherit;
   font-weight: bold;
+  line-height: inherit;
+  padding: 0;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, button.link:hover {
   text-decoration: underline;
 }
 
@@ -88,7 +95,7 @@ td:first-child {
 }
 
 details {
-  margin: 0 0 $gutter 0;
+  margin: $gutter-half 0 $gutter 0;
 
   summary {
     color: $link-color;

@@ -152,7 +152,7 @@ en-GB:
           <p>When it goes live, we’ll email you a link so you can start sharing it.</p>
     help_page:
       body_html: |-
-        <h1 id="page-header">Creating a petition</h1>
+        <h1 id="page-heading">Creating a petition</h1>
 
         <p>Petitions are a way to ask the Parliament to do something. Petitions can:</p>
 
@@ -396,10 +396,10 @@ en-GB:
       action:
         label: "What do you want us to do?"
         help_html: |-
-          <p class="form-hint">Example: Introduce a 10p charge for single use plastic bags</p>
-          <details class="form-group-help">
-            <summary><span class="summary">Show more examples</span></summary>
-            <div class="panel-indent">
+          <p>Example: Introduce a 10p charge for single use plastic bags</p>
+          <details>
+            <summary>Show more examples</summary>
+            <div>
               <p>This will be the title of your petition and should explain what the petition is about in a few words.</p>
               <p>Good petitions say clearly what they want the Scottish Parliament to do and must  not be a slogan or campaign name.</p>
               <p>Good examples:</p>
@@ -455,7 +455,7 @@ en-GB:
           heading: "We couldn’t create this petition"
         petition_stage:
           intro_html: |-
-            <h1 class="page-title">Start a petition</h1>
+            <h1 id="page-heading">Start a petition</h1>
             <p>Remember, your petition must meet the <a href="/rules">rules for petitions</a></p>
           submit_html: |-
             <button type="submit" name="move_next" class="button forward" data-disable-with="Preview petition">Preview petition</button>
@@ -470,9 +470,9 @@ en-GB:
         replay_petition_stage:
           heading: "Check your petition"
           submit_html: |-
-            <button type="submit" name="move_next" class="button forward" data-disable-with="This looks good">This looks good</button>
+            <button type="submit" name="move_next" class="button" data-disable-with="This looks good">This looks good</button>
           go_back_html: |-
-            <button type="submit" name="move_back" class="button-secondary back" data-disable-with="Go back and make changes">Go back and make changes</button>
+            <button type="submit" name="move_back" class="button button-secondary" data-disable-with="Go back and make changes">Go back and make changes</button>
           submit_warning_html: |-
             <p class="secondary">You cannot change your petition after this point.</p>
             <p class="secondary">This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job or any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) think carefully about whether you are happy for this to be published.</p>
@@ -534,9 +534,9 @@ en-GB:
       previous_action:
         label: "What action have you taken previously to resolve this issue?"
         help_html: |-
-          <details class="form-group-help">
-            <summary><span class="summary">Help writing previous action</span></summary>
-            <div class="panel-indent">
+          <details>
+            <summary>Help writing previous action</summary>
+            <div>
               <p>Before you petition the Scottish Parliament, you need to have taken some action to raise the issue. This can be a range of activities but <strong>should include contacting a decision maker such as one of your MSP(s) or the Scottish Government</strong>.</p>
               <p>Please let us know what outcome of this activity was. For example, if you contacted an MSP, what was their response to your petition idea?</p>
               <p>Good examples</p>
@@ -556,9 +556,9 @@ en-GB:
         label: "Petition summary"
         preamble: "Calling on the Scottish Parliament to urge the Scottish Government to…"
         help_html: |-
-          <details class="form-group-help">
-            <summary><span class="summary">Help writing summary</span></summary>
-            <div class="panel-indent">
+          <details>
+            <summary>Help writing summary</summary>
+            <div>
               <p>This section should be one or two sentences and should state clearly what action you want the Parliament to take.</p>
             </div>
           </details>
@@ -593,9 +593,9 @@ en-GB:
       additional_details:
         label: "Background information"
         help_html: |-
-          <details class="form-group-help">
-            <summary><span class="summary">Help writing the background information</span></summary>
-            <div class="panel-indent">
+          <details>
+            <summary>Help writing the background information</summary>
+            <div>
               <p>In this section, you can provide any other information you want to let the Parliament know about to help the Public Petitions Committee understand why you would like it to consider the issue(s) you have raised.</p>
               <p>You might want to add links to any webpages you think might be helpful. Just make sure these don’t link to webpages with commenting sections (like news articles which we can’t publish).</p>
               <p>We’re unable to accept supplementary information, such as correspondence, legal documents, photographs, or copies of Freedom of Information requests as part of your petition, but there may be a way to summarise this information, so long as it meets our <a href="/rules">rules about petitions</a>.</p>
@@ -652,19 +652,15 @@ en-GB:
       petitions_run_length: |-
         Petitions can collect signatures for a maximum of 4 weeks
       about_petition_data_html: |-
-        <details role="group">
-          <summary role="button" aria-controls="about-json-content" aria-expanded="true">
-            <span class="summary">About petition data</span>
-          </summary>
-          <div id="about-json-content" aria-hidden="false">
-            <p>
-              The data shows the number of people who have signed the petition
-              by country as well as in the constituency of each Member of the Scottish Parliament.
-              This data is available for all petitions on the site. It is not a
-              list of people who have signed the petition. The only name
-              that is shared on the site is that of the petition creator.
-            </p>
-          </div>
+        <details>
+          <summary>About petition data</summary>
+          <p>
+            The data shows the number of people who have signed the petition
+            by country as well as in the constituency of each Member of the Scottish Parliament.
+            This data is available for all petitions on the site. It is not a
+            list of people who have signed the petition. The only name
+            that is shared on the site is that of the petition creator.
+          </p>
         </details>
       parliament_debate_description: |-
         The Public Petitions Committee considers all petitions that get more than %{threshold} signatures for a debate
@@ -773,7 +769,7 @@ en-GB:
     application:
       back: "Back"
       back_html: |-
-        <button type="submit" name="move_back" class="back-page" data-disable-with="Back">Back</button>
+        <button type="submit" name="move_back" class="link back-page" data-disable-with="Back">Back</button>
       continue_html: |-
         <button type="submit" class="button forward">Continue</button>
       character_count: "%{count} characters max"

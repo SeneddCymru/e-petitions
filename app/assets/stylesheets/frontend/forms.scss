@@ -9,7 +9,7 @@ form {
   position: relative;
   border-radius: 2px;
 
-  label, input[type=text], textarea {
+  label, input[type=text], select, textarea {
     transition: all 0.2s;
   }
 
@@ -63,6 +63,7 @@ form {
     opacity: 1;
   }
 
+  select + label,
   textarea:not(:placeholder-shown) ~ label,
   textarea:focus ~ label,
   input[type=text]:not(:placeholder-shown) ~ label,
@@ -80,10 +81,28 @@ form {
     color: $purple;
   }
 
+  select {
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 2px;
+    font-size: 1rem;
+    line-height: 1;
+    height: 56px;
+    padding: 25px 15px 9px 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  select ~ label {
+    color: $silver;
+  }
+
   .character-count {
     position: absolute;
-    right: $gutter-half;
-    bottom: $gutter-half;
+    right: 16px;
+    bottom: 16px;
     text-align: right;
     margin: 0;
     font-size: 1rem;
@@ -111,7 +130,7 @@ form {
       right: 16px;
     }
 
-    input[type=text], textarea {
+    input[type=text], select, textarea {
       border: 1px solid $error;
 
       &:focus {
@@ -120,6 +139,7 @@ form {
     }
   }
 
+  .multiple-choice + .error-message,
   .field + .error-message {
     display: block;
     color: $error;
@@ -132,25 +152,50 @@ form {
 .button {
   background-color: $purple;
   box-sizing: border-box;
-  border: 0;
+  border: 2px solid $purple;
   border-radius: 2px;
   color: $white;
   display: inline-block;
   font-size: 1.125rem;
-  line-height: 1.25;
+  line-height: 1;
   font-family: $futura-bold;
   font-weight: normal;
   height: 56px;
-  padding: 18px;
+  padding: 18px 0;
   text-decoration: none;
+  width: 100%;
 
   &:hover {
     background-color: $purple-60;
+    border: 2px solid $purple-60;
     text-decoration: none;
   }
 
   &:active {
     background-color: $purple-80;
+    border: 2px solid $purple-80;
+    text-decoration: none;
+  }
+
+  @include media(tablet) {
+    padding: 18px;
+    width: auto;
+  }
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: $purple;
+
+  &:hover {
+    background-color: transparent;
+    color: $purple-60;
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: transparent;
+    color: $purple-80;
     text-decoration: none;
   }
 }
@@ -201,6 +246,56 @@ form {
   }
 }
 
+.button-group {
+  display: flex;
+  flex-direction: column;
+  margin: $gutter 0;
+
+  .button {
+    width: 100%;
+  }
+
+  & > * {
+    margin: 0 0 $gutter-half 0;
+  }
+
+  & > *:last-child {
+    margin: 0 0 0 0;
+  }
+
+  @include media(tablet) {
+    flex-direction: row;
+
+    .button {
+      width: auto;
+    }
+
+    & > * {
+      margin: 0 $gutter-half 0 0;
+    }
+
+    & > *:last-child {
+      margin: 0 0 0 0;
+    }
+  }
+}
+
 textarea[data-max-length='100'] {
-  min-height: 118px;
+  min-height: 98px;
+}
+
+textarea[data-max-length='500'] {
+  min-height: 158px;
+}
+
+textarea[data-max-length='1000'] {
+  min-height: 258px;
+}
+
+input[type=hidden] + p {
+  margin-top: 0;
+}
+
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
 }

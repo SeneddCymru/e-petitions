@@ -1,4 +1,4 @@
-<span><%= t(:"ui.application.back_html") %></span>
+<p><%= t(:"ui.application.back_html") %></p>
 
 <%= form.hidden_field :action %>
 <%= form.hidden_field :background %>
@@ -6,6 +6,8 @@
 <%= form.hidden_field :additional_details %>
 
 <h1 class="page-title"><%= t(:"ui.petitions.create.replay_petition_stage.heading") %></h1>
+
+<hr>
 
 <div class="panel-indent">
   <h1><%= petition.action %></h1>
@@ -19,13 +21,17 @@
   <% end %>
 </div>
 
-<span>
-  <%= t(:"ui.petitions.create.replay_petition_stage.go_back_html") %>
-</span>
+<div class="button-group">
+  <div>
+    <%= t(:"ui.petitions.create.replay_petition_stage.go_back_html") %>
+  </div>
 
-<span>
-  <%= t(:"ui.petitions.create.replay_petition_stage.submit_html") %>
-</span>
+  <div>
+    <%= t(:"ui.petitions.create.replay_petition_stage.submit_html") %>
+  </div>
+</div>
+
+<hr>
 
 <div>
   <%= t(:"ui.petitions.create.replay_petition_stage.submit_warning_html") %>

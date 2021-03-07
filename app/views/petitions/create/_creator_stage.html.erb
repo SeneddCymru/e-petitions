@@ -1,4 +1,4 @@
-<span><%= t(:"ui.application.back_html") %></span>
+<p><%= t(:"ui.application.back_html") %></p>
 
 <%= form.hidden_field :action %>
 <%= form.hidden_field :background %>
@@ -7,63 +7,79 @@
 <%= form.hidden_field :autocorrect_domain, value: "1" %>
 <%= form.hidden_field :collect_signatures %>
 
-<h1 class="page-title"><%= t(:"ui.petitions.create.creator_stage.heading") %></h1>
-<h2 class="page-subtitle"><%= petition.action %></h2>
+<h1 id="page-heading"><%= t(:"ui.petitions.create.creator_stage.heading") %></h1>
+
+<h2><%= petition.action %></h2>
+
+<hr>
 
 <%= render "petitions/create/error_summary", form: form %>
 
 <%= form_row for: [petition, :name] do %>
-  <%= form.label :name, t(:"ui.petitions.create.creator_stage.name.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_field :name, maxlength: 255, placeholder: " " %>
+    <%= form.label :name, t(:"ui.petitions.create.creator_stage.name.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :name %>
-  <%= form.text_field :name, maxlength: 255, size: nil, class: "form-control" %>
-  <span class="form-hint"><%= t(:"ui.petitions.create.creator_stage.name.hint") %></span>
+  <p><%= t(:"ui.petitions.create.creator_stage.name.hint") %></p>
 <% end %>
 
 <%= form_row for: [petition, :email] do %>
-  <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_field :email, inputmode: "email", placeholder: " " %>
+    <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :email %>
-  <%= form.text_field :email, inputmode: "email", class: "form-control" %>
 <% end %>
 
 <%= form_row for: [petition, :phone_number] do %>
-  <%= form.label :phone_number, t(:"ui.petitions.create.creator_stage.phone_number.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_field :phone_number, inputmode: "tel", placeholder: " " %>
+    <%= form.label :phone_number, t(:"ui.petitions.create.creator_stage.phone_number.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :phone_number %>
-  <%= form.text_field :phone_number, inputmode: "tel", class: "form-control" %>
 <% end %>
 
 <%= form_row for: [petition, :location_code] do %>
-  <%= form.label :location_code, t(:"ui.petitions.create.creator_stage.location.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.select :location_code, countries_for_create %>
+    <%= form.label :location_code, t(:"ui.petitions.create.creator_stage.location.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :location_code %>
-  <%= form.select :location_code, countries_for_create, {}, class: "form-control" %>
-  <p class="form-hint"><%= t(:"ui.petitions.create.creator_stage.location.hint") %></p>
+  <p><%= t(:"ui.petitions.create.creator_stage.location.hint") %></p>
 <% end %>
 
 <%= form_row for: [petition, :address] do %>
-  <%= form.label :address, t(:"ui.petitions.create.creator_stage.address.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_area :address, rows: 4, data: { max_length: 500 }, placeholder: " " %>
+    <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
+    <%= form.label :address, t(:"ui.petitions.create.creator_stage.address.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :address %>
-  <%= form.text_area :address, rows: 4, data: { max_length: 500 }, class: "form-control" %>
-  <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
-  <span class="form-hint"><%= t(:"ui.petitions.create.creator_stage.address.hint") %></span>
+  <p><%= t(:"ui.petitions.create.creator_stage.address.hint") %></p>
+  </div>
 <% end %>
 
 <%= form_row for: [petition, :postcode] do %>
-  <%= form.label :postcode, t(:"ui.petitions.create.creator_stage.postcode.label"), class: "form-label" %>
+  <div class="field w-50">
+    <%= form.text_field :postcode, placeholder: " " %>
+    <%= form.label :postcode, t(:"ui.petitions.create.creator_stage.postcode.label"), class: "form-label" %>
+  </div>
   <%= error_messages_for_field petition, :postcode %>
-  <%= form.text_field :postcode, class: "form-control small" %>
 <% end %>
 
 <%= form_row for: [petition, :privacy_notice] do %>
   <div class="multiple-choice">
-    <%= error_messages_for_field petition, :privacy_notice %>
     <%= form.check_box :privacy_notice %>
     <%= form.label :privacy_notice, t(:"ui.petitions.create.creator_stage.privacy_notice.label").try(:html_safe), class: "privacy-notice" %>
   </div>
+  <%= error_messages_for_field petition, :privacy_notice %>
 <% end %>
 
-<span>
+<div class="button-group">
   <%= t(:"ui.petitions.create.creator_stage.continue_html") %>
-</span>
-
-<div>
-  <%= t(:"ui.petitions.create.creator_stage.about_published_data_html") %>
 </div>
+
+<hr>
+
+<%= t(:"ui.petitions.create.creator_stage.about_published_data_html") %>

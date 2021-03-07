@@ -11,3 +11,21 @@
   border: 0 !important;
   white-space: nowrap !important;
 }
+
+.w-25 {
+  @include media(tablet) {
+    width: 25%;
+  }
+}
+
+.w-50 {
+  @include media(tablet) {
+    width: 50%;
+  }
+}
+
+.w-75 {
+  @include media(tablet) {
+    width: 75%;
+  }
+}

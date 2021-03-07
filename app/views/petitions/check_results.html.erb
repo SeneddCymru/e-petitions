@@ -1,37 +1,45 @@
-<%= link_to check_petitions_path(q: @new_petition.action), class: "back-page" do %>
-  <%= t(:"ui.petitions.check.results.back") %>
-<% end %>
+<section aria-labelledby="page-heading">
+  <p>
+    <%= link_to check_petitions_path(q: @new_petition.action), class: "back-page" do %>
+      <%= t(:"ui.petitions.check.results.back") %>
+    <% end %>
+  </p>
 
-<% if petitions = @new_petition.duplicates %>
+  <% if petitions = @new_petition.duplicates %>
 
-  <h1 class="page-title"><%= t(:"ui.petitions.check.results.duplicate.heading") %></h1>
-  <p><%= t(:"ui.petitions.check.results.duplicate.sign_if_match") %></p>
-  <%= render 'notification', message: t(:"ui.petitions.check.results.duplicate.reject_notice") %>
+    <h1 class="page-title"><%= t(:"ui.petitions.check.results.duplicate.heading") %></h1>
+    <p><%= t(:"ui.petitions.check.results.duplicate.sign_if_match") %></p>
+    <%= render 'notification', message: t(:"ui.petitions.check.results.duplicate.reject_notice") %>
 
-  <% petitions.each do |petition| %>
-    <ul>
-      <li class="petition-item petition-item-existing panel-indent">
-        <h3><%= link_to petition.action, petition_path(petition) %></h3>
-        <% unless petition.rejected? -%>
-          <p><%= signature_count(:default, petition.signature_count) %></p>
-        <% end %>
-        <p><%= petition.background %></p>
-      </li>
-    </ul>
+    <section>
+      <% petitions.each do |petition| %>
+        <ul>
+          <li class="petition-item petition-item-existing panel-indent">
+            <h3><%= link_to petition.action, petition_path(petition) %></h3>
+            <% unless petition.rejected? -%>
+              <p><%= signature_count(:default, petition.signature_count) %></p>
+            <% end %>
+            <p><%= petition.background %></p>
+          </li>
+        </ul>
+      <% end %>
+    </section>
+
+    <hr>
+
+    <%= link_to(new_petition_path(q: @new_petition.action), class: "button") do %>
+      <%= t(:"ui.petitions.check.results.duplicate.continue_btn") %>
+    <% end %>
+
+  <% else %>
+
+    <h1 class="page-title"><%= t(:"ui.petitions.check.results.unique.heading") %></h1>
+    <p><%= t(:"ui.petitions.check.results.unique.no_match") %></p>
+    <p><%= t(:"ui.petitions.check.results.unique.ok_to_continue") %><br /></p>
+
+    <%= link_to(new_petition_path(q: @new_petition.action), class: "button") do %>
+      <%= t(:"ui.petitions.check.results.unique.continue") %>
+    <% end %>
+
   <% end %>
-
-  <%= link_to(new_petition_path(q: @new_petition.action), class: "button forward") do %>
-    <%= t(:"ui.petitions.check.results.duplicate.continue_btn") %>
-  <% end %>
-
-<% else %>
-
-  <h1 class="page-title"><%= t(:"ui.petitions.check.results.unique.heading") %></h1>
-  <p><%= t(:"ui.petitions.check.results.unique.no_match") %></p>
-  <p><%= t(:"ui.petitions.check.results.unique.ok_to_continue") %><br /></p>
-
-  <%= link_to(new_petition_path(q: @new_petition.action), class: "button forward") do %>
-    <%= t(:"ui.petitions.check.results.unique.continue") %>
-  <% end %>
-
-<% end %>
+</section>
