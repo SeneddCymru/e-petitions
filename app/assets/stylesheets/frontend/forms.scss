@@ -297,10 +297,10 @@ form {
     content: image-url('frontend/sprite.svg#alert-red');
     display: block;
     position: absolute;
-    width: $gutter;
-    height: $gutter;
-    top: $gutter;
-    right: $gutter;
+    width: 24px;
+    height: 24px;
+    top: $gutter-three-quarters;
+    right: $gutter-three-quarters;
   }
 
   h2 {
