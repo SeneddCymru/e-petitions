@@ -218,7 +218,6 @@ class PetitionCreator
     errors.add(:address, :too_long, count: 500) if address.length > 500
     errors.add(:postcode, :too_long, count: 255) if postcode.length > 255
     errors.add(:name, :has_uri) if URI::regexp =~ name
-    errors.add(:privacy_notice, :accepted) unless privacy_notice == "1"
 
     if email.present?
       email_validator.validate(self)
@@ -231,6 +230,8 @@ class PetitionCreator
         postcode_validator.validate(self)
       end
     end
+
+    errors.add(:privacy_notice, :accepted) unless privacy_notice == "1"
 
     if replay_email?
       @stage = "replay_email"
