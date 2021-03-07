@@ -537,7 +537,8 @@ en-GB:
           You need %{count} supporters
       previous_action:
         heading: "Previous action taken"
-        label: "What action have you taken previously to resolve this issue?"
+        preamble: "What action have you taken previously to resolve this issue?"
+        label: "Previous action taken"
         help_html: |-
           <details>
             <summary><span>Help writing previous action</span></summary>

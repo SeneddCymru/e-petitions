@@ -30,6 +30,7 @@
 <% end %>
 
 <%= form_row for: [petition, :previous_action] do %>
+  <p><%= t(:"ui.petitions.previous_action.preamble") %></p>
   <div class="field">
     <%= form.text_area :previous_action, data: { max_length: 500 }, placeholder: " " %>
     <p class="character-count"><%= t(:"ui.application.character_count", count: 500) %></p>
