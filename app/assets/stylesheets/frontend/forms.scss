@@ -285,6 +285,48 @@ form {
   }
 }
 
+.error-summary {
+  box-shadow: 0 1px 2px 0 tint($error, 60%);
+  background-color: $error-10;
+  margin: $gutter 0;
+  padding: $gutter;
+  padding-right: $gutter * 3;
+  position: relative;
+
+  &::before {
+    content: image-url('frontend/sprite.svg#alert-red');
+    display: block;
+    position: absolute;
+    width: $gutter;
+    height: $gutter;
+    top: $gutter;
+    right: $gutter;
+  }
+
+  h2 {
+    @include font-size(1.125rem, 1.5rem);
+    margin: 0 0 $gutter-half;
+    color: $error;
+  }
+
+  p {
+    @include font-size(0.875rem, 1rem);
+
+    color: $error;
+    font-weight: bold;
+    margin: 0 0 $gutter-three-quarters;
+  }
+
+  ul {
+    li {
+      @include font-size(0.875rem, 1rem);
+
+      font-weight: bold;
+      margin: $gutter-quarter 0 0;
+    }
+  }
+}
+
 textarea[data-max-length='100'] {
   min-height: 98px;
 }
