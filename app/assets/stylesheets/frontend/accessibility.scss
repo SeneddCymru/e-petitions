@@ -1,3 +1,9 @@
+%no-outline {
+  outline: none !important;
+  outline-offset: 0px !important;
+  -moz-outline-offset: 0px !important;
+}
+
 *:focus {
   outline: none;
   outline-offset: 0px;
