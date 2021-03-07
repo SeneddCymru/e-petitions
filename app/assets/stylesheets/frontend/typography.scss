@@ -101,11 +101,49 @@ details {
     color: $link-color;
     cursor: pointer;
     display: inline-block;
-    margin: 0 0 $gutter-half 0;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.375;
+
+    span {
+      @extend %icon-suffix;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &::before {
+        content: image-url('frontend/sprite.svg#plus');
+      }
+    }
+  }
+
+  &[open] {
+    summary {
+      span {
+        &::before {
+          content: image-url('frontend/sprite.svg#minus');
+        }
+      }
+    }
+
+    & > div {
+      border-top: 1px solid $border-color;
+      margin-top: $gutter-quarter;
+      padding-top: $gutter-half;
+    }
   }
 
   summary::-webkit-details-marker {
     display: none;
+  }
+
+  .list-bullet {
+    margin-top: -$gutter-half;
+
+    li {
+      margin-top: $gutter-quarter;
+    }
   }
 }
 
