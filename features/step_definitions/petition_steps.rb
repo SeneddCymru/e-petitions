@@ -255,13 +255,13 @@ end
 When(/^I choose to collect signatures$/) do
   if I18n.locale == :"en-GB"
     steps %Q(
-      When I choose "Yes, I want to collect signatures"
+      When I choose "I want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
   else
     steps %Q(
-      When I choose "Yes, I want to collect signatures"
+      When I choose "I want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
@@ -271,13 +271,13 @@ end
 When(/^I choose not to collect signatures$/) do
   if I18n.locale == :"en-GB"
     steps %Q(
-      When I choose "No, I do not want to collect signatures"
+      When I choose "I do not want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
   else
     steps %Q(
-      When I choose "No, I do not want to collect signatures"
+      When I choose "I do not want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )

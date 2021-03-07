@@ -164,7 +164,7 @@ Scenario: Charlie tries to submit an invalid petition
   And I press "Preview petition"
   And I press "This looks good"
 
-  Then I should see a heading called "Would you like to collect signatures on your petition?"
+  Then I should see a heading called "Collecting signatures"
   When I press "Continue"
   Then I should see a heading called "Sign your petition"
 
