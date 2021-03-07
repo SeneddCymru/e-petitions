@@ -39,9 +39,11 @@ $border-color: $silver-40;
 $background-color: $silver-10;
 $link-color: $purple;
 $focus-color: $jade;
+$text-color: $black;
 
 body {
   background-color: $background-color;
+  color: $text-color;
 }
 
 a {
