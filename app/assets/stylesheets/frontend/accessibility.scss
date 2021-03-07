@@ -14,7 +14,7 @@ a[name] {
   }
 }
 
-a, summary {
+a:not(.button), summary {
   &:focus {
     outline: 4px solid $focus-color;
     outline-offset: 4px;
