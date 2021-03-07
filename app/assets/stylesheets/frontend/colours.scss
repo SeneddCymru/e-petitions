@@ -27,6 +27,7 @@ $purple-80: tint($purple, 20%);
 $purple-90: tint($purple, 10%);
 
 $silver: #848789;
+$silver-5: tint($silver, 95%);
 $silver-10: tint($silver, 90%);
 $silver-20: tint($silver, 80%);
 $silver-30: tint($silver, 70%);
@@ -42,6 +43,7 @@ $background-color: $silver-10;
 $link-color: $purple;
 $focus-color: $jade;
 $text-color: $black;
+$secondary-color: $darker-grey;
 
 body {
   background-color: $background-color;
@@ -50,6 +52,10 @@ body {
 
 a {
   color: $link-color;
+}
+
+.secondary {
+  color: $secondary-color;
 }
 
 svg {

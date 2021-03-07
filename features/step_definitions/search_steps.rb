@@ -1,6 +1,6 @@
 When(/^I browse to see only "([^"]*)" petitions$/) do |facet|
   step "I go to the petitions page"
-  within :css, '#other-search-lists' do
+  within :css, 'nav[aria-labelledby=other-lists-heading]' do
     click_on facet
   end
 end
@@ -17,7 +17,7 @@ When(/^I search for "([^"]*)" with "([^"]*)"$/) do |facet, term|
 end
 
 Then(/^I should( not)? see an? "([^"]*)" petition count of (\d+)$/) do |see_or_not, state, count|
-  have_petition_count_for_state = have_css(%{#other-search-lists a:contains("#{state.capitalize}")}, :text => count.to_s)
+  have_petition_count_for_state = have_css(%{nav[aria-labelledby=other-lists-heading] a:contains("#{state.capitalize}")}, :text => count.to_s)
   if see_or_not.blank?
     expect(page).to have_petition_count_for_state
   else

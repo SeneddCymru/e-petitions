@@ -1,31 +1,35 @@
-<details class="lists-of-petitions">
-  <summary><span class="summary"><%= t(:"ui.petitions.other_lists") %></span></summary>
-  <div>
-    <ul>
-    <% public_petition_facets_with_counts(@petitions).each do |facet, count| %>
-      <li>
-        <%= link_to petitions_url(state: facet) do %>
-          <%= t(facet, scope: :"ui.petitions.lists", quantity: number_with_delimiter(count)) %>
-        <% end %>
-      </li>
-    <% end %>
-    </ul>
-  </div>
-</details>
+<section aria-labelledby="page-heading">
+  <details class="lists-of-petitions">
+    <summary><span><%= t(:"ui.petitions.other_lists") %></span></summary>
+    <div>
+      <ul>
+      <% public_petition_facets_with_counts(@petitions).each do |facet, count| %>
+        <li>
+          <%= link_to petitions_url(state: facet) do %>
+            <%= t(facet, scope: :"ui.petitions.lists", quantity: number_with_delimiter(count)) %>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </details>
 
-<h1 class="page-title"><%= t(@petitions.scope, scope: :"ui.petitions.index.page_titles") %></h1>
-<%= t(:"#{@petitions.scope}_html", scope: :"ui.list_headers", default: "") %>
+  <h1 id="page-heading"><%= t(@petitions.scope, scope: :"ui.petitions.index.page_titles") %></h1>
+  <%= t(:"#{@petitions.scope}_html", scope: :"ui.list_headers", default: "") %>
 
-<%= form_tag petitions_path, method: 'get', enforce_utf8: false do %>
-  <label for="search" class="visuallyhidden"><%= t(:"ui.home_page.search_petitions.heading") %></label>
-  <div class="search-inline">
-    <%= text_field_tag 'q', @petitions.query, autocomplete: 'off', class: 'form-control', id: 'search' %>
+  <%= form_tag petitions_path, method: 'get', enforce_utf8: false do %>
+    <div class="field-group">
+      <div class="field">
+        <%= text_field_tag 'q', @petitions.query, autocomplete: 'off', id: 'search', placeholder: ' ' %>
+        <label for="search"><%= t(:"ui.home_page.search_petitions.heading") %></label>
+      </div>
+      <%= t(:"ui.petitions.search.submit_button_html") %>
+    </div>
     <%= hidden_field_tag 'state', @petitions.scope %>
-    <%= t(:"ui.petitions.search.submit_button_html") %>
-  </div>
-<% end %>
+  <% end %>
 
-<p class="filtered-petition-count"><%= filtered_petition_count(@petitions) %></p>
+  <p class="filtered-petition-count"><%= filtered_petition_count(@petitions) %></p>
 
-<%= render 'petitions/search/results' %>
-<%= render 'petitions/search/filter_nav' %>
+  <%= render 'petitions/search/results' %>
+  <%= render 'petitions/search/filter_nav' %>
+</section>

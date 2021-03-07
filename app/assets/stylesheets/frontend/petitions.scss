@@ -116,7 +116,7 @@ section {
   }
 }
 
-.duplicate-petitions {
+.duplicate-petitions, .search-results ol {
   margin: $gutter 0;
 
   @include media(tablet) {
@@ -170,6 +170,141 @@ section {
     &:active {
       background-color: $purple-20;
     }
+  }
+}
+
+.search-results {
+  ol {
+    a {
+      h2 {
+        margin-bottom: $gutter-quarter;
+      }
+
+      p:last-child {
+        margin-top: $gutter-quarter;
+      }
+    }
+  }
+}
+
+.search-pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: $gutter 0;
+
+  @include media(tablet) {
+    margin: $extra-gutter 0;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    font-family: $futura-book;
+    font-weight: normal;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: 48px;
+    height: 48px;
+    justify-content: center;
+
+    &.previous {
+      align-items: flex-start;
+      background-image: image-url('frontend/sprite.svg#chevron-left');
+      padding-left: $extra-gutter;
+      background-position: center left;
+    }
+
+    &.next {
+      align-items: flex-end;
+      background-image: image-url('frontend/sprite.svg#chevron-right');
+      padding-right: $extra-gutter;
+      background-position: center right;
+    }
+
+    .page-count {
+      color: $secondary-color;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+
+    .paginate-label {
+      font-size: 1.25rem;
+      line-height: 1;
+      padding-top: $gutter-quarter;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      .paginate-label {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.lists-of-petitions {
+  background-color: $silver-5;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: $extra-gutter;
+  padding: $gutter;
+
+  summary {
+    display: block;
+
+    span {
+      display: flex;
+      font-size: 1.125rem;
+      justify-content: space-between;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &[open] {
+    & > div {
+      margin: $gutter (-$gutter) 0;
+      padding: 0 $gutter;
+
+      ul {
+        margin: 0;
+        margin-top: $gutter;
+      }
+
+      li {
+        margin: 0;
+        margin-top: $gutter-half;
+      }
+
+      a {
+        font-family: $futura-book;
+        font-weight: normal;
+        font-size: 1.125rem;
+      }
+    }
+  }
+}
+
+.other-search-lists {
+  ul {
+    margin-top: $gutter-half;
+  }
+
+  li {
+    margin-top: $gutter-quarter;
+  }
+
+  a {
+    font-family: $futura-book;
+    font-weight: normal;
+    font-size: 1.25rem;
+  }
+
+  hr {
+    margin: $gutter 0;
   }
 }
 

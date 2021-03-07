@@ -495,7 +495,7 @@ en-GB:
             <p>After this point you can only change the closing date by contacting the <a href="/contact">petitions team</a>.</p>
       search:
         submit_button_html: |-
-          <input type="submit" value="Search" class="inline-submit" data-disable-with="Search" tabindex="%{tabindex}">
+          <input type="submit" value="Search" class="button" data-disable-with="Search">
         results:
           items:
             facet_collecting_signatures:
@@ -507,8 +507,12 @@ en-GB:
               referred: "Under consideration from %{date}"
             facet_debated:
               debated_date: "Debated on %{date}"
+            facet_not_debated:
+              not_debated_date: "Decision not to debate taken on %{date}"
             facet_referred:
               referred_date: "Under consideration from %{date}"
+            facet_rejected:
+              rejected_date: "Rejected on %{date}"
             facet_completed:
               completed_date: "Closed on %{date}"
           no_match: "No petitions could be found matching your search terms."
