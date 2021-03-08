@@ -28,14 +28,20 @@
 
     <div id="rejection_preview" class="reject-flash-notice" style="display: none;">
       <strong>We'll send this standard text to the petition creator:</strong>
-      <div class="en">
-        <strong>English:</strong>
-        <div class="content"></div>
-      </div>
-      <div class="cy">
-        <strong>Gaelic:</strong>
-        <div class="content"></div>
-      </div>
+      <% if Site.disable_gaelic_website? %>
+        <div class="en">
+          <div class="content"></div>
+        </div>
+      <% else %>
+        <div class="en">
+          <strong>English:</strong>
+          <div class="content"></div>
+        </div>
+        <div class="cy">
+          <strong>Gaelic:</strong>
+          <div class="content"></div>
+        </div>
+      <% end %>
     </div>
 
     <% if Site.disable_gaelic_website? %>
