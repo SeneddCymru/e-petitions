@@ -728,7 +728,7 @@ gd-GB:
           <h2>Register to vote</h2>
           <p>To vote in the Scottish Parliament elections, you must be registered to vote.</p>
           <p>It takes less than 5 minutes.</p>
-          <a href="https://www.gov.uk/register-to-vote" rel="external">Register to vote</a>
+          <p><a href="https://www.gov.uk/register-to-vote" rel="external">Register to vote</a></p>
         external_links_html: |-
           <hr>
           <ul>
@@ -763,13 +763,13 @@ gd-GB:
       unsubscribe:
         back_button: "Return to home page"
         failed_html: |-
-          <h1>Failed to unsubscribe</h1>
+          <h1 id="page-heading">Failed to unsubscribe</h1>
           <p>Your unsubscribe link is invalid.</p>
         already_html: |-
-          <h1>Already unsubscribed from this petition</h1>
+          <h1 id="page-heading">Already unsubscribed from this petition</h1>
           <p>You have already unsubscribed from email updates about this petition.</p>
         success_html: |-
-          <h1>Successfully unsubscribed from this petition</h1>
+          <h1 id="page-heading">Successfully unsubscribed from this petition</h1>
           <p>You have unsubscribed from email updates about this petition.</p>
       confirmation:
         signatures: "signatures"

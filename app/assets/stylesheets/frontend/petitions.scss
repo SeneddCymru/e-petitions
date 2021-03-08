@@ -30,6 +30,82 @@
   transform-origin: center bottom;
 }
 
+// tumblingNumbers animation
+@keyframes tumblingNumbers {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+%tumblingNumbers {
+  animation-name: tumblingNumbers;
+}
+
+// tumble styles
+// Adapted from https://github.com/HubSpot/odometer
+
+.tumble {
+  display: inline-block;
+  position: relative;
+}
+
+.tumble-digit {
+  display: inline-block;
+  position: relative;
+  margin-right: -0.25em;
+}
+
+.tumble-digit-spacer {
+  display: inline-block;
+  visibility: hidden;
+}
+
+.tumble-digit-inner {
+  text-align: left;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.tumble-ribbon {
+  display: block;
+}
+
+.tumble-ribbon-inner {
+  display: block;
+  -webkit-backface-visibility: hidden;
+  @extend %animated;
+  @extend %tumblingNumbers;
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.tumble-value {
+  display: block;
+  text-align: center;
+}
+
+.tumble-first-value {
+  position: absolute;
+}
+
+.signature-number {
+  @include font-size(1.875rem, 3rem);
+  font-family: $futura-book;
+
+  .signatures {
+    @include font-size(1.25rem, 2rem);
+    display: inline-block;
+    margin-left: $gutter-half;
+  }
+}
+
 .threshold-petitions {
   margin-bottom: $gutter;
 
@@ -355,5 +431,61 @@ section {
     p:last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+.petition-share {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  background-color: $dark-blue;
+  color: $white;
+  margin: $gutter 0;
+  padding: $gutter;
+
+  h2 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap
+  }
+
+  li {
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center left;
+    flex: 1 1 100%;
+
+    @media(min-width: 320px) {
+      flex: 1 1 50%;
+    }
+
+    @media(min-width: 640px) {
+      flex: 1 1 25%;
+    }
+  }
+
+  a {
+    color: $white;
+    font-weight: normal;
+    display: block;
+    padding-left: 32px;
+  }
+
+  .email {
+    background-image: image-url('frontend/sprite.svg#share-email');
+  }
+
+  .twitter {
+    background-image: image-url('frontend/sprite.svg#share-twitter');
+  }
+
+  .facebook {
+    background-image: image-url('frontend/sprite.svg#share-facebook');
+  }
+
+  .whatsapp {
+    background-image: image-url('frontend/sprite.svg#share-whatsapp');
   }
 }
