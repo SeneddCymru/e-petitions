@@ -6,9 +6,6 @@
   <%= t(:"ui.feedback.thanks.body_html") %>
 
   <p>
-    <%= link_to home_path, class: 'forward' do %>
-      <svg class="svg-icon" aria-hidden="true"><use xlink:href="#svg--arrow-circle-right"></use></svg>
-      <span><%= t(:"ui.feedback.thanks.back_link") %></span>
-    <% end %>
+    <%= link_to t(:"ui.feedback.thanks.back_link"), home_path, class: 'forward-page' %>
   </p>
 </section>
