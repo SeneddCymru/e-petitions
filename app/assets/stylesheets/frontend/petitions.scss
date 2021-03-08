@@ -489,3 +489,113 @@ section {
     background-image: image-url('frontend/sprite.svg#share-whatsapp');
   }
 }
+
+.petition {
+  h1 {
+    @include font-size(1.75rem, 2.25rem);
+
+    color: $purple;
+    margin: 0;
+
+    span {
+      @include font-size(1.125rem, 1.25rem);
+
+      color: $secondary-color;
+      display: block;
+      margin-bottom: $gutter-half;
+    }
+  }
+
+  .background {
+    margin-top: $gutter;
+
+    h2 {
+      margin: $gutter-half 0 $gutter-quarter 0;
+      font-size: 1.125rem;
+      line-height: 1.375;
+    }
+
+    p {
+      font-family: $futura-book;
+      font-size: 1.125rem;
+      margin: $gutter-quarter 0 $gutter-half 0;
+    }
+  }
+
+  .previous-action, .additional-details {
+    margin-top: $gutter;
+
+    h3 {
+      font-family: $futura-bold;
+      font-size: 1.125rem;
+      margin: $gutter-three-quarters 0 $gutter-quarter 0;
+    }
+
+    p {
+      margin: 0 0 $gutter-half 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .petition-meta {
+    margin-top: $gutter;
+
+    li {
+      font-size: 1.25rem;
+      font-family: $futura-book;
+
+      .label {
+        display: block;
+        font-size: 1.125rem;
+        font-family: $futura-bold;
+      }
+
+      .note {
+        display: block;
+        color: $secondary-color;
+        font-size: 0.875rem;
+        margin-top: $gutter-quarter;
+      }
+    }
+  }
+
+  .referral-notice, .rejection-reason {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    background: $silver-10;
+    margin: $gutter 0 $extra-gutter;
+    padding: $gutter;
+
+    h2 {
+      font-size: 1.25rem;
+      font-family: $arial;
+      font-weight: bold;
+      line-height: 1.375;
+      margin: 0;
+    }
+  }
+
+  .signature-count {
+    font-family: $futura-book;
+    margin: $extra-gutter 0;
+
+    .count {
+      font-size: 3rem
+    }
+
+    .text {
+      font-size: 1.5rem;
+    }
+
+    .no-signature-count {
+      font-size: 1.5rem;
+    }
+  }
+
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}

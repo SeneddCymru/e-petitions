@@ -506,7 +506,7 @@ Then(/^I should see both petitions content$/) do
 end
 
 Then(/^I should not see both petitions content$/) do
-  expect(page).to have_selector(:css, ".petition-content", count: 2)
+  expect(page).to have_selector(:css, ".petition .background", count: 1)
 end
 
 Then(/^I should see the petition's (\w+) timestamp$/) do |attribute|

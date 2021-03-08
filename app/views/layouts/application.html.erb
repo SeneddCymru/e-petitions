@@ -29,9 +29,6 @@
     <%= cache_for :footer do %>
       <%= render 'application/footer' %>
       <%= javascript_include_tag 'application' %>
-      <% if open_petition_page? %>
-        <%= javascript_include_tag 'auto-updater' %>
-      <% end %>
     <% end %>
 
     <% if Site.translation_enabled? %>

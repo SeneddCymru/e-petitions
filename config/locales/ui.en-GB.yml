@@ -617,20 +617,20 @@ en-GB:
         open:
           heading: "What happens next?"
           link_html: |-
-            <a href="%{link}">The petition will be considered by the Public Petitions Committee after it stops collecting signatures</a>
+            <a href="%{link}">The petition will be considered by the Public Petitions Committee after it stops collecting signatures</a>
         waiting:
-          heading: "This petition is now under consideration by the Public Petitions Committee"
+          heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
-            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         closed:
-          heading: "This petition is now under consideration by the Public Petitions Committee"
+          heading: "This petition is now under consideration by the Public Petitions Committee"
           link_html: |-
-            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         referred:
           heading: |-
-            This petition is now under consideration by the Public Petitions Committee
+            This petition is now under consideration by the Public Petitions Committee
           link_html: |-
-            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
         completed:
           heading: |-
             This petition was considered by the Scottish Parliament

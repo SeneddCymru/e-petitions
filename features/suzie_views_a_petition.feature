@@ -42,8 +42,7 @@ Feature: Suzie views a petition
     Given an open petition exists with action: "Defence review", additional_details: "<i>We<i> like http://www.google.com and bambi@gmail.com"
     When I go to the petition page for "Defence review"
     Then the markup should be valid
-    When I click to see more details
-    Then I should see "<i>We<i>"
+    And I should see "<i>We<i>"
     And I should see a link called "http://www.google.com" linking to "http://www.google.com"
     And I should see a link called "bambi@gmail.com" linking to "mailto:bambi@gmail.com"
 
@@ -181,5 +180,5 @@ Feature: Suzie views a petition
 
     Scenarios:
       | state     | copy                                                                        |
-      | closed    | Find out about the Public Petitions Committee’s discussion of this petition |
+      | closed    | Find out about the Public Petitions Committee’s discussion of this petition |
       | completed | Find out about the decisions taken on this petition                         |
