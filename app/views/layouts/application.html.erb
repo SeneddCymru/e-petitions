@@ -4,6 +4,7 @@
     <title><%= page_title %></title>
     <%= cache_for :head do %>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <%= tag :meta, name: 'description', content: t(:"ui.home_page.heading") %>
       <%= stylesheet_link_tag 'application' %>
       <%= stylesheet_link_tag 'print', media: 'print' %>
       <%= preload_link_tag font_path('FuturaBT-Book.ttf') %>
