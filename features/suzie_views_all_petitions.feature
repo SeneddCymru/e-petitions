@@ -79,12 +79,12 @@ Feature: Suzy Signer views all petitions
   Scenario: Suzie browses open petitions and can see numbering in the list view
     Given a set of 101 petitions
     When I view all petitions from the home page
-    Then I should see "2 of 3"
+    Then I should see "2 of 7"
     And I navigate to the next page of petitions
-    Then I should see "1 of 3"
-    And I should see "3 of 3"
+    Then I should see "1 of 7"
+    And I should see "3 of 7"
     And I navigate to the next page of petitions
-    Then I should see "2 of 3"
+    Then I should see "2 of 7"
 
   Scenario: Suzie browses petitions collecting signatures and can see the closing date
     Given a petition "Good times" signed by "CHIC" that is collecting signatures

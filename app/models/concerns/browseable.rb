@@ -115,6 +115,7 @@ module Browseable
     delegate :next_page, :previous_page, to: :results
     delegate :total_entries, :total_pages, to: :results
     delegate :each, :empty?, :map, :to_a, to: :results
+    delegate :count, to: :execute_search
 
     def initialize(klass, params = {})
       @klass, @params = klass, params
@@ -156,8 +157,24 @@ module Browseable
       @query ||= params[:q].to_s
     end
 
+    def query?
+      query.present?
+    end
+
     def page_size
       @page_size ||= params.fetch(:count, default_page_size).to_i.clamp(1, max_page_size)
+    end
+
+    def page_size?
+      page_size != default_page_size
+    end
+
+    def current_params
+      new_params(current_page)
+    end
+
+    def first_params
+      new_params(1)
     end
 
     def previous_params
@@ -166,6 +183,10 @@ module Browseable
 
     def next_params
       new_params(next_page)
+    end
+
+    def last_params
+      new_params(total_pages)
     end
 
     def scope
@@ -213,10 +234,10 @@ module Browseable
 
     def new_params(page)
       {}.tap do |params|
-        params[:q] = query if query.present?
-        params[:state] = scope
-        params[:page] = page
-        params[:count] = page_size if params.key?(:count)
+        params[:q] = query if query?
+        params[:state] = scope if scoped?
+        params[:page] = page if page && page > 1
+        params[:count] = page_size if page_size?
         params.merge!(filters)
       end
     end

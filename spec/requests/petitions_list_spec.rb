@@ -85,7 +85,7 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
     it "redirects to all petitions if the provided state isn't valid" do
       get "/petitions.json?count=2&page=2&state=rejected"
 
-      expect(response).to redirect_to('/petitions?page=2&state=all')
+      expect(response).to redirect_to('/petitions?count=2&page=2&state=all')
     end
   end
 

@@ -14,7 +14,7 @@
   <p class="secondary">
   <%= t(
     :"ui.application.get_json_csv_html",
-    json_link: link_to("JSON", petitions_path(:json, params.permit(:q, :page, :state, :topic).to_h)),
+    json_link: link_to("JSON", petitions_path(:json, params.permit(:q, :page, :state, :topic, :count).to_h)),
     csv_link: link_to('CSV', petitions_path(:csv, params.permit(:q, :state, :topic).to_h))
   ) %></p>
 </div>

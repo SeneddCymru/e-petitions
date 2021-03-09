@@ -85,9 +85,13 @@ Feature: Suzy Singer searches by free text
     Given 51 open petitions exist with action: "International development spending"
     When I search for "Collecting signatures" with "International"
     And I follow "Next"
-    Then I should see 1 petition
+    Then I should see 15 petitions
+    And I follow "Next"
+    Then I should see 15 petitions
+    And I follow "Next"
+    Then I should see 6 petitions
     And I follow "Previous"
-    Then I should see 50 petitions
+    Then I should see 15 petitions
 
   Scenario: Viewing all archived petitions
     Given an archived petition with action: "Leave the EU"

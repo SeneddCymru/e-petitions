@@ -102,7 +102,7 @@ class PetitionsController < LocalizedController
       scope = scope.preload(:creator, :rejection, :debate_outcome)
     end
 
-    @petitions = scope.search(params)
+    @petitions = scope.search(search_params)
   end
 
   def retrieve_petition
@@ -136,7 +136,7 @@ class PetitionsController < LocalizedController
   end
 
   def search_params(overrides = {})
-    params.permit(:page, :q, :state).merge(overrides).to_h
+    params.permit(:page, :q, :state, :count).merge(overrides).to_h
   end
 
   def collecting_sponsors?
