@@ -29,7 +29,6 @@
       <%= form_row for: [f.object, :background] do %>
         <%= f.label :background, class: 'form-label' %>
         <%= error_messages_for_field @petition, :background %>
-        <span class="form-hint">Calling on the Scottish Parliament to urge the Scottish Government to…</span>
         <% I18n.with_locale petition_locale do %>
           <%= f.text_area :background, tabindex: increment, rows: 5, class: 'form-control' %>
         <% end %>
