@@ -18,6 +18,7 @@ class PaperPetition
   attribute :locale, :string, default: "en-GB"
   attribute :location_code, :string, default: "GB-SCT"
   attribute :signature_count, :integer
+  attribute :collect_signatures, :boolean, default: true
   attribute :submitted_on, :date
   attribute :name, :string
   attribute :email, :string
@@ -178,7 +179,7 @@ class PaperPetition
       referral_threshold_reached_at: closed_at,
       debate_threshold_reached_at: debate_threshold_reached_at,
       closed_at: closed_at, last_signed_at: closed_at,
-      referred_at: closed_at,
+      referred_at: closed_at, collect_signatures: collect_signatures
     }
   end
 

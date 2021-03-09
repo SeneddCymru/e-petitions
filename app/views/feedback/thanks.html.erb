@@ -1,7 +1,11 @@
-<h1><%= t(:"ui.feedback.thanks.heading") %></h1>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading"><%= t(:"ui.feedback.thanks.heading") %></h1>
 
-<%= render 'messages' %>
+  <%= render 'messages' %>
 
-<%= t(:"ui.feedback.thanks.body_html") %>
+  <%= t(:"ui.feedback.thanks.body_html") %>
 
-<p><%= link_to t(:"ui.feedback.thanks.back_link"), home_path, :class => 'link_button large_link_button return_to_homepage_button' %></p>
+  <p>
+    <%= link_to t(:"ui.feedback.thanks.back_link"), home_path, class: 'forward-page' %>
+  </p>
+</section>

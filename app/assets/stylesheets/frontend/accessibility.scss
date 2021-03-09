@@ -1,0 +1,57 @@
+%no-outline {
+  outline: none !important;
+  outline-offset: 0px !important;
+  -moz-outline-offset: 0px !important;
+}
+
+*:focus {
+  outline: none;
+  outline-offset: 0px;
+  -moz-outline-offset: 0px;
+}
+
+a[name] {
+  display: block;
+  position: relative;
+  top: -105px;
+
+  @include media(tablet) {
+    top: -115px;
+  }
+}
+
+a:not(.button), button.link, summary {
+  &:focus {
+    outline: 4px solid $focus-color;
+    outline-offset: 4px;
+    -moz-outline-offset: 4px;
+  }
+}
+
+.button {
+  transition: box-shadow 0.2s;
+
+  &:focus {
+    box-shadow: 0 0 0 4px $focus-color;
+    z-index: 1;
+  }
+}
+
+.field {
+  transition: box-shadow 0.2s;
+
+  input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 4px $focus-color;
+  }
+}
+
+.multiple-choice {
+  input[type=radio], input[type=checkbox] {
+    transition: box-shadow 0.2s;
+
+    &:focus {
+      box-shadow: 0 0 0 3px $focus-color;
+      border-color: $focus-color !important;
+    }
+  }
+}

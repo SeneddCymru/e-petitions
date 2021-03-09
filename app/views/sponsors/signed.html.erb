@@ -1,7 +1,7 @@
-<h1 class="page-title page-title-with-tick-icon">
-  <%= t(:"ui.sponsors.signed.heading") %>
-</h1>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading" class="signed-heading"><%= t(:"ui.sponsors.signed.heading") %></h1>
 
-<p><%= t(:"ui.sponsors.signed.added") %></p>
+  <p><%= t(:"ui.sponsors.signed.added") %></p>
 
-<%= t(:"ui.sponsors.signed.what_next_html", min_sponsors: Site.minimum_number_of_sponsors) %>
+  <%= t(:"ui.sponsors.signed.what_next_html", min_sponsors: Site.minimum_number_of_sponsors) %>
+</section>

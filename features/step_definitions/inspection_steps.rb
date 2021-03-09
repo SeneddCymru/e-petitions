@@ -71,7 +71,7 @@ Then(/^I should see the following search results:$/) do |values_table|
 end
 
 Then(/^I should see the following ordered list of petitions:$/) do |table|
-  actual_petitions = page.all(:css, '.search-results ol li a').map(&:text)
+  actual_petitions = page.all(:css, '.search-results ol li a h2').map(&:text)
   expected_petitions = table.raw.flatten
   expect(actual_petitions).to eq(expected_petitions)
 end

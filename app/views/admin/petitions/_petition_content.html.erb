@@ -10,23 +10,34 @@
 
 <div class="petition-content">
   <% if @petition.background? %>
+    <p>Calling on the Scottish Parliament to urge the Scottish Government to…</p>
     <%= apply_formatting(@petition, :background) %>
   <% end %>
 
-  <% if @petition.previous_action? %>
-    <%= apply_formatting(@petition, :previous_action) %>
-  <% end %>
-
   <% if @petition.in_todo_list? %>
-    <% if @petition.additional_details? %>
-      <%= apply_formatting(@petition, :additional_details) %>
+    <% if @petition.previous_action? %>
+      <h2>Previous action</h2>
+      <%= apply_formatting(@petition, :previous_action) %>
     <% end %>
 
+    <% if @petition.additional_details? %>
+      <h2>Background information</h2>
+      <%= apply_formatting(@petition, :additional_details) %>
+    <% end %>
   <% else %>
     <% if @petition.additional_details? %>
       <details>
         <summary><span>More details</span></summary>
-        <div><%= apply_formatting(@petition, :additional_details) %></div>
+
+        <% if @petition.previous_action? %>
+          <h2>Previous action</h2>
+          <%= apply_formatting(@petition, :previous_action) %>
+        <% end %>
+
+        <% if @petition.additional_details? %>
+          <h2>Background information</h2>
+          <%= apply_formatting(@petition, :additional_details) %>
+        <% end %>
       </details>
     <% end %>
   <% end %>

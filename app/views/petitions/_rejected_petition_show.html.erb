@@ -1,21 +1,20 @@
 <%= cache_for :petition do %>
-  <%= render "localize_content", petition: petition %>
+  <div class="petition rejected-petition">
+    <%= render "localize_content", petition: petition %>
 
-  <section class="rejection-reason" aria-labelledby="rejection-reason-heading">
-    <h2 id="rejection-reason-heading"><%= t(:"ui.petitions.reject_reason_heading") %></h2>
-    <%= rejection_description(petition.rejection.code) %>
-    <% if petition.rejection.details? %>
-      <p><%= markdown_to_html(petition.rejection.details) %></p>
-    <% end %>
-    <%= t(:"ui.petitions.reject_reason_standards_html", standards_link: petition_standards_link) %>
-  </section>
-  <ul class="petition-meta">
-    <li class="meta-deadline">
-      <span class="label"><%= t(:"ui.petitions.date_submitted") %></span> <%= short_date_format petition.created_at %>
-    </li>
-    <li class="meta-json">
-      <span class="note"><%= link_to t(:"ui.petitions.get_json"), petition_path(petition, :json) %></span>
-      <%= t(:"ui.petitions.about_petition_data_html") %>
-    </li>
-  </ul>
+    <ul class="petition-meta">
+      <li class="meta-deadline">
+        <span class="label"><%= t(:"ui.petitions.date_submitted") %></span> <%= short_date_format petition.created_at %>
+      </li>
+    </ul>
+
+    <section class="rejection-reason" aria-labelledby="rejection-reason-heading">
+      <h2 id="rejection-reason-heading"><%= t(:"ui.petitions.reject_reason_heading") %></h2>
+      <%= rejection_description(petition.rejection.code) %>
+      <% if petition.rejection.details? %>
+        <p><%= markdown_to_html(petition.rejection.details) %></p>
+      <% end %>
+      <%= t(:"ui.petitions.reject_reason_standards_html", standards_link: petition_standards_link) %>
+    </section>
+  </div>
 <% end %>

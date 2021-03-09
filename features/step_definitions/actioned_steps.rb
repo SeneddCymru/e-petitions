@@ -55,7 +55,7 @@ end
 Then(/^I should see an empty referral threshold section$/) do
   within(:css, "section[aria-labelledby=referral-threshold-heading]") do
     expect(page).to have_no_css("a[href='#{petitions_path(state: :referred)}']")
-    expect(page).to have_content("No petitions have been referred to the Public Petitions Committee yet")
+    expect(page).to have_content("No petitions are being considered yet")
   end
 end
 

@@ -1,3 +1,7 @@
-<%= form_for @signature, url: petition_sponsors_path(@petition, token: @petition.sponsor_token) do |form| %>
-  <%= render "email_form", form: form, signature: @signature %>
-<% end %>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading"><%= t(:"ui.petitions.create.replay_email_stage.heading") %></h1>
+
+  <%= form_for @signature, url: petition_sponsors_path(@petition, token: @petition.sponsor_token) do |form| %>
+    <%= render "email_form", form: form, signature: @signature %>
+  <% end %>
+</section>

@@ -525,6 +525,10 @@ class Petition < ActiveRecord::Base
     end
   end
 
+  def signature_count
+    collect_signatures? ? super : 0
+  end
+
   def to_param
     published? ? ('PE%04d' % pe_number_id) : ('PP%04d' % id)
   end

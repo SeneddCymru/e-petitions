@@ -1,4 +1,7 @@
-<%= form_for @signature, url: confirm_petition_sponsors_path(@petition, token: @petition.sponsor_token) do |form| %>
-  <h1 class="page-title"><%= t(:"ui.sponsors.new.heading", creator_name: @petition.creator.name) %></h1>
-  <%= render "form", form: form, signature: @signature %>
-<% end %>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading"><%= t(:"ui.sponsors.new.heading", creator_name: @petition.creator.name) %></h1>
+
+  <%= form_for @signature, url: confirm_petition_sponsors_path(@petition, token: @petition.sponsor_token) do |form| %>
+    <%= render "form", form: form, signature: @signature %>
+  <% end %>
+</section>

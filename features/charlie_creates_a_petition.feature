@@ -124,7 +124,7 @@ Scenario: Charlie tries to submit an invalid petition
   When I am allowed to make the petition action too long
   When I fill in "What do you want us to do?" with text longer than 100 characters
   And I fill in "Petition summary" with text longer than 500 characters
-  And I fill in "What action have you taken previously to resolve this issue?" with text longer than 500 characters
+  And I fill in "Previous action taken" with text longer than 500 characters
   And I fill in "Background information" with text longer than 1100 characters
   And I press "Preview petition"
 
@@ -135,7 +135,7 @@ Scenario: Charlie tries to submit an invalid petition
 
   When I fill in "What do you want us to do?" with "=cmd"
   And I fill in "Petition summary" with "@cmd"
-  And I fill in "What action have you taken previously to resolve this issue?" with "@cmd"
+  And I fill in "Previous action taken" with "@cmd"
   And I fill in "Background information" with "+cmd"
   And I press "Preview petition"
 
@@ -146,26 +146,25 @@ Scenario: Charlie tries to submit an invalid petition
 
   When I fill in "What do you want us to do?" with "The wombats of wimbledon rock."
   And I fill in "Petition summary" with "Give half of Wimbledon rock to wombats!"
-  And I fill in "What action have you taken previously to resolve this issue?" with "I asked my MP and she said to create a petition"
+  And I fill in "Previous action taken" with "I asked my MP and she said to create a petition"
   And I fill in "Background information" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
   And I press "Preview petition"
 
   Then I should see a heading called "Check your petition"
 
   And I should see "The wombats of wimbledon rock."
-  And I expand "More details"
   And I should see "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
 
   And I press "Go back and make changes"
   And the "What do you want us to do?" field should contain "The wombats of wimbledon rock."
   And the "Petition summary" field should contain "Give half of Wimbledon rock to wombats!"
-  And the "What action have you taken previously to resolve this issue?" field should contain "I asked my MP and she said to create a petition"
+  And the "Previous action taken" field should contain "I asked my MP and she said to create a petition"
   And the "Background information" field should contain "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
 
   And I press "Preview petition"
   And I press "This looks good"
 
-  Then I should see a heading called "Would you like to collect signatures on your petition?"
+  Then I should see a heading called "Collecting signatures"
   When I press "Continue"
   Then I should see a heading called "Sign your petition"
 

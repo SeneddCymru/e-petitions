@@ -1232,7 +1232,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         context "when the petition was created in English" do
           let(:petition) do
             FactoryBot.create(
-              :open_petition,
+              :closed_petition,
+              collect_signatures: false,
               action_en: "Do stuff",
               background_en: "Because of reasons",
               additional_details_en: "Here's some more reasons",
@@ -1273,7 +1274,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         context "when the petition was created in Gaelic" do
           let(:petition) do
             FactoryBot.create(
-              :open_petition,
+              :closed_petition,
+              collect_signatures: false,
               action_en: "Do stuff",
               background_en: "Because of reasons",
               additional_details_en: "Here's some more reasons",
@@ -1504,7 +1506,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         context "when the petition was created in English" do
           let(:petition) do
             FactoryBot.create(
-              :open_petition,
+              :closed_petition,
+              collect_signatures: false,
               action_en: "Do stuff",
               background_en: "Because of reasons",
               additional_details_en: "Here's some more reasons",
@@ -1592,7 +1595,8 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         context "when the petition was created in Gaelic" do
           let(:petition) do
             FactoryBot.create(
-              :open_petition,
+              :closed_petition,
+              collect_signatures: false,
               action_en: "Do stuff",
               background_en: "Because of reasons",
               additional_details_en: "Here's some more reasons",

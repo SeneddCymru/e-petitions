@@ -1,27 +1,35 @@
 <%= form.hidden_field :autocorrect_domain, value: "1" %>
 
 <%= form_row for: [signature, :name] do %>
-  <%= form.label :name, t(:"ui.petitions.create.creator_stage.name.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_field :name, maxlength: 255, placeholder: " "  %>
+    <%= form.label :name, t(:"ui.petitions.create.creator_stage.name.label") %>
+  </div>
   <%= error_messages_for_field signature, :name %>
-  <%= form.text_field :name, maxlength: 255, size: nil, class: "form-control"  %>
 <% end %>
 
 <%= form_row for: [signature, :email] do %>
-  <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_field :email, inputmode: "email", placeholder: " " %>
+    <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label") %>
+  </div>
   <%= error_messages_for_field signature, :email %>
-  <%= form.text_field :email, inputmode: "email", class: "form-control" %>
 <% end %>
 
 <%= form_row for: [signature, :location_code] do %>
-  <%= form.label :location_code, t(:"ui.petitions.create.creator_stage.location.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.select :location_code, countries_for_select %>
+    <%= form.label :location_code, t(:"ui.petitions.create.creator_stage.location.label") %>
+  </div>
   <%= error_messages_for_field signature, :location_code %>
-  <%= form.select :location_code, countries_for_select, {}, class: "form-control" %>
 <% end %>
 
 <%= form_row for: [signature, :postcode] do %>
-  <%= form.label :postcode, t(:"ui.petitions.create.creator_stage.postcode.label"), class: "form-label" %>
+  <div class="field w-50">
+    <%= form.text_field :postcode, placeholder: " " %>
+    <%= form.label :postcode, t(:"ui.petitions.create.creator_stage.postcode.label") %>
+  </div>
   <%= error_messages_for_field signature, :postcode %>
-  <%= form.text_field :postcode, class: "form-control small" %>
 <% end %>
 
 <% unless Site.disable_notify_by_email? %>
@@ -35,14 +43,16 @@
 
 <%= form_row for: [signature, :privacy_notice] do %>
   <div class="multiple-choice">
-    <%= error_messages_for_field signature, :privacy_notice %>
     <%= form.check_box :privacy_notice %>
     <%= form.label :privacy_notice, t(:"ui.petitions.create.creator_stage.privacy_notice.label").try(:html_safe), class: "privacy-notice" %>
   </div>
+  <%= error_messages_for_field signature, :privacy_notice %>
 <% end %>
 
-<span>
-  <%= t(:"ui.signatures.new.continue_html") %>
-</span>
+<div class="button-group">
+  <div>
+    <%= t(:"ui.signatures.new.continue_html") %>
+  </div>
+</div>
 
 <%= t(:"ui.signatures.privacy_notice_html") %>

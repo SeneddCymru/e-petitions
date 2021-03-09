@@ -1,62 +1,63 @@
 body > header {
-  position: relative;
-  margin: -1px 0;
-  padding: 18px 0;
+  width: 100%;
 
-  @include hover-links($white);
-
-  .language-switcher {
-    @extend %icon-globe;
-
-    background-position: left center;
-    font-size: 0.625rem;
-    font-weight: bold;
-    line-height: 1;
-    padding: 1px 0 0 14px;
-    position: absolute;
-    right: 0;
-    text-transform: uppercase;
+  .wrapper {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: $gutter;
+    max-width: $site-width;
 
     @include media(tablet) {
-      font-size: 0.75rem;
-      padding: 1px 0 0 16px;
+      padding: $gutter $extra-gutter;
     }
   }
 
   .brand {
-    @extend %icon-logo;
+    background-color: $white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    position: fixed;
+    width: 100%;
+    height: 85px;
+    top: 0;
+    left: 0;
+    z-index: 999;
 
-    background-position: left top;
-    background-size: contain;
-    font-weight: bold;
-
-    p {
-      line-height: 1;
-      margin: 0;
+    .wrapper {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
     }
 
     .logo {
-      width: 300px;
-
-      a {
-        @include padding-left(56px, 64px);
-
-        background-position: left top;
-        display: block;
-        padding-top: 1px;
-
-        p {
-          margin: 3px 0;
-          @include font-size(0.75rem, 0.875rem);
-        }
-      }
+      display: block;
+      width: 175px;
+      height: 47px;
     }
 
-    .service {
-      font-weight: bold;
-      margin-top: 12px;
-      @include font-size(1.25rem, 1.5rem);
-      @include padding-left(56px, 64px);
+    .language-switcher {
+      color: $purple;
+      font-size: 0.875rem;
+      line-height: 1;
+    }
+  }
+
+  .service {
+    background-image: linear-gradient(135deg, $magenta 0%, $orange 100%);
+
+    p {
+      color: $white;
+      font-family: $futura-book;
+      font-size: 2.25rem;
+      line-height: 0.75;
+      margin: 0 auto;
+      max-width: 660px;
+      padding-top: 25px;
+
+      a {
+        color: $white;
+        font-weight: normal;
+      }
     }
   }
 }

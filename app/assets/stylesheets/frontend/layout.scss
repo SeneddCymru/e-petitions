@@ -1,11 +1,10 @@
-$site-width: 648px;
+$site-width: 660px;
 
-$full-width: 100%;
-$one-quarter: $full-width/4;
-$one-third: $full-width/3;
-$half: $full-width/2;
-$two-thirds: ($full-width)-($one-third);
-$three-quarters: ($full-width)-($one-quarter);
+$gutter: 20px;
+$gutter-half: $gutter / 2;
+$gutter-quarter: $gutter / 4;
+$gutter-three-quarters: ($gutter / 4) * 3;
+$extra-gutter: ($gutter * 3) / 2;
 
 @mixin media($size: false, $max-width: false, $min-width: false) {
   @if $size == desktop {
@@ -35,36 +34,74 @@ $three-quarters: ($full-width)-($one-quarter);
   }
 }
 
-@mixin site-width-container($width) {
-  max-width: $width;
-  margin: 0 18px;
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 85px;
 
-  @include media(tablet) {
-    margin: 0 36px;
+  & > main {
+    flex-grow: 1;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: $site-width;
+  width: 100%;
+
+  & > section {
+    flex-grow: 0;
+    align-self: stretch;
+
+    background-color: $white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    margin: 0 0 $gutter 0;
+    padding: $gutter;
+
+    @include media(tablet) {
+      margin: 0 0 $extra-gutter 0;
+      padding: $extra-gutter;
+    }
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+
+    & > *:first-child {
+      margin-top: 0;
+    }
+
+    & > section {
+      border-top: 1px solid $border-color;
+      margin-left: -$gutter;
+      margin-right: -$gutter;
+      margin-top: $gutter;
+      padding: 0 $gutter;
+
+      & > *:first-child {
+        margin-top: 20px;
+
+        @include media(tablet) {
+          margin-top: 30px;
+        }
+      }
+
+      @include media(tablet) {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        margin-top: $extra-gutter;
+      }
+    }
   }
 
-  @include media($min-width: ($width + 72)) {
-    margin: 0 auto;
-  }
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.wrapper {
-  @include site-width-container($site-width);
-  position: relative;
-}
-
-#content {
-  @include site-width-container($site-width);
-  @extend %contain-floats;
-  padding-bottom: 18px;
-
-  @include media(tablet) {
-    padding-bottom: 36px;
+  & > section:last-child {
+    flex-grow: 1;
   }
 }

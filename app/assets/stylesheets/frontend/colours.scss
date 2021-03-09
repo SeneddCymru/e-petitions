@@ -1,47 +1,63 @@
-$black: #000000;
-$dark-grey: #3C3C3B;
-$mid-grey: #747474;
-$light-grey: #E6E6E6;
-$pink: #B0008E;
-$dark-pink: #B31570;
-$white: #FFFFFF;
-$purple: #500778;
-
-$text-color: $dark-grey;
-$secondary-text-color: $mid-grey;
-$link-color: $pink;
-$button-color: $pink;
-$border-color: $mid-grey;
-$panel-color: $light-grey;
-$brand-color: $pink;
-$focus-color: $pink;
-$error-color: $pink;
-
-html {
-  background-color: $dark-grey;
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
 }
 
+$black: #1c1c1c;
+$white: #ffffff;
+$magenta: #b0008e;
+$red: #e40046;
+$orange: #e87722;
+$jade: #108765;
+$dark-blue: #003057;
+$dark-grey: #73787b;
+$darker-grey: #545759;
+
+$error: #d91e1e;
+$error-10: tint($error, 90%);
+
+$purple: #500778;
+$purple-10: tint($purple, 90%);
+$purple-20: tint($purple, 80%);
+$purple-30: tint($purple, 70%);
+$purple-40: tint($purple, 60%);
+$purple-50: tint($purple, 50%);
+$purple-60: tint($purple, 40%);
+$purple-70: tint($purple, 30%);
+$purple-80: tint($purple, 20%);
+$purple-90: tint($purple, 10%);
+
+$silver: #848789;
+$silver-5: tint($silver, 95%);
+$silver-10: tint($silver, 90%);
+$silver-20: tint($silver, 80%);
+$silver-30: tint($silver, 70%);
+$silver-40: tint($silver, 60%);
+$silver-50: tint($silver, 50%);
+$silver-60: tint($silver, 40%);
+$silver-70: tint($silver, 30%);
+$silver-80: tint($silver, 20%);
+$silver-90: tint($silver, 10%);
+
+$border-color: $silver-40;
+$background-color: $silver-10;
+$link-color: $purple;
+$focus-color: $jade;
+$text-color: $black;
+$secondary-color: $darker-grey;
+
 body {
-  background-color: $white;
+  background-color: $background-color;
   color: $text-color;
 }
 
-body > header {
-  background-color: $purple;
-  color: $white;
-}
-
-body > footer {
-  background-image: linear-gradient(170deg, $purple 0, $pink 100%);
-  color: $white;
-}
-
 a {
-  color: $pink;
+  color: $link-color;
 }
 
-a:focus {
-  background-color: $pink;
-  color: $white;
-  text-decoration: none;
+.secondary {
+  color: $secondary-color;
+}
+
+svg {
+  fill: currentColor;
 }

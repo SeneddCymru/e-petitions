@@ -1,5 +1,5 @@
 Then /^the markup should be valid$/ do
-  tags = %w[header nav main details summary section footer time]
+  tags = %w[header nav main details summary section footer time svg g path symbol use]
   pattern = /\A\d+:\d+: ERROR: Tag (?:#{tags.join('|')}) invalid\z/
   filter = -> (error){ error.message =~ pattern }
 

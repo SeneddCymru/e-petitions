@@ -71,8 +71,10 @@
     <dd><%= date_time_format(@petition.moderation_threshold_reached_at) %></dd>
   <% end %>
 <% else %>
-  <dt>Link to petition</dt>
-  <dd><%= link_to petition_path(@petition), petition_url(@petition), target: "_blank" %></dd>
+  <% if @petition.visible? %>
+    <dt>Link to petition</dt>
+    <dd><%= link_to petition_path(@petition), petition_url(@petition), target: "_blank" %></dd>
+  <% end %>
 
   <dt>PP Number</dt>
   <dd><%= ('PP%04d' % @petition.id) %></dd>

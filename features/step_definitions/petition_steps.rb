@@ -239,14 +239,14 @@ When(/^I fill in the petition details/) do
     steps %Q(
       When I fill in "What do you want us to do?" with "The wombats of wimbledon rock."
       And I fill in "Petition summary" with "Give half of Wimbledon rock to wombats!"
-      And I fill in "What action have you taken previously to resolve this issue?" with "I asked my local MP and she said to create a petition"
+      And I fill in "Previous action taken" with "I asked my local MP and she said to create a petition"
       And I fill in "Background information" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
     )
   else
     steps %Q(
       When I fill in "What do you want us to do?" with "The wombats of wimbledon rock."
       And I fill in "Petition summary" with "Give half of Wimbledon rock to wombats!"
-      And I fill in "What action have you taken previously to resolve this issue?" with "I asked my local MP and she said to create a petition"
+      And I fill in "Previous action taken" with "I asked my local MP and she said to create a petition"
       And I fill in "Background information" with "The racial tensions between the wombles and the wombats are heating up. Racial attacks are a regular occurrence and the death count is already in 5 figures. The only resolution to this crisis is to give half of Wimbledon common to the Wombats and to recognise them as their own independent state."
     )
   end
@@ -255,13 +255,13 @@ end
 When(/^I choose to collect signatures$/) do
   if I18n.locale == :"en-GB"
     steps %Q(
-      When I choose "Yes, I want to collect signatures"
+      When I choose "I want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
   else
     steps %Q(
-      When I choose "Yes, I want to collect signatures"
+      When I choose "I want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
@@ -271,13 +271,13 @@ end
 When(/^I choose not to collect signatures$/) do
   if I18n.locale == :"en-GB"
     steps %Q(
-      When I choose "No, I do not want to collect signatures"
+      When I choose "I do not want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
   else
     steps %Q(
-      When I choose "No, I do not want to collect signatures"
+      When I choose "I do not want to collect signatures"
       When I press "Continue"
       Then I should see "Sign your petition"
     )
@@ -506,7 +506,7 @@ Then(/^I should see both petitions content$/) do
 end
 
 Then(/^I should not see both petitions content$/) do
-  expect(page).to have_selector(:css, ".petition-content", count: 2)
+  expect(page).to have_selector(:css, ".petition .background", count: 1)
 end
 
 Then(/^I should see the petition's (\w+) timestamp$/) do |attribute|
@@ -516,7 +516,7 @@ Then(/^I should see the petition's (\w+) timestamp$/) do |attribute|
 end
 
 When(/^I search all petitions for "(.*?)"$/) do |search_term|
-  within :css, '.search-petitions' do
+  within :css, 'section[aria-labelledby=search-petitions-heading]' do
     fill_in :search, with: search_term
 
     if I18n.locale == :"en-GB"

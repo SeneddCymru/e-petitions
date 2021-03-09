@@ -1,11 +1,12 @@
-<span><%= t(:"ui.application.back_html") %></span>
+<p><%= t(:"ui.application.back_html") %></p>
 
 <%= form.hidden_field :action %>
 <%= form.hidden_field :background %>
 <%= form.hidden_field :previous_action %>
 <%= form.hidden_field :additional_details %>
 
-<h1 class="page-title"><%= t(:"ui.petitions.create.collect_signatures_stage.heading") %></h1>
+<h1 id="page-heading"><%= t(:"ui.petitions.create.collect_signatures_stage.heading") %></h1>
+
 <%= t(:"ui.petitions.create.collect_signatures_stage.help_html") %>
 
 <%= render "petitions/create/error_summary", form: form %>
@@ -22,6 +23,6 @@
   </div>
 <% end %>
 
-<span>
-  <%= t(:"ui.petitions.create.collect_signatures_stage.submit_html") %>
-</span>
+<div class="button-group">
+  <div><%= t(:"ui.petitions.create.collect_signatures_stage.submit_html") %></div>
+</div>

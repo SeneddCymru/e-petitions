@@ -1,4 +1,4 @@
-<span><%= t(:"ui.application.back_html") %></span>
+<p><%= t(:"ui.application.back_html") %></p>
 
 <%= form.hidden_field :action %>
 <%= form.hidden_field :background %>
@@ -12,16 +12,18 @@
 <%= form.hidden_field :collect_signatures %>
 <%= form.hidden_field :privacy_notice %>
 
-<h1 class="page-title"><%= t(:"ui.petitions.create.replay_email_stage.heading") %></h1>
+<h1 id="page-heading"><%= t(:"ui.petitions.create.replay_email_stage.heading") %></h1>
 
 <%= form_row for: [petition, :email] do %>
-  <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label"), class: "form-label" %>
+  <div class="field">
+    <%= form.text_field :email, inputmode: "email", placeholder: " " %>
+    <%= form.label :email, t(:"ui.petitions.create.creator_stage.email.label") %>
+  </div>
   <%= error_messages_for_field petition, :email %>
-  <%= form.text_field :email, inputmode: "email", class: "form-control" %>
+  <p><%= t(:"ui.petitions.create.replay_email_stage.fix_email_if_wrong") %></p>
 <% end %>
 
-<span>
+<div class="button-group">
    <%= t(:"ui.petitions.create.replay_email_stage.submit_html") %>
-</span>
+</div>
 
-<p><%= t(:"ui.petitions.create.replay_email_stage.fix_email_if_wrong") %></p>

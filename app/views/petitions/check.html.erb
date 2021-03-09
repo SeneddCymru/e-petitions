@@ -1,19 +1,23 @@
-<%= t(:"ui.petitions.check.intro_html") %>
-<form method="get" action="/petitions/check-results">
-  <div class="form-group">
-    <label for="action" class="form-label"><%= t(:"ui.petitions.check.action.label") %></label>
-    <textarea name="q" id="action" class="form-control" data-max-length="100" rows="3"><%= @new_petition.action %></textarea>
-    <p class="character-count"><%= t(:"ui.application.character_count", count: 100) %></p>
-    <%= t(:"ui.petitions.action.help_html") %>
-  </div>
+<section aria-labelledby="page-heading">
+  <%= t(:"ui.petitions.check.intro_html") %>
 
-  <% if Site.collecting_sponsors? %>
-    <section class="create-warning" aria-labelledby="just-so-you-know-heading">
-      <h2 id="just-so-you-know-heading"><%= t(:"ui.petitions.need_sponsors_later_heading") %></h2>
-      <span aria-hidden="true"><%= Site.minimum_number_of_sponsors %></span>
-      <p><%= t(:"ui.petitions.need_sponsors_later", count: Site.minimum_number_of_sponsors) %></p>
-    </section>
-  <% end %>
+  <form method="get" action="/petitions/check-results">
+    <div class="form-group">
+      <div class="field">
+        <textarea name="q" id="action" placeholder=" " data-max-length="100"><%= @new_petition.action %></textarea>
+        <p class="character-count"><%= t(:"ui.application.character_count", count: 100) %></p>
+        <label for="action" class="form-label"><%= t(:"ui.petitions.check.action.label") %></label>
+      </div>
+      <%= t(:"ui.petitions.action.help_html") %>
+    </div>
 
-  <%= t(:"ui.application.continue_html") %>
-</form>
+    <% if Site.collecting_sponsors? %>
+      <section class="create-warning" aria-labelledby="just-so-you-know-heading">
+        <h2 id="just-so-you-know-heading"><%= t(:"ui.petitions.need_sponsors_later_heading") %></h2>
+        <p><%= t(:"ui.petitions.need_sponsors_later", count: Site.minimum_number_of_sponsors) %></p>
+      </section>
+    <% end %>
+
+    <%= t(:"ui.application.continue_html") %>
+  </form>
+</section>
