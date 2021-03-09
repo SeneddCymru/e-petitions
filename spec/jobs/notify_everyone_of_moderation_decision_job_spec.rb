@@ -6,6 +6,7 @@ RSpec.describe NotifyEveryoneOfModerationDecisionJob, type: :job do
   let!(:pending_sponsor) { FactoryBot.create(:sponsor, :pending, petition: petition) }
 
   let(:creator) { petition.creator }
+  let(:feedback) { FeedbackSignature.new(petition) }
 
   context "when the petition is published" do
     before do
@@ -50,6 +51,14 @@ RSpec.describe NotifyEveryoneOfModerationDecisionJob, type: :job do
       }.to have_enqueued_job(
         NotifyCreatorThatPetitionWasRejectedEmailJob
       ).with(creator, rejection).on_queue("high_priority")
+    end
+
+    it "sends a copy to the feedback address" do
+      expect {
+        described_class.perform_now(petition)
+      }.to have_enqueued_job(
+        NotifyCreatorThatPetitionWasRejectedEmailJob
+      ).with(feedback, rejection).on_queue("high_priority")
     end
 
     it "notifies the validated sponsors" do
