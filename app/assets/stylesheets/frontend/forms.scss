@@ -30,6 +30,9 @@ form {
     height: 56px;
     padding: 25px 53px 9px 15px;
     width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 
   textarea {
