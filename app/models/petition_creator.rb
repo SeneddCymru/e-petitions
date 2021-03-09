@@ -48,7 +48,7 @@ class PetitionCreator
     if done?
       @petition = Petition.new do |p|
         p.action = action
-        p.background = background
+        p.background = summary
         p.previous_action = previous_action
         p.additional_details = additional_details
         p.collect_signatures = collect_signatures
@@ -107,6 +107,10 @@ class PetitionCreator
 
   def background?
     background.present?
+  end
+
+  def summary
+    background.sub(/\A(.)/) { |char| preamble + char.downcase }
   end
 
   def previous_action
@@ -294,5 +298,9 @@ class PetitionCreator
 
   def reached_stage?(other_stage)
     stage_index >= STAGES.index(other_stage)
+  end
+
+  def preamble
+    I18n.t(:"ui.petitions.background.preamble").sub('…', ' ')
   end
 end

@@ -172,7 +172,7 @@ class Admin::SignaturesController < Admin::AdminController
   end
 
   def search_params
-    params.permit(:q, :page, :state, :window).to_h
+    params.permit(:q, :page, :state, :window, :count).to_h
   end
 
   def index_url(*args)

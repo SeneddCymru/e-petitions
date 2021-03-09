@@ -10,8 +10,7 @@
 <div class="preview-petition">
   <h2 class="action"><%= petition.action %></h2>
   <div class="background">
-    <h3><%= t(:"ui.petitions.background.preamble") %></h3>
-    <%= auto_link(simple_format(h(petition.background)), html: { rel: "nofollow" }) %>
+    <%= auto_link(simple_format(h(petition.summary)), html: { rel: "nofollow" }) %>
   </div>
   <div class="previous-action">
     <h3><%= t(:"ui.petitions.previous_action.heading") %></h3>

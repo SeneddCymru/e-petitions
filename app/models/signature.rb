@@ -236,6 +236,7 @@ class Signature < ActiveRecord::Base
       window = options[:window]
       page   = [options[:page].to_i, 1].max
       scope  = preload(:petition).by_most_recent
+      count  = options.fetch(:count, 25).to_i.clamp(1, 50)
 
       if state.in?(STATES)
         scope = scope.where(state: state)
@@ -273,7 +274,7 @@ class Signature < ActiveRecord::Base
         scope = scope.for_name(query)
       end
 
-      scope.paginate(page: page, per_page: 50)
+      scope.paginate(page: page, per_page: count)
     end
 
     def creator

@@ -69,6 +69,7 @@ RSpec.describe Browseable, type: :model do
       it { is_expected.to delegate_method(:empty?).to(:results) }
       it { is_expected.to delegate_method(:map).to(:results) }
       it { is_expected.to delegate_method(:to_a).to(:results) }
+      it { is_expected.to delegate_method(:count).to(:execute_search) }
     end
 
     describe "#current_page" do
@@ -158,7 +159,19 @@ RSpec.describe Browseable, type: :model do
 
       context "with default params" do
         it "returns a hash of params for building the previous page link" do
-          expect(search.previous_params).to eq({ q: 'search', state: :all, page: 2 })
+          expect(search.previous_params).to eq({ q: 'search', page: 2 })
+        end
+      end
+
+      context "with a custom count param" do
+        let(:params) { { q: 'search', page: '3', count: '5' } }
+
+        before do
+          allow(klass).to receive(:paginate).with(page: 3, per_page: 5).and_return(results)
+        end
+
+        it "returns a hash of params for building the previous page link" do
+          expect(search.previous_params).to eq({ q: 'search', page: 2, count: 5 })
         end
       end
 
@@ -180,7 +193,7 @@ RSpec.describe Browseable, type: :model do
         end
 
         it "returns a hash of params for building the previous page link" do
-          expect(search.previous_params).to eq({ q: 'search', state: :all, page: 2, topic: 'covid-19' })
+          expect(search.previous_params).to eq({ q: 'search', page: 2, topic: 'covid-19' })
         end
       end
     end
@@ -206,7 +219,19 @@ RSpec.describe Browseable, type: :model do
 
       context "with default params" do
         it "returns a hash of params for building the previous page link" do
-          expect(search.next_params).to eq({ q: 'search', state: :all, page: 4 })
+          expect(search.next_params).to eq({ q: 'search', page: 4 })
+        end
+      end
+
+      context "with a custom count param" do
+        let(:params) { { q: 'search', page: '3', count: '5' } }
+
+        before do
+          allow(klass).to receive(:paginate).with(page: 3, per_page: 5).and_return(results)
+        end
+
+        it "returns a hash of params for building the previous page link" do
+          expect(search.next_params).to eq({ q: 'search', page: 4, count: 5 })
         end
       end
 
@@ -228,7 +253,7 @@ RSpec.describe Browseable, type: :model do
         end
 
         it "returns a hash of params for building the previous page link" do
-          expect(search.next_params).to eq({ q: 'search', state: :all, page: 4, topic: 'covid-19' })
+          expect(search.next_params).to eq({ q: 'search', page: 4, topic: 'covid-19' })
         end
       end
     end

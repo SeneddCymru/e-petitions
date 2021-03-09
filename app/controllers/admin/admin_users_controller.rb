@@ -11,7 +11,7 @@ class Admin::AdminUsersController < Admin::AdminController
   end
 
   def index
-    @users = AdminUser.by_name.paginate(page: params[:page], per_page: 50)
+    @users = AdminUser.by_name.paginate(page: params[:page], per_page: 25)
   end
 
   def new

@@ -69,8 +69,12 @@ class Admin::PetitionsController < Admin::AdminController
     preload_scope(tag_scope(Petition.all))
   end
 
+  def search_params
+    params.permit(:q, :page, :state, :count).to_h
+  end
+
   def fetch_petitions
-    @petitions = scope.search(params)
+    @petitions = scope.search(search_params)
   end
 
   def fetch_petition
