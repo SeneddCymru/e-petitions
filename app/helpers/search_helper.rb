@@ -10,8 +10,17 @@ module SearchHelper
     }
 
     capture do
-      concat content_tag(:span, t(:previous_html, options)) unless petitions.first_page?
-      concat content_tag(:span, t(:next_html, options)) unless petitions.last_page?
+      if petitions.first_page?
+        concat content_tag(:span, '') # empty tag for flexbox
+      else
+        concat content_tag(:span, t(:previous_html, options))
+      end
+
+      if petitions.last_page?
+        concat content_tag(:span, '') # empty tag for flexbox
+      else
+        concat content_tag(:span, t(:next_html, options))
+      end
     end
   end
 
