@@ -7,6 +7,29 @@ en-GB:
         <p>Sorry, the petitions service is currently unavailable. We are launching a new, improved website for petitions on 30 April.</p>
         <p>Please accept our apologies for any inconvenience.</p>
         <p>Click here to find out more about the work of the <a href="https://beta.parliament.scot/chamber-and-committees/committees/current-committees/public-petitions-committee">Public Petitions Committee</a>.</p>
+    cc:
+      statement:
+        name: "Find out more about the cookies on this website"
+        description: ""
+        updated: "30/04/2020"
+      text:
+        "title": "Cookies are files saved on your phone, tablet or computer when you visit a website."
+        "intro": "Some of these cookies are essential, while others help us to improve your experience by providing insights into how the site is being used."
+        "description": "We use cookies to store information about how you use the website, such as the pages you visit."
+        "notify_title": "Tell us whether you accept cookies"
+        "notify_description": "We use cookies to collect information about how you use this service."
+        "necessary_title": "Strictly necessary cookies"
+        "necessary_description": "These essential cookies do things like remember your progress through a form (for example a creating a petition)."
+        "on": "On"
+        "off": "Off"
+        "accept": "Accept all cookies"
+        "reject": "Reject unnecessary cookies"
+        "settings": "Set cookie preferences"
+        "accept_settings": "Accept all cookies"
+        "reject_settings": "Reject unnecessary cookies"
+      analytics:
+        label: "Cookies that measure website use"
+        description: "We use Google Analytics to measure how you use the website so we can improve it based on user needs. We do not allow Google to use or share the data about how you use this site."
     os:
       app_name: "Petitions"
       app_tooltip: "Scottish Parliament"

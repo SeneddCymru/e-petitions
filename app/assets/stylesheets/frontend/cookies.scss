@@ -1,0 +1,179 @@
+$primary-button-background: $white;
+$primary-button-background-hover: tint($dark-blue, 80%);
+$primary-button-background-active: tint($dark-blue, 90%);
+
+$primary-button-text: $purple;
+$primary-button-text-hover: $purple-80;
+$primary-button-text-active: $purple-90;
+
+$secondary-button: $white;
+$secondary-button-hover: tint($dark-blue, 80%);
+$secondary-button-active: tint($dark-blue, 90%);
+
+#ccc {
+  font-family: $arial !important;
+
+  #ccc-notify #ccc-close,
+  #ccc-notify-dismiss,
+  #ccc-notify-reject {
+    display: none !important;
+  }
+
+  #ccc-notify h3 {
+    @include font-size(0.875rem, 1rem);
+    font-family: $arial !important;
+  }
+
+  #ccc-notify p {
+    font-size: 0.75rem !important;
+    font-family: $arial !important;
+    opacity: 1 !important;
+
+    @include media(tablet) {
+      font-size: 0.875rem !important;
+    }
+  }
+
+  #ccc-content {
+    h2, h3 {
+      font-family: $arial !important;
+      line-height: 1.25 !important;
+      margin: 0 0 $gutter-half 0;
+    }
+
+    h2 {
+      @include font-size(0.875rem, 1rem);
+    }
+
+    h3 {
+      @include font-size(0.875rem, 1rem);
+    }
+
+    p {
+      line-height: 1.375 !important;
+      margin: 0 0 $gutter-half;
+
+      @include font-size(0.75rem, 1rem);
+    }
+
+    hr {
+      margin: $gutter-three-quarters 0 !important;
+    }
+
+    .ccc-svg-element {
+      height: 10px;
+      width: 10px;
+      top: 3px;
+      margin-left: 6px;
+    }
+
+    .checkbox-toggle {
+      background-color: $white !important;
+      border-color: $white !important;
+      border-width: 2px !important;
+      padding: 0;
+    }
+
+    .checkbox-toggle-on {
+      color: $text-color !important;
+    }
+
+    .checkbox-toggle-off {
+      color: $secondary-color !important;
+    }
+
+
+    #ccc-necessary-title {
+      padding-right: 0;
+    }
+
+    #ccc-close {
+      svg {
+        fill: $white;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  #ccc-statement {
+    .ccc-svg-element {
+      display: none !important;
+    }
+  }
+
+  #ccc-notify-accept,
+  #ccc-recommended-settings {
+    background-color: $primary-button-background !important;
+    border-color: $primary-button-background !important;
+    color: $primary-button-text !important;
+
+    &:hover {
+      background-color: $primary-button-background-hover !important;
+      border-color: $primary-button-background-hover !important;
+      color: $primary-button-text-hover !important;
+    }
+
+    &:active {
+      background-color: $primary-button-background-active !important;
+      border-color: $primary-button-background-active !important;
+      color: $primary-button-text-active !important;
+    }
+
+    &:focus {
+      border-color: $focus-color !important;
+      box-shadow: 0 0 0 2px $focus-color;
+      color: $primary-button-text-hover !important;
+    }
+  }
+
+  .ccc-notify-buttons, #ccc-button-holder {
+    .ccc-notify-button {
+      padding: $gutter-half $gutter-three-quarters !important;
+
+      @include media(tablet) {
+        padding: $gutter-three-quarters $gutter !important;
+      }
+    }
+  }
+
+  .ccc-notify-button {
+    font-size: 0.75rem !important;
+    line-height: 1 !important;
+
+    @include media(tablet) {
+      font-size: 1rem !important;
+    }
+
+    background-color: transparent !important;
+    border-radius: 2px !important;
+    border-width: 1px !important;
+    font-family: $futura-bold !important;
+    font-weight: normal !important;
+
+    border-color: $secondary-button !important;
+    color: $secondary-button !important;
+
+    span {
+      color: inherit !important;
+    }
+
+    &:hover {
+      border-color: $secondary-button-hover !important;
+      color: $secondary-button-hover !important;
+    }
+
+    &:active {
+      border-color: $secondary-button-active !important;
+      color: $secondary-button-active !important;
+    }
+
+    &:focus {
+      border-color: $focus-color !important;
+      box-shadow: 0 0 0 2px $focus-color;
+      color: $secondary-button-hover !important;
+    }
+  }
+}
