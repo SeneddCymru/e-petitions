@@ -121,7 +121,7 @@ module Browseable
     end
 
     def current_page
-      @current_page ||= [params[:page].to_i, 1].max
+      @current_page ||= [page_param, 1].max
     end
 
     def each(&block)
@@ -157,7 +157,7 @@ module Browseable
     end
 
     def page_size
-      @page_size ||= [[params.fetch(:count, default_page_size).to_i, max_page_size].min, 1].max
+      @page_size ||= params.fetch(:count, default_page_size).to_i.clamp(1, max_page_size)
     end
 
     def previous_params
@@ -206,6 +206,10 @@ module Browseable
     end
 
     private
+
+    def page_param
+      params[:page].to_s[0..8].to_i
+    end
 
     def new_params(page)
       {}.tap do |params|
