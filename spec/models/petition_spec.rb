@@ -2980,4 +2980,22 @@ RSpec.describe Petition, type: :model do
       end
     end
   end
+
+  describe "#signature_count" do
+    context "when the petition is collecting signatures" do
+      let(:petition) { FactoryBot.create(:validated_petition, collect_signatures: true) }
+
+      it "returns the correct signature count" do
+        expect(petition.signature_count).to eq(1)
+      end
+    end
+
+    context "when the petition is not collecting signatures" do
+      let(:petition) { FactoryBot.create(:validated_petition, collect_signatures: false) }
+
+      it "returns a signature count of 0" do
+        expect(petition.signature_count).to eq(0)
+      end
+    end
+  end
 end

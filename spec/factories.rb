@@ -35,7 +35,7 @@ FactoryBot.define do
     sequence(:action) { |n| "Petition #{n}" }
     background { "Petition background" }
     previous_action { "Previous action" }
-    collect_signatures { false }
+    collect_signatures { true }
 
     trait :english do
       locale { "en-GB" }

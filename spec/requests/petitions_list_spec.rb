@@ -173,6 +173,19 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
       )
     end
 
+    it "sets the signature count to zero for petitions that didn't collect signatures" do
+      petition = FactoryBot.create :closed_petition, collect_signatures: false, signature_count: 1
+
+      get "/petitions.json"
+      expect(response).to be_successful
+
+      expect(data).to match(
+        a_collection_containing_exactly(
+          a_hash_including("attributes" => a_hash_including("signature_count" => 0))
+        )
+      )
+    end
+
     (Petition::VISIBLE_STATES - Array(Petition::OPEN_STATE)).each do |state_name|
       it "does not include the creator_name field for #{state_name} petitions" do
         petition = FactoryBot.create "#{state_name}_petition".to_sym
