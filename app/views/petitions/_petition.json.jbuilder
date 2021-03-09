@@ -37,11 +37,7 @@ json.attributes do
   json.submitted_on_paper petition.submitted_on_paper
   json.submitted_on api_date_format(petition.submitted_on)
 
-  if petition.open?
-    json.creator_name petition.creator_name
-  else
-    json.creator_name nil
-  end
+  json.creator_name petition.creator_name
 
   if rejection = petition.rejection
     json.rejection do

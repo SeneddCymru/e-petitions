@@ -147,6 +147,32 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
       )
     end
 
+    it "includes the creator_name field for closed petitions" do
+      petition = FactoryBot.create :closed_petition, creator_name: "Bob Jones"
+
+      get "/petitions.json"
+      expect(response).to be_successful
+
+      expect(data).to match(
+        a_collection_containing_exactly(
+          a_hash_including("attributes" => a_hash_including("creator_name" => "Bob Jones"))
+        )
+      )
+    end
+
+    it "includes the creator_name field for completed petitions" do
+      petition = FactoryBot.create :completed_petition, creator_name: "Bob Jones"
+
+      get "/petitions.json"
+      expect(response).to be_successful
+
+      expect(data).to match(
+        a_collection_containing_exactly(
+          a_hash_including("attributes" => a_hash_including("creator_name" => "Bob Jones"))
+        )
+      )
+    end
+
     (Petition::VISIBLE_STATES - Array(Petition::OPEN_STATE)).each do |state_name|
       it "does not include the creator_name field for #{state_name} petitions" do
         petition = FactoryBot.create "#{state_name}_petition".to_sym
