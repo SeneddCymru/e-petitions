@@ -37,7 +37,7 @@ class TrendingIp < ActiveRecord::Base
         scope = all
       end
 
-      scope.paginate(page: page, per_page: 50)
+      scope.paginate(page: page, per_page: 25)
     end
   end
 

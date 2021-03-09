@@ -30,9 +30,11 @@ Feature: Admin users index and crud
     Given 50 moderator users exist
     When I go to the admin users index page
     And I follow "Next"
+    Then I should see 25 rows in the admin user table
+    And I follow "Next"
     Then I should see 2 rows in the admin user table
     And I follow "Previous"
-    Then I should see 50 rows in the admin user table
+    Then I should see 25 rows in the admin user table
 
   Scenario: Inspecting the new user form
     When I go to the admin users index page
