@@ -1981,6 +1981,38 @@ RSpec.describe Petition, type: :model do
         expect(petition.at_threshold_for_moderation?).to be_falsey
       end
     end
+
+    context "when the petition is not collecting signatures" do
+      let(:petition) { FactoryBot.create(:pending_petition, signature_count: signature_count, collect_signatures: false) }
+
+      before do
+        expect(Site).to receive(:threshold_for_moderation).and_return(0)
+      end
+
+      context "and the signature count is less than the threshold" do
+        let(:signature_count) { 0 }
+
+        it "is falsey" do
+          expect(petition.at_threshold_for_moderation?).to be_falsey
+        end
+      end
+
+      context "and the signature count is equal to the threshold" do
+        let(:signature_count) { 1 }
+
+        it "is truthy" do
+          expect(petition.at_threshold_for_moderation?).to be_truthy
+        end
+      end
+
+      context "and the signature count is more than the threshold" do
+        let(:signature_count) { 2 }
+
+        it "is truthy" do
+          expect(petition.at_threshold_for_moderation?).to be_truthy
+        end
+      end
+    end
   end
 
   describe "at_threshold_for_referral?" do

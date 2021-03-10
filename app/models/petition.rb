@@ -531,6 +531,10 @@ class Petition < ActiveRecord::Base
     collect_signatures? ? super : 0
   end
 
+  def real_signature_count
+    self[:signature_count]
+  end
+
   def to_param
     published? ? ('PE%04d' % pe_number_id) : ('PP%04d' % id)
   end
@@ -633,37 +637,37 @@ class Petition < ActiveRecord::Base
 
   def will_reach_threshold_for_moderation?
     unless moderation_threshold_reached_at?
-      signature_count >= Site.threshold_for_moderation
+      real_signature_count >= Site.threshold_for_moderation
     end
   end
 
   def at_threshold_for_moderation?
     unless moderation_threshold_reached_at?
-      signature_count >= Site.threshold_for_moderation + 1
+      real_signature_count >= Site.threshold_for_moderation + 1
     end
   end
 
   def at_threshold_for_referral?
     unless referral_threshold_reached_at?
-      signature_count >= Site.threshold_for_referral
+      real_signature_count >= Site.threshold_for_referral
     end
   end
 
   def at_threshold_for_debate?
     unless debate_threshold_reached_at?
-      signature_count >= Site.threshold_for_debate
+      real_signature_count >= Site.threshold_for_debate
     end
   end
 
   def below_threshold_for_referral?
     if referral_threshold_reached_at?
-      signature_count <= Site.threshold_for_referral
+      real_signature_count <= Site.threshold_for_referral
     end
   end
 
   def below_threshold_for_debate?
     if debate_threshold_reached_at?
-      signature_count <= Site.threshold_for_debate
+      real_signature_count <= Site.threshold_for_debate
     end
   end
 
