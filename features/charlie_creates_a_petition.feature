@@ -23,7 +23,8 @@ Scenario: Charlie cannot craft an xss attack when searching for petitions
   Then the markup should be valid
 
 Scenario: Charlie creates a petition
-  Given I start a new petition
+  Given the site is not collecting sponsors
+  And I start a new petition
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
@@ -36,8 +37,10 @@ Scenario: Charlie creates a petition
   When I press "Yes – this is my email address"
   Then a petition should exist with action_en: "The wombats of wimbledon rock.", action_gd: nil, state: "pending", locale: "en-GB", collect_signatures: false
   And there should be a "pending" signature with email "womboid@wimbledon.com" and name "Womboid Wibbledon"
-  And "Womboid Wibbledon" wants to be notified about the petition's progress
-  And "womboid@wimbledon.com" should be emailed a link for gathering support from sponsors
+  And "womboid@wimbledon.com" should be emailed a link for validating their signature
+  When I confirm my email
+  Then a petition should exist with action_en: "The wombats of wimbledon rock.", state: "sponsored"
+  And I should see "We’re checking this petition"
 
 Scenario: Charlie creates a petition and wants to collect signatures
   Given the date is the "20 April, 2020"
@@ -74,7 +77,7 @@ Scenario: Charlie creates a petition when sponsor count is set to 0
   And "womboid@wimbledon.com" should be emailed a link for validating their signature
   When I confirm my email
   Then a petition should exist with action_en: "The wombats of wimbledon rock.", state: "sponsored"
-  Then I should see "We’re checking this petition"
+  And I should see "We’re checking this petition"
 
 @gaelic
 Scenario: Charlie creates a petition in Gaelic
