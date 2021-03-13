@@ -11,7 +11,7 @@ jobs:
 
     environment:
       name: scottish-petitions-preview
-      url: https://preview.scotpets.net/
+      url: https://petitions-beta.parliament.scot/
 
     steps:
     - name: Checkout code

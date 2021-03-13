@@ -1,6 +1,8 @@
-name: Deploy to Staging
+name: Deploy to Production
 
 on:
+  release:
+    types: [released]
   workflow_dispatch:
 
 jobs:
@@ -8,8 +10,8 @@ jobs:
     runs-on: ubuntu-20.04
 
     environment:
-      name: scottish-petitions-staging
-      url: https://staging.scotpets.net/
+      name: scottish-petitions-production
+      url: https://petitions.parliament.scot/
 
     steps:
     - name: Checkout code
@@ -46,7 +48,7 @@ jobs:
 
     - name: Deploy application
       env:
-        APPSIGNAL_APP_NAME: scottish-petitions-staging
+        APPSIGNAL_APP_NAME: scottish-petitions-production
         APPSIGNAL_PUSH_API_KEY: ${{ secrets.APPSIGNAL_PUSH_API_KEY }}
       run: |
-        bundle exec rake deploy:staging
+        bundle exec rake deploy:production
