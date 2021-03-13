@@ -10,22 +10,25 @@ class ApplicationController < ActionController::Base
 
   after_action do
     default_src = %w[default-src 'self']
-    font_src = %w[font-src 'self' https://fonts.gstatic.com]
+    font_src = %w[font-src 'self']
 
     img_src = %w[img-src 'self' data:]
+    img_src << "https://www.google-analytics.com"
 
     connect_src = %w[connect-src 'self']
     connect_src << "https://apikeys.civiccomputing.com"
+    connect_src << "https://www.google-analytics.com"
 
     script_src = %w[script-src 'self' 'unsafe-inline']
     script_src << "https://cc.cdn.civiccomputing.com"
+    script_src << "https://www.googletagmanager.com"
+    script_src << "https://www.google-analytics.com"
 
     if Site.translation_enabled?
       script_src << Site.moderate_url
     end
 
     style_src = %w[style-src 'self' 'unsafe-inline']
-    style_src << "https://fonts.googleapis.com"
 
     directives = [
       default_src.join(" "),
