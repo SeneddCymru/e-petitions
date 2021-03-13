@@ -165,7 +165,7 @@ class PackageBuilder
   end
 
   def tag_ref?
-    ENV.fetch('GITHUB_REF', '') =~ /\Arefs\/tags\/[0-9]+(?:\.[0-9]+){1,2}\z/
+    ENV.fetch('GITHUB_REF', '') =~ /\Arefs\/tags\/v[0-9]{8}-[0-9]{1}\z/
   end
 
   def deploy_build?
