@@ -196,7 +196,11 @@ Rails.application.routes.draw do
         post :forward, on: :member
       end
 
-      resources :templates, except: %i[show]
+      resources :templates do
+        collection do
+          get :fixture, path: '/fixture/:name', constraints: { name: /[_a-zA-Z0-9]{1,100}/ }
+        end
+      end
 
       scope 'stats', controller: 'statistics' do
         get '/', action: 'index', as: :stats

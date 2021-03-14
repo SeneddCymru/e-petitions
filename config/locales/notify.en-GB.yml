@@ -33,6 +33,9 @@ en-GB:
       sponsor_signed_email_on_threshold_easter: "cb8144c1-3d7c-417b-9add-261fe4253d24"
       sponsor_signed_email_on_threshold: "3949e09a-19fe-46de-b7cc-cd25c6e1360e"
 
+    extra_templates:
+      feedback_email: "18fe5489-1e5b-4741-b840-5a1dddd97983"
+
     strings:
       sponsor_count:
         zero: "You have 0 supporters so far"

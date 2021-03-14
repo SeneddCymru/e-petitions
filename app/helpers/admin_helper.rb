@@ -1,5 +1,6 @@
 module AdminHelper
   ISO8601_TIMESTAMP = /\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z/
+  TEMPLATE_PLACEHOLDER = /\{\{([a-zA-Z][_a-zA-Z0-9]*)\}\}/
 
   def selected_tags
     @selected_tags ||= Array(params[:tags]).flatten.map(&:to_i).compact.reject(&:zero?)
@@ -119,7 +120,41 @@ module AdminHelper
     end
   end
 
+  def highlight_vars(string)
+    highlight(string,  TEMPLATE_PLACEHOLDER) do |match|
+      "((" + content_tag(:mark, match[2..-3]) + "))"
+    end
+  end
+
+  def template_menu
+    [].tap do |choices|
+      choices << ["English", english_template_menu]
+
+      unless Site.disable_gaelic_website?
+        choices << ["Gaelic", gaelic_template_menu]
+      end
+
+      choices << ["Other", extra_template_menu]
+    end
+  end
+
+  def existing_templates
+    Notifications::Template.pluck(:name)
+  end
+
   private
+
+  def english_template_menu
+    Notifications::Template::ENGLISH_TEMPLATES.keys.sort
+  end
+
+  def gaelic_template_menu
+    Notifications::Template::GAELIC_TEMPLATES.keys.sort
+  end
+
+  def extra_template_menu
+    Notifications::Template::EXTRA_TEMPLATES.keys.sort
+  end
 
   def admin_petition_facets
     if Site.disable_thresholds_and_debates?
