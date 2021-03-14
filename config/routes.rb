@@ -196,7 +196,7 @@ Rails.application.routes.draw do
         post :forward, on: :member
       end
 
-      resources :templates, except: %i[show]
+      resources :templates
 
       scope 'stats', controller: 'statistics' do
         get '/', action: 'index', as: :stats

@@ -1,7 +1,7 @@
 class Admin::TemplatesController < Admin::AdminController
-  before_action :require_sysadmin, only: [:new, :create, :destroy]
+  before_action :require_sysadmin, only: [:new, :edit, :create, :destroy]
   before_action :find_templates, only: [:index]
-  before_action :find_template, only: [:edit, :update, :destroy]
+  before_action :find_template, only: [:show, :edit, :update, :destroy]
   before_action :build_template, only: [:new, :create]
 
   def index

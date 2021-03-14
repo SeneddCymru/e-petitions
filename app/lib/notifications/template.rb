@@ -34,6 +34,10 @@ module Notifications
       view.render(template: "layouts/notification", formats: [:text], layout: false)
     end
 
+    def preview
+      view.render(inline: "<%= markdown_to_html(@body) %>")
+    end
+
     def to_partial_path
       "admin/templates/template"
     end

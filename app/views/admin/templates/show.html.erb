@@ -1,0 +1,33 @@
+<%= link_to "Back", admin_templates_path, class: "back-link" %>
+
+<h1>View Template</h1>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <table class="email-preview">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <td><%= @template.id %></td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td><%= @template.name %></td>
+        </tr>
+        <tr>
+          <th>Subject</th>
+          <td><%= highlight_vars(@template.subject) %></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">
+            <%= highlight_vars(@template.preview) %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p><%= link_to "Edit", edit_admin_template_path(@template), class: "button" %></p>

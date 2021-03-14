@@ -1,5 +1,6 @@
 module AdminHelper
   ISO8601_TIMESTAMP = /\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z/
+  TEMPLATE_PLACEHOLDER = /\{\{([a-zA-Z][_a-zA-Z0-9]*)\}\}/
 
   def selected_tags
     @selected_tags ||= Array(params[:tags]).flatten.map(&:to_i).compact.reject(&:zero?)
@@ -116,6 +117,12 @@ module AdminHelper
       link_to "Back", admin_petitions_path, class: "back-link"
     else
       link_to "Back", admin_root_path, class: "back-link"
+    end
+  end
+
+  def highlight_vars(string)
+    highlight(string,  TEMPLATE_PLACEHOLDER) do |match|
+      "((" + content_tag(:mark, match[2..-3]) + "))"
     end
   end
 
