@@ -12,6 +12,10 @@ RSpec.describe Notifications::Template, type: :model do
     { status: 404, body: '{"code":"NotFoundException"}', headers: { "Content-Type" => "application/json" } }
   end
 
+  let(:template_names) do
+    described_class::TEMPLATE_NAMES
+  end
+
   describe "schema" do
     it { is_expected.to have_db_column(:id).of_type(:uuid).with_options(null: false) }
     it { is_expected.to have_db_column(:name).of_type(:string).with_options(null: false) }
@@ -39,6 +43,7 @@ RSpec.describe Notifications::Template, type: :model do
     it { is_expected.to validate_length_of(:name).is_at_most(100) }
     it { is_expected.to validate_length_of(:subject).is_at_most(100) }
     it { is_expected.to validate_length_of(:body).is_at_most(10000) }
+    it { is_expected.to validate_inclusion_of(:name).in_array(template_names) }
     it { is_expected.to validate_uniqueness_of(:name) }
   end
 

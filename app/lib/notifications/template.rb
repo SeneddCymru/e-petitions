@@ -10,10 +10,19 @@ module Notifications
 
     PLACEHOLDER = /\(\(([a-zA-Z][_a-zA-Z0-9]*)\)\)/
 
+    ENGLISH_TEMPLATES = I18n.t(:"notify.templates", locale: :"en-GB").transform_keys { |key| "#{key}_en" }
+    GAELIC_TEMPLATES  = I18n.t(:"notify.templates", locale: :"gd-GB").transform_keys { |key| "#{key}_gd" }
+    EXTRA_TEMPLATES   = I18n.t(:"notify.extra_templates", locale: :"en-GB").stringify_keys
+    TEMPLATE_LOOKUP   = ENGLISH_TEMPLATES.merge(GAELIC_TEMPLATES.merge(EXTRA_TEMPLATES))
+    TEMPLATE_NAMES    = TEMPLATE_LOOKUP.keys.sort
+
     validates :name, :subject, :body, presence: true
+    validates :name, inclusion: { in: TEMPLATE_NAMES }
     validates :name, uniqueness: true
     validates :name, :subject, length: { maximum: 100 }
     validates :body, length: { maximum: 10000 }
+
+    before_create { self.id = TEMPLATE_LOOKUP.fetch(name) }
 
     after_save :sync_template_to_ses
     after_destroy :delete_template_from_ses
@@ -23,6 +32,20 @@ module Notifications
     class << self
       def by_name
         order(name: :asc)
+      end
+
+      def fixture(name)
+        YAML.load_file(fixture_path(name))
+      end
+
+      private
+
+      def fixture_file(name)
+        "#{TEMPLATE_LOOKUP.fetch(name)}.yml"
+      end
+
+      def fixture_path(name)
+        Rails.root.join("spec", "fixtures", "notify", fixture_file(name))
       end
     end
 

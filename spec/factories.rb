@@ -723,7 +723,7 @@ FactoryBot.define do
   end
 
   factory :template, class: "Notifications::Template" do
-    sequence(:name) { |n| "template_#{n}" }
+    sequence(:name) { |n| Notifications::Template::TEMPLATE_NAMES.sample }
     subject { "Email Subject" }
     body { "Email Body" }
   end

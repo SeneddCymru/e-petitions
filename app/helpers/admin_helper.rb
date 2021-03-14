@@ -126,7 +126,35 @@ module AdminHelper
     end
   end
 
+  def template_menu
+    [].tap do |choices|
+      choices << ["English", english_template_menu]
+
+      unless Site.disable_gaelic_website?
+        choices << ["Gaelic", gaelic_template_menu]
+      end
+
+      choices << ["Other", extra_template_menu]
+    end
+  end
+
+  def existing_templates
+    Notifications::Template.pluck(:name)
+  end
+
   private
+
+  def english_template_menu
+    Notifications::Template::ENGLISH_TEMPLATES.keys.sort
+  end
+
+  def gaelic_template_menu
+    Notifications::Template::GAELIC_TEMPLATES.keys.sort
+  end
+
+  def extra_template_menu
+    Notifications::Template::EXTRA_TEMPLATES.keys.sort
+  end
 
   def admin_petition_facets
     if Site.disable_thresholds_and_debates?

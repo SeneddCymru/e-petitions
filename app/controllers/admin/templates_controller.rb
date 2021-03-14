@@ -3,6 +3,7 @@ class Admin::TemplatesController < Admin::AdminController
   before_action :find_templates, only: [:index]
   before_action :find_template, only: [:show, :edit, :update, :destroy]
   before_action :build_template, only: [:new, :create]
+  before_action :find_fixture, only: [:fixture]
 
   def index
     respond_to do |format|
@@ -44,6 +45,12 @@ class Admin::TemplatesController < Admin::AdminController
     end
   end
 
+  def fixture
+    respond_to do |format|
+      format.json
+    end
+  end
+
   private
 
   def find_templates
@@ -56,6 +63,10 @@ class Admin::TemplatesController < Admin::AdminController
 
   def build_template
     @template = Notifications::Template.new(template_params)
+  end
+
+  def find_fixture
+    @fixture = Notifications::Template.fixture(params[:name])
   end
 
   def search_params

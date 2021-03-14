@@ -1,15 +1,23 @@
 <div class="grid-row">
   <div class="column-two-thirds extra-gutter">
-    <%= form_row for: [form.object, :name] do %>
-      <%= form.label :name, "Name", class: 'form-label' %>
-      <%= error_messages_for_field @template, :name %>
-      <%= form.text_field :name, tabindex: increment, maxlength: 100, autofocus: true, class: 'form-control' %>
+    <% if @template.persisted? %>
+      <%= form_row for: [form.object, :name] do %>
+        <%= form.label :name, "Name", class: 'form-label' %>
+        <%= error_messages_for_field @template, :name %>
+        <%= form.text_field :name, tabindex: increment, maxlength: 100, disabled: true, readonly: true, class: 'form-control' %>
+      <% end %>
+    <% else %>
+      <%= form_row for: [form.object, :name] do %>
+        <%= form.label :name, "Name", class: 'form-label' %>
+        <%= error_messages_for_field @template, :name %>
+        <%= form.select :name, template_menu, { disabled: existing_templates, prompt: "-- select template name --" }, tabindex: increment, class: "form-control" %>
+      <% end %>
     <% end %>
 
     <%= form_row for: [form.object, :subject] do %>
       <%= form.label :subject, "Subject", class: 'form-label' %>
       <%= error_messages_for_field @template, :subject %>
-      <%= form.text_field :subject, tabindex: increment, maxlength: 100, class: 'form-control' %>
+      <%= form.text_field :subject, tabindex: increment, autofocus: true, maxlength: 100, class: 'form-control' %>
     <% end %>
 
     <%= form_row for: [form.object, :body] do %>
@@ -23,3 +31,22 @@
 
 <%= form.submit 'Save', class: 'button' %>
 <%= link_to 'Cancel', admin_templates_path, class: 'button-secondary' %>
+
+<%= javascript_tag do %>
+  $().ready(function() {
+    var $subject = $('#template_subject');
+    var $body = $('#template_body');
+    var $select = $('#template_name');
+
+    $select.on('change', function(event) {
+      var url = '/admin/templates/fixture/' + $select.val() + '.json';
+
+      $.getJSON(url, {}, function(data) {
+        if (data.subject && data.body) {
+          $subject.val(data.subject);
+          $body.val(data.body);
+        }
+      });
+    })
+  });
+<% end -%>
