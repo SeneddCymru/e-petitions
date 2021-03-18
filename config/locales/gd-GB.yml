@@ -192,6 +192,7 @@ gd-GB:
         units:
           byte:
             one: Byte
+            two: Bytes
             other: Bytes
           gb: GB
           kb: KB

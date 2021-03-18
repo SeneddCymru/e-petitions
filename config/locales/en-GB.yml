@@ -57,37 +57,48 @@ en-GB:
     distance_in_words:
       about_x_hours:
         one: about 1 hour
+        two: about 2 hours
         other: "about %{count} hours"
       about_x_months:
         one: about 1 month
+        two: about 2 months
         other: "about %{count} months"
       about_x_years:
         one: about 1 year
+        two: about 2 years
         other: "about %{count} years"
       almost_x_years:
         one: almost 1 year
+        two: almost 2 years
         other: "almost %{count} years"
       half_a_minute: half a minute
       less_than_x_minutes:
-        one: less than a minute
+        one: less than 1 minute
+        two: less than 2 minutes
         other: "less than %{count} minutes"
       less_than_x_seconds:
         one: less than 1 second
+        two: less than 2 seconds
         other: "less than %{count} seconds"
       over_x_years:
         one: over 1 year
+        two: over 2 years
         other: "over %{count} years"
       x_days:
         one: 1 day
+        two: 2 days
         other: "%{count} days"
       x_minutes:
         one: 1 minute
+        two: 2 minutes
         other: "%{count} minutes"
       x_months:
         one: 1 month
+        two: 2 months
         other: "%{count} months"
       x_seconds:
         one: 1 second
+        two: 2 seconds
         other: "%{count} seconds"
     prompts:
       day: Day
@@ -181,6 +192,7 @@ en-GB:
         units:
           byte:
             one: Byte
+            two: Bytes
             other: Bytes
           gb: GB
           kb: KB
