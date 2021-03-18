@@ -1,4 +1,5 @@
 require 'bcrypt'
+require 'mail'
 require 'uri'
 require 'active_support/number_helper'
 require 'active_support/string_inquirer'
