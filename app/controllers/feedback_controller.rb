@@ -2,6 +2,10 @@ class FeedbackController < LocalizedController
   before_action :raise_routing_error, if: :feedback_disabled?
   before_action :build_feedback, only: [:new, :create]
 
+  rescue_from Feedback::RateLimitExceededError do
+    redirect_to thanks_feedback_url
+  end
+
   def new
     respond_to do |format|
       format.html
@@ -32,14 +36,17 @@ class FeedbackController < LocalizedController
   end
 
   def feedback_params
-    params.require(:feedback).permit(*feedback_attributes).merge(user_agent)
+    params.require(:feedback).permit(*feedback_attributes).merge(additional_params)
   end
 
   def feedback_attributes
     [:email, :petition_link_or_title, :comment]
   end
 
-  def user_agent
-    { user_agent: request.user_agent }
+  def additional_params
+    {
+      user_agent: request.user_agent,
+      ip_address: request.remote_ip
+    }
   end
 end

@@ -230,3 +230,7 @@ end
 Then(/^a petition should exist with action_en: "([^"]*)", state: "([^"]*)"$/) do |action_en, state|
   expect(Petition.where(action_en: action_en, state: state)).to exist
 end
+
+Then(/^a feedback should not exist with comment: "([^"]*)"$/) do |comment|
+  expect(Feedback.where(comment: comment)).not_to exist
+end
