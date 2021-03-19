@@ -44,15 +44,24 @@
 <% if @petition.creator %>
   <dt>Creator</dt>
   <dd>
-    <%= @petition.creator.name %><br />
-    <%= auto_link(@petition.creator.email) %>
-    <% @petition.creator.contact&.tap do |contact| %>
-      <br />
-      <%= contact.phone_number %><br />
-      <%= link_to "https://www.google.com/maps/search/?api=1&query=#{URI.escape("#{contact.address.squish}, #{contact.signature.postcode}")}" do %>
-        <%= simple_format(h(contact.address)) %>
+    <ul>
+      <li>
+        <%= @petition.creator.name %><br />
+        <%= auto_link(@petition.creator.email) %>
+      </li>
+      <% if contact = @petition.creator.contact %>
+        <% if contact.phone_number? %>
+          <li><%= contact.phone_number %></li>
+        <% end %>
+        <% if contact.address? %>
+          <li>
+            <%= link_to "https://www.google.com/maps/search/?api=1&query=#{URI.escape("#{contact.address.squish}, #{contact.signature.postcode}")}" do %>
+              <%= simple_format(h(contact.address)) %>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
+    </ul>
   </dd>
 <% end %>
 
@@ -158,7 +167,7 @@
 <% end %>
 </dl>
 
-<% if current_user.is_a_sysadmin? %>
+<% if current_user.is_a_sysadmin? && @petition.published? %>
   <div class="statistics-meta">
     <small>
       <% if @petition.statistics.refreshed? %>
