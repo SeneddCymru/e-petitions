@@ -1,31 +1,40 @@
 <div class="grid-row">
-  <div class="column-two-thirds extra-gutter">
+  <div class="grid-column">
     <%= hidden_field_tag :tab, "petitions" %>
 
     <div class="grid-row">
-      <div class="column-half">
+      <div class="column-third">
         <%= form_row for: [form.object, :threshold_for_referral] do %>
           <%= form.label :threshold_for_referral, "Threshold for referral to the committee", class: "form-label" %>
           <%= error_messages_for_field @site, :threshold_for_referral %>
           <%= form.text_field :threshold_for_referral, tabindex: increment, maxlength: 10, class: "form-control form-control-1-2" %>
         <% end %>
-      </div>
 
-      <div class="column-half">
         <%= form_row for: [form.object, :threshold_for_debate] do %>
           <%= form.label :threshold_for_debate, "Threshold for consideration for a debate", class: "form-label" %>
           <%= error_messages_for_field @site, :threshold_for_debate %>
           <%= form.text_field :threshold_for_debate, tabindex: increment, maxlength: 10, class: "form-control form-control-1-2" %>
         <% end %>
-      </div>
-    </div>
 
-    <div class="grid-row">
-      <div class="column-half">
         <%= form_row for: [form.object, :petition_duration] do %>
           <%= form.label :petition_duration, "Duration", class: "form-label" %>
           <%= error_messages_for_field @site, :petition_duration %>
           <%= form.text_field :petition_duration, tabindex: increment, maxlength: 10, class: "form-control form-control-1-2" %> <span class="suffix">weeks</span>
+        <% end %>
+      </div>
+
+      <div class="column-half">
+        <%= form_row for: [form.object, :disable_petition_creation], class: "inline" do %>
+          <%= form.label :disable_petition_creation, "Stop new petitions from being created?", class: "form-label" %>
+          <%= error_messages_for_field @site, :disable_petition_creation %>
+          <div class="multiple-choice">
+            <%= form.radio_button :disable_petition_creation, true %>
+            <%= form.label :disable_petition_creation, "Yes", for: "site_disable_petition_creation_true" %>
+          </div>
+          <div class="multiple-choice">
+            <%= form.radio_button :disable_petition_creation, false %>
+            <%= form.label :disable_petition_creation, "No", for: "site_disable_petition_creation_false" %>
+          </div>
         <% end %>
       </div>
     </div>

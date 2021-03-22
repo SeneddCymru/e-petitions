@@ -28,6 +28,7 @@ class Site < ActiveRecord::Base
     disable_register_to_vote
     disable_other_business
     disable_thresholds_and_debates
+    disable_petition_creation
   ]
 
   class << self
