@@ -46,14 +46,9 @@
 }
 
 .graphic-logo-white {
-  width: 21px;
-  height: 34px;
-  background-image: image-url("graphics/graphic-logo-white.png");
-
-  @include device-pixel-ratio() {
-    background-image: image-url("graphics/graphic-logo-white-2x.png");
-    background-size: 100%;
-  }
+  width: 20px;
+  height: 28px;
+  background-image: image-url("graphics/graphic-logo-white.svg");
 }
 
 .graphic-portcullis {
