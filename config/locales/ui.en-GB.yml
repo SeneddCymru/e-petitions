@@ -155,7 +155,7 @@ en-GB:
             <button type="submit" class="button forward" data-disable-with="Send feedback">Send feedback</button>
           petition_link_or_title:
             label_html: |-
-              Petition title/link <span class="optional">optional</span>
+              Petition title/link (optional)
       thanks:
         heading: "Your feedback has been sent"
         back_link: "Back to Petitions home"

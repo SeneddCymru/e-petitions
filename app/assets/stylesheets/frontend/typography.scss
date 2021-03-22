@@ -134,7 +134,8 @@ details {
     }
   }
 
-  summary::-webkit-details-marker {
+  summary::-webkit-details-marker,
+  summary::marker {
     display: none;
   }
 

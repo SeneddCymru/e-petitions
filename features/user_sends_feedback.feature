@@ -12,6 +12,11 @@ Feature: User sends feedback
     Given I am on the feedback page
     Then I cannot submit feedback without filling in the required fields
 
+  Scenario: User sees a message when submitting feedback and a message has been enabled
+    Given a feedback page message has been enabled
+    When I am on the feedback page
+    Then I should see "Petition moderation is experiencing delays"
+
   @allow-rescue
   Scenario: Feedback page is disabled
     Given the feedback page is disabled

@@ -403,7 +403,7 @@ class Petition < ActiveRecord::Base
 
     def close_petitions!(time = Time.current)
       in_need_of_closing(time).find_each do |petition|
-        petition.close!
+        petition.close!(time)
       end
     end
 
@@ -885,7 +885,18 @@ class Petition < ActiveRecord::Base
     end
   end
 
-  def close!(time = deadline)
+  def close!(time)
+    unless open?
+      raise RuntimeError, "can't close a petition that is in the #{state} state"
+    end
+
+    if deadline <= time
+      Appsignal.increment_counter("petition.closed", 1)
+      update!(state: CLOSED_STATE, closed_at: deadline)
+    end
+  end
+
+  def close_early!(time)
     if open?
       Appsignal.increment_counter("petition.closed", 1)
       update!(state: CLOSED_STATE, closed_at: time)
@@ -1038,6 +1049,10 @@ class Petition < ActiveRecord::Base
     if published?
       (closed_at || Site.closed_at_for_opening(open_at))
     end
+  end
+
+  def extend_deadline!(amount = 1.day, now = Time.current)
+    update_columns(closed_at: closed_at + amount, updated_at: now)
   end
 
   def update_last_petition_created_at

@@ -154,13 +154,45 @@ section {
     left: $gutter;
   }
 
-  p {
+  &.important::before {
+    @include media(tablet) {
+      width: $gutter + 2px;
+      height: $gutter + 2px;
+      top: $gutter + 2px;
+      left: $extra-gutter;
+    }
+  }
+
+  &.important {
+    margin: (-$gutter) (-$gutter) $gutter;
+
+    @include media(tablet) {
+      margin: (-$extra-gutter) (-$extra-gutter) $extra-gutter;
+      padding: $gutter $extra-gutter;
+    }
+  }
+
+  h2, h3 {
     margin: 0;
     padding-left: $extra-gutter;
   }
 
+  p {
+    margin: 0;
+    margin-top: $gutter-half;
+    padding-left: $extra-gutter;
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+
   & + details {
     margin-top: $gutter;
+  }
+
+  a {
+    color: $white;
   }
 }
 

@@ -37,7 +37,10 @@ class Admin::SitesController < Admin::AdminController
       :disable_plus_address_check, :disable_feedback_sending, :show_holding_page,
       :disable_gaelic_website, :disable_notify_by_email, :disable_local_petitions,
       :disable_register_to_vote, :disable_thresholds_and_debates, :disable_other_business,
-      :disable_petition_creation
+      :disable_petition_creation, :disable_collecting_signatures,
+      :show_home_page_message, :home_page_message_en, :home_page_message_gd,
+      :show_petition_page_message, :petition_page_message_en, :petition_page_message_gd,
+      :show_feedback_page_message, :feedback_page_message_en, :feedback_page_message_gd
     )
   end
 end

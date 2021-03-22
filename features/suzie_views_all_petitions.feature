@@ -92,6 +92,18 @@ Feature: Suzy Signer views all petitions
     Then I should see "Good times"
     And I should see "Collecting signatures until"
 
+  Scenario: Suzie sees a message when browsing petitions and signature collection has been paused
+    Given petitions are not collecting signatures
+    And a set of petitions
+    When I view all petitions from the home page
+    Then I should see "Petitions have stopped collecting signatures"
+
+  Scenario: Suzie sees a message when browsing petitions and a message has been enabled
+    Given a home page message has been enabled
+    And a set of petitions
+    When I view all petitions from the home page
+    Then I should see "Petition moderation is experiencing delays"
+
   Scenario: Downloading the JSON data for petitions
     Given a set of petitions
     And I am on the all petitions page
