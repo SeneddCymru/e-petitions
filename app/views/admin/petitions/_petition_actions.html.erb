@@ -52,16 +52,16 @@
         </li>
       <% end %>
 
-      <% if current_user.can_take_petitions_down? && @petition.can_be_signed? %>
-        <li class="petition-action">
-          <%= render 'petition_action_take_down', petition: @petition %>
-        </li>
-
-      <% elsif @petition.rejected? || @petition.hidden? -%>
+      <% if @petition.rejected? || @petition.hidden? %>
         <li class="petition-action">
           <%= render 'petition_action_change_rejection_status', petition: @petition %>
         </li>
-      <% end -%>
+
+      <% elsif current_user.can_take_petitions_down?  %>
+        <li class="petition-action">
+          <%= render 'petition_action_take_down', petition: @petition %>
+        </li>
+      <% end  %>
 
       <% if @petition.completed? %>
         <li class="petition-action">
