@@ -7,7 +7,7 @@ Feature: Suzy Singer searches by free text
     Given the date is the "21 April 2011 12:00"
     And a pending petition exists with action_en: "Wombles are great", action_gd: "Tha Wombles sgoinneil"
     And a validated petition exists with action_en: "The Wombles of Wimbledon", action_gd: "Wombles Wimbledon"
-    And an open petition exists with action_en: "Uncle Bulgaria", additional_details: "The Wombles are here", action_gd: "Uncle Bulgaria", additional_details_gd: "Tha na Wombles an seo", closed_at: "1 minute from now"
+    And an open petition exists with action_en: "Uncle Bulgaria", additional_details_en: "The Wombles are here", action_gd: "Uncle Bulgaria", additional_details_gd: "Tha na Wombles an seo", closed_at: "1 minute from now"
     And an open petition exists with action_en: "Common People", background: "The Wombles belong to us all", action_gd: "Daoine Cumanta", background_gd: "Buinidh na Wombles dhuinn uile", closed_at: "11 days from now"
     And an open petition exists with action_en: "Overthrow the Wombles", action_gd: "Thoir thairis na Wombles", closed_at: "1 year from now"
     And a referred petition exists with action_en: "The Wombles will rock Glasto", action_gd: "Bidh na Wombles a ’creag Glasto", closed_at: "1 minute ago"

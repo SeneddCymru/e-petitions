@@ -100,10 +100,6 @@ Given(/^an sponsored petition exists with action: "([^"]*)"$/) do |action|
   @petition = FactoryBot.create(:sponsored_petition, action: action)
 end
 
-Given(/^an open petition exists with action_en: "([^"]*)", action_gd: "([^"]*)", background_en: "([^"]*)", background_gd: "([^"]*)"$/) do |action_en, action_gd, background_en, background_gd|
-  @petition = FactoryBot.create(:open_petition, action_en: action_en, action_gd: action_gd, background_en: background_en, background_gd: background_gd)
-end
-
 Given(/^an open petition exists with action_en: "([^"]*)", background_en: "([^"]*)", action_gd: "([^"]*)", background_gd: "([^"]*)"$/) do |action_en, background_en, action_gd, background_gd|
   @petition = FactoryBot.create(:open_petition, action_en: action_en, action_gd: action_gd, background_en: background_en, background_gd: background_gd)
 end
@@ -140,8 +136,8 @@ Given(/^a validated petition exists with action_en: "([^"]*)", action_gd: "([^"]
   @petition = FactoryBot.create(:validated_petition, action_en: action_en, action_gd: action_gd)
 end
 
-Given(/^an open petition exists with action_en: "([^"]*)", additional_details: "([^"]*)", action_gd: "([^"]*)", additional_details_gd: "([^"]*)", closed_at: "([^"]*)"$/) do |action_en, additional_details, action_gd, additional_details_gd, closed_at|
-  @petition = FactoryBot.create(:open_petition, action_en: action_en, additional_details: additional_details, action_gd: action_gd, additional_details_gd: additional_details_gd, closed_at: closed_at)
+Given(/^an open petition exists with action_en: "([^"]*)", additional_details_en: "([^"]*)", action_gd: "([^"]*)", additional_details_gd: "([^"]*)", closed_at: "([^"]*)"$/) do |action_en, additional_details_en, action_gd, additional_details_gd, closed_at|
+  @petition = FactoryBot.create(:open_petition, action_en: action_en, additional_details_en: additional_details_en, action_gd: action_gd, additional_details_gd: additional_details_gd, closed_at: closed_at)
 end
 
 Given(/^an open petition exists with action_en: "([^"]*)", background: "([^"]*)", action_gd: "([^"]*)", background_gd: "([^"]*)", closed_at: "([^"]*)"$/) do |action_en, background, action_gd, background_gd, closed_at|
