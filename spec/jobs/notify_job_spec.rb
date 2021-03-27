@@ -57,7 +57,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "notifies Appsignal of the error" do
-          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class))
 
           perform_enqueued_jobs {
             described_class.perform_later(*arguments)
@@ -79,7 +79,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "doesn't notify Appsignal of the error" do
-          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -102,7 +102,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "doesn't notify Appsignal of the error" do
-          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -125,7 +125,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "notifies Appsignal of the error" do
-          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -148,7 +148,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "notifies Appsignal of the error" do
-          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -171,7 +171,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "notifies Appsignal of the error" do
-          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -194,7 +194,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "notifies Appsignal of the error" do
-          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -217,7 +217,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "doesn't notify Appsignal of the error" do
-          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
@@ -240,7 +240,7 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
 
         it "doesn't notify Appsignal of the error" do
-          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class), nil, "email")
+          expect(Appsignal).not_to receive(:send_exception).with(an_instance_of(exception_class))
           described_class.perform_now(*arguments)
         end
 
