@@ -165,8 +165,7 @@ Given(/^a hidden petition exists with action_en: "([^"]*)", action_gd: "([^"]*)"
 end
 
 Then(/^a petition should exist with action_en: "([^"]*)", action_gd: nil, state: "([^"]*)", locale: "([^"]*)"$/) do |action_en, state, locale|
-  petition = Petition.where(action_en: action_en, action_gd: nil, state: state, locale: locale)
-  expect(petition).to exist
+  expect(Petition.where(action_en: action_en, action_gd: nil, state: state, locale: locale)).to exist
 end
 
 Then(/^a petition should exist with action_en: "([^"]*)", action_gd: nil, state: "([^"]*)", locale: "([^"]*)", collect_signatures: (\w+)$/) do |action_en, state, locale, collect_signatures|
@@ -182,23 +181,19 @@ Then(/^a petition should exist with action_en: "([^"]*)", action_gd: nil, state:
 end
 
 Then(/^a petition should exist with action_gd: "([^"]*)", action_en: nil, state: "([^"]*)", locale: "([^"]*)"$/) do |action_gd, state, locale|
-  petition = Petition.where(action_en: nil, action_gd: action_gd, state: state, locale: locale)
-  expect(petition).to exist
+  expect(Petition.where(action_en: nil, action_gd: action_gd, state: state, locale: locale)).to exist
 end
 
 Then(/^a signature should exist with email: "([^"]*)", state: "([^"]*)"$/) do |email, state|
-  signature = Signature.where(email: email, state: state)
-  expect(signature).to exist
+  expect(Signature.where(email: email, state: state)).to exist
 end
 
 Then(/^a petition should not exist with action: "([^"]*)", state: "([^"]*)"$/) do |action, state|
-  petition = Petition.where(action: action, state: state)
-  expect(petition).to eq([])
+  expect(Petition.where(action: action, state: state)).not_to exist
 end
 
 Then(/^a signature should not exist with email: "([^"]*)", state: "([^"]*)"$/) do |email, state|
-  signature = Signature.where(email: email, state: state)
-  expect(signature).to eq([])
+  expect(Signature.where(email: email, state: state)).not_to exist
 end
 
 Given(/^(\d+) open petitions exist with action: "([^"]*)"$/) do |number, action|
@@ -233,6 +228,5 @@ When(/^I confirm my email$/) do
 end
 
 Then(/^a petition should exist with action_en: "([^"]*)", state: "([^"]*)"$/) do |action_en, state|
-  petition = Petition.where(action_en: action_en, state: state)
-  expect(petition).to exist
+  expect(Petition.where(action_en: action_en, state: state)).to exist
 end
