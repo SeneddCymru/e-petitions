@@ -20,12 +20,14 @@ class Petition < ActiveRecord::Base
   SHOW_STATES       = %w[pending validated sponsored flagged open closed completed rejected]
   MODERATED_STATES  = %w[open closed completed hidden rejected]
   PUBLISHED_STATES  = %w[open closed completed]
+  REJECTED_STATES   = %w[rejected hidden]
   SELECTABLE_STATES = %w[open closed completed rejected hidden]
   SEARCHABLE_STATES = %w[open closed completed rejected]
   CURRENT_STATES    = %w[open closed]
   ARCHIVABLE_STATES = %w[completed rejected hidden]
 
-  MODERATION_STATES       = %w[sponsored flagged]
+  PUBLISHABLE_STATES         = %w[validated sponsored flagged]
+  MODERATION_STATES          = %w[sponsored flagged]
   TODO_LIST_STATES           = %w[pending validated sponsored flagged]
   COLLECTING_SPONSORS_STATES = %w[pending validated]
 
@@ -81,7 +83,11 @@ class Petition < ActiveRecord::Base
   has_one :creator, -> { creator }, class_name: 'Signature', inverse_of: :petition
   accepts_nested_attributes_for :creator, update_only: true
 
-  belongs_to :locked_by, class_name: 'AdminUser', optional: true
+  with_options class_name: 'AdminUser' do
+    belongs_to :locked_by, optional: true
+    belongs_to :moderated_by, optional: true
+  end
+
   belongs_to :pe_number, optional: true
 
   has_one :debate_outcome, dependent: :destroy
@@ -151,28 +157,33 @@ class Petition < ActiveRecord::Base
   alias_attribute :opened_at, :open_at
   attribute :locale, :string, default: -> { I18n.locale }
 
+  before_update if: :moderating? do
+    self.moderated_by = Admin::Current.user
+  end
+
   after_create do
     Appsignal.increment_counter("petition.created")
   end
 
   finders = Module.new do
-   def find_by_param(param)
-     case param
-     when /\APE(\d{4,7})\z/
-       all.find_by!(pe_number_id: $1)
-     when /\APP(\d{4,7})\z/
-       all.find_by!(id: $1)
-     else
-       all.find_by!(id: param)
-     end
-   end
-   def find(id)
-     id.is_a?(String) ? find_by_param(id) : super(id)
-   end
- end
+    def find_by_param(param)
+      case param
+      when /\APE(\d{4,7})\z/
+        all.find_by!(pe_number_id: $1)
+      when /\APP(\d{4,7})\z/
+        all.find_by!(id: $1)
+      else
+        all.find_by!(id: param)
+      end
+    end
 
- include finders
- relation.class.include finders
+    def find(id)
+      id.is_a?(String) ? find_by_param(id) : super(id)
+    end
+  end
+
+  include finders
+  relation.class.include finders
 
   class << self
     def by_most_popular
@@ -785,6 +796,18 @@ class Petition < ActiveRecord::Base
     end
   end
 
+  def moderating?
+    state_changed? && (publishing? || rejecting?)
+  end
+
+  def publishing?
+    state.in?(PUBLISHED_STATES) && state_was.in?(PUBLISHABLE_STATES)
+  end
+
+  def rejecting?
+    state.in?(REJECTED_STATES) && state_was.in?(PUBLISHABLE_STATES + VISIBLE_STATES)
+  end
+
   def publish(time = Time.current)
     errors.add :moderation, :translation_missing unless translated?
     errors.add :moderation, :still_pending if pending?
@@ -956,10 +979,6 @@ class Petition < ActiveRecord::Base
 
   def published?
     state.in?(PUBLISHED_STATES)
-  end
-
-  def publishing?
-    state_was.in?(MODERATION_STATES) && state.in?(PUBLISHED_STATES)
   end
 
   def visible?
