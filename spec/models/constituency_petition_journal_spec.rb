@@ -99,18 +99,8 @@ RSpec.describe ConstituencyPetitionJournal, type: :model do
       end
     end
 
-    context "when the supplied signature has no petition" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: nil, constituency_id: constituency_id) }
-
-      it "does nothing" do
-        expect {
-          described_class.invalidate_signature_for(signature)
-        }.not_to change { journal.reload.signature_count }
-      end
-    end
-
     context "when the supplied signature has no country" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, constituency_id: nil) }
+      let(:signature) { FactoryBot.create(:validated_signature, petition: petition, constituency_id: nil) }
 
       it "does nothing" do
         expect {
@@ -120,7 +110,7 @@ RSpec.describe ConstituencyPetitionJournal, type: :model do
     end
 
     context "when the supplied signature is not validated" do
-      let(:signature) { FactoryBot.build(:pending_signature, petition: petition, constituency_id: constituency_id) }
+      let(:signature) { FactoryBot.create(:pending_signature, petition: petition, constituency_id: constituency_id) }
 
       it "does nothing" do
         expect {
@@ -130,7 +120,7 @@ RSpec.describe ConstituencyPetitionJournal, type: :model do
     end
 
     context "when the signature count is already zero" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, constituency_id: constituency_id) }
+      let(:signature) { FactoryBot.create(:validated_signature, petition: petition, constituency_id: constituency_id) }
       let(:signature_count) { 0 }
 
       it "does nothing" do

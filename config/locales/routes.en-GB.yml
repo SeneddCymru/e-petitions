@@ -27,6 +27,9 @@ en-GB:
     "/help":
       en-GB: "/help"
       gd-GB: "/cuideachadh"
+    "/images/:signed_blob_id/:variation_key/*filename":
+      en-GB: "/images/:signed_blob_id/:variation_key/*filename"
+      gd-GB: "/iomhaighean/:signed_blob_id/:variation_key/*filename"
     "/manifest":
       en-GB: "/manifest"
       gd-GB: "/manifest"

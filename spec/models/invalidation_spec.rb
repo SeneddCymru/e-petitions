@@ -336,16 +336,6 @@ RSpec.describe Invalidation, type: :model do
     describe "#start!" do
       subject { FactoryBot.create(:invalidation, ip_address: "10.0.1.1") }
 
-      let(:job) do
-        {
-          job: InvalidateSignaturesJob,
-          args: [
-            { "_aj_globalid" => "gid://scots-pets/Invalidation/#{subject.id}" }
-          ],
-          queue: "high_priority"
-        }
-      end
-
       it "enqueues the invalidate signatures job" do
         expect {
           subject.start!

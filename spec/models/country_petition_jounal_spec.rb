@@ -96,18 +96,13 @@ RSpec.describe CountryPetitionJournal, type: :model do
       end
     end
 
-    context "when the supplied signature has no petition" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: nil, location_code: "GB-SCT") }
-
-      it "does nothing" do
-        expect {
-          described_class.invalidate_signature_for(signature)
-        }.not_to change { journal.reload.signature_count }
-      end
-    end
-
     context "when the supplied signature has no country" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: nil) }
+      let(:signature) { FactoryBot.create(:validated_signature, petition: petition, location_code: "GB-SCT") }
+
+      before do
+        # Validation prevents location code being nil so bypass with update_column
+        signature.update_column(:location_code, nil)
+      end
 
       it "does nothing" do
         expect {
@@ -117,7 +112,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
     end
 
     context "when the supplied signature is not validated" do
-      let(:signature) { FactoryBot.build(:pending_signature, petition: petition, location_code: "GB-SCT") }
+      let(:signature) { FactoryBot.create(:pending_signature, petition: petition, location_code: "GB-SCT") }
 
       it "does nothing" do
         expect {
@@ -127,7 +122,7 @@ RSpec.describe CountryPetitionJournal, type: :model do
     end
 
     context "when the signature count is already zero" do
-      let(:signature) { FactoryBot.build(:invalidated_signature, petition: petition, location_code: "GB-SCT") }
+      let(:signature) { FactoryBot.create(:validated_signature, petition: petition, location_code: "GB-SCT") }
       let(:signature_count) { 0 }
 
       it "does nothing" do

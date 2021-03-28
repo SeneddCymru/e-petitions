@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Load environment variables
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
-gem 'rails', '6.1.3'
+gem 'rails', '6.1.3.1'
 
 gem 'rake'
 gem 'pg'
@@ -30,7 +30,7 @@ gem 'connection_pool'
 gem 'lograge'
 gem 'logstash-logger'
 gem 'jbuilder'
-gem 'paperclip'
+gem 'image_processing'
 gem 'maxminddb'
 gem 'redcarpet'
 gem 'scrypt'

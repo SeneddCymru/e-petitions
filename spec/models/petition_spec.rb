@@ -1423,7 +1423,7 @@ RSpec.describe Petition, type: :model do
     end
 
     context "when a petition is in the closed state and the petition has not been referred or rejected" do
-      let!(:petition) { FactoryBot.create(:closed_petition, open_at: 1.month.ago, closed_at: 1.day.ago) }
+      let!(:petition) { FactoryBot.create(:closed_petition, open_at: 1.month.ago, closed_at: 25.hours.ago) }
 
       it "finds the petition" do
         expect(described_class.in_need_of_referring_or_rejecting).to include(petition)
@@ -1643,10 +1643,10 @@ RSpec.describe Petition, type: :model do
     end
 
     context "when the signature count crosses the threshold for moderation" do
-      let(:signature_count) { 4 }
+      let(:signature_count) { 5 }
 
       before do
-        expect(Site).to receive(:threshold_for_referral).and_return(5)
+        expect(Site).to receive(:threshold_for_moderation).and_return(5)
         FactoryBot.create(:validated_signature, petition: petition, increment: false)
       end
 
