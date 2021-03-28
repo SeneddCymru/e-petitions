@@ -16,7 +16,7 @@ class DebateOutcome < ActiveRecord::Base
     content_type: "image/jpeg",
     byte_size: 512.kilobytes,
     dimensions: {
-      width: 600..1800, height: 377..1200,
+      width: 600..1800, height: 338..1200,
       ratio: (1.5)..(1.8)
     }
   }

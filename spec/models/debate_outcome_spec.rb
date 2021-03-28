@@ -60,7 +60,7 @@ RSpec.describe DebateOutcome, type: :model do
       it { is_expected.not_to allow_value(too_large).for(:image).with_message("The image is too large (maximum is 512 KB)") }
       it { is_expected.not_to allow_value(too_narrow).for(:image).with_message("Width must be at least 600px (is 512px)") }
       it { is_expected.not_to allow_value(too_wide).for(:image).with_message("Width must be at most 1800px (is 2000px)") }
-      it { is_expected.not_to allow_value(too_short).for(:image).with_message("Height must be at least 377px (is 300px)") }
+      it { is_expected.not_to allow_value(too_short).for(:image).with_message("Height must be at least 338px (is 300px)") }
       it { is_expected.not_to allow_value(too_tall).for(:image).with_message("Height must be at most 1200px (is 1300px)") }
       it { is_expected.not_to allow_value(incorrect_ratio).for(:image).with_message("Aspect ratio of the image is 1 - should be between 1.5 and 1.8") }
     end
