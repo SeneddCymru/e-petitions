@@ -28,7 +28,7 @@ class Petition < ActiveRecord::Base
 
   PUBLISHABLE_STATES         = %w[validated sponsored flagged]
   MODERATION_STATES          = %w[sponsored flagged]
-  MODERATABLE_STATES         = %w[validated sponsored flagged rejected hidden]
+  MODERATABLE_STATES         = %w[pending validated sponsored flagged rejected hidden]
   TODO_LIST_STATES           = %w[pending validated sponsored flagged]
   COLLECTING_SPONSORS_STATES = %w[pending validated]
 
