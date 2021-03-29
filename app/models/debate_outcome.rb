@@ -7,8 +7,11 @@ class DebateOutcome < ActiveRecord::Base
 
   validates :petition, presence: true
   validates :debated_on, presence: true, if: :debated?
-  validates :transcript_url_en, :video_url_en, :debate_pack_url_en, length: { maximum: 500 }
-  validates :transcript_url_gd, :video_url_gd, :debate_pack_url_gd, length: { maximum: 500 }
+
+  with_options url: true, length: { maximum: 500 } do
+    validates :transcript_url_en, :video_url_en, :debate_pack_url_en
+    validates :transcript_url_gd, :video_url_gd, :debate_pack_url_gd
+  end
 
   has_one_attached :image
 
