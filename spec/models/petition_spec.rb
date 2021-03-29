@@ -52,7 +52,9 @@ RSpec.describe Petition, type: :model do
         %w[validated flagged],
         %w[sponsored flagged],
         %w[flagged sponsored],
-        %w[open closed]
+        %w[open closed],
+        %w[rejected flagged],
+        %w[rejected sponsored]
       ].each do |initial, desired|
         context "from '#{initial}' to '#{desired}'" do
           let(:petition) { FactoryBot.create(:"#{initial}_petition", state: initial) }
@@ -89,7 +91,8 @@ RSpec.describe Petition, type: :model do
         %w[flagged open],
         %w[flagged rejected],
         %w[flagged hidden],
-        %w[rejected hidden]
+        %w[rejected hidden],
+        %w[rejected open]
       ].each do |initial, desired|
         context "from '#{initial}' to '#{desired}'" do
           let(:petition) { FactoryBot.create(:"#{initial}_petition", state: initial) }

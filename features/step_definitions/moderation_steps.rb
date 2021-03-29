@@ -18,6 +18,12 @@ When(/^I visit a sponsored petition with action: "([^"]*)", that has background:
   visit admin_petition_url(@sponsored_petition)
 end
 
+When(/^I reject the petition$/) do
+  choose "Reject"
+  select "Duplicate petition", :from => :petition_rejection_code
+  click_button "Email petition creator"
+end
+
 When(/^I reject the petition with a reason code "([^"]*)"$/) do |reason_code|
   choose "Reject"
   select reason_code, :from => :petition_rejection_code
@@ -53,8 +59,13 @@ When(/^I flag the petition$/) do
   click_button "Save without emailing"
 end
 
+When(/^I restore the petition$/) do
+  choose "Restore"
+  click_button "Save without emailing"
+end
+
 Then /^the petition is still available for searching or viewing$/ do
-  step %{I search for "Rejected petitions" with "#{@petition.action}"}
+  step %{I search for "All petitions" with "#{@petition.action}"}
   step %{I should see the petition "#{@petition.action}"}
   step %{I view the petition}
   step %{I should see the petition details}
@@ -84,6 +95,10 @@ end
 Then(/^the petition should be visible on the site but not available for signing$/) do
   visit petition_url(@petition)
   expect(page).not_to have_css("a", :text => "Sign this petition")
+end
+
+Then(/^the petition can no longer be rejected$/) do
+  expect(page).to have_no_field('Reject', visible: false)
 end
 
 Then(/^the petition can no longer be flagged$/) do
@@ -233,8 +248,16 @@ Then /^it can still be approved$/ do
   expect(page).to have_field('Approve', visible: false)
 end
 
+Then /^it can still be flagged$/ do
+  expect(page).to have_field('Flag', visible: false)
+end
+
 Then /^it can still be rejected$/ do
   expect(page).to have_field('Reject', visible: false)
+end
+
+Then(/^it can still be restored$/) do
+  expect(page).to have_field('Restore', visible: false)
 end
 
 Then /^it can be restored to a sponsored state$/ do

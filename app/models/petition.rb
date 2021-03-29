@@ -19,8 +19,8 @@ class Petition < ActiveRecord::Base
   VISIBLE_STATES    = %w[open closed completed rejected]
   SHOW_STATES       = %w[pending validated sponsored flagged open closed completed rejected]
   MODERATED_STATES  = %w[open closed completed hidden rejected]
-  PUBLISHED_STATES  = %w[open closed completed]
   REJECTED_STATES   = %w[rejected hidden]
+  PUBLISHED_STATES  = %w[open closed completed]
   SELECTABLE_STATES = %w[open closed completed rejected hidden]
   SEARCHABLE_STATES = %w[open closed completed rejected]
   CURRENT_STATES    = %w[open closed]
@@ -40,10 +40,13 @@ class Petition < ActiveRecord::Base
 
   translate :action, :additional_details, :background, :previous_action, :scot_parl_link
 
-  before_save :build_pe_number, if: :publishing?
   before_save :update_debate_state, if: :scheduled_debate_date_changed?
   before_save :update_moderation_lag, unless: :moderation_lag?
   after_create :update_last_petition_created_at
+
+  before_save if: :publishing? do
+    build_pe_number unless pe_number.present?
+  end
 
   extend Searchable(:action_en, :action_gd, :background_en, :background_gd, :additional_details_en, :additional_details_gd)
   include Browseable, Taggable, Topics
@@ -706,7 +709,7 @@ class Petition < ActiveRecord::Base
   end
 
   def moderation=(value)
-    @moderation = value if value.in?(%w[approve reject flag unflag])
+    @moderation = value if value.in?(%w[approve reject restore flag unflag])
   end
 
   def moderation
@@ -782,23 +785,29 @@ class Petition < ActiveRecord::Base
   def moderate(params)
     self.moderation = params[:moderation]
 
-    case moderation
-    when 'approve'
-      publish
-    when 'reject'
-      reject(params[:rejection])
-    when 'flag'
-      update(state: FLAGGED_STATE)
-    when 'unflag'
-      update(state: SPONSORED_STATE)
-    else
-      if flagged?
-        errors.add :moderation, :blank, action: 'unflag'
-      else
-        errors.add :moderation, :blank, action: 'flag'
-      end
+    transaction do
+      # Clear any existing rejection details
+      self.rejection = nil
+      self.rejected_at = nil
 
-      return false
+      case moderation
+      when 'approve'
+        publish
+      when 'reject'
+        reject(params[:rejection])
+      when 'flag'
+        update(state: FLAGGED_STATE)
+      when 'unflag', 'restore'
+        update(state: SPONSORED_STATE)
+      else
+        if flagged?
+          errors.add :moderation, :blank, action: 'unflag'
+        else
+          errors.add :moderation, :blank, action: 'flag'
+        end
+
+        false
+      end
     end
   end
 
@@ -807,7 +816,7 @@ class Petition < ActiveRecord::Base
   end
 
   def publishing?
-    state.in?(PUBLISHED_STATES) && state_was.in?(PUBLISHABLE_STATES)
+    state.in?(PUBLISHED_STATES) && state_was.in?(PUBLISHABLE_STATES + REJECTED_STATES)
   end
 
   def rejecting?
@@ -1004,6 +1013,10 @@ class Petition < ActiveRecord::Base
 
   def closed_for_signing?(now = Time.current)
     rejected? || closed_at? && closed_at < 24.hours.ago(now)
+  end
+
+  def rejection?
+    rejected? || hidden?
   end
 
   def update_lock!(user, now = Time.current)
