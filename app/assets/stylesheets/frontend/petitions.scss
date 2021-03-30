@@ -637,3 +637,53 @@ section {
     }
   }
 }
+
+.petition-content {
+  ul {
+    & > li {
+      margin-top: $gutter-half;
+      padding-left: $gutter;
+      position: relative;
+
+      &::before {
+        box-sizing: border-box;
+        background-color: $black;
+        content: "";
+        position: absolute;
+        left: 2px;
+        border-radius: 4px;
+        height: 7px;
+        width: 7px;
+        top: 7px;
+      }
+
+      & > p {
+        margin: 0 0 $gutter-half 0;
+      }
+    }
+
+    ul > li {
+      &::before {
+        background-color: $white;
+        border: 1px solid $black;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: ordered-list;
+
+    & > li {
+      margin-top: $gutter-half;
+      padding-left: $gutter;
+      position: relative;
+
+      &::before {
+        counter-increment: ordered-list;
+        content: counter(ordered-list) ".";
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}
