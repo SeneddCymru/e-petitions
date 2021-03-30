@@ -2200,6 +2200,71 @@ RSpec.describe Petition, type: :model do
     end
   end
 
+  describe '#moderate' do
+    shared_examples "it doesn't change timestamps" do
+      it "doesn't change the open_at timestamp" do
+        expect {
+          petition.moderate(params)
+        }.not_to change {
+          petition.reload.open_at
+        }
+      end
+
+      it "doesn't change the closed_at timestamp" do
+        expect {
+          petition.moderate(moderation: "approve")
+        }.not_to change {
+          petition.reload.closed_at
+        }
+      end
+    end
+
+    context "when taking down an open petition" do
+      let(:petition) do
+        FactoryBot.create(
+          :open_petition,
+          open_at: 2.weeks.ago,
+          closed_at: 2.weeks.from_now,
+          collect_signatures: true
+        )
+      end
+
+      let(:params) do
+        { moderation: "reject", rejection: { code: "duplicate" } }
+      end
+
+      it_behaves_like "it doesn't change timestamps"
+    end
+
+    context "when republishing a petition that was taken down" do
+      let(:params) do
+        { moderation: "approve" }
+      end
+
+      context "and the petition collected signatures" do
+        let(:petition) do
+          FactoryBot.create(:rejected_petition,
+            open_at: 6.weeks.ago, closed_at: 2.weeks.ago,
+            collect_signatures: true
+          )
+        end
+
+        it_behaves_like "it doesn't change timestamps"
+      end
+
+      context "and the petition didn't collect signatures" do
+        let(:petition) do
+          FactoryBot.create(:rejected_petition,
+            open_at: 2.weeks.ago, closed_at: 2.weeks.ago,
+            collect_signatures: false
+          )
+        end
+
+        it_behaves_like "it doesn't change timestamps"
+      end
+    end
+  end
+
   describe '#publish' do
     let(:now) { Time.current }
     let(:duration) { Site.petition_duration.weeks }
@@ -2209,7 +2274,7 @@ RSpec.describe Petition, type: :model do
       subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: true) }
 
       before do
-        petition.publish
+        petition.publish!
       end
 
       it "sets the state to OPEN" do
@@ -2231,7 +2296,7 @@ RSpec.describe Petition, type: :model do
           threshold_for_referral: 1
         )
 
-        petition.publish
+        petition.publish!
       end
 
       it "sets the state to CLOSED" do
@@ -2240,10 +2305,6 @@ RSpec.describe Petition, type: :model do
 
       it "sets the closed date to now" do
         expect(petition.closed_at).to be_within(1.second).of(now)
-      end
-
-      it "sets the referred date to now" do
-        expect(petition.referred_at).to be_within(1.second).of(now)
       end
     end
 
@@ -2256,7 +2317,7 @@ RSpec.describe Petition, type: :model do
         subject(:petition) { FactoryBot.create(:sponsored_petition, :translated, collect_signatures: false) }
 
         before do
-          petition.publish
+          petition.publish!
         end
 
         it "sets the state to CLOSED" do
@@ -2274,13 +2335,13 @@ RSpec.describe Petition, type: :model do
     end
   end
 
-  describe "#reject" do
+  describe "#reject!" do
     subject(:petition) { FactoryBot.create(:petition, :translated) }
 
     %w[insufficient duplicate irrelevant no-action fake-name].each do |rejection_code|
       context "when the reason for rejection is #{rejection_code}" do
         before do
-          petition.reject(code: rejection_code)
+          petition.reject!(code: rejection_code)
           petition.reload
         end
 
@@ -2297,7 +2358,7 @@ RSpec.describe Petition, type: :model do
     %w[libellous offensive not-suitable].each do |rejection_code|
       context "when the reason for rejection is #{rejection_code}" do
         before do
-          petition.reject(code: rejection_code)
+          petition.reject!(code: rejection_code)
           petition.reload
         end
 
@@ -2325,8 +2386,8 @@ RSpec.describe Petition, type: :model do
           expect(p2.rejection).to be_nil
           expect(p2.association(:rejection)).to be_loaded
 
-          p1.reject(code: "duplicate")
-          p2.reject(code: "irrelevant")
+          p1.reject!(code: "duplicate")
+          p2.reject!(code: "irrelevant")
 
           expect(rejection.code).to eq("irrelevant")
         }.not_to raise_error
