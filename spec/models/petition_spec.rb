@@ -172,8 +172,8 @@ RSpec.describe Petition, type: :model do
         it { is_expected.to validate_presence_of(:previous_action) }
         it { is_expected.to validate_length_of(:action).is_at_most(255) }
         it { is_expected.to validate_length_of(:background).is_at_most(3000) }
-        it { is_expected.to validate_length_of(:previous_action).is_at_most(500) }
-        it { is_expected.to validate_length_of(:additional_details).is_at_most(5000) }
+        it { is_expected.to validate_length_of(:previous_action).is_at_most(4000) }
+        it { is_expected.to validate_length_of(:additional_details).is_at_most(20000) }
       end
     end
 
@@ -182,8 +182,8 @@ RSpec.describe Petition, type: :model do
       it { is_expected.not_to validate_presence_of(:background) }
       it { is_expected.not_to validate_length_of(:action).is_at_most(255) }
       it { is_expected.not_to validate_length_of(:background).is_at_most(3000) }
-      it { is_expected.not_to validate_length_of(:previous_action).is_at_most(500) }
-      it { is_expected.not_to validate_length_of(:additional_details).is_at_most(5000) }
+      it { is_expected.not_to validate_length_of(:previous_action).is_at_most(4000) }
+      it { is_expected.not_to validate_length_of(:additional_details).is_at_most(20000) }
     end
 
     it { is_expected.to validate_presence_of(:creator).with_message(/must be completed/) }

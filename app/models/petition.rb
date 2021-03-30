@@ -141,8 +141,8 @@ class Petition < ActiveRecord::Base
     errors.add :previous_action, :blank unless t.previous_action.present?
     # allow extra characters to account for carriage returns
     errors.add :background, :too_long, count: 3000 if t.background.length > 3000
-    errors.add :additional_details, :too_long, count: 5000 if t.additional_details.length > 5000
-    errors.add :previous_action, :too_long, count: 500 if t.previous_action.length > 500
+    errors.add :additional_details, :too_long, count: 20000 if t.additional_details.length > 20000
+    errors.add :previous_action, :too_long, count: 4000 if t.previous_action.length > 4000
   end
 
   validates :committee_note, length: { maximum: 800, allow_blank: true }
