@@ -82,6 +82,20 @@ RSpec.describe SignaturesController, type: :controller do
         expect(response).to render_template("signatures/new")
       end
     end
+
+    context "when the petition is open but signature collection is paused" do
+      let(:petition) { FactoryBot.create(:open_petition) }
+
+      before do
+        expect(Site).to receive(:signature_collection_disabled?).and_return(true)
+
+        get :new, params: { petition_id: petition.id }
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{petition.to_param}")
+      end
+    end
   end
 
   describe "POST /petitions/:petition_id/signatures/new" do
@@ -208,6 +222,20 @@ RSpec.describe SignaturesController, type: :controller do
         it "renders the signatures/new template" do
           expect(response).to render_template("signatures/new")
         end
+      end
+    end
+
+    context "when the petition is open but signature collection is paused" do
+      let(:petition) { FactoryBot.create(:open_petition) }
+
+      before do
+        expect(Site).to receive(:signature_collection_disabled?).and_return(true)
+
+        post :confirm, params: { petition_id: petition.id, signature: params }
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{petition.to_param}")
       end
     end
   end
@@ -459,6 +487,22 @@ RSpec.describe SignaturesController, type: :controller do
         end
       end
     end
+
+    context "when the petition is open but signature collection is paused" do
+      let(:petition) { FactoryBot.create(:open_petition) }
+
+      before do
+        expect(Site).to receive(:signature_collection_disabled?).and_return(true)
+
+        perform_enqueued_jobs {
+          post :create, params: { petition_id: petition.id, signature: params }
+        }
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{petition.to_param}")
+      end
+    end
   end
 
   describe "GET /petitions/:petition_id/signatures/thank-you" do
@@ -558,6 +602,24 @@ RSpec.describe SignaturesController, type: :controller do
 
       it "renders the signatures/thank_you template" do
         expect(response).to render_template("signatures/thank_you")
+      end
+    end
+
+    context "when the petition is open but signature collection is paused" do
+      let(:petition) { FactoryBot.create(:open_petition) }
+
+      before do
+        expect(Site).to receive(:signature_collection_disabled?).and_return(true)
+
+        get :thank_you, params: { petition_id: petition.id }
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{petition.to_param}")
+      end
+
+      it "doesn't create a signature" do
+        expect(petition.signatures.find_by(email: "ted@example.com")).to be_nil
       end
     end
   end
@@ -758,6 +820,25 @@ RSpec.describe SignaturesController, type: :controller do
         end
       end
     end
+
+    context "when the petition is open but signature collection is paused" do
+      let(:petition) { FactoryBot.create(:open_petition) }
+      let(:signature) { FactoryBot.create(:pending_signature, petition: petition) }
+
+      before do
+        expect(Site).to receive(:signature_collection_disabled?).and_return(true)
+
+        get :verify, params: { id: signature.id, token: signature.perishable_token }
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{petition.to_param}")
+      end
+
+      it "doesn't verify the signature" do
+        expect(signature.reload).to be_pending
+      end
+    end
   end
 
   describe "GET /signatures/:id/signed" do
@@ -931,6 +1012,22 @@ RSpec.describe SignaturesController, type: :controller do
         it "redirects to the petition page" do
           expect(response).to redirect_to("/petitions/#{petition.to_param}")
         end
+      end
+    end
+
+    context "when the petition is open but signature collection is paused" do
+      let(:petition) { FactoryBot.create(:open_petition) }
+      let(:signature) { FactoryBot.create(:validated_signature, :just_signed, petition: petition) }
+
+      before do
+        expect(Site).to receive(:signature_collection_disabled?).and_return(true)
+        session[:signed_tokens] = { signature.id.to_s => signature.signed_token }
+
+        get :signed, params: { id: signature.id }
+      end
+
+      it "redirects to the petition page" do
+        expect(response).to redirect_to("/petitions/#{petition.to_param}")
       end
     end
   end

@@ -19,8 +19,8 @@ class Petition < ActiveRecord::Base
   VISIBLE_STATES    = %w[open closed completed rejected]
   SHOW_STATES       = %w[pending validated sponsored flagged open closed completed rejected]
   MODERATED_STATES  = %w[open closed completed hidden rejected]
-  PUBLISHED_STATES  = %w[open closed completed]
   REJECTED_STATES   = %w[rejected hidden]
+  PUBLISHED_STATES  = %w[open closed completed]
   SELECTABLE_STATES = %w[open closed completed rejected hidden]
   SEARCHABLE_STATES = %w[open closed completed rejected]
   CURRENT_STATES    = %w[open closed]
@@ -40,10 +40,13 @@ class Petition < ActiveRecord::Base
 
   translate :action, :additional_details, :background, :previous_action, :scot_parl_link
 
-  before_save :build_pe_number, if: :publishing?
   before_save :update_debate_state, if: :scheduled_debate_date_changed?
   before_save :update_moderation_lag, unless: :moderation_lag?
   after_create :update_last_petition_created_at
+
+  before_save if: :publishing? do
+    build_pe_number unless pe_number.present?
+  end
 
   extend Searchable(:action_en, :action_gd, :background_en, :background_gd, :additional_details_en, :additional_details_gd)
   include Browseable, Taggable, Topics
@@ -138,8 +141,8 @@ class Petition < ActiveRecord::Base
     errors.add :previous_action, :blank unless t.previous_action.present?
     # allow extra characters to account for carriage returns
     errors.add :background, :too_long, count: 3000 if t.background.length > 3000
-    errors.add :additional_details, :too_long, count: 5000 if t.additional_details.length > 5000
-    errors.add :previous_action, :too_long, count: 500 if t.previous_action.length > 500
+    errors.add :additional_details, :too_long, count: 20000 if t.additional_details.length > 20000
+    errors.add :previous_action, :too_long, count: 4000 if t.previous_action.length > 4000
   end
 
   validates :committee_note, length: { maximum: 800, allow_blank: true }
@@ -387,23 +390,24 @@ class Petition < ActiveRecord::Base
       debated.where.not(debate_outcome_at: nil)
     end
 
-    def trending(period, limit: 3)
+    def trending(interval, limit = 3)
       petitions_star = arel_table[Arel.star]
       signatures = Signature.arel_table
 
       select(petitions_star, signatures[:id].count.as("signature_count_in_period")).
       joins(:signatures).
       where(arel_table[:state].eq(OPEN_STATE)).
-      where(arel_table[:last_signed_at].gt(period.first)).
-      where(signatures[:validated_at].between(period)).
+      where(signatures[:validated_at].between(interval)).
       where(signatures[:invalidated_at].eq(nil)).
-      group(arel_table[:id]).order(signatures[:id].count.desc).
+      group(arel_table[:id]).
+      order(signatures[:id].count.desc).
+      order(arel_table[:created_at].desc).
       limit(limit)
     end
 
     def close_petitions!(time = Time.current)
       in_need_of_closing(time).find_each do |petition|
-        petition.close!
+        petition.close!(time)
       end
     end
 
@@ -705,7 +709,7 @@ class Petition < ActiveRecord::Base
   end
 
   def moderation=(value)
-    @moderation = value if value.in?(%w[approve reject flag unflag])
+    @moderation = value if value.in?(%w[approve reject restore flag unflag])
   end
 
   def moderation
@@ -781,23 +785,29 @@ class Petition < ActiveRecord::Base
   def moderate(params)
     self.moderation = params[:moderation]
 
-    case moderation
-    when 'approve'
-      publish
-    when 'reject'
-      reject(params[:rejection])
-    when 'flag'
-      update(state: FLAGGED_STATE)
-    when 'unflag'
-      update(state: SPONSORED_STATE)
-    else
-      if flagged?
-        errors.add :moderation, :blank, action: 'unflag'
-      else
-        errors.add :moderation, :blank, action: 'flag'
-      end
+    transaction do
+      # Clear any existing rejection details
+      self.rejection = nil
+      self.rejected_at = nil
 
-      return false
+      case moderation
+      when 'approve'
+        publish
+      when 'reject'
+        reject(params[:rejection])
+      when 'flag'
+        update(state: FLAGGED_STATE)
+      when 'unflag', 'restore'
+        update(state: SPONSORED_STATE)
+      else
+        if flagged?
+          errors.add :moderation, :blank, action: 'unflag'
+        else
+          errors.add :moderation, :blank, action: 'flag'
+        end
+
+        false
+      end
     end
   end
 
@@ -806,7 +816,7 @@ class Petition < ActiveRecord::Base
   end
 
   def publishing?
-    state.in?(PUBLISHED_STATES) && state_was.in?(PUBLISHABLE_STATES)
+    state.in?(PUBLISHED_STATES) && state_was.in?(PUBLISHABLE_STATES + REJECTED_STATES)
   end
 
   def rejecting?
@@ -885,7 +895,18 @@ class Petition < ActiveRecord::Base
     end
   end
 
-  def close!(time = deadline)
+  def close!(time)
+    unless open?
+      raise RuntimeError, "can't close a petition that is in the #{state} state"
+    end
+
+    if deadline <= time
+      Appsignal.increment_counter("petition.closed", 1)
+      update!(state: CLOSED_STATE, closed_at: deadline)
+    end
+  end
+
+  def close_early!(time)
     if open?
       Appsignal.increment_counter("petition.closed", 1)
       update!(state: CLOSED_STATE, closed_at: time)
@@ -994,6 +1015,10 @@ class Petition < ActiveRecord::Base
     rejected? || closed_at? && closed_at < 24.hours.ago(now)
   end
 
+  def rejection?
+    rejected? || hidden?
+  end
+
   def update_lock!(user, now = Time.current)
     if locked_by == user
       update!(locked_at: now)
@@ -1038,6 +1063,10 @@ class Petition < ActiveRecord::Base
     if published?
       (closed_at || Site.closed_at_for_opening(open_at))
     end
+  end
+
+  def extend_deadline!(amount = 1.day, now = Time.current)
+    update_columns(closed_at: closed_at + amount, updated_at: now)
   end
 
   def update_last_petition_created_at

@@ -290,16 +290,16 @@ RSpec.describe Browseable, type: :model do
       context "when the count param is set to zero" do
         let(:params) { { q: 'search', page: '1', count: '0' } }
 
-        it "returns 1" do
-          expect(search.page_size).to eq(1)
+        it "returns the default page size" do
+          expect(search.page_size).to eq(50)
         end
       end
 
       context "when the count param is set to less than 0" do
         let(:params) { { q: 'search', page: '1', count: '-10' } }
 
-        it "returns 1" do
-          expect(search.page_size).to eq(1)
+        it "returns the default page size" do
+          expect(search.page_size).to eq(50)
         end
       end
     end

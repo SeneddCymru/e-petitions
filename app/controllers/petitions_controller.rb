@@ -106,6 +106,8 @@ class PetitionsController < LocalizedController
 
     if json_request?
       scope = scope.preload(:creator, :rejection, :debate_outcome)
+    elsif csv_request?
+      scope = scope.preload(:creator)
     end
 
     @petitions = scope.search(search_params)
@@ -129,12 +131,16 @@ class PetitionsController < LocalizedController
     params[:state].present?
   end
 
+  def sanitized_state
+    params[:state].to_s[0..30].to_sym
+  end
+
   def valid_state?
     public_facet? || archived_facet?
   end
 
   def public_facet?
-    public_petition_facets.include?(params[:state].to_sym)
+    public_petition_facets.include?(sanitized_state)
   end
 
   def archived_facet?

@@ -170,6 +170,18 @@ en-GB:
               too_short: "Height must be at least %{min_height}px (is %{height}px)"
               too_tall: "Height must be at most %{max_height}px (is %{height}px)"
               incorrect_ratio: "Aspect ratio of the image is %{ratio} - should be between %{min_ratio} and %{max_ratio}"
+            debate_pack_url_en:
+              invalid: "Please use a valid http or https url"
+            debate_pack_url_gd:
+              invalid: "Please use a valid http or https url"
+            transcript_url_en:
+              invalid: "Please use a valid http or https url"
+            transcript_url_gd:
+              invalid: "Please use a valid http or https url"
+            video_url_en:
+              invalid: "Please use a valid http or https url"
+            video_url_gd:
+              invalid: "Please use a valid http or https url"
 
         rate_limit:
           attributes:
@@ -243,3 +255,41 @@ en-GB:
           attributes:
             name:
               inclusion: "‘%{value}’ is not in the list of template names"
+
+        site:
+          attributes:
+            home_page_message_en:
+              blank: "Message must be completed"
+              too_long:
+                one: "Message is too long (maximum is 1 character)"
+                other: "Message is too long (maximum is %{count} characters)"
+
+            home_page_message_gd:
+              blank: "Message must be completed"
+              too_long:
+                one: "Message is too long (maximum is 1 character)"
+                other: "Message is too long (maximum is %{count} characters)"
+
+            petition_page_message_en:
+              blank: "Message must be completed"
+              too_long:
+                one: "Message is too long (maximum is 1 character)"
+                other: "Message is too long (maximum is %{count} characters)"
+
+            petition_page_message_gd:
+              blank: "Message must be completed"
+              too_long:
+                one: "Message is too long (maximum is 1 character)"
+                other: "Message is too long (maximum is %{count} characters)"
+
+            feedback_page_message_en:
+              blank: "Message must be completed"
+              too_long:
+                one: "Message is too long (maximum is 1 character)"
+                other: "Message is too long (maximum is %{count} characters)"
+
+            feedback_page_message_gd:
+              blank: "Message must be completed"
+              too_long:
+                one: "Message is too long (maximum is 1 character)"
+                other: "Message is too long (maximum is %{count} characters)"

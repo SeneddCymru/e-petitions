@@ -49,6 +49,10 @@ every :day, at: '7.15am' do
   rake "spets:petitions:debated", output: nil
 end
 
+every :day, at: '7.30am' do
+  rake "spets:petitions:extend_deadline", output: nil
+end
+
 every 15.minutes do
   rake "spets:site:signature_counts", output: nil
 end

@@ -6,6 +6,11 @@
   }
 }
 
+html, body, button, input, table, td, th, main {
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+}
+
 body {
   color: $black;
   font-size: 16px;
@@ -134,7 +139,8 @@ details {
     }
   }
 
-  summary::-webkit-details-marker {
+  summary::-webkit-details-marker,
+  summary::marker {
     display: none;
   }
 

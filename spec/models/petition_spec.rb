@@ -23,9 +23,9 @@ RSpec.describe Petition, type: :model do
   end
 
   describe "callbacks" do
-    context "when creating a petition" do
-      let(:now) { Time.current }
+    let(:now) { Time.current }
 
+    context "when creating a petition" do
       before do
         Site.update_all(last_petition_created_at: nil)
       end
@@ -52,7 +52,9 @@ RSpec.describe Petition, type: :model do
         %w[validated flagged],
         %w[sponsored flagged],
         %w[flagged sponsored],
-        %w[open closed]
+        %w[open closed],
+        %w[rejected flagged],
+        %w[rejected sponsored]
       ].each do |initial, desired|
         context "from '#{initial}' to '#{desired}'" do
           let(:petition) { FactoryBot.create(:"#{initial}_petition", state: initial) }
@@ -89,7 +91,8 @@ RSpec.describe Petition, type: :model do
         %w[flagged open],
         %w[flagged rejected],
         %w[flagged hidden],
-        %w[rejected hidden]
+        %w[rejected hidden],
+        %w[rejected open]
       ].each do |initial, desired|
         context "from '#{initial}' to '#{desired}'" do
           let(:petition) { FactoryBot.create(:"#{initial}_petition", state: initial) }
@@ -151,7 +154,7 @@ RSpec.describe Petition, type: :model do
 
       it "doesn't record a moderation lag" do
         expect {
-          petition.close!
+          petition.close!(now)
         }.not_to change {
           petition.reload.moderation_lag
         }
@@ -169,8 +172,8 @@ RSpec.describe Petition, type: :model do
         it { is_expected.to validate_presence_of(:previous_action) }
         it { is_expected.to validate_length_of(:action).is_at_most(255) }
         it { is_expected.to validate_length_of(:background).is_at_most(3000) }
-        it { is_expected.to validate_length_of(:previous_action).is_at_most(500) }
-        it { is_expected.to validate_length_of(:additional_details).is_at_most(5000) }
+        it { is_expected.to validate_length_of(:previous_action).is_at_most(4000) }
+        it { is_expected.to validate_length_of(:additional_details).is_at_most(20000) }
       end
     end
 
@@ -179,8 +182,8 @@ RSpec.describe Petition, type: :model do
       it { is_expected.not_to validate_presence_of(:background) }
       it { is_expected.not_to validate_length_of(:action).is_at_most(255) }
       it { is_expected.not_to validate_length_of(:background).is_at_most(3000) }
-      it { is_expected.not_to validate_length_of(:previous_action).is_at_most(500) }
-      it { is_expected.not_to validate_length_of(:additional_details).is_at_most(5000) }
+      it { is_expected.not_to validate_length_of(:previous_action).is_at_most(4000) }
+      it { is_expected.not_to validate_length_of(:additional_details).is_at_most(20000) }
     end
 
     it { is_expected.to validate_presence_of(:creator).with_message(/must be completed/) }
@@ -221,51 +224,52 @@ RSpec.describe Petition, type: :model do
   describe "scopes" do
     describe ".trending" do
       let(:now) { 1.minute.from_now }
-      let(:period) { 24.hours.ago(now)..now }
+      let(:interval) { 1.hour.ago(now)..now }
 
       before(:each) do
         11.times do |count|
-          petition = FactoryBot.create(:open_petition, action: "petition ##{count+1}", last_signed_at: now)
-          count.times { FactoryBot.create(:validated_signature, petition: petition, validated_at: 1.minute.ago(now)) }
+          petition = FactoryBot.create(:open_petition, action: "petition ##{count+1}", last_signed_at: Time.current)
+          count.times { FactoryBot.create(:validated_signature, petition: petition) }
         end
 
-        @old_petition = FactoryBot.create(:open_petition, action: "petition out of range", last_signed_at: 48.hours.ago(now))
-        @old_petition.signatures.first.update_attribute(:validated_at, 48.hours.ago(now))
+        @petition_with_old_signatures = FactoryBot.create(:open_petition, action: "petition out of range", last_signed_at: 2.hours.ago)
+        @petition_with_old_signatures.signatures.first.update_attribute(:validated_at, 2.hours.ago)
       end
 
-      it "excludes petitions not signed in the last 24 hours" do
-        expect(Petition.trending(period, limit: 100)).not_to include(@old_petition)
+      it "returns petitions trending for the last hour" do
+        expect(Petition.trending(interval).map(&:id).include?(@petition_with_old_signatures.id)).to be_falsey
       end
 
-      it "returns the signature count for the last 24 hours as an additional attribute" do
-        expect(Petition.trending(period).map(&:signature_count_in_period)).to eq([11, 10, 9])
+      it "returns the signature count for the last hour as an additional attribute" do
+        expect(Petition.trending(interval).first.signature_count_in_period).to eq(11)
+        expect(Petition.trending(interval).last.signature_count_in_period).to eq(9)
       end
 
       it "limits the result to 3 petitions" do
         # 13 petitions signed in the last hour
         2.times do |count|
-          petition = FactoryBot.create(:open_petition, action: "petition ##{count+1}", last_signed_at: now)
-          count.times { FactoryBot.create(:validated_signature, petition: petition, validated_at: 1.minute.ago(now)) }
+          petition = FactoryBot.create(:open_petition, action: "petition ##{count+1}", last_signed_at: Time.current)
+          count.times { FactoryBot.create(:validated_signature, petition: petition) }
         end
 
-        expect(Petition.trending(period).length).to eq(3)
+        expect(Petition.trending(interval).to_a.size).to eq(3)
       end
 
       it "excludes petitions that are not open" do
         petition = FactoryBot.create(:validated_petition)
-        20.times{ FactoryBot.create(:validated_signature, petition: petition, validated_at: 1.minute.ago(now)) }
+        20.times{ FactoryBot.create(:validated_signature, petition: petition) }
 
-        expect(Petition.trending(period)).not_to include(petition)
+        expect(Petition.trending(interval)).not_to include(petition)
       end
 
       it "excludes signatures that have been invalidated" do
-        petition = Petition.trending(period).first
-        signature = FactoryBot.create(:validated_signature, petition: petition, validated_at: 1.minute.ago(now))
+        petition = Petition.trending(interval).first
+        signature = FactoryBot.create(:validated_signature, petition: petition)
 
-        expect(Petition.trending(period).first.signature_count_in_period).to eq(12)
+        expect(Petition.trending(interval).first.signature_count_in_period).to eq(12)
 
         signature.invalidate!
-        expect(Petition.trending(period).first.signature_count_in_period).to eq(11)
+        expect(Petition.trending(interval).first.signature_count_in_period).to eq(11)
       end
     end
 
@@ -2331,7 +2335,103 @@ RSpec.describe Petition, type: :model do
   end
 
   describe '#close!' do
-    subject(:petition) { FactoryBot.create(:open_petition, referred: true, debate_state: debate_state, closed_at: closing_date) }
+    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
+    let(:now) { Time.current }
+    let(:duration) { Site.petition_duration.weeks }
+    let(:closing_date) { (now + duration).end_of_day }
+    let(:debate_state) { 'pending' }
+
+    context "when the deadline has not passed" do
+      let(:time) { closing_date.yesterday.beginning_of_day }
+
+      it "doesn't set the state to CLOSED" do
+        expect {
+          petition.close!(time)
+        }.not_to change {
+          petition.state
+        }.from(Petition::OPEN_STATE)
+      end
+
+      it "doesn't set the closing date" do
+        expect {
+          petition.close!(time)
+        }.not_to change {
+          petition.closed_at
+        }.from(petition.closed_at)
+      end
+
+      %w[pending awaiting scheduled debated not_debated].each do |state|
+        context "when the debate state is '#{state}'" do
+          let(:debate_state) { state }
+
+          it "doesn't change the debate state" do
+            expect {
+              petition.close!(time)
+            }.not_to change {
+              petition.debate_state
+            }
+          end
+        end
+      end
+
+      (Petition::STATES - [Petition::OPEN_STATE]).each do |state|
+        context "when called on a #{state} petition" do
+          subject(:petition) { FactoryBot.create(:"#{state}_petition") }
+
+          it "raises a RuntimeError" do
+            expect { petition.close!(time) }.to raise_error(RuntimeError)
+          end
+        end
+      end
+    end
+
+    context "when the deadline has passed" do
+      let(:time) { closing_date.tomorrow.beginning_of_day }
+
+      it "sets the state to CLOSED" do
+        expect {
+          petition.close!(time)
+        }.to change {
+          petition.state
+        }.from(Petition::OPEN_STATE).to(Petition::CLOSED_STATE)
+      end
+
+      it "doesn't change the closing date" do
+        expect {
+          petition.close!(time)
+        }.not_to change {
+          petition.closed_at
+        }
+      end
+
+      %w[pending awaiting scheduled debated not_debated].each do |state|
+        context "when the debate state is '#{state}'" do
+          let(:debate_state) { state }
+
+          it "doesn't change the debate state" do
+            expect {
+              petition.close!(time)
+            }.not_to change {
+              petition.debate_state
+            }
+          end
+        end
+      end
+
+      (Petition::STATES - [Petition::OPEN_STATE]).each do |state|
+        context "when called on a #{state} petition" do
+          subject(:petition) { FactoryBot.create(:"#{state}_petition") }
+
+          it "raises a RuntimeError" do
+            expect { petition.close!(time) }.to raise_error(RuntimeError)
+          end
+        end
+      end
+    end
+  end
+
+  describe '#close_early!' do
+    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
     let(:now) { Time.current }
     let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
@@ -2339,7 +2439,7 @@ RSpec.describe Petition, type: :model do
 
     it "sets the state to CLOSED" do
       expect {
-        petition.close!(now)
+        petition.close_early!(now)
       }.to change {
         petition.state
       }.from(Petition::OPEN_STATE).to(Petition::CLOSED_STATE)
@@ -2347,7 +2447,7 @@ RSpec.describe Petition, type: :model do
 
     it "sets the closing date to now" do
       expect {
-        petition.close!(now)
+        petition.close_early!(now)
       }.to change {
         petition.closed_at
       }.from(petition.closed_at).to(now)
@@ -2359,21 +2459,11 @@ RSpec.describe Petition, type: :model do
 
         it "doesn't change the debate state" do
           expect {
-            petition.close!
+            petition.close_early!(now)
           }.not_to change {
             petition.debate_state
           }
         end
-      end
-    end
-
-    context "when called without an argument" do
-      it "doesn't change the closing date" do
-        expect {
-          petition.close!
-        }.not_to change {
-          petition.closed_at
-        }
       end
     end
 
@@ -2382,7 +2472,7 @@ RSpec.describe Petition, type: :model do
         subject(:petition) { FactoryBot.create(:"#{state}_petition") }
 
         it "raises a RuntimeError" do
-          expect { petition.close! }.to raise_error(RuntimeError)
+          expect { petition.close_early!(now) }.to raise_error(RuntimeError)
         end
       end
     end
@@ -2489,6 +2579,26 @@ RSpec.describe Petition, type: :model do
       it 'is nil' do
         expect(petition.deadline).to be_nil
       end
+    end
+  end
+
+  describe "#extend_deadline!" do
+    let(:petition) { FactoryBot.create(:open_petition, updated_at: 2.days.ago) }
+
+    it "increments the closed_at attribute by 1 day" do
+      expect {
+        petition.extend_deadline!
+      }.to change {
+        petition.reload.closed_at
+      }.by(1.day)
+    end
+
+    it "touches the updated_at timestamp" do
+      expect {
+        petition.extend_deadline!
+      }.to change {
+        petition.reload.updated_at
+      }.to(be_within(1.second).of(Time.current))
     end
   end
 

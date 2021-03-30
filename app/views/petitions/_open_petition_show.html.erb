@@ -16,7 +16,9 @@
       </li>
     </ul>
 
-    <p class="sign-petition"><%= link_to t(:"ui.petitions.sign_this_petition"), new_petition_signature_path(petition), class: "button forward" %></p>
+    <% unless Site.signature_collection_disabled? %>
+      <p class="sign-petition"><%= link_to t(:"ui.petitions.sign_this_petition"), new_petition_signature_path(petition), class: "button forward" %></p>
+    <% end %>
 
     <% if @petition.scot_parl_link? %>
       <section class="referral-notice" aria-labelledby="referral-notice-heading">

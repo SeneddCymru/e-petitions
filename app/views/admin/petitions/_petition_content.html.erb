@@ -56,7 +56,7 @@
   <% end %>
 </p>
 
-<% if @petition.rejected? or @petition.hidden? -%>
+<% if @petition.rejection? -%>
   <h2>This petition was rejected</h2>
   <p><%= rejection_reason(@petition.rejection.code) %></p>
 

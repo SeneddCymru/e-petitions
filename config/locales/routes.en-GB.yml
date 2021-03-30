@@ -111,3 +111,6 @@ en-GB:
     "/topics":
       en-GB: "/topics"
       gd-GB: "/cuspairean"
+    "/trending":
+      en-GB: "/trending"
+      gd-GB: "/gluasadan"

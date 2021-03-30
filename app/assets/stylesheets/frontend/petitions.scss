@@ -112,7 +112,7 @@
   .intro {
     color: $darker-grey;
     line-height: 1.375;
-    margin: 0;
+    margin: $gutter-quarter 0 0 0;
   }
 }
 
@@ -154,13 +154,45 @@ section {
     left: $gutter;
   }
 
-  p {
+  &.important::before {
+    @include media(tablet) {
+      width: $gutter + 2px;
+      height: $gutter + 2px;
+      top: $gutter + 2px;
+      left: $extra-gutter;
+    }
+  }
+
+  &.important {
+    margin: (-$gutter) (-$gutter) $gutter;
+
+    @include media(tablet) {
+      margin: (-$extra-gutter) (-$extra-gutter) $extra-gutter;
+      padding: $gutter $extra-gutter;
+    }
+  }
+
+  h2, h3 {
     margin: 0;
     padding-left: $extra-gutter;
   }
 
+  p {
+    margin: 0;
+    margin-top: $gutter-half;
+    padding-left: $extra-gutter;
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+
   & + details {
     margin-top: $gutter;
+  }
+
+  a {
+    color: $white;
   }
 }
 
@@ -214,6 +246,7 @@ section {
 
     h2 {
       @include font-size(1.25rem, 1.5rem);
+      line-height: 1.25;
       color: $purple;
       margin: 0 0 $gutter-half 0;
     }
@@ -225,7 +258,7 @@ section {
 
     p:last-child {
       color: $darker-grey;
-      font-size: 0.875rem;
+      font-size: 1rem;
       margin: $gutter-half 0 0 0;
     }
 
@@ -246,20 +279,6 @@ section {
 
     &:active {
       background-color: $purple-20;
-    }
-  }
-}
-
-.search-results {
-  ol {
-    a {
-      h2 {
-        margin-bottom: $gutter-quarter;
-      }
-
-      p:last-child {
-        margin-top: $gutter-quarter;
-      }
     }
   }
 }
@@ -507,7 +526,10 @@ section {
   }
 
   .background {
-    margin-top: $gutter;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    background: $silver-10;
+    margin: $gutter 0 $extra-gutter;
+    padding: $gutter;
 
     h2 {
       margin: $gutter-half 0 $gutter-quarter 0;
@@ -518,7 +540,15 @@ section {
     p {
       font-family: $futura-book;
       font-size: 1.125rem;
-      margin: $gutter-quarter 0 $gutter-half 0;
+      margin: $gutter-quarter 0 $gutter-three-quarters 0;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -532,7 +562,8 @@ section {
     }
 
     p {
-      margin: 0 0 $gutter-half 0;
+      line-height: 1.4375;
+      margin: 0 0 $gutter-three-quarters 0;
     }
 
     p:last-child {
@@ -603,6 +634,56 @@ section {
     img {
       width: 100%;
       height: 100%;
+    }
+  }
+}
+
+.petition-content {
+  ul {
+    & > li {
+      margin-top: $gutter-half;
+      padding-left: $gutter;
+      position: relative;
+
+      &::before {
+        box-sizing: border-box;
+        background-color: $black;
+        content: "";
+        position: absolute;
+        left: 2px;
+        border-radius: 4px;
+        height: 7px;
+        width: 7px;
+        top: 7px;
+      }
+
+      & > p {
+        margin: 0 0 $gutter-half 0;
+      }
+    }
+
+    ul > li {
+      &::before {
+        background-color: $white;
+        border: 1px solid $black;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: ordered-list;
+
+    & > li {
+      margin-top: $gutter-half;
+      padding-left: $gutter;
+      position: relative;
+
+      &::before {
+        counter-increment: ordered-list;
+        content: counter(ordered-list) ".";
+        position: absolute;
+        left: 0;
+      }
     }
   }
 }
