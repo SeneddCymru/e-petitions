@@ -106,6 +106,8 @@ class PetitionsController < LocalizedController
 
     if json_request?
       scope = scope.preload(:creator, :rejection, :debate_outcome)
+    elsif csv_request?
+      scope = scope.preload(:creator)
     end
 
     @petitions = scope.search(search_params)
