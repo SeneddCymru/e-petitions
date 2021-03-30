@@ -112,7 +112,7 @@
   .intro {
     color: $darker-grey;
     line-height: 1.375;
-    margin: 0;
+    margin: $gutter-quarter 0 0 0;
   }
 }
 
@@ -246,6 +246,7 @@ section {
 
     h2 {
       @include font-size(1.25rem, 1.5rem);
+      line-height: 1.25;
       color: $purple;
       margin: 0 0 $gutter-half 0;
     }
@@ -257,7 +258,7 @@ section {
 
     p:last-child {
       color: $darker-grey;
-      font-size: 0.875rem;
+      font-size: 1rem;
       margin: $gutter-half 0 0 0;
     }
 
@@ -278,20 +279,6 @@ section {
 
     &:active {
       background-color: $purple-20;
-    }
-  }
-}
-
-.search-results {
-  ol {
-    a {
-      h2 {
-        margin-bottom: $gutter-quarter;
-      }
-
-      p:last-child {
-        margin-top: $gutter-quarter;
-      }
     }
   }
 }
@@ -539,7 +526,10 @@ section {
   }
 
   .background {
-    margin-top: $gutter;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    background: $silver-10;
+    margin: $gutter 0 $extra-gutter;
+    padding: $gutter;
 
     h2 {
       margin: $gutter-half 0 $gutter-quarter 0;
@@ -550,7 +540,15 @@ section {
     p {
       font-family: $futura-book;
       font-size: 1.125rem;
-      margin: $gutter-quarter 0 $gutter-half 0;
+      margin: $gutter-quarter 0 $gutter-three-quarters 0;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -564,7 +562,8 @@ section {
     }
 
     p {
-      margin: 0 0 $gutter-half 0;
+      line-height: 1.4375;
+      margin: 0 0 $gutter-three-quarters 0;
     }
 
     p:last-child {
