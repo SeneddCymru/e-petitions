@@ -2236,31 +2236,79 @@ RSpec.describe Petition, type: :model do
       it_behaves_like "it doesn't change timestamps"
     end
 
-    context "when republishing a petition that was taken down" do
+    context "when republishing a closed petition that was taken down" do
       let(:params) do
         { moderation: "approve" }
       end
 
       context "and the petition collected signatures" do
         let(:petition) do
-          FactoryBot.create(:rejected_petition,
-            open_at: 6.weeks.ago, closed_at: 2.weeks.ago,
+          FactoryBot.create(
+            :rejected_petition,
+            :translated,
+            open_at: 6.weeks.ago,
+            closed_at: 2.weeks.ago,
             collect_signatures: true
           )
         end
 
         it_behaves_like "it doesn't change timestamps"
+
+        it "restores it to the 'closed' state" do
+          expect {
+            petition.moderate(params)
+          }.to change {
+            petition.reload.state
+          }.from('rejected').to('closed')
+        end
       end
 
       context "and the petition didn't collect signatures" do
         let(:petition) do
-          FactoryBot.create(:rejected_petition,
-            open_at: 2.weeks.ago, closed_at: 2.weeks.ago,
+          FactoryBot.create(
+            :rejected_petition,
+            :translated,
+            open_at: 6.weeks.ago,
+            closed_at: 2.weeks.ago,
             collect_signatures: false
           )
         end
 
         it_behaves_like "it doesn't change timestamps"
+
+        it "restores it to the 'closed' state" do
+          expect {
+            petition.moderate(params)
+          }.to change {
+            petition.reload.state
+          }.from('rejected').to('closed')
+        end
+      end
+    end
+
+    context "when republishing an open petition that was taken down" do
+      let(:params) do
+        { moderation: "approve" }
+      end
+
+      let(:petition) do
+        FactoryBot.create(
+          :rejected_petition,
+          :translated,
+          open_at: 2.weeks.ago,
+          closed_at: 2.weeks.from_now,
+          collect_signatures: true
+        )
+      end
+
+      it_behaves_like "it doesn't change timestamps"
+
+      it "restores it to the 'open' state" do
+        expect {
+          petition.moderate(params)
+        }.to change {
+          petition.reload.state
+        }.from('rejected').to('open')
       end
     end
   end

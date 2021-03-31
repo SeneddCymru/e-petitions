@@ -838,7 +838,7 @@ class Petition < ActiveRecord::Base
     end
 
     update!(
-      state: state_for_publishing,
+      state: state_for_publishing(time),
       open_at: time_for_publishing(time),
       closed_at: closing_date(time)
     )
@@ -1158,8 +1158,16 @@ class Petition < ActiveRecord::Base
     @sponsor_count ||= sponsors.validated.count
   end
 
-  def state_for_publishing
-    collect_signatures? ? OPEN_STATE : CLOSED_STATE
+  def state_for_publishing(time)
+    if open_at
+      if closed_at > time
+        collect_signatures? ? OPEN_STATE : CLOSED_STATE
+      else
+        CLOSED_STATE
+      end
+    else
+      collect_signatures? ? OPEN_STATE : CLOSED_STATE
+    end
   end
 
   def time_for_publishing(time)
