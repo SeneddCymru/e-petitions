@@ -8,14 +8,14 @@ RSpec.describe Admin::CompletionDateController, type: :controller, admin: true d
   describe "not logged in" do
     describe "GET /admin/petitions/:petition_id/completion-date" do
       it "redirects to the login page" do
-        get :show, params: { petition_id: petition.id }
+        get :show, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/login")
       end
     end
 
     describe "PATCH /admin/petitions/:petition_id/completion-date" do
       it "redirects to the login page" do
-        patch :update, params: { petition_id: petition.id }
+        patch :update, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/login")
       end
     end
@@ -27,14 +27,14 @@ RSpec.describe Admin::CompletionDateController, type: :controller, admin: true d
 
     describe "GET /admin/petitions/:petition_id/completion-date" do
       it "redirects to the login page" do
-        get :show, params: { petition_id: petition.id }
+        get :show, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/profile/#{user.id}/edit")
       end
     end
 
     describe "PATCH /admin/petitions/:petition_id/completion-date" do
       it "redirects to edit profile page" do
-        patch :update, params: { petition_id: petition.id }
+        patch :update, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/profile/#{user.id}/edit")
       end
     end
@@ -82,13 +82,30 @@ RSpec.describe Admin::CompletionDateController, type: :controller, admin: true d
       end
 
       it "redirects to the petition page" do
-        patch :update, params: { petition_id: petition.id, petition: params }
+        patch :update, params: { petition_id: petition.to_param, petition: params }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
       end
 
       it "displays a notice" do
-        patch :update, params: { petition_id: petition.id, petition: params }
+        patch :update, params: { petition_id: petition.to_param, petition: params }
         expect(flash[:notice]).to eq("The completion date was successfully updated")
+      end
+
+      context "when the update fails" do
+        before do
+          expect(Petition).to receive(:find).with(petition.to_param).and_return(petition)
+          expect(petition).to receive(:update).and_return(false)
+        end
+
+        it "renders the petition page" do
+          patch :update, params: { petition_id: petition.to_param, petition: params }
+          expect(response).to have_rendered("admin/petitions/show")
+        end
+
+        it "displays an alert" do
+          patch :update, params: { petition_id: petition.to_param, petition: params }
+          expect(flash[:alert]).to eq("Petition could not be updated - please check the form for errors")
+        end
       end
     end
   end
