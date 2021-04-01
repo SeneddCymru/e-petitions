@@ -47,26 +47,28 @@
   <% end %>
 <% end %>
 
-<% if @petition.creator %>
+<% if creator = @petition.creator %>
   <dt>Creator</dt>
   <dd>
     <ul>
       <li>
-        <%= @petition.creator.name %><br />
-        <%= auto_link(@petition.creator.email) %>
+        <%= creator.name %><br />
+        <%= auto_link(creator.email) %>
       </li>
-      <% if contact = @petition.creator.contact %>
+      <% if contact = creator.contact %>
         <% if contact.phone_number? %>
           <li><%= contact.phone_number %></li>
         <% end %>
         <% if contact.address? %>
           <li>
-            <%= link_to "https://www.google.com/maps/search/?api=1&query=#{URI.escape("#{contact.address.squish}, #{contact.signature.postcode}")}" do %>
-              <%= simple_format(h(contact.address)) %>
+            <%= link_to "https://www.google.com/maps/search/?api=1&query=#{URI.escape("#{contact.address.squish}, #{creator.formatted_postcode}")}" do %>
+              <%= simple_format(h(contact.address + "\n" + creator.formatted_postcode)) %>
             <% end %>
           </li>
         <% end %>
       <% end %>
+      <li>
+      </li>
     </ul>
   </dd>
 <% end %>
