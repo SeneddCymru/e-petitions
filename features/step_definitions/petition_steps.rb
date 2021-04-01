@@ -337,7 +337,7 @@ Then(/^I should see my Member of the Scottish Parliament/) do
 end
 
 Then(/^I can click on a link to visit my Member of the Scottish Parliament$/) do
-  expect(page).to have_css("a[href*='https://beta.parliament.scot/msps/current-and-previous-msps/ivan-mckee']")
+  expect(page).to have_css("a[href*='https://www.parliament.scot/msps/current-and-previous-msps/ivan-mckee']")
 end
 
 Then(/^I should not see the text "([^"]*)"/) do |text|

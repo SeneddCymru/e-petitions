@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
-  URL_EN = "https://beta.parliament.scot/msps/current-and-previous-msps/%{slug}"
-  URL_GD = "https://beta.parlamaid-alba.scot/msps/current-and-previous-msps/%{slug}"
+  URL_EN = "https://www.parliament.scot/msps/current-and-previous-msps/%{slug}"
+  URL_GD = "https://www.parlamaid-alba.scot/msps/current-and-previous-msps/%{slug}"
 
   MEMBER_PATTERN = / (?:MSP|BPA)$/
 
