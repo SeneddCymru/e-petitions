@@ -59,8 +59,8 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
     describe "PATCH /update" do
       let(:attributes) do
         {
-          scot_parl_link_en: "https://beta.parliament.scot/getting-involved/petitions/PE01319",
-          scot_parl_link_gd: "https://beta.parlamaid-alba.scot/a-dol-an-sas/athchuingean/PE01319"
+          scot_parl_link_en: "https://www.parliament.scot/getting-involved/petitions/PE01319",
+          scot_parl_link_gd: "https://www.parlamaid-alba.scot/a-dol-an-sas/athchuingean/PE01319"
         }
       end
 
@@ -85,7 +85,7 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
           petition.reload
         }.to change {
           petition.scot_parl_link_en
-        }.from(nil).to(a_string_matching("beta.parliament.scot"))
+        }.from(nil).to(a_string_matching("www.parliament.scot"))
       end
 
       it "stores the Gaelic link in the database" do
@@ -93,7 +93,7 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
           petition.reload
         }.to change {
           petition.scot_parl_link_gd
-        }.from(nil).to(a_string_matching("beta.parlamaid-alba.scot"))
+        }.from(nil).to(a_string_matching("www.parlamaid-alba.scot"))
       end
     end
   end
