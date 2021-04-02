@@ -6,13 +6,13 @@
     <dt>Archived on</dt>
     <dd><%= date_format_admin(@petition.archived_at) %></dd>
   <% elsif @petition.completed? %>
-    <dt>Completed on</dt>
+    <dt>Closed on</dt>
     <dd><%= date_format_admin(@petition.completed_at) %></dd>
   <% elsif @petition.rejection? %>
     <dt>Rejected on</dt>
     <dd><%= date_format_admin(@petition.rejected_at) %></dd>
   <% elsif @petition.closed? %>
-    <dt>Closed on</dt>
+    <dt>Under consideration from</dt>
     <dd><%= date_format_admin(@petition.closed_at) %></dd>
   <% elsif @petition.open? %>
     <dt>Deadline</dt>

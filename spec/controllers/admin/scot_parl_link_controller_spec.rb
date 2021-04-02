@@ -7,14 +7,14 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
   describe "not logged in" do
     describe "GET /show" do
       it "redirects to the login page" do
-        get :show, params: { petition_id: petition.id }
+        get :show, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/login")
       end
     end
 
     describe "PATCH /update" do
       it "redirects to the login page" do
-        patch :update, params: { petition_id: petition.id }
+        patch :update, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/login")
       end
     end
@@ -26,14 +26,14 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
 
     describe "GET /show" do
       it "redirects to edit profile page" do
-        get :show, params: { petition_id: petition.id }
+        get :show, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/profile/#{user.id}/edit")
       end
     end
 
     describe "PATCH /update" do
       it "redirects to edit profile page" do
-        patch :update, params: { petition_id: petition.id }
+        patch :update, params: { petition_id: petition.to_param }
         expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/profile/#{user.id}/edit")
       end
     end
@@ -45,12 +45,12 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
 
     describe "GET /show" do
       it "fetches the requested petition" do
-        get :show, params: { petition_id: petition.id }
+        get :show, params: { petition_id: petition.to_param }
         expect(assigns(:petition)).to eq petition
       end
 
       it "responds successfully and renders the petitions/show template" do
-        get :show, params: { petition_id: petition.id }
+        get :show, params: { petition_id: petition.to_param }
         expect(response).to be_successful
         expect(response).to render_template("petitions/show")
       end
@@ -65,7 +65,7 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
       end
 
       before do
-        patch :update, params: { petition_id: petition.id, petition: attributes }
+        patch :update, params: { petition_id: petition.to_param, petition: attributes }
       end
 
       it "fetches the requested petition" do
@@ -94,6 +94,23 @@ RSpec.describe Admin::ScotParlLinkController, type: :controller, admin: true do
         }.to change {
           petition.scot_parl_link_gd
         }.from(nil).to(a_string_matching("www.parlamaid-alba.scot"))
+      end
+
+      context "when the update fails" do
+        before do
+          expect(Petition).to receive(:find).with(petition.to_param).and_return(petition)
+          expect(petition).to receive(:update).and_return(false)
+        end
+
+        it "renders the petition page" do
+          patch :update, params: { petition_id: petition.to_param, petition: attributes }
+          expect(response).to have_rendered("admin/petitions/show")
+        end
+
+        it "displays an alert" do
+          patch :update, params: { petition_id: petition.to_param, petition: attributes }
+          expect(flash[:alert]).to eq("Petition could not be updated - please check the form for errors")
+        end
       end
     end
   end
