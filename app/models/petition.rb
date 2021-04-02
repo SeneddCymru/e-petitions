@@ -145,6 +145,12 @@ class Petition < ActiveRecord::Base
     errors.add :previous_action, :too_long, count: 4000 if t.previous_action.length > 4000
   end
 
+  # The scheduled_debate_date will be blank for most petitions but we
+  # can't add `allow_blank: true` here because Active Record validations
+  # will not call the DateValidator as all invalid dates are coerced to nil.
+  # Therefore the allowing of blank values is handling in the validtor.
+  validates :scheduled_debate_date, date: true
+
   validates :committee_note, length: { maximum: 800, allow_blank: true }
   validates :open_at, presence: true, if: :open?
   validates :creator, presence: true, unless: :completed?
