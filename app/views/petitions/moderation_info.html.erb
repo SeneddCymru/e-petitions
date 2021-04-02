@@ -1,9 +1,11 @@
-<h1><%= t(:"ui.petitions.moderation_info.heading") %></h1>
+<section aria-labelledby="page-heading">
+  <h1 id="page-heading"><%= t(:"ui.petitions.moderation_info.heading") %></h1>
 
-<% if Site.collecting_sponsors? %>
-  <p><%= t(:"ui.petitions.moderation_info.min_supporters_reached", min_supporters: Site.minimum_number_of_sponsors, creator_name: @petition.creator.name) %></p>
-<% end %>
+  <% if Site.collecting_sponsors? %>
+    <p><%= t(:"ui.petitions.moderation_info.min_supporters_reached", min_supporters: Site.minimum_number_of_sponsors, creator_name: @petition.creator.name) %></p>
+  <% end %>
 
-<p><%= t(:"ui.petitions.moderation_info.checking_standards_html", standards_link: petition_standards_link) %></p>
+  <p><%= t(:"ui.petitions.moderation_info.checking_standards_html", standards_link: petition_standards_link) %></p>
 
-<p><%= t(:"ui.petitions.moderation_info.try_again_later") %></p>
+  <p><%= t(:"ui.petitions.moderation_info.try_again_later") %></p>
+</section>
