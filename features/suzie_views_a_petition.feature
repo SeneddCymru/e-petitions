@@ -174,9 +174,9 @@ Feature: Suzie views a petition
 
   Scenario Outline: Suzie sees the correct wording for petitions with a ScotParl link
     Given a <state> petition "My petition" exists
-    And the petition has a ScotParl link "some URL"
+    And the petition has a ScotParl link "https://www.parliament.scot/"
     When I view the petition
-    Then I should see a link called "<copy>" linking to "some URL"
+    Then I should see a link called "<copy>" linking to "https://www.parliament.scot/"
 
     Scenarios:
       | state     | copy                                                                        |

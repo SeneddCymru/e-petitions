@@ -151,6 +151,9 @@ class Petition < ActiveRecord::Base
   validates :state, inclusion: { in: STATES }
   validates :collect_signatures, inclusion: [true, false]
 
+  validates :scot_parl_link_en, url: true
+  validates :scot_parl_link_gd, url: true, unless: :gaelic_disabled?
+
   validates :completed_at, presence: true, if: :completed?
 
   with_options allow_nil: true, prefix: true do
