@@ -132,7 +132,7 @@ RSpec.describe SponsorsController, type: :controller do
           let(:signature_collection_disabled?) { true }
 
           it "sets the flash :notice message" do
-            expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+            expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
           end
 
           it "redirects to the petition page" do
@@ -302,7 +302,7 @@ RSpec.describe SponsorsController, type: :controller do
           let(:signature_collection_disabled?) { true }
 
           it "sets the flash :notice message" do
-            expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+            expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
           end
 
           it "redirects to the petition page" do
@@ -612,7 +612,7 @@ RSpec.describe SponsorsController, type: :controller do
           end
 
           it "sets the flash :notice message" do
-            expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+            expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
           end
 
           it "redirects to the petition page" do
@@ -721,7 +721,7 @@ RSpec.describe SponsorsController, type: :controller do
           let(:signature_collection_disabled?) { true }
 
           it "sets the flash :notice message" do
-            expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+            expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
           end
 
           it "redirects to the petition page" do
@@ -904,7 +904,7 @@ RSpec.describe SponsorsController, type: :controller do
         let(:signature_collection_disabled?) { true }
 
         it "sets the flash :notice message" do
-          expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+          expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
         end
 
         it "redirects to the petition page" do
@@ -1064,7 +1064,7 @@ RSpec.describe SponsorsController, type: :controller do
         let(:signature_collection_disabled?) { true }
 
         it "sets the flash :notice message" do
-          expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+          expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
         end
 
         it "redirects to the petition page" do
@@ -1177,7 +1177,7 @@ RSpec.describe SponsorsController, type: :controller do
         let(:signature_collection_disabled?) { true }
 
         it "sets the flash :notice message" do
-          expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+          expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
         end
 
         it "redirects to the petition page" do
@@ -1360,7 +1360,7 @@ RSpec.describe SponsorsController, type: :controller do
             let(:signature_collection_disabled?) { true }
 
             it "sets the flash :notice message" do
-              expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+              expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
             end
 
             it "redirects to the petition page" do
@@ -1384,7 +1384,7 @@ RSpec.describe SponsorsController, type: :controller do
             let(:signature_collection_disabled?) { true }
 
             it "sets the flash :notice message" do
-              expect(flash[:notice]).to eq("Sorry, you can't sign petitions at the moment")
+              expect(flash[:notice]).to eq("Sorry, you can’t sign petitions at the moment")
             end
 
             it "redirects to the petition page" do
