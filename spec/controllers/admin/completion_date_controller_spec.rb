@@ -88,7 +88,7 @@ RSpec.describe Admin::CompletionDateController, type: :controller, admin: true d
 
       it "displays a notice" do
         patch :update, params: { petition_id: petition.to_param, petition: params }
-        expect(flash[:notice]).to eq("The completion date was successfully updated")
+        expect(flash[:notice]).to eq("The closed date was successfully updated")
       end
 
       context "when the update fails" do
