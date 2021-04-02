@@ -83,7 +83,13 @@
         <% else %>
           <td class="date"><%= date_format(petition.deadline) || "—" %></td>
         <% end %>
-        <td class="numeric last"><%= number_with_delimiter(petition.signature_count) %></td>
+        <td class="numeric last">
+          <% if petition.collect_signatures? %>
+            <%= number_with_delimiter(petition.signature_count) %>
+          <% else %>
+            –
+          <% end %>
+        </td>
       </tr>
     <% end -%>
   </tbody>
