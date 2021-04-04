@@ -206,10 +206,6 @@ Given(/^an open petition exists with action: "([^"]*)", additional_details: "([^
   @petition = FactoryBot.create(:open_petition, action: action, additional_details: additional_details)
 end
 
-Given(/^an open petition exists with action: "([^"]*)", committee_note: "([^"]*)"$/) do |action, committee_note|
-  @petition = FactoryBot.create(:open_petition, action: action, committee_note: committee_note)
-end
-
 Then(/^"([^"]*)" should be emailed a link for validating their signature$/) do |address|
   open_last_email_for(address)
   steps %{

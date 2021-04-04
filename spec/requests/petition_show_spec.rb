@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "API request to show a petition", type: :request, show_exceptions: true do
-  let(:petition) { FactoryBot.create :open_petition, committee_note: "This petition action was found to be false" }
+  let(:petition) { FactoryBot.create :open_petition }
   let(:attributes) { json["data"]["attributes"] }
 
   let(:access_control_allow_origin) { response.headers['Access-Control-Allow-Origin'] }
@@ -52,7 +52,6 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
           "previous_action" => a_string_matching(petition.previous_action),
           "background_information" => a_string_matching(petition.additional_details),
           "petitioner" => a_string_matching(petition.creator.name),
-          "committee_note" => a_string_matching(petition.committee_note),
           "status" => a_string_matching(petition.status),
           "signature_count" => eq_to(petition.signature_count),
           "opened_at" => a_string_matching(%r[\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z\z]),
