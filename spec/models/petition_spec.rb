@@ -197,10 +197,7 @@ RSpec.describe Petition, type: :model do
     it { is_expected.to have_db_column(:previous_action_gd).of_type(:text).with_options(null: true) }
     it { is_expected.to have_db_column(:additional_details_en).of_type(:text).with_options(null: true) }
     it { is_expected.to have_db_column(:additional_details_gd).of_type(:text).with_options(null: true) }
-    it { is_expected.to have_db_column(:committee_note).of_type(:text).with_options(null: true) }
     it { is_expected.to have_db_column(:collect_signatures).of_type(:boolean).with_options(default: false, null: false) }
-
-    it { is_expected.to validate_length_of(:committee_note).is_at_most(800) }
 
     it { is_expected.to validate_presence_of(:state).with_message("State ‘’ not recognised") }
     it { is_expected.not_to allow_value("unknown").for(:state) }

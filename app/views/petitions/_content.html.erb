@@ -14,12 +14,6 @@
     <%= petition.to_param %>: <%= petition.action %>
   <% end %>
 
-  <% if petition.committee_note? %>
-    <div class="committee-note">
-      <%= markdown_to_html(petition.committee_note) %>
-    </div>
-  <% end %>
-
   <% if petition.background? %>
     <div class="background">
       <%= apply_formatting(petition, :background) %>

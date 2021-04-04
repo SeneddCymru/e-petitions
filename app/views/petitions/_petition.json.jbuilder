@@ -11,7 +11,6 @@ json.attributes do
   json.previous_action petition.previous_action
   json.background_information petition.additional_details
   json.petitioner petition.creator.name
-  json.committee_note petition.committee_note
   json.status petition.status
   json.signature_count petition.signature_count
 
