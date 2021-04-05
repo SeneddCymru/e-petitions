@@ -284,7 +284,7 @@ FactoryBot.define do
       debate_pack_url { nil }
       debate_pack_url_en { nil }
       debate_pack_url_gd { nil }
-      commons_image { nil }
+      debate_image { nil }
     end
 
     debate_state { 'debated' }
@@ -348,8 +348,8 @@ FactoryBot.define do
         debate_outcome_attributes[:debate_pack_url_gd] = evaluator.debate_pack_url_gd
       end
 
-      if evaluator.commons_image.present?
-        debate_outcome_attributes[:commons_image] = evaluator.commons_image
+      if evaluator.debate_image.present?
+        debate_outcome_attributes[:image] = evaluator.debate_image
       end
 
       petition.build_debate_outcome(debate_outcome_attributes)
