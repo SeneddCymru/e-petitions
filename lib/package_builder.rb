@@ -451,6 +451,9 @@ class PackageBuilder
     env = Bundler.original_env
     env["BUNDLE_SPECIFIC_PLATFORM"] = "true"
 
+    # Ensure that we pick up the archive's Gemfile
+    env.delete("BUNDLE_GEMFILE")
+
     backup = ENV.to_hash
     ENV.replace(env)
 
