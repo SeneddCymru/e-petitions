@@ -33,7 +33,7 @@ namespace :spets do
 
     desc "Add a task to the queue to extend petition deadlines at midnight"
     task :extend_deadline => :environment do
-      Task.run("wpets:petitions:extend_deadline") do
+      Task.run("spets:petitions:extend_deadline") do
         ExtendPetitionDeadlinesJob.set(wait_until: Date.tomorrow.beginning_of_day).perform_later
       end
     end
