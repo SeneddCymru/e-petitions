@@ -32,7 +32,7 @@ class NotifyJob < ApplicationJob
   # If we sort it out before then we can always requeue manually.
   rescue_from *DELAY_FOR_24_HOURS do |exception|
     reschedule_job 24.hours.from_now
-    Appsignal.send_exception(exception) { |t| t.namespace("email") }
+    Appsignal.send_exception(exception) { |t| t.set_namespace("email") }
   end
 
   # It's likely that the GOV.UK Notify platform is having problems so
@@ -57,7 +57,7 @@ class NotifyJob < ApplicationJob
 
   # Likely something got deleted so just flag in Appsignal and drop the job.
   rescue_from(ActiveJob::DeserializationError) do |exception|
-    Appsignal.send_exception(exception) { |t| t.namespace("email") }
+    Appsignal.send_exception(exception) { |t| t.set_namespace("email") }
   end
 
   def perform(signature, *args)
