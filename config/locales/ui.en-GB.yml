@@ -452,13 +452,14 @@ en-GB:
       create:
         creator_stage:
           name:
-            hint: "You must use your full name"
+            hint: "You must use your full name. If you are submitting a petition on behalf of an organisation, please provide your full name and the organisation you are submitting it on behalf of."
+            example: "For example - Alex Smith on behalf of Meadhowhaugh Community Council"
             label: "Name"
           email:
             label: "Email address"
           address:
             hint: |-
-              You must provide a valid address to create a petition. Anyone can sign your petition.
+              You must provide a valid address to create a petition.
             label: "Address"
           heading: "Sign your petition"
           location:
