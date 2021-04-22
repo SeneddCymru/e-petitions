@@ -270,9 +270,9 @@ gd-GB:
     contact_page:
       body_html: |-
         <h1 id="page-heading">Contact</h1>
-        <p><strong>If you have any questions, the Public Petitions team are available to help.</strong></p>
-        <p><strong>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</strong></p>
-        <p><strong>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</strong></p>
+        <p>If you have any questions, the Public Petitions team are available to help.</p>
+        <p>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</p>
+        <p>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</p>
 
         <section aria-labelled="email-heading">
           <h2 id="email-heading"><a name="email"></a>Email</h2>
