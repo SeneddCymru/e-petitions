@@ -239,7 +239,7 @@ en-GB:
         <section aria-labelledby="rejections-heading">
           <h2 id="rejections-heading"><a name="rejections"></a>Why we might reject your petition</h2>
 
-          <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue..</p>
+          <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue.</p>
 
           <p>We'll have to reject your petition if:</p>
 
@@ -248,6 +248,9 @@ en-GB:
               <p>It’s about something that’s not within the powers of the Scottish Parliament.</p>
               <p>That includes: something that your local council is responsible for (including planning decisions); something that the UK Government or Parliament is responsible for; and something that an independent organisation has done.</p>
             </li>
+            <li>It calls for the same action as a petition that’s already open, or one which was closed by the Public Petitions Committee less than a year earlier.</li>
+            <li>You already have 2 petitions being looked at by the Scottish Parliament.</li>
+            <li>It calls for something that relates to a law currently being looked at by the Parliament or has been in the last 12 months.</li>
             <li>It does not include details of relevant previous action taken to address the issue, such as raising it with the Scottish Government or one of your MSP’s.</li>
             <li>It contains language which is defamatory, offensive or inappropriate. This not only includes obvious profanities, swear words and insults, but any language which a reasonable person would regard as offensive.</li>
             <li>It names individuals or otherwise contains information that could lead to the identification of any individual. This excludes MSPs and senior leaders of public bodies.</li>
@@ -270,9 +273,9 @@ en-GB:
     contact_page:
       body_html: |-
         <h1 id="page-heading">Contact</h1>
-        <p><strong>If you have any questions, the Public Petitions team are available to help.</strong></p>
-        <p><strong>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</strong></p>
-        <p><strong>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</strong></p>
+        <p>If you have any questions, the Public Petitions team are available to help.</p>
+        <p>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</p>
+        <p>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</p>
 
         <section aria-labelled="email-heading">
           <h2 id="email-heading"><a name="email"></a>Email</h2>
@@ -336,7 +339,7 @@ en-GB:
       referred_petitions:
         title: "Petitions under consideration"
         introduction: |-
-          The Public Petitions Committee looks at all published petitions, regardless of whether signatures are collected.
+          The Public Petitions Committee looks at all published petitions whether they collect signatures or not.
         none_referred: |-
           No petitions are being considered yet
         referred_date: "Under consideration from %{date}"
@@ -449,13 +452,14 @@ en-GB:
       create:
         creator_stage:
           name:
-            hint: "You must use your full name"
+            hint: "You must use your full name. If you are submitting a petition on behalf of an organisation, please provide your full name and the organisation you are submitting it on behalf of."
+            example: "For example - Alex Smith on behalf of Meadhowhaugh Community Council"
             label: "Name"
           email:
             label: "Email address"
           address:
             hint: |-
-              You must provide a valid address to create a petition. Anyone can sign your petition.
+              You must provide a valid address to create a petition.
             label: "Address"
           heading: "Sign your petition"
           location:
@@ -507,11 +511,11 @@ en-GB:
             <button type="submit" name="move_back" class="button button-secondary" data-disable-with="Go back and make changes">Go back and make changes</button>
           submit_warning_html: |-
             <p>You cannot change your petition after this point.</p>
-            <p>This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published. We also cannot publish any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation).</p>
+            <p>This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published. Also, make sure that you have not included any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) as we cannot publish this.</p>
             <p>Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>
         collect_signatures_stage:
           heading: Collecting signatures
-          help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for four weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, <strong>it will not affect how your petition is looked at by the Committee</strong>.</p>"
+          help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for 4 weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, it will not affect how your petition is looked at by the Committee.</p>"
           label:
             false: I do not want to collect signatures
             true: I want to collect signatures
@@ -575,12 +579,12 @@ en-GB:
           <details>
             <summary><span>Help writing previous action</span></summary>
             <div>
-              <p>Before you petition the Scottish Parliament, you need to have taken some action to raise the issue. This can be a range of activities but <strong>should include contacting a decision maker such as one of your MSP(s) or the Scottish Government</strong>.</p>
-              <p>Please let us know what outcome of this activity was. For example, if you contacted an MSP, what was their response to your petition idea?</p>
+              <p>Before you petition the Scottish Parliament, you must provide information about what you’ve already done to raise the issue. You should contact at least <a href="https://www.parliament.scot/msps/current-and-previous-msps">1 of your MSPs</a> or the <a href="https://www.gov.scot/about/contact-information/">Scottish Government</a> before submitting a petition. You will also need to let us know what happened as a result of your contact.</p>
+              <p>For example, if you contacted an MSP, what was their response to your petition idea?</p>
               <p>Good examples</p>
               <ul class="list-bullet">
-                <li>I have raised the issue with Rhoda Grant MSP who held a debate in the chamber.</li>
-                <li>I met with the Minister for Children and Young People who explained the wellbeing and safety of children and young people in Scotland is a key priority for the Scottish Government.</li>
+                <li>I have raised the issue with Sam Brown MSP who held a debate in the chamber</li>
+                <li>I met with the Minister for Children and Young People who explained the wellbeing and safety of children and young people in Scotland is a key priority for the Scottish Government</li>
               </ul>
               <p>Bad examples</p>
               <ul class="list-bullet">
@@ -597,7 +601,14 @@ en-GB:
           <details>
             <summary><span>Help writing summary</span></summary>
             <div>
-              <p>This section should be one or two sentences and should state clearly what action you want the Parliament to take.</p>
+              <p>This section starts with the words “Calling on the Scottish Parliament to urge the Scottish Government to…”. You should finish this sentence by writing clearly the action you want to be taken.</p>
+              <p>For example:</p>
+              <ul class="list-bullet">
+                <li>
+                  If you write ‘provide mandatory annual blood tests from the age of 55 to detect cancer’ in the summary box, your petition will automatically update to read:<br><br>
+                  ‘Calling on the Scottish Parliament to urge the Scottish Government to provide mandatory annual blood tests from the age of 55 to detect cancer’.
+                </li>
+              </ul>
             </div>
           </details>
       created_by: "Created by"
@@ -635,10 +646,16 @@ en-GB:
           <details>
             <summary><span>Help writing the background information</span></summary>
             <div>
-              <p>In this section, you can provide any other information you want to let the Parliament know about to help the Public Petitions Committee understand why you would like it to consider the issue(s) you have raised.</p>
-              <p>You might want to add links to any webpages you think might be helpful. Just make sure these don’t link to webpages with commenting sections (like news articles which we can’t publish).</p>
-              <p>We’re unable to accept supplementary information, such as correspondence, legal documents, photographs, or copies of Freedom of Information requests as part of your petition, but there may be a way to summarise this information, so long as it meets our <a href="/rules">rules about petitions</a>.</p>
-              <p>Also make sure your petition does not name anybody or include information that could lead to the identification of that person, unless they are an MSP or senior leader (like the chief executive of an organisation).</p>
+              <p>This section is for you to give more information to the Public Petitions Committee about your petition. Use this section to help the committee understand in more detail the issues your petition raises.</p>
+              <p>You can add links to webpages you think might be helpful. Please do not link to webpages with commenting sections (like news articles which we cannot publish).</p>
+              <p>We cannot accept additional petition information like:</p>
+              <ul class="list-bullet">
+                <li>copies of correspondence between yourself and other people, or between other people</li>
+                <li>legal documents</li>
+                <li>photographs</li>
+                <li>copies of Freedom of Information requests</li>
+              </ul>
+              <p>Also make sure your petition does not name anybody or include information that could identify someone, unless that person is an MSP or senior leader (like the chief executive of an organisation).</p>
             </div>
           </details>
       referral_threshold:
