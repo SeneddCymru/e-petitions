@@ -838,146 +838,168 @@ gd-GB:
       body_html: |-
         <h1>Privacy and cookies</h1>
 
-        <p>Last update: 22 March 2021</p>
+        <p>Last update: 31 March 2021</p>
 
         <section aria-labelledby="privacy-heading">
-          <h2 id="privacy-heading"><a name="privacy"></a>Privacy notice: how we use your data</h2>
+          <h2 id="privacy-heading"><a name="privacy"></a>SPCB Privacy Notice: Online Petitions Processing</h2>
 
-          <p>The Petitions site lets you start and sign public petitions to raise issues with the Scottish Parliament.</p>
+          <p>This privacy statement explains how we collect and use personal information as a data controller for the following process:</p>
 
-          <p>The Public Petitions process is provided by the Scottish Parliament. We need to collect, process and store some personal data to enable you to do this.</p>
+          <p>To start and sign public petitions to raise issues with the Scottish Parliament.</p>
 
-          <h3>Data Controller</h3>
-
-          <p>The Scottish Parliamentary Corporate Body (SPCB) is the data controller of the information you provide and will ensure it is protected and used in line with data protection legislation.</p>
-
-          <h3>Our Contact Details</h3>
-
-          <p>Any queries regarding our use of your information should be sent to the Data Protection Officer at:</p>
-
-          <p><a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a> — <a href="tel:01313486913">0131 348 6913</a></p>
-
-          <h3>What data we collect from you</h3>
-
-          <p>The personal data we collect from people who sign petitions will include:</p>
+          <h3>The purpose of the processing</h3>
 
           <ul class="list-bullet">
-            <li>your name</li>
-            <li>your email address</li>
-            <li>your postcode</li>
-            <li>the country you live in</li>
-            <li>the IP address you use when starting or signing a petition</li>
+            <li>Facilitate the public petitions process</li>
+            <li>Make sure that people only sign a petition once</li>
+            <li>Check that your petition is admissible</li>
+            <li>Contact you about petitions you start</li>
+            <li>We may occasionally contact people who start or submit petitions to seek feedback on the petitions process and how it could be improved.</li>
+            <li>We will use your personal information to process the petition you have started or signed.</li>
+            <li>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We will not publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the Official Report of the Scottish Parliament’s petitions process. This information will be transferred to the National Records of Scotland (NRS) where it will be publicly available.</li>
+            <li>Your petition, including your name, will be included in data about parliamentary business that will be available on the Parliament’s Open Data Portal on an ongoing basis. The Open Data Portal can be accessed here: <a href="https://data.parliament.scot/#/home">https://data.parliament.scot/#/home</a></li>
+            <li>If you’ve signed a petition, we will not publish any personal information about you.</li>
+            <li>IP addresses are used to protect the petitions site and prevent fraudulent activity.</li>
+          </ul>
+
+          <p>We set up systems and processes to prevent unauthorised access or disclosure of the data we collect about you, for example, we protect your data using varying levels of encryption. All third parties who process personal data for us are required to keep that data secure.</p>
+
+          <h3>Categories of information processed</h3>
+
+          <p>The personal data we collect from people who sign petitions will include the following types of normal personal data:</p>
+
+          <ul class="list-bullet">
+            <li>Your name</li>
+            <li>Your email address</li>
+            <li>Your postcode</li>
+            <li>The country you live in</li>
+            <li>The IP address you use when starting or signing a petition</li>
           </ul>
 
           <p>In addition, for people who start a petition we will also collect:</p>
 
           <ul class="list-bullet">
-            <li>organisation you are petitioning on behalf of (if applicable)</li>
-            <li>your postal address</li>
-            <li>your contact telephone number</li>
-            <li>any personal information or details that you provide within the petition itself.</li>
+            <li>Organisation you are petitioning on behalf of (if applicable)</li>
+            <li>Your postal address</li>
+            <li>Your contact telephone number</li>
+            <li>Any personal information or details that you provide within the petition itself.</li>
           </ul>
 
-          <p>We sometimes receive information relating to people who have submitted petitions in writing. These petitions are securely stored and retained for the same period as personal data received through our own electronic petitions system.</p>
-
-          <h3>Why we need your data</h3>
-
-          <p>We use this information to:</p>
-
-          <ul class="list-bullet">
-            <li>facilitate the public petitions process</li>
-            <li>make sure that people only sign a petition once</li>
-            <li>check that your petition is admissible</li>
-            <li>contact you about petitions you start</li>
-            <li>we may occasionally contact people who start or submit petitions to seek feedback on the petitions process and how it could be improved.</li>
-          </ul>
-
-          <h3>What we do with your data</h3>
-
-          <p>We use your personal information to process the petition you have started or signed.</p>
-
-          <p>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We will not publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the official record of the Scottish Parliament’s petitions process. This information will be transferred to the Scottish Parliament archive at National Records of Scotland where it will be publicly available.</p>
-
-          <p>Your petition, including your name, will be included in data about parliamentary business that will be available on the Parliament’s Open Data Portal on an ongoing basis. The Open Data Portal can be accessed here: <a href="https://data.parliament.scot/#/home">data.parliament.scot/#/home</a></p>
-
-          <p>If you’ve signed a petition, we will not publish any personal information about you.</p>
-
-          <p>IP addresses are used to protect the petitions site and prevent fraudulent activity.</p>
-
-          <h3>What we’ll email you about</h3>
+          <p>We sometimes receive information relating to people who have submitted petitions in writing. Some may contain special category personal data. These petitions are securely stored and retained for the same period as personal data received through our own electronic petitions system.</p>
 
           <p>If a petition you’ve started is referred to the Public Petitions Committee, we will use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
 
           <p>You will receive automated confirmation emails when you set up or sign a petition.</p>
 
-          <h3>Who has access to the data and where is it processed and stored</h3>
+          <h3>Source of the information</h3>
 
-          <p>The Scottish Parliament’s staff administering the petitions process will have access to your personal information.</p>
+          <p>The personal data being processed is received directly from the data subjects themselves.</p>
+
+          <h3>Legal basis for data processinga</h3>
+
+          <p>We use this information to:</p>
+
+          <p>Data protection law states that we must have a legal basis for handling your personal data.</p>
+
+          <p>For normal category personal data, the processing is necessary for the performance of a task that is carried out in the public interest in terms of Article 6(1)(e) of the UK General Data Protection Regulation (UK GDPR).</p>
+
+          <p>For petitions or other information containing special category data, the legal basis for the processing is that the personal data processing is necessary for reasons of substantial public interest. The public interest is compliance with statutory equality requirements. (Art 9(2)(g), S10(3) and Part 2 Schedule 1, para 6 DPA, s29(7) Equality Act 2010.)</p>
+
+          <p>A service provider must make reasonable adjustments. Processing personal data relating to protected characteristics enables the SPCB to make reasonable adjustments. This does not interfere with the rights of the data subjects disproportionately because the data subjects provide the data themselves, they are not under an obligation to provide the data to us and we only keep the data for the minimum time necessary to comply with the statutory obligation.</p>
+
+          <p>The legal basis for sharing personal data with NRS is that it is necessary for historical and archiving purposes in the public interest (Article 6(1)(e) UK GDPR, section 8(d) DPA or Art 9(2)(j) UK GDPR, section 10(2) DPA and paragraph 4(a) of part 1, Schedule 1, DPA).</p>
+
+          <p><u>The privacy notice for the NRS can be viewed here:</u></p>
+
+          <p><a href="https://www.nrscotland.gov.uk/Privacy">https://www.nrscotland.gov.uk/Privacy</a></p>
+
+          <h3>Retention of data</h3>
+
+          <p>Petitions form part of the public record. They will be retained according to the Scottish Parliament’s record management policy and transferred to the Scottish Parliament archive at NRS where they will be publicly available.</p>
+
+          <h3>Transfer of Data</h3>
+
+          <p>If a petition you’ve started is referred to the Public Petitions Committee, we will use your contact The Scottish Parliament’s staff administering the petitions process will have access to your personal information.</p>
 
           <p>Unboxed Consulting Limited who provide technical support for the petitions system will also have access to the system for troubleshooting and maintenance purposes only.</p>
 
-          <p>Electronic information will be stored on Scottish Parliament ICT systems, which includes third party cloud services provided by Microsoft. Any transfer of data by Microsoft outside of the EEA is covered by contractual clauses under which Microsoft ensure that personal data is treated in line with European legislation.</p>
+          <p>Electronic information will be stored on Scottish Parliament Information and Communication Technologies (ICT) systems, which includes third party cloud services provided by Microsoft. Any transfer of data by Microsoft outside of the European Economic Area (EEA) is covered by contractual clauses under which Microsoft ensure that personal data is treated in line with European legislation.</p>
 
-          <p>The petitions system uses Amazon Web Services (AWS) cloud storage to store your data and to send emails relating to the petitions process. Emails sent are stored for 6 months. The privacy notice for Amazon Web Services (AWS) is available here: <a href="https://aws.amazon.com/privacy/">aws.amazon.com/privacy</a>.</p>
-
-          <p>Petitions form part of the public record. They will be retained according to the Scottish Parliament’s record management policy and transferred publicly to the Scottish Parliament archive at National Records of Scotland where they will be publicly available.</p>
-
-          <h3>How we protect your data and keep it secure</h3>
-
-          <p>We are committed to keeping your personal data secure. We set up systems and processes to prevent unauthorised access or disclosure of the data we collect about you – for example, we protect your data using varying levels of encryption. All third parties who process personal data for us are required to keep that data secure.</p>
-
-          <h3>Our legal bases for collecting, holding and using your personal information</h3>
-
-          <p>Data protection law sets out various legal bases (or ‘conditions’) which allow us to collect, hold and use your personal information.</p>
-
-          <p>The collection and use of your information are necessary to help us facilitate the public petitions process and allow the public the chance to raise and show support for issues with The Scottish Parliament.</p>
-
-          <p>Personal data is processed because it is necessary for the performance of a task carried out in the public interest in accordance with Article 6(1)(e) of the General Data Protection Regulation (GDPR), read together with section 8(d) of the Data Protection Act 2018.</p>
-
-          <p>We may process special categories of personal data of those who start and/or contribute to its passage through the Scottish Parliament’s petitions process. Special category personal data is defined in Article 9(1) of the GDPR as the processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade-union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or a natural person’s sex life or sexual orientation.</p>
-
-          <p>Special category personal data will usually be processed on the basis that it is necessary for reasons of substantial public interest, pursuant to Article 9(2)(g) of the GDPR read in conjunction with section 10(3) of, and paragraph 6(2)(b), part 2, of Schedule 1 to, the Data Protection Act 2018.</p>
-
-          <p>The legal basis for sharing personal data with NRS (as set out in the paragraph below) is that it is necessary for historical and archiving purposes in the public interest (Article 6(1)(e) UK GDPR, section 8(d) DPA or Art 9(2)(j) UK GDPR, section 10(2) DPA and paragraph 4(a) of part 1, Schedule 1, DPA).</p>
-
-          <h3>What are your rights</h3>
-
-          <p>You have certain rights over the information we hold. In summary, the rights include:</p>
-
-          <ul class="list-bullet">
-            <li>The right to be informed about how your personal information is used</li>
-            <li>The right of access to copies of your personal information</li>
-            <li>The right to rectification if your information is inaccurate</li>
-            <li>The right to restrict our use of your personal information in certain circumstances</li>
-            <li>The right to object to the use of your personal information in certain circumstances</li>
-          </ul>
-
-          <p>If you would like to engage any of these rights, please email <a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a></p>
+          <p>The petitions system uses Amazon Web Services (AWS) cloud storage to store your data and to send emails relating to the petitions process. Emails sent are stored for 6 months. The privacy notice for AWS is available here: <a href="https://aws.amazon.com/privacy/">https://aws.amazon.com/privacy</a>.</p>
 
           <h3>Children and Young People Safeguarding and Child Protection</h3>
 
-          <p>In line with the principles underlying the National Guidance for Child protection in Scotland (2014), published by the Scottish Government, our staff may report a concern to the relevant authorities if they come across an issue during their work which causes them to think that a child may be at risk of abuse or harm.</p>
+          <p>In line with the principles underlying the National Guidance for Child Protection in Scotland (2014), published by the Scottish Government, our staff may report a concern to the relevant authorities if they come across an issue during their work which causes them to think that a child may be at risk of abuse or harm.</p>
 
-          <h3>Changes to this notice</h3>
+          <h3>Your rights</h3>
 
-          <p>We keep this privacy notice under regular review. We may change this privacy notice. In that case the ‘last updated’ date at the top of this page will also change. Any changes to this privacy notice will apply to you and your data immediately. If these changes affect how your personal data is processed, we will take reasonable steps to make sure you know.</p>
+          <p>Data protection legislation sets out the rights which individuals have in relation to personal data held about them by data controllers. Applicable rights are listed below.  You can exercise your data subject rights in particular circumstances depending on the purpose for which the data controller is processing the data and the legal basis upon which the processing takes place.</p>
+
+          <p>The following rights may apply:</p>
+
+          <p><strong>Access to your information</strong> – You have the right to request a copy of the personal information about you that we hold. For further information, see information on how to make a data protection subject access request: <a href="https://www.parliament.scot/abouttheparliament/23315.aspx">https://www.parliament.scot/abouttheparliament/23315.aspx</a></p>
+
+          <p><strong>Correcting your information</strong> – You have the right to ask us to correct the personal data we hold about you. We want to make sure that your personal information is accurate, complete and up to date and you may ask us to correct any personal information about you that you believe does not meet these standards.</p>
+
+          <p><strong>Objecting to how we may use your information</strong> – You have the right at any time to require us to stop using your personal information for direct marketing purposes. In addition, where we use your personal information to perform tasks carried out in the public interest then, if you ask us to, we will stop using that personal information unless there are overriding legitimate grounds to continue.</p>
+
+          <ul class="list-bullet">
+            <li>Please note that the right to object to the processing of personal data does not apply where the data subject has consented to the processing, subject to the right to withdraw consent.</li>
+            <li>The right to object to the processing of personal data for the purposes of a public interest task is restricted if there are legitimate grounds for the processing which override the interest of the data subject.</li>
+            <li>The right of erasure and the right to object to processing of personal data do not apply where personal data is processed for the performance of a legal obligation. This will be considered on a case by case basis and depends on what personal data is involved and the risks further processing of that data could pose to you.</li>
+          </ul>
+
+          <p><strong>Deletion of your information</strong> – You have the right to ask us to delete personal information about you where:</p>
+
+          <ul class="list-bullet">
+            <li>You consider that we no longer require the information for the purposes for which it was obtained</li>
+            <li>We are using that information with your consent and you have withdrawn your consent – see <em>Withdrawing consent to using your information</em> below</li>
+            <li>You have validly objected to our use of your personal information – see <em>Objecting to how we may use your information</em> above</li>
+            <li>Our use of your personal information is contrary to law or our other legal obligations</li>
+            <li>Please note that the right allowing for deletion or erasure of personal data (right to be forgotten) does not apply in cases where personal data is processed for the purposes of the performance of a task carried out in the public interest.</li>
+            <li>The right of erasure and the right to object to processing of personal data do not apply where personal data is processed for the performance of a legal obligation. This will be considered on a case by case basis and depends on what personal data is involved and the risks further processing of that data could pose to you.</li>
+          </ul>
+
+          <p><strong>Restricting how we may use your information</strong> – In some cases, you may ask us to restrict how we use your personal information. This right might apply, for example, where we are checking the accuracy of personal information about you that we hold or assessing the validity of any objection you have made to our use of your information. The right might also apply where there is no longer a basis for using your personal information, but you don't want us to delete the data. Where this right is validly exercised, we may only use the relevant personal information with your consent, for legal claims or where there are other public interest grounds to do so.</p>
+
+          <p><strong>Withdrawing consent to using your information</strong> – Where we use your personal information with your consent, you may withdraw that consent at any time and we will stop using your personal information for the purposes for which consent was given.</p>
+
+          <p>Please contact us in any of the ways set out below if you wish to exercise any of these rights.</p>
+
+          <h3>Changes to our privacy statement</h3>
+
+          <p>We keep this privacy statement under regular review and will place any updates on this website. Paper copies of the privacy statement may also be obtained using the contact information below.</p>
+
+          <p>This privacy statement was last updated on 31 March 2021.</p>
 
           <h3>Contact information and further advice</h3>
 
-          <p>You can also complain to the ICO if you are unhappy with how we have used your data.</p>
-
-          <p>The Scottish Parliament’s Head of Information and Governances address:</p>
+          <p>If you have any further questions about the way in which we process personal data, or about how to exercise your rights, please contact the Head of Information Governance at:</p>
 
           <p>
             The Scottish Parliament<br>
             Edinburgh<br>
-            EH99 1SP<br>
-            <a href="tel:013133486913">01313 348 6913</a><br>
-            <a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a>
+            EH99 1SP
           </p>
 
-          <p>Calls are welcome through the Text Relay Service or in British Sign Language through <a href="https://contactscotland-bsl.org/">contactSCOTLAND-BSL</a>.</p>
+          <p>01313 348 6913 (Calls are welcome through the Text Relay service or in British Sign Language through <a href="https://contactscotland-bsl.org/">contactSCOTLAND-BSL.</a>)<br></p>
+
+          <p>Email: <a href="mailto:dataprotection@parliament.scot">dataprotection@parliament.scot</a></p>
+
+          <h3>Complaints</h3>
+
+          <p>We seek to directly resolve all complaints about how we handle personal data.</p>
+
+          <p>
+            You also have the right to lodge a complaint with the Information Commissioner's Office online at: <a href="https://ico.org.uk/make-a-complaint">https://ico.org.uk/make-a-complaint</a>.<br>
+            Or by phone at: 0303 123 1113
+          </p>
+
+          <img alt="Happy to translate logo" src="%{url}" width="200">
+
+          <p>Please contact us if you require information in another language or format.</p>
         </section>
+
 
         <section aria-labelledby="cookies-heading">
           <h2 id="cookies-heading"><a name="cookies"></a>Cookies</h2>
