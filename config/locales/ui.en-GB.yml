@@ -514,7 +514,7 @@ en-GB:
             <p>Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>
         collect_signatures_stage:
           heading: Collecting signatures
-          help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for four weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, <strong>it will not affect how your petition is looked at by the Committee</strong>.</p>"
+          help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for 4 weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, it will not affect how your petition is looked at by the Committee.</p>"
           label:
             false: I do not want to collect signatures
             true: I want to collect signatures
