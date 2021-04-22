@@ -339,7 +339,7 @@ en-GB:
       referred_petitions:
         title: "Petitions under consideration"
         introduction: |-
-          The Public Petitions Committee looks at all published petitions, regardless of whether signatures are collected.
+          The Public Petitions Committee looks at all published petitions whether they collect signatures or not.
         none_referred: |-
           No petitions are being considered yet
         referred_date: "Under consideration from %{date}"
