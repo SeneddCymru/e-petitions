@@ -510,7 +510,7 @@ en-GB:
             <button type="submit" name="move_back" class="button button-secondary" data-disable-with="Go back and make changes">Go back and make changes</button>
           submit_warning_html: |-
             <p>You cannot change your petition after this point.</p>
-            <p>This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published. We also cannot publish any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation).</p>
+            <p>This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published. Also, make sure that you have not included any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) as we cannot publish this.</p>
             <p>Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>
         collect_signatures_stage:
           heading: Collecting signatures
