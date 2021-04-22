@@ -453,7 +453,7 @@ gd-GB:
         creator_stage:
           name:
             hint: "You must use your full name. If you are submitting a petition on behalf of an organisation, please provide your full name and the organisation you are submitting it on behalf of."
-            example: "For example - Alex Smith on behalf of Meadhowhaugh Community Council"
+            example: "For example - Alex Smith on behalf of Meadowhaugh Community Council"
             label: "Name"
           email:
             label: "Email address"
