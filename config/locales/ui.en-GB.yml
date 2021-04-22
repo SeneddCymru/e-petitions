@@ -239,7 +239,7 @@ en-GB:
         <section aria-labelledby="rejections-heading">
           <h2 id="rejections-heading"><a name="rejections"></a>Why we might reject your petition</h2>
 
-          <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue..</p>
+          <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue.</p>
 
           <p>We'll have to reject your petition if:</p>
 
@@ -248,6 +248,9 @@ en-GB:
               <p>It’s about something that’s not within the powers of the Scottish Parliament.</p>
               <p>That includes: something that your local council is responsible for (including planning decisions); something that the UK Government or Parliament is responsible for; and something that an independent organisation has done.</p>
             </li>
+            <li>It calls for the same action as a petition that’s already open, or one which was closed by the Public Petitions Committee less than a year earlier.</li>
+            <li>You already have 2 petitions being looked at by the Scottish Parliament.</li>
+            <li>It calls for something that relates to a law currently being looked at by the Parliament or has been in the last 12 months.</li>
             <li>It does not include details of relevant previous action taken to address the issue, such as raising it with the Scottish Government or one of your MSP’s.</li>
             <li>It contains language which is defamatory, offensive or inappropriate. This not only includes obvious profanities, swear words and insults, but any language which a reasonable person would regard as offensive.</li>
             <li>It names individuals or otherwise contains information that could lead to the identification of any individual. This excludes MSPs and senior leaders of public bodies.</li>
