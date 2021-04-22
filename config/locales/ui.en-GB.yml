@@ -645,10 +645,16 @@ en-GB:
           <details>
             <summary><span>Help writing the background information</span></summary>
             <div>
-              <p>In this section, you can provide any other information you want to let the Parliament know about to help the Public Petitions Committee understand why you would like it to consider the issue(s) you have raised.</p>
-              <p>You might want to add links to any webpages you think might be helpful. Just make sure these don’t link to webpages with commenting sections (like news articles which we can’t publish).</p>
-              <p>We’re unable to accept supplementary information, such as correspondence, legal documents, photographs, or copies of Freedom of Information requests as part of your petition, but there may be a way to summarise this information, so long as it meets our <a href="/rules">rules about petitions</a>.</p>
-              <p>Also make sure your petition does not name anybody or include information that could lead to the identification of that person, unless they are an MSP or senior leader (like the chief executive of an organisation).</p>
+              <p>This section is for you to give more information to the Public Petitions Committee about your petition. Use this section to help the committee understand in more detail the issues your petition raises.</p>
+              <p>You can add links to webpages you think might be helpful. Please do not link to webpages with commenting sections (like news articles which we cannot publish).</p>
+              <p>We cannot accept additional petition information like:</p>
+              <ul class="list-bullet">
+                <li>copies of correspondence between yourself and other people, or between other people</li>
+                <li>legal documents</li>
+                <li>photographs</li>
+                <li>copies of Freedom of Information requests</li>
+              </ul>
+              <p>Also make sure your petition does not name anybody or include information that could identify someone, unless that person is an MSP or senior leader (like the chief executive of an organisation).</p>
             </div>
           </details>
       referral_threshold:
