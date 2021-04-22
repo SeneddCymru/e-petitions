@@ -600,7 +600,14 @@ en-GB:
           <details>
             <summary><span>Help writing summary</span></summary>
             <div>
-              <p>This section should be one or two sentences and should state clearly what action you want the Parliament to take.</p>
+              <p>This section starts with the words “Calling on the Scottish Parliament to urge the Scottish Government to…”. You should finish this sentence by writing clearly the action you want to be taken.</p>
+              <p>For example:</p>
+              <ul class="list-bullet">
+                <li>
+                  If you write ‘provide mandatory annual blood tests from the age of 55 to detect cancer’ in the summary box, your petition will automatically update to read:<br><br>
+                  ‘Calling on the Scottish Parliament to urge the Scottish Government to provide mandatory annual blood tests from the age of 55 to detect cancer’.
+                </li>
+              </ul>
             </div>
           </details>
       created_by: "Created by"
