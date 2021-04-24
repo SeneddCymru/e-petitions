@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_183008) do
+ActiveRecord::Schema.define(version: 2021_04_24_081311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -351,6 +351,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_183008) do
     t.index ["anonymized_at"], name: "index_petitions_on_anonymized_at"
     t.index ["archived_at", "state"], name: "index_petitions_on_archived_at_and_state"
     t.index ["closed_at"], name: "index_petitions_on_closed_at", order: :desc
+    t.index ["completed_at"], name: "index_petitions_on_completed_at", order: :desc
     t.index ["created_at", "state"], name: "index_petitions_on_created_at_and_state"
     t.index ["debate_state"], name: "index_petitions_on_debate_state"
     t.index ["debate_threshold_reached_at"], name: "index_petitions_on_debate_threshold_reached_at"
@@ -358,6 +359,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_183008) do
     t.index ["locked_by_id"], name: "index_petitions_on_locked_by_id"
     t.index ["moderated_by_id"], name: "index_petitions_on_moderated_by_id"
     t.index ["moderation_threshold_reached_at", "moderation_lag"], name: "index_petitions_on_mt_reached_at_and_moderation_lag"
+    t.index ["open_at", "created_at"], name: "index_petitions_on_open_at_and_created_at", order: :desc
     t.index ["pe_number_id"], name: "index_petitions_on_pe_number_id"
     t.index ["referral_threshold_reached_at"], name: "index_petitions_on_referral_threshold_reached_at"
     t.index ["referred_at", "created_at"], name: "index_petitions_on_referred_at_and_created_at", order: { created_at: :desc }
