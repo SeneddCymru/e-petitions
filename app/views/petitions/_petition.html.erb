@@ -1,0 +1,75 @@
+<%= content_tag :li, class: "petition-item petition-#{petition.state}" do %>
+  <% case @petitions.scope %>
+  <% when :archived %>
+
+    <%= link_to petition_path(petition) do %>
+      <h2><%= petition.action %></h2>
+      <% case petition.state %>
+      <% when "closed" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.closed") %></p>
+      <% when "completed" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.completed", date: short_date_format(petition.completed_at)) %></p>
+      <% when "rejected" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.rejected") %></p>
+      <% end %>
+    <% end %>
+
+  <% when :closed %>
+
+    <%= link_to petition_path(petition) do %>
+      <h2><%= petition.action %></h2>
+      <p><%= t(:"ui.petitions.search.results.items.facet_completed.completed_date", date: short_date_format(petition.completed_at)) %></p>
+    <% end %>
+
+  <% when :collecting_signatures %>
+
+    <%= link_to petition_path(petition) do %>
+      <h2><%= petition.action %></h2>
+      <p><%= t(:"ui.petitions.search.results.items.facet_collecting_signatures.until", date: short_date_format(petition.closed_at)) %></p>
+    <% end %>
+
+  <% when :debated %>
+
+    <%= link_to petition_path(petition, anchor: 'debate-threshold') do %>
+      <h2><%= petition.action %></h2>
+      <% if debate_outcome = petition.debate_outcome %>
+      <p><%= t(:"ui.petitions.search.results.items.facet_debated.debated_date", date: short_date_format(debate_outcome.debated_on)) %></p>
+      <% else %>
+      <p><%= t(:"ui.petitions.search.results.items.facet_debated.debated_date", date: short_date_format(petition.scheduled_debate_date)) %></p>
+      <% end %>
+    <% end %>
+
+  <% when :not_debated %>
+
+    <%= link_to petition_path(petition, anchor: 'debate-threshold') do %>
+      <h2><%= petition.action %></h2>
+      <% if debate_outcome = petition.debate_outcome %>
+      <p><%= t(:"ui.petitions.search.results.items.facet_not_debated.not_debated_date", date: short_date_format(debate_outcome.debated_on)) %></p>
+      <% end %>
+    <% end %>
+
+  <% when :under_consideration %>
+
+    <%= link_to petition_path(petition) do %>
+      <h2><%= petition.action %></h2>
+      <p><%= t(:"ui.petitions.search.results.items.facet_referred.referred_date", date: short_date_format(petition.closed_at)) %></p>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to petition_path(petition) do %>
+      <h2><%= petition.action %></h2>
+      <% case petition.state %>
+      <% when "open" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_collecting_signatures.until", date: short_date_format(petition.closed_at)) %></p>
+      <% when "closed" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.referred", date: short_date_format(petition.closed_at)) %></p>
+      <% when "completed" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.completed", date: short_date_format(petition.completed_at)) %></p>
+      <% when "rejected" %>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.rejected") %></p>
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>

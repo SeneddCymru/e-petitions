@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_070355) do
+ActiveRecord::Schema.define(version: 2021_04_24_081311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -350,6 +350,8 @@ ActiveRecord::Schema.define(version: 2021_04_18_070355) do
     t.index "to_tsvector('simple'::regconfig, additional_details_gd)", name: "index_petitions_on_additional_details_gd", using: :gin
     t.index ["anonymized_at"], name: "index_petitions_on_anonymized_at"
     t.index ["archived_at", "state"], name: "index_petitions_on_archived_at_and_state"
+    t.index ["closed_at"], name: "index_petitions_on_closed_at", order: :desc
+    t.index ["completed_at"], name: "index_petitions_on_completed_at", order: :desc
     t.index ["created_at", "state"], name: "index_petitions_on_created_at_and_state"
     t.index ["debate_state"], name: "index_petitions_on_debate_state"
     t.index ["debate_threshold_reached_at"], name: "index_petitions_on_debate_threshold_reached_at"
@@ -357,9 +359,11 @@ ActiveRecord::Schema.define(version: 2021_04_18_070355) do
     t.index ["locked_by_id"], name: "index_petitions_on_locked_by_id"
     t.index ["moderated_by_id"], name: "index_petitions_on_moderated_by_id"
     t.index ["moderation_threshold_reached_at", "moderation_lag"], name: "index_petitions_on_mt_reached_at_and_moderation_lag"
+    t.index ["open_at", "created_at"], name: "index_petitions_on_open_at_and_created_at", order: :desc
     t.index ["pe_number_id"], name: "index_petitions_on_pe_number_id"
     t.index ["referral_threshold_reached_at"], name: "index_petitions_on_referral_threshold_reached_at"
     t.index ["referred_at", "created_at"], name: "index_petitions_on_referred_at_and_created_at", order: { created_at: :desc }
+    t.index ["signature_count", "created_at"], name: "index_petitions_on_signature_count_and_created_at", order: :desc
     t.index ["signature_count", "state"], name: "index_petitions_on_signature_count_and_state"
     t.index ["state", "debate_state"], name: "index_petitions_on_state_and_debate_state"
     t.index ["tags"], name: "index_petitions_on_tags", opclass: :gin__int_ops, using: :gin
@@ -461,7 +465,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_070355) do
     t.string "locale", limit: 10, default: "en-GB", null: false
     t.datetime "anonymized_at"
     t.index "((ip_address)::inet)", name: "index_signatures_on_inet"
-    t.index "((regexp_replace(\"left\"((email)::text, (\"position\"((email)::text, '@'::text) - 1)), '\\.|\\+.+'::text, ''::text, 'g'::text) || \"substring\"((email)::text, \"position\"((email)::text, '@'::text))))", name: "index_signatures_on_normalized_email"
+    t.index "((regexp_replace(\"left\"(lower((email)::text), (\"position\"((email)::text, '@'::text) - 1)), '\\.|\\+.+'::text, ''::text, 'g'::text) || \"substring\"(lower((email)::text), \"position\"((email)::text, '@'::text))))", name: "index_signatures_on_lower_normalized_email"
     t.index "\"left\"((postcode)::text, '-3'::integer), petition_id", name: "index_signatures_on_sector_and_petition_id"
     t.index "\"left\"((postcode)::text, '-3'::integer), state, petition_id", name: "index_signatures_on_sector_and_state_and_petition_id"
     t.index "\"substring\"((email)::text, (\"position\"((email)::text, '@'::text) + 1))", name: "index_signatures_on_domain"

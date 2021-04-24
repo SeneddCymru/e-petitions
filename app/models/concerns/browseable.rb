@@ -117,7 +117,8 @@ module Browseable
     delegate :offset, :out_of_bounds?, to: :results
     delegate :next_page, :previous_page, to: :results
     delegate :total_entries, :total_pages, to: :results
-    delegate :each, :empty?, :map, :to_a, to: :results
+    delegate :to_a, :to_ary, to: :results
+    delegate :each, :map, :size, to: :to_a
     delegate :count, to: :execute_search
 
     def initialize(klass, params = {})
@@ -126,10 +127,6 @@ module Browseable
 
     def current_page
       @current_page ||= [sanitized_page, 1].max
-    end
-
-    def each(&block)
-      results.each(&block)
     end
 
     def find_each(&block)
@@ -142,6 +139,10 @@ module Browseable
 
     def filters
       @filters ||= Filters.new(klass, params)
+    end
+
+    def empty?
+      total_entries.zero?
     end
 
     def first_page?
@@ -192,6 +193,10 @@ module Browseable
       new_params(total_pages)
     end
 
+    def current_params
+      new_params(current_page)
+    end
+
     def scope
       @scope ||= facets.keys.detect(-> { :all }){ |key| key.to_s == params[:state] }
     end
@@ -202,10 +207,6 @@ module Browseable
 
     def search?
       query.present?
-    end
-
-    def to_a
-      results.to_a
     end
 
     def in_batches(&block)
