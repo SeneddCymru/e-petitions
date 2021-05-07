@@ -480,7 +480,7 @@ en-GB:
           about_published_data_html: |-
             <div class="secondary">
               <p>Your name will be published on this petition as the petition creator.</p>
-              <p>Other than that, we won’t publish your personal details anywhere or use them for anything other than this petition. Please see our <a href="/privacy" target="_blank">privacy notice</a> (opens in a new tab) for information on how we use your personal details.</p>
+              <p>Other than that, we will not publish your personal details anywhere or use them for anything other than this petition. Please see our <a href="/privacy" target="_blank">privacy notice</a> (opens in a new tab) for information on how we use your personal details.</p>
             </div>
         error_summary:
           prompt:
@@ -952,7 +952,7 @@ en-GB:
 
           <p>The following rights may apply:</p>
 
-          <p><strong>Access to your information</strong> – You have the right to request a copy of the personal information about you that we hold. For further information, see information on how to make a data protection subject access request: <a href="https://www.parliament.scot/abouttheparliament/23315.aspx">https://www.parliament.scot/abouttheparliament/23315.aspx</a></p>
+          <p><strong>Access to your information</strong> – You have the right to request a copy of the personal information about you that we hold. For further information, see information on how to make a data protection subject access request:<br> <a href="https://www.parliament.scot/about/information-rights/data-protection/request-copy-of-personal-information">Request personal information about you that we hold | Scottish Parliament Website</a></p>
 
           <p><strong>Correcting your information</strong> – You have the right to ask us to correct the personal data we hold about you. We want to make sure that your personal information is accurate, complete and up to date and you may ask us to correct any personal information about you that you believe does not meet these standards.</p>
 
@@ -1174,8 +1174,11 @@ en-GB:
             <li><span>(ac)</span> refers to any matter in relation to which legal proceedings are active;</li>
             <li><span>(b)</span> contains language which is offensive;</li>
             <li><span>(ba)</span> fails to raise issues of national policy or practice;</li>
-            <li><span>(c)</span> requests the Parliament to do anything which the Parliament clearly has no power to do; or</li>
+            <li><span>(c)</span> requests the Parliament to do anything which the Parliament clearly has no power to do;</li>
             <li><span>(d)</span> is the same as, or in substantially similar terms to, a petition brought during the same session of the Parliament and which was closed less than a year earlier.</li>
+            <li><span>(e)</span> is the same as, or in substantially similar terms to, any other petition which is currently being considered by the Parliament;</li>
+            <li><span>(f)</span> has been brought by or on behalf of a petitioner who, at the same time, has two current petitions under consideration by the Parliament; or</li>
+            <li><span>(g)</span> relates to a Bill which is currently being considered by the Parliament, or to primary legislation passed by the Parliament within the period of twelve months preceding the lodging of the petition.</li>
           </ol>
         </section>
 
