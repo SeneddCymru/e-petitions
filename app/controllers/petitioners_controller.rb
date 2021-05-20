@@ -1,4 +1,7 @@
 class PetitionersController < SponsorsController
+  skip_before_action :block_if_not_collecting_sponsors
+  skip_before_action :redirect_to_new_sponsor_page_if_validated
+
   before_action :block_if_collecting_sponsors
 
   def verify

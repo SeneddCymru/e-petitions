@@ -65,6 +65,14 @@ RSpec.describe PetitionersController, type: :controller do
         it "redirects to the thank you page" do
           expect(response).to redirect_to("/petitioners/#{signature.id}/thank-you")
         end
+
+        context "and the signature was validated more than 15 minutes ago" do
+          let(:signature) { FactoryBot.create(:validated_signature, petition: petition, validated_at: 30.minutes.ago) }
+
+          it "still redirects to the thank you page" do
+            expect(response).to redirect_to("/petitioners/#{signature.id}/thank-you")
+          end
+        end
       end
     end
 

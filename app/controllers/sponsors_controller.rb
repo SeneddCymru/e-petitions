@@ -4,6 +4,7 @@ class SponsorsController < SignaturesController
   skip_before_action :redirect_to_petition_page_if_closed
   skip_before_action :redirect_to_petition_page_if_closed_for_signing
 
+  before_action :block_if_not_collecting_sponsors
   before_action :redirect_to_new_sponsor_page_if_validated, only: [:verify]
   before_action :redirect_to_petition_page_if_moderated, except: [:thank_you, :signed]
   before_action :redirect_to_moderation_info_page_if_sponsored, except: [:thank_you, :signed]
@@ -75,7 +76,11 @@ class SponsorsController < SignaturesController
   end
 
   def signed_token_failure_url
-    moderation_info_petition_url(@petition)
+    if Site.collecting_sponsors?
+      moderation_info_petition_url(@petition)
+    else
+      raise ActionController::RoutingError, "Not available when not collecting sponsors"
+    end
   end
 
   def redirect_to_new_sponsor_page_if_validated
@@ -98,5 +103,11 @@ class SponsorsController < SignaturesController
 
   def validate_creator
     @petition.validate_creator!
+  end
+
+  def block_if_not_collecting_sponsors
+    unless Site.collecting_sponsors?
+      raise ActionController::RoutingError, "Not available when not collecting sponsors"
+    end
   end
 end
