@@ -42,6 +42,20 @@ RSpec.describe SponsorsController, type: :controller do
       end
     end
 
+    context "when the site isn't collecting sponsors" do
+      let(:petition) { FactoryBot.create(:pending_petition) }
+
+      before do
+        allow(Site).to receive(:collecting_sponsors?).and_return(false)
+      end
+
+      it "raises an ActionController::RoutingError" do
+        expect {
+          get :new, params: { petition_id: petition.id, token: petition.sponsor_token }
+        }.to raise_exception(ActionController::RoutingError)
+      end
+    end
+
     %w[flagged hidden].each do |state|
       context "when the petition is #{state}" do
         let(:petition) { FactoryBot.create(:"#{state}_petition") }
@@ -169,6 +183,20 @@ RSpec.describe SponsorsController, type: :controller do
         expect {
           post :confirm, params: { petition_id: petition.id, token: 'token', signature: params }
         }.to raise_exception(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "when the site isn't collecting sponsors" do
+      let(:petition) { FactoryBot.create(:pending_petition) }
+
+      before do
+        allow(Site).to receive(:collecting_sponsors?).and_return(false)
+      end
+
+      it "raises an ActionController::RoutingError" do
+        expect {
+          post :confirm, params: { petition_id: petition.id, token: petition.sponsor_token, signature: params }
+        }.to raise_exception(ActionController::RoutingError)
       end
     end
 
@@ -339,6 +367,20 @@ RSpec.describe SponsorsController, type: :controller do
         expect {
           post :create, params: { petition_id: petition.id, token: 'token', signature: params }
         }.to raise_exception(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "when the site isn't collecting sponsors" do
+      let(:petition) { FactoryBot.create(:pending_petition) }
+
+      before do
+        allow(Site).to receive(:collecting_sponsors?).and_return(false)
+      end
+
+      it "raises an ActionController::RoutingError" do
+        expect {
+          post :create, params: { petition_id: petition.id, token: petition.sponsor_token, signature: params }
+        }.to raise_exception(ActionController::RoutingError)
       end
     end
 
@@ -642,6 +684,20 @@ RSpec.describe SponsorsController, type: :controller do
       end
     end
 
+    context "when the site isn't collecting sponsors" do
+      let(:petition) { FactoryBot.create(:pending_petition) }
+
+      before do
+        allow(Site).to receive(:collecting_sponsors?).and_return(false)
+      end
+
+      it "raises an ActionController::RoutingError" do
+        expect {
+          get :thank_you, params: { petition_id: petition.id, token: petition.sponsor_token }
+        }.to raise_exception(ActionController::RoutingError)
+      end
+    end
+
     %w[flagged hidden].each do |state|
       context "when the petition is #{state}" do
         let(:petition) { FactoryBot.create(:"#{state}_petition") }
@@ -773,6 +829,21 @@ RSpec.describe SponsorsController, type: :controller do
         expect {
           get :verify, params: { id: signature.id, token: signature.perishable_token }
         }.not_to raise_error
+      end
+    end
+
+    context "when the site isn't collecting sponsors" do
+      let(:petition) { FactoryBot.create(:pending_petition) }
+      let(:signature) { FactoryBot.create(:pending_signature, petition: petition, sponsor: true) }
+
+      before do
+        allow(Site).to receive(:collecting_sponsors?).and_return(false)
+      end
+
+      it "raises an ActionController::RoutingError" do
+        expect {
+          get :verify, params: { id: signature.id, token: signature.perishable_token }
+        }.to raise_exception(ActionController::RoutingError)
       end
     end
 
@@ -1229,6 +1300,35 @@ RSpec.describe SponsorsController, type: :controller do
         expect {
           get :signed, params: { id: signature.id }
         }.not_to raise_error
+      end
+    end
+
+    context "when the site isn't collecting sponsors" do
+      let(:petition) { FactoryBot.create(:pending_petition) }
+      let(:signature) { FactoryBot.create(:pending_signature, petition: petition, sponsor: true) }
+
+      before do
+        allow(Site).to receive(:collecting_sponsors?).and_return(false)
+      end
+
+      context "and the signed token is not set" do
+        it "raises an ActionController::RoutingError" do
+          expect {
+            get :signed, params: { id: signature.id }
+          }.to raise_exception(ActionController::RoutingError)
+        end
+      end
+
+      context "and the signed token is valid" do
+        before do
+          cookies.encrypted[:signed_tokens] = { signature.id.to_s => signature.signed_token }.to_json
+        end
+
+        it "raises an ActionController::RoutingError" do
+          expect {
+            get :signed, params: { id: signature.id }
+          }.to raise_exception(ActionController::RoutingError)
+        end
       end
     end
 
