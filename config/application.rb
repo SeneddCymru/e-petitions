@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 require File.expand_path('../../lib/cloud_front_remote_ip', __FILE__)
 require File.expand_path('../../lib/quiet_logger', __FILE__)
+require File.expand_path('../../lib/reject_bad_requests', __FILE__)
 
 require 'rails'
 
@@ -79,5 +80,8 @@ module ScotsPets
     # to build, once to compress) which breaks the usage of "unquote" to use
     # CSS that has same function names as SCSS such as max
     config.assets.css_compressor = nil
+
+    # Reject requests with parameters containing null bytes
+    config.middleware.insert_before ActionDispatch::Callbacks, RejectBadRequests
   end
 end
