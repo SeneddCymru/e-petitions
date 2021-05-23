@@ -48,7 +48,7 @@ en-GB:
                 other: "Name is too long (maximum is %{count} characters)"
             email:
               blank: "Email must be completed"
-              invalid: "Email ‘%{value}’ not recognised"
+              invalid: "Email not recognised"
               plus_address: "You can’t use ‘plus addressing’ in your email address"
               too_long:
                 other: "Email is too long (maximum is %{count} characters)"
