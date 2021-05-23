@@ -71,7 +71,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@example" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@example’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -79,7 +79,7 @@ RSpec.describe EmailValidator do
     let(:email) { "@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -87,7 +87,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura.example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura.example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -95,7 +95,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laüra@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laüra@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -103,7 +103,7 @@ RSpec.describe EmailValidator do
     let(:email) { "láura@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘láura@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -111,7 +111,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laûra@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laûra@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -119,7 +119,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura @example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura @example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -127,7 +127,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@ example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@ example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -135,7 +135,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@ example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@ example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -143,7 +143,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura..smith@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura..smith@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -151,7 +151,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@example..com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@example..com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -159,7 +159,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura,smith@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura,smith@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -167,7 +167,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@example,com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@example,com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -175,7 +175,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@home@example.com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@home@example.com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
@@ -183,7 +183,7 @@ RSpec.describe EmailValidator do
     let(:email) { "laura@example.@com" }
 
     it "adds an error" do
-      expect(errors).to include("Email ‘laura@example.@com’ not recognised")
+      expect(errors).to include("Email not recognised")
     end
   end
 
