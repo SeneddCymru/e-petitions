@@ -6,6 +6,7 @@ require 'active_support/string_inquirer'
 
 class Site < ActiveRecord::Base
   class ServiceUnavailable < StandardError; end
+  class PetitionRemoved < StandardError; end
 
   include ActiveSupport::NumberHelper
   include Translatable

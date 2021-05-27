@@ -62,6 +62,7 @@ module ScotsPets
 
     # Add additional exceptions to the rescue responses
     config.action_dispatch.rescue_responses.merge!(
+      'Site::PetitionRemoved' => :gone,
       'Site::ServiceUnavailable' => :service_unavailable,
       'BulkVerification::InvalidBulkRequest' => :bad_request
     )

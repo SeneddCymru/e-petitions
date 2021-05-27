@@ -495,6 +495,21 @@ class Petition < ActiveRecord::Base
       where(submitted_on_paper: true)
     end
 
+    def removed
+      where(state: HIDDEN_STATE).where.not(opened_at: nil)
+    end
+
+    def removed?(param)
+      case param
+      when /\APE(\d{4,7})\z/
+        removed.exists?(pe_number_id: $1)
+      when /\APP(\d{4,7})\z/
+        removed.exists?(id: $1)
+      else
+        removed.exists?(id: param)
+      end
+    end
+
     private
 
     def grouping(expression)
