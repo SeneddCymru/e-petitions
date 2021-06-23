@@ -24,10 +24,12 @@ default: &defaults
     - ActionDispatch::Http::MimeNegotiation::InvalidType
     - ActionController::BadRequest
     - ActionController::InvalidAuthenticityToken
+    - ActionController::ParameterMissing
     - ActionController::RoutingError
     - ActionController::UnknownFormat
     - ActionController::UnknownHttpMethod
     - ActiveRecord::RecordNotFound
+    - Site::PetitionRemoved
     - Site::ServiceUnavailable
 
 # Configuration per environment, leave out an environment or set active

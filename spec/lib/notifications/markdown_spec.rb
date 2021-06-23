@@ -89,7 +89,7 @@ RSpec.describe Notifications::Markdown do
     it "hard wraps paragraphs" do
       markdown_to_html <<~MD
         Thanks,
-        The Petitions team
+        The Citizen Participation and Public Petitions team
         The Scottish Parliament
       MD
 
@@ -315,7 +315,7 @@ RSpec.describe Notifications::Markdown do
           * It's not the remit of the Scottish Parliament/Government
 
           Thanks,
-          The Petitions team
+          The Citizen Participation and Public Petitions team
           The Scottish Parliament
         MD
       )).to eq <<~TEXT
@@ -344,7 +344,7 @@ RSpec.describe Notifications::Markdown do
         * It's not the remit of the Scottish Parliament/Government
 
         Thanks,
-        The Petitions team
+        The Citizen Participation and Public Petitions team
         The Scottish Parliament
 
       TEXT
@@ -381,7 +381,7 @@ RSpec.describe Notifications::Markdown do
           * It's not the remit of the Scottish Parliament/Government
 
           Thanks,
-          The Petitions team
+          The Citizen Participation and Public Petitions team
           The Scottish Parliament
         MD
       )).to eq <<~TEXT.squish

@@ -114,6 +114,10 @@ class PetitionsController < LocalizedController
   end
 
   def retrieve_petition
+    if Petition.removed?(petition_id)
+      raise Site::PetitionRemoved, "Petition #{petition_id} has been removed"
+    end
+
     @petition = Petition.show.find(petition_id)
   end
 

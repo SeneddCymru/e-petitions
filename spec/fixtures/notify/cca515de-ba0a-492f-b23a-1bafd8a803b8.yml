@@ -3,16 +3,16 @@ name: "notify_sponsor_that_petition_is_published_without_signatures_en"
 subject: "We published the petition “((action_en))” that you supported"
 body: |-
   Dear ((sponsor)),
-  
-  The petition “((action_en))” is now published and will be scheduled for consideration by the Public Petitions Committee. 
-  
+
+  The petition “((action_en))” is now published and will be scheduled for consideration by the Citizen Participation and Public Petitions Committee.
+
   Click this link to see the petition and start sharing it:
   ((url_en))
-  
-  Information gathered and reported by the Public Petitions Committee regarding the petition will be updated on the Scottish Parliament Website here: ((petition_website_url_en))
-  
+
+  Information gathered and reported by the Citizen Participation and Public Petitions Committee regarding the petition will be updated on the Scottish Parliament Website here: ((petition_website_url_en))
+
   Finally, should you require any further information in the meantime, please do not hesitate to contact us.
-  
+
   Thanks,
-  The Petitions team
+  The Citizen Participation and Public Petitions team
   The Scottish Parliament
