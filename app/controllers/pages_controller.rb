@@ -50,6 +50,14 @@ class PagesController < LocalizedController
     end
   end
 
+  def sitemap
+    expires_in 1.hour, public: true
+
+    respond_to do |format|
+      format.xml
+    end
+  end
+
   def browserconfig
     expires_in 1.hour, public: true
 

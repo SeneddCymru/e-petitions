@@ -102,6 +102,9 @@ en-GB:
     "/signatures/:id/verify":
       en-GB: "/signatures/:id/verify"
       gd-GB: "/ainmean-sgriobhte/:id/dearbhaich"
+    "/sitemap":
+      en-GB: "/sitemap"
+      gd-GB: "/sitemap"
     "/sponsors/:id/sponsored":
       en-GB: "/sponsors/:id/sponsored"
       gd-GB: "/luchd-taic/:id/urrasach"

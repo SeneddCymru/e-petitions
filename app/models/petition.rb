@@ -510,6 +510,10 @@ class Petition < ActiveRecord::Base
       end
     end
 
+    def sitemap
+      visible.order(:pe_number_id)
+    end
+
     private
 
     def grouping(expression)

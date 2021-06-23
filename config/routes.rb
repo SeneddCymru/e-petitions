@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       scope format: true, localized: false do
         get '/browserconfig', action: 'browserconfig', as: :browserconfig, constraints: { format: 'xml' }
         get '/manifest',      action: 'manifest',      as: :manifest,      constraints: { format: 'json' }
+        get '/sitemap',       action: 'sitemap',       as: :sitemap,       constraints: { format: 'xml' }
       end
     end
 
