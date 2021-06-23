@@ -11,7 +11,7 @@ en-GB:
         <h1 id="page-heading">A new petitions site is coming on 6 April</h1>
         <p>Sorry, the petitions service is currently unavailable. We are launching a new, improved website for petitions on 6 April.</p>
         <p>Please accept our apologies for any inconvenience.</p>
-        <p>Click here to find out more about the work of the <a href="https://www.parliament.scot/chamber-and-committees/committees/current-committees/public-petitions-committee">Public Petitions Committee</a>.</p>
+        <p>Click here to find out more about the work of the <a href="https://www.parliament.scot/chamber-and-committees/committees/current-and-previous-committees/session-6-citizen-participation-and-public-petitions-committee">Citizen Participation and Public Petitions Committee</a>.</p>
     cc:
       statement:
         name: "Find out more about the cookies on this website"
@@ -50,13 +50,13 @@ en-GB:
           <span class="count">%{num}</span> petitions are currently collecting signatures
       referred_html:
         one: |-
-          <span class="count">1</span> petition was referred to the Public Petitions Committee
+          <span class="count">1</span> petition was referred to the Citizen Participation and Public Petitions Committee
         two: |-
-          <span class="count">2</span> petitions were referred to the Public Petitions Committee
+          <span class="count">2</span> petitions were referred to the Citizen Participation and Public Petitions Committee
         zero: |-
-          <span class="count">0</span> petitions were referred to the Public Petitions Committee
+          <span class="count">0</span> petitions were referred to the Citizen Participation and Public Petitions Committee
         other: |-
-          <span class="count">%{num}</span> petitions were referred to the Public Petitions Committee
+          <span class="count">%{num}</span> petitions were referred to the Citizen Participation and Public Petitions Committee
       debated_explanation_html: |-
         See all petitions debated by Parliament (%{num})
       referred_explanation_html: |-
@@ -191,23 +191,23 @@ en-GB:
           <li>Lead to, or influence, a debate in the Chamber.</li>
         </ul>
 
-        <p>All petitions should be made using our online petitions system. If you cannot use the system, please get in touch with the <a href="/contact">Public Petitions team</a>.</p>
+        <p>All petitions should be made using our online petitions system. If you cannot use the system, please get in touch with the <a href="/contact">Citizen Participation and Public Petitions team</a>.</p>
 
         <section aria-labelledby="how-petitions-work-heading">
           <h2 id="how-petitions-work-heading"><a name="how-petitions-work"></a>How petitions work</h2>
 
           <ol class="list-number">
             <li>Any person or organisation can submit a petition. You do not have to be a certain age or live in Scotland (but your petition must be about something that is <a href="https://www.parliament.scot/about/how-parliament-works/powers-of-the-scottish-parliament">“devolved”</a> within the Scottish Parliament’s powers).</li>
-            <li>You do not need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the Public Petitions team and run for four weeks.</li>
-            <li>Once we have received your petition, the Public Petitions team will check to make sure it meets the <a href="/rules">Parliament’s rules</a> and is clear. Petitions that don’t meet these rules will be rejected.</li>
+            <li>You do not need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the CPPPC team and run for four weeks.</li>
+            <li>Once we have received your petition, the CPPPC team will check to make sure it meets the <a href="/rules">Parliament’s rules</a> and is clear. Petitions that don’t meet these rules will be rejected.</li>
             <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature.</li>
           </ol>
         </section>
 
         <section aria-labelledby="the-petitions-committee-heading">
-          <h2 id="the-petitions-committee-heading"><a name="the-petitions-committee"></a>The Public Petitions Committee</h2>
+          <h2 id="the-petitions-committee-heading"><a name="the-petitions-committee"></a>The Citizen Participation and Public Petitions Committee</h2>
 
-          <p>The <a href="/contact">Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
+          <p>The <a href="/contact">Citizen Participation and Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
 
           <ul class="list-bullet">
             <li>asking for evidence from the Scottish Government, other organisations, or people</li>
@@ -239,7 +239,7 @@ en-GB:
         <section aria-labelledby="rejections-heading">
           <h2 id="rejections-heading"><a name="rejections"></a>Why we might reject your petition</h2>
 
-          <p>The Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue.</p>
+          <p>The Citizen Participation and Public Petitions team reject petitions that do not meet the <a href="/rules">rules</a>. If we reject your petition, we will tell you why. If we can, we will suggest other ways you could raise your issue.</p>
 
           <p>We'll have to reject your petition if:</p>
 
@@ -248,7 +248,7 @@ en-GB:
               <p>It’s about something that’s not within the powers of the Scottish Parliament.</p>
               <p>That includes: something that your local council is responsible for (including planning decisions); something that the UK Government or Parliament is responsible for; and something that an independent organisation has done.</p>
             </li>
-            <li>It calls for the same action as a petition that’s already open, or one which was closed by the Public Petitions Committee less than a year earlier.</li>
+            <li>It calls for the same action as a petition that’s already open, or one which was closed by the Committee less than a year earlier.</li>
             <li>You already have 2 petitions being looked at by the Scottish Parliament.</li>
             <li>It calls for something that relates to a law currently being looked at by the Parliament or has been in the last 12 months.</li>
             <li>It does not include details of relevant previous action taken to address the issue, such as raising it with the Scottish Government or one of your MSP’s.</li>
@@ -263,7 +263,7 @@ en-GB:
 
           <ul class="list-bullet">
             <li>the <a href="/rules#standing-orders">Standing Orders</a> of the Scottish Parliament (the rules for how the Parliament works)</li>
-            <li>a <a href="/rules#determination">determination</a> agreed by the Public Petitions Committee</li>
+            <li>a <a href="/rules#determination">determination</a> agreed by the Citizen Participation and Public Petitions Committee</li>
           </ul>
 
           <p>If you have any other questions, please %{contact_link}.</p>
@@ -273,19 +273,19 @@ en-GB:
     contact_page:
       body_html: |-
         <h1 id="page-heading">Contact</h1>
-        <p>If you have any questions, the Public Petitions team are available to help.</p>
+        <p>If you have any questions, the CPPPC team are available to help.</p>
         <p>Due to the Covid-19 public health emergency, the team are working from home and therefore response times will be affected.</p>
         <p>Before you get in touch, you might want to check if your question can be answered by our <a href="/help">‘How petitions work’</a> page.</p>
 
         <section aria-labelled="email-heading">
           <h2 id="email-heading"><a name="email"></a>Email</h2>
-          <p>The quickest way to contact the Public Petitions team is by email at <a href="mailto:petitions@parliament.scot">petitions@parliament.scot</a>.</p>
+          <p>The quickest way to contact the CPPPC team is by email at <a href="mailto:petitions@parliament.scot">petitions@parliament.scot</a>.</p>
         </section>
 
         <section aria-labelled="phone-heading">
           <h2 id="phone-heading"><a name="phone"></a>Phone</h2>
           <p>If you are unable to contact us by email, you can phone us.</p>
-          <p>Phone calls are handled by the Public Petitions team who are all currently working from home.</p>
+          <p>Phone calls are handled by the CPPPC team who are all currently working from home.</p>
           <p>If you leave us a message and a contact number, one of the team will get back to you as soon as possible.</p>
           <p>Please note the voicemail service is only checked intermittently.</p>
           <p>Telephone: <a href="tel:01313485254">0131 348 5254</a></p>
@@ -311,7 +311,7 @@ en-GB:
         debate: |-
           If a petition gets %{formatted_count} signatures, it will be considered for a debate in Parliament
         referred: |-
-          All petitions with more than %{formatted_count} signatures are discussed by the Public Petitions Committee
+          All petitions with more than %{formatted_count} signatures are discussed by the Citizen Participation and Public Petitions Committee
       local_petitions:
         heading: "Local to you"
         find_local_petitions: "Find petitions being signed by people near you"
@@ -339,7 +339,7 @@ en-GB:
       referred_petitions:
         title: "Petitions under consideration"
         introduction: |-
-          The Public Petitions Committee looks at all published petitions whether they collect signatures or not.
+          The Citizen Participation and Public Petitions Committee looks at all published petitions whether they collect signatures or not.
         none_referred: |-
           No petitions are being considered yet
         referred_date: "Under consideration from %{date}"
@@ -382,7 +382,7 @@ en-GB:
           collecting_signatures: "Petitions collecting signatures"
           closed: "Closed petitions"
           debated: "Petitions debated by Parliament"
-          referred: "Petitions referred to the Public Petitions Committee"
+          referred: "Petitions referred to the Citizen Participation and Public Petitions Committee"
           rejected: "Rejected petitions"
           completed: "Completed petitions"
           published: "Published petitions"
@@ -535,7 +535,7 @@ en-GB:
             facet_all:
               rejected: "Rejected"
               completed: "Closed on %{date}"
-              closed: "Referred to the Public Petitions Committee on %{date}"
+              closed: "Referred to the Citizen Participation and Public Petitions Committee on %{date}"
               referred: "Under consideration from %{date}"
             facet_debated:
               debated_date: "Debated on %{date}"
@@ -566,7 +566,7 @@ en-GB:
         confirmation_link_emailed: "We’ve emailed you a link to confirm your email address"
         confirmation_needed: "Please click the link in the email we have sent you to confirm your email address"
         n_sponsors_needed: |-
-          %{count} people need to click this link and confirm their support for your petition to go live. Once this has happened the Petitions team will check that it meets the petitions standards and arrange for it to be translated. You will receive an email when it is published.
+          %{count} people need to click this link and confirm their support for your petition to go live. Once this has happened the CPPPC team will check that it meets the petitions standards and arrange for it to be translated. You will receive an email when it is published.
         n_sponsors_needed_notice: |-
           Your petition will only go live after %{count} people confirm their support
         n_sponsors_needed_heading: |-
@@ -628,7 +628,7 @@ en-GB:
         min_supporters_reached: |
           %{min_supporters} people have already supported %{creator_name}’s petition.
         checking_standards_html: |-
-          The petitions team need to check your petition meets the Parliament's rules and is clear.
+          The CPPPC team need to check your petition meets the Parliament's rules and is clear.
       notice_rejected: "This petition was rejected"
       heading_rejected: "Rejected petition"
       topic_debated_on: "This topic was debated on %{date}"
@@ -646,7 +646,7 @@ en-GB:
           <details>
             <summary><span>Help writing the background information</span></summary>
             <div>
-              <p>This section is for you to give more information to the Public Petitions Committee about your petition. Use this section to help the committee understand in more detail the issues your petition raises.</p>
+              <p>This section is for you to give more information to the Citizen Participation and Public Petitions Committee about your petition. Use this section to help the committee understand in more detail the issues your petition raises.</p>
               <p>You can add links to webpages you think might be helpful. Please do not link to webpages with commenting sections (like news articles which we cannot publish).</p>
               <p>We cannot accept additional petition information like:</p>
               <ul class="list-bullet">
@@ -662,20 +662,20 @@ en-GB:
         open:
           heading: "What happens next?"
           link_html: |-
-            <a href="%{link}">The petition will be considered by the Public Petitions Committee after it stops collecting signatures</a>
+            <a href="%{link}">The petition will be considered by the Citizen Participation and Public Petitions Committee after it stops collecting signatures</a>
         waiting:
-          heading: "This petition is now under consideration by the Public Petitions Committee"
+          heading: "This petition is now under consideration by the Citizen Participation and Public Petitions Committee"
           link_html: |-
-            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Citizen Participation and Public Petitions Committee’s discussion of this petition</a>
         closed:
-          heading: "This petition is now under consideration by the Public Petitions Committee"
+          heading: "This petition is now under consideration by the Citizen Participation and Public Petitions Committee"
           link_html: |-
-            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Citizen Participation and Public Petitions Committee’s discussion of this petition</a>
         referred:
           heading: |-
-            This petition is now under consideration by the Public Petitions Committee
+            This petition is now under consideration by the Citizen Participation and Public Petitions Committee
           link_html: |-
-            <a href="%{link}">Find out about the Public Petitions Committee’s discussion of this petition</a>
+            <a href="%{link}">Find out about the Citizen Participation and Public Petitions Committee’s discussion of this petition</a>
         completed:
           heading: |-
             This petition was considered by the Scottish Parliament
@@ -684,7 +684,7 @@ en-GB:
         needs_more_signatures:
           heading: "At %{threshold} signatures…"
           referral_threshold: |-
-            All petitions with more than %{threshold} signatures will be discussed by the Public Petitions Committee
+            All petitions with more than %{threshold} signatures will be discussed by the Citizen Participation and Public Petitions Committee
       parliament_will_debate: |-
         Parliament will debate this petition
       sign_this_petition: |-
@@ -698,7 +698,7 @@ en-GB:
       reject_reason_heading: |-
         Why was this petition rejected?
       parliament_debate_heading: |-
-        The Public Petitions Committee will consider this for a debate
+        The Citizen Participation and Public Petitions Committee will consider this for a debate
       parliament_will_debate_on: |-
         Parliament will debate this petition on %{date}.
       closed_due_to_election: |-
@@ -719,7 +719,7 @@ en-GB:
           </p>
         </details>
       parliament_debate_description: |-
-        The Public Petitions Committee considers all petitions that get more than %{threshold} signatures for a debate
+        The Citizen Participation and Public Petitions Committee considers all petitions that get more than %{threshold} signatures for a debate
       need_sponsors_later_heading: |-
         Just so you know
       watch_online_parliament_tv_html: |-
@@ -730,7 +730,7 @@ en-GB:
         <p>We only reject petitions that don’t meet the %{standards_link}</p>
         <p>Rejected petitions are published in the language in which they were submitted</p>
       committee_decided_not_to_debate: |-
-        The Public Petitions Committee decided not to refer this petition for a debate
+        The Citizen Participation and Public Petitions Committee decided not to refer this petition for a debate
       at_threshold_for_debate_ellipsis: |-
         At %{threshold} signatures…
       watch_online_youtube_channel_html: |-
@@ -832,19 +832,19 @@ en-GB:
       share_this_petition: |-
         Share this petition
       twitter_card_description: |-
-        Official online petitions in response to issues of the day, listing the number that were referred to the Public Petitions Committee, and those that have been debated by the Scottish Parliament
+        Official online petitions in response to issues of the day, listing the number that were referred to the Citizen Participation and Public Petitions Committee, and those that have been debated by the Scottish Parliament
     share_title: "Petition: %{petition}"
     list_headers:
       open_html: |-
         <p class="text-secondary">These petitions are collecting signatures</p>
       referred_html: |-
-        <p class="text-secondary">These petitions are currently being considered by the Public Petitions Committee</p>
+        <p class="text-secondary">These petitions are currently being considered by the Citizen Participation and Public Petitions Committee</p>
       debated_html: |-
         <p class="text-secondary">These petitions were debated by Parliament in Plenary</p>
       not_debated_html: |-
-        <p class="text-secondary">The Public Petitions Committee decided not to request a Plenary debate on these petitions</p>
+        <p class="text-secondary">The Citizen Participation and Public Petitions Committee decided not to request a Plenary debate on these petitions</p>
       completed_html: |-
-        <p class="text-secondary">The Public Petitions Committee has finished considering these petitions</p>
+        <p class="text-secondary">The Citizen Participation and Public Petitions Committee has finished considering these petitions</p>
       rejected_html: |-
         <p class="text-secondary">These petitions did not meet the <a href="/help#rules">rules for petitions</a>. They are published in the language in which they were submitted.</p>
     local_search:
@@ -873,7 +873,7 @@ en-GB:
             <li>Contact you about petitions you start</li>
             <li>We may occasionally contact people who start or submit petitions to seek feedback on the petitions process and how it could be improved</li>
             <li>We will use your personal information to process the petition you have started or signed</li>
-            <li>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We will not publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the Official Report of the Scottish Parliament’s petitions process. This information will be transferred to the National Records of Scotland (NRS) where it will be publicly available</li>
+            <li>If you start a petition and we accept it, your name will be published alongside any text you include within the petition. We will not publish any of your contact details. If you start a petition, your name will remain permanently referenced alongside the petition on the Citizen Participation and Public Petitions Committee’s web pages and in meeting transcripts and recordings, as part of the Official Report of the Scottish Parliament’s petitions process. This information will be transferred to the National Records of Scotland (NRS) where it will be publicly available</li>
             <li>Your petition, including your name, will be included in data about parliamentary business that will be available on the Parliament’s Open Data Portal on an ongoing basis. The Open Data Portal can be accessed here: <a href="https://data.parliament.scot/#/home">https://data.parliament.scot/#/home</a></li>
             <li>If you’ve signed a petition, we will not publish any personal information about you</li>
             <li>IP addresses are used to protect the petitions site and prevent fraudulent activity.</li>
@@ -904,7 +904,7 @@ en-GB:
 
           <p>We sometimes receive information relating to people who have submitted petitions in writing. Some may contain special category personal data. These petitions are securely stored and retained for the same period as personal data received through our own electronic petitions system.</p>
 
-          <p>If a petition you’ve started is referred to the Public Petitions Committee, we will use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
+          <p>If a petition you’ve started is referred to the Citizen Participation and Public Petitions Committee, we will use your contact details to update you about the petition’s progress and to offer you the opportunity to provide further information and engage with the Committee.</p>
 
           <p>You will receive automated confirmation emails when you set up or sign a petition.</p>
 
@@ -1151,7 +1151,7 @@ en-GB:
 
         <ul class="list-bullet">
           <li>the Standing Orders of the Scottish Parliament (the rules for how the Parliament works)</li>
-          <li>a “determination” (rules) agreed by the Public Petitions Committee</li>
+          <li>a “determination” (rules) agreed by the Citizen Participation and Public Petitions Committee</li>
         </ul>
 
         <section aria-labelledby="standing-orders-heading">
@@ -1185,7 +1185,7 @@ en-GB:
         <section aria-labelledby="determination-heading">
           <h2 id="determination-heading"><a name="determination"></a>Determination on proper form of petitions</h2>
 
-          <p>To be read alongside the Parliament’s rules on public petitions, the Public Petitions Committee has made the following determination under Rule 15.4.3 on proper form of petitions.</p>
+          <p>To be read alongside the Parliament’s rules on public petitions, the Citizen Participation and Public Petitions Committee has made the following determination under Rule 15.4.3 on proper form of petitions.</p>
 
           <ul class="list-bullet">
             <li>Petitions should be submitted using the Scottish Parliament’s online petitions site. All sections should be completed.</li>
@@ -1196,7 +1196,7 @@ en-GB:
             <li>Petitions must relate to national policy or practice as opposed to a local or individual matter.</li>
             <li>Petition titles should be a short factual description that explains what is sought but not a slogan or campaign name. For example “changes to the law about fatal accident inquiries” would be an appropriate title. “Betty’s Law” or “Justice for Betty” would not be.</li>
             <li>Previous action taken on a petition must include raising the issue with a relevant decision maker such as the Scottish Government (or other relevant public body) or an elected representative such as an MSP.</li>
-            <li>A petition will not be considered by the Public Petitions Committee if the same (or substantially similar) petition, submitted by the same petitioner, has previously been considered by the Committee and closed at its first consideration on three consecutive occasions.</li>
+            <li>A petition will not be considered by the Citizen Participation and Public Petitions Committee if the same (or substantially similar) petition, submitted by the same petitioner, has previously been considered by the Committee and closed at its first consideration on three consecutive occasions.</li>
 
             <li>
               <p>Petitions should not:</p>
@@ -1205,7 +1205,7 @@ en-GB:
                 <li>Contain any false statements.  It is the responsibility of the petitioner to ensure that statements are accurate. </li>
                 <li>Refer to any matter that is the subject of continuing court proceedings.</li>
                 <li>Seek an adjudication or decision on an individual or commercial matter.</li>
-                <li>Seek to involve the Public Petitions Committee in a decision that is more properly the domain of another body (for example complaints, court appeals, planning appeals, local authority expenditure decisions etc.)</li>
+                <li>Seek to involve the Citizen Participation and Public Petitions Committee in a decision that is more properly the domain of another body (for example complaints, court appeals, planning appeals, local authority expenditure decisions etc.)</li>
                 <li>Include language or wording that is defamatory, offensive, or inappropriate, for example swear words, insults, sarcasm or other language that could reasonably be considered offensive by a reader.</li>
               </ul>
             </li>

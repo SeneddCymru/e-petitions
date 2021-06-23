@@ -2,19 +2,19 @@ id: "cbf205c3-9d3a-4d97-8dd6-c367ecaeb8cd"
 name: "email_confirmation_for_creator_gd"
 subject: "Scottish Parliament Public Petition: Please confirm your email"
 body: |-
-  Thank You for submitting a petition to the Scottish Parliament. 
-  
+  Thank You for submitting a petition to the Scottish Parliament.
+
   To allow us to review your petition, we need to first confirm your email address. Please click this link to confirm your email:
-  
+
   # ((action_en))
   ((url_en))
-  
-  After you have confirmed your email, the Public Petitions team will review your petition and contact you to discuss the next steps.
-  
+
+  After you have confirmed your email, The Citizen Participation and Public Petitions team will review your petition and contact you to discuss the next steps.
+
   Find out how we check petitions before we publish them
   ((moderation_info_url_en))
-  
-  
+
+
   Thanks,
-  The Public Petitions team
+  The Citizen Participation and Public Petitions team
   The Scottish Parliament

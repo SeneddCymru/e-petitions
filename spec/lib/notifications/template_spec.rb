@@ -67,7 +67,7 @@ RSpec.describe Notifications::Template, type: :model do
           ((url_en))
 
           Thanks,
-          The Petitions team
+          The Citizen Participation and Public Petitions team
           The Scottish Parliament
         MD
       )
@@ -230,7 +230,7 @@ RSpec.describe Notifications::Template, type: :model do
           ((url_en))
 
           Thanks,
-          The Petitions team
+          The Citizen Participation and Public Petitions team
           The Scottish Parliament
         MD
       )
@@ -272,7 +272,7 @@ RSpec.describe Notifications::Template, type: :model do
                 assert_select "p:first-child", "Click this link to sign the petition:"
                 assert_select "h2", "{{action_en}}"
                 assert_select "p > a[href='{{url_en}}']", "{{url_en}}"
-                assert_select "p:last-child", "Thanks,\nThe Petitions team\nThe Scottish Parliament"
+                assert_select "p:last-child", "Thanks,\nThe Citizen Participation and Public Petitions team\nThe Scottish Parliament"
                 assert_select "p:last-child br", count: 2
               end
             end
@@ -293,7 +293,7 @@ RSpec.describe Notifications::Template, type: :model do
           {{url_en}}
 
           Thanks,
-          The Petitions team
+          The Citizen Participation and Public Petitions team
           The Scottish Parliament
 
 
