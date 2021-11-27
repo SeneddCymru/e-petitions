@@ -14,6 +14,10 @@ Given(/^the site is protected$/) do
   Site.instance.update! protected: true, username: "username", password: "password"
 end
 
+Given(/^signature counting is handled by an external process$/) do
+  ENV["INLINE_UPDATES"] = "false"
+end
+
 Given(/^the Gaelic website is disabled$/) do
   Site.instance.update! feature_flags: { disable_gaelic_website: true }
 end
