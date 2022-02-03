@@ -55,7 +55,7 @@ CREATE INDEX index_scottish_constituency_to_region_lookup_on_SPC20CD ON scottish
 Now import the data file using the `COPY` SQL command:
 
 ``` sql
-COPY scottish_constituency_to_region_lookup FROM '/Users/andyw/Desktop/constituency_to_region_lookup.csv' WITH DELIMITER ',' CSV HEADER;
+COPY scottish_constituency_to_region_lookup FROM '/path/to/constituency_to_region_lookup.csv' WITH DELIMITER ',' CSV HEADER;
 ```
 
 If you’re on a Mac you may get a warning about postgres wanting access to the filesystem depending on the path to the CSV file (e.g. if it's on your desktop).
@@ -136,7 +136,7 @@ This is the final table we need to generate our final geography CSV files - expo
 COPY (
   SELECT r.code AS id, r.name AS name_en, '' AS name_gd
   FROM scottish_regions AS r ORDER BY r.name_en
-) TO '/Users/andyw/Desktop/regions.csv' WITH CSV HEADER FORCE QUOTE *;
+) TO '/path/to/regions.csv' WITH CSV HEADER FORCE QUOTE *;
 ```
 
 ``` sql
