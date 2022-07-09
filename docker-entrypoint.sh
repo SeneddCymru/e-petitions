@@ -8,7 +8,7 @@ rm -f /app/tmp/pids/server.pid
 
 echo 'Waiting for a connection with postgres...'
 
-until psql -h "postgres" -U "postgres" -c '\q' > /dev/null 2>&1; do
+until psql $DATABASE_URL -c '\q' > /dev/null 2>&1; do
   sleep 1
 done
 
