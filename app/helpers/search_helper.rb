@@ -13,13 +13,13 @@ module SearchHelper
       if petitions.first_page?
         concat content_tag(:span, '') # empty tag for flexbox
       else
-        concat content_tag(:span, t(:previous_html, options))
+        concat content_tag(:span, t(:previous_html, **options))
       end
 
       if petitions.last_page?
         concat content_tag(:span, '') # empty tag for flexbox
       else
-        concat content_tag(:span, t(:next_html, options))
+        concat content_tag(:span, t(:next_html, **options))
       end
     end
   end
@@ -31,9 +31,9 @@ module SearchHelper
     }
 
     if petitions.search?
-      t(:"ui.petitions.search.filtered_result_count", options)
+      t(:"ui.petitions.search.filtered_result_count", **options)
     else
-      t(:"ui.petitions.search.filtered_petition_count", options)
+      t(:"ui.petitions.search.filtered_petition_count", **options)
     end
   end
 end

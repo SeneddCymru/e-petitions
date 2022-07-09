@@ -1,10 +1,11 @@
 version: "3.7"
 
 x-application: &application
-  image: unboxed/epetitions:12
+  image: unboxed/epetitions
+  build: .
   entrypoint: ./docker-entrypoint.sh
   environment:
-    - DATABASE_URL=postgres://postgres@postgres:5432
+    - DATABASE_URL=postgres://postgres:fUG1DnZpy1rNkxiO@postgres:5432
     - MEMCACHE_SERVERS=memcached:11211
     - SPROCKETS_CACHE=/cache
   volumes:
@@ -19,13 +20,17 @@ services:
   postgres:
     image: postgres:12
     restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=fUG1DnZpy1rNkxiO
+      - POSTGRES_DB=postgres
     ports:
       - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data
 
   memcached:
-    image: memcached:1.5.16
+    image: memcached:1.5
     ports:
       - "11211:11211"
 
