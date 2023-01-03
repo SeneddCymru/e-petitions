@@ -197,7 +197,7 @@ RSpec.describe Petition, type: :model do
     it { is_expected.to have_db_column(:previous_action_gd).of_type(:text).with_options(null: true) }
     it { is_expected.to have_db_column(:additional_details_en).of_type(:text).with_options(null: true) }
     it { is_expected.to have_db_column(:additional_details_gd).of_type(:text).with_options(null: true) }
-    it { is_expected.to have_db_column(:collect_signatures).of_type(:boolean).with_options(default: false, null: false) }
+    it { is_expected.to have_db_column(:collect_signatures).of_type(:boolean).with_options(default: true, null: false) }
 
     it { is_expected.to validate_presence_of(:state).with_message("State ‘’ not recognised") }
     it { is_expected.not_to allow_value("unknown").for(:state) }
@@ -2592,6 +2592,10 @@ RSpec.describe Petition, type: :model do
       it "sets the open date to now" do
         expect(petition.open_at).to be_within(1.second).of(now)
       end
+
+      it "does not set the closed date" do
+        expect(petition.closed_at).to be_nil
+      end
     end
 
     context "when the petition is not collecting signatures" do
@@ -2611,8 +2615,8 @@ RSpec.describe Petition, type: :model do
         expect(petition.state).to eq(Petition::CLOSED_STATE)
       end
 
-      it "sets the closed date to now" do
-        expect(petition.closed_at).to be_within(1.second).of(now)
+      it "does not set the closed date" do
+        expect(petition.closed_at).to be_nil
       end
     end
 
@@ -2632,8 +2636,8 @@ RSpec.describe Petition, type: :model do
           expect(petition.state).to eq(Petition::CLOSED_STATE)
         end
 
-        it "sets the closed date to now" do
-          expect(petition.closed_at).to be_within(1.second).of(now)
+        it "does not set the closed date" do
+          expect(petition.closed_at).to be_nil
         end
 
         it "doesn't set the referred date" do

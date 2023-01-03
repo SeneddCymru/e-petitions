@@ -40,14 +40,13 @@ Scenario: Charlie creates a petition
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose not to collect signatures
   And I fill in my details as a creator
   And I fill in my creator contact details
   When I press "Continue"
   Then the markup should be valid
   And I am asked to review my email address
   When I press "Yes – this is my email address"
-  Then a petition should exist with action_en: "The wombats of wimbledon rock.", action_gd: nil, state: "pending", locale: "en-GB", collect_signatures: false
+  Then a petition should exist with action_en: "The wombats of wimbledon rock.", action_gd: nil, state: "pending", locale: "en-GB", collect_signatures: true
   And there should be a "pending" signature with email "womboid@wimbledon.com" and name "Womboid Wibbledon"
   And "womboid@wimbledon.com" should be emailed a link for validating their signature
   When I confirm my email
@@ -60,7 +59,6 @@ Scenario: Charlie creates a petition and wants to collect signatures
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator
   And I fill in my creator contact details
   And I press "Continue"
@@ -75,7 +73,6 @@ Scenario: Charlie creates a petition when sponsor count is set to 0
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator
   And I fill in my creator contact details
   When I press "Continue"
@@ -97,7 +94,6 @@ Scenario: Charlie creates a petition in Gaelic
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator
   And I fill in my creator contact details
   When I press "Continue"
@@ -120,7 +116,6 @@ Scenario: Charlie creates a petition with invalid postcode SW14 9RQ
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator with postcode "SW14 9RQ"
   And I fill in my creator contact details
   And I press "Continue"
@@ -179,8 +174,6 @@ Scenario: Charlie tries to submit an invalid petition
   And I press "Preview petition"
   And I press "This looks good"
 
-  Then I should see a heading called "Collecting signatures"
-  When I press "Continue"
   Then I should see a heading called "Sign your petition"
 
   When I press "Continue"
@@ -235,7 +228,6 @@ Scenario: Charlie creates a petition with a typo in his email
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator with email "charlie@hotmial.com"
   And I fill in my creator contact details
   And I press "Continue"
@@ -249,7 +241,6 @@ Scenario: Charlie creates a petition when his email is autocorrected wrongly
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator with email "charlie@hotmial.com"
   And I fill in my creator contact details
   And I press "Continue"
@@ -265,7 +256,6 @@ Scenario: Charlie creates a petition when blocked
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator
   And I fill in my creator contact details
   When I press "Continue"
@@ -284,7 +274,6 @@ Scenario: Charlie creates a petition when his IP address is rate limited
   And I fill in the petition details
   And I press "Preview petition"
   And I press "This looks good"
-  And I choose to collect signatures
   And I fill in my details as a creator
   And I fill in my creator contact details
   When I press "Continue"

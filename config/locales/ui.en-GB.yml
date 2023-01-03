@@ -492,7 +492,10 @@ en-GB:
         petition_stage:
           intro_html: |-
             <h1 id="page-heading">Start a petition</h1>
-            <p>Remember, your petition must meet the <a href="/rules">rules for petitions</a></p>
+            <p>Remember, your petition must meet the <a href="/rules">rules for petitions</a>. 
+              Your petition can collect signatures until your petition is closed by the Citizen 
+              Participation and Public Petitions Committee.
+            </p>
           submit_html: |-
             <button type="submit" name="move_next" class="button forward" data-disable-with="Preview petition">Preview petition</button>
           hint_standards_html: |-
@@ -513,18 +516,6 @@ en-GB:
             <p>You cannot change your petition after this point.</p>
             <p>This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published. Also, make sure that you have not included any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) as we cannot publish this.</p>
             <p>Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>
-        collect_signatures_stage:
-          heading: Collecting signatures
-          help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for 4 weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, it will not affect how your petition is looked at by the Committee.</p>"
-          label:
-            false: I do not want to collect signatures
-            true: I want to collect signatures
-          submit_html: |-
-            <button type="submit" name="move_next" class="button forward" data-disable-with="Continue">Continue</button>
-          go_back_html: |-
-            <button type="submit" name="move_back" class="button-secondary back" data-disable-with="Go back and change it">Go back and change it</button>
-          submit_warning_html: |-
-            <p>After this point you can only change the closing date by contacting the <a href="/contact">petitions team</a>.</p>
       search:
         submit_button_html: |-
           <input type="submit" value="Search" class="button" data-disable-with="Search">

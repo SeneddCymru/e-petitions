@@ -876,8 +876,7 @@ class Petition < ActiveRecord::Base
 
     update!(
       state: state_for_publishing(time),
-      open_at: time_for_publishing(time),
-      closed_at: closing_date(time)
+      open_at: time_for_publishing(time)
     )
   end
 
@@ -1185,10 +1184,6 @@ class Petition < ActiveRecord::Base
     else
       0
     end
-  end
-
-  def closing_date(time)
-    closed_at || (collect_signatures? ? Site.closed_at_for_opening(time) : time )
   end
 
   def sponsor_count
