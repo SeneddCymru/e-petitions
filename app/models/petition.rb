@@ -424,16 +424,6 @@ class Petition < ActiveRecord::Base
       where(state: OPEN_STATE).where(arel_table[:closed_at].lt(time))
     end
 
-    def refer_or_reject_petitions!(time = Time.current)
-      in_need_of_referring_or_rejecting(time).find_each do |petition|
-        petition.refer_or_reject!(time)
-      end
-    end
-
-    def in_need_of_referring_or_rejecting(time = Time.current)
-      closed_state.not_referred.closed_before(24.hours.before(time))
-    end
-
     def closed_before(time)
       where(arel_table[:closed_at].lt(time))
     end
@@ -946,20 +936,6 @@ class Petition < ActiveRecord::Base
       update!(state: CLOSED_STATE, closed_at: time)
     else
       raise RuntimeError, "can't close a petition that is in the #{state} state"
-    end
-  end
-
-  def refer_or_reject!(time)
-    if closed? && !referred?
-      if will_be_referred?
-        Appsignal.increment_counter("petition.referred", 1)
-        update!(referred_at: time)
-      elsif RejectionReason.exists?(code: "insufficient")
-        reject!(code: "insufficient", rejected_at: time)
-        NotifyEveryoneOfFailureToGetEnoughSignaturesJob.perform_later(self)
-      end
-    else
-      raise RuntimeError, "can't refer or reject a petition that is in the #{state} state"
     end
   end
 

@@ -8,14 +8,6 @@ namespace :spets do
       end
     end
 
-    desc "Add a task to the queue to refer or reject petitions at midnight"
-    task :refer_or_reject => :environment do
-      Task.run("spets:petitions:refer_or_reject") do
-        time = Date.tomorrow.beginning_of_day
-        ReferOrRejectPetitionsJob.set(wait_until: time).perform_later(time.iso8601)
-      end
-    end
-
     desc "Add a task to the queue to validate petition counts"
     task :count => :environment do
       Task.run("spets:petitions:count") do
