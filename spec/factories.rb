@@ -194,19 +194,18 @@ FactoryBot.define do
   factory :open_petition, :parent => :sponsored_petition do
     state { Petition::OPEN_STATE }
     open_at { Time.current }
+    referred_at { Time.current }
 
     translated
 
     transient do
-      referred { false }
+      referred { true }
     end
 
     after(:build) do |petition, evaluator|
       if evaluator.referred
-        petition.referral_threshold_reached_at = petition.open_at + 2.months
+        petition.referral_threshold_reached_at = petition.open_at
       end
-
-      petition.closed_at ||= Site.closed_at_for_opening(petition.open_at)
     end
   end
 
@@ -253,23 +252,23 @@ FactoryBot.define do
     end
   end
 
-  factory :referred_petition, :parent => :closed_petition do
+  factory :referred_petition, :parent => :open_petition do
     referral_threshold_reached_at { 1.week.ago }
     referred_at  { 1.day.ago }
   end
 
-  factory :awaiting_debate_petition, :parent => :referred_petition do
+  factory :awaiting_debate_petition, :parent => :closed_petition do
     debate_threshold_reached_at { 1.week.ago }
     debate_state { 'awaiting' }
   end
 
-  factory :scheduled_debate_petition, :parent => :referred_petition do
+  factory :scheduled_debate_petition, :parent => :closed_petition do
     debate_threshold_reached_at { 1.week.ago }
     scheduled_debate_date { 1.week.from_now }
     debate_state { 'scheduled' }
   end
 
-  factory :debated_petition, :parent => :referred_petition do
+  factory :debated_petition, :parent => :closed_petition do
     transient do
       debated_on { 1.day.ago }
       overview { nil }

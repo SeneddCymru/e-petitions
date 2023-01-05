@@ -107,7 +107,7 @@ Given(/^the petition has reached the referral threshold$/) do
 end
 
 Given(/^the petition has closed$/) do
-  @petition.close!(@petition.deadline)
+  @petition.close!(Time.now)
 end
 
 Given(/^the petition has closed some time ago$/) do
@@ -160,11 +160,10 @@ Then(/^I should see the petition details$/) do
   end
 end
 
-Then(/^I should see the vote count, closed and open dates$/) do
+Then(/^I should see the vote count and open dates$/) do
   @petition.reload
   expect(page).to have_css("p.signature-count-number", :text => "#{@petition.signature_count} #{'signature'.pluralize(@petition.signature_count)}")
 
-  expect(page).to have_css("li.meta-deadline", :text => "Collecting signatures until " + @petition.deadline.strftime("%e %B %Y").squish)
   expect(page).to have_css("li.meta-created-by", :text => "Created by " + @petition.creator.name)
 end
 

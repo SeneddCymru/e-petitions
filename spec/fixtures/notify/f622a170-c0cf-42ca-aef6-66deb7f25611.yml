@@ -9,8 +9,6 @@ body: |-
   Click this link to see the petition and start sharing it:
   ((url_en))
 
-  The petition will be open for gathering signatures until ((closing_date)) After this, the petition will be scheduled for consideration by the Citizen Participation and Public Petitions Committee.
-
   Information gathered and reported by the Citizen Participation and Public Petitions Committee regarding the petition will be updated on the Scottish Parliament Website here: ((petition_website_url_en))
 
   Finally, should you require any further information in the meantime, please do not hesitate to contact us.

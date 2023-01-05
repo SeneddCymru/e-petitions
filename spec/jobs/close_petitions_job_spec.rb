@@ -28,7 +28,9 @@ RSpec.describe ClosePetitionsJob, type: :job do
       let(:now) { "2015-12-29T07:00:00Z".in_time_zone }
 
       it "does change the petition debate state" do
-        expect{
+        petition.update(closed_at: now)
+        
+        expect {
           perform_enqueued_jobs {
             described_class.perform_later(Date.tomorrow.beginning_of_day.iso8601)
           }
@@ -64,7 +66,9 @@ RSpec.describe ClosePetitionsJob, type: :job do
       let(:now) { "2016-06-29T10:00:00Z".in_time_zone }
 
       it "does change the petition state" do
-        expect{
+        petition.update(closed_at: now)
+
+        expect {
           perform_enqueued_jobs {
             described_class.perform_later(Date.tomorrow.beginning_of_day.iso8601)
           }

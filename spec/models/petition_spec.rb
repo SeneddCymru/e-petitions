@@ -524,8 +524,8 @@ RSpec.describe Petition, type: :model do
       let!(:p3) { FactoryBot.create(:referred_petition) }
       let!(:p4) { FactoryBot.create(:debated_petition) }
 
-      it "doesn't include petitions that are still open" do
-        expect(Petition.referred).not_to include(p1)
+      it "includes petitions that are still open" do
+        expect(Petition.referred).to include(p1)
       end
 
       it "doesn't include petitions that are rejected" do
@@ -541,13 +541,13 @@ RSpec.describe Petition, type: :model do
       end
     end
 
-    describe ".by_referred_longest" do
+    describe ".by_referred_shortest" do
       let!(:p1) { FactoryBot.create(:referred_petition, referred_at: 1.week.ago) }
       let!(:p2) { FactoryBot.create(:referred_petition, referred_at: 1.month.ago) }
       let!(:p3) { FactoryBot.create(:referred_petition, referred_at: 1.year.ago) }
 
       it "returns the petitions in the correct order" do
-        expect(Petition.by_referred_longest.to_a).to eq([p3, p2, p1])
+        expect(Petition.by_referred_shortest.to_a).to eq([p1, p2, p3])
       end
     end
 
@@ -1537,7 +1537,7 @@ RSpec.describe Petition, type: :model do
 
     context "when a petition is in the open state and closed_at has passed" do
       let(:open_at) { Site.opened_at_for_closing - 1.day }
-      let!(:petition) { FactoryBot.create(:open_petition, referred: true, open_at: open_at) }
+      let!(:petition) { FactoryBot.create(:open_petition, referred: true, open_at: open_at, closed_at: 1.day.ago) }
 
       it "does close the petition" do
         expect{
@@ -1879,23 +1879,6 @@ RSpec.describe Petition, type: :model do
       end
     end
 
-    context "when the signature count crosses the threshold for referral" do
-      let(:signature_count) { 9 }
-
-      before do
-        expect(Site).to receive(:threshold_for_referral).and_return(10)
-        FactoryBot.create(:validated_signature, petition: petition, increment: false)
-      end
-
-      it "records the time it happened" do
-        expect {
-          petition.increment_signature_count!
-        }.to change {
-          petition.referral_threshold_reached_at
-        }.to be_within(1.second).of(Time.current)
-      end
-    end
-
     context "when the petition hasn't been debated" do
       let(:debate_state) { "pending" }
 
@@ -1986,23 +1969,6 @@ RSpec.describe Petition, type: :model do
     context "when thresholds are disabled" do
       before do
         Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
-      end
-
-      context "and the signature count crosses the threshold for referral" do
-        let(:signature_count) { 9 }
-
-        before do
-          expect(Site).not_to receive(:threshold_for_referral)
-          FactoryBot.create(:validated_signature, petition: petition, increment: false)
-        end
-
-        it "doesn't record the time it happened" do
-          expect {
-            petition.increment_signature_count!
-          }.not_to change {
-            petition.referral_threshold_reached_at
-          }.from(nil)
-        end
       end
 
       context "and the signature count crosses the threshold for a debate" do
@@ -2266,7 +2232,7 @@ RSpec.describe Petition, type: :model do
 
   describe "at_threshold_for_referral?" do
     context "when referral_threshold_reached_at is not present" do
-      let(:petition) { FactoryBot.create(:open_petition, signature_count: signature_count) }
+      let(:petition) { FactoryBot.create(:open_petition, signature_count: signature_count, referred: false) }
 
       before do
         expect(Site).to receive(:threshold_for_referral).and_return(10)
@@ -2610,11 +2576,11 @@ RSpec.describe Petition, type: :model do
   end
 
   describe '#close!' do
-    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
     let(:now) { Time.current }
     let(:duration) { Site.petition_duration.weeks }
     let(:closing_date) { (now + duration).end_of_day }
     let(:debate_state) { 'pending' }
+    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state, closed_at: closing_date) }
 
     context "when the deadline has not passed" do
       let(:time) { closing_date.yesterday.beginning_of_day }
@@ -2703,6 +2669,27 @@ RSpec.describe Petition, type: :model do
         end
       end
     end
+
+    context "when there is no deadline" do
+      subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
+      let(:time) { closing_date.tomorrow.beginning_of_day }
+
+      it "sets the state to CLOSED" do
+        expect {
+          petition.close!(time)
+        }.to change {
+          petition.state
+        }.from(Petition::OPEN_STATE).to(Petition::CLOSED_STATE)
+      end
+
+      it "changes the closing date" do
+        expect {
+          petition.close!(time)
+        }.to change {
+          petition.closed_at
+        }.to be_within(1.second).of(time)
+      end
+    end
   end
 
   describe '#close_early!' do
@@ -2771,9 +2758,9 @@ RSpec.describe Petition, type: :model do
       let(:duration) { Site.petition_duration.weeks }
       let(:closing_date) { (now + duration).end_of_day }
 
-      it "returns the end of the day, #{Site.petition_duration} weeks after the open_at" do
+      it "is nil" do
         expect(petition.open_at).to eq now
-        expect(petition.deadline).to eq closing_date
+        expect(petition.deadline).to eq nil
       end
 
       it "prefers any closed_at stamp that has been set" do
@@ -2792,7 +2779,7 @@ RSpec.describe Petition, type: :model do
   end
 
   describe "#extend_deadline!" do
-    let(:petition) { FactoryBot.create(:open_petition, updated_at: 2.days.ago) }
+    let(:petition) { FactoryBot.create(:open_petition, updated_at: 2.days.ago, closed_at: Time.now) }
 
     it "increments the closed_at attribute by 1 day" do
       expect {
@@ -3399,9 +3386,9 @@ RSpec.describe Petition, type: :model do
 
   describe "#status" do
     mapping = [
-      ['closed', 'under_consideration'],
+      ['closed', 'closed'],
       ['completed', 'closed'],
-      ['open', 'collecting_signatures'],
+      ['open', 'under_consideration'],
       ['hidden', 'rejected'],
       ['pending', 'pending']
     ]

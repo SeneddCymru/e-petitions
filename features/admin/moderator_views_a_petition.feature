@@ -12,6 +12,5 @@ Feature: Moderator looks at a single petition
 
     Scenarios:
       | state     | status                |
-      | open      | Collecting signatures |
-      | closed    | Under consideration   |
+      | open      | Under consideration   |
       | completed | Closed                |

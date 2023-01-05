@@ -23,6 +23,8 @@ RSpec.describe ExtendPetitionDeadlinesJob, type: :job do
     end
 
     it "increments the closed_at attribute by 1 day" do
+      petition.update(closed_at: Time.current)
+
       expect {
         described_class.perform_now
       }.to change {
