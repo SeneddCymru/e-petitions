@@ -13,7 +13,6 @@ class NotifyCreatorThatPetitionIsPublishedEmailJob < NotifyJob
     {
       creator: signature.name,
       action_en:  petition.action_en, action_gd: petition.action_gd,
-      closing_date: short_date_format(petition.closed_at),
       url_en:  petition_en_url(petition), url_gd:  petition_gd_url(petition),
       petition_website_url_en: home_en_url, petition_website_url_gd: home_gd_url
     }
