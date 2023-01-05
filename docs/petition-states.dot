@@ -16,8 +16,6 @@ digraph{
         flagged
         rejected
         published
-        collecting_signatures[label="collecting\nsignatures"]
-        not_collecting_signatures[label="not collecting\nsignatures"]
         under_consideration[label="under\nconsideration\n by the P.O"]
         closed
 
@@ -29,9 +27,6 @@ digraph{
         in_moderation_queue -> rejected[label= "P.O disapproves of petition"]
         flagged -> rejected[label=" no good       "]
         flagged -> published[label=" all good"]
-        published -> collecting_signatures[label=" with signatures             "]
-        published -> not_collecting_signatures[label=" without signatures"]
-        collecting_signatures -> under_consideration[label=" signatures deadline reached         "]
-        not_collecting_signatures -> under_consideration[label=" immediately"]
+        published -> under_consideration
         under_consideration -> closed[label=" regardless of outcome"]
 }
