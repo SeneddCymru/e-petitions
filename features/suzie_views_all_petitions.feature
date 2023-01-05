@@ -17,7 +17,7 @@ Feature: Suzy Signer views all petitions
   Scenario: Suzie can see the closing date from the index page
     Given a petition "Good times" has been closed
     When I view all petitions from the home page
-    Then I should see "Under consideration from "
+    Then I should see "Closed on "
     And I should see the petition's closed_at timestamp
 
   Scenario: Suzie can see the completion date from the index page

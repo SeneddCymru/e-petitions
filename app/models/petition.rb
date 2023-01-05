@@ -922,17 +922,6 @@ class Petition < ActiveRecord::Base
   end
 
   def close!(time)
-    unless open?
-      raise RuntimeError, "can't close a petition that is in the #{state} state"
-    end
-
-    if past_deadline?(time)
-      Appsignal.increment_counter("petition.closed", 1)
-      update!(state: CLOSED_STATE, closed_at: (deadline || time))
-    end
-  end
-
-  def close_early!(time)
     if open?
       Appsignal.increment_counter("petition.closed", 1)
       update!(state: CLOSED_STATE, closed_at: time)
@@ -1073,24 +1062,6 @@ class Petition < ActiveRecord::Base
 
   def debate_outcome?
     debate_outcome_at? && debate_outcome
-  end
-
-  def past_deadline?(time)
-    if deadline
-      deadline <= time
-    else
-      open? && referred_at?
-    end
-  end
-
-  def deadline
-    if published?
-      closed_at
-    end
-  end
-
-  def extend_deadline!(amount = 1.day, now = Time.current)
-    update_columns(closed_at: closed_at + amount, updated_at: now)
   end
 
   def update_last_petition_created_at
