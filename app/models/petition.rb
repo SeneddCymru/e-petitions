@@ -619,10 +619,6 @@ class Petition < ActiveRecord::Base
       end
 
       unless thresholds_disabled?
-        if at_threshold_for_referral?
-          updates << "referral_threshold_reached_at = :now"
-        end
-
         if at_threshold_for_debate?
           updates << "debate_threshold_reached_at = :now"
 
@@ -865,7 +861,9 @@ class Petition < ActiveRecord::Base
 
     update!(
       state: state_for_publishing(time),
-      open_at: time_for_publishing(time)
+      open_at: time_for_publishing(time),
+      referred_at: time_for_publishing(time),
+      referral_threshold_reached_at: time_for_publishing(time)
     )
   end
 
