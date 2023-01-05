@@ -57,7 +57,7 @@ class Petition < ActiveRecord::Base
   facet :open,      -> { not_archived.open_state.by_most_popular }
   facet :rejected,  -> { not_archived.rejected_state.or(hidden_state).by_most_recent }
   facet :closed,    -> { not_archived.completed_state.by_most_recently_completed }
-  facet :referred,  -> { not_archived.closed_state.referred.by_most_recently_closed }
+  facet :referred,  -> { not_archived.open_state.referred.by_referred_shortest }
   facet :completed, -> { not_archived.completed_state.by_most_recently_closed }
   facet :hidden,    -> { not_archived.hidden_state.by_most_recent }
   facet :archived,  -> { archived.by_most_recently_archived }
@@ -79,8 +79,7 @@ class Petition < ActiveRecord::Base
   facet :tagged_in_moderation,         -> { tagged_in_moderation.by_most_recent_moderation_threshold_reached }
   facet :untagged_in_moderation,       -> { untagged_in_moderation.by_most_recent_moderation_threshold_reached }
 
-  facet :collecting_signatures, -> { not_archived.open_state.by_most_recently_published }
-  facet :under_consideration, -> { not_archived.closed_state.referred.by_most_recently_closed }
+  facet :under_consideration, -> { not_archived.open_state.referred.by_referred_shortest }
 
   filter :topic, ->(codes) { topics(codes) }
 
@@ -240,8 +239,8 @@ class Petition < ActiveRecord::Base
       reorder(debate_threshold_reached_at: :asc, created_at: :desc)
     end
 
-    def by_referred_longest
-      reorder(referred_at: :asc, created_at: :desc)
+    def by_referred_shortest
+      reorder(referred_at: :desc, created_at: :desc)
     end
 
     def by_most_recently_archived
@@ -1215,12 +1214,10 @@ class Petition < ActiveRecord::Base
   end
 
   def status
-    if closed? && !completed?
+    if open? && !completed?
       'under_consideration'
     elsif completed?
       'closed'
-    elsif open?
-      'collecting_signatures'
     elsif hidden?
       'rejected'
     else
