@@ -521,7 +521,7 @@ en-GB:
             facet_all:
               rejected: "Rejected"
               completed: "Closed on %{date}"
-              closed: "Referred to the Citizen Participation and Public Petitions Committee on %{date}"
+              closed: "Closed on %{date}"
               referred: "Under consideration from %{date}"
             facet_debated:
               debated_date: "Debated on %{date}"
