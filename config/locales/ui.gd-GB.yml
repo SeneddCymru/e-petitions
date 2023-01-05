@@ -349,7 +349,7 @@ gd-GB:
         heading: "Petitions collecting signatures"
         none_open: |-
           There are no petitions currently collecting signatures
-        open_date: "Collecting signatures until %{date}"
+        open_date: "Under consideration from %{date}"
     petitions:
       check:
         intro_html: |-
@@ -367,7 +367,7 @@ gd-GB:
           duplicate:
             heading: "We found some similar petitions"
             petition:
-              open: "Collecting signatures until %{date}"
+              open: "Under consideration from %{date}"
               completed: "Closed on  %{date}"
               referred: "Under consideration from  %{date}"
             continue_btn: "My petition is different"
@@ -379,7 +379,6 @@ gd-GB:
         page_titles:
           all: "All petitions"
           open: "Open petitions"
-          collecting_signatures: "Petitions collecting signatures"
           closed: "Closed petitions"
           debated: "Petitions debated by Parliament"
           referred: "Petitions referred to the Citizen Participation and Public Petitions Committee"
@@ -392,7 +391,6 @@ gd-GB:
       lists:
         all: "All petitions (%{quantity})"
         open: "Open petitions (%{quantity})"
-        collecting_signatures: "Collecting signatures (%{quantity})"
         closed: "Closed (%{quantity})"
         debated: "Debated by Parliament (%{quantity})"
         referred: "Referred to the Committee (%{quantity})"
@@ -521,8 +519,6 @@ gd-GB:
           <input type="submit" value="Search" class="button" data-disable-with="Search">
         results:
           items:
-            facet_collecting_signatures:
-              until: "Collecting signatures until %{date}"
             facet_all:
               rejected: "Rejected"
               completed: "Closed on %{date}"
@@ -534,6 +530,7 @@ gd-GB:
               not_debated_date: "Decision not to debate taken on %{date}"
             facet_referred:
               referred_date: "Under consideration from %{date}"
+              until: "Under consideration from %{date}"
             facet_rejected:
               rejected_date: "Rejected on %{date}"
             facet_completed:
@@ -549,7 +546,7 @@ gd-GB:
           two: "2 petitions"
           zero: "0 petitions"
           other: "%{num} petitions"
-      deadline: "Collecting signatures until"
+      deadline: "Under consideration from"
       get_json: "Get petition data (JSON format)"
       thank_you:
         heading: "One more step…"

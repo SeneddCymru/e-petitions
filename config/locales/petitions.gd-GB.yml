@@ -11,7 +11,6 @@ gd-GB:
     facets:
       public:
         - :all
-        - :collecting_signatures
         - :under_consideration
         - :closed
         - :debated
@@ -26,7 +25,6 @@ gd-GB:
         - :tagged_in_moderation
         - :untagged_in_moderation
         - :open
-        - :referred
         - :rejected
         - :hidden
         - :awaiting_debate_date
@@ -37,7 +35,6 @@ gd-GB:
       alternate:
         public:
           - :all
-          - :collecting_signatures
           - :under_consideration
           - :closed
         admin:
@@ -50,7 +47,6 @@ gd-GB:
           - :tagged_in_moderation
           - :untagged_in_moderation
           - :open
-          - :referred
           - :rejected
           - :hidden
           - :completed
