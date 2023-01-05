@@ -901,10 +901,14 @@ class Petition < ActiveRecord::Base
     end
   end
 
-  def complete(time = Time.current)
-    if closed?
-      Appsignal.increment_counter("petition.completed", 1)
-      update(state: COMPLETED_STATE, completed_at: time)
+  def complete!(time = Time.current)
+    with_lock do
+      close!(time) unless closed?
+
+      if closed? && !completed?
+        Appsignal.increment_counter("petition.completed", 1)
+        update(state: COMPLETED_STATE, completed_at: time)
+      end
     end
   end
 
@@ -924,9 +928,9 @@ class Petition < ActiveRecord::Base
       raise RuntimeError, "can't close a petition that is in the #{state} state"
     end
 
-    if deadline <= time
+    if past_deadline?(time)
       Appsignal.increment_counter("petition.closed", 1)
-      update!(state: CLOSED_STATE, closed_at: deadline)
+      update!(state: CLOSED_STATE, closed_at: (deadline || time))
     end
   end
 
@@ -1073,9 +1077,17 @@ class Petition < ActiveRecord::Base
     debate_outcome_at? && debate_outcome
   end
 
+  def past_deadline?(time)
+    if deadline
+      deadline <= time
+    else
+      open? && referred_at?
+    end
+  end
+
   def deadline
     if published?
-      (closed_at || Site.closed_at_for_opening(open_at))
+      closed_at
     end
   end
 
