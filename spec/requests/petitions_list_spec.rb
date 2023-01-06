@@ -82,6 +82,12 @@ RSpec.describe "API request to list petitions", type: :request, show_exceptions:
       expect(links).to include("next" => nil)
     end
 
+    it "redirects to under_consideration if the provided state is collecting_signatures" do
+      get "/petitions.json?state=collecting_signatures"
+
+      expect(response).to redirect_to('/petitions.json?state=under_consideration')
+    end
+
     it "redirects to all petitions if the provided state isn't valid" do
       get "/petitions.json?count=2&page=2&state=rejected"
 

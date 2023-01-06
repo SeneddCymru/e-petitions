@@ -127,7 +127,15 @@ class PetitionsController < LocalizedController
 
   def redirect_to_valid_state
     if state_present? && !valid_state?
-      redirect_to petitions_url(search_params(state: :all))
+      redirect_to valid_petitions_url
+    end
+  end
+
+  def valid_petitions_url
+    if sanitized_state == :collecting_signatures
+      petitions_url(state: :under_consideration, format: :json)
+    else
+      petitions_url(search_params(state: :all))
     end
   end
 
