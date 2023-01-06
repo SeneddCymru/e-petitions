@@ -196,7 +196,7 @@ en-GB:
 
           <ol class="list-number">
             <li>Any person or organisation can submit a petition. You do not have to be a certain age or live in Scotland (but your petition must be about something that is <a href="https://www.parliament.scot/about/how-parliament-works/powers-of-the-scottish-parliament">“devolved”</a> within the Scottish Parliament’s powers).</li>
-            <li>You do not need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the CPPPC team and run for four weeks.</li>
+            <li>Your petition can collect signatures until your petition is closed by the Citizen Participation and Public Petitions Committee. This will start once your petition has been published by the CPPPC team.</li>
             <li>Once we have received your petition, the CPPPC team will check to make sure it meets the <a href="/rules">Parliament’s rules</a> and is clear. Petitions that don’t meet these rules will be rejected.</li>
             <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature.</li>
           </ol>
@@ -205,7 +205,7 @@ en-GB:
         <section aria-labelledby="the-petitions-committee-heading">
           <h2 id="the-petitions-committee-heading"><a name="the-petitions-committee"></a>The Citizen Participation and Public Petitions Committee</h2>
 
-          <p>The <a href="/contact">Citizen Participation and Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
+          <p>The <a href="/contact">Citizen Participation and Public Petitions Committee</a> looks at all published petitions, regardless of the number of signatures they collect. The Committee will decide what action it wants to take. This can include:</p>
 
           <ul class="list-bullet">
             <li>asking for evidence from the Scottish Government, other organisations, or people</li>
