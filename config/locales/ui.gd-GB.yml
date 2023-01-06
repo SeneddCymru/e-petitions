@@ -61,8 +61,6 @@ gd-GB:
         See all petitions debated by Parliament (%{num})
       referred_explanation_html: |-
         See all petitions under consideration (%{num})
-      open_explanation_html: |-
-        See all petitions collecting signatures (%{num})
       with_debated_outcome_html:
         one: |-
           <span class="count">%{num}</span> petition was debated by Parliament
@@ -339,16 +337,16 @@ gd-GB:
       referred_petitions:
         title: "Petitions under consideration"
         introduction: |-
-          The Citizen Participation and Public Petitions Committee looks at all published petitions whether they collect signatures or not.
+          The Citizen Participation and Public Petitions Committee looks at all published petitions.
         none_referred: |-
           No petitions are being considered yet
         referred_date: "Under consideration from %{date}"
       trending_petitions:
         heading: "Popular petitions"
       open_petitions:
-        heading: "Petitions collecting signatures"
+        heading: "Petitions under consideration"
         none_open: |-
-          There are no petitions currently collecting signatures
+          There are no petitions currently under consideration
         open_date: "Under consideration from %{date}"
     petitions:
       check:
@@ -694,7 +692,7 @@ gd-GB:
       petition_closed_notice: |-
         This petition is closed
       petitions_run_length: |-
-        Petitions can collect signatures for a maximum of 4 weeks
+        Petitions can collect signatures until the Citizen and Public Participation Committee closes the petition
       about_petition_data_html: |-
         <details>
           <summary>About petition data</summary>

@@ -5,7 +5,6 @@ Feature: Suzie sees actioned petitions
 
   Scenario: There are no actioned petitions
     Given I am on the home page
-    Then I should see an empty open petitions section
     And I should see an empty referral threshold section
     And I should see an empty debate threshold section
 
