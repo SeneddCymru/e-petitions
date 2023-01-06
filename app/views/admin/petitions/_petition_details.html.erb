@@ -11,6 +11,9 @@
   <% elsif @petition.rejection? %>
     <dt>Rejected on</dt>
     <dd><%= date_format_admin(@petition.rejected_at) %></dd>
+  <% elsif @petition.closed? %>
+    <dt>Closed on</dt>
+    <dd><%= date_format_admin(@petition.closed_at) %></dd>
   <% elsif @petition.referred? %>
     <dt>Under consideration from</dt>
     <dd><%= date_format_admin(@petition.referred_at) %></dd>
