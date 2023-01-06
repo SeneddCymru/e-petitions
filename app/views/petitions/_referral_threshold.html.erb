@@ -5,6 +5,9 @@
       <% if @petition.scot_parl_link? %>
         <p><%= t(:"ui.petitions.referral_threshold.waiting.link_html", link: @petition.scot_parl_link) %></p>
       <% end %>
+    <% else -%>
+      <h2 id="referral-threshold-heading"><%= t(:"ui.petitions.referral_threshold.needs_more_signatures.heading", threshold: Site.formatted_threshold_for_referral) %></h2>
+      <p><%= t(:"ui.petitions.referral_threshold.needs_more_signatures.referral_threshold", threshold: Site.formatted_threshold_for_referral) %></p>
     <% end -%>
   </section>
 <% end %>

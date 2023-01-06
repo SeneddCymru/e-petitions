@@ -619,6 +619,10 @@ class Petition < ActiveRecord::Base
       end
 
       unless thresholds_disabled?
+        if at_threshold_for_referral?
+          updates << "referral_threshold_reached_at = :now"
+        end
+
         if at_threshold_for_debate?
           updates << "debate_threshold_reached_at = :now"
 

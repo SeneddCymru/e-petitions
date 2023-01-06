@@ -1,23 +1,19 @@
 class ReassignCollectingSignaturePetitionsToUnderConsideration < ActiveRecord::Migration[6.1]
-  def up
-    execute(
-      "UPDATE petitions
-      SET referred_at = open_at, referral_threshold_reached_at = open_at
-      WHERE referred_at IS NULL
-      AND open_at IS NOT NULL;"
-    )
+  def change
+    up_only do 
+      execute <<~SQL
+        UPDATE petitions
+        SET referred_at = open_at, referral_threshold_reached_at = open_at
+        WHERE referred_at IS NULL
+        AND open_at IS NOT NULL;
+      SQL
 
-    execute(
-      "UPDATE petitions
-      SET collect_signatures = true
-      WHERE (state = 'pending'
-        OR state = 'validated'
-        OR state = 'sponsored'
-        OR state = 'flagged'
-        OR state = 'opened')
-      AND collect_signatures = false"
-    )
+      execute <<~SQL
+        UPDATE petitions
+        SET collect_signatures = true
+        WHERE state IN ('pending', 'validated', 'sponsored', 'flagged', 'opened')
+        AND collect_signatures = false;
+      SQL
+    end
   end
-
-  def down; end
 end
