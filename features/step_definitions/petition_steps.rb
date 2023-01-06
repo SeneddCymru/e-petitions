@@ -107,11 +107,11 @@ Given(/^the petition has reached the referral threshold$/) do
 end
 
 Given(/^the petition has closed$/) do
-  @petition.close!(@petition.deadline)
+  @petition.close!(Time.now)
 end
 
 Given(/^the petition has closed some time ago$/) do
-  @petition.close_early!(2.days.ago)
+  @petition.close!(2.days.ago)
 end
 
 Given(/^a petition "([^"]*)" has been rejected( with the reason "([^"]*)")?$/) do |petition_action, reason_or_not, reason|
@@ -160,11 +160,10 @@ Then(/^I should see the petition details$/) do
   end
 end
 
-Then(/^I should see the vote count, closed and open dates$/) do
+Then(/^I should see the vote count and open dates$/) do
   @petition.reload
   expect(page).to have_css("p.signature-count-number", :text => "#{@petition.signature_count} #{'signature'.pluralize(@petition.signature_count)}")
 
-  expect(page).to have_css("li.meta-deadline", :text => "Collecting signatures until " + @petition.deadline.strftime("%e %B %Y").squish)
   expect(page).to have_css("li.meta-created-by", :text => "Created by " + @petition.creator.name)
 end
 
@@ -271,29 +270,6 @@ When(/^I choose the default closing date$/) do
       Then I should see "Sign your petition"
     )
   end
-end
-
-When(/^I fill in the closing date with a date (\d+) ((?:day|week|month)s?) from today$/) do |number, period|
-  closing_date = number.public_send(period).from_now
-
-  fill_in "Day", with: closing_date.day
-  fill_in "Month", with: closing_date.month
-  fill_in "Year", with: closing_date.year
-end
-
-When(/^I fill in the closing date with "(\d{4}-\d{2}-\d{2})"$/) do |date|
-  year, month, day = date.split("-")
-
-  fill_in "Day", with: day
-  fill_in "Month", with: month
-  fill_in "Year", with: year
-end
-
-Then(/^the petition "([^"]*)" should exist with a closing date of "([^"]*)"$/) do |action, closing_date|
-  closing_date = closing_date.in_time_zone.end_of_day
-  petition = Petition.find_by!(action: action)
-
-  expect(petition.closed_at).to be_within(1.second).of(closing_date)
 end
 
 Then(/^I should see my constituency "([^"]*)"/) do |constituency|

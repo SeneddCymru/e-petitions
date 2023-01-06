@@ -5,7 +5,7 @@ Feature: Searching for signatures as Terry
   I would like to be able to enter a name, and see all signatures on a petition associated with it
 
   Scenario: Searching for signatures on a petition by name
-    Given a petition "Fun times!" signed by "Bob Jones" that is collecting signatures
+    Given a petition "Fun times!" signed by "Bob Jones"
     And I am logged in as a moderator
     When I search for a petition by id
     Then I am on the admin petition page for "Fun times!"
@@ -15,7 +15,7 @@ Feature: Searching for signatures as Terry
     Then I should see 1 signature associated with that name
 
   Scenario: Searching for signatures on a petition by email
-    Given a petition "Fun times!" signed by "bob@example.com" that is collecting signatures
+    Given a petition "Fun times!" signed by "bob@example.com"
     And I am logged in as a moderator
     When I search for a petition by id
     Then I am on the admin petition page for "Fun times!"

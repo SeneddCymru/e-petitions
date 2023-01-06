@@ -19,7 +19,7 @@ Feature: Suzie views a petition
     When I view the petition
     Then I should see the petition details
     And I should see "Spend more money on Defence - Petitions" in the browser page title
-    And I should see the vote count, closed and open dates
+    And I should see the vote count and open dates
     And I should not see "Closed petition"
     And I can share it via Email
     And I can share it via Facebook
@@ -145,7 +145,6 @@ Feature: Suzie views a petition
   Scenario: Suzie sees information about future signature targets when viewing an open petition which has not passed the threshold for referral or debate
     Given an open petition "Spend more money on Defence"
     When I view the petition
-    Then I should see "At 50 signatures…"
     Then I should see "At 5,000 signatures…"
 
   @javascript

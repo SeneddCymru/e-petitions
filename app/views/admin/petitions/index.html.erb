@@ -60,7 +60,7 @@
       <% if show_tags_column?(@petitions.scope) %>
         <th class="tags">Tags</th>
       <% else %>
-        <th class="date">Closing</th>
+        <th class="date">Closed</th>
       <% end %>
       <th class="numeric last">Signatures</th>
     </tr>
@@ -81,7 +81,7 @@
         <% if show_tags_column?(@petitions.scope) %>
           <td class="tags"><%= tag_names(petition.tags).presence || "—" %></td>
         <% else %>
-          <td class="date"><%= date_format(petition.deadline) || "—" %></td>
+          <td class="date"><%= date_format(petition.closed_at) || "—" %></td>
         <% end %>
         <td class="numeric last">
           <% if petition.collect_signatures? %>

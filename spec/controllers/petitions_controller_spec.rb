@@ -355,13 +355,13 @@ RSpec.describe PetitionsController, type: :controller do
 
       context "and it is a public facet from the locale file" do
         it "is successful" do
-          get :index, params: { state: "collecting_signatures" }
+          get :index, params: { state: "closed" }
           expect(response).to be_successful
         end
 
         it "exposes a search scoped to the state param" do
-          get :index, params: { state: "collecting_signatures" }
-          expect(assigns(:petitions).scope).to eq :collecting_signatures
+          get :index, params: { state: "closed" }
+          expect(assigns(:petitions).scope).to eq :closed
         end
       end
 

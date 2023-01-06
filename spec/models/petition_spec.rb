@@ -524,8 +524,8 @@ RSpec.describe Petition, type: :model do
       let!(:p3) { FactoryBot.create(:referred_petition) }
       let!(:p4) { FactoryBot.create(:debated_petition) }
 
-      it "doesn't include petitions that are still open" do
-        expect(Petition.referred).not_to include(p1)
+      it "includes petitions that are still open" do
+        expect(Petition.referred).to include(p1)
       end
 
       it "doesn't include petitions that are rejected" do
@@ -541,13 +541,13 @@ RSpec.describe Petition, type: :model do
       end
     end
 
-    describe ".by_referred_longest" do
+    describe ".by_referred_shortest" do
       let!(:p1) { FactoryBot.create(:referred_petition, referred_at: 1.week.ago) }
       let!(:p2) { FactoryBot.create(:referred_petition, referred_at: 1.month.ago) }
       let!(:p3) { FactoryBot.create(:referred_petition, referred_at: 1.year.ago) }
 
       it "returns the petitions in the correct order" do
-        expect(Petition.by_referred_longest.to_a).to eq([p3, p2, p1])
+        expect(Petition.by_referred_shortest.to_a).to eq([p1, p2, p3])
       end
     end
 
@@ -1537,7 +1537,7 @@ RSpec.describe Petition, type: :model do
 
     context "when a petition is in the open state and closed_at has passed" do
       let(:open_at) { Site.opened_at_for_closing - 1.day }
-      let!(:petition) { FactoryBot.create(:open_petition, referred: true, open_at: open_at) }
+      let!(:petition) { FactoryBot.create(:open_petition, referred: true, open_at: open_at, closed_at: 1.day.ago) }
 
       it "does close the petition" do
         expect{
@@ -1569,104 +1569,6 @@ RSpec.describe Petition, type: :model do
 
       it "finds the petition" do
         expect(described_class.in_need_of_closing.to_a).to include(petition)
-      end
-    end
-  end
-
-  describe ".refer_or_reject_petitions!" do
-    let(:now) { Time.current.beginning_of_minute }
-
-    context "when a petition is in the closed state" do
-      let(:petition) { FactoryBot.create(:closed_petition, referred: referred, open_at: 1.month.ago, closed_at: closed_at) }
-
-      context "and has received enough signatures to be referred" do
-        let(:referred) { true }
-
-        context "and the closing date has passed less than 24 hours ago" do
-          let(:closed_at) { 12.hours.before(now) }
-
-          it "does not refer the petition" do
-            expect{
-              described_class.refer_or_reject_petitions!(now)
-            }.not_to change {
-              petition.reload.referred_at
-            }.from(nil)
-          end
-        end
-
-        context "and the closing date has passed more than 24 hours ago" do
-          let(:closed_at) { 24.hours.before(now) - 1.second }
-
-          it "refers the petition" do
-            expect{
-              described_class.refer_or_reject_petitions!(now)
-            }.to change {
-              petition.reload.referred_at
-            }.from(nil).to(now)
-          end
-        end
-      end
-
-      context "and has not received enough signatures to be referred" do
-        let(:referred) { false }
-
-        context "and the closing date has passed less than 24 hours ago" do
-          let(:closed_at) { 12.hours.before(now) }
-
-          it "does not reject the petition" do
-            expect{
-              described_class.refer_or_reject_petitions!(now)
-            }.not_to change {
-              petition.reload.state
-            }.from("closed")
-          end
-        end
-
-        context "and the closing date has passed more than 24 hours ago" do
-          let(:closed_at) { 24.hours.before(now) - 1.second }
-
-          it "rejects the petition" do
-            expect{
-              described_class.refer_or_reject_petitions!(now)
-            }.to change {
-              petition.reload.state
-            }.from("closed").to("rejected")
-          end
-        end
-      end
-    end
-  end
-
-  describe ".in_need_of_referring_or_rejecting" do
-    context "when a petition is in the open state" do
-      let!(:petition) { FactoryBot.create(:open_petition) }
-
-      it "does not find the petition" do
-        expect(described_class.in_need_of_referring_or_rejecting).not_to include(petition)
-      end
-    end
-
-    context "when a petition is in the closed state and the closing date passed less than a day ago" do
-      let!(:petition) { FactoryBot.create(:closed_petition, open_at: 1.month.ago, closed_at: 12.hours.ago) }
-
-      it "does not find the petition" do
-        expect(described_class.in_need_of_referring_or_rejecting).not_to include(petition)
-      end
-    end
-
-    context "when a petition is in the closed state and the petition has already been referred" do
-      let!(:petition) { FactoryBot.create(:closed_petition, open_at: 1.month.ago, closed_at: 2.days.ago, referred_at: 1.day.ago) }
-
-      it "does not find the petition" do
-        expect(described_class.in_need_of_referring_or_rejecting).not_to include(petition)
-      end
-    end
-
-    context "when a petition is in the closed state and the petition has not been referred or rejected" do
-      let!(:petition) { FactoryBot.create(:closed_petition, open_at: 1.month.ago, closed_at: 25.hours.ago) }
-
-      it "finds the petition" do
-        expect(described_class.in_need_of_referring_or_rejecting).to include(petition)
       end
     end
   end
@@ -1977,23 +1879,6 @@ RSpec.describe Petition, type: :model do
       end
     end
 
-    context "when the signature count crosses the threshold for referral" do
-      let(:signature_count) { 9 }
-
-      before do
-        expect(Site).to receive(:threshold_for_referral).and_return(10)
-        FactoryBot.create(:validated_signature, petition: petition, increment: false)
-      end
-
-      it "records the time it happened" do
-        expect {
-          petition.increment_signature_count!
-        }.to change {
-          petition.referral_threshold_reached_at
-        }.to be_within(1.second).of(Time.current)
-      end
-    end
-
     context "when the petition hasn't been debated" do
       let(:debate_state) { "pending" }
 
@@ -2084,23 +1969,6 @@ RSpec.describe Petition, type: :model do
     context "when thresholds are disabled" do
       before do
         Site.instance.update! feature_flags: { disable_thresholds_and_debates: true }
-      end
-
-      context "and the signature count crosses the threshold for referral" do
-        let(:signature_count) { 9 }
-
-        before do
-          expect(Site).not_to receive(:threshold_for_referral)
-          FactoryBot.create(:validated_signature, petition: petition, increment: false)
-        end
-
-        it "doesn't record the time it happened" do
-          expect {
-            petition.increment_signature_count!
-          }.not_to change {
-            petition.referral_threshold_reached_at
-          }.from(nil)
-        end
       end
 
       context "and the signature count crosses the threshold for a debate" do
@@ -2364,7 +2232,7 @@ RSpec.describe Petition, type: :model do
 
   describe "at_threshold_for_referral?" do
     context "when referral_threshold_reached_at is not present" do
-      let(:petition) { FactoryBot.create(:open_petition, signature_count: signature_count) }
+      let(:petition) { FactoryBot.create(:open_petition, signature_count: signature_count, referred: false) }
 
       before do
         expect(Site).to receive(:threshold_for_referral).and_return(10)
@@ -2640,8 +2508,8 @@ RSpec.describe Petition, type: :model do
           expect(petition.closed_at).to be_nil
         end
 
-        it "doesn't set the referred date" do
-          expect(petition.referred_at).to be_nil
+        it "sets the referred date" do
+          expect(petition.referred_at).to be_within(1.second).of(Time.now)
         end
       end
     end
@@ -2708,59 +2576,11 @@ RSpec.describe Petition, type: :model do
   end
 
   describe '#close!' do
-    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
-    let(:now) { Time.current }
-    let(:duration) { Site.petition_duration.weeks }
-    let(:closing_date) { (now + duration).end_of_day }
+    let(:time) { Time.current }
     let(:debate_state) { 'pending' }
+    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
 
-    context "when the deadline has not passed" do
-      let(:time) { closing_date.yesterday.beginning_of_day }
-
-      it "doesn't set the state to CLOSED" do
-        expect {
-          petition.close!(time)
-        }.not_to change {
-          petition.state
-        }.from(Petition::OPEN_STATE)
-      end
-
-      it "doesn't set the closing date" do
-        expect {
-          petition.close!(time)
-        }.not_to change {
-          petition.closed_at
-        }.from(petition.closed_at)
-      end
-
-      %w[pending awaiting scheduled debated not_debated].each do |state|
-        context "when the debate state is '#{state}'" do
-          let(:debate_state) { state }
-
-          it "doesn't change the debate state" do
-            expect {
-              petition.close!(time)
-            }.not_to change {
-              petition.debate_state
-            }
-          end
-        end
-      end
-
-      (Petition::STATES - [Petition::OPEN_STATE]).each do |state|
-        context "when called on a #{state} petition" do
-          subject(:petition) { FactoryBot.create(:"#{state}_petition") }
-
-          it "raises a RuntimeError" do
-            expect { petition.close!(time) }.to raise_error(RuntimeError)
-          end
-        end
-      end
-    end
-
-    context "when the deadline has passed" do
-      let(:time) { closing_date.tomorrow.beginning_of_day }
-
+    context "when the petition is open" do
       it "sets the state to CLOSED" do
         expect {
           petition.close!(time)
@@ -2769,61 +2589,13 @@ RSpec.describe Petition, type: :model do
         }.from(Petition::OPEN_STATE).to(Petition::CLOSED_STATE)
       end
 
-      it "doesn't change the closing date" do
+      it "changes the closing date" do
         expect {
           petition.close!(time)
-        }.not_to change {
+        }.to change {
           petition.closed_at
-        }
+        }.to be_within(1.second).of(time)
       end
-
-      %w[pending awaiting scheduled debated not_debated].each do |state|
-        context "when the debate state is '#{state}'" do
-          let(:debate_state) { state }
-
-          it "doesn't change the debate state" do
-            expect {
-              petition.close!(time)
-            }.not_to change {
-              petition.debate_state
-            }
-          end
-        end
-      end
-
-      (Petition::STATES - [Petition::OPEN_STATE]).each do |state|
-        context "when called on a #{state} petition" do
-          subject(:petition) { FactoryBot.create(:"#{state}_petition") }
-
-          it "raises a RuntimeError" do
-            expect { petition.close!(time) }.to raise_error(RuntimeError)
-          end
-        end
-      end
-    end
-  end
-
-  describe '#close_early!' do
-    subject(:petition) { FactoryBot.create(:open_petition, debate_state: debate_state) }
-    let(:now) { Time.current }
-    let(:duration) { Site.petition_duration.weeks }
-    let(:closing_date) { (now + duration).end_of_day }
-    let(:debate_state) { 'pending' }
-
-    it "sets the state to CLOSED" do
-      expect {
-        petition.close_early!(now)
-      }.to change {
-        petition.state
-      }.from(Petition::OPEN_STATE).to(Petition::CLOSED_STATE)
-    end
-
-    it "sets the closing date to now" do
-      expect {
-        petition.close_early!(now)
-      }.to change {
-        petition.closed_at
-      }.from(petition.closed_at).to(now)
     end
 
     %w[pending awaiting scheduled debated not_debated].each do |state|
@@ -2832,7 +2604,7 @@ RSpec.describe Petition, type: :model do
 
         it "doesn't change the debate state" do
           expect {
-            petition.close_early!(now)
+            petition.close!(time)
           }.not_to change {
             petition.debate_state
           }
@@ -2845,133 +2617,9 @@ RSpec.describe Petition, type: :model do
         subject(:petition) { FactoryBot.create(:"#{state}_petition") }
 
         it "raises a RuntimeError" do
-          expect { petition.close_early!(now) }.to raise_error(RuntimeError)
+          expect { petition.close!(time) }.to raise_error(RuntimeError)
         end
       end
-    end
-  end
-
-  describe "#refer_or_reject!" do
-    subject(:petition) { FactoryBot.create(:closed_petition, :translated, referred: true, debate_state: debate_state, closed_at: closing_date) }
-    let(:now) { Time.current }
-    let(:duration) { Site.petition_duration.weeks }
-    let(:closing_date) { (now + duration).end_of_day }
-    let(:debate_state) { 'pending' }
-
-    it "sets the referral date to now" do
-      expect {
-        petition.refer_or_reject!(now)
-      }.to change {
-        petition.referred_at
-      }.from(nil).to(now)
-    end
-
-    context "when the petition failed to get enough signatures" do
-      subject(:petition) { FactoryBot.create(:closed_petition, :translated, referred: false, debate_state: debate_state) }
-
-      it "sets the state to REJECTED" do
-        expect {
-          petition.refer_or_reject!(now)
-        }.to change {
-          petition.state
-        }.from(Petition::CLOSED_STATE).to(Petition::REJECTED_STATE)
-      end
-
-      it "sets the rejected date to now" do
-        expect {
-          petition.refer_or_reject!(now)
-        }.to change {
-          petition.rejected_at
-        }.from(nil).to(now)
-      end
-
-      it "enqueues a notification job" do
-        expect {
-          petition.refer_or_reject!(now)
-        }.to have_enqueued_job(NotifyEveryoneOfFailureToGetEnoughSignaturesJob).with(petition)
-      end
-    end
-
-    %w[pending awaiting scheduled debated not_debated].each do |state|
-      context "when the debate state is '#{state}'" do
-        let(:debate_state) { state }
-
-        it "doesn't change the debate state" do
-          expect {
-            petition.refer_or_reject!(now)
-          }.not_to change {
-            petition.debate_state
-          }
-        end
-      end
-    end
-
-    (Petition::STATES - [Petition::CLOSED_STATE]).each do |state|
-      context "when called on a #{state} petition" do
-        subject(:petition) { FactoryBot.create(:"#{state}_petition") }
-
-        it "raises a RuntimeError" do
-          expect { petition.refer_or_reject!(now) }.to raise_error(RuntimeError)
-        end
-      end
-    end
-  end
-
-  describe '#deadline' do
-    let(:now) { Time.current }
-
-    context 'for closed petitions' do
-      let(:closed_at) { now + 1.day }
-      subject(:petition) { FactoryBot.build(:closed_petition, closed_at: closed_at) }
-
-      it 'returns the closed_at timestamp' do
-        expect(petition.closed_at).to eq closed_at
-        expect(petition.deadline).to eq petition.closed_at
-      end
-    end
-
-    context 'for open petitions' do
-      subject(:petition) { FactoryBot.build(:open_petition, open_at: now) }
-      let(:duration) { Site.petition_duration.weeks }
-      let(:closing_date) { (now + duration).end_of_day }
-
-      it "returns the end of the day, #{Site.petition_duration} weeks after the open_at" do
-        expect(petition.open_at).to eq now
-        expect(petition.deadline).to eq closing_date
-      end
-
-      it "prefers any closed_at stamp that has been set" do
-        petition.closed_at = now + 1.day
-        expect(petition.deadline).not_to eq closing_date
-        expect(petition.deadline).to eq petition.closed_at
-      end
-    end
-
-    context 'for petitions in other states without an open_at' do
-      subject(:petition) { FactoryBot.build(:petition, open_at: nil) }
-      it 'is nil' do
-        expect(petition.deadline).to be_nil
-      end
-    end
-  end
-
-  describe "#extend_deadline!" do
-    let(:petition) { FactoryBot.create(:open_petition, updated_at: 2.days.ago) }
-
-    it "increments the closed_at attribute by 1 day" do
-      expect {
-        petition.extend_deadline!
-      }.to change {
-        petition.reload.closed_at
-      }.by(1.day)
-    end
-
-    it "touches the updated_at timestamp" do
-      expect {
-        petition.extend_deadline!
-      }.to change {
-        petition.reload.updated_at
-      }.to(be_within(1.second).of(Time.current))
     end
   end
 
@@ -3563,9 +3211,9 @@ RSpec.describe Petition, type: :model do
 
   describe "#status" do
     mapping = [
-      ['closed', 'under_consideration'],
+      ['closed', 'closed'],
       ['completed', 'closed'],
-      ['open', 'collecting_signatures'],
+      ['open', 'under_consideration'],
       ['hidden', 'rejected'],
       ['pending', 'pending']
     ]

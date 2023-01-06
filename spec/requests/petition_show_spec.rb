@@ -64,7 +64,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
     context "when the petition is closed" do
       let(:petition) { FactoryBot.create :closed_petition }
 
-      it "returns the closed_at timestamp as under_consideration_at" do
+      it "returns the closed_at timestamp as closed_at" do
         get "/petitions/#{petition.to_param}.json"
 
         expect(response).to be_successful
@@ -72,7 +72,7 @@ RSpec.describe "API request to show a petition", type: :request, show_exceptions
         expect(attributes)
           .to match(
                 a_hash_including(
-                  "status" => "under_consideration",
+                  "status" => "closed",
                   "under_consideration_at" => a_string_matching(%r[\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z\z])
                 )
               )

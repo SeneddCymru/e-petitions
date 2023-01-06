@@ -57,7 +57,7 @@ class Petition < ActiveRecord::Base
   facet :open,      -> { not_archived.open_state.by_most_popular }
   facet :rejected,  -> { not_archived.rejected_state.or(hidden_state).by_most_recent }
   facet :closed,    -> { not_archived.completed_state.by_most_recently_completed }
-  facet :referred,  -> { not_archived.closed_state.referred.by_most_recently_closed }
+  facet :referred,  -> { not_archived.open_state.referred.by_referred_shortest }
   facet :completed, -> { not_archived.completed_state.by_most_recently_closed }
   facet :hidden,    -> { not_archived.hidden_state.by_most_recent }
   facet :archived,  -> { archived.by_most_recently_archived }
@@ -79,8 +79,7 @@ class Petition < ActiveRecord::Base
   facet :tagged_in_moderation,         -> { tagged_in_moderation.by_most_recent_moderation_threshold_reached }
   facet :untagged_in_moderation,       -> { untagged_in_moderation.by_most_recent_moderation_threshold_reached }
 
-  facet :collecting_signatures, -> { not_archived.open_state.by_most_recently_published }
-  facet :under_consideration, -> { not_archived.closed_state.referred.by_most_recently_closed }
+  facet :under_consideration, -> { not_archived.open_state.referred.by_referred_shortest }
 
   filter :topic, ->(codes) { topics(codes) }
 
@@ -240,8 +239,8 @@ class Petition < ActiveRecord::Base
       reorder(debate_threshold_reached_at: :asc, created_at: :desc)
     end
 
-    def by_referred_longest
-      reorder(referred_at: :asc, created_at: :desc)
+    def by_referred_shortest
+      reorder(referred_at: :desc, created_at: :desc)
     end
 
     def by_most_recently_archived
@@ -423,16 +422,6 @@ class Petition < ActiveRecord::Base
 
     def in_need_of_closing(time = Time.current)
       where(state: OPEN_STATE).where(arel_table[:closed_at].lt(time))
-    end
-
-    def refer_or_reject_petitions!(time = Time.current)
-      in_need_of_referring_or_rejecting(time).find_each do |petition|
-        petition.refer_or_reject!(time)
-      end
-    end
-
-    def in_need_of_referring_or_rejecting(time = Time.current)
-      closed_state.not_referred.closed_before(24.hours.before(time))
     end
 
     def closed_before(time)
@@ -876,7 +865,9 @@ class Petition < ActiveRecord::Base
 
     update!(
       state: state_for_publishing(time),
-      open_at: time_for_publishing(time)
+      open_at: time_for_publishing(time),
+      referred_at: time_for_publishing(time),
+      referral_threshold_reached_at: time_for_publishing(time)
     )
   end
 
@@ -912,10 +903,14 @@ class Petition < ActiveRecord::Base
     end
   end
 
-  def complete(time = Time.current)
-    if closed?
-      Appsignal.increment_counter("petition.completed", 1)
-      update(state: COMPLETED_STATE, completed_at: time)
+  def complete!(time = Time.current)
+    with_lock do
+      close!(time) unless closed?
+
+      if closed? && !completed?
+        Appsignal.increment_counter("petition.completed", 1)
+        update(state: COMPLETED_STATE, completed_at: time)
+      end
     end
   end
 
@@ -931,36 +926,11 @@ class Petition < ActiveRecord::Base
   end
 
   def close!(time)
-    unless open?
-      raise RuntimeError, "can't close a petition that is in the #{state} state"
-    end
-
-    if deadline <= time
-      Appsignal.increment_counter("petition.closed", 1)
-      update!(state: CLOSED_STATE, closed_at: deadline)
-    end
-  end
-
-  def close_early!(time)
     if open?
       Appsignal.increment_counter("petition.closed", 1)
       update!(state: CLOSED_STATE, closed_at: time)
     else
       raise RuntimeError, "can't close a petition that is in the #{state} state"
-    end
-  end
-
-  def refer_or_reject!(time)
-    if closed? && !referred?
-      if will_be_referred?
-        Appsignal.increment_counter("petition.referred", 1)
-        update!(referred_at: time)
-      elsif RejectionReason.exists?(code: "insufficient")
-        reject!(code: "insufficient", rejected_at: time)
-        NotifyEveryoneOfFailureToGetEnoughSignaturesJob.perform_later(self)
-      end
-    else
-      raise RuntimeError, "can't refer or reject a petition that is in the #{state} state"
     end
   end
 
@@ -1098,16 +1068,6 @@ class Petition < ActiveRecord::Base
     debate_outcome_at? && debate_outcome
   end
 
-  def deadline
-    if published?
-      (closed_at || Site.closed_at_for_opening(open_at))
-    end
-  end
-
-  def extend_deadline!(amount = 1.day, now = Time.current)
-    update_columns(closed_at: closed_at + amount, updated_at: now)
-  end
-
   def update_last_petition_created_at
     Site.last_petition_created_at!
   end
@@ -1215,12 +1175,10 @@ class Petition < ActiveRecord::Base
   end
 
   def status
-    if closed? && !completed?
+    if open? && !completed?
       'under_consideration'
     elsif completed?
       'closed'
-    elsif open?
-      'collecting_signatures'
     elsif hidden?
       'rejected'
     else

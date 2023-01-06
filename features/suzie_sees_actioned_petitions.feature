@@ -9,14 +9,6 @@ Feature: Suzie sees actioned petitions
     And I should see an empty referral threshold section
     And I should see an empty debate threshold section
 
-  Scenario: There are petitions collecting signatures
-    Given there are 2 petitions collecting signatures
-    And I am on the home page
-    Then I should see 2 petitions counted in the open petitions section
-    And I should see 2 petitions listed in the open petitions section
-    And I should see an empty referral threshold section
-    And I should see an empty debate threshold section
-
   Scenario: There are petitions referred to the committee
     Given there are 2 petitions that have been referred to the committee
     And I am on the home page
@@ -27,8 +19,6 @@ Feature: Suzie sees actioned petitions
   Scenario: There are petitions debated by Parliament
     Given there are 3 petitions debated by Parliament
     And I am on the home page
-    Then I should see 3 petitions counted in the referral threshold section
-    And I should see 3 petitions listed in the referral threshold section
     And I should see 3 petitions counted in the debate threshold section
     And I should see 3 petitions listed in the debate threshold section
 
@@ -36,7 +26,7 @@ Feature: Suzie sees actioned petitions
     Given there are 5 petitions that have been referred to the committee
     And there are 2 petitions debated by Parliament
     And I am on the home page
-    Then I should see 7 petitions counted in the referral threshold section
+    Then I should see 5 petitions counted in the referral threshold section
     And I should see 4 petitions listed in the referral threshold section
     And I should see 2 petitions counted in the debate threshold section
     And I should see 2 petitions listed in the debate threshold section

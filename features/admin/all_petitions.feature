@@ -27,7 +27,6 @@ Feature: A moderator user views all petitions
     And a flagged petition "My flagged petition" reached threshold 3 days ago
 
     And an open petition exists with action: "My open petition"
-    And a referred petition exists with action: "My referred petition"
     And a rejected petition exists with action: "My rejected petition"
     And a hidden petition exists with action: "My hidden petition"
 
@@ -48,7 +47,6 @@ Feature: A moderator user views all petitions
       | My referred petition with scheduled debate date |
       | My referred petition awaiting debate date       |
       | My referred petition with debate outcome        |
-      | My referred petition                            |
 
     And I filter the list to show "Collecting sponsors" petitions
     Then I should see the following list of petitions:
@@ -64,13 +62,6 @@ Feature: A moderator user views all petitions
     And I filter the list to show "Open" petitions
     Then I should see the following list of petitions:
      | My open petition                              |
-
-    And I filter the list to show "Referred" petitions
-    Then I should see the following list of petitions:
-     | My referred petition with scheduled debate date |
-     | My referred petition awaiting debate date       |
-     | My referred petition with debate outcome        |
-     | My referred petition                            |
 
     And I filter the list to show "Rejected" petitions
     Then I should see the following list of petitions:
