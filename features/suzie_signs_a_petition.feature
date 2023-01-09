@@ -4,7 +4,7 @@ Feature: Suzie signs a petition
   I want to sign an existing petition
 
   Background:
-    Given a petition "Do something!" that is collecting signatures
+    Given an open petition "Do something!"
 
   Scenario: Suzie signs a petition after validating her email
     When I decide to sign the petition

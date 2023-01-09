@@ -18,7 +18,7 @@ json.attributes do
   json.updated_at api_date_format(petition.updated_at)
   json.rejected_at api_date_format(petition.rejected_at)
   json.opened_at api_date_format(petition.opened_at)
-  json.under_consideration_at api_date_format(petition.closed_at)
+  json.under_consideration_at api_date_format(petition.open_at)
   json.closed_at api_date_format(petition.completed_at)
 
   unless Site.disable_thresholds_and_debates?

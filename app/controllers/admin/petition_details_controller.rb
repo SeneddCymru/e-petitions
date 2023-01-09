@@ -30,7 +30,7 @@ class Admin::PetitionDetailsController < Admin::AdminController
 
   def petition_params
     params.require(:petition).permit(
-      :action, :background, :previous_action, :additional_details, :closed_at, :use_markdown,
+      :action, :background, :previous_action, :additional_details, :use_markdown,
       :special_consideration, creator_attributes: [
         :name, :email, :postcode, contact_attributes: [:address, :phone_number]
       ]

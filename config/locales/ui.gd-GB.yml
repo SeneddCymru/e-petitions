@@ -61,8 +61,6 @@ gd-GB:
         See all petitions debated by Parliament (%{num})
       referred_explanation_html: |-
         See all petitions under consideration (%{num})
-      open_explanation_html: |-
-        See all petitions collecting signatures (%{num})
       with_debated_outcome_html:
         one: |-
           <span class="count">%{num}</span> petition was debated by Parliament
@@ -198,7 +196,7 @@ gd-GB:
 
           <ol class="list-number">
             <li>Any person or organisation can submit a petition. You do not have to be a certain age or live in Scotland (but your petition must be about something that is <a href="https://www.parliament.scot/about/how-parliament-works/powers-of-the-scottish-parliament">“devolved”</a> within the Scottish Parliament’s powers).</li>
-            <li>You do not need to collect signatures on your petition. If you choose to collect signatures, this will start once your petition has been published by the CPPPC team and run for four weeks.</li>
+            <li>Your petition can collect signatures until your petition is closed by the Citizen Participation and Public Petitions Committee. This will start once your petition has been published by the CPPPC team.</li>
             <li>Once we have received your petition, the CPPPC team will check to make sure it meets the <a href="/rules">Parliament’s rules</a> and is clear. Petitions that don’t meet these rules will be rejected.</li>
             <li>People can only sign a petition once. If they sign the petition online, they will be sent an email to verify their signature.</li>
           </ol>
@@ -207,7 +205,7 @@ gd-GB:
         <section aria-labelledby="the-petitions-committee-heading">
           <h2 id="the-petitions-committee-heading"><a name="the-petitions-committee"></a>The Citizen Participation and Public Petitions Committee</h2>
 
-          <p>The <a href="/contact">Citizen Participation and Public Petitions Committee</a> looks at all published petitions, regardless of whether signatures are collected. The Committee will decide what action it wants to take. This can include:</p>
+          <p>The <a href="/contact">Citizen Participation and Public Petitions Committee</a> looks at all published petitions, regardless of the number of signatures they collect. The Committee will decide what action it wants to take. This can include:</p>
 
           <ul class="list-bullet">
             <li>asking for evidence from the Scottish Government, other organisations, or people</li>
@@ -339,17 +337,17 @@ gd-GB:
       referred_petitions:
         title: "Petitions under consideration"
         introduction: |-
-          The Citizen Participation and Public Petitions Committee looks at all published petitions whether they collect signatures or not.
+          The Citizen Participation and Public Petitions Committee looks at all published petitions.
         none_referred: |-
           No petitions are being considered yet
         referred_date: "Under consideration from %{date}"
       trending_petitions:
         heading: "Popular petitions"
       open_petitions:
-        heading: "Petitions collecting signatures"
+        heading: "Petitions under consideration"
         none_open: |-
-          There are no petitions currently collecting signatures
-        open_date: "Collecting signatures until %{date}"
+          There are no petitions currently under consideration
+        open_date: "Under consideration from %{date}"
     petitions:
       check:
         intro_html: |-
@@ -367,7 +365,7 @@ gd-GB:
           duplicate:
             heading: "We found some similar petitions"
             petition:
-              open: "Collecting signatures until %{date}"
+              open: "Under consideration from %{date}"
               completed: "Closed on  %{date}"
               referred: "Under consideration from  %{date}"
             continue_btn: "My petition is different"
@@ -379,7 +377,6 @@ gd-GB:
         page_titles:
           all: "All petitions"
           open: "Open petitions"
-          collecting_signatures: "Petitions collecting signatures"
           closed: "Closed petitions"
           debated: "Petitions debated by Parliament"
           referred: "Petitions referred to the Citizen Participation and Public Petitions Committee"
@@ -392,7 +389,6 @@ gd-GB:
       lists:
         all: "All petitions (%{quantity})"
         open: "Open petitions (%{quantity})"
-        collecting_signatures: "Collecting signatures (%{quantity})"
         closed: "Closed (%{quantity})"
         debated: "Debated by Parliament (%{quantity})"
         referred: "Referred to the Committee (%{quantity})"
@@ -492,7 +488,10 @@ gd-GB:
         petition_stage:
           intro_html: |-
             <h1 id="page-heading">Start a petition</h1>
-            <p>Remember, your petition must meet the <a href="/rules">rules for petitions</a></p>
+            <p>Remember, your petition must meet the <a href="/rules">rules for petitions</a>. 
+              Your petition can collect signatures until your petition is closed by the Citizen 
+              Participation and Public Petitions Committee.
+            </p>
           submit_html: |-
             <button type="submit" name="move_next" class="button forward" data-disable-with="Preview petition">Preview petition</button>
           hint_standards_html: |-
@@ -513,29 +512,15 @@ gd-GB:
             <p>You cannot change your petition after this point.</p>
             <p>This is a good time to check that your petition is clear. If you’ve included personal information, such as details about your health, your family or your job, think carefully about whether you are happy for this to be published. Also, make sure that you have not included any information that might identify somebody else (unless that person is a MSP or a chief executive of an organisation) as we cannot publish this.</p>
             <p>Once we receive your petition we will check to make sure it meets with our rules. If your petition includes information we are unable to publish, we will ask you to remove it before we can publish it.</p>
-        collect_signatures_stage:
-          heading: Collecting signatures
-          help_html: "<p>Petitions submitted to the Scottish Parliament do not need to collect signatures.<p></p>If you choose to collect signatures, this will start once your petition has been published and run for 4 weeks. We will let you know when your petition is published and the closing date for collecting signatures.</p><p>Whether you choose to collect signatures or not, it will not affect how your petition is looked at by the Committee.</p>"
-          label:
-            false: I do not want to collect signatures
-            true: I want to collect signatures
-          submit_html: |-
-            <button type="submit" name="move_next" class="button forward" data-disable-with="Continue">Continue</button>
-          go_back_html: |-
-            <button type="submit" name="move_back" class="button-secondary back" data-disable-with="Go back and change it">Go back and change it</button>
-          submit_warning_html: |-
-            <p>After this point you can only change the closing date by contacting the <a href="/contact">petitions team</a>.</p>
       search:
         submit_button_html: |-
           <input type="submit" value="Search" class="button" data-disable-with="Search">
         results:
           items:
-            facet_collecting_signatures:
-              until: "Collecting signatures until %{date}"
             facet_all:
               rejected: "Rejected"
               completed: "Closed on %{date}"
-              closed: "Referred to the Citizen Participation and Public Petitions Committee on %{date}"
+              closed: "Closed on %{date}"
               referred: "Under consideration from %{date}"
             facet_debated:
               debated_date: "Debated on %{date}"
@@ -543,6 +528,7 @@ gd-GB:
               not_debated_date: "Decision not to debate taken on %{date}"
             facet_referred:
               referred_date: "Under consideration from %{date}"
+              until: "Under consideration from %{date}"
             facet_rejected:
               rejected_date: "Rejected on %{date}"
             facet_completed:
@@ -558,7 +544,7 @@ gd-GB:
           two: "2 petitions"
           zero: "0 petitions"
           other: "%{num} petitions"
-      deadline: "Collecting signatures until"
+      deadline: "Under consideration from"
       get_json: "Get petition data (JSON format)"
       thank_you:
         heading: "One more step…"
@@ -706,7 +692,7 @@ gd-GB:
       petition_closed_notice: |-
         This petition is closed
       petitions_run_length: |-
-        Petitions can collect signatures for a maximum of 4 weeks
+        Petitions can collect signatures until the Citizen and Public Participation Committee closes the petition
       about_petition_data_html: |-
         <details>
           <summary>About petition data</summary>

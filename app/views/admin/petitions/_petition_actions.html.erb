@@ -69,6 +69,14 @@
         </li>
       <% end  %>
 
+      <% if @petition.open? %>
+        <li class="petition-action">
+          <%= form_for @petition, url: admin_petition_completion_path(@petition), method: :patch do |f| -%>
+            <%= f.submit "Mark this petition as closed", class: 'button', style: "font-size: 16px;", data: { confirm: "Are you sure?" } %>
+          <% end -%>
+        </li>
+      <% end %>
+
       <% if @petition.completed? %>
         <li class="petition-action">
           <%= render 'petition_action_completion_date', petition: @petition %>
@@ -79,12 +87,6 @@
         <li class="petition-action">
           <%= form_for @petition, url: admin_petition_archive_path(@petition), method: :patch do |f| -%>
             <%= f.submit "Mark this petition as archived", class: 'button', style: "font-size: 16px;", data: { confirm: "Are you sure?" } %>
-          <% end -%>
-        </li>
-      <% elsif @petition.closed? %>
-        <li class="petition-action">
-          <%= form_for @petition, url: admin_petition_completion_path(@petition), method: :patch do |f| -%>
-            <%= f.submit "Mark this petition as closed", class: 'button', style: "font-size: 16px;", data: { confirm: "Are you sure?" } %>
           <% end -%>
         </li>
       <% end %>

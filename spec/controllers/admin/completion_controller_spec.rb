@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Admin::CompletionController, type: :controller, admin: true do
   let(:petition) do
-    FactoryBot.create(:referred_petition)
+    FactoryBot.create(:closed_petition)
   end
 
   describe "not logged in" do
@@ -52,12 +52,12 @@ RSpec.describe Admin::CompletionController, type: :controller, admin: true do
       context "when the petition is still open" do
         let(:petition) { FactoryBot.create(:open_petition) }
 
-        it "doesn't mark the petition as completed" do
+        it "marks the petition as completed" do
           expect {
             patch :update, params: { petition_id: petition.id }
-          }.not_to change {
+          }.to change {
             petition.reload.state
-          }.from(Petition::OPEN_STATE)
+          }.from(Petition::OPEN_STATE).to(Petition::COMPLETED_STATE)
         end
 
         it "redirects to the petition page" do
@@ -65,9 +65,9 @@ RSpec.describe Admin::CompletionController, type: :controller, admin: true do
           expect(response).to redirect_to("https://moderate.petitions.parliament.scot/admin/petitions/#{petition.to_param}")
         end
 
-        it "displays an alert" do
+        it "displays a notice" do
           patch :update, params: { petition_id: petition.id }
-          expect(flash[:alert]).to eq("Petition could not be updated - please contact support")
+          expect(flash[:notice]).to eq("Petition has been successfully updated")
         end
       end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_081311) do
+ActiveRecord::Schema.define(version: 2023_01_03_152832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -336,7 +336,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_081311) do
     t.boolean "use_markdown", default: false, null: false
     t.datetime "anonymized_at"
     t.integer "topics", default: [], null: false, array: true
-    t.boolean "collect_signatures", default: false, null: false
+    t.boolean "collect_signatures", default: true, null: false
     t.bigint "pe_number_id"
     t.text "previous_action_en"
     t.text "previous_action_gd"

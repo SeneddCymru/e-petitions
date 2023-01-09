@@ -21,13 +21,6 @@
       <p><%= t(:"ui.petitions.search.results.items.facet_completed.completed_date", date: short_date_format(petition.completed_at)) %></p>
     <% end %>
 
-  <% when :collecting_signatures %>
-
-    <%= link_to petition_path(petition) do %>
-      <h2><%= petition.action %></h2>
-      <p><%= t(:"ui.petitions.search.results.items.facet_collecting_signatures.until", date: short_date_format(petition.closed_at)) %></p>
-    <% end %>
-
   <% when :debated %>
 
     <%= link_to petition_path(petition, anchor: 'debate-threshold') do %>
@@ -52,7 +45,7 @@
 
     <%= link_to petition_path(petition) do %>
       <h2><%= petition.action %></h2>
-      <p><%= t(:"ui.petitions.search.results.items.facet_referred.referred_date", date: short_date_format(petition.closed_at)) %></p>
+      <p><%= t(:"ui.petitions.search.results.items.facet_referred.referred_date", date: short_date_format(petition.referred_at)) %></p>
     <% end %>
 
   <% else %>
@@ -61,9 +54,9 @@
       <h2><%= petition.action %></h2>
       <% case petition.state %>
       <% when "open" %>
-        <p><%= t(:"ui.petitions.search.results.items.facet_collecting_signatures.until", date: short_date_format(petition.closed_at)) %></p>
+        <p><%= t(:"ui.petitions.search.results.items.facet_referred.until", date: short_date_format(petition.closed_at)) %></p>
       <% when "closed" %>
-        <p><%= t(:"ui.petitions.search.results.items.facet_all.referred", date: short_date_format(petition.closed_at)) %></p>
+        <p><%= t(:"ui.petitions.search.results.items.facet_all.closed", date: short_date_format(petition.closed_at)) %></p>
       <% when "completed" %>
         <p><%= t(:"ui.petitions.search.results.items.facet_all.completed", date: short_date_format(petition.completed_at)) %></p>
       <% when "rejected" %>

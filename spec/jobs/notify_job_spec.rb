@@ -1175,7 +1175,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 creator: "Charlie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                closing_date: "#{short_date_format(petition.closed_at)}",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                 petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1217,7 +1216,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 creator: "Charlie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                 petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1261,7 +1259,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 creator: "Charlie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                closing_date: "#{short_date_format(petition.closed_at)}",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                 petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1303,7 +1300,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
               personalisation: {
                 creator: "Charlie",
                 action_en: "Do stuff", action_gd: "Dèan stuth",
-                closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
                 url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                 url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                 petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1367,7 +1363,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{short_date_format(petition.closed_at)}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1401,7 +1396,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1456,7 +1450,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{short_date_format(petition.closed_at)}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1490,7 +1483,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1547,7 +1539,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{short_date_format(petition.closed_at)}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1581,7 +1572,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1636,7 +1626,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{short_date_format(petition.closed_at)}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
@@ -1670,7 +1659,6 @@ RSpec.describe NotifyJob, type: :job, notify: false do
                 personalisation: {
                   sponsor: "Suzie",
                   action_en: "Do stuff", action_gd: "Dèan stuth",
-                  closing_date: "#{I18n.with_locale(:"gd-GB"){ short_date_format(petition.closed_at) }}",
                   url_en: "https://petitions.parliament.scot/petitions/#{petition.to_param}",
                   url_gd: "https://athchuingean.parlamaid-alba.scot/athchuingean/#{petition.to_param}",
                   petition_website_url_en: "https://petitions.parliament.scot/",
