@@ -1,13 +1,5 @@
 namespace :spets do
   namespace :petitions do
-    desc "Add a task to the queue to close petitions at midnight"
-    task :close => :environment do
-      Task.run("spets:petitions:close") do
-        time = Date.tomorrow.beginning_of_day
-        ClosePetitionsJob.set(wait_until: time).perform_later(time.iso8601)
-      end
-    end
-
     desc "Add a task to the queue to validate petition counts"
     task :count => :environment do
       Task.run("spets:petitions:count") do
