@@ -18,13 +18,6 @@
       </li>
     </ul>
 
-    <section class="referral-notice" aria-labelledby="referral-notice-heading">
-      <h2 id="referral-threshold-heading"><%= t(:"ui.petitions.referral_threshold.waiting.heading") %></h2>
-      <% if @petition.scot_parl_link? %>
-        <p><%= t(:"ui.petitions.referral_threshold.open.link_html", link: @petition.scot_parl_link) %></p>
-      <% end %>
-    </section>
-
     <% unless Site.signature_collection_disabled? %>
       <p class="sign-petition"><%= link_to t(:"ui.petitions.sign_this_petition"), new_petition_signature_path(petition), class: "button forward" %></p>
     <% end %>
