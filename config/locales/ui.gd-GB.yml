@@ -598,7 +598,7 @@ gd-GB:
             </div>
           </details>
       created_by: "Created by"
-      date_opened: "Considered from"
+      date_referred: "Considered from"
       other_lists: "Other lists of petitions"
       heading_open: "Collecting signatures"
       more_details: "More details"
