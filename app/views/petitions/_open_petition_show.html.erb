@@ -10,23 +10,16 @@
       <li class="meta-created-by">
         <span class="label"><%= t(:"ui.petitions.created_by") %></span> <%= petition.creator.name %>
       </li>
+      <li class="meta-referred-at">
+        <span class="label"><%= t(:"ui.petitions.date_referred") %></span> <%= short_date_format petition.referred_at %>
+      </li>
       <li class="meta-deadline">
-        <span class="note"><%= t(:"ui.petitions.petitions_run_length") %></span>
+        <%= t(:"ui.petitions.petitions_run_length") %>
       </li>
     </ul>
 
     <% unless Site.signature_collection_disabled? %>
       <p class="sign-petition"><%= link_to t(:"ui.petitions.sign_this_petition"), new_petition_signature_path(petition), class: "button forward" %></p>
-    <% end %>
-
-    <% if @petition.scot_parl_link? %>
-      <section class="referral-notice" aria-labelledby="referral-notice-heading">
-        <h2 id="referral-notice-heading">
-          <%= t(:"ui.petitions.referral_threshold.open.heading") %>
-        </h2>
-
-        <p><%= t(:"ui.petitions.referral_threshold.open.link_html", link: @petition.scot_parl_link) %></p>
-      </section>
     <% end %>
 
     <div class="signature-count">

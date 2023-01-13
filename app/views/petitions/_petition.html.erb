@@ -54,7 +54,7 @@
       <h2><%= petition.action %></h2>
       <% case petition.state %>
       <% when "open" %>
-        <p><%= t(:"ui.petitions.search.results.items.facet_referred.until", date: short_date_format(petition.closed_at)) %></p>
+        <p><%= t(:"ui.petitions.search.results.items.facet_referred.until", date: short_date_format(petition.referred_at)) %></p>
       <% when "closed" %>
         <p><%= t(:"ui.petitions.search.results.items.facet_all.closed", date: short_date_format(petition.closed_at)) %></p>
       <% when "completed" %>
