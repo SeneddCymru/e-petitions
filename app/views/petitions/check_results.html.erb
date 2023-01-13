@@ -18,7 +18,7 @@
             <h2><%= petition.action %></h2>
             <%= auto_link(simple_format(h(petition.background)), html: { rel: "nofollow" }) %>
             <% if petition.open? %>
-              <p><%= t(:"ui.petitions.check.results.duplicate.petition.open", date: short_date_format(petition.closed_at)) %></p>
+              <p><%= t(:"ui.petitions.check.results.duplicate.petition.open", date: short_date_format(petition.referred_at)) %></p>
             <% elsif petition.completed? %>
               <p><%= t(:"ui.petitions.check.results.duplicate.petition.completed", date: short_date_format(petition.completed_at)) %></p>
             <% elsif petition.closed? %>
