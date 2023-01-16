@@ -1,10 +1,12 @@
 <% if Site.disable_thresholds_and_debates? %>
-  <section class="referral-notice" aria-labelledby="referral-notice-heading">
-    <h2 id="referral-threshold-heading"><%= t(:"ui.petitions.referral_threshold.waiting.heading") %></h2>
-    <% if @petition.scot_parl_link? %>
-      <p><%= t(:"ui.petitions.referral_threshold.open.link_html", link: @petition.scot_parl_link) %></p>
-    <% end %>
-  </section>
+  <% if @petition.open? %>
+    <section class="referral-notice" aria-labelledby="referral-notice-heading">
+      <h2 id="referral-threshold-heading"><%= t(:"ui.petitions.referral_threshold.waiting.heading") %></h2>
+      <% if @petition.scot_parl_link? %>
+        <p><%= t(:"ui.petitions.referral_threshold.open.link_html", link: @petition.scot_parl_link) %></p>
+      <% end %>
+    </section>
+  <% end %>
 <% else %>
   <div class="about-petitions">
     <%-
