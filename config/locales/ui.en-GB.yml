@@ -653,7 +653,7 @@ en-GB:
           link_html: |-
             <a href="%{link}">Find out about the Citizen Participation and Public Petitions Committee’s discussion of this petition</a>
         closed:
-          heading: "This petition is now under consideration by the Citizen Participation and Public Petitions Committee"
+          heading: "This petition was considered by the Scottish Parliament"
           link_html: |-
             <a href="%{link}">Find out about the Citizen Participation and Public Petitions Committee’s discussion of this petition</a>
         referred:
