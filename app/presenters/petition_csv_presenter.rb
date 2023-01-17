@@ -110,7 +110,7 @@ class PetitionCSVPresenter
     when :under_consideration_at
       class_eval <<~RUBY
         def under_consideration_at
-          api_date_format petition.send :closed_at
+          api_date_format petition.send :open_at
         end
       RUBY
     when :closed_at

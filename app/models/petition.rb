@@ -1151,14 +1151,10 @@ class Petition < ActiveRecord::Base
   end
 
   def state_for_publishing(time)
-    if open_at
-      if closed_at > time
-        collect_signatures? ? OPEN_STATE : CLOSED_STATE
-      else
-        CLOSED_STATE
-      end
-    else
+    if closed_at.nil? || closed_at > time
       collect_signatures? ? OPEN_STATE : CLOSED_STATE
+    else
+      CLOSED_STATE
     end
   end
 

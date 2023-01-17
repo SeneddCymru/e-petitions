@@ -42,7 +42,7 @@ RSpec.describe PetitionCSVPresenter do
 
       [
         [:closed_at, :completed_at, ->(petition) { timestampify(petition.completed_at) }],
-        [:under_consideration_at, :closed_at, ->(petition) { timestampify(petition.closed_at) }],
+        [:under_consideration_at, :open_at, ->(petition) { timestampify(petition.open_at) }],
         [:summary, :background],
         [:background_information, :additional_details],
         [:title, :action]
@@ -87,7 +87,7 @@ RSpec.describe PetitionCSVPresenter do
       timestampify(petition.created_at),
       timestampify(petition.updated_at),
       timestampify(petition.open_at),
-      timestampify(petition.closed_at),
+      timestampify(petition.open_at),
       timestampify(petition.completed_at),
       datestampify(petition.scheduled_debate_date),
       timestampify(petition.referral_threshold_reached_at),
@@ -123,7 +123,7 @@ RSpec.describe PetitionCSVPresenter do
       timestampify(petition.created_at),
       timestampify(petition.updated_at),
       timestampify(petition.open_at),
-      timestampify(petition.closed_at),
+      timestampify(petition.open_at),
       timestampify(petition.completed_at),
       datestampify(petition.scheduled_debate_date),
       timestampify(petition.referral_threshold_reached_at),
