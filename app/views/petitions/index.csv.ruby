@@ -14,7 +14,7 @@ csv_builder = lambda do |csv|
       csv_escape(petition.additional_details),
       csv_date_format(petition.created_at),
       csv_date_format(petition.opened_at),
-      csv_date_format(petition.closed_at),
+      csv_date_format(petition.referred_at),
       topic_list(petition.topics)
     ]
   end
