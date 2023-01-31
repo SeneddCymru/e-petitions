@@ -11,7 +11,7 @@ class ReassignCollectingSignaturePetitionsToUnderConsideration < ActiveRecord::M
       execute <<~SQL
         UPDATE petitions
         SET collect_signatures = true
-        WHERE state IN ('pending', 'validated', 'sponsored', 'flagged', 'opened')
+        WHERE state IN ('pending', 'validated', 'sponsored', 'flagged', 'open')
         AND collect_signatures = false;
       SQL
     end
