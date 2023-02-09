@@ -3,9 +3,8 @@ class ReassignCollectingSignaturePetitionsToUnderConsideration < ActiveRecord::M
     up_only do 
       execute <<~SQL
         UPDATE petitions
-        SET referred_at = open_at, referral_threshold_reached_at = open_at
-        WHERE referred_at IS NULL
-        AND open_at IS NOT NULL;
+        SET referred_at = COALESCE(referred_at, open_at)
+        WHERE open_at IS NOT NULL;
       SQL
 
       execute <<~SQL
