@@ -39,6 +39,7 @@ gem 'rgeo-geojson'
 gem 'rgeo-proj4'
 gem 'chunky_png'
 gem 'webrick'
+gem 'ffi', force_ruby_platform: true
 
 gem 'aws-sdk-codedeploy'
 gem 'aws-sdk-cloudwatchlogs'
