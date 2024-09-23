@@ -455,7 +455,7 @@ DEPENDENCIES
   net-http-persistent
   nokogiri
   notifications-ruby-client
-  pg
+  pg (< 1.5)
   pry
   puma (< 6)
   rails (= 6.1.7.8)
