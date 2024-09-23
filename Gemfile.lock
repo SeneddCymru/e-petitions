@@ -267,7 +267,7 @@ GEM
       racc (~> 1.4)
     notifications-ruby-client (5.4.0)
       jwt (>= 1.5, < 3)
-    pg (1.4.6)
+    pg (1.5.8)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -455,7 +455,7 @@ DEPENDENCIES
   net-http-persistent
   nokogiri
   notifications-ruby-client
-  pg (< 1.5)
+  pg (< 1.6)
   pry
   puma (< 6)
   rails (= 6.1.7.8)
