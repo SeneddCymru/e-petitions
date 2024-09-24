@@ -21,24 +21,6 @@ Given(/^there (?:are|is) (\d+) petitions? debated by the Senedd(.+)?$/) do |deba
   end
 end
 
-Given(/^there are (\d+) petitions that have been referred$/) do |referred_count|
-  referred_count.times do |count|
-    petition = FactoryBot.create(:referred_petition, :action => "Petition #{count}")
-  end
-end
-
-Then(/^I should not see the actioned petitions totals section$/) do
-  expect(page).to_not have_css(".actioned-petitions")
-end
-
-Then(/^I should see a total showing (.*?) petitions referred to the committee$/) do |referred_count|
-  expect(page).to have_css(".actioned-petitions ul li:first-child .count", :text => referred_count)
-end
-
-Then(/^I should see a total showing (.*?) petitions debated by the Senedd$/) do |debated_count|
-  expect(page).to have_css(".actioned-petitions ul li:last-child .count", :text => debated_count)
-end
-
 Then(/^I should see an empty referral threshold section$/) do
   within(:css, "section[aria-labelledby=referral-threshold-heading]") do
     expect(page).to have_no_css("a[href='#{petitions_path(state: :referred)}']")
