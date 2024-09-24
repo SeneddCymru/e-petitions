@@ -30,43 +30,9 @@ Given(/^a petition "([^"]*)" with a scheduled debate date of "(.*?)"$/) do |acti
   @petition = FactoryBot.create(:scheduled_debate_petition, action: action, scheduled_debate_date: date)
 end
 
-Given(/^the petition "([^"]*)" has (\d+) validated and (\d+) pending signatures$/) do |petition_action, no_validated, no_pending|
-  petition = Petition.find_by(action: petition_action)
-  (no_validated - 1).times { FactoryBot.create(:validated_signature, petition: petition) }
-  no_pending.times { FactoryBot.create(:pending_signature, petition: petition) }
-  petition.reload
-end
-
-Given(/^(\d+) petitions exist with a signature count of (\d+)$/) do |number, count|
-  number.times do
-    p = FactoryBot.create(:open_petition)
-    p.update_attribute(:signature_count, count)
-  end
-end
-
 Given(/^a petition "([^"]*)" exists with a signature count of (\d+)$/) do |petition_action, count|
   @petition = FactoryBot.create(:open_petition, action: petition_action)
   @petition.update_attribute(:signature_count, count)
-end
-
-Given(/^a petition "(.*?)" passed the threshold for a debate less than a day ago and has no debate date set$/) do |action|
-  petition = FactoryBot.create(:awaiting_debate_petition, action: action, debate_threshold_reached_at: 2.hours.ago)
-  petition.debate_outcome = nil
-end
-
-Given(/^a petition "(.*?)" passed the threshold for a debate (\d+) days? ago and has no debate date set$/) do |action, amount|
-  petition = FactoryBot.create(:awaiting_debate_petition, action: action, debate_threshold_reached_at: amount.days.ago)
-  petition.debate_outcome = nil
-end
-
-Given(/^a petition "(.*?)" passed the threshold for a debate (\d+) days? ago and has a debate in (\d+) days$/) do |action, threshold, debate|
-  petition = FactoryBot.create(:awaiting_debate_petition, action: action, debate_threshold_reached_at: threshold.days.ago, scheduled_debate_date: debate.days.from_now)
-  petition.debate_outcome = nil
-end
-
-Given(/^I have created a petition$/) do
-  @petition = FactoryBot.create(:open_petition)
-  reset_mailer
 end
 
 Given(/^the petition "([^"]*)" has (\d+) validated signatures$/) do |petition_action, no_validated|
@@ -74,16 +40,6 @@ Given(/^the petition "([^"]*)" has (\d+) validated signatures$/) do |petition_ac
   (no_validated - 1).times { FactoryBot.create(:validated_signature, petition: petition) }
   petition.reload
   @petition.reload if @petition
-end
-
-And(/^the petition "([^"]*)" has reached maximum amount of sponsors$/) do |petition_action|
-  petition = Petition.find_by(action: petition_action)
-  Site.maximum_number_of_sponsors.times { petition.sponsors.build(FactoryBot.attributes_for(:sponsor)) }
-end
-
-And(/^the petition "([^"]*)" has (\d+) pending sponsors$/) do |petition_action, sponsors|
-  petition = Petition.find_by(action: petition_action)
-  sponsors.times { petition.sponsors.build(FactoryBot.attributes_for(:sponsor)) }
 end
 
 Given(/^a petition "([^"]*)" has been closed$/) do |petition_action|
@@ -178,22 +134,12 @@ Then(/^I should be asked to search for a new petition$/) do
   expect(page).to have_css("form textarea[name=q]")
 end
 
-Then(/^I should see a list of (\d+) petitions$/) do |petition_count|
-  expect(page).to have_css("tbody tr", :count => petition_count)
-end
-
 Then(/^I should see my search query already filled in as the action of the petition$/) do
   expect(page).to have_field("What do you want us to do?", text: "Rioters should loose benefits")
 end
 
 Then(/^I can click on a link to return to the petition$/) do
   expect(page).to have_css("a[href*='/petitions/#{@petition.id}']")
-end
-
-Then(/^I should receive an email telling me how to get an MP on board$/) do
-  expect(unread_emails_for(@petition.creator.email).size).to eq 1
-  open_email(@petition.creator.email)
-  expect(current_email.default_part_body.to_s).to include("MP")
 end
 
 When(/^I am allowed to make the petition action too long$/) do
@@ -365,14 +311,6 @@ end
 
 Given(/^a petition "(.*?)" exists awaiting debate date$/) do |action|
   @petition = FactoryBot.create(:awaiting_debate_petition, action: action)
-end
-
-Given(/^a petition "(.*?)" exists that has been referred$/) do |action|
-  @petition = FactoryBot.create(:referred_petition, action: action)
-end
-
-Given(/^a petition "(.*?)" exists with notes "([^"]*)"$/) do |action, notes|
-  @petition = FactoryBot.create(:open_petition, action: action, admin_notes: notes)
 end
 
 Given(/^an? ?(pending|validated|sponsored|flagged|open)? petition "(.*?)" exists with tags "([^"]*)"$/) do |state, action, tags|
