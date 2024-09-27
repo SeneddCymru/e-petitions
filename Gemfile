@@ -38,6 +38,7 @@ gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 gem 'rgeo-proj4'
 gem 'chunky_png'
+gem 'puma'
 gem 'webrick'
 gem 'ffi', force_ruby_platform: true
 
@@ -65,8 +66,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webmock'
   gem 'rails-controller-testing'
-end
-
-group :production do
-  gem 'puma', '< 6'
 end
