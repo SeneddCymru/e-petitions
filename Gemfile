@@ -16,7 +16,7 @@ gem 'appsignal'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'net-http-persistent'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '< 6'
 gem 'textacular'
 gem 'terser'
 gem 'bcrypt'
@@ -32,19 +32,21 @@ gem 'jbuilder'
 gem 'image_processing'
 gem 'maxminddb'
 gem 'redcarpet'
-gem 'notifications-ruby-client'
 gem 'scrypt'
+gem 'webrick'
+gem 'puma'
+gem 'ffi', force_ruby_platform: true
+
+gem 'aws-sdk-codedeploy', require: false
+gem 'aws-sdk-cloudwatchlogs', require: false
+gem 'aws-sdk-s3', require: false
+
+gem 'notifications-ruby-client'
+
 gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 gem 'rgeo-proj4'
 gem 'chunky_png'
-gem 'puma'
-gem 'webrick'
-gem 'ffi', force_ruby_platform: true
-
-gem 'aws-sdk-codedeploy'
-gem 'aws-sdk-cloudwatchlogs'
-gem 'aws-sdk-s3'
 
 group :development, :test do
   gem 'simplecov'
