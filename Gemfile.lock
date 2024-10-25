@@ -471,6 +471,7 @@ DEPENDENCIES
   logstash-logger
   maxminddb
   net-http-persistent
+  net-imap (< 0.5)
   nokogiri
   notifications-ruby-client
   pg (< 1.5)
@@ -495,6 +496,7 @@ DEPENDENCIES
   webrick
   whenever
   will_paginate
+  zeitwerk (< 2.7)
 
 BUNDLED WITH
    2.3.26
