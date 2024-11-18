@@ -285,7 +285,7 @@ GEM
     notifications-ruby-client (5.4.0)
       jwt (>= 1.5, < 3)
     pg (1.4.6)
-    pry (0.14.2)
+    pry (0.15.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (6.0.1)
