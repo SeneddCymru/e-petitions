@@ -40,13 +40,6 @@ module WelshPets
 
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Configure the cache store
-    config.cache_store = :mem_cache_store, nil, {
-      expires_in: 1.day, compress: true,
-      namespace: ENV.fetch('MEMCACHE_NAMESPACE') { 'wpets' },
-      pool_size: ENV.fetch('WEB_CONCURRENCY_MAX_THREADS') { 16 }.to_i
-    }
-
     # Configure Active Record to use cache versioning
     config.active_record.cache_versioning = false
 
