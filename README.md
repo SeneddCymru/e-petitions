@@ -4,7 +4,7 @@ This is the code base for the Senedd's petitions service (https://petitions.sene
 
 ## Setup
 
-We recommend using [Docker Desktop][1] to get setup quickly. If you'd prefer not to use Docker then you'll need Ruby (3.0+), Node (20+), PostgreSQL (14+) and Memcached (1.5+) installed.
+We recommend using [Docker Desktop][1] to get setup quickly. If you'd prefer not to use Docker then you'll need Ruby (3.0+), Node (20+) and PostgreSQL (14+) installed.
 
 ### DNS
 
@@ -96,7 +96,7 @@ Dyma sylfaen cod gwasanaeth deisebau Senedd (https://deisebau.senedd.cymru).
 
 ## Gosod
 
-Rydym yn argymell defnyddio [Docker Desktop] [1] i gael setup yn gyflym. Os byddai'n well gennych beidio â defnyddio Docker yna bydd angen Ruby (3.0+), Node (20+), PostgreSQL (14+) a Memcached (1.5+) arnoch chi wedi'u gosod.
+Rydym yn argymell defnyddio [Docker Desktop] [1] i gael setup yn gyflym. Os byddai'n well gennych beidio â defnyddio Docker yna bydd angen Ruby (3.0+), Node (20+) a PostgreSQL (14+) arnoch chi wedi'u gosod.
 
 ### DNS
 

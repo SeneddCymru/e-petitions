@@ -2,60 +2,58 @@
   <%= tag :meta, name: "count_url", content: count_petition_url(@petition) %>
 <% end %>
 
-<%= cache_for :petition do %>
-  <h1>
-    <span class="heading-secondary"><%= t(:"ui.petitions.heading_open") %></span>
-    <%= petition.action %>
-  </h1>
+<h1>
+  <span class="heading-secondary"><%= t(:"ui.petitions.heading_open") %></span>
+  <%= petition.action %>
+</h1>
 
-  <% if petition.background? %>
-    <div class="petition-content"><%= apply_formatting(petition, :background) %></div>
-  <% end %>
-  <% if petition.additional_details? %>
-    <details>
-      <summary><span class="summary"><%= t(:"ui.petitions.more_details") %></span></summary>
-      <div class="petition-content"><%= apply_formatting(petition, :additional_details) %></div>
-    </details>
-  <% end %>
-
-  <% unless Site.signature_collection_disabled? %>
-    <%= link_to t(:"ui.petitions.sign_this_petition"), new_petition_signature_path(petition), class: "button forward" %>
-  <% end %>
-
-  <div class="signature-count">
-    <p class="signature-count-number">
-      <%= signature_count(:default, petition.signature_count) %>
-    </p>
-    <div class="signature-count-graph" aria-hidden="true">
-      <span class="signature-count-current" style="width: <%= signatures_threshold_percentage(petition) %>"></span>
-    </div>
-    <p class="signatures-on-a-map">
-      <% if Site.show_map_page? %>
-        <%= link_to petition_map_path(petition) do %>
-          <%= t(:"ui.petitions.show_on_a_map") %>
-        <% end %>
-      <% end %>
-    </p>
-    <p class="signature-count-goal">
-      <%= number_with_delimiter(current_threshold(petition)) %>
-    </p>
-  </div>
-
-  <%= render 'threshold_details', petition: petition %>
-  <%= render 'other_senedd_business_details', petition: petition %>
-  <%= render 'share_petition', petition: petition %>
-
-  <ul class="petition-meta">
-    <li class="meta-created-by">
-      <span class="label"><%= t(:"ui.petitions.created_by") %></span> <%= petition.creator.name %>
-    </li>
-    <li class="meta-deadline">
-      <span class="label"><%= t(:"ui.petitions.deadline") %></span> <%= short_date_format petition.deadline %>
-      <span class="note"><%= t(:"ui.petitions.petitions_run_6_months") %></span>
-    </li>
-    <li class="meta-json">
-      <span class="note"><%= link_to t(:"ui.petitions.get_json"), petition_path(petition, :json) %></span>
-      <%= t(:"ui.petitions.about_petition_data_html") %>
-    </li>
-  </ul>
+<% if petition.background? %>
+  <div class="petition-content"><%= apply_formatting(petition, :background) %></div>
 <% end %>
+<% if petition.additional_details? %>
+  <details>
+    <summary><span class="summary"><%= t(:"ui.petitions.more_details") %></span></summary>
+    <div class="petition-content"><%= apply_formatting(petition, :additional_details) %></div>
+  </details>
+<% end %>
+
+<% unless Site.signature_collection_disabled? %>
+  <%= link_to t(:"ui.petitions.sign_this_petition"), new_petition_signature_path(petition), class: "button forward" %>
+<% end %>
+
+<div class="signature-count">
+  <p class="signature-count-number">
+    <%= signature_count(:default, petition.signature_count) %>
+  </p>
+  <div class="signature-count-graph" aria-hidden="true">
+    <span class="signature-count-current" style="width: <%= signatures_threshold_percentage(petition) %>"></span>
+  </div>
+  <p class="signatures-on-a-map">
+    <% if Site.show_map_page? %>
+      <%= link_to petition_map_path(petition) do %>
+        <%= t(:"ui.petitions.show_on_a_map") %>
+      <% end %>
+    <% end %>
+  </p>
+  <p class="signature-count-goal">
+    <%= number_with_delimiter(current_threshold(petition)) %>
+  </p>
+</div>
+
+<%= render 'threshold_details', petition: petition %>
+<%= render 'other_senedd_business_details', petition: petition %>
+<%= render 'share_petition', petition: petition %>
+
+<ul class="petition-meta">
+  <li class="meta-created-by">
+    <span class="label"><%= t(:"ui.petitions.created_by") %></span> <%= petition.creator.name %>
+  </li>
+  <li class="meta-deadline">
+    <span class="label"><%= t(:"ui.petitions.deadline") %></span> <%= short_date_format petition.deadline %>
+    <span class="note"><%= t(:"ui.petitions.petitions_run_6_months") %></span>
+  </li>
+  <li class="meta-json">
+    <span class="note"><%= link_to t(:"ui.petitions.get_json"), petition_path(petition, :json) %></span>
+    <%= t(:"ui.petitions.about_petition_data_html") %>
+  </li>
+</ul>

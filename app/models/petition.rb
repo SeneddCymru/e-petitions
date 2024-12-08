@@ -34,8 +34,6 @@ class Petition < ActiveRecord::Base
 
   DEBATE_STATES = %w[pending awaiting scheduled debated not_debated]
 
-  self.cache_timestamp_format = :stepped_cache_key
-
   has_perishable_token called: 'sponsor_token'
 
   translate :action, :additional_details, :background, :abms_link

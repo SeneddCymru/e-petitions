@@ -135,10 +135,8 @@ module MapHelper
       race_condition_ttl: 10.seconds
     }
 
-    Rails.cache.fetch(key, options)  do
-      builder = MapPreview.new(petition)
-      yield builder
-      builder.to_blob
-    end
+    builder = MapPreview.new(petition)
+    yield builder
+    builder.to_blob
   end
 end
