@@ -1,4 +1,4 @@
-FROM ruby:3.0-bullseye
+FROM ruby:3.2-bookworm
 
 ENV BUNDLE_PATH=/bundle
 
@@ -11,14 +11,14 @@ RUN wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key 
 # Add apt repositories
 RUN echo 'deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main' \
     > /etc/apt/sources.list.d/nodesource.list && \
-    echo 'deb [signed-by=/usr/share/keyrings/pgdg.gpg] http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main' \
+    echo 'deb [signed-by=/usr/share/keyrings/pgdg.gpg] http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main' \
     > /etc/apt/sources.list.d/pgdg.list && \
     apt-get update
 
 # Install packages
 RUN apt-get install -y --no-install-recommends \
     libgeos-dev libproj-dev gdal-bin \
-    chromium chromium-driver nodejs postgresql-client-12
+    chromium chromium-driver nodejs postgresql-client-14
 
 # Create the crash reports directory - without it Chromium complains on startup
 RUN mkdir -p "/root/.config/chromium/Crash Reports/pending/"
