@@ -48,7 +48,7 @@ gem 'notifications-ruby-client'
 gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 gem 'rgeo-proj4'
-gem 'chunky_png'
+gem 'chunky_png', git: 'https://github.com/SeneddCymru/chunky_png.git', branch: 'welsh-petitions'
 
 group :development, :test do
   gem 'simplecov'
