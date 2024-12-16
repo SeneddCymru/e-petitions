@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/SeneddCymru/chunky_png.git
-  revision: afa4e5bb99b1c58a46cfc9f309d937658568a40c
+  revision: fd6e3431e4e5c4de5c2ef8346a7a3d63f49fadbf
   branch: welsh-petitions
   specs:
     chunky_png (1.4.0)
