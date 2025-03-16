@@ -1,3 +1,9 @@
+Before('@javascript') do
+  unless page.driver.invalid_element_errors.include?(Selenium::WebDriver::Error::UnknownError)
+    page.driver.invalid_element_errors << Selenium::WebDriver::Error::UnknownError
+  end
+end
+
 Before do
   default_url_options[:protocol] = 'https'
 end
@@ -42,7 +48,7 @@ Before('not @welsh') do
   I18n.locale = :"en-GB"
 end
 
-After do
+After('not @javascript') do
   page.driver.options[:headers] = nil
 end
 

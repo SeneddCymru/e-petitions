@@ -113,7 +113,7 @@ Scenario: Charlie tries to submit an invalid petition
   And I should see "Background must be completed"
 
   When I am allowed to make the petition action too long
-  When I fill in "What do you want us to do?" with text longer than 100 characters
+  And I fill in "What do you want us to do?" with text longer than 100 characters
   And I fill in "Background" with text longer than 500 characters
   And I fill in "Additional details" with text longer than 1100 characters
   And I press "Preview petition"
@@ -232,8 +232,9 @@ Scenario: Charlie tries to submit an invalid petition
   When I fill in "Email" with "womboid@wimbledon.com"
   And I press "Yes – this is my email address"
 
-  Then a petition should exist with action: "The wombats of wimbledon rock.", state: "pending"
-  Then there should be a "pending" signature with email "womboid@wimbledon.com" and name "Mr. Wibbledon"
+  Then I should see "We’ve emailed you a link"
+  And a petition should exist with action: "The wombats of wimbledon rock.", state: "pending"
+  And there should be a "pending" signature with email "womboid@wimbledon.com" and name "Mr. Wibbledon"
 
 Scenario: Charlie creates a petition with a typo in his email
   Given I start a new petition
@@ -246,7 +247,8 @@ Scenario: Charlie creates a petition with a typo in his email
   And I press "Continue"
   Then my email is autocorrected to "charlie@hotmail.com"
   When I press "Yes – this is my email address"
-  Then a petition should exist with action: "The wombats of wimbledon rock.", state: "pending"
+  Then I should see "We’ve emailed you a link"
+  And a petition should exist with action: "The wombats of wimbledon rock.", state: "pending"
   And a signature should exist with email: "charlie@hotmail.com", state: "pending"
 
 Scenario: Charlie creates a petition when his email is autocorrected wrongly
@@ -261,7 +263,8 @@ Scenario: Charlie creates a petition when his email is autocorrected wrongly
   Then my email is autocorrected to "charlie@hotmail.com"
   When I fill in "Email" with "charlie@hotmial.com"
   And I press "Yes – this is my email address"
-  Then a petition should exist with action: "The wombats of wimbledon rock.", state: "pending"
+  Then I should see "We’ve emailed you a link"
+  And a petition should exist with action: "The wombats of wimbledon rock.", state: "pending"
   And a signature should exist with email: "charlie@hotmial.com", state: "pending"
 
 Scenario: Charlie creates a petition when blocked
@@ -277,7 +280,8 @@ Scenario: Charlie creates a petition when blocked
   Then the markup should be valid
   And I am asked to review my email address
   When I press "Yes – this is my email address"
-  Then a petition should not exist with action: "The wombats of wimbledon rock.", state: "pending"
+  Then I should see "We’ve emailed you a link"
+  And a petition should not exist with action: "The wombats of wimbledon rock.", state: "pending"
   And a signature should not exist with email: "womboid@wimbledon.com", state: "pending"
 
 Scenario: Charlie creates a petition when his IP address is rate limited
@@ -296,5 +300,6 @@ Scenario: Charlie creates a petition when his IP address is rate limited
   Then the markup should be valid
   And I am asked to review my email address
   When I press "Yes – this is my email address"
-  Then a petition should not exist with action: "The wombats of wimbledon rock.", state: "pending"
+  Then I should see "We’ve emailed you a link"
+  And a petition should not exist with action: "The wombats of wimbledon rock.", state: "pending"
   And a signature should not exist with email: "womboid@wimbledon.com", state: "pending"

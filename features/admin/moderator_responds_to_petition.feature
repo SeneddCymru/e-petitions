@@ -9,7 +9,8 @@ Feature: Moderator respond to petition
     Given a sponsored petition "More money for charities"
     And I am logged in as a sysadmin
     When I go to the admin petition page for "More money for charities"
-    Then I should be connected to the server via an ssl connection
+    Then I should be on the admin petition page for "More money for charities"
+    And I should be connected to the server via an ssl connection
     And the markup should be valid
     And I should see the petition details
     And I should not see "Rejection reason"
@@ -84,7 +85,8 @@ Feature: Moderator respond to petition
     Given I am logged in as a moderator
     When I look at the next petition on my list
     And I publish the petition
-    Then the petition should still be unmoderated
+    Then I should see "Petition could not be updated - please check the form for errors"
+    And the petition should still be unmoderated
     And the creator should not receive a notification email
     And I should see "The petition must be fully translated first before being made public"
 
@@ -94,7 +96,8 @@ Feature: Moderator respond to petition
     And the petition is translated
     When I go to the admin petition page for "Remove trolls on the bridge"
     And I publish the petition
-    Then the petition should still be unmoderated
+    Then I should see "Petition could not be updated - please check the form for errors"
+    And the petition should still be unmoderated
     And the creator should not receive a notification email
     And I should see "You can't publish a petition before the creator has validated their email address"
 
@@ -154,8 +157,8 @@ Feature: Moderator respond to petition
     Given I am logged in as a moderator named "Ben Macintosh"
     When I look at the next petition on my list
     And I flag the petition
-    Then the petition is not available for searching or viewing
-    And the creator should not receive a notification email
+    Then I should see "Petition has been successfully updated"
+    And the petition is not available for searching or viewing
     And the creator should not receive a rejection notification email
     But the petition will still show up in the back-end reporting
     When I revisit the petition
@@ -169,7 +172,8 @@ Feature: Moderator respond to petition
     Given I am logged in as a sysadmin named "Ben Macintosh"
     When I look at the next petition on my list
     And I reject the petition
-    Then the creator should receive a rejection notification email
+    Then I should see "Petition has been successfully updated"
+    And the creator should receive a rejection notification email
     And the petition is not available for signing
     But the petition is still available for searching or viewing
     Given no emails have been sent
@@ -188,7 +192,8 @@ Feature: Moderator respond to petition
     Given I am logged in as a sysadmin named "Ben Macintosh"
     When I look at the next petition on my list
     And I reject the petition
-    Then the creator should receive a rejection notification email
+    Then I should see "Petition has been successfully updated"
+    And the creator should receive a rejection notification email
     And the petition is not available for signing
     But the petition is still available for searching or viewing
     Given no emails have been sent
@@ -198,7 +203,8 @@ Feature: Moderator respond to petition
     And it can still be restored
     And it can still be flagged
     When I restore the petition
-    Then the creator should not receive a notification email
+    Then I should see "Petition has been successfully updated"
+    And the creator should not receive a notification email
     And the petition is not available for searching or viewing
     But the petition will still show up in the back-end reporting
 
@@ -207,7 +213,8 @@ Feature: Moderator respond to petition
     Given I am logged in as a sysadmin named "Ben Macintosh"
     When I look at the next petition on my list
     And I reject the petition
-    Then the creator should receive a rejection notification email
+    Then I should see "Petition has been successfully updated"
+    And the creator should receive a rejection notification email
     And the petition is not available for signing
     But the petition is still available for searching or viewing
     Given no emails have been sent
@@ -217,6 +224,7 @@ Feature: Moderator respond to petition
     And it can still be restored
     And it can still be flagged
     When I flag the petition
-    Then the creator should not receive a notification email
+    Then I should see "Petition has been successfully updated"
+    And the creator should not receive a notification email
     And the petition is not available for searching or viewing
     But the petition will still show up in the back-end reporting
