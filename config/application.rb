@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 require File.expand_path('../../lib/cloud_front_remote_ip', __FILE__)
 require File.expand_path('../../lib/quiet_logger', __FILE__)
+require File.expand_path('../../lib/reject_bad_requests', __FILE__)
 
 require 'rails'
 
@@ -57,6 +58,7 @@ module WelshPets
 
     # Add additional exceptions to the rescue responses
     config.action_dispatch.rescue_responses.merge!(
+      'Site::PetitionRemoved' => :gone,
       'Site::ServiceUnavailable' => :service_unavailable,
       'BulkVerification::InvalidBulkRequest' => :bad_request
     )
@@ -70,6 +72,9 @@ module WelshPets
     config.middleware.insert_before Rails::Rack::Logger, QuietLogger, paths: [
       %r[\A/petitions/\d+/count.json\z], %q[/admin/status.json], %q[/ping]
     ]
+
+    # Reject requests with parameters containing null bytes
+    config.middleware.insert_before ActionDispatch::Callbacks, RejectBadRequests
 
     # Generate integer primary keys
     config.generators do |generator|

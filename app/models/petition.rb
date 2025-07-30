@@ -441,6 +441,14 @@ class Petition < ActiveRecord::Base
       where(submitted_on_paper: true)
     end
 
+    def removed
+      where(state: HIDDEN_STATE).where.not(opened_at: nil)
+    end
+
+    def removed?(param)
+      removed.exists?(id: param)
+    end
+
     private
 
     def grouping(expression)
