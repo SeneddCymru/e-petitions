@@ -385,10 +385,10 @@ RSpec.describe SponsorsController, type: :controller do
             end
           end
 
-          context "and the user is on the English domain" do
+          context "and the user is on the Welsh domain", welsh: true do
             let(:locale) { "cy-GB" }
 
-            it "records the English locale on the signature" do
+            it "records the Welsh locale on the signature" do
               expect(assigns[:signature].locale).to eq("cy-GB")
             end
           end

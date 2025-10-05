@@ -9,8 +9,7 @@ class LocalizedController < ApplicationController
 
   before_action :set_locale
   before_action :set_bypass_cookie, if: :bypass_param?
-  before_action :redirect_to_holding_page, except: :holding
-  before_action :redirect_to_home_page, only: :holding
+  before_action :redirect_to_holding_page
 
   helper_method :holding_page?
 
@@ -30,7 +29,7 @@ class LocalizedController < ApplicationController
   end
 
   def holding_page?
-    action_name == "holding"
+    controller_name == "pages" && action_name == "holding"
   end
 
   def bypass_param?
@@ -53,12 +52,6 @@ class LocalizedController < ApplicationController
     if bypass_param == Site.bypass_token
       cookies.signed[:_wpets_bypass] = Site.bypass_token
       redirect_to home_url
-    end
-  end
-
-  def redirect_to_home_page
-    unless bypass_authenticated?
-      redirect_to home_url unless Site.show_holding_page?
     end
   end
 
