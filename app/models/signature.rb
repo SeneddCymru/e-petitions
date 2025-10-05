@@ -456,7 +456,7 @@ class Signature < ActiveRecord::Base
     end
 
     def ip_index
-      Arel.sql("inet(ip_address) <<= inet(:ip)")
+      Arel.sql("inet(ip_address) <<= inet((:ip)::text)")
     end
 
     def count_star

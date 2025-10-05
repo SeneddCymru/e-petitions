@@ -9,9 +9,9 @@ Rails.application.config.assets.version = "1.0"
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-# Rails.application.config.assets.precompile += %w( admin.js admin.css )
+# Rails.application.config.assets.precompile += %w[ admin.js admin.css ]
 
-Rails.application.config.assets.precompile += %w(
+Rails.application.config.assets.precompile += %w[
   map.css
   admin.css
   delayed/web/application.css
@@ -20,7 +20,7 @@ Rails.application.config.assets.precompile += %w(
   admin.js
   character-counter.js
   auto-updater.js
-)
+]
 
 # Compress JavaScript assets.
 Rails.application.config.assets.js_compressor = :terser
