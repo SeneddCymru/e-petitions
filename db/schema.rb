@@ -74,7 +74,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_17_121742) do
     t.string "name_cy", limit: 100, null: false
     t.string "name_en", limit: 100, null: false
     t.integer "population", null: false
-    t.string "region_id", limit: 9, null: false
+    t.string "region_id", limit: 9
     t.datetime "updated_at", precision: nil, null: false
     t.index ["name_cy"], name: "index_constituencies_on_name_cy", unique: true
     t.index ["name_en"], name: "index_constituencies_on_name_en", unique: true

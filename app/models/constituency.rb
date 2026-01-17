@@ -7,7 +7,7 @@ class Constituency < ActiveRecord::Base
 
   translate :name
 
-  belongs_to :region
+  belongs_to :region, optional: true
   has_one :member
   has_many :postcodes
 

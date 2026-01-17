@@ -7,7 +7,7 @@ RSpec.describe Constituency, type: :model do
 
   describe "schema" do
     it { is_expected.to have_db_column(:id).of_type(:string).with_options(null: false, limit: 9, primary: true) }
-    it { is_expected.to have_db_column(:region_id).of_type(:string).with_options(null: false, limit: 9) }
+    it { is_expected.to have_db_column(:region_id).of_type(:string).with_options(null: true, limit: 9) }
     it { is_expected.to have_db_column(:name_en).of_type(:string).with_options(null: false, limit: 100) }
     it { is_expected.to have_db_column(:name_cy).of_type(:string).with_options(null: false, limit: 100) }
     it { is_expected.to have_db_column(:example_postcode).of_type(:string).with_options(null: false, limit: 7) }
@@ -16,7 +16,7 @@ RSpec.describe Constituency, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to belong_to(:region) }
+    it { is_expected.to belong_to(:region).optional }
     it { is_expected.to have_one(:member) }
     it { is_expected.to have_many(:postcodes) }
     it { is_expected.to have_many(:signatures) }
