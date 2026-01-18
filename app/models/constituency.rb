@@ -8,15 +8,13 @@ class Constituency < ActiveRecord::Base
   translate :name
 
   belongs_to :region, optional: true
-  has_one :member
+  has_many :members
   has_many :postcodes
 
   has_many :signatures
   has_many :petitions, through: :signatures
 
-  delegate :name, :url, to: :member, prefix: true
-
-  default_scope { preload(:member, :region).order(:id) }
+  default_scope { preload(:members, :region).order(:id) }
 
   class << self
     def find_by_postcode(query)
