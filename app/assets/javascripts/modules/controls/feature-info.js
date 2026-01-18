@@ -86,13 +86,7 @@ L.Control.FeatureInfo = L.Control.extend({
     var heading = L.DomUtil.create('h2', '', this._wrapper);
     heading.innerHTML = properties.name;
 
-    if (properties.member) {
-      var memberName = L.DomUtil.create('p', '', this._wrapper);
-      memberName.innerHTML = properties.member.name;
-
-      var partyName = L.DomUtil.create('small', '', memberName);
-      partyName.innerHTML = properties.member.party;
-    } else if (properties.members) {
+    if (properties.members) {
       var wrapper = this._wrapper;
 
       properties.members.forEach(function (member) {

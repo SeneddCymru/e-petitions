@@ -2,19 +2,17 @@ json.constituency do
   json.id @constituency.id
   json.name @constituency.name
 
-  if @member.present?
-    json.member do
-      json.name @member.name
-      json.party @member.party
-      json.url @member.url
-    end
+  json.members @members do |member|
+    json.name member.name
+    json.party member.party
+    json.url member.url
   end
 
   json.region do
     json.id @region.id
     json.name @region.name
 
-    json.members @members do |member|
+    json.members @regional_members do |member|
       json.name member.name
       json.party member.party
       json.url member.url

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_17_121742) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_17_175113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
   enable_extension "pg_catalog.plpgsql"
@@ -250,7 +250,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_17_121742) do
     t.string "party_en", limit: 100, null: false
     t.string "region_id", limit: 9
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["constituency_id"], name: "index_members_on_constituency_id", unique: true
+    t.index ["constituency_id"], name: "index_members_on_constituency_id"
     t.index ["region_id"], name: "index_members_on_region_id"
   end
 

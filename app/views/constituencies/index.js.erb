@@ -15,8 +15,10 @@
       properties.percentageOfSignatures = properties.signatures / properties.totalSignatures;
       properties.percentageOfPopulation = properties.signatures / properties.population;
 
-      if (properties.member) {
-        properties.partyColour = properties.member.colour;
+      if (properties.members) {
+        properties.members.forEach(function (member) {
+          properties.partyColour = member.colour;
+        })
       }
 
       maxSignatures = Math.max(maxSignatures, properties.percentageOfSignatures);

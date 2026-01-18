@@ -24,7 +24,7 @@ RSpec.describe Member, type: :model do
 
   describe "indexes" do
     it { is_expected.to have_db_index([:region_id]) }
-    it { is_expected.to have_db_index([:constituency_id]).unique }
+    it { is_expected.to have_db_index([:constituency_id]) }
   end
 
   describe "#colour" do

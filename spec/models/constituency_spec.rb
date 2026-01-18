@@ -17,7 +17,7 @@ RSpec.describe Constituency, type: :model do
 
   describe "associations" do
     it { is_expected.to belong_to(:region).optional }
-    it { is_expected.to have_one(:member) }
+    it { is_expected.to have_many(:members) }
     it { is_expected.to have_many(:postcodes) }
     it { is_expected.to have_many(:signatures) }
     it { is_expected.to have_many(:petitions).through(:signatures) }
