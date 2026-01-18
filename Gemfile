@@ -48,6 +48,10 @@ gem 'rgeo-geojson'
 gem 'rgeo-proj4'
 gem 'chunky_png', git: 'https://github.com/SeneddCymru/chunky_png.git', branch: 'welsh-petitions'
 
+group :development do
+  gem 'foreman'
+end
+
 group :development, :test do
   gem 'simplecov'
   gem 'brakeman', require: false
