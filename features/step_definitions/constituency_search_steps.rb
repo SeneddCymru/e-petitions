@@ -44,7 +44,7 @@ end
 When(/^I search for petitions local to me in "(.*?)"$/) do |postcode|
   sanitized_postcode = PostcodeSanitizer.call(postcode)
   @my_constituency = @constituencies.fetch(postcode)
-  @my_member = @my_constituency.member
+  @my_member = @my_constituency.members.first
 
   expect(Constituency).to receive(:find_by_postcode).with(sanitized_postcode).and_return(@my_constituency)
 
