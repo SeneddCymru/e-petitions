@@ -29,11 +29,12 @@ RSpec.describe Member, type: :model do
 
   describe "#colour" do
     [
-      ['Welsh Liberal Democrats', '#FDBB30'],
-      ['Welsh Labour and Co-operative Party', '#CC0000'],
-      ['Welsh Labour', '#DC241F'],
-      ['Welsh Conservative Party', '#0087DC'],
-      ['Plaid Cymru', '#008142']
+      ['Plaid Cymru', '#008672'],
+      ['Reform UK', '#12B6CF'],
+      ['Welsh Liberal Democrats', '#FF6400'],
+      ['Welsh Labour and Co-operative Party', '#E4003B'],
+      ['Welsh Labour', '#E4003B'],
+      ['Welsh Conservative Party', '#0087DC']
     ].each do |party, colour|
       context "when the member's party is '#{party}'" do
         subject { described_class.new(party: party) }
