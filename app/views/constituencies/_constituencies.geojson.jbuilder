@@ -13,6 +13,7 @@ json.features @constituencies do |constituency|
       json.party member.party
       json.url member.url
       json.colour member.colour
+      json.css_class member.css_class
     end
 
     if region = constituency.region
@@ -25,6 +26,7 @@ json.features @constituencies do |constituency|
           json.party member.party
           json.url member.url
           json.colour member.colour
+          json.css_class member.css_class
         end
       end
     else

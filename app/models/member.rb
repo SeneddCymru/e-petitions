@@ -11,6 +11,15 @@ class Member < ActiveRecord::Base
     'Welsh Conservative Party' => '#0087DC'
   }
 
+  CSS_CLASSES = {
+    'Plaid Cymru' => 'plaid-cymru',
+    'Reform UK' => 'reform-uk',
+    'Welsh Liberal Democrats' => 'liberal-democrats',
+    'Welsh Labour and Co-operative Party' => 'labour-and-co-op',
+    'Welsh Labour' => 'labour',
+    'Welsh Conservative Party' => 'conservative'
+  }
+
   include Translatable
 
   translate :name, :party
@@ -37,6 +46,10 @@ class Member < ActiveRecord::Base
 
   def colour
     PARTY_COLOURS.fetch(party_en, '#DCDCDC')
+  end
+
+  def css_class
+    CSS_CLASSES.fetch(party_en, '')
   end
 
   private
