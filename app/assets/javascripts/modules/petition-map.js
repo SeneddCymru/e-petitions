@@ -199,24 +199,36 @@
   }
 
   var highlightFeature = function (layer) {
-    var properties = layer.feature.properties;
+    var feature = layer.feature;
+    var properties = feature.properties;
 
     var style = {
-      color: '#3C3C3B',
-      fillColor: null,
+      fillColor: '#C9187E',
+      fillOpacity: fillOpacity(layer.feature.properties),
       fillPattern: null,
-      fillOpacity: 1.0,
+      color: '#3C3C3B',
+      opacity: 1.0,
       weight: 2
     };
 
-    if (properties.partyColour) {
-      style.fillColor = properties.partyColour;
-    } else if (properties.partyPattern) {
-      style.fillPattern = properties.partyPattern;
-    } else {
-      style.fillOpacity = fillOpacity(properties);
-      style.fillColor = '#C9187E';
+    if (currentFeature != feature) {
+      layer.setStyle(style);
+      layer.bringToFront();
     }
+  }
+
+  var selectFeature = function (layer) {
+    var feature = layer.feature;
+    var properties = feature.properties;
+
+    var style = {
+      fillColor: '#C9187E',
+      fillOpacity: fillOpacity(feature.properties),
+      fillPattern: null,
+      color: '#3C3C3B',
+      opacity: 1.0,
+      weight: 3
+    };
 
     layer.setStyle(style);
     layer.bringToFront();
@@ -230,7 +242,11 @@
 
   var onMouseOverFeature = function (e) {
     if (!zooming) {
-      highlightFeature(e.target);
+      if (e.target == currentFeature) {
+        selectFeature(e.target);
+      } else {
+        highlightFeature(e.target);
+      }
     }
   }
 
@@ -250,7 +266,7 @@
     }
 
     currentFeature = e.target;
-    highlightFeature(currentFeature);
+    selectFeature(currentFeature);
     controls.featureInfo.setFeatureInfo(currentFeature.feature);
   }
 
