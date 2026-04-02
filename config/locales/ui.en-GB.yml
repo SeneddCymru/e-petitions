@@ -1044,13 +1044,15 @@ en-GB:
       body_html: |-
         <h1 class="page-title">Determination by the Presiding Officer under Standing Order 23.3 of the Proper Form of Petitions</h1>
 
+        <p>Updated March 2026</p>
+
         <p>The Presiding Officer has made the following determination of the proper form of public petitions submitted under Standing Order 23.</p>
 
         <ol class="list-number">
           <li>
             <h2>Means and format for submission</h2>
             <p>Petitions may be submitted on paper or electronically using the Senedd’s online petitions system. Petitions may collect signatures for a maximum period of six months.</p>
-            <p>For a paper petition the petition wording should be set out in full on each sheet (or side of a sheet) where signatures are asked for. A template is available on request.</p>
+            <p>For a paper petition the petition wording should be set out in full on each sheet (or side of a sheet) where signatures are asked for. A template is available on request, and only paper signatures submitted in the correct format will be accepted.</p>
           </li>
 
           <li>
@@ -1064,7 +1066,7 @@ en-GB:
             <ul class="list-bullet">
               <li>the name of the petitioner, who may be an individual or an organisation;</li>
               <li>the petitioner’s address, which must be in Wales, to which all communications concerning the petition should be sent;</li>
-              <li>signatures from at least 50 people who support the petition and their names and addresses.</li>
+              <li>signatures from at least 250 people who support the petition and their names and addresses.</li>
             </ul>
             <p>Petitions must not:</p>
             <ul class="list-bullet">
@@ -1079,7 +1081,8 @@ en-GB:
             <h2>Other factors concerning admissibility</h2>
             <p>Petitions that include or ask the Senedd to consider the following are not admissible:</p>
             <ul class="list-bullet">
-              <li>to intervene in the operational decisions or actions of local authorities and National Park Authorities, including planning decisions;</li>
+              <li>to intervene in the operational decisions or actions of local authorities and National Park Authorities;</li>
+              <li>to intervene in the operational decisions or actions of any relevant authority responsible for determining applications for planning permission or infrastructure consent in Wales, or to seek to challenge or reverse such determination;</li>
               <li>for an individual to be appointed to or removed from a role or position, to resign, or for a vote of no confidence;</li>
               <li>to adjudicate, arbitrate or mediate personal or commercial interests (this is the role of a court or tribunal);</li>
               <li>matters that are ‘sub judice’ (subject to legal proceedings in the courts);</li>
