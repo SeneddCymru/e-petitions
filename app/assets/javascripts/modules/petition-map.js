@@ -19,13 +19,18 @@
     zoom: 5
   });
 
+  var hasRegions = PetitionMap.hasRegions = function () {
+    return data.regions.features.length > 0;
+  }
+
   var defaultMapView = function() {
     params = new URLSearchParams(window.location.search);
     viewParam = params.get('view');
 
     switch (viewParam) {
-      case 'countries':
       case 'regions':
+        return hasRegions() ? viewParam : 'constituencies';
+      case 'countries':
       case 'constituencies':
         return viewParam;
       default:
