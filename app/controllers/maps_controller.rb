@@ -1,8 +1,9 @@
 class MapsController < LocalizedController
   before_action :retrieve_petition
-  before_action :redirect_to_petition_url, unless: :show_map_page?
   before_action :redirect_to_gathering_support_url, if: :collecting_sponsors?
   before_action :redirect_to_moderation_info_url, if: :in_moderation?
+  before_action :redirect_to_petition_url, unless: :show_map_page?
+  before_action :set_parliament
 
   skip_forgery_protection
 
@@ -38,8 +39,12 @@ class MapsController < LocalizedController
     @petition = Petition.show.find(petition_id)
   end
 
+  def set_parliament
+    @parliament = @petition.parliament
+  end
+
   def show_map_page?
-    Site.show_map_page?
+    Site.show_map_page? && @petition.published?
   end
 
   def redirect_to_petition_url

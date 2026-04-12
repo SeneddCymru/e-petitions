@@ -2,6 +2,13 @@ require 'rails_helper'
 
 RSpec.describe MapsController, type: :controller do
   let(:petition) { double(to_param: "1") }
+  let(:parliament) { Parliament.current }
+
+  before do
+    allow(petition).to receive(:collecting_sponsors?).and_return(false)
+    allow(petition).to receive(:in_moderation?).and_return(false)
+    allow(petition).to receive(:published?).and_return(true)
+  end
 
   describe "GET /petitions/:id/map" do
     context "when the map feature is disabled" do
@@ -24,11 +31,11 @@ RSpec.describe MapsController, type: :controller do
       end
 
       it "shows the map page" do
-        expect(petition).to receive(:collecting_sponsors?).and_return(false)
-        expect(petition).to receive(:in_moderation?).and_return(false)
+        expect(petition).to receive(:parliament).and_return(parliament)
         expect(Petition).to receive_message_chain(:show, find: petition)
 
         get :show, params: { petition_id: 1 }
+        expect(assigns(:parliament)).to eq(parliament)
         expect(assigns(:petition)).to eq(petition)
         expect(response).to render_template('layouts/maps')
         expect(response).to render_template('maps/show')
@@ -50,6 +57,24 @@ RSpec.describe MapsController, type: :controller do
 
         expect(response).to redirect_to "/petitions/1/gathering-support"
       end
+
+      it "does not show petitions awaiting moderation" do
+        expect(petition).to receive(:in_moderation?).and_return(true)
+        expect(Petition).to receive_message_chain(:show, find: petition)
+
+        get :show, params: { petition_id: 1 }
+
+        expect(response).to redirect_to "/petitions/1/moderation-info"
+      end
+
+      it "does not show petitions that have not been published" do
+        expect(petition).to receive(:published?).and_return(false)
+        expect(Petition).to receive_message_chain(:show, find: petition)
+
+        get :show, params: { petition_id: 1 }
+
+        expect(response).to redirect_to "/petitions/1"
+      end
     end
   end
 
@@ -62,7 +87,7 @@ RSpec.describe MapsController, type: :controller do
       it "does not show the map about page" do
         expect(Petition).to receive_message_chain(:show, find: petition)
 
-        get :share, params: { petition_id: 1 }
+        get :about, params: { petition_id: 1 }
 
         expect(response).to redirect_to "/petitions/1"
       end
@@ -73,12 +98,12 @@ RSpec.describe MapsController, type: :controller do
         allow(Site).to receive(:show_map_page?).and_return(true)
       end
 
-      it "assigns the given petition" do
-        expect(petition).to receive(:collecting_sponsors?).and_return(false)
-        expect(petition).to receive(:in_moderation?).and_return(false)
+      it "shows the map about page" do
+        expect(petition).to receive(:parliament).and_return(parliament)
         expect(Petition).to receive_message_chain(:show, find: petition)
 
         get :about, params: { petition_id: 1 }
+        expect(assigns(:parliament)).to eq(parliament)
         expect(assigns(:petition)).to eq(petition)
         expect(response).to render_template('layouts/application')
         expect(response).to render_template('maps/about')
@@ -99,6 +124,24 @@ RSpec.describe MapsController, type: :controller do
         get :about, params: { petition_id: 1 }
 
         expect(response).to redirect_to "/petitions/1/gathering-support"
+      end
+
+      it "does not show petitions awaiting moderation" do
+        expect(petition).to receive(:in_moderation?).and_return(true)
+        expect(Petition).to receive_message_chain(:show, find: petition)
+
+        get :about, params: { petition_id: 1 }
+
+        expect(response).to redirect_to "/petitions/1/moderation-info"
+      end
+
+      it "does not show petitions that have not been published" do
+        expect(petition).to receive(:published?).and_return(false)
+        expect(Petition).to receive_message_chain(:show, find: petition)
+
+        get :about, params: { petition_id: 1 }
+
+        expect(response).to redirect_to "/petitions/1"
       end
     end
   end
@@ -124,11 +167,11 @@ RSpec.describe MapsController, type: :controller do
       end
 
       it "shows the map sharing page" do
-        expect(petition).to receive(:collecting_sponsors?).and_return(false)
-        expect(petition).to receive(:in_moderation?).and_return(false)
+        expect(petition).to receive(:parliament).and_return(parliament)
         expect(Petition).to receive_message_chain(:show, find: petition)
 
         get :share, params: { petition_id: 1 }
+        expect(assigns(:parliament)).to eq(parliament)
         expect(assigns(:petition)).to eq(petition)
         expect(response).to render_template('layouts/application')
         expect(response).to render_template('maps/share')
@@ -149,6 +192,24 @@ RSpec.describe MapsController, type: :controller do
         get :share, params: { petition_id: 1 }
 
         expect(response).to redirect_to "/petitions/1/gathering-support"
+      end
+
+      it "does not show petitions awaiting moderation" do
+        expect(petition).to receive(:in_moderation?).and_return(true)
+        expect(Petition).to receive_message_chain(:show, find: petition)
+
+        get :share, params: { petition_id: 1 }
+
+        expect(response).to redirect_to "/petitions/1/moderation-info"
+      end
+
+      it "does not show petitions that have not been published" do
+        expect(petition).to receive(:published?).and_return(false)
+        expect(Petition).to receive_message_chain(:show, find: petition)
+
+        get :share, params: { petition_id: 1 }
+
+        expect(response).to redirect_to "/petitions/1"
       end
     end
   end

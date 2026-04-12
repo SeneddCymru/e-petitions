@@ -17,11 +17,23 @@ class Constituency < ActiveRecord::Base
   default_scope { preload(:members, :region).order(:id) }
 
   class << self
+    def current
+      where(end_date: nil)
+    end
+
     def find_by_postcode(query)
       sanitized_postcode = sanitize_postcode(query)
 
       if valid_postcode?(sanitized_postcode)
         joins(:postcodes).where(postcode.eq(sanitized_postcode)).take
+      end
+    end
+
+    def for(dates)
+      if dates.end
+        where(start_date: ..dates.begin, end_date: dates.end..)
+      else
+        where(start_date: ..dates.begin, end_date: nil)
       end
     end
 
