@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_17_175113) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_12_082254) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
   enable_extension "pg_catalog.plpgsql"
@@ -70,11 +70,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_17_175113) do
   create_table "constituencies", id: { type: :string, limit: 9 }, force: :cascade do |t|
     t.geography "boundary", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
     t.datetime "created_at", precision: nil, null: false
+    t.date "end_date"
     t.string "example_postcode", limit: 7, null: false
     t.string "name_cy", limit: 100, null: false
     t.string "name_en", limit: 100, null: false
     t.integer "population", null: false
     t.string "region_id", limit: 9
+    t.date "start_date"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["name_cy"], name: "index_constituencies_on_name_cy", unique: true
     t.index ["name_en"], name: "index_constituencies_on_name_en", unique: true
@@ -389,9 +391,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_17_175113) do
   create_table "regions", id: { type: :string, limit: 9 }, force: :cascade do |t|
     t.geography "boundary", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
     t.datetime "created_at", precision: nil, null: false
+    t.date "end_date"
     t.string "name_cy", limit: 100, null: false
     t.string "name_en", limit: 100, null: false
     t.integer "population", null: false
+    t.date "start_date"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["name_cy"], name: "index_regions_on_name_cy", unique: true
     t.index ["name_en"], name: "index_regions_on_name_en", unique: true

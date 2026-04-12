@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
   PARTY_COLOURS = {
     'Plaid Cymru' => '#008672',
     'Reform UK' => '#12B6CF',
+    'Reform UK Wales' => '#12B6CF',
+    'Welsh Green Party' => '#02A95B',
     'Welsh Liberal Democrats' => '#FF6400',
     'Welsh Labour and Co‑operative Party' => '#E4003B',
     'Welsh Labour and Co-operative Party' => '#E4003B',
@@ -15,6 +17,8 @@ class Member < ActiveRecord::Base
   CSS_CLASSES = {
     'Plaid Cymru' => 'plaid-cymru',
     'Reform UK' => 'reform-uk',
+    'Reform UK Wales' => 'reform-uk',
+    'Welsh Green Party' => 'green',
     'Welsh Liberal Democrats' => 'liberal-democrats',
     'Welsh Labour and Co‑operative Party' => 'labour-and-co-op',
     'Welsh Labour and Co-operative Party' => 'labour-and-co-op',
