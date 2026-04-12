@@ -128,7 +128,7 @@ class FetchMembersJob < ApplicationJob
   def parse_constituency(node)
     id = Integer(node.at_xpath(MEMBER_ID).text)
     name = node.at_xpath(MEMBER_NAME).text.strip
-    party = node.at_xpath(PARTY).text.strip
+    party = node.at_xpath(PARTY).text.strip.tr("-", "\u2011")
     constituency_name = node.at_xpath(CONSTITUENCY).text.strip
     constituency_id = constituency_map.fetch(constituency_name.parameterize)
 
@@ -139,7 +139,7 @@ class FetchMembersJob < ApplicationJob
     node.xpath(MEMBERS).map do |member|
       id = Integer(member.at_xpath(MEMBER_ID).text)
       name = member.at_xpath(MEMBER_NAME).text.strip
-      party = member.at_xpath(PARTY).text.strip
+      party = member.at_xpath(PARTY).text.strip.tr("-", "\u2011")
       region_name = member.at_xpath(REGION).text.strip
       region_id = region_map.fetch(region_name.parameterize)
 

@@ -6,6 +6,7 @@ class Member < ActiveRecord::Base
     'Plaid Cymru' => '#008672',
     'Reform UK' => '#12B6CF',
     'Welsh Liberal Democrats' => '#FF6400',
+    'Welsh Labour and Co‑operative Party' => '#E4003B',
     'Welsh Labour and Co-operative Party' => '#E4003B',
     'Welsh Labour' => '#E4003B',
     'Welsh Conservative Party' => '#0087DC'
@@ -15,6 +16,7 @@ class Member < ActiveRecord::Base
     'Plaid Cymru' => 'plaid-cymru',
     'Reform UK' => 'reform-uk',
     'Welsh Liberal Democrats' => 'liberal-democrats',
+    'Welsh Labour and Co‑operative Party' => 'labour-and-co-op',
     'Welsh Labour and Co-operative Party' => 'labour-and-co-op',
     'Welsh Labour' => 'labour',
     'Welsh Conservative Party' => 'conservative'
