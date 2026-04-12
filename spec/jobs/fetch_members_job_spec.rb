@@ -47,7 +47,7 @@ RSpec.describe FetchMembersJob, type: :job do
     end
 
     describe "attribute assignment" do
-      let(:member) { Member.find(249) }
+      let(:member) { Member.find(143) }
       let(:members) { Member.pluck(:name_en) }
 
       before do
@@ -63,23 +63,31 @@ RSpec.describe FetchMembersJob, type: :job do
       end
 
       it "assigns the member id" do
-        expect(member.id).to eq(249)
+        expect(member.id).to eq(143)
       end
 
       it "assigns the English member name" do
-        expect(member.name_en).to eq("Vaughan Gething MS")
+        expect(member.name_en).to eq("Andrew RT Davies MS")
       end
 
       it "assigns the Welsh member name" do
-        expect(member.name_cy).to eq("Vaughan Gething AS")
+        expect(member.name_cy).to eq("Andrew RT Davies AS")
       end
 
       it "assigns the English party name" do
-        expect(member.party_en).to eq("Welsh Labour")
+        expect(member.party_en).to eq("Welsh Conservative Party")
       end
 
       it "assigns the Welsh party name" do
-        expect(member.party_cy).to eq("Llafur Cymru")
+        expect(member.party_cy).to eq("Ceidwadwyr Cymreig")
+      end
+
+      context "when the party name contains a hyphen" do
+        let(:member) { Member.find(249) }
+
+        it "converts the hyphen to a non-breaking hyphen" do
+          expect(member.party_en).to eq("Welsh Labour and Co‑operative Party")
+        end
       end
     end
 
