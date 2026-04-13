@@ -1,6 +1,40 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "7a26335b8da3718fa57b2403b5bb8954ea93441a39c073163b56dab7c591a22c",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/local_petitions/all.html.erb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url, :rel => \"external\", :class => \"view-all\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "LocalPetitionsController",
+          "method": "all",
+          "line": 33,
+          "file": "app/controllers/local_petitions_controller.rb",
+          "rendered": {
+            "name": "local_petitions/all",
+            "file": "app/views/local_petitions/all.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "local_petitions/all"
+      },
+      "user_input": "(Unresolved Model).new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
       "warning_type": "SSL Verification Bypass",
       "warning_code": 71,
       "fingerprint": "83faaaee2d372a0a73dc703bf46452d519d79dbf3b069a5007f71392ec7d4a3e",
@@ -45,11 +79,79 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 4,
+      "fingerprint": "ccc9ca8f9643c3b78f19153a54215b1f29aae40040f93a8738180b5200ebf647",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/local_petitions/show.html.erb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url, :rel => \"external\", :class => \"view-all\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "LocalPetitionsController",
+          "method": "show",
+          "line": 25,
+          "file": "app/controllers/local_petitions_controller.rb",
+          "rendered": {
+            "name": "local_petitions/show",
+            "file": "app/views/local_petitions/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "local_petitions/show"
+      },
+      "user_input": "(Unresolved Model).new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
       "fingerprint": "ec90a43d600ec1cef6f6f0ff5eeebb9f29380fd1f4b005edc2c7b4393ef73a47",
       "check_name": "LinkToHref",
       "message": "Potentially unsafe model attribute in `link_to` href",
       "file": "app/views/local_petitions/show.html.erb",
-      "line": 17,
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "LocalPetitionsController",
+          "method": "show",
+          "line": 25,
+          "file": "app/controllers/local_petitions_controller.rb",
+          "rendered": {
+            "name": "local_petitions/show",
+            "file": "app/views/local_petitions/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "local_petitions/show"
+      },
+      "user_input": "(Unresolved Model).new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "ec90a43d600ec1cef6f6f0ff5eeebb9f29380fd1f4b005edc2c7b4393ef73a47",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/local_petitions/show.html.erb",
+      "line": 29,
       "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
       "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url)",
       "render_path": [
@@ -125,7 +227,41 @@
       "check_name": "LinkToHref",
       "message": "Potentially unsafe model attribute in `link_to` href",
       "file": "app/views/local_petitions/all.html.erb",
-      "line": 17,
+      "line": 19,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "LocalPetitionsController",
+          "method": "all",
+          "line": 33,
+          "file": "app/controllers/local_petitions_controller.rb",
+          "rendered": {
+            "name": "local_petitions/all",
+            "file": "app/views/local_petitions/all.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "local_petitions/all"
+      },
+      "user_input": "(Unresolved Model).new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "fcba9d7cf6497695c27711ea24c55c03f15dab032fe7256f1b5da8680620a2da",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/local_petitions/all.html.erb",
+      "line": 29,
       "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
       "code": "link_to((Unresolved Model).new.name, (Unresolved Model).new.url)",
       "render_path": [
@@ -153,6 +289,6 @@
       "note": ""
     }
   ],
-  "updated": "2026-03-31 13:36:34 +0000",
+  "updated": "2026-04-01 07:58:38 +0000",
   "brakeman_version": "6.2.2"
 }

@@ -54,20 +54,22 @@ L.Control.MapSwitcher = L.Control.extend({
     constituenciesLabel.htmlFor = 'current_view_constituencies';
     constituenciesLabel.innerHTML = this._ui.show_signatures_by.constituencies;
 
-    var regionsDiv = L.DomUtil.create('div', 'multiple-choice', fieldset);
-    var regionsRadio = L.DomUtil.create('input', '', regionsDiv);
-    regionsRadio.type = 'radio';
-    regionsRadio.name = 'current_view';
-    regionsRadio.value = 'regions';
-    regionsRadio.id = 'current_view_regions';
+    if (PetitionMap.hasRegions()) {
+      var regionsDiv = L.DomUtil.create('div', 'multiple-choice', fieldset);
+      var regionsRadio = L.DomUtil.create('input', '', regionsDiv);
+      regionsRadio.type = 'radio';
+      regionsRadio.name = 'current_view';
+      regionsRadio.value = 'regions';
+      regionsRadio.id = 'current_view_regions';
 
-    if (PetitionMap.getCurrentView() == 'regions') {
-      regionsRadio.checked = true;
+      if (PetitionMap.getCurrentView() == 'regions') {
+        regionsRadio.checked = true;
+      }
+
+      var regionsLabel = L.DomUtil.create('label', '', regionsDiv);
+      regionsLabel.htmlFor = 'current_view_regions';
+      regionsLabel.innerHTML = this._ui.show_signatures_by.regions;
     }
-
-    var regionsLabel = L.DomUtil.create('label', '', regionsDiv);
-    regionsLabel.htmlFor = 'current_view_regions';
-    regionsLabel.innerHTML = this._ui.show_signatures_by.regions;
 
     var countriesDiv = L.DomUtil.create('div', 'multiple-choice', fieldset);
     var countriesRadio = L.DomUtil.create('input', '', countriesDiv);

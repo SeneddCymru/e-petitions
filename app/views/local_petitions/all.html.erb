@@ -6,14 +6,26 @@
   <%= link_to t(:"ui.petitions.local.all.open_popular_link", constituency_name: @constituency.name), local_petition_path(@constituency), class: 'view-all' %>
 </p>
 
-<% if @member.present? %>
-  <p><%= t(:"ui.petitions.local.member_name_link_html", member_name_link: link_to(@member.name, @member.url, rel: 'external', class: 'view-all'), constituency_name: @constituency.name) %></p>
+<% if @members.any? %>
+  <% if @members.one? %>
+    <% @members.each do |member| %>
+      <p><%= t(:"ui.petitions.local.member_name_link_html", member_name_link: link_to(member.name, member.url, rel: 'external', class: 'view-all'), constituency_name: @constituency.name) %></p>
+    <% end %>
+  <% else %>
+    <p><%= t(:"ui.petitions.local.members_heading_html", constituency_name: @constituency.name) %></p>
+
+    <ul class="member-list">
+      <% @members.each do |member| %>
+        <li><%= link_to(member.name, member.url) %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>
 
-<% if @members.any? %>
+<% if @regional_members.any? %>
   <p><%= t(:"ui.petitions.local.regional_members.heading_html", region: @region.name) %></p>
   <ul class="member-list">
-    <% @members.each do |member| %>
+    <% @regional_members.each do |member| %>
       <li><%= link_to(member.name, member.url) %></li>
     <% end %>
   </ul>
