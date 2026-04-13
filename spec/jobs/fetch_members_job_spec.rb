@@ -29,7 +29,7 @@ RSpec.describe FetchMembersJob, type: :job do
   end
 
   before do
-    FactoryBot.create(:constituency, :cardiff_south_and_penarth)
+    FactoryBot.create(:constituency, :gwynedd_maldwyn)
   end
 
   context "when the request is successful" do
@@ -43,11 +43,11 @@ RSpec.describe FetchMembersJob, type: :job do
         described_class.perform_now
       }.to change {
         Member.count
-      }.from(0).to(5)
+      }.from(0).to(6)
     end
 
     describe "attribute assignment" do
-      let(:member) { Member.find(143) }
+      let(:member) { Member.find(3415) }
       let(:members) { Member.pluck(:name_en) }
 
       before do
@@ -55,35 +55,36 @@ RSpec.describe FetchMembersJob, type: :job do
       end
 
       it "imports members" do
-        expect(members).to include("Vaughan Gething MS")
-        expect(members).to include("Andrew RT Davies MS")
-        expect(members).to include("David Melding MS")
-        expect(members).to include("Gareth Bennett MS")
-        expect(members).to include("Neil McEvoy MS")
+        expect(members).to include("Andrea Anderson MS")
+        expect(members).to include("Emily Cameron MS")
+        expect(members).to include("Lily Ellison MS")
+        expect(members).to include("Sue Hemmings MS")
+        expect(members).to include("Edward Knox MS")
+        expect(members).to include("Owen McDonald MS")
       end
 
       it "assigns the member id" do
-        expect(member.id).to eq(143)
+        expect(member.id).to eq(3415)
       end
 
       it "assigns the English member name" do
-        expect(member.name_en).to eq("Andrew RT Davies MS")
+        expect(member.name_en).to eq("Andrea Anderson MS")
       end
 
       it "assigns the Welsh member name" do
-        expect(member.name_cy).to eq("Andrew RT Davies AS")
+        expect(member.name_cy).to eq("Andrea Anderson AS")
       end
 
       it "assigns the English party name" do
-        expect(member.party_en).to eq("Welsh Conservative Party")
+        expect(member.party_en).to eq("Welsh Green Party")
       end
 
       it "assigns the Welsh party name" do
-        expect(member.party_cy).to eq("Ceidwadwyr Cymreig")
+        expect(member.party_cy).to eq("Plaid Werdd Cymru")
       end
 
       context "when the party name contains a hyphen" do
-        let(:member) { Member.find(249) }
+        let(:member) { Member.find(3442) }
 
         it "converts the hyphen to a non-breaking hyphen" do
           expect(member.party_en).to eq("Welsh Labour and Co‑operative Party")
@@ -93,26 +94,14 @@ RSpec.describe FetchMembersJob, type: :job do
 
     describe "association assignment" do
       context "for a constituency member" do
-        let(:member) { Member.find(249) }
+        let(:member) { Member.find(3415) }
 
         before do
           described_class.perform_now
         end
 
         it "assigns the correct constituency" do
-          expect(member.constituency_name).to eq("Cardiff South and Penarth")
-        end
-      end
-
-      context "for a regional member" do
-        let(:member) { Member.find(169) }
-
-        before do
-          described_class.perform_now
-        end
-
-        it "assigns the correct region" do
-          expect(member.region_name).to eq("South Wales Central")
+          expect(member.constituency_name).to eq("Gwynedd Maldwyn")
         end
       end
     end
@@ -123,7 +112,7 @@ RSpec.describe FetchMembersJob, type: :job do
         let(:exception) { ActiveRecord::RecordInvalid.new(member) }
 
         it "notifies Appsignal of the failure" do
-          expect(Member).to receive(:find_or_initialize_by).with(id: 249).and_return(member)
+          expect(Member).to receive(:find_or_initialize_by).with(id: 3415).and_return(member)
           expect(member).to receive(:save!).and_raise(exception)
           expect(Appsignal).to receive(:send_exception).with(exception)
 
@@ -134,14 +123,14 @@ RSpec.describe FetchMembersJob, type: :job do
 
     describe "updating members" do
       context "when a member is still in office" do
-        let!(:member) { FactoryBot.create(:member, :cardiff_south_and_penarth, name: "Vaughan Gething AM") }
+        let!(:member) { FactoryBot.create(:member, :gwynedd_maldwyn, name: "Andrea Anderson AM") }
 
         it "updates the record" do
           expect {
             described_class.perform_now
           }.to change {
             member.reload.name
-          }.from("Vaughan Gething AM").to("Vaughan Gething MS")
+          }.from("Andrea Anderson AM").to("Andrea Anderson MS")
         end
       end
 
@@ -153,19 +142,7 @@ RSpec.describe FetchMembersJob, type: :job do
             described_class.perform_now
           }.to change {
             member.reload.constituency_id
-          }.from("W09000043").to(nil)
-        end
-      end
-
-      context "when a regional member is no longer in office" do
-        let!(:member) { FactoryBot.create(:member, :regional_member) }
-
-        it "clears the region association" do
-          expect {
-            described_class.perform_now
-          }.to change {
-            member.reload.region_id
-          }.from("W10000007").to(nil)
+          }.from("W09000058").to(nil)
         end
       end
     end

@@ -466,6 +466,13 @@ FactoryBot.define do
   sequence(:constituency_id) { |n| "W09%06d" % n }
 
   factory :constituency do
+    trait :gwynedd_maldwyn do
+      id { "W09000058" }
+      name_en { "Gwynedd Maldwyn" }
+      name_cy { "Gwynedd Maldwyn" }
+      example_postcode { "LL546TH" }
+    end
+
     trait :cardiff_south_and_penarth do
       id { "W09000043" }
       association :region, :south_wales_central
@@ -562,6 +569,15 @@ FactoryBot.define do
       association :constituency
     end
 
+    trait :gwynedd_maldwyn do
+      id { 3415 }
+      constituency_id { "W09000058" }
+      name_en { "Andrea Anderson MS" }
+      name_cy { "Andrea Anderson AS" }
+      party_en { "Welsh Green Party" }
+      party_cy { "Plaid Werdd Cymru" }
+    end
+
     trait :cardiff_south_and_penarth do
       id { 249 }
       constituency_id { "W09000043" }
@@ -571,16 +587,8 @@ FactoryBot.define do
       party_cy { "Llafur Cymru" }
     end
 
-    trait :regional_member do
-      region_id { "W10000007" }
-      name_en { "Bob Jones MS" }
-      name_cy { "Bob Jones AS" }
-      party_en { "Welsh Conservative Party" }
-      party_cy { "Ceidwadwyr Cymreig" }
-    end
-
     trait :constituency_member do
-      constituency_id { "W09000043" }
+      constituency_id { "W09000058" }
       name_en { "Alice Davies MS" }
       name_cy { "Alice Davies AS" }
       party_en { "Welsh Labour" }
@@ -591,6 +599,11 @@ FactoryBot.define do
   factory :postcode do
     id { Faker::Address.postcode.tr(" ", "") }
     sequence(:constituency_id) { |n| "W09%06d" % n }
+
+    trait :gwynedd_maldwyn do
+      id { "LL546TH" }
+      constituency_id { "W09000058" }
+    end
 
     trait :cardiff_south_and_penarth do
       id { "CF991NA" }
