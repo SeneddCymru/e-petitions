@@ -2869,20 +2869,50 @@ RSpec.describe Petition, type: :model do
   describe "#extend_deadline!" do
     let(:petition) { FactoryBot.create(:open_petition, updated_at: 2.days.ago) }
 
-    it "increments the closed_at attribute by 1 day" do
-      expect {
-        petition.extend_deadline!
-      }.to change {
-        petition.reload.closed_at
-      }.by(1.day)
-    end
-
     it "touches the updated_at timestamp" do
       expect {
         petition.extend_deadline!
       }.to change {
         petition.reload.updated_at
       }.to(be_within(1.second).of(Time.current))
+    end
+
+    context "when extending the closing date doesn't cross a DST boundary" do
+      around do |example|
+        travel_to("2026-04-01") { example.run }
+      end
+
+      it "increments the closed_at attribute by 24 hours" do
+        expect {
+          petition.extend_deadline!
+        }.to change {
+          petition.reload.closed_at
+        }.by(24.hours)
+      end
+    end
+
+    context "when extending the closing date crosses the autumn DST boundary" do
+      it "increments the closed_at attribute by 25 hours" do
+        expect {
+          petition.extend_deadline!
+        }.to change {
+          petition.reload.closed_at
+        }.by(25.hours)
+      end
+    end
+
+    context "and extending the closing date crosses the spring DST boundary" do
+      around do |example|
+        travel_to("2026-09-27") { example.run }
+      end
+
+      it "increments the closed_at attribute by 23 hours" do
+        expect {
+          petition.extend_deadline!
+        }.to change {
+          petition.reload.closed_at
+        }.by(23.hours)
+      end
     end
   end
 
