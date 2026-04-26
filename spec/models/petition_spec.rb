@@ -2892,6 +2892,10 @@ RSpec.describe Petition, type: :model do
     end
 
     context "when extending the closing date crosses the autumn DST boundary" do
+      around do |example|
+        travel_to("2026-04-24") { example.run }
+      end
+
       it "increments the closed_at attribute by 25 hours" do
         expect {
           petition.extend_deadline!
