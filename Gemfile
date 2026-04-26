@@ -35,6 +35,7 @@ gem 'scrypt'
 gem 'webrick'
 gem 'puma'
 gem 'ffi', force_ruby_platform: true
+gem 'strong_migrations'
 
 gem 'aws-sdk-codedeploy', require: false
 gem 'aws-sdk-cloudwatchlogs', require: false
@@ -46,6 +47,10 @@ gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 gem 'rgeo-proj4'
 gem 'chunky_png', git: 'https://github.com/SeneddCymru/chunky_png.git', branch: 'welsh-petitions'
+
+group :development do
+  gem 'foreman'
+end
 
 group :development, :test do
   gem 'simplecov'

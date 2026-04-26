@@ -2,13 +2,25 @@ x-application: &application
   image: welsh-petitions/ruby
   build: docker/ruby
   volumes:
-    - .:/app
-    - bundle:/bundle
-    - cache:/cache
+    - type: bind
+      source: .
+      target: /app
+    - type: volume
+      source: bundle
+      target: /bundle
+    - type: volume
+      source: cache
+      target: /app/tmp/cache
+    - type: volume
+      source: node_modules
+      target: /app/node_modules
   tmpfs:
     - /tmp/pids/
   depends_on:
+    - dnsmasq
     - postgres
+  dns:
+    - 172.66.99.53
 
 x-environment: &environment
   DATABASE_URL: "postgres://postgres:fUG1DnZpy1rNkxiO@postgres:5432"
@@ -17,6 +29,19 @@ x-environment: &environment
   PIDFILE: "/tmp/pids/server.pid"
 
 services:
+  dnsmasq:
+    image: e-petitions/dnsmasq
+    build: docker/dnsmasq
+    volumes:
+      - type: bind
+        source: docker/dnsmasq/dnsmasq.conf
+        target: /etc/dnsmasq.conf
+    cap_add:
+      - NET_ADMIN
+    networks:
+      default:
+        ipv4_address: 172.66.99.53
+
   postgres:
     image: welsh-petitions/postgis
     build: docker/postgis
@@ -32,37 +57,49 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     volumes:
-      - db:/var/lib/postgresql/data
+      - type: volume
+        source: db
+        target: /var/lib/postgresql/data
 
   web:
     <<: *application
     environment:
       <<: *environment
     command: [
-      "rails", "server",
-      "-b", "0.0.0.0",
-      "-p", "3000"
+      "foreman", "start",
+      "-f", "Procfile.dev"
     ]
     ports:
       - "127.0.0.1:3000:3000"
+    networks:
+      default:
+        ipv4_address: 172.66.99.31
     stdin_open: true
     tty: true
+    init: true
 
-  worker:
+  console:
     <<: *application
     environment:
       <<: *environment
-      MIN_PRIORITY: "10"
-    command: [ "rake", "jobs:work" ]
+    command: ["/bin/bash"]
+    profiles:
+      - console
+    stdin_open: true
+    tty: true
+    dns:
+      - 172.66.99.53
 
-  counter:
-    <<: *application
-    environment:
-      <<: *environment
-      MAX_PRIORITY: "5"
-    command: [ "rake", "jobs:work" ]
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.66.0.0/16
+          ip_range: 172.66.99.0/24
+          gateway: 172.66.99.254
 
 volumes:
   bundle:
   db:
   cache:
+  node_modules:

@@ -80,15 +80,15 @@ RSpec.describe LocalPetitionsController, type: :controller do
 
   describe "GET /petitions/local/:id" do
     let(:petitions) { double(:petitions) }
-    let(:member) { double(:member) }
-    let(:region) { double(:region) }
     let(:members) { double(:members) }
+    let(:region) { double(:region) }
+    let(:regional_members) { double(:regional_members) }
 
     before do
       expect(Constituency).to receive(:find).with("W09000043").and_return(constituency)
-      expect(constituency).to receive(:member).and_return(member)
+      expect(constituency).to receive(:members).and_return(members)
       expect(constituency).to receive(:region).and_return(region)
-      expect(region).to receive(:members).and_return(members)
+      expect(region).to receive(:members).and_return(regional_members)
       expect(Petition).to receive(:popular_in_constituency).with("W09000043", 50).and_return(petitions)
 
       get :show, params: { id: "W09000043" }
@@ -100,24 +100,24 @@ RSpec.describe LocalPetitionsController, type: :controller do
 
     it "assigns the instance variables" do
       expect(assigns(:constituency)).to eq(constituency)
-      expect(assigns(:member)).to eq(member)
-      expect(assigns(:region)).to eq(region)
       expect(assigns(:members)).to eq(members)
+      expect(assigns(:region)).to eq(region)
+      expect(assigns(:regional_members)).to eq(regional_members)
       expect(assigns(:petitions)).to eq(petitions)
     end
   end
 
   describe "GET /petitions/local/:id/all" do
     let(:petitions) { double(:petitions) }
-    let(:member) { double(:member) }
-    let(:region) { double(:region) }
     let(:members) { double(:members) }
+    let(:region) { double(:region) }
+    let(:regional_members) { double(:regional_members) }
 
     before do
       expect(Constituency).to receive(:find).with("W09000043").and_return(constituency)
-      expect(constituency).to receive(:member).and_return(member)
+      expect(constituency).to receive(:members).and_return(members)
       expect(constituency).to receive(:region).and_return(region)
-      expect(region).to receive(:members).and_return(members)
+      expect(region).to receive(:members).and_return(regional_members)
       expect(Petition).to receive(:all_popular_in_constituency).with("W09000043", 50).and_return(petitions)
 
       get :all, params: { id: "W09000043" }
@@ -129,9 +129,9 @@ RSpec.describe LocalPetitionsController, type: :controller do
 
     it "assigns the instance variables" do
       expect(assigns(:constituency)).to eq(constituency)
-      expect(assigns(:member)).to eq(member)
-      expect(assigns(:region)).to eq(region)
       expect(assigns(:members)).to eq(members)
+      expect(assigns(:region)).to eq(region)
+      expect(assigns(:regional_members)).to eq(regional_members)
       expect(assigns(:petitions)).to eq(petitions)
     end
   end

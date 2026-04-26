@@ -413,6 +413,7 @@ cy-GB:
             find_local_petitions: Dod o hyd i ddeisebau am faterion lleol
         regional_members:
           heading_html: "Eich Aelodau o’r Senedd ar gyfer rhanbarth <strong>%{region}</strong> yw:"
+        members_heading_html: "Eich Aelodau o’r Senedd ar gyfer etholaeth <strong>%{constituency_name}</strong> yw:"
         member_name_link_html: Eich Aelod o’r Senedd dros etholaeth <strong>%{constituency_name}</strong> yw %{member_name_link}
       action:
         label: Beth ydych chi am i ni ei wneud?
@@ -677,6 +678,7 @@ cy-GB:
           heading: Cysylltu â’ch Aelod o’r Senedd
         regional_members:
           region_html: "Eich Aelodau o’r Senedd ar gyfer rhanbarth <strong>%{region}</strong> yw:"
+        members_heading_html: "Eich Aelodau o’r Senedd ar gyfer etholaeth <strong>%{constituency_name}</strong> yw:"
         member_name_link_html: Eich Aelod o’r Senedd dros etholaeth <strong>%{constituency_name}</strong> yw %{member_name_link}
         added_to_petition: "Rydym ni wedi ychwanegu eich enw at y ddeiseb:"
         register_to_vote_html: |-

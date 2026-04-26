@@ -5,7 +5,7 @@ class LocalPetitionsController < LocalizedController
   before_action :sanitize_postcode, only: :index
   before_action :find_by_postcode, if: :postcode?, only: :index
   before_action :find_by_id, only: [:show, :all]
-  before_action :find_member, only: [:show, :all]
+  before_action :find_members, only: [:show, :all]
   before_action :find_region, only: [:show, :all]
   before_action :find_regional_members, only: [:show, :all]
   before_action :find_petitions, if: :constituency?, only: :show
@@ -54,8 +54,8 @@ class LocalPetitionsController < LocalizedController
     @constituency = Constituency.find(params[:id])
   end
 
-  def find_member
-    @member = @constituency.member
+  def find_members
+    @members = @constituency.members
   end
 
   def find_region
@@ -63,7 +63,7 @@ class LocalPetitionsController < LocalizedController
   end
 
   def find_regional_members
-    @members = @region.members
+    @regional_members = @region.members
   end
 
   def constituency?

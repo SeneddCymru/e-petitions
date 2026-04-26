@@ -92,6 +92,7 @@ module MapHelper
 
     attr_reader :petition, :png
     delegate :signatures_by_constituency, to: :petition
+    delegate :parliament, to: :petition
 
     def initialize(petition)
       @petition = petition
@@ -103,7 +104,7 @@ module MapHelper
     end
 
     def constituencies
-      Constituency.all.map do |c|
+      parliament.constituencies.all.map do |c|
         yield ConstituencyFeature.new(c.boundary.projection, journals[c.id], max_value)
       end
     end
