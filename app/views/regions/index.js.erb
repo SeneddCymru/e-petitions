@@ -1,4 +1,4 @@
-<%= cache [I18n.locale, :regions, :js], expires_in: 1.hour do -%>
+<%= cache [I18n.locale, :regions, @parliament, :js], expires_in: 1.hour do -%>
 (function () {
   this.PetitionMap = this.PetitionMap || {};
   PetitionMap.data = PetitionMap.data || {};
@@ -9,11 +9,6 @@
 
     this.features.forEach(function (feature) {
       var properties = feature.properties;
-      var pattern = new L.Pattern({
-        patternUnits: 'userSpaceOnUse',
-        patternContentUnits: null,
-        x: 0, y: 0, width: 32, height: 32, angle: 135
-      });
 
       properties.signatures = petition.signatures_by_region[properties.id] || 0;
       properties.totalSignatures = petition.signature_count;
@@ -22,18 +17,6 @@
 
       maxSignatures = Math.max(maxSignatures, properties.percentageOfSignatures);
       maxPopulation = Math.max(maxPopulation, properties.percentageOfPopulation);
-
-      properties.members.forEach(function (member, index) {
-        var shape = new L.PatternPath({
-          d: 'M 0 ' + (index * 8 + 4) + ' L 32 ' + (index * 8 + 4) + ' Z',
-          stroke: true, color: member.colour, weight: 8
-        });
-
-        pattern.addShape(shape);
-      });
-
-      pattern.addTo(PetitionMap.map);
-      properties.partyPattern = pattern;
     });
 
     this.features.forEach(function (feature) {

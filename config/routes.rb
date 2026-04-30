@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   public_scope do
     scope controller: 'constituencies' do
-      get '/constituencies', action: 'index', as: :constituencies
+      get '/constituencies/:parliament', action: 'index', as: :constituencies
+      get '/constituencies',             action: 'index', as: nil
     end
 
     scope controller: 'regions' do
-      get '/regions', action: 'index', as: :regions
+      get '/regions/:parliament', action: 'index', as: :regions
+      get '/regions',             action: 'index', as: nil
     end
 
     scope controller: 'countries' do

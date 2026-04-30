@@ -29,31 +29,31 @@ If you do this before running the app for the first time it will automatically p
 ### Create the database
 
 ```
-docker compose run --rm web rake db:prepare
+bin/run rake db:prepare
 ```
 
 ### Create an admin user
 
 ```
-docker compose run --rm web rake wpets:add_sysadmin_user
+bin/run rake wpets:add_sysadmin_user
 ```
 
 ### Load the postcode, constituency and region data
 
 ```
-docker compose run --rm web rake wpets:geography:import
+bin/run rake wpets:geography:import
 ```
 
 ### Fetch the member list
 
 ```
-docker compose run --rm web rails runner 'FetchMembersJob.perform_now'
+bin/run rails runner 'FetchMembersJob.perform_now'
 ```
 
 ### Enable signature counting
 
 ```
-docker compose run --rm web rails runner 'Site.enable_signature_counts!(interval: 10)'
+bin/run rails runner 'Site.enable_signature_counts!(interval: 10)'
 ```
 
 ### Start the services
@@ -69,25 +69,25 @@ Once the services have started you can access the [front end][2] and [back end][
 Before running any tests the database needs to be prepared:
 
 ```
-docker compose run --rm web rake db:test:prepare
+bin/run rake db:test:prepare
 ```
 
 You can run the full test suite using following command:
 
 ```
-docker compose run --rm web rake
+bin/run rake
 ```
 
 Individual specs can be run using the following command:
 
 ```
-docker compose run --rm web rspec spec/models/site_spec.rb
+bin/run rspec spec/models/site_spec.rb
 ```
 
 Similarly, individual cucumber features can be run using the following command:
 
 ```
-docker compose run --rm web cucumber features/suzie_views_a_petition.feature
+bin/run cucumber features/suzie_views_a_petition.feature
 ```
 
 # Deisebau Senedd
@@ -121,19 +121,19 @@ Os gwnewch hyn cyn rhedeg yr ap am y tro cyntaf, bydd yn codi'r rhain yn awtomat
 ### Creu'r cronfeydd data
 
 ```
-docker compose run --rm web rake db:setup
+bin/run rake db:setup
 ```
 
 ### Creu defnyddiwr gweinyddol
 
 ```
-docker compose run --rm web rake wpets:add_sysadmin_user
+bin/run rake wpets:add_sysadmin_user
 ```
 
 ### Galluogi cyfrif llofnod
 
 ```
-docker compose run --rm web rails runner 'Site.enable_signature_counts!(interval: 10)'
+bin/run rails runner 'Site.enable_signature_counts!(interval: 10)'
 ```
 
 ### Dechreuwch y gwasanaethau
@@ -148,21 +148,21 @@ Unwaith y bydd y gwasanaethau wedi cychwyn gallwch gael mynediad i'r [pen blaen]
 Gallwch chi redeg y gyfres brawf lawn gan ddefnyddio'r gorchymyn canlynol:
 
 ```
-docker compose run --rm web rake
+bin/run rake
 ```
 
 Gellir rhedeg specs unigol gan ddefnyddio'r gorchymyn canlynol:
 
 ```
-docker compose run --rm web rspec spec/models/site_spec.rb
+bin/run rspec spec/models/site_spec.rb
 ```
 
 Yn yr un modd, gellir rhedeg nodweddion ciwcymbr unigol gan ddefnyddio'r gorchymyn canlynol:
 
 ```
-docker compose run --rm web cucumber features/suzie_views_a_petition.feature
+bin/run cucumber features/suzie_views_a_petition.feature
 ```
 
 [1]: https://www.docker.com/products/docker-desktop
-[2]: http://localhost:3000/
-[3]: http://localhost:3000/admin
+[2]: http://welshpets.local:3000/
+[3]: http://moderatepets.local:3000/admin

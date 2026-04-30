@@ -13,6 +13,7 @@ json.features @regions do |region|
       json.party member.party
       json.url member.url
       json.colour member.colour
+      json.css_class member.css_class
     end
   end
 

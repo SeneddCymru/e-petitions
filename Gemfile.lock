@@ -239,6 +239,8 @@ GEM
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
+    foreman (0.90.0)
+      thor (~> 1.4)
     globalid (1.3.0)
       activesupport (>= 6.1)
     hashdiff (1.2.1)
@@ -465,6 +467,8 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.2.0)
+    strong_migrations (2.5.2)
+      activerecord (>= 7.1)
     sys-uname (1.5.0)
       ffi (~> 1.1)
       memoist3 (~> 1.0.0)
@@ -527,6 +531,7 @@ DEPENDENCIES
   faraday
   faraday_middleware
   ffi
+  foreman
   image_processing
   jbuilder
   jquery-rails
@@ -554,6 +559,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   slack-notifier
+  strong_migrations
   terser
   textacular
   webmock
@@ -643,6 +649,7 @@ CHECKSUMS
   faraday_middleware (1.2.1) sha256=d45b78c8ee864c4783fbc276f845243d4a7918a67301c052647bacabec0529e9
   ffi (1.17.4) sha256=bcd1642e06f0d16fc9e09ac6d49c3a7298b9789bcb58127302f934e437d60acf
   ffi-compiler (1.3.2) sha256=a94f3d81d12caf5c5d4ecf13980a70d0aeaa72268f3b9cc13358bcc6509184a0
+  foreman (0.90.0) sha256=ff675e2d47b607ac58714a6d4ac3e1ee8f06f41d8db084531c31961e2c3f117c
   globalid (1.3.0) sha256=05c639ad6eb4594522a0b07983022f04aa7254626ab69445a0e493aa3786ff11
   hashdiff (1.2.1) sha256=9c079dbc513dfc8833ab59c0c2d8f230fa28499cc5efb4b8dd276cf931457cd1
   htmlentities (4.4.2) sha256=bbafbdf69f2eca9262be4efef7e43e6a1de54c95eb600f26984f71d2fe96c5c3
@@ -737,6 +744,7 @@ CHECKSUMS
   sprockets (3.7.5) sha256=72c20f256548f8a37fe7db41d96be86c3262fddaf4ebe9d69ec8317394fed383
   sprockets-rails (3.5.2) sha256=a9e88e6ce9f8c912d349aa5401509165ec42326baf9e942a85de4b76dbc4119e
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
+  strong_migrations (2.5.2) sha256=06faff4782b24c8a0a4b1a5a1613d809339ff26c5ac135fde75a932a5c9b454e
   sys-uname (1.5.0) sha256=15286961bc583796424135e2e4949c54f2943997c7b1a23470b70e5d021c3053
   terser (1.2.7) sha256=1b12eb49769dadac44caac3485b38928ff4ab435f1bbbacfe8048cff84c6aa1b
   textacular (5.7.0) sha256=7c25df13c0152cf991cddfeb832c0dc16928bdaccb98f9a88fe29d7b032dd31f

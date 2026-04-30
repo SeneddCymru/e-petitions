@@ -213,7 +213,7 @@ module WelshPets
       constraints(Site.constraints_for_public_en) do
         defaults locale: "en-GB" do
           routes.each do |route|
-            match route.path("en-GB"), route.options("en")
+            match route.path("en-GB"), **route.options("en")
 
             if route.localized?
               match route.path("cy-GB"), to: redirect(route.redirect("en"), status: 308), via: route.via, as: nil
@@ -225,7 +225,7 @@ module WelshPets
       constraints(Site.constraints_for_public_cy) do
         defaults locale: "cy-GB" do
           routes.each do |route|
-            match route.path("cy-GB"), route.options("cy")
+            match route.path("cy-GB"), **route.options("cy")
 
             if route.localized?
               match route.path("en-GB"), to: redirect(route.redirect("cy"), status: 308), via: route.via, as: nil

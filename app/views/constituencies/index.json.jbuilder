@@ -3,14 +3,10 @@ json.array! @constituencies do |constituency|
   json.name constituency.name
   json.population constituency.population
 
-  if member = constituency.member
-    json.member do
-      json.name member.name
-      json.party member.party
-      json.url member.url
-    end
-  else
-    json.member nil
+  json.members constituency.members do |member|
+    json.name member.name
+    json.party member.party
+    json.url member.url
   end
 
   if region = constituency.region

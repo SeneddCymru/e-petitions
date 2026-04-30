@@ -408,6 +408,7 @@ en-GB:
             find_local_petitions: Find petitions about local issues
         regional_members:
           heading_html: "Your Members of the Senedd for the <strong>%{region}</strong> region are:"
+        members_heading_html: "Your Members of the Senedd for the <strong>%{constituency_name}</strong> constituency are:"
         member_name_link_html: Your Member of the Senedd for the <strong>%{constituency_name}</strong> constituency is %{member_name_link}
       action:
         label: What do you want us to do?
@@ -682,6 +683,7 @@ en-GB:
           heading: Contact your Members of the Senedd
         regional_members:
           region_html: "Your Members of the Senedd for the <strong>%{region}</strong> region are:"
+        members_heading_html: "Your Members of the Senedd for the <strong>%{constituency_name}</strong> constituency are:"
         member_name_link_html: Your Member of the Senedd for the <strong>%{constituency_name}</strong> constituency is %{member_name_link}
         added_to_petition: "We’ve added your signature to the petition:"
         register_to_vote_html: |-
