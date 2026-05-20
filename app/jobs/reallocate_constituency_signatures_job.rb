@@ -1,5 +1,5 @@
 class ReallocateConstituencySignaturesJob < ApplicationJob
-  def perform(petition, time = current_time)
+  def perform(petition)
     signatures(petition).find_each do |signature|
       next unless signature.united_kingdom?
       next unless signature.postcode?
@@ -13,10 +13,6 @@ class ReallocateConstituencySignaturesJob < ApplicationJob
   end
 
   private
-
-  def current_time
-    Time.current.change(usec: 0).iso8601
-  end
 
   def signatures(petition)
     petition.signatures.validated
