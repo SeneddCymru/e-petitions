@@ -22,7 +22,7 @@
   <% end %>
 <% end %>
 
-<% if @regional_members.any? %>
+<% if @region.present? && @regional_members.any? %>
   <p><%= t(:"ui.petitions.local.regional_members.heading_html", region: @region.name) %></p>
   <ul class="member-list">
     <% @regional_members.each do |member| %>

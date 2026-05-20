@@ -113,26 +113,48 @@ RSpec.describe LocalPetitionsController, type: :controller do
     let(:region) { double(:region) }
     let(:regional_members) { double(:regional_members) }
 
-    before do
-      expect(Constituency).to receive(:find).with("W09000043").and_return(constituency)
-      expect(constituency).to receive(:members).and_return(members)
-      expect(constituency).to receive(:region).and_return(region)
-      expect(region).to receive(:members).and_return(regional_members)
-      expect(Petition).to receive(:all_popular_in_constituency).with("W09000043", 50).and_return(petitions)
+    context "when the constituency has regional members" do
+      before do
+        expect(Constituency).to receive(:find).with("W09000043").and_return(constituency)
+        expect(constituency).to receive(:members).and_return(members)
+        expect(constituency).to receive(:region).and_return(region)
+        expect(region).to receive(:members).and_return(regional_members)
+        expect(Petition).to receive(:all_popular_in_constituency).with("W09000043", 50).and_return(petitions)
 
-      get :all, params: { id: "W09000043" }
+        get :all, params: { id: "W09000043" }
+      end
+
+      it "renders the all template" do
+        expect(response).to render_template("local_petitions/all")
+      end
+
+      it "assigns the instance variables" do
+        expect(assigns(:constituency)).to eq(constituency)
+        expect(assigns(:members)).to eq(members)
+        expect(assigns(:region)).to eq(region)
+        expect(assigns(:regional_members)).to eq(regional_members)
+        expect(assigns(:petitions)).to eq(petitions)
+      end
     end
 
-    it "renders the all template" do
-      expect(response).to render_template("local_petitions/all")
-    end
+    context "when the constituency doesn't have regional members" do
+      before do
+        expect(Constituency).to receive(:find).with("W09000053").and_return(constituency)
+        expect(constituency).to receive(:members).and_return(members)
+        expect(constituency).to receive(:region).and_return(nil)
+        expect(region).not_to receive(:members)
+        expect(Petition).to receive(:all_popular_in_constituency).with("W09000043", 50).and_return(petitions)
 
-    it "assigns the instance variables" do
-      expect(assigns(:constituency)).to eq(constituency)
-      expect(assigns(:members)).to eq(members)
-      expect(assigns(:region)).to eq(region)
-      expect(assigns(:regional_members)).to eq(regional_members)
-      expect(assigns(:petitions)).to eq(petitions)
+        get :all, params: { id: "W09000053" }
+      end
+
+      it "assigns the instance variables" do
+        expect(assigns(:constituency)).to eq(constituency)
+        expect(assigns(:members)).to eq(members)
+        expect(assigns(:region)).to be_nil
+        expect(assigns(:regional_members)).to be_nil
+        expect(assigns(:petitions)).to eq(petitions)
+      end
     end
   end
 end
