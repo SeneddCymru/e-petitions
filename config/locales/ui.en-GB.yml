@@ -998,11 +998,6 @@ en-GB:
                 <td>When you close your browser</td>
               </tr>
               <tr>
-                <td>_wpets_session</td>
-                <td>This keeps your information secure while you use the petitions service</td>
-                <td>When you close your browser</td>
-              </tr>
-              <tr>
                 <td>signed_tokens</td>
                 <td>Randomly generated references used to identify what links you’ve clicked to verify your email address.</td>
                 <td>When you close your browser</td>
