@@ -1,5 +1,7 @@
 class ReallocateConstituencySignaturesJob < ApplicationJob
   def perform(petition)
+    petition.constituency_petition_journals.delete_all
+
     petition.signatures.find_each do |signature|
       next unless signature.united_kingdom?
       next unless signature.postcode?
