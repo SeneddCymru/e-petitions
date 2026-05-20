@@ -7,7 +7,7 @@ class LocalPetitionsController < LocalizedController
   before_action :find_by_id, only: [:show, :all]
   before_action :find_members, only: [:show, :all]
   before_action :find_region, only: [:show, :all]
-  before_action :find_regional_members, only: [:show, :all]
+  before_action :find_regional_members, if: :region?, only: [:show, :all]
   before_action :find_petitions, if: :constituency?, only: :show
   before_action :find_all_petitions, if: :constituency?, only: :all
   before_action :redirect_to_constituency, if: :constituency?, only: :index
@@ -68,6 +68,10 @@ class LocalPetitionsController < LocalizedController
 
   def constituency?
     @constituency.present?
+  end
+
+  def region?
+    @region.present?
   end
 
   def find_petitions
