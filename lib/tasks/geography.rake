@@ -184,6 +184,15 @@ namespace :wpets do
         SET constituency_id = EXCLUDED.constituency_id
       SQL
 
+      conn.exec <<~SQL
+        DELETE FROM postcodes
+        WHERE constituency_id NOT IN (
+          SELECT id
+          FROM constituencies
+          WHERE end_date IS NULL
+        )
+      SQL
+
       conn.exec "DROP TABLE postcodes_import"
     end
   end
