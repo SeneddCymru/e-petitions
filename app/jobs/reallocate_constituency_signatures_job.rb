@@ -1,6 +1,6 @@
 class ReallocateConstituencySignaturesJob < ApplicationJob
   def perform(petition)
-    signatures(petition).find_each do |signature|
+    petition.signatures.find_each do |signature|
       next unless signature.united_kingdom?
       next unless signature.postcode?
 
@@ -10,11 +10,5 @@ class ReallocateConstituencySignaturesJob < ApplicationJob
     end
 
     ConstituencyPetitionJournal.reset_signature_counts_for(petition)
-  end
-
-  private
-
-  def signatures(petition)
-    petition.signatures.validated
   end
 end
