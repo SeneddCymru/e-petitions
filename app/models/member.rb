@@ -3,11 +3,27 @@ class Member < ActiveRecord::Base
   URL_CY = "https://senedd.cymru/pobl/%{slug}/"
 
   PARTY_COLOURS = {
-    'Welsh Liberal Democrats' => '#FDBB30',
-    'Welsh Labour and Co-operative Party' => '#CC0000',
-    'Welsh Labour' => '#DC241F',
-    'Welsh Conservative Party' => '#0087DC',
-    'Plaid Cymru' => '#008142'
+    'Plaid Cymru' => '#008672',
+    'Reform UK' => '#12B6CF',
+    'Reform UK Wales' => '#12B6CF',
+    'Welsh Green Party' => '#02A95B',
+    'Welsh Liberal Democrats' => '#FF6400',
+    'Welsh Labour and Co‑operative Party' => '#E4003B',
+    'Welsh Labour and Co-operative Party' => '#E4003B',
+    'Welsh Labour' => '#E4003B',
+    'Welsh Conservative Party' => '#0087DC'
+  }
+
+  CSS_CLASSES = {
+    'Plaid Cymru' => 'plaid-cymru',
+    'Reform UK' => 'reform-uk',
+    'Reform UK Wales' => 'reform-uk',
+    'Welsh Green Party' => 'green',
+    'Welsh Liberal Democrats' => 'liberal-democrats',
+    'Welsh Labour and Co‑operative Party' => 'labour-and-co-op',
+    'Welsh Labour and Co-operative Party' => 'labour-and-co-op',
+    'Welsh Labour' => 'labour',
+    'Welsh Conservative Party' => 'conservative'
   }
 
   include Translatable
@@ -36,6 +52,10 @@ class Member < ActiveRecord::Base
 
   def colour
     PARTY_COLOURS.fetch(party_en, '#DCDCDC')
+  end
+
+  def css_class
+    CSS_CLASSES.fetch(party_en, '')
   end
 
   private

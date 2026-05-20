@@ -86,17 +86,12 @@ L.Control.FeatureInfo = L.Control.extend({
     var heading = L.DomUtil.create('h2', '', this._wrapper);
     heading.innerHTML = properties.name;
 
-    if (properties.member) {
-      var memberName = L.DomUtil.create('p', '', this._wrapper);
-      memberName.innerHTML = properties.member.name;
-
-      var partyName = L.DomUtil.create('small', '', memberName);
-      partyName.innerHTML = properties.member.party;
-    } else if (properties.members) {
+    if (properties.members) {
       var wrapper = this._wrapper;
+      var memberWrapper = L.DomUtil.create('div', 'members', wrapper);
 
       properties.members.forEach(function (member) {
-        var memberName = L.DomUtil.create('p', '', wrapper);
+        var memberName = L.DomUtil.create('p', 'member-info ' + member.css_class, memberWrapper);
         memberName.innerHTML = member.name;
 
         var partyName = L.DomUtil.create('small', '', memberName);
@@ -104,7 +99,7 @@ L.Control.FeatureInfo = L.Control.extend({
       });
     }
 
-    var statsParagraph = L.DomUtil.create('p', '', this._wrapper);
+    var statsParagraph = L.DomUtil.create('p', 'stats-info', this._wrapper);
     this._addSignatureCount(feature, statsParagraph);
 
     if (PetitionMap.getCurrentCount() == 'constituents') {

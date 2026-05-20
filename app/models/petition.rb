@@ -507,6 +507,10 @@ class Petition < ActiveRecord::Base
     end
   end
 
+  def parliament
+    Parliament.at(closed_at) if closed_at?
+  end
+
   def statistics
     super || create_statistics!
   end
@@ -657,8 +661,10 @@ class Petition < ActiveRecord::Base
     signatures_by_constituency
     .sort_by(&:region_id)
     .group_by(&:region)
-    .map do |region, journals|
-      RegionPetitionJournal.new(region, journals.sum(&:signature_count))
+    .each_with_object([]) do |(region, journals), region_journals|
+      if region.present?
+        region_journals << RegionPetitionJournal.new(region, journals.sum(&:signature_count))
+      end
     end
   end
 
