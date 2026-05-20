@@ -8,6 +8,8 @@ class ReallocateConstituencySignaturesJob < ApplicationJob
 
       if new_constituency = Constituency.find_by_postcode(signature.postcode)
         signature.update_column(:constituency_id, new_constituency.id)
+      else
+        signature.update_column(:constituency_id, nil)
       end
     end
 
