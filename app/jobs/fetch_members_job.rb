@@ -2,7 +2,7 @@ require 'faraday'
 
 class FetchMembersJob < ApplicationJob
   HOST = "https://business.senedd.wales"
-  TIMEOUT = 5
+  TIMEOUT = 10
 
   ENDPOINTS = {
     "en-GB": "/mgwebservice.asmx/GetCouncillorsByWard",
