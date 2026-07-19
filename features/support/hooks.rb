@@ -64,6 +64,14 @@ After do
   Site.reload
 end
 
+Before('@locking') do
+  Site.enable_petition_moderation_locking!
+end
+
+Before('not @locking') do
+  Site.disable_petition_moderation_locking!
+end
+
 Before('@welsh') do
   I18n.locale = :"cy-GB"
 end
