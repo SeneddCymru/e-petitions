@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Load environment variables
 gem 'dotenv-rails', require: 'dotenv/load'
 
-gem 'rails', '8.1.3'
+gem 'rails', '8.1.3.1'
 
 gem 'rake'
 gem 'pg'
