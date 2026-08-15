@@ -230,3 +230,18 @@ blockquote {
     }
   }
 }
+
+.text-page {
+  h3 {
+    @include font-size(1rem, 1.125rem);
+    line-height: 1.375;
+    margin: 24px 0 6px 0;
+  }
+
+  h4 {
+    @include font-size(0.875rem, 1rem);
+    line-height: 1.375;
+    margin: 24px 0 6px 0;
+  }
+}
+

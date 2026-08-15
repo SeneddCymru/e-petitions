@@ -764,28 +764,27 @@ cy-GB:
         <h1>Preifatrwydd a chwcis</h1>
 
         <section id="privacy" aria-labelledby="privacy-heading">
+          <h2 id="privacy-heading">Hysbysiad preifatrwydd: sut y byddwn eich gwybodaeth yn cael ei defnyddio</h2>
 
-          <h2 id="privacy-heading">Hysbysiad preifatrwydd: sut rydym ni’n defnyddio’ch data</h2>
+          <p>Diweddarwyd ddiwethaf: Mehefin 2026</p>
 
-          <p>Diweddarwyd ddiwethaf: 13 Tachwedd 2020</p>
+          <p>Mae’r wefan Deisebau yn eich galluogi i ddechrau a llofnodi deisebau i godi materion gyda Senedd Cymru (y cyfeirir ati fel y Senedd o hyn ymlaen).</p>
 
-          <p>Mae’r wefan ddeisebau’n eich galluogi i ddechrau a llofnodi deisebau i godi materion gyda Senedd Cymru/Welsh Parliament (y cyfeirir ati fel y Senedd o hyn ymlaen).</p>
+          <p>Darperir y gwasanaeth deisebau gan Gomisiwn y Senedd. Mae angen i ni gasglu, prosesu a storio rhai data personol i’ch galluogi i wneud hyn.</p>
 
-          <p>Darperir y gwasanaeth deisebau gan y Senedd. Mae angen i ni gasglu, prosesu a storio rhai data personol i’ch galluogi i wneud hyn.</p>
+          <h3>Rheolwr data</h3>
 
-          <h3>Rheolwr Data</h3>
+          <p>Comisiwn y Senedd yw rheolwr data’r wybodaeth rydych chi’n ei rhoi, a bydd yn sicrhau y caiff ei diogelu a’i defnyddio yn unol â chyfraith diogelu data y DU.</p>
 
-          <p>Comisiwn y Senedd yw rheolwr data’r wybodaeth a rowch, a bydd yn sicrhau y caiff ei diogelu a’i defnyddio’n unol â deddfwriaeth diogelu data.</p>
+          <h3>Ein manylion cyswllt</h3>
 
-          <h3>Ein Manylion Cyswllt</h3>
+          <p>Dylid anfon ymholiadau am y ffordd y caiff eich gwybodaeth ei defnyddio gennym at y Swyddog Diogelu Data:</p>
 
-          <p>Dylai ymholiadau ynghylch ein defnydd o’ch gwybodaeth gael eu hanfon at y Swyddog Diogelu Data drwy anfon e-bost neu ffonio:</p>
+          <p><a href="mailto:Digoelu.Data@senedd.cymru">Digoelu.Data@senedd.cymru</a> 0300 2006565</p>
 
-          <p>Diogelu.Data@senedd.cymru 0300 2006565</p>
+          <h3>Pa wybodaeth rydym yn ei phrosesu?</h3>
 
-          <h3>Pa ddata y byddwn ni’n eu casglu gennych chi</h3>
-
-          <p>Bydd y data personol y byddwn ni’n eu casglu gan bobl sy’n llofnodi deisebau’n cynnwys y canlynol:</p>
+          <p>Bydd y data personol y byddwn ni’n eu casglu gan bobl sy’n llofnodi deisebau yn cynnwys y canlynol:</p>
 
           <ul class="list-bullet">
             <li>eich enw</li>
@@ -795,128 +794,153 @@ cy-GB:
             <li>y cyfeiriad IP rydych chi’n ei ddefnyddio wrth ddechrau neu lofnodi deiseb</li>
           </ul>
 
-          <p>Ar ben hynny, ar gyfer pobl sy’n dechrau deiseb, byddwn ni hefyd yn casglu’r canlynol:</p>
+          <p>Yn ogystal, ar gyfer pobl sy’n cychwyn deiseb byddwn hefyd yn casglu’r canlynol:</p>
 
           <ul class="list-bullet">
-            <li>eich cyfeiriad post</li>
-            <li>eich rhif ffôn cyswllt</li>
-            <li>unrhyw wybodaeth bersonol neu fanylion a rowch yn y ddeiseb ei hun.</li>
+            <li>eich cyfeiriad cartref</li>
+            <li>eich rhif ffôn ar gyfer cysylltu</li>
+            <li>Unrhyw wybodaeth neu fanylion personol rydych yn ei darparu yn y ddeiseb ei hun.</li>
           </ul>
 
-          <p>Weithiau, rydym ni’n cael gwybodaeth sy’n ymwneud â phobl sydd wedi llofnodi deisebau ar bapur. Mae deisebau papur yn cael eu storio’n ddiogel a’u cadw am yr un cyfnod â data personol a geir drwy ein system ddeisebau electronig ein hunain. Cân nhw eu dinistrio mewn modd diogel ar ddiwedd y cyfnod cadw.</p>
+          <p>Weithiau, rydym ni’n cael gwybodaeth sy’n ymwneud â phobl sydd wedi llofnodi deisebau ar bapur. Mae deisebau papur yn cael eu storio a’u cadw’n ddiogel am yr un cyfnod â data personol a dderbynnir trwy ein system deisebau electronig ein hunain. Byddant yn cael eu dinistrio mewn modd diogel ar ddiwedd y cyfnod cadw.</p>
 
-          <h3>Pam y mae angen eich data arnom ni</h3>
+          <h3>Pam rydym yn ei phrosesu?</h3>
 
           <p>Rydym ni’n defnyddio’r wybodaeth hon er mwyn:</p>
 
           <ul class="list-bullet">
-            <li>hwyluso’r broses ddeisebau</li>
+            <li>hwyluso’r broses ddeisebu</li>
             <li>sicrhau mai dim ond unwaith y bydd pobl yn llofnodi deiseb</li>
             <li>gwirio eich bod chi’n gymwys i ddechrau deiseb</li>
             <li>cysylltu â chi ynghylch deisebau rydych chi’n eu dechrau</li>
-            <li>os ydych chi’n dewis cofrestru i gael e-byst gyda’r wybodaeth ddiweddaraf am beth sy’n digwydd yn y Senedd ynghylch deisebau rydych chi wedi’u llofnodi</li>
-            <li>o dro i dro, cawn ni gysylltu â phobl sy’n dechrau neu’n cyflwyno deisebau i geisio adborth ar y broses ddeisebau a sut y gallai gael ei gwella.</li>
+            <li>os ydych chi’n dewis cofrestru i gael y wybodaeth ddiweddaraf am beth sy’n digwydd yn y Senedd ynghylch deisebau rydych chi wedi’u llofnodi</li>
+            <li>efallai y byddwn yn cysylltu o bryd i’w gilydd â phobl sy’n cychwyn neu’n cyflwyno deisebau i ofyn am adborth ar y broses ddeisebu a sut y gellid ei gwella.</li>
           </ul>
 
           <h3>Beth rydym ni’n ei wneud gyda’ch data</h3>
 
-          <p>Rydym ni’n defnyddio’ch gwybodaeth bersonol i brosesu’r ddeiseb rydych chi wedi’i dechrau neu ei llofnodi.</p>
+          <p>Rydym yn defnyddio eich gwybodaeth bersonol i brosesu’r ddeiseb rydych wedi’i dechrau neu ei llofnodi.</p>
 
-          <p>Os ydych chi’n dechrau deiseb ac rydym ni’n ei derbyn, caiff eich enw ei gyhoeddi wrth ochr unrhyw destun rydych chi’n ei gynnwys yn y ddeiseb. Ni fyddwn ni’n cyhoeddi’ch manylion cyswllt. Os ydych chi’n dechrau deiseb, bydd eich enw’n ymddangos yn barhaus gyda’r ddeiseb ar dudalennau gwe’r Pwyllgor Deisebau ac mewn trawsgrifiadau a chofnodion cyfarfodydd, fel rhan o broses ddeisebau’r Senedd.</p>
-
-          <p>Os ydych chi wedi llofnodi deiseb, ni fyddwn ni’n cyhoeddi gwybodaeth bersonol amdanoch chi.</p>
-
-          <p>Byddwn ni’n defnyddio’ch cod post i gyfrifo faint o bobl yng Nghymru ac yn holl etholaethau a rhanbarthau’r Senedd sydd wedi llofnodi deiseb.</p>
-
-          <p>Byddwn ni’n cadw’ch data personol o’r dyddiad rydych chi’n dechrau neu’n llofnodi deiseb tan 12 mis ar ôl i’r Pwyllgor Deisebau, hynny yw tan 12 mis ar ôl i’r Pwyllgor ystyried bod y ddeiseb wedi’i chwblhau, heblaw am ddata personol sydd wedi’u cyhoeddi.</p>
-
-          <p>Bydd unrhyw wybodaeth sydd wedi’i chyhoeddi’n aros ar-lein yn barhaus yng nghofnodion proses ddeisebau’r Senedd, gan gynnwys mewn unrhyw ddeunydd y mae’r Pwyllgor Deisebau’n ei gyhoeddi.</p>
-
-          <p>Mae cyfeiriadau IP yn cael eu defnyddio i ddiogelu’r wefan ddeisebau ac atal gweithgarwch twyllodrus.</p>
+          <p>Defnyddir cyfeiriadau IP i amddiffyn y wefan ddeisebau ac atal gweithgarwch twyllodrus.</p>
 
           <p>Byddwn ni’n rhannu’ch data os bydd yn ofynnol i ni wneud hynny yn ôl y gyfraith – er enghraifft, drwy orchymyn llys, neu i atal twyll neu droseddau eraill.</p>
 
-          <h3>Beth y byddwn ni’n anfon e-byst atoch chi amdano fe</h3>
+          <p>Os ydych chi wedi llofnodi deiseb, ni fyddwn ni’n cyhoeddi gwybodaeth bersonol amdanoch chi.</p>
+
+          <p>Byddwn ni’n defnyddio’ch cod post i gyfrifo faint o bobl yng Nghymru ac o bob un o etholaethau’r Senedd sydd wedi llofnodi deiseb.</p>
+
+          <p>Byddwn yn cadw eich data personol o’r dyddiad y byddwch yn dechrau neu’n llofnodi deiseb tan 12 mis ar ôl iddi beidio â chael ei hystyried gan y Pwyllgor Deisebau mwyach, h.y. tan 12 mis ar ôl i’r Pwyllgor ystyried bod y ddeiseb wedi’i chwblhau, ar wahân i unrhyw ddata personol sydd wedi’i gyhoeddi.</p>
+
+          <h3>Beth fyddwn ni’n ei anfon atoch dros e-bost</h3>
 
           <p>Os bydd deiseb rydych chi wedi’i dechrau’n cael ei chyfeirio i’r Pwyllgor Deisebau, byddwn ni’n defnyddio’ch manylion cyswllt i roi’r wybodaeth ddiweddaraf i chi am hynt y ddeiseb ac i gynnig cyfle i chi roi rhagor o wybodaeth ac ymgysylltu â’r Pwyllgor.</p>
 
-          <p>Byddwch yn cael e-byst cadarnhad awtomatig pan fyddwch yn creu neu’n llofnodi deiseb.</p>
+          <p>Byddwch yn derbyn negeseuon e-bost cadarnhau awtomataidd pan fyddwch chi’n dechrau neu’n llofnodi deiseb. Os ydych wedi llofnodi deiseb, gallwch ddewis cael y wybodaeth ddiweddaraf am hynt y ddeiseb.</p>
 
-          <p>Os ydych chi wedi llofnodi deiseb, gallwch chi ddewis cael y wybodaeth ddiweddaraf am hynt y ddeiseb. Gallai hyn gynnwys cysylltu â chi i roi gwybod i chi beth sy’n digwydd yn y Senedd mewn perthynas â’r Senedd, er enghraifft dadleuon y gallwch chi eu gwylio neu eu darllen, cyfleoedd i ymateb i ymgynghoriad, neu ffyrdd o roi gwybod i bwyllgorau ac Aelodau o’r Senedd pam y mae’r ddeiseb yn bwysig i chi.</p>
+          <p>Gallai hyn gynnwys cysylltu â chi i roi gwybod i chi beth sy’n digwydd yn y Senedd mewn perthynas â’ch deiseb, er enghraifft:</p>
 
-          <p>Efallai y byddwn ni’n defnyddio’ch manylion cyswllt yn achlysurol i geisio’ch barn am broses ddeisebau’r Senedd.</p>
+          <ul class="list-bullet">
+            <li>dadleuon y gallwch eu gwylio neu eu darllen,</li>
+            <li>cyfleoedd i ymateb i ymgynghoriad,</li>
+            <li>neu ffyrdd o roi gwybod i bwyllgorau ac Aelodau o’r Senedd pam bod y ddeiseb yn bwysig i chi.</li>
+          </ul>
 
-          <p>Gallwch chi stopio’r e-byst hyn ar unrhyw adeg drwy glicio ar y linc “dad-danysgrifio” yn yr e-bost.</p>
+          <p>Efallai y byddwn ni’n defnyddio eich manylion cyswllt yn achlysurol i geisio eich barn am broses ddeisebau’r Senedd.</p>
 
-          <h3>Pwy sydd â mynediad at y data a lle maen nhw’n cael eu prosesu a’u storio</h3>
+          <p>Gallwch chi stopio’r negeseuon hyn unrhyw bryd drwy glicio ar y linc “dad-danysgrifio” yn yr e-bost.</p>
 
-          <p>Bydd staff Comisiwn y Senedd sy’n gweinyddu’r broses ddeisebau â mynediad at eich gwybodaeth bersonol.</p>
+          <h3>Pwy fydd yn gallu cael mynediad at y wybodaeth?</h3>
 
-          <p>Bydd Unboxed Consulting Limited, sy’n darparu cymorth technegol ar gyfer y system ddeisebau hefyd â mynediad at y system dim ond at ddibenion cywiro diffygion a chynnal a chadw.</p>
+          <p>Dim ond staff cyfyngedig Comisiwn y Senedd sy’n gweinyddu’r broses ddeisebu fydd â mynediad at eich gwybodaeth bersonol.</p>
 
-          <p>Bydd gwybodaeth electronig yn cael ei storio ar systemau TGCh y Senedd, sy’n cynnwys gwasanaethau cwmwl trydydd parti y mae Microsoft yn eu darparu. Mae unrhyw drosglwyddiad data gan Microsoft y tu allan i’r AEE wedi’i gynnwys gan gymalau dan gontract y mae Microsoft yn sicrhau bod data personol yn cael eu trin yn unol â deddfwriaeth Ewropeaidd.</p>
+          <h3>A fydd y wybodaeth yn cael ei rhannu â thrydydd partïon, neu’n cael ei chyhoeddi?</h3>
 
-          <p>Mae’r system ddeisebau’n defnyddio dull storio cwmwl Gwasanaethau Gwe Amazon (AWS) i storio’ch data. Mae AWS yn storio data yn yr Ardal Economaidd Ewropeaidd (AEE).</p>
+          <p>Os ydych chi’n dechrau deiseb ac rydym ni’n ei derbyn, caiff eich enw ei gyhoeddi ochr yn ochr ag unrhyw destun rydych yn ei gynnwys gyda’r ddeiseb. Ni fyddwn yn cyhoeddi eich manylion cyswllt. Os byddwch chi’n dechrau deiseb, bydd eich enw’n parhau i ymddangos yn barhaol ochr yn ochr â’r ddeiseb ar dudalennau gwe’r Pwyllgor Deisebau ac mewn trawsgrifiadau a chofnodion cyfarfodydd, fel rhan o gofnod swyddogol proses ddeisebau’r Senedd. Bydd unrhyw wybodaeth sydd wedi’i chyhoeddi yn aros ar-lein yn barhaol yng nghofnodion proses ddeisebau’r Senedd, gan gynnwys mewn unrhyw ddeunydd a gyhoeddir gan y Pwyllgor Deisebau.</p>
 
-          <p>Mae’r system ddeisebau yn defnyddio gwasanaeth Notify GOV.UK i anfon e-byst ynghylch y broses ddeisebau, gan gynnwys diweddariadau. Caiff e-byst sy’n cael eu storio am 7 niwrnod. Mae hysbysiad preifatrwydd gwasanaeth Notify GOV.UK ar gael yma: <a href="https://www.notifications.service.gov.uk/privacy">www.notifications.service.gov.uk/privacy</a>.</p>
+          <h4>Proseswyr trydydd parti:</h4>
 
-          <h3>Sut rydym ni’n diogelu’ch data ac yn eu cadw nhw’n ddiogel</h3>
+          <p>Bydd gan Unboxed Consulting Limited sy’n darparu cymorth technegol ar gyfer y system ddeisebau fynediad i’r system at ddibenion datrys problemau a chynnal a chadw yn unig.</p>
 
-          <p>Rydym ni wedi ymrwymo i wneud popeth yn ein gallu i gadw’ch data’n ddiogel. Gwnaethom ni sefydlu systemau a phrosesau i atal mynediad heb awdurdod neu ddatgelu’r data rydym ni’n eu casglu amdanoch chi – er enghraifft, rydym ni’n diogelu’ch data gan ddefnyddio lefelau amrywiol o amgryptio. Mae’n ofynnol i bob trydydd parti sy’n prosesu data personol i ni gadw’r data hynny’n ddiogel.</p>
+          <p>Mae’r system ddeisebau yn defnyddio storfa cwmwl Amazon Web Services (AWS) i storio eich data. Mae AWS yn storio data o fewn yr Ardal Economaidd Ewropeaidd (AEE).</p>
 
-          <h3>Ein seiliau cyfreithiol dros gasglu, dal a defnyddio’ch gwybodaeth bersonol</h3>
+          <p>Bydd y wybodaeth yn cael ei storio’n ddiogel ar ein systemau TGCh, sy’n cynnwys gwasanaethau cwmwl trydydd parti a ddarperir gan Microsoft. Efallai y byddwn hefyd yn defnyddio technoleg deallusrwydd artiffisial Microsoft i brosesu eich gwybodaeth. Mae unrhyw drosglwyddo data gan Microsoft y tu allan i’r AEE yn dod o dan gymalau cytundebol lle mae Microsoft yn sicrhau bod data personol yn cael eu trin yn unol â deddfwriaeth ddomestig. I gael rhagor o wybodaeth am sut y bydd Microsoft yn defnyddio eich gwybodaeth, gellir darllen datganiad preifatrwydd y cwmni <a href="https://www.microsoft.com/en-gb/trust-center/privacy">yma</a>.</p>
 
-          <p>Mae cyfraith diogelu data’n nodi tair sail gyfreithiol amrywiol (neu ‘amodau’) sy’n caniatáu i ni gasglu, dal a defnyddio’ch gwybodaeth bersonol.</p>
+          <p>Mae’r system ddeisebau yn defnyddio’r gwasanaeth GOV.UK Notify i anfon negeseuon e-bost sy’n ymwneud â’r broses ddeisebu gan gynnwys y wybodaeth ddiweddaraf. Mae negeseuon e-bost a anfonir yn cael eu storio am 7 diwrnod.  Mae’r hysbysiad preifatrwydd ar gyfer gwasanaeth GOV.UK Notify ar gael yma: <a href="https://www.notifications.service.gov.uk/privacy">www.notifications.service.gov.uk/privacy</a>.</p>
 
-          <p>Rydym ni o’r farn bod casglu a defnyddio’ch gwybodaeth yn angenrheidiol i’n helpu i hwyluso’r broses ddeisebau a rhoi cyfle i’r cyhoedd godi materion gyda’r Senedd a dangos cefnogaeth drostyn nhw.</p>
+          <h3>Storio, cadw a dileu</h3>
 
-          <p>Fel y cyfryw, mae data personol yn cael eu prosesu ar y sail eu bod nhw’n angenrheidiol er mwyn ymgymryd â thasg er budd y cyhoedd yn unol ag Erthygl 6(1)(e) o’r Rheoliad Cyffredinol ar Ddiogelu Data (GDPR), wedi’i ddarllen ynghyd ag adran 8(d) o Ddeddf Diogelu Data 2018.</p>
+          <p>Bydd y wybodaeth yn cael ei storio’n ddiogel ar ein systemau TGCh, sy’n cynnwys gwasanaethau cwmwl trydydd parti a ddarperir gan Microsoft.</p>
 
-          <p>Pan fo’n ofynnol i ni brosesu data personol er mwyn cydymffurfio â rhwymedigaeth gyfreithiol, megis cais dan ddeddfwriaeth mynediad at wybodaeth neu orchymyn llys, byddwn ni’n gwneud hynny ar y sail bod prosesu data’n angenrheidiol er mwyn cydymffurfio â rhwymedigaeth gyfreithiol yn unol ag Erthygl 6(1)(c) o’r GDPR.</p>
+          <p>Byddwn yn cadw eich data personol o’r dyddiad y byddwch yn dechrau neu’n llofnodi deiseb tan 12 mis ar ôl iddi beidio â chael ei hystyried gan y Pwyllgor Deisebau mwyach, h.y. tan 12 mis ar ôl i’r Pwyllgor ystyried bod y ddeiseb wedi’i chwblhau, ar wahân i unrhyw ddata personol sydd wedi’i gyhoeddi.</p>
 
-          <p>Cawn ni brosesu data personol sy’n ymwneud ag euogfarnau troseddol a throseddau. Er mwyn cydymffurfio ag Erthygl 10 o’r GDPR, bydd y data hyn yn cael eu prosesu yn unol â’n sail gyfreithiol o dan Erthygl 6, fel yr amlinellir uchod, ac adran 10 o Ddeddf Diogelu Data 2018, a pharagraff 6 o Atodlen 1 iddi.</p>
+          <p>Ar ôl y cyfnod hwn o 12 mis, bydd eich data personol yn cael ei ddileu’n ddiogel.</p>
 
-          <p>Yn olaf, cawn ni brosesu categorïau arbennig o ddata personol y rhai sy’n dechrau neu’n llofnodi deiseb, a/neu’n cyfrannu i’w hynt drwy broses ddeisebau’r Senedd. Diffinnir data personol categori arbennig yn Erthygl 9(1) o’r GDPR fel prosesu data personol sy’n datgelu hil neu darddiad ethnig, barn wleidyddol, credoau crefyddol neu athronyddol, neu aelodaeth undeb llafur, a phrosesu data genetig, data biometreg at ddibenion adnabod person naturiol yn unigryw, data sy’n ymwneud ag iechyd neu fywyd rhywiol neu gyfeiriadedd rhywiol person naturiol.</p>
+          <h3>Y sail gyfreithiol ar gyfer prosesu Data Personol</h3>
 
-          <p>Fel arfer, bydd data personol categori arbennig yn cael eu prosesu ar y sail eu bod nhw’n angenrheidiol oherwydd budd sylweddol y cyhoedd, yn unol ag Erthygl 9(2)(g) o’r GDPR wedi’i ddarllen ynghyd ag Erthygl 10 o Ddeddf Diogelu Data 2018 a pharagraff 6 o Atodlen 1 iddi. Fodd bynnag, pan fyddwch chi’n trefnu bod eich data personol categori arbennig ar gael i’r cyhoedd, maen nhw’n gallu cael eu prosesu ar y sail ei bod hi’n amlwg eich bod chi wedi trefnu iddyn nhw fod ar gael i’r cyhoedd, yn unol ag Erthygl 9(2)(e) o’r GDPR.</p>
+          <p>Mae cyfraith diogelu data’r DU yn nodi amryw o seiliau cyfreithiol sy’n caniatáu i ni gasglu, cadw a defnyddio eich gwybodaeth bersonol. At ddibenion prosesu’r data personol a ddarperir gennych, rydym yn dibynnu ar y seiliau cyfreithiol a ganlyn:</p>
 
-          <h3>Ceisiadau am wybodaeth sy’n cael eu gwneud i’r Comisiwn</h3>
+          <h4>Erthygl 6(1)(e) o Reoliad Diogelu Data Cyffredinol y DU (‘GDPR y DU’): ‘Tasg gyhoeddus’</h4>
 
-          <p>Mae’r Senedd yn ddarostyngedig i ddeddfwriaeth mynediad at wybodaeth. Os bydd cais am wybodaeth yn cael ei wneud dan ddeddfwriaeth mynediad at wybodaeth, gall fod angen datgelu rhywfaint neu’r cyfan o’r wybodaeth a rowch. Fodd bynnag, dim ond os bydd hi’n ofynnol yn ôl y gyfraith y byddwn ni’n gwneud hyn.</p>
+          <p>Rydym o’r farn ei bod hi’n angenrheidiol i ni gasglu a defnyddio eich gwybodaeth er mwyn ein helpu i hwyluso’r broses ddeisebu a rhoi cyfle i’r cyhoedd godi materion gyda’r Senedd a dangos cefnogaeth iddynt. Dylid darllen ein dibyniaeth ar y sail gyfreithiol hon ynghyd ag adran 8(d) o Ddeddf Diogelu Data 2018 (‘DPA 2018’).</p>
+
+          <h4>Erthygl 6(1)(c) o GDPR y DU: ‘Rhwymedigaeth gyfreithiol’</h4>
+
+          <p>Pan fo’n ofynnol i ni brosesu data personol er mwyn cydymffurfio â rhwymedigaeth gyfreithiol, megis cais o dan ddeddfwriaeth mynediad at wybodaeth neu orchymyn llys, byddwn yn gwneud hynny ar y sail bod prosesu yn angenrheidiol er mwyn cydymffurfio â rhwymedigaeth gyfreithiol.</p>
+
+          <p>Mae’n bosibl y byddwn yn prosesu data personol sy’n ymwneud ag euogfarnau troseddol a throseddau. Er mwyn cydymffurfio ag Erthygl 10 o GDPR y DU, bydd y data hwn yn cael ei brosesu yn unol â’n sail gyfreithiol Erthygl 6, fel yr amlinellwyd uchod, ac adran 10 o, a pharagraff 6 o Atodlen 1 i, DPA 2018.</p>
+
+          <h3>Y sail gyfreithiol ar gyfer prosesu Data Categori Arbennig</h3>
+
+          <p>Mae Erthygl 9(1) o’r Rheoliad Cyffredinol ar Ddiogelu Data (GDPR) yn diffinio data personol categori arbennig fel data personol sy’n datgelu tarddiad o ran hil neu ethnigrwydd, barn wleidyddol, credoau crefyddol neu athronyddol, neu aelodaeth o undeb llafur, a phrosesu data genetig, data biometrig i adnabod person naturiol yn unigryw, data sy’n ymwneud ag iechyd neu ddata sy’n ymwneud â bywyd rhywiol neu gyfeiriadedd rhywiol person naturiol.</p>
+
+          <p>Bydd data personol categori arbennig fel arfer yn cael ei brosesu ar y sail ei fod yn angenrheidiol am resymau sydd o ddiddordeb sylweddol i’r cyhoedd, yn unol ag Erthygl 9(2)(g) o Reoliad Cyffredinol ar Ddiogelu Data y DU, a ddarllenir ar y cyd ag adran 10 o, a pharagraff 6 o Atodlen 1 i, Deddf Diogelu Data 2018. Fodd bynnag, pan fo eich data personol categori arbennig yn cael ei gyhoeddi gennych chi, gellir ei brosesu ar y sail ei fod eisoes wedi’i gyhoeddi’n amlwg gennych chi, yn unol ag Erthygl 9(2)(e) o’r GDPR.</p>
+
+          <h3>Rhannu data</h3>
+
+          <p>Os gwneir cais am wybodaeth o dan ddeddfwriaeth mynediad at wybodaeth, mae’n bosibl y bydd angen datgelu’r cyfan neu rywfaint o’r wybodaeth a ddarperir gennych.  Dim ond os yw’r gyfraith yn dweud bod yn rhaid inni rannu’r wybodaeth y byddwn yn gwneud hynny.</p>
 
           <h3>Eich hawliau</h3>
 
-          <p>Mae gennych chi rai hawliau dros y wybodaeth rydym ni’n ei dal. Yn gryno, mae’r hawliau’n cynnwys y canlynol:</p>
+          <p>Fel testun y data, mae gennych nifer o hawliau. Mae’r hawliau sy’n gymwys yn dibynnu ar y seiliau cyfreithiol yr ydym yn dibynnu arnynt i ddefnyddio eich gwybodaeth bersonol. Ni fydd yr hawliau hynny’n gymwys ym mhob achos, a bydd y Comisiwn yn cadarnhau a ydynt yn gymwys ai peidio pan fyddwch yn gwneud cais.</p>
+
+          <p>Mae’r hawliau’n cynnwys yr hawl i ofyn am fynediad at eich gwybodaeth bersonol eich hun, a elwir weithiau’n ‘gais am fynediad gan destun y data’.</p>
+
+          <p>Hefyd, mae gennych hawl i ofyn i ni wneud y canlynol:</p>
 
           <ul class="list-bullet">
-            <li>Yr hawl i gael gwybod am sut y mae’ch gwybodaeth bersonol yn cael ei defnyddio;</li>
-            <li>Yr hawl i gael mynediad at gopïau o’ch gwybodaeth bersonol;</li>
-            <li>Yr hawl i’ch gwybodaeth gael ei chywiro os yw’n anghywir;</li>
-            <li>Yr hawl i gyfyngu ar y ffordd rydym ni’n defnyddio’ch gwybodaeth bersonol mewn rhai amgylchiadau;</li>
-            <li>Yr hawl i wrthwynebu i’ch gwybodaeth bersonol gael ei defnyddio mewn rhai amgylchiadau;</li>
+            <li>cywiro unrhyw wybodaeth anghywir sydd gennym amdanoch (sylwer bod gofyn i chi roi gwybod i ni am unrhyw newidiadau o ran eich gwybodaeth bersonol);</li>
+            <li>dileu gwybodaeth amdanoch (o dan amgylchiadau penodol);</li>
+            <li>ein bod yn rhoi’r gorau i ddefnyddio eich gwybodaeth bersonol at ddibenion penodol neu mewn rhai amgylchiadau; a</li>
+            <li>bod eich gwybodaeth yn cael ei darparu i chi neu drydydd parti mewn fformat cludadwy (eto, o dan rai amgylchiadau).</li>
           </ul>
 
-          <p>Os hoffech chi ddefnyddio unrhyw un o’r hawliau hyn, anfonwch e-bost i Ceisiadau-gwybodaeth@senedd.cymru</p>
+          <p>Os hoffech chi arfer unrhyw un o’r hawliau sydd gennych o dan ddeddfwriaeth diogelu data, gofyn cwestiwn, neu wneud cwyn am sut mae eich gwybodaeth yn cael ei defnyddio, anfonwch e-bost at ceisiadau-gwybodaeth@senedd.cymru.</p>
 
-          <h3>Newidiadau i’r hysbysiad hwn</h3>
+          <h3>Cwyno</h3>
 
-          <p>Cawn ni newid yr hysbysiad preifatrwydd hwn. Yn yr achos hwnnw, bydd y dyddiad ‘diweddarwyd ddiwethaf’ ar frig y dudalen hon hefyd yn newid. Bydd unrhyw newid i’r hysbysiad preifatrwydd hwn yn gymwys i chi a’ch data ar unwaith. Os yw’r newidiadau hyn yn effeithio ar y ffordd y caiff eich data personol eu prosesu, byddwn ni’n cymryd camau rhesymol i sicrhau y cewch chi wybod.</p>
+          <p>Gallwch gwyno i’r Swyddog Diogelu Data os ydych yn anfodlon ar sut rydym wedi defnyddio eich data. Ceir y manylion cyswllt uchod.</p>
 
-          <h3>Sut i gwyno</h3>
+          <p>Os byddwch yn dal i fod yn anfodlon ar ein hymateb ar ôl gwneud cwyn, gallwch hefyd gwyno i Swyddfa’r Comisiynydd Gwybodaeth (ICO).</p>
 
-          <p>Gallwch chi hefyd gwyno i Swyddfa’r Comisiynydd Gwybodaeth os nad ydych chi’n fodlon ar y ffordd rydym ni wedi defnyddio’ch data.</p>
+          <p>Cyfeiriad Swyddfa’r Comisiynydd Gwybodaeth:</p>
 
           <p>
-            Swyddfa’r Comisiynydd Gwybodaeth<br>
+            Information Commissioner’s Office<br>
             Wycliffe House<br>
             Water Lane<br>
             Wilmslow<br>
             Cheshire<br>
-            SK9 5AF<br>
-            Helpline number: 0303 123 1113<br>
-            <br>
-            casework@ico.org.uk
+            SK9 5AF
           </p>
+
+          <p>
+            Rhif y llinell gymorth: 0303 123 1113<br>
+            <a href="mailto:casework@ico.org.uk">casework@ico.org.uk</a>
+          </p>
+
+          <h3>Newidiadau i’r hysbysiad hwn</h3>
+
+          <p>Gallwn newid yr hysbysiad preifatrwydd hwn. Yn yr achos hwnnw, bydd y dyddiad ‘diweddarwyd ddiwethaf’ ar frig y dudalen hon hefyd yn newid. Bydd unrhyw newid i’r hysbysiad preifatrwydd hwn yn gymwys i chi a’ch data ar unwaith. Os yw’r newidiadau hyn yn effeithio ar y ffordd y caiff eich data personol eu prosesu, byddwn ni’n cymryd camau rhesymol i sicrhau y cewch chi wybod.</p>
         </section>
 
         <section id="cookies" aria-labelledby="cookies-heading">
@@ -934,7 +958,8 @@ cy-GB:
 
           <p>Mae rhai cwcis yn hollol angenrheidiol er mwyn sicrhau y caiff y wefan hon ei chynnal yn ddiogel. Ni chân nhw eu defnyddio i’ch adnabod chi’n bersonol.</p>
 
-          <p>Rhagor o wybodaeth am <a href="http://www.aboutcookies.org/" rel="external">sut i reoli cwcis</a>.</p>
+          <p>Rhagor o wybodaeth am <a href="https://www.aboutcookies.org/">sut i reoli cwcis</a>.</p>
+
 
           <h3>Cwcis Google Analytics</h3>
 
@@ -953,14 +978,24 @@ cy-GB:
               <tr>
                 <th>Enw</th>
                 <th>Diben</th>
-                <th>Dod i ben</th>
+                <th>Dod i ben</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>_ga</td>
                 <td>Defnyddir cyfeirnod a gynhyrchir ar hap i adnabod defnyddwyr unigryw a hysbysu gwefannau cyfeirio a chyfrif nifer y bobl sy’n mynd i’r wefan a nifer y sesiynau</td>
-                <td>Dwy flynedd</td>
+                <td>2 flynedd</td>
+              </tr>
+              <tr>
+                <td>_ga_&lt;ID number&gt;</td>
+                <td>Yn caniatáu inni ddeall sut mae defnyddwyr yn rhyngweithio â’n gwefannau</td>
+                <td>2 flynedd</td>
+              </tr>
+              <tr>
+                <td>_gid</td>
+                <td>Yn caniatáu inni ddeall sut mae defnyddwyr yn rhyngweithio â’n gwefannau</td>
+                <td>24 awr</td>
               </tr>
             </tbody>
           </table>
@@ -968,14 +1003,14 @@ cy-GB:
           <p>Ni chaniateir i Google ddefnyddio na rhannu ein data dadansoddol â neb, ond cewch chi ddewis peidio â derbyn cwcis Google Analytics.</p>
 
           <h3>Cwcis sesiwn</h3>
-          <p>Rydym ni’n storio cwci sesiwn ar eich cyfrifiadur i helpu i gadw’ch gwybodaeth yn ddiogel wrth i chi ddefnyddio’r gwasanaeth.</p>
 
+          <p>Rydym ni’n storio cwci sesiwn ar eich cyfrifiadur i helpu i gadw’ch gwybodaeth yn ddiogel wrth i chi ddefnyddio’r gwasanaeth.</p>
           <table>
             <thead>
               <tr>
                 <th>Enw</th>
                 <th>Diben</th>
-                <th>Dod i ben</th>
+                <th>Dod i ben</th>
               </tr>
             </thead>
             <tbody>
@@ -984,11 +1019,6 @@ cy-GB:
                 <td>Mae hyn yn cadw’ch gwybodaeth yn ddiogel wrth i chi ddefnyddio’r gwasanaeth deisebau</td>
                 <td>Pan fyddwch chi’n cau’ch porwr</td>
               </tr>
-              <tr>
-                <td>signed_tokens</td>
-                <td>Cyfeiriadau a gynhyrchir ar hap a ddefnyddir i nodi pa ddolenni rydych chi wedi’u clicio i wirio’ch cyfeiriad e-bost.</td>
-                <td>Pan fyddwch chi’n cau’ch porwr</td>
-              </td>
             </tbody>
           </table>
         </section>
