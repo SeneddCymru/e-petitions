@@ -2,41 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :reset_session
 
   before_action :reload_site
-  before_action :service_unavailable, unless: :site_enabled?
-  before_action :authenticate, if: :site_protected?
   before_action :redirect_to_url_without_format, if: :unknown_format?
-
-  helper_method :public_petition_facets
-
-  content_security_policy do |policy|
-    if Site.translation_enabled?
-      policy.script_src :self, :unsafe_inline,
-        "https://cc.cdn.civiccomputing.com",
-        "https://www.googletagmanager.com",
-        "https://www.google-analytics.com",
-        Site.moderate_url
-    end
-  end
 
   def admin_request?
     false
   end
 
   protected
-
-  def authenticate
-    unless authenticated?
-      if request.format.html?
-        redirect_to login_url
-      else
-        head :forbidden
-      end
-    end
-  end
-
-  def authenticated?
-    cookies[:login] == Site.login_digest
-  end
 
   def csv_request?
     request.format.symbol == :csv
@@ -66,18 +38,6 @@ class ApplicationController < ActionController::Base
     Site.reload
   end
 
-  def service_unavailable
-    raise Site::ServiceUnavailable, "Sorry, the website is temporarily unavailable"
-  end
-
-  def site_enabled?
-    Site.enabled?
-  end
-
-  def site_protected?
-    Site.protected? unless request.local?
-  end
-
   def redirect_to_home_page
     redirect_to home_url
   end
@@ -86,10 +46,6 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'GET'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
-  end
-
-  def public_petition_facets
-    I18n.t('public', scope: :"petitions.facets")
   end
 
   def do_not_cache
