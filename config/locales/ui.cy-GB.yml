@@ -1196,3 +1196,13 @@ cy-GB:
         <p>Paratowyd y datganiad hwn ar 12 Tachwedd 2020.</p>
 
         <p>Profir y wefan hon yn barhaus drwy gyfuniad o offer hygyrchedd.</p>
+
+    login:
+      new:
+        heading: "Mewngofnodwch i weld y wefan"
+        username:
+          label: "Enw defnyddiwr"
+        password:
+          label: "Cyfrinair"
+        submit_html: |-
+          <button type="submit" class="button forward" data-disable-with="Mewngofnodi">Mewngofnodi</button>

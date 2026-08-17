@@ -1,0 +1,21 @@
+<div class="text-page">
+  <h1 class="page-title"><%= t(:"ui.login.new.heading") %></h1>
+
+  <%= form_for @login, url: login_url, authenticity_token: false do |form| %>
+    <%= form_row for: [@login, :username] do %>
+      <%= form.label :username, t(:"ui.login.new.username.label"), class: "form-label" %>
+      <%= error_messages_for_field @login, :username %>
+      <%= form.text_field :username, maxlength: 255, class: "form-control" %>
+    <% end %>
+
+    <%= form_row for: [@login, :password] do %>
+      <%= form.label :password, t(:"ui.login.new.password.label"), class: "form-label" %>
+      <%= error_messages_for_field @login, :password %>
+      <%= form.password_field :password, maxlength: 255, class: "form-control" %>
+    <% end %>
+
+    <div>
+      <%= t(:"ui.login.new.submit_html") %>
+    </div>
+  <% end %>
+</div>

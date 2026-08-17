@@ -1207,3 +1207,13 @@ en-GB:
         <p>This statement was prepared on 12 November 2020.</p>
 
         <p>This website is tested on an ongoing basis via a combination of accessibility tools.</p>
+
+    login:
+      new:
+        heading: "Login to view the website"
+        username:
+          label: "Username"
+        password:
+          label: "Password"
+        submit_html: |-
+          <button type="submit" class="button forward" data-disable-with="Login">Login</button>
