@@ -1,5 +1,6 @@
 class PagesController < LocalizedController
   skip_before_action :redirect_to_holding_page, only: :holding
+  skip_before_action :authenticate, only: [:browserconfig, :manifest]
 
   before_action :set_cors_headers, only: :trending, if: :json_request?
   before_action :redirect_to_home_page, only: :holding
