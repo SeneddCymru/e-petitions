@@ -41,3 +41,8 @@ en-GB:
       address:
         blank: "Address must be completed"
         too_long: "Address is too long"
+      username:
+        blank: "Username must be completed"
+        invalid: "Username/password not recognised"
+      password:
+        blank: "Password must be completed"

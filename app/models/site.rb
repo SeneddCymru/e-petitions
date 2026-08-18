@@ -141,6 +141,10 @@ class Site < ActiveRecord::Base
       instance.protected?
     end
 
+    def login_digest
+      instance.login_digest
+    end
+
     def login_timeout
       instance.login_timeout
     end
@@ -601,6 +605,10 @@ class Site < ActiveRecord::Base
     unless database_migrating?
       { protocol: moderate_protocol, host: moderate_host, port: moderate_port }
     end
+  end
+
+  def login_digest
+    Digest::SHA256.base64digest("#{username}:#{password_digest}}")
   end
 
   def password_digest

@@ -43,6 +43,12 @@ Rails.application.routes.draw do
       get  '/thanks', action: 'thanks', as: :thanks_feedback
     end
 
+    scope controller: 'login' do
+      get  '/login',  action: 'new',     as: :login
+      post '/login',  action: 'create',  as: :create_login
+      get  '/logout', action: 'destroy', as: :logout
+    end
+
     scope '/petitions/local', controller: 'local_petitions' do
       get  '/',        action: 'index', as: :local_petitions
       get  '/:id',     action: 'show',  as: :local_petition

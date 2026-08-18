@@ -41,3 +41,8 @@ cy-GB:
       address:
         blank: "Rhaid nodi cyfeiriad"
         too_long: "Mae’r cyfeiriad yn rhy hir"
+      username:
+        blank: "Rhaid llenwi’r enw defnyddiwr"
+        invalid: "Heb adnabod yr enw defnyddiwr/cyfrinair"
+      password:
+        blank: "Rhaid nodi’r cyfrinair"

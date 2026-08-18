@@ -30,6 +30,12 @@ en-GB:
     "/images/:signed_blob_id/:variation_key/*filename":
       en-GB: "/images/:signed_blob_id/:variation_key/*filename"
       cy-GB: "/delweddau/:signed_blob_id/:variation_key/*filename"
+    "/login":
+      en-GB: "/login"
+      cy-GB: "/mewngofnodi"
+    "/logout":
+      en-GB: "/logout"
+      cy-GB: "/allgofnodi"
     "/manifest":
       en-GB: "/manifest"
       cy-GB: "/manifest"
