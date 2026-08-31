@@ -369,3 +369,8 @@ end
 Given(/^the petition has an ABMS link "([^"]*)"$/) do |url|
   @petition.update!(abms_link: url)
 end
+
+Given(/^the petition has been anonymized$/) do
+  AnonymizePetitionJob.perform_now(@petition, Time.current)
+  @petition.reload
+end

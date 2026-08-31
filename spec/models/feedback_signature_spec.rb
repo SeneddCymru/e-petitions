@@ -79,4 +79,10 @@ RSpec.describe FeedbackSignature, type: :model do
       expect(signature.to_gid).to eq(GlobalID.new("gid://welsh-pets/FeedbackSignature/#{petition.id}"))
     end
   end
+
+  describe "#anonymized?" do
+    it "returns false" do
+      expect(signature.anonymized?).to eq(false)
+    end
+  end
 end

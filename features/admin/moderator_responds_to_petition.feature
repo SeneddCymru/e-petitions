@@ -27,11 +27,14 @@ Feature: Moderator respond to petition
     Then I fill in "Action" with "We need to save our planet"
     And I fill in "Background" with "Reduce pollution"
     And I fill in "Additional details" with "Enforce Kyoto Protocol in more countries"
+    And I check "Do not anonymize this petition"
     And I press "Save"
     Then I am on the admin petition page for "We need to save our planet"
     And I should see "We need to save our planet"
     And I should see "Reduce pollution"
     And I should see "Enforce Kyoto Protocol in more countries"
+    And I follow "English"
+    Then the "Do not anonymize this petition" checkbox should be checked
 
   Scenario: Moderator translates petition
     Given I am logged in as a moderator
@@ -228,3 +231,17 @@ Feature: Moderator respond to petition
     And the creator should not receive a notification email
     And the petition is not available for searching or viewing
     But the petition will still show up in the back-end reporting
+
+  @javascript
+  Scenario: Moderator can't publish a rejected petition that has been anonymized
+    Given I am logged in as a sysadmin named "Ben Macintosh"
+    When I look at the next petition on my list
+    And I reject the petition
+    Then I should see "Petition has been successfully updated"
+    And the creator should receive a rejection notification email
+    And the petition is not available for signing
+    But the petition is still available for searching or viewing
+    Given no emails have been sent
+    And the petition has been anonymized
+    When I revisit the petition
+    Then the petition can no longer be approved

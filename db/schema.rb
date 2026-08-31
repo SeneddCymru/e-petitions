@@ -95,6 +95,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100100) do
 
   create_table "contacts", id: :serial, force: :cascade do |t|
     t.string "address"
+    t.datetime "anonymized_at"
     t.datetime "created_at", precision: nil, null: false
     t.string "phone_number", limit: 255
     t.integer "signature_id", null: false
@@ -304,6 +305,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100100) do
     t.datetime "debate_outcome_at", precision: nil
     t.string "debate_state", limit: 30, default: "pending"
     t.datetime "debate_threshold_reached_at", precision: nil
+    t.boolean "do_not_anonymize", default: false, null: false
     t.datetime "last_signed_at", precision: nil
     t.string "locale", limit: 7, default: "en-GB", null: false
     t.datetime "locked_at", precision: nil

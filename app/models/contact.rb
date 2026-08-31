@@ -12,4 +12,22 @@ class Contact < ActiveRecord::Base
   def phone_number=(value)
     super(value.to_s.tr('^1234567890+./ ', ''))
   end
+
+  def anonymized?
+    anonymized_at?
+  end
+
+  def anonymize!(timestamp)
+    return if anonymized?
+
+    with_lock do
+      # Set the address to the address of the Senedd and the
+      # phone number to an Ofcom-approved fake number for Cardiff.
+      self.address = "Cardiff Bay, Cardiff"
+      self.phone_number = "029 2018 1234"
+      self.anonymized_at = timestamp
+
+      save!
+    end
+  end
 end
