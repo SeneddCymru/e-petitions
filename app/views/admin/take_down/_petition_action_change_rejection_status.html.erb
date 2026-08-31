@@ -1,4 +1,4 @@
-<%= form_for petition, url: admin_petition_take_down_path(petition), method: :patch do |f| -%>
+<%= form_for petition, url: admin_petition_take_down_path(petition), method: :patch do |f| %>
   <%= form_row for: [petition, :moderation], class: 'inline' do %>
     <h2 class="petition-action-heading">Change rejection reason</h2>
     <p>Changing the rejected state of this petition will affect if it can be seen on the website or not.</p>
@@ -7,9 +7,13 @@
 
   <%= render 'admin/petitions/reject', f: f %>
 
-  <%= f.submit "Email petition creator", name: 'save_and_email', class: 'button' %>
-  <%= f.submit 'Save without emailing', name: 'save', class: 'button-secondary', tabindex: increment %>
+  <% if @petition.anonymized? %>
+    <%= f.submit 'Save', name: 'save', class: 'button', tabindex: increment %>
+  <% else %>
+    <%= f.submit "Email petition creator", name: 'save_and_email', class: 'button' %>
+    <%= f.submit 'Save without emailing', name: 'save', class: 'button-secondary', tabindex: increment %>
+  <% end %>
   <%= link_to 'Cancel', admin_petition_path(petition), class: 'button-secondary' %>
-<% end -%>
+<% end %>
 
 <%= render 'edit_lock' %>

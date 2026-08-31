@@ -83,6 +83,10 @@ Then /^the petition should be visible on the site for signing$/ do
   expect(page).to have_css("a", :text => "Sign")
 end
 
+Then(/^the petition can no longer be approved$/) do
+  expect(page).to have_no_field('Approve', visible: false)
+end
+
 Then(/^the petition can no longer be rejected$/) do
   expect(page).to have_no_field('Reject', visible: false)
 end

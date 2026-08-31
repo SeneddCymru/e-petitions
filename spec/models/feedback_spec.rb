@@ -27,4 +27,10 @@ RSpec.describe Feedback, type: :model do
     it { is_expected.not_to allow_value("foo@example").for(:email) }
     it { is_expected.not_to allow_value("foo").for(:email) }
   end
+
+  describe "#anonymized?" do
+    it "returns false" do
+      expect(subject.anonymized?).to eq(false)
+    end
+  end
 end

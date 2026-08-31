@@ -31,6 +31,17 @@ RSpec.describe NotifyJob, type: :job, notify: false do
   end
 
   shared_examples_for "a notify job" do
+    context "when the signature has been anonymized" do
+      before do
+        allow(arguments.first).to receive(:anonymized?).and_return(true)
+      end
+
+      it "doesn't make a request to GOV.UK Notify" do
+        described_class.perform_now(*arguments)
+        expect(a_request(:post, notify_url)).not_to have_been_made
+      end
+    end
+
     describe "error handling" do
       around do |example|
         freeze_time { example.run }
