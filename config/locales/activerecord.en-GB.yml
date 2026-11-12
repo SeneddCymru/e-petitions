@@ -67,6 +67,16 @@ en-GB:
               invalid: "Address can’t start with a ‘=’, ‘+’, ‘-’ or ‘@’"
               too_long:
                 other: "Address is too long (maximum is %{count} characters)"
+        paper_signatures:
+          attributes:
+            location_code:
+              inclusion: "Location must be in the United Kingdom"
+            signature_count:
+              blank: "Number of signatures must be completed"
+              not_a_number: "Number of signatures must be a whole number"
+              not_an_integer: "Number of signatures must be a whole number"
+              greater_than: "Number of signatures must be greater than zero"
+              less_than_or_equal_to: "Number of signatures must be %{count} or fewer"
 
       name:
         invalid: "Name can’t start with a ‘=’, ‘+’, ‘-’ or ‘@’"

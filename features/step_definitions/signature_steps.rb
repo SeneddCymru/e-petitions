@@ -257,3 +257,8 @@ Then /^the signature count (?:stays at|goes up to) (\d+)$/ do |number|
   signatures = @petition.signatures
   expect(signatures.count).to eq number
 end
+
+Then /^(\d+) validated paper signatures should exist with location_code: "([^"]*)"$/ do |count, location_code|
+  signatures = @petition.signatures.validated.where(location_code: location_code, postcode: "ZZ993WZ").order(:id)
+  expect(signatures.pluck(:name)).to eq((1..count).map { |n| "Paper Signature #{n}" })
+end
