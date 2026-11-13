@@ -6,7 +6,8 @@ Feature: Moderator adds paper signatures to a petition
     And I am logged in as a moderator
     When I view all petitions
     And I follow "More money for charities"
-    And I follow "Add paper signatures"
+    Then I should see "Paper signatures 0"
+    When I follow "Add paper signatures"
     Then the "Location" field should contain "GB-WLS"
     When I press "Add signatures"
     Then I should see "Number of signatures must be completed"
@@ -21,3 +22,4 @@ Feature: Moderator adds paper signatures to a petition
     And I press "Add signatures"
     Then I should see "Paper signatures are being added to the petition - this may take a few minutes"
     And 3 validated paper signatures should exist with location_code: "GB-ENG"
+    And I should see "Paper signatures 3"
