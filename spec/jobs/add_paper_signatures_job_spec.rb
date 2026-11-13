@@ -12,6 +12,16 @@ RSpec.describe AddPaperSignaturesJob, type: :job do
     }.to change { petition.signatures.count }.by(3)
   end
 
+  it "increments the paper signature count" do
+    petition.update_columns(paper_signature_count: 10)
+
+    expect {
+      perform_enqueued_jobs {
+        described_class.perform_later(petition, "GB-ENG", 3, "10.0.1.1")
+      }
+    }.to change { petition.reload.paper_signature_count }.from(10).to(13)
+  end
+
   it "names the signatures sequentially" do
     perform_enqueued_jobs {
       described_class.perform_later(petition, "GB-ENG", 3, "10.0.1.1")
@@ -42,6 +52,16 @@ RSpec.describe AddPaperSignaturesJob, type: :job do
     expect(signatures.distinct.count(:email)).to eq(50)
   end
 
+  it "continues the numbering from the existing paper signatures" do
+    perform_enqueued_jobs {
+      described_class.perform_later(petition, "GB-ENG", 2, "10.0.1.1")
+      described_class.perform_later(petition, "GB-WLS", 3, "10.0.1.1")
+    }
+
+    expect(signatures.map(&:name)).to eq((1..5).map { |n| "Paper Signature #{n}" })
+    expect(petition.reload.paper_signature_count).to eq(5)
+  end
+
   context "when an error occurs" do
     let(:exception) { ActiveRecord::RecordInvalid.new(Signature.new) }
 
@@ -51,18 +71,89 @@ RSpec.describe AddPaperSignaturesJob, type: :job do
 
     it "notifies Appsignal of the error" do
       expect(Appsignal).to receive(:send_exception).with(exception)
+      described_class.perform_now(petition, "GB-WLS", 1, "10.0.1.1")
+    end
 
-      perform_enqueued_jobs {
-        described_class.perform_later(petition, "GB-WLS", 1, "10.0.1.1")
-      }
+    it "doesn't increment the paper signature count" do
+      expect {
+        described_class.perform_now(petition, "GB-WLS", 1, "10.0.1.1")
+      }.not_to change { petition.reload.paper_signature_count }
     end
 
     it "doesn't raise an error" do
       expect {
-        perform_enqueued_jobs {
-          described_class.perform_later(petition, "GB-WLS", 1, "10.0.1.1")
-        }
+        described_class.perform_now(petition, "GB-WLS", 1, "10.0.1.1")
       }.not_to raise_error
+    end
+
+    it "re-enqueues the signatures to be added in an hour" do
+      freeze_time do
+        expect {
+          described_class.perform_now(petition, "GB-WLS", 3, "10.0.1.1")
+        }.to have_enqueued_job(described_class)
+          .with(petition, "GB-WLS", 3, "10.0.1.1", 2)
+          .at(1.hour.from_now)
+      end
+    end
+
+    it "doesn't re-enqueue the signatures after the maximum number of attempts" do
+      expect {
+        described_class.perform_now(petition, "GB-WLS", 3, "10.0.1.1", 5)
+      }.not_to have_enqueued_job(described_class)
+    end
+  end
+
+  context "when an error occurs part way through" do
+    before do
+      calls = 0
+
+      allow_any_instance_of(Signature).to receive(:save!).and_wrap_original do |method, *args|
+        calls += 1
+        raise ActiveRecord::RecordInvalid.new(Signature.new) if calls == 3
+        method.call(*args)
+      end
+
+      allow(Appsignal).to receive(:send_exception)
+    end
+
+    it "increments the paper signature count by the number of signatures added" do
+      expect {
+        described_class.perform_now(petition, "GB-WLS", 5, "10.0.1.1")
+      }.to change { petition.reload.paper_signature_count }.by(2)
+    end
+
+    it "re-enqueues the remaining signatures" do
+      expect {
+        described_class.perform_now(petition, "GB-WLS", 5, "10.0.1.1")
+      }.to have_enqueued_job(described_class).with(petition, "GB-WLS", 3, "10.0.1.1", 2)
+    end
+
+    it "adds the remaining signatures when the job is retried" do
+      perform_enqueued_jobs {
+        described_class.perform_later(petition, "GB-WLS", 5, "10.0.1.1")
+      }
+
+      expect(signatures.map(&:name)).to eq((1..5).map { |n| "Paper Signature #{n}" })
+      expect(petition.reload.paper_signature_count).to eq(5)
+    end
+  end
+
+  context "when validating a signature fails" do
+    before do
+      allow_any_instance_of(Signature).to receive(:validate!).and_raise(ActiveRecord::StatementInvalid)
+      allow(Appsignal).to receive(:send_exception)
+    end
+
+    it "doesn't leave an unvalidated signature behind" do
+      expect {
+        described_class.perform_now(petition, "GB-WLS", 1, "10.0.1.1")
+      }.not_to change { petition.signatures.count }
+    end
+
+    it "doesn't increment the paper signature count" do
+      expect {
+        described_class.perform_now(petition, "GB-WLS", 1, "10.0.1.1")
+      }.not_to change { petition.reload.paper_signature_count }
     end
   end
 end

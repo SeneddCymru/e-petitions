@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_12_082254) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_13_100100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
   enable_extension "pg_catalog.plpgsql"
@@ -313,6 +313,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_12_082254) do
     t.datetime "moderation_threshold_reached_at", precision: nil
     t.boolean "notified_by_email", default: false
     t.datetime "open_at", precision: nil
+    t.integer "paper_signature_count", default: 0, null: false
     t.datetime "referral_threshold_reached_at", precision: nil
     t.datetime "referred_at", precision: nil
     t.datetime "rejected_at", precision: nil
