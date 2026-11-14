@@ -82,6 +82,8 @@ en-GB:
       password_updated: "Password was successfully updated"
       petition_email_created: "Created other Senedd business successfully"
       petition_email_updated: "Updated other Senedd business successfully"
+      paper_signatures_enqueued: "Paper signatures are being added to the petition - this may take a few minutes"
+      paper_signatures_not_enqueued: "Paper signatures could not be added - please contact support"
       petition_email_deleted: "Deleted other Senedd business successfully"
       petition_email_not_deleted: "Unable to delete other Senedd business - please contact support"
       petition_not_found: "Cannot find petition with id: %{query}"

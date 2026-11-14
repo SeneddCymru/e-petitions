@@ -185,6 +185,8 @@ Rails.application.routes.draw do
         resource :completion, controller: 'completion', only: %i[update]
         resource :archive, controller: 'archive', only: %i[update]
 
+        resource :paper_signatures, path: 'paper-signatures', only: %i[new create]
+
         resources :signatures, except: %i[show edit update] do
           member do
             post :validate

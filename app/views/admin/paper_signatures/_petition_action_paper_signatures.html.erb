@@ -1,0 +1,18 @@
+<h2 class="petition-action-heading">Add paper signatures</h2>
+
+<%= form_for @paper_signatures, as: :paper_signatures, url: admin_petition_paper_signatures_path(@petition), method: :post do |form| -%>
+  <%= form_row for: [@paper_signatures, :location_code] do %>
+    <%= form.label :location_code, "Location", class: "form-label" %>
+    <%= error_messages_for_field @paper_signatures, :location_code %>
+    <%= form.select :location_code, t(:priority_countries), {}, tabindex: increment, class: "form-control" %>
+  <% end %>
+
+  <%= form_row for: [@paper_signatures, :signature_count] do %>
+    <%= form.label :signature_count, "Number of signatures", class: "form-label" %>
+    <%= error_messages_for_field @paper_signatures, :signature_count %>
+    <%= form.text_field :signature_count, tabindex: increment, inputmode: "numeric", class: "form-control small" %>
+  <% end %>
+
+  <%= form.submit 'Add signatures', class: 'button' %>
+  <%= link_to 'Cancel', admin_petition_path(@petition), class: 'button-secondary' %>
+<% end -%>
