@@ -26,7 +26,11 @@
   <p class="character-count">5000 characters max</p>
 <% end %>
 
-<%= form.submit "Send email", name: "save_and_email", class: "button" %>
-<%= form.submit "Save and preview", name: "save_and_preview", class: "button-secondary" %>
-<%= form.submit "Save", name: "save", class: "button-secondary" %>
+<% if @petition.anonymized? %>
+  <%= form.submit "Save", name: "save", class: "button" %>
+<% else %>
+  <%= form.submit "Send email", name: "save_and_email", class: "button" %>
+  <%= form.submit "Save and preview", name: "save_and_preview", class: "button-secondary" %>
+  <%= form.submit "Save", name: "save", class: "button-secondary" %>
+<% end %>
 <%= link_to "Cancel", admin_petition_emails_path(@petition), class: "button-secondary" %>

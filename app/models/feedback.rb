@@ -34,6 +34,10 @@ class Feedback < ActiveRecord::Base
     nil
   end
 
+  def anonymized?
+    false
+  end
+
   private
 
   def rate_limit

@@ -9,6 +9,7 @@ class NotifyJob < ApplicationJob
   queue_as :high_priority
 
   before_perform :set_appsignal_namespace
+  before_perform :skip_anonymized
 
   DELAY_FOR_24_HOURS = [
     Notifications::Client::BadRequestError,
@@ -128,6 +129,10 @@ class NotifyJob < ApplicationJob
 
   def log_message(exception)
     "#{exception.class.name} while sending email for #{self.class.name}"
+  end
+
+  def skip_anonymized
+    throw :abort if arguments.first.anonymized?
   end
 
   def set_appsignal_namespace

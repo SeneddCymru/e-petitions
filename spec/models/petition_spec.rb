@@ -1236,6 +1236,152 @@ RSpec.describe Petition, type: :model do
     end
   end
 
+  describe ".anonymize_petitions!" do
+    context "when a petition has completed less than twelve months ago" do
+      let!(:petition) { FactoryBot.create(:completed_petition, completed_at: 11.months.ago) }
+
+      it "does not anonymize the petition" do
+        expect{
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.not_to change{ petition.reload.anonymized? }
+      end
+    end
+
+    context "when a petition was rejected less than twelve months ago" do
+      let!(:petition) { FactoryBot.create(:rejected_petition, rejected_at: 11.months.ago) }
+
+      it "does not anonymize the petition" do
+        expect {
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.not_to change { petition.reload.anonymized? }
+      end
+    end
+
+    context "when a petition was hidden less than twelve months ago" do
+      let!(:petition) { FactoryBot.create(:hidden_petition, rejected_at: 11.months.ago) }
+
+      it "does not anonymize the petition" do
+        expect {
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.not_to change { petition.reload.anonymized? }
+      end
+    end
+
+    context "when a petition has completed more than twelve months ago" do
+      let!(:petition) { FactoryBot.create(:completed_petition, completed_at: 13.months.ago) }
+
+      it "does anonymize the petition" do
+        expect{
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.to change{ petition.reload.anonymized? }.from(false).to(true)
+      end
+    end
+
+    context "when a petition was rejected more than twelve months ago" do
+      let!(:petition) { FactoryBot.create(:rejected_petition, rejected_at: 13.months.ago) }
+
+      it "does anonymize the petition" do
+        expect{
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.to change{ petition.reload.anonymized? }.from(false).to(true)
+      end
+    end
+
+    context "when a petition was hidden more than twelve months ago" do
+      let!(:petition) { FactoryBot.create(:hidden_petition, rejected_at: 13.months.ago) }
+
+      it "does anonymize the petition" do
+        expect{
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.to change{ petition.reload.anonymized? }.from(false).to(true)
+      end
+    end
+
+    context "when a petition has been set to not be anonymized" do
+      let!(:petition) { FactoryBot.create(:completed_petition, completed_at: 13.months.ago, do_not_anonymize: true) }
+
+      it "does not anonymize the petition" do
+        expect{
+          perform_enqueued_jobs {
+            described_class.anonymize_petitions!
+          }
+        }.not_to change{ petition.reload.anonymized? }
+      end
+    end
+  end
+
+  describe ".in_need_of_anonymizing" do
+    context "when a petition is anonymized" do
+      let!(:petition) { FactoryBot.create(:completed_petition, completed_at: 13.months.ago, anonymized_at: 1.week.ago) }
+
+      it "doesn't return the petition" do
+        expect(described_class.in_need_of_anonymizing).not_to include(petition)
+      end
+    end
+
+    context "when a petition is not anonymized" do
+      context "and it has been completed for less than twelve months" do
+        let!(:petition) { FactoryBot.create(:completed_petition, completed_at: 11.months.ago, anonymized_at: nil) }
+
+        it "doesn't return the petition" do
+          expect(described_class.in_need_of_anonymizing).not_to include(petition)
+        end
+      end
+
+      context "and it has been rejected for less than twelve months" do
+        let!(:petition) { FactoryBot.create(:rejected_petition, rejected_at: 11.months.ago, anonymized_at: nil) }
+
+        it "doesn't return the petition" do
+          expect(described_class.in_need_of_anonymizing).not_to include(petition)
+        end
+      end
+
+      context "and it has been hidden for less than twelve months" do
+        let!(:petition) { FactoryBot.create(:hidden_petition, rejected_at: 11.months.ago, anonymized_at: nil) }
+
+        it "doesn't return the petition" do
+          expect(described_class.in_need_of_anonymizing).not_to include(petition)
+        end
+      end
+
+      context "and it has been completed for more than twelve months" do
+        let!(:petition) { FactoryBot.create(:completed_petition, completed_at: 13.months.ago, anonymized_at: nil) }
+
+        it "returns the petition" do
+          expect(described_class.in_need_of_anonymizing).to include(petition)
+        end
+      end
+
+      context "and it has been rejected for more than twelve months" do
+        let!(:petition) { FactoryBot.create(:rejected_petition, rejected_at: 13.months.ago, anonymized_at: nil) }
+
+        it "returns the petition" do
+          expect(described_class.in_need_of_anonymizing).to include(petition)
+        end
+      end
+
+      context "and it has been hidden for more than twelve months" do
+        let!(:petition) { FactoryBot.create(:hidden_petition, rejected_at: 13.months.ago, anonymized_at: nil) }
+
+        it "returns the petition" do
+          expect(described_class.in_need_of_anonymizing).to include(petition)
+        end
+      end
+    end
+  end
+
   describe "#can_be_signed?" do
     context "when the petition is in the open state" do
       let(:petition) { FactoryBot.build(:petition, state: Petition::OPEN_STATE) }
@@ -1483,6 +1629,36 @@ RSpec.describe Petition, type: :model do
         it "is not in todo list when the state is #{state}" do
           expect(petition.in_todo_list?).to be_falsey
         end
+      end
+    end
+  end
+
+  describe "#anonymize!" do
+    let(:petition) { FactoryBot.create(:completed_petition, completed_at: "2023-06-30T23:00:00Z") }
+
+    it "enqueues an AnonymizePetitionJob" do
+      expect {
+        petition.anonymize!("2024-06-30T23:00:00Z".in_time_zone)
+      }.to have_enqueued_job(AnonymizePetitionJob)
+        .with(petition, "2024-07-01T00:00:00+01:00")
+        .on_queue("low_priority")
+    end
+  end
+
+  describe "#anonymized?" do
+    context "when anonymized_at is nil" do
+      let(:petition) { FactoryBot.build(:petition, anonymized_at: nil) }
+
+      it "return false" do
+        expect(petition.anonymized?).to eq(false)
+      end
+    end
+
+    context "when anonymized_at is not nil" do
+      let(:petition) { FactoryBot.build(:petition, anonymized_at: 1.week.ago) }
+
+      it "return true" do
+        expect(petition.anonymized?).to eq(true)
       end
     end
   end

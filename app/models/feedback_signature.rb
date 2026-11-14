@@ -54,4 +54,8 @@ class FeedbackSignature
   def to_param
     "0"
   end
+
+  def anonymized?
+    false
+  end
 end

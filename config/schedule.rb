@@ -33,6 +33,10 @@ every :day, at: '3.30am' do
 	rake "wpets:petitions:update_statistics", output: nil
 end
 
+every :day, at: '4.30am' do
+  rake "wpets:petitions:anonymize", output: nil
+end
+
 every :day, at: '7.00am' do
   rake "wpets:petitions:close", output: nil
 end
