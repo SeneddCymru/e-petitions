@@ -183,7 +183,7 @@
       "warning_code": 121,
       "fingerprint": "edf687f759ec9765bd5db185dbc615c80af77d6e7e19386fc42934e7a80307af",
       "check_name": "EOLRuby",
-      "message": "Support for Ruby 3.2.9 ended on 2026-03-31",
+      "message": "Support for Ruby 3.2.11 ended on 2026-03-31",
       "file": ".ruby-version",
       "line": 1,
       "link": "https://brakemanscanner.org/docs/warning_types/unmaintained_dependency/",
@@ -194,6 +194,30 @@
       "confidence": "High",
       "cwe_id": [
         1104
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Eval",
+      "warning_code": 13,
+      "fingerprint": "f19c9d7b95015640b513f08e77728f0400225db07ec30060e05c2865b7265b13",
+      "check_name": "Evaluation",
+      "message": "Dynamic string evaluated as code",
+      "file": "app/models/concerns/translatable.rb",
+      "line": 35,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_eval/",
+      "code": "class_eval(\"def #{name}\\n  translated_method(:\\\"#{name}_en\\\", :\\\"#{name}_cy\\\")\\nend\\n\\ndef #{name}?\\n  translated_method(:\\\"#{name}_en?\\\", :\\\"#{name}_cy?\\\")\\nend\\n\\ndef #{name}=(value)\\n  translated_method(:\\\"#{name}_en=\\\", :\\\"#{name}_cy=\\\", value)\\nend\\n\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Translatable::ClassMethods",
+        "method": "translate"
+      },
+      "user_input": null,
+      "confidence": "Weak",
+      "cwe_id": [
+        913,
+        95
       ],
       "note": ""
     },
@@ -289,6 +313,5 @@
       "note": ""
     }
   ],
-  "updated": "2026-04-01 07:58:38 +0000",
-  "brakeman_version": "6.2.2"
+  "brakeman_version": "8.0.6"
 }
