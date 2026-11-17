@@ -8,6 +8,7 @@ require 'mail'
 class Signature < ActiveRecord::Base
   include PerishableTokenGenerator
   include GeoipLookup
+  include Anonymize
 
   has_perishable_token
   has_perishable_token called: 'signed_token'
