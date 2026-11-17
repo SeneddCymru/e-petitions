@@ -11,6 +11,7 @@ json.attributes do
   json.additional_details petition.additional_details
   json.state petition.state
   json.signature_count petition.signature_count
+  json.paper_signature_count petition.paper_signature_count
   json.threshold_for_referral petition.threshold_for_referral
   json.threshold_for_debate petition.threshold_for_debate
 
