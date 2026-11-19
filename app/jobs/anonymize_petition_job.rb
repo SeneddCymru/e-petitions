@@ -32,7 +32,12 @@ class AnonymizePetitionJob < ApplicationJob
     if petition.signatures.not_anonymized.exists?
       self.class.perform_later(petition, time.iso8601, limit: limit)
     else
-      petition.creator.contact.anonymize!(time)
+      if creator = petition.creator
+        if contact = creator.contact
+          contact.anonymize!(time)
+        end
+      end
+
       petition.update_column(:anonymized_at, time)
     end
 
