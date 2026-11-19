@@ -35,6 +35,52 @@ RSpec.describe AnonymizePetitionJob, type: :job do
     }.from(nil).to(timestamp)
   end
 
+  context "when the petition has no creator" do
+    before do
+      petition.signatures.creator.update_all(creator: false)
+      petition.reload
+    end
+
+    it "marks every signature as anonymized" do
+      expect {
+        described_class.perform_now(petition, timestamp.iso8601)
+      }.to change {
+        petition.signatures.not_anonymized.count
+      }.from(3).to(0)
+    end
+
+    it "marks the petition as anonymized" do
+      expect {
+        described_class.perform_now(petition, timestamp.iso8601)
+      }.to change {
+        petition.anonymized_at
+      }.from(nil).to(timestamp)
+    end
+  end
+
+  context "when the creator has no contact details" do
+    before do
+      contact.destroy!
+      petition.reload
+    end
+
+    it "anonymizes the creator signature" do
+      expect {
+        described_class.perform_now(petition, timestamp.iso8601)
+      }.to change {
+        petition.creator.reload.anonymized_at
+      }.from(nil).to(timestamp)
+    end
+
+    it "marks the petition as anonymized" do
+      expect {
+        described_class.perform_now(petition, timestamp.iso8601)
+      }.to change {
+        petition.anonymized_at
+      }.from(nil).to(timestamp)
+    end
+  end
+
   shared_examples_for "anonymization" do
     it "anonymizes the signature" do
       expect {
