@@ -43,7 +43,6 @@ jobs:
 
     - name: Install gems
       run: |
-        gem install bundler -v 2.3.26
         bundle config set --local path 'vendor/bundle'
         bundle install --jobs 4 --retry 3
 
