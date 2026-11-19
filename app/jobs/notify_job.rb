@@ -35,9 +35,17 @@ class NotifyJob < ApplicationJob
 
   # Unexpected error so give us a day to sort things out.
   # If we sort it out before then we can always requeue manually.
+  # An invalid email address will never be accepted so drop the job,
+  # tagging the record so we can find the email address that failed.
   rescue_from *DELAY_FOR_24_HOURS do |exception|
-    reschedule_job 24.hours.from_now
-    Appsignal.send_exception(exception) { |t| t.set_namespace("email") }
+    unless invalid_email_address?(exception)
+      reschedule_job 24.hours.from_now
+    end
+
+    Appsignal.send_exception(exception) do |t|
+      t.set_namespace("email")
+      t.add_tags(record_tags)
+    end
   end
 
   # It's likely that the GOV.UK Notify platform is having problems so
@@ -129,6 +137,15 @@ class NotifyJob < ApplicationJob
 
   def log_message(exception)
     "#{exception.class.name} while sending email for #{self.class.name}"
+  end
+
+  def invalid_email_address?(exception)
+    exception.message.include?("email_address Not a valid email address")
+  end
+
+  def record_tags
+    record = arguments.first
+    { "#{record.model_name.singular}_id" => record.id }
   end
 
   def skip_anonymized

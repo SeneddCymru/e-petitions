@@ -2,7 +2,7 @@ require 'faraday'
 
 class FetchMembersJob < ApplicationJob
   HOST = "https://business.senedd.wales"
-  TIMEOUT = 10
+  TIMEOUT = 30
 
   ENDPOINTS = {
     "en-GB": "/mgwebservice.asmx/GetCouncillorsByWard",
@@ -16,7 +16,18 @@ class FetchMembersJob < ApplicationJob
   MEMBER_NAME = ".//fullusername"
   PARTY_NAME = ".//politicalpartytitle"
 
+  RETRYABLE_ERRORS = [
+    Faraday::TimeoutError,
+    Faraday::ConnectionFailed
+  ]
+
   rescue_from StandardError do |exception|
+    Appsignal.send_exception exception
+  end
+
+  # The API occasionally times out so try again a few times
+  # before notifying Appsignal that something is wrong.
+  retry_on *RETRYABLE_ERRORS, wait: 5.minutes, attempts: 3 do |job, exception|
     Appsignal.send_exception exception
   end
 
@@ -88,6 +99,8 @@ class FetchMembersJob < ApplicationJob
     else
       []
     end
+  rescue *RETRYABLE_ERRORS
+    raise
   rescue Faraday::Error => e
     Appsignal.send_exception(e)
     return []

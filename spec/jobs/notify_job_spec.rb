@@ -143,6 +143,37 @@ RSpec.describe NotifyJob, type: :job, notify: false do
         end
       end
 
+      context "when GOV.UK Notify rejects the email address" do
+        let(:exception_class) { Notifications::Client::BadRequestError }
+        let(:record) { arguments.first }
+        let(:transaction) { double(:transaction, set_namespace: nil, add_tags: nil) }
+
+        before do
+          stub_request(:post, notify_url).to_return(
+            status: 400,
+            headers: {
+              "Content-Type" => "application/json"
+            },
+            body: { errors: [
+              { error: "ValidationError", message: "email_address Not a valid email address" }
+            ]}.to_json
+          )
+        end
+
+        it "notifies Appsignal of the error tagged with the record id" do
+          expect(Appsignal).to receive(:send_exception).with(an_instance_of(exception_class)).and_yield(transaction)
+          expect(transaction).to receive(:add_tags).with({ "#{record.model_name.singular}_id" => record.id })
+
+          described_class.perform_now(*arguments)
+        end
+
+        it "doesn't reschedule the job" do
+          expect {
+            described_class.perform_now(*arguments)
+          }.not_to have_enqueued_job(described_class)
+        end
+      end
+
       context "when GOV.UK Notify is returning a 403 error" do
         let(:exception_class) { Notifications::Client::AuthError }
 

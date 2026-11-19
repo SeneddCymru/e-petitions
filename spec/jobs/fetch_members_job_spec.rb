@@ -159,6 +159,47 @@ RSpec.describe FetchMembersJob, type: :job do
         expect(Member).not_to receive(:update_all).with(region_id: nil, constituency_id: nil)
         described_class.perform_now
       end
+
+      it "doesn't notify Appsignal" do
+        expect(Appsignal).not_to receive(:send_exception)
+        described_class.perform_now
+      end
+
+      it "retries the job in 5 minutes" do
+        freeze_time do
+          expect {
+            described_class.perform_now
+          }.to have_enqueued_job(described_class).at(a_value_between(5.minutes.from_now, 6.minutes.from_now))
+        end
+      end
+
+      it "notifies Appsignal when it runs out of attempts" do
+        expect(Appsignal).to receive(:send_exception).with(an_instance_of(Faraday::TimeoutError))
+
+        perform_enqueued_jobs {
+          described_class.perform_later
+        }
+      end
+    end
+
+    context "because the API connection fails" do
+      before do
+        stub_members_en_api.to_raise(Faraday::ConnectionFailed.new("Connection refused"))
+        stub_members_cy_api.to_raise(Faraday::ConnectionFailed.new("Connection refused"))
+      end
+
+      it "doesn't notify Appsignal" do
+        expect(Appsignal).not_to receive(:send_exception)
+        described_class.perform_now
+      end
+
+      it "retries the job in 5 minutes" do
+        freeze_time do
+          expect {
+            described_class.perform_now
+          }.to have_enqueued_job(described_class).at(a_value_between(5.minutes.from_now, 6.minutes.from_now))
+        end
+      end
     end
 
     context "because the API connection is blocked" do
