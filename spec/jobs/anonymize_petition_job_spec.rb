@@ -171,7 +171,29 @@ RSpec.describe AnonymizePetitionJob, type: :job do
     let!(:signature) { FactoryBot.create(:pending_signature, created_at: "2023-01-01T12:00:00Z", petition: petition) }
 
     before do
-      signature.update_column(:location_code, nil)
+      signature.update_columns(location_code: nil, postcode: nil)
+    end
+
+    it "anonymizes the signature" do
+      expect {
+        described_class.perform_now(petition, timestamp.iso8601)
+      }.to change {
+        signature.reload.anonymized_at
+      }.from(nil).to(timestamp)
+    end
+
+    it "marks the petition as anonymized" do
+      expect {
+        described_class.perform_now(petition, timestamp.iso8601)
+      }.to change {
+        petition.reload.anonymized_at
+      }.from(nil).to(timestamp)
+    end
+  end
+
+  context "when a record is invalid" do
+    before do
+      allow_any_instance_of(Contact).to receive(:anonymize!).and_raise(ActiveRecord::RecordInvalid.new(contact))
     end
 
     it "notifies Appsignal" do
