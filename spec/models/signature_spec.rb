@@ -1775,6 +1775,36 @@ RSpec.describe Signature, type: :model do
         end
       end
     end
+
+    context "when the location code is missing" do
+      it "anonymizes the signature" do
+        signature = FactoryBot.create(:signature, postcode: "SW1A1AA", location_code: "GB-ENG", constituency_id: nil)
+        signature.update_columns(location_code: nil, postcode: nil)
+
+        expect {
+          signature.anonymize!(timestamp)
+        }.to change {
+          signature.reload.anonymized_at
+        }.from(nil).to(timestamp)
+
+        expect(signature.name).to eq("Signature #{signature.id}")
+        expect(signature.email).to eq("signature-#{signature.id}@example.com")
+        expect(signature.postcode).to eq("")
+      end
+    end
+
+    context "when the postcode is missing for a signature in the UK" do
+      it "sets the postcode to ZZ993WZ" do
+        signature = FactoryBot.create(:signature, postcode: "SW1A1AA", location_code: "GB-ENG", constituency_id: nil)
+        signature.update_columns(postcode: nil)
+
+        expect {
+          signature.anonymize!(timestamp)
+        }.to change {
+          signature.reload.postcode
+        }.from(nil).to("ZZ993WZ")
+      end
+    end
   end
 
   describe "#unsubscribe" do

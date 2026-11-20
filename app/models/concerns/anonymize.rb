@@ -34,7 +34,10 @@ module Anonymize
         self.postcode = "ZZ993WZ"
       end
 
-      save!
+      # Older signatures may be missing data that's now required, e.g.
+      # location_code or postcode, so skip validations to ensure that
+      # they can still be anonymized.
+      save!(validate: false)
     end
   end
 end
